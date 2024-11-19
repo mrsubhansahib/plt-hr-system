@@ -12,10 +12,11 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login()
     {
-        //
+        return view('pages.auth.login');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,20 +34,26 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function authenticate(Request $request)
     {
-        //
+        $data=$request->validate([
+            'email'=>'required|email|exists:users,email',
+            'password'=>'required'
+        ]);
+        if(auth()->attempt($data)){
+
+            return redirect('/dashboard')->with('success','Login Successful');
+        }else
+        {
+            return back()->with('error','Invalid Credentials');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Auth  $auth
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Auth $auth)
+ 
+    public function logout(Request $request)
     {
-        //
+        auth()->logout();
+        return redirect('/')->with('success','Logout Successful');
     }
 
     /**
