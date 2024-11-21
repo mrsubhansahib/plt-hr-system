@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_trainings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('training_title');
             $table->string('course_date');
             $table->string('renewal_date');

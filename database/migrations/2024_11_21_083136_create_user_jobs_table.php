@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('facility');
             $table->string('job_start_date');
             $table->string('rate_of_pay');
