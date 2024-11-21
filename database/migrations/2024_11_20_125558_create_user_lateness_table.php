@@ -15,14 +15,13 @@ return new class extends Migration
     {
         Schema::create('user_lateness', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Foreign Key (references users table)
-            $table->string('Lateness_Triggered');
-            $table->text('Lateness_Stage');
-            $table->text('Level_of_Warning');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('lateness_triggered');
+            $table->text('lateness_stage');
+            $table->text('warning_level');
             $table->text('notes');
+            
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
