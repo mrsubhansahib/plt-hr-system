@@ -38,15 +38,12 @@ Route::group(['prefix' => 'email'], function () {
     });
 });
 // routes added by haider 
-Route::group(['prefix' => 'email'], function () {
-    Route::get('inbox', function () {
-        return view('pages.email.inbox');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('list', function () {
+        return view('pages.admin.list');
     });
-    Route::get('read', function () {
-        return view('pages.email.read');
-    });
-    Route::get('compose', function () {
-        return view('pages.email.compose');
+    Route::get('create', function () {
+        return view('pages.admin.create');
     });
 });
 
