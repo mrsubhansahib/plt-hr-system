@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Auth;
+// use App\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -36,24 +39,78 @@ class AuthController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $data=$request->validate([
-            'email'=>'required|email|exists:users,email',
-            'password'=>'required'
+        $data = $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required'
         ]);
-        if(auth()->attempt($data)){
+        if (auth()->attempt($data)) {
 
-            return redirect('/dashboard')->with('success','Login Successful');
-        }else
-        {
-            return back()->with('error','Invalid Credentials');
+            return redirect('/dashboard')->with('success', 'Login Successful');
+        } else {
+            return back()->with('error', 'Invalid Credentials');
         }
     }
 
- 
+    public function getprofile()
+    {
+        $user = Auth::user();
+        return view('pages.general.profile', compact('user'));
+    }
+    public function edit_profile()
+    {
+        $user = Auth::user();
+        return view('pages.general.editprofile', compact('user'));
+    }
+    public function update_profile(Request $request)
+    {
+        $user = Auth::user();
+        $request->validate([
+            'firstName' => 'required',
+            'surname' => 'required',  
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'address' => 'nullable', 
+            'gender' => 'nullable', 
+            'mobile_tel' => 'nullable', 
+        ]);
+        $user->first_name = $request->firstName;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->address1 = $request->address;
+        $user->gender = $request->gender;
+        $user->mobile_tel = $request->mobile_tel;
+        $user->save();
+        return redirect()->route('dashboard')->with('success', 'Profile updated successfully!');
+    }
+
+    public function edit_password()
+    {
+        $user = Auth::user();
+        return view('pages.general.editpassword', compact('user'));
+    }
+
+    public function update_password(Request $request)
+    {
+        $request->validate([
+            'currentPassword' => 'required',
+            'new_password' => 'required|confirmed',
+            'new_password_confirmation' => 'required'
+        ]);
+
+        $user = auth()->user();
+        if (!Hash::check($request->currentPassword, $user->password)) {
+            return back()->with(['error' => 'The current password is incorrect.']);
+        } else {
+            $user->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+            return redirect()->route('dashboard')->with('success', 'Password updated successfully!');
+        }
+    }
+
     public function logout(Request $request)
     {
         auth()->logout();
-        return redirect('/')->with('success','Logout Successful');
+        return redirect('/')->with('success', 'Logout Successful');
     }
 
     /**

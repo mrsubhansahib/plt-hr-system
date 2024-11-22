@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', function () {
         return view('dashboard');
-    });
+    })->name('dashboard');
 });
 
 
@@ -195,9 +196,16 @@ Route::group(['prefix' => 'general'], function () {
     Route::get('invoice', function () {
         return view('pages.general.invoice');
     });
-    Route::get('profile', function () {
-        return view('pages.general.profile');
-    });
+    // Route::get('profile', function () {
+    //     return view('pages.general.profile');
+    // });
+    Route::get('profile', [AuthController::class, 'getprofile'])
+    ->name('profile');
+    Route::get('edit_profile',[AuthController::class, 'edit_profile'])->name('edit_profile');
+    Route::post('update_profile', [AuthController::class, 'update_profile'])->name('update_profile');
+    Route::get('edit_password', [AuthController::class, 'edit_password'])
+    ->name('edit_password');
+    Route::post('update_password', [AuthController::class, 'update_password'])->name('update_password');
     Route::get('pricing', function () {
         return view('pages.general.pricing');
     });

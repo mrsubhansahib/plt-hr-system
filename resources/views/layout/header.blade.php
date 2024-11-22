@@ -214,17 +214,17 @@
               </a>
             </li>
             <li class="dropdown-item py-2">
-              <a href="javascript:;" class="text-body ms-0">
+              <a href="{{ url('/general/edit_profile') }}" class="text-body ms-0">
                 <i class="me-2 icon-md" data-feather="edit"></i>
                 <span>Edit Profile</span>
               </a>
             </li>
             <li class="dropdown-item py-2">
-              <a href="javascript:;" class="text-body ms-0">
-                <i class="me-2 icon-md" data-feather="repeat"></i>
-                <span>Switch User</span>
+              <a href="{{ url('/general/edit_password') }}" class="text-body ms-0">
+                <i class="me-2 icon-md" data-feather="lock"></i>
+                <span>Edit Password</span>
               </a>
-            </li>
+            </li>            
             <li class="dropdown-item py-2" onclick="document.getElementById('logout').submit()">
               <form action="{{route('logout')}}" method="POST" id="logout" class="text-body ms-0">
                 @csrf
