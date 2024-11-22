@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_disclosures', function (Blueprint $table) {
+        Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('dbs_evel');
-            $table->string('date_equested');
-            $table->string('date_on_certificate');
-            $table->string('certificate_no');
-            $table->string('paid_liberata');
-            $table->string('reimbursed_candidate');
-            $table->string('invoice_sent');
-            $table->text('contract_type');
+            $table->text('training_title');
+            $table->string('course_date');
+            $table->string('renewal_date');
+            $table->string('ihasco_training_sent');
+            $table->string('ihasco_training_complete');
             $table->text('notes');
 
             $table->timestamps();
@@ -37,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_disclosures');
+        Schema::dropIfExists('user_trainings');
     }
 };

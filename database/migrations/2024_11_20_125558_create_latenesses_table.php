@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_trainings', function (Blueprint $table) {
+        Schema::create('latenesses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('training_title');
-            $table->string('course_date');
-            $table->string('renewal_date');
-            $table->string('ihasco_training_sent');
-            $table->string('ihasco_training_complete');
+            $table->string('lateness_triggered');
+            $table->text('lateness_stage');
+            $table->text('warning_level');
             $table->text('notes');
-
+            
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_trainings');
+        Schema::dropIfExists('user_lateness');
     }
 };

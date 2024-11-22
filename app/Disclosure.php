@@ -5,21 +5,26 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class user_disciplinary extends Model
+class Disclosure extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'reason_for_disciplinary',
-        'hearing_date',
-        'outcome',
-        'suspended',
-        'date_suspended',
+        'dbs_evel',
+        'date_equested',
+        'date_on_certificate',
+        'certificate_no',
+        'paid_liberata',
+        'reimbursed_candidate',
+        'invoice_sent',
+        'contract_type',
         'notes'
     ];
 
-
+    // relationships one to one
     public function user()
     {
         return $this->hasOne(User::class,'user_id','id');
     }
+
+
 }
