@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'first_name'=>'',
             'middle_name'=>'',
             'surname'=>'Admin',
+            'role'=>'admin',
             'preferred_name'=>'',
             'email'=>'admin@softicera.com',
             'password'=>Hash::make('password'),
