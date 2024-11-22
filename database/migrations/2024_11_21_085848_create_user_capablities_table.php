@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('user_capablities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('capability_rocedure');
             $table->string('capability_stage');
             $table->string('date');
-            $table->string('outcome/action_taken');
+            $table->string('outcome');
             $table->string('warning_issued_type');
             $table->string('review_date');
             $table->text('notes');
