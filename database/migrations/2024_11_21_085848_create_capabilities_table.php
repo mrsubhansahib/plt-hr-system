@@ -13,18 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_jobs', function (Blueprint $table) {
+        Schema::create('capabilities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('facility');
-            $table->string('job_start_date');
-            $table->string('rate_of_pay');
-            $table->string('number_of_hours');
-            $table->text('contrac_type');
-            $table->string('termination_date');
-            $table->string('contract_returned');
-            $table->string('jd_returned');
+            $table->string('capability_rocedure');
+            $table->string('capability_stage');
+            $table->string('date');
+            $table->string('outcome');
+            $table->string('warning_issued_type');
+            $table->string('review_date');
             $table->text('notes');
+
 
             $table->timestamps();
         });
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_jobs');
+        Schema::dropIfExists('user_capablities');
     }
 };

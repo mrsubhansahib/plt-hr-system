@@ -5,17 +5,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class user_latenes extends Model
+class Capability extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'lateness_triggered',
-        'lateness_stage',
-        'warning_level',
+        'capability_rocedure',
+        'capability_stage',
+        'date',
+        'outcome',
+        'warning_issued_type',
+        'review_date',
         'notes'
     ];
 
-    // relationships one to many
+
     public function user()
     {
         return $this->hasOne(User::class);

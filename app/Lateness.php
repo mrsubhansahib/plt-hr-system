@@ -5,16 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class user_sicknesse extends Model
+class Lateness extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'date_from',
-        'date_to',
-        'total_hours',
-        'certification_form_received',
-        'fit_note_received',
+        'lateness_triggered',
+        'lateness_stage',
+        'warning_level',
         'notes'
     ];
 

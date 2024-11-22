@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_disciplinarys', function (Blueprint $table) {
+        Schema::create('disclosures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('reason_for_disciplinary');
-            $table->string('hearing_date');
-            $table->text('outcome');
-            $table->string('suspended');
-            $table->string('date_suspended');
+            $table->text('dbs_evel');
+            $table->string('date_equested');
+            $table->string('date_on_certificate');
+            $table->string('certificate_no');
+            $table->string('paid_liberata');
+            $table->string('reimbursed_candidate');
+            $table->string('invoice_sent');
+            $table->text('contract_type');
             $table->text('notes');
 
             $table->timestamps();
@@ -34,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_disciplinarys');
+        Schema::dropIfExists('user_disclosures');
     }
 };
