@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('lateness_stage');
             $table->text('warning_level');
             $table->text('notes');
-            
             $table->timestamps();
         });
     }
