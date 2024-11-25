@@ -80,22 +80,24 @@
                       <div class="col-md-3">
                           <label class="form-label">Gender:</label>
                           <select class="form-control" name="gender">
+                              <option value="" selected disabled></option>
                               <option value="male">Male</option>
                               <option value="female">Female</option>
                               <option value="other">Other</option>
                           </select>
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Ethnicity:</label>
-                          <input class="form-control" type="text" name="ethnicity" />
+                        <label class="form-label">Ethnicity:</label>
+                        <input class="form-control" type="text" name="ethnicity" />
                       </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-md-3">
                       <label class="form-label">Disability:</label>
                       <select class="form-control" name="disability">
-                          <option value="yes">Yes</option>
-                          <option value="no">No</option>
+                        <option value="" selected disabled></option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
                       </select>
                     </div>
                   </div>
@@ -320,6 +322,7 @@
                           <textarea class="form-control" name="notes" rows="4"></textarea>
                       </div>
                   </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
               </form>
           </div>
       </div>
