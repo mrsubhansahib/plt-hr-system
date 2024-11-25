@@ -39,6 +39,36 @@
           </ul>
         </div>
       </li>
+
+
+
+      {{-- admin added by haider --}}
+      
+      <li class="nav-item {{ active_class(['admin/*']) }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#Admin" role="button" aria-expanded="{{ is_active_route(['admin/*']) }}" aria-controls="Admin">
+          <i class="link-icon" data-feather="users"></i>
+          <span class="link-title">Admin</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse {{ show_class(['admin/*']) }}" id="Admin">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="{{ url('/admin/list') }}" class="nav-link {{ active_class(['admin/list']) }}">List</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/admin/create') }}" class="nav-link {{ active_class(['admin/create']) }}">Create</a>
+            </li>
+            {{-- <li class="nav-item">
+              <a href="{{ url('/email/compose') }}" class="nav-link {{ active_class(['email/compose']) }}"></a>
+            </li> --}}
+          </ul>
+        </div>
+      </li>
+
+
+
+
+
       <li class="nav-item {{ active_class(['apps/chat']) }}">
         <a href="{{ url('/apps/chat') }}" class="nav-link">
           <i class="link-icon" data-feather="message-square"></i>

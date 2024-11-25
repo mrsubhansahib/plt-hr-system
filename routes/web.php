@@ -37,6 +37,15 @@ Route::group(['prefix' => 'email'], function () {
         return view('pages.email.compose');
     });
 });
+// routes added by haider 
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('list', function () {
+        return view('pages.admin.list');
+    });
+    Route::get('create', function () {
+        return view('pages.admin.create');
+    });
+});
 
 Route::group(['prefix' => 'apps'], function () {
     Route::get('chat', function () {
