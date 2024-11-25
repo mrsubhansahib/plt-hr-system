@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -40,9 +41,7 @@ Route::group(['prefix' => 'email'], function () {
 });
 // routes added by haider 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('list', function () {
-        return view('pages.admin.list');
-    });
+    Route::get('list', [UserController::class,'index'])->name('show.admins');
     Route::get('create', function () {
         return view('pages.admin.create');
     });
