@@ -48,6 +48,7 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
+
 Route::group(['prefix' => 'apps'], function () {
     Route::get('chat', function () {
         return view('pages.apps.chat');
