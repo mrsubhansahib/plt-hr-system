@@ -10,54 +10,41 @@
 @endpush
 
 @section('content')
+@include('layout.alert')
     <div class="row">
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Profile Information</h6>
-                    <form class="forms-sample">
+                    <h6 class="card-title">Update Password</h6>
+                    <form class="forms-sample" method="POST" action="{{ route('update_password') }}">
+                        @csrf
                         <div class="row mb-3">
-                            <div class="col">
-                                <label class="form-label" for="firstName">First Name:</label>
-                                <input class="form-control mb-4 mb-md-0" name="firstName" type="text" id="firstName"
-                                    value="{{ $user->first_name }}" disabled />
+                            <div class="col-md-4">
+                                <label class="form-label" for="currentPassword">Current Password:</label>
+                                <input class="form-control mb-4 mb-md-0" name="currentPassword" type="password"
+                                    id="currentPassword" placeholder="Enter your current password" />
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="lastName">Surname:</label>
-                                <input class="form-control" type="text" name="lastName" id="lastName"
-                                    value="{{ $user->surname }}" disabled />
+                            <div class="col-md-4">
+                                <label class="form-label" for="newPassword">New Password:</label>
+                                <input class="form-control" type="password" id="newPassword" name="new_password"
+                                    placeholder="Enter your new password" />
+                                    @error('new_password')
+                                        <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="newPasswordConfirmation">Confirm New Password:</label>
+                                <input class="form-control" type="password" id="newPasswordConfirmation"
+                                    name="new_password_confirmation" placeholder="Confirm your new password" />
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label" for="email">Email:</label>
-                                <input class="form-control mb-4 mb-md-0" type="email" name="email" id="email"
-                                    value="{{ $user->email }}" disabled />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="address">Address:</label>
-                                <input class="form-control" type="text" id="address" name="address"
-                                    value="{{ $user->address1 }}" disabled />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Gender:</label>
-                                <input class="form-control" type="text" value="{{ $user->gender }}" disabled />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Phone:</label>
-                                <input class="form-control mb-4 mb-md-0" data-inputmask-alias="(+99) 9999-9999" /
-                                    value="{{ $user->mobile_tel }}" disabled>
-                            </div>
-                        </div>
+                        <input class="btn btn-primary" type="submit" value="Confirm">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-
 @push('plugin-scripts')
     <script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
@@ -71,7 +58,6 @@
     <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/flatpickr/flatpickr.min.js') }}"></script>
 @endpush
-
 @push('custom-scripts')
     <script src="{{ asset('assets/js/form-validation.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap-maxlength.js') }}"></script>
