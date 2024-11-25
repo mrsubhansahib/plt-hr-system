@@ -24,28 +24,28 @@
                                     value="{{ $user->first_name }}" required/>
                             </div>
                             <div class="col-md-6">
+                                <label class="form-label" for="middle_name">Middle Name:</label>
+                                <input class="form-control" type="text" name="middleName" id="middleName"
+                                    value="{{ $user->middle_name }}" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label class="form-label" for="surname">Surname:</label>
                                 <input class="form-control" type="text" name="surname" id="surname"
                                     value="{{ $user->surname }}" required/>
                             </div>
-                        </div>
-                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label" for="email">Email:</label>
                                 <input class="form-control mb-4 mb-md-0" type="email" name="email" id="email"
                                     value="{{ $user->email }}" required/>
                             </div>
+                        </div>
+                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label" for="address">Address:</label>
                                 <input class="form-control" type="text" id="address" name="address"
                                     value="{{ $user->address1 }}" required/>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Gender:</label>
-                                <input class="form-control" type="text" value="{{ $user->gender }}"
-                                name="gender" required/>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Phone:</label>
