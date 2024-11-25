@@ -66,17 +66,17 @@ class AuthController extends Controller
         $user = Auth::user();
         $request->validate([
             'firstName' => 'required',
+            'middleName' => 'required',
             'surname' => 'required',  
             'email' => 'required|email|unique:users,email,' . $user->id,
             'address' => 'nullable', 
-            'gender' => 'nullable', 
             'mobile_tel' => 'nullable', 
         ]);
         $user->first_name = $request->firstName;
+        $user->middle_name = $request->middleName;
         $user->surname = $request->surname;
         $user->email = $request->email;
         $user->address1 = $request->address;
-        $user->gender = $request->gender;
         $user->mobile_tel = $request->mobile_tel;
         $user->save();
         return redirect()->route('dashboard')->with('success', 'Profile updated successfully!');

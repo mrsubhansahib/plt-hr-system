@@ -23,27 +23,28 @@
                                     value="{{ $user->first_name }}" disabled />
                             </div>
                             <div class="col-md-6">
+                                <label class="form-label" for="middle_Name">Middle Name:</label>
+                                <input class="form-control" type="text" name="middle_Name" id="middle_Name"
+                                    value="{{ $user->middle_name }}" disabled />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label class="form-label" for="lastName">Surname:</label>
                                 <input class="form-control" type="text" name="lastName" id="lastName"
                                     value="{{ $user->surname }}" disabled />
                             </div>
-                        </div>
-                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label" for="email">Email:</label>
                                 <input class="form-control mb-4 mb-md-0" type="email" name="email" id="email"
                                     value="{{ $user->email }}" disabled />
                             </div>
+                        </div>
+                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label" for="address">Address:</label>
                                 <input class="form-control" type="text" id="address" name="address"
                                     value="{{ $user->address1 }}" disabled />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Gender:</label>
-                                <input class="form-control" type="text" value="{{ $user->gender }}" disabled />
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Phone:</label>
