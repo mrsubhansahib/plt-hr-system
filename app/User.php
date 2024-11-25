@@ -71,45 +71,45 @@ class User extends Authenticatable
     ];
 
     // relationships one to one 
-    public function user_job()
+    public function jobs()
     {
-        return $this->hasMany(user_job::class,'user_id','id');
+        return $this->hasMany(Job::class);
     }  
 
     // relationships one to one
-    public function user_disclosure()
+    public function disclosure()
     {
-        return $this->hasOne(user_disclosure::class,'user_id','id');
+        return $this->hasOne(Disclosure::class);
     }
 
     // relationships one to one
-    public function user_sicknesse()
+    public function sicknesses()
     {
-        return $this->hasMany(user_sicknesse::class,'user_id','id');
+        return $this->hasMany(Sickness::class);
     }
 
     // relationships one to one
-    public function user_capabilitie()
+    public function capabilities()
     {
-        return $this->hasMany(user_capabilitie::class,'user_id','id');
+        return $this->hasMany(Capability::class);
     }
 
 // relationships one to one
-    public function user_disciplinary()
+    public function disciplinaries()
     {
-        return $this->hasMany(user_disciplinary::class,'user_id','id');
+        return $this->hasMany(Disclosure::class);
     }
 
     // relationships one to one
-    public function user_latenes()
+    public function latenesses()
     {
-        return $this->hasMany(user_latenes::class,'user_id','id');
+        return $this->hasMany(Lateness::class);
     }
 
     // relationships one to one
-    public function user_training()
+    public function trainings()
     {
-        return $this->hasMany(user_training::class,'user_id','id');
+        return $this->hasMany(Training::class);
     }
     
 
