@@ -99,13 +99,13 @@
               </div>	
             </a>
             <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-              <div class="me-3">
+              {{-- <div class="me-3">
                 <img class="wd-30 ht-30 rounded-circle" src="{{ url('https://via.placeholder.com/30x30') }}" alt="userr">
-              </div>
+              </div> --}}
               <div class="d-flex justify-content-between flex-grow-1">
                 <div class="me-4">
-                  <p>Amiah Burton</p>
-                  <p class="tx-12 text-muted">Project deatline</p>
+                  <p>{{auth()->user()->surname}}</p>
+                  <p class="tx-12 text-muted">{{auth()->user()->email}}</p>
                 </div>
                 <p class="tx-12 text-muted">2 hrs ago</p>
               </div>	
@@ -198,29 +198,29 @@
         </a>
         <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
           <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
-            <div class="mb-3">
+            {{-- <div class="mb-3">
               <img class="wd-80 ht-80 rounded-circle" src="{{ url('https://via.placeholder.com/80x80') }}" alt="">
-            </div>
+            </div> --}}
             <div class="text-center">
-              <p class="tx-16 fw-bolder">Amiah Burton</p>
-              <p class="tx-12 text-muted">amiahburton@gmail.com</p>
+              <p class="tx-16 fw-bolder">{{auth()->user()->surname}}</p>
+              <p class="tx-12 text-muted">{{auth()->user()->email}}</p>
             </div>
           </div>
           <ul class="list-unstyled p-1">
             <li class="dropdown-item py-2">
-              <a href="{{ url('/general/profile') }}" class="text-body ms-0">
+              <a href="{{ route('show.profile') }}" class="text-body ms-0">
                 <i class="me-2 icon-md" data-feather="user"></i>
                 <span>Profile</span>
               </a>
             </li>
             <li class="dropdown-item py-2">
-              <a href="{{ url('/general/edit_profile') }}" class="text-body ms-0">
+              <a href="{{ route('edit.profile') }}" class="text-body ms-0">
                 <i class="me-2 icon-md" data-feather="edit"></i>
                 <span>Edit Profile</span>
               </a>
             </li>
             <li class="dropdown-item py-2">
-              <a href="{{ url('/general/edit_password') }}" class="text-body ms-0">
+              <a href="{{ route('edit.password')}}" class="text-body ms-0">
                 <i class="me-2 icon-md" data-feather="lock"></i>
                 <span>Edit Password</span>
               </a>

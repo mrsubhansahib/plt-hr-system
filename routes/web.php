@@ -13,6 +13,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +22,29 @@ Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 
 Route::middleware('auth')->group(function () {
+    // Route for authentication
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    // Route for Admin CRUD  
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('list', [UserController::class, 'index'])->name('show.admins');
+        Route::get('create', [UserController::class, 'create'])->name('create.admin');
+        Route::post('store', [UserController::class, 'store'])->name('store.admin');
+        Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit.admin');
+        Route::post('update/{id}', [UserController::class, 'update'])->name('update.admin');
+        Route::get('delete/{id}', [UserController::class, 'destroy'])->name('delete.admin');
+    });
+    //Route for Admin Profile
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('show.profile');
+        Route::get('edit', [ProfileController::class, 'edit'])->name('edit.profile');
+        Route::post('update', [ProfileController::class, 'update'])->name('update.profile');
+        Route::get('edit/password', [ProfileController::class, 'edit_password'])->name('edit.password');
+        Route::post('update/password', [ProfileController::class, 'update_password'])->name('update.password');
+    });
 });
 
 
@@ -39,13 +59,7 @@ Route::group(['prefix' => 'email'], function () {
         return view('pages.email.compose');
     });
 });
-// routes added by haider 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('list', [UserController::class,'index'])->name('show.admins');
-    Route::get('create', function () {
-        return view('pages.admin.create');
-    });
-});
+
 
 
 Route::group(['prefix' => 'apps'], function () {
@@ -208,13 +222,7 @@ Route::group(['prefix' => 'general'], function () {
     // Route::get('profile', function () {
     //     return view('pages.general.profile');
     // });
-    Route::get('profile', [AuthController::class, 'getprofile'])
-    ->name('profile');
-    Route::get('edit_profile',[AuthController::class, 'edit_profile'])->name('edit_profile');
-    Route::post('update_profile', [AuthController::class, 'update_profile'])->name('update_profile');
-    Route::get('edit_password', [AuthController::class, 'edit_password'])
-    ->name('edit_password');
-    Route::post('update_password', [AuthController::class, 'update_password'])->name('update_password');
+
     Route::get('pricing', function () {
         return view('pages.general.pricing');
     });

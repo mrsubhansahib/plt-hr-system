@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $user = new User();
 
-        return view('admin.user.create', compact('user'));
+        return view('pages.admin.create', compact('user'));
     }
 
     /**
@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         $user = User::create($request->all());
         
-        return redirect()->route('users.index')
+        return redirect('/dashboard')
             ->with('success', 'User created successfully.');
     }
 
