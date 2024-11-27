@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\user_disclosure;
+use App\Sickness;
 use Illuminate\Http\Request;
 
-class UserDisclosureController extends Controller
+class SicknessController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserDisclosureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_disclosure  $user_disclosure
+     * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function show(user_disclosure $user_disclosure)
+    public function show(Sickness $Sickness)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserDisclosureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_disclosure  $user_disclosure
+     * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_disclosure $user_disclosure)
+    public function edit(Sickness $Sickness)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserDisclosureController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_disclosure  $user_disclosure
+     * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_disclosure $user_disclosure)
+    public function update(Request $request, Sickness $Sickness)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserDisclosureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_disclosure  $user_disclosure
+     * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_disclosure $user_disclosure)
+    public function destroy(Sickness $Sickness)
     {
         //
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\user_latenes;
+use App\Disciplinary;
 use Illuminate\Http\Request;
 
-class UserLatenesController extends Controller
+class DisciplinaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserLatenesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_latenes  $user_latenes
+     * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function show(user_latenes $user_latenes)
+    public function show(Disciplinary $Disciplinary)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserLatenesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_latenes  $user_latenes
+     * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_latenes $user_latenes)
+    public function edit(Disciplinary $Disciplinary)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserLatenesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_latenes  $user_latenes
+     * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_latenes $user_latenes)
+    public function update(Request $request, Disciplinary $Disciplinary)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserLatenesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_latenes  $user_latenes
+     * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_latenes $user_latenes)
+    public function destroy(Disciplinary $Disciplinary)
     {
         //
     }

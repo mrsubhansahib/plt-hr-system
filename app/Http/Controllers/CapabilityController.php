@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\user_sicknesse;
+use App\Capability;
 use Illuminate\Http\Request;
 
-class UserSicknesseController extends Controller
+class CapabilityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserSicknesseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_sicknesse  $user_sicknesse
+     * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function show(user_sicknesse $user_sicknesse)
+    public function show(Capability $Capability)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserSicknesseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_sicknesse  $user_sicknesse
+     * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_sicknesse $user_sicknesse)
+    public function edit(Capability $Capability)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserSicknesseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_sicknesse  $user_sicknesse
+     * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_sicknesse $user_sicknesse)
+    public function update(Request $request, Capability $Capability)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserSicknesseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_sicknesse  $user_sicknesse
+     * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_sicknesse $user_sicknesse)
+    public function destroy(Capability $Capability)
     {
         //
     }

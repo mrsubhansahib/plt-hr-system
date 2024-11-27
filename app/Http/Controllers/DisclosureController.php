@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\user_job;
+use App\Disclosure;
 use Illuminate\Http\Request;
 
-class UserJobController extends Controller
+class DisclosureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserJobController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_job  $user_job
+     * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function show(user_job $user_job)
+    public function show(Disclosure $Disclosure)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserJobController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_job  $user_job
+     * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_job $user_job)
+    public function edit(Disclosure $Disclosure)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserJobController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_job  $user_job
+     * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_job $user_job)
+    public function update(Request $request, Disclosure $Disclosure)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserJobController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_job  $user_job
+     * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_job $user_job)
+    public function destroy(Disclosure $Disclosure)
     {
         //
     }

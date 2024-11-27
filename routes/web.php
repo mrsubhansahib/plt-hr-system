@@ -13,6 +13,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Artisan;
@@ -38,6 +39,15 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit.admin');
         Route::post('update/{id}', [UserController::class, 'update'])->name('update.admin');
         Route::get('delete/{id}', [UserController::class, 'destroy'])->name('delete.admin');
+    });
+    Route::group(['prefix' => 'employee'], function () {
+        Route::get('list', [EmployeeController::class, 'index'])->name('show.employees');
+        Route::get('create', [EmployeeController::class, 'create'])->name('create.employee');
+        Route::post('store', [EmployeeController::class, 'store'])->name('store.employee');
+        Route::get('detail', [EmployeeController::class, 'show'])->name('detail.employee');
+        Route::get('edit/{id}', [EmployeeController::class, 'edit'])->name('edit.employee');
+        Route::post('update/{id}', [EmployeeController::class, 'update'])->name('update.employee');
+        Route::get('delete/{id}', [EmployeeController::class, 'destroy'])->name('delete.employee');
     });
     //Route for Admin Profile
     Route::group(['prefix' => 'profile'], function () {

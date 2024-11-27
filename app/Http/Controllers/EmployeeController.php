@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
-/**
- * Class UserController
- * @package App\Http\Controllers
- */
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +18,9 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::where('role', 'admin')->get();
-        return view('pages.admin.list', compact('users'));
+        $users = User::where('role', 'employee')->get();
+        // dd($users);
+        return view('pages.employee.list', compact('users'));
     }
 
     /**
@@ -32,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.create');
+        return view('pages.employee.create');
     }
 
     /**
@@ -64,8 +61,8 @@ class UserController extends Controller
         ]);
         $user = User::create($request->all());
 
-        return redirect()->route('show.admins')
-            ->with('success', 'Admin created successfully.');
+        return redirect()->route('show.employees')
+            ->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -75,7 +72,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('pages.admin.show', compact('user'));
+        return view('pages.employee.show', compact('user'));
     }
 
     /**
@@ -87,7 +84,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('pages.admin.edit', compact('user'));
+        return view('pages.employee.edit', compact('user'));
     }
 
     /**
@@ -117,15 +114,13 @@ class UserController extends Controller
             'emergency_1_ph_no' => 'required',
             'emergency_1_relation' => 'required',
         ]);
-        // dd($id);
-
-        $user= User::find($id);
+        $user = User::find($id);
         $user->update($request->all());
 
 
 
         // Redirect with a success message
-        return redirect()->route('show.admins')->with('success', 'Admin updated successfully.');
+        return redirect()->route('show.employees')->with('success', 'Employee updated successfully.');
     }
 
 
@@ -138,7 +133,7 @@ class UserController extends Controller
     {
         $user = User::find($id)->delete();
 
-        return redirect()->route('show.admins')
-            ->with('success', 'Admin deleted successfully');
+        return redirect()->route('show.employees')
+            ->with('success', 'Employee deleted successfully');
     }
 }

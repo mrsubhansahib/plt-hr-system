@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\user_disciplinary;
+use App\Training;
 use Illuminate\Http\Request;
 
-class UserDisciplinaryController extends Controller
+class TrainingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserDisciplinaryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_disciplinary  $user_disciplinary
+     * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function show(user_disciplinary $user_disciplinary)
+    public function show(Training $Training)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserDisciplinaryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_disciplinary  $user_disciplinary
+     * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_disciplinary $user_disciplinary)
+    public function edit(Training $Training)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserDisciplinaryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_disciplinary  $user_disciplinary
+     * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_disciplinary $user_disciplinary)
+    public function update(Request $request, Training $Training)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserDisciplinaryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_disciplinary  $user_disciplinary
+     * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_disciplinary $user_disciplinary)
+    public function destroy(Training $Training)
     {
         //
     }
