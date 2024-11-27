@@ -28,7 +28,7 @@ class User extends Authenticatable
                 'address2',
                 'address3',
                 'town',
-                'Postcode',
+                'postcode',
                 'mobile_tel',
                 'home_tel',
                 'dob',

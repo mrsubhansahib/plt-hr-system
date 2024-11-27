@@ -4,27 +4,28 @@
 <div class="row">
   <div class="col-md-12 grid-margin">
       <div class="card">
+        <h4 class="card-title">Personal Detail</h4>
           <div class="card-body">
-
-              <h4 class="card-title">Create</h4>
-              <form class="forms-sample" action="{{route('store.admin')}}" method="POST">
-                    @csrf
+              
+              <form class="forms-sample" action="{{ route('update.admin', $user->id) }}" method="POST">
+                @csrf
+                @method('PUT') <!-- Use PUT or PATCH for updates -->
                   <!-- Personal Details -->
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">First Name:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="first_name" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Middle Name:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="middle_name" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Surname:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="surname" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Preferred Name:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="preferred_name" />
                       </div>
                   </div>
@@ -32,19 +33,19 @@
                   <!-- Address Details -->
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">Address 1:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="address1" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Address 2:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="address2" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Address 3:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="address3" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Town:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="town" />
                       </div>
                   </div>
@@ -52,39 +53,35 @@
                   <!-- Contact Details -->
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">Postcode:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="postcode" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Mobile Tel:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="mobile_tel" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Home Tel:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="home_tel" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Email</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="email" name="email" />
                       </div>
-                      <div class="col-md-3">
-                        <label class="form-label">password</label>
-                        <input class="form-control" type="password" name="password" />
-                    </div>
                   </div>
 
                   <!-- Personal Info -->
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">DOB:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="date" name="dob" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Age:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="number" name="age" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Gender:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <select class="form-control" name="gender">
                               <option value="" selected disabled></option>
                               <option value="male">Male</option>
@@ -93,13 +90,13 @@
                           </select>
                       </div>
                       <div class="col-md-3">
-                        <label class="form-label">Ethnicity:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <input class="form-control" type="text" name="ethnicity" />
                       </div>
                   </div>
                   <div class="row mb-3">
                     <div class="col-md-3">
-                      <label class="form-label">Disability:</label>
+                      <label class="form-label">{{ $user-> }}</label>
                       <select class="form-control" name="disability">
                         <option value="" selected disabled></option>
                         <option value="yes">Yes</option>
@@ -112,27 +109,27 @@
                   <h4 class="my-4">Employment Details</h4>
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">Employment Date:</label>
-                          <input class="form-control" type="date" name="employment_date" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="date" name="employment_start_date" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Contracted From Date:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="date" name="contracted_from_date" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Employment Termination Date:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="date" name="termination_date" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Reason for Termination:</label>
-                          <input class="form-control" type="text" name="reason_termination" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="termination_reason" />
                       </div>
                   </div>
 
                   <!-- Additional Fields -->
                   <div class="row mb-3">
                     <div class="col-md-3">
-                        <label class="form-label">Handbook Sent:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="handbook_sent">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -140,7 +137,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Medical Form Returned:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="medical_form_returned">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -149,7 +146,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">New Entrant Form Returned:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="new_entrant_form_returned">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -157,7 +154,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Confidentiality Statement:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="confidentiality_statement_returned">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -167,15 +164,15 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-3">
-                        <label class="form-label">Work Document Received:</label>
-                        <select class="form-control" name="work_document_received">
+                        <label class="form-label">{{ $user-> }}</label>
+                        <select class="form-control" name="right_to_work_document">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Qualifications Checked:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="qualifications_checked">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -183,7 +180,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">References Requested:</label>
+                        <label class="form-label">{{ $user-> }}:</label>
                         <select class="form-control" name="references_requested">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -191,7 +188,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">References Returned:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="references_returned">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -201,7 +198,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-3">
-                        <label class="form-label">Payroll Informed:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="payroll_informed">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -209,7 +206,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Probation Complete:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="probation_complete">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -218,7 +215,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Equipment Required:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="equipment_required">
                             <option value="" selected disabled></option>
                             <option value="laptop">Laptop</option>
@@ -228,7 +225,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Equipment Ordered:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="equipment_ordered">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -238,15 +235,15 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-3">
-                        <label class="form-label">P45 / Tax Form Received:</label>
-                        <select class="form-control" name="p45">
+                        <label class="form-label">{{ $user-> }}</label>
+                        <select class="form-control" name="p45_tax_form_received">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Employee Pack Sent:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="employee_pack_sent">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -254,7 +251,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Termination Form to Payroll:</label>
+                        <label class="form-label">{{ $user-> }}</label>
                         <select class="form-control" name="termination_form_to_payroll">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
@@ -262,23 +259,23 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                      <label class="form-label">Casual Holiday Pay:</label>
-                      <input class="form-control" type="number" name="casual_holiday_pay" />
+                      <label class="form-label">{{ $user-> }}</label>
+                      <input class="form-control" type="number" name="holiday_pay" />
                   </div>
                     
                 </div>
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">NI Number:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="ni_number" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Default Cost Centre:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <input class="form-control" type="text" name="default_cost_centre" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Salaried / Monthly in Arrears:</label>
-                          <input class="form-control" type="text" name="salaried" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="salary_type" />
                       </div>
                   </div>
 
@@ -286,45 +283,45 @@
                   <h4 class="my-4">Emergency Contacts</h4>
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">Contact 1 Name:</label>
-                          <input class="form-control" type="text" name="emergency_1_name" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact1_name" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Contact 1 Mobile:</label>
-                          <input class="form-control" type="text" name="emergency_1_ph_no" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact1_mobile" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Contact 1 Home Number:</label>
-                          <input class="form-control" type="text" name="emergency_1_home_ph" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact1_home" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Contact 1 Relationship:</label>
-                          <input class="form-control" type="text" name="emergency_1_relation" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact1_relationship" />
                       </div>
                   </div>
                   <div class="row mb-3">
                       <div class="col-md-3">
-                          <label class="form-label">Contact 2 Name:</label>
-                          <input class="form-control" type="text" name="emergency_2_name" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact2_name" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Contact 2 Mobile:</label>
-                          <input class="form-control" type="text" name="emergency_2_ph_no" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact2_mobile" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Contact 2 Home Number:</label>
-                          <input class="form-control" type="text" name="emergency_2_home_ph" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact2_home" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Contact 2 Relationship:</label>
-                          <input class="form-control" type="text" name="emergency_2_relation" />
+                          <label class="form-label">{{ $user-> }}</label>
+                          <input class="form-control" type="text" name="emergency_contact2_relationship" />
                       </div>
                   </div>
 
                   <!-- Notes -->
                   <div class="row mb-3">
                       <div class="col-md-12">
-                          <label class="form-label">Notes:</label>
+                          <label class="form-label">{{ $user-> }}</label>
                           <textarea class="form-control" name="notes" rows="4"></textarea>
                       </div>
                   </div>
@@ -335,4 +332,4 @@
   </div>
 </div>
 
-@endsection
+@endsection 
