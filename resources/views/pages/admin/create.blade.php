@@ -6,7 +6,8 @@
       <div class="card">
           <div class="card-body">
               <h4 class="card-title">Create</h4>
-              <form class="forms-sample">
+              <form class="forms-sample" action="{{route('store.admin')}}" method="POST">
+                    @csrf
                   <!-- Personal Details -->
                   <div class="row mb-3">
                       <div class="col-md-3">
