@@ -16,65 +16,65 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-                'first_name',
-                'middle_name',
-                'surname',
-                'preferred_name',
-                'email',
-                'role',
-                'status',
-                'password',
-                'address1',
-                'address2',
-                'address3',
-                'town',
-                'postcode',
-                'mobile_tel',
-                'home_tel',
-                'dob',
-                'age',
-                'gender',
-                'ethnicity',
-                'disability',
-                'ni_number',
-                'employment_date',
-                'contracted_from_date',
-                'termination_date',
-                'reason_termination',
-                'handbook_sent',
-                'medical_form_returned',
-                'new_entrant_form_returned',
-                'confidentiality_statement_returned',
-                'work_document_received',
-                'qualifications_checked',
-                'references_requested',
-                'references_returned',
-                'payroll_informed',
-                'probation_complete',
-                'equipment_required',
-                'equipment_ordered',
-                'default_cost_centre',
-                'salaried',
-                'casual_holiday_pay',
-                'p45',
-                'employee_pack_sent',
-                'emergency_1_name',
-                'emergency_1_ph_no',
-                'emergency_1_home_ph',
-                'emergency_1_relation',
-                'emergency_2_name',
-                'emergency_2_ph_no',
-                'emergency_2_home_ph',
-                'emergency_2_relation',
-                'termination_form_to_payroll',
-                'notes'
+        'status',
+        'first_name',
+        'middle_name',
+        'surname',
+        'preferred_name',
+        'role',
+        'email',
+        'password',
+        'address1',
+        'address2',
+        'address3',
+        'town',
+        'post_code',
+        'mobile_tel',
+        'home_tel',
+        'dob',
+        'age',
+        'gender',
+        'ethnicity',
+        'disability',
+        'ni_number',
+        'commencement_date',
+        'contracted_from_date',
+        'termination_date',
+        'reason_termination',
+        'handbook_sent',
+        'medical_form_returned',
+        'new_entrant_form_returned',
+        'confidentiality_statement_returned',
+        'work_document_received',
+        'qualifications_checked',
+        'references_requested',
+        'references_returned',
+        'payroll_informed',
+        'probation_complete',
+        'equipment_required',
+        'equipment_ordered',
+        'default_cost_center',
+        'salaried',
+        'casual_holiday_pay',
+        'p45',
+        'employee_pack_sent',
+        'emergency_1_name',
+        'emergency_1_ph_no',
+        'emergency_1_home_ph',
+        'emergency_1_relation',
+        'emergency_2_name',
+        'emergency_2_ph_no',
+        'emergency_2_home_ph',
+        'emergency_2_relation',
+        'termination_form_to_payroll',
+        'notes',
     ];
 
     // relationships one to one 
     public function jobs()
     {
         return $this->hasMany(Job::class);
-    }  
+    }
 
     // relationships one to one
     public function disclosure()
@@ -94,7 +94,7 @@ class User extends Authenticatable
         return $this->hasMany(Capability::class);
     }
 
-// relationships one to one
+    // relationships one to one
     public function disciplinaries()
     {
         return $this->hasMany(Disclosure::class);
@@ -111,7 +111,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Training::class);
     }
-    
+
 
     /**
      * The attributes that should be hidden for arrays.

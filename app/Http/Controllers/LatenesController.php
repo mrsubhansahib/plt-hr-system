@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\user_capabilitie;
+use App\Lateness;
 use Illuminate\Http\Request;
 
-class UserCapabilitieController extends Controller
+class UserLatenesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserCapabilitieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_capabilitie  $user_capabilitie
+     * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function show(user_capabilitie $user_capabilitie)
+    public function show(Lateness $Lateness)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserCapabilitieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_capabilitie  $user_capabilitie
+     * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_capabilitie $user_capabilitie)
+    public function edit(Lateness $Lateness)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserCapabilitieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_capabilitie  $user_capabilitie
+     * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_capabilitie $user_capabilitie)
+    public function update(Request $request, Lateness $Lateness)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserCapabilitieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_capabilitie  $user_capabilitie
+     * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_capabilitie $user_capabilitie)
+    public function destroy(Lateness $Lateness)
     {
         //
     }

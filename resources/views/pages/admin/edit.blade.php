@@ -1,335 +1,148 @@
 @extends('layout.master')
 
 @section('content')
-<div class="row">
-  <div class="col-md-12 grid-margin">
-      <div class="card">
-        <h4 class="card-title">Personal Detail</h4>
-          <div class="card-body">
-              
-              <form class="forms-sample" action="{{ route('update.admin', $user->id) }}" method="POST">
-                @csrf
-                @method('PUT') <!-- Use PUT or PATCH for updates -->
-                  <!-- Personal Details -->
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="first_name" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="middle_name" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="surname" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="preferred_name" />
-                      </div>
-                  </div>
+    <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Update</li>
+        </ol>
+    </nav>
+    @include('layout.alert')
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
 
-                  <!-- Address Details -->
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="address1" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="address2" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="address3" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="town" />
-                      </div>
-                  </div>
+                    {{-- <h3 class="card-title">Personal Details</h3> --}}
+                    <h3 class="my-4 text-center">Personal Details</h3>
+                    <hr>
+                    <form class="forms-sample" action="{{ route('update.admin', $user->id) }}" method="POST">
+                        @csrf
+                        <!-- Personal Details -->
+                        <div class="row mb-3">
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">First Name <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="first_name"
+                                    value="{{ $user->first_name }}" />
+                            </div>
 
-                  <!-- Contact Details -->
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="postcode" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="mobile_tel" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="home_tel" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="email" name="email" />
-                      </div>
-                  </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Surname <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="surname"
+                                    value="{{ $user->surname }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Preferred Name <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="preferred_name"
+                                    value="{{ $user->preferred_name }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Address 1 <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="address1"
+                                    value="{{ $user->address1 }}" />
+                            </div>
 
-                  <!-- Personal Info -->
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="date" name="dob" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="number" name="age" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <select class="form-control" name="gender">
-                              <option value="" selected disabled></option>
-                              <option value="male">Male</option>
-                              <option value="female">Female</option>
-                              <option value="other">Other</option>
-                          </select>
-                      </div>
-                      <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <input class="form-control" type="text" name="ethnicity" />
-                      </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-md-3">
-                      <label class="form-label">{{ $user-> }}</label>
-                      <select class="form-control" name="disability">
-                        <option value="" selected disabled></option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </select>
-                    </div>
-                  </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Town <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="town"
+                                    value="{{ $user->town }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Postcode <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="post_code"
+                                    value="{{ $user->post_code }}" />
+                            </div>
 
-                  <!-- Employment Details -->
-                  <h4 class="my-4">Employment Details</h4>
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="date" name="employment_start_date" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="date" name="contracted_from_date" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="date" name="termination_date" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="termination_reason" />
-                      </div>
-                  </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Email <span class="text-danger">*</span></label>
+                                <input class="form-control" type="email" required name="email"
+                                    value="{{ $user->email }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">DOB <span class="text-danger">*</span></label>
+                                <input class="form-control" type="date" required name="dob"
+                                    value="{{ $user->dob }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Age <span class="text-danger">*</span></label>
+                                <input class="form-control" type="number" required name="age"
+                                    value="{{ $user->age }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Gender <span class="text-danger">*</span></label>
+                                <select class="form-control" required name="gender" value="{{ $user->gender }}">
+                                    <option value="" selected disabled>Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="ethnicity"
+                                    value="{{ $user->ethnicity }}" />
+                            </div>
 
-                  <!-- Additional Fields -->
-                  <div class="row mb-3">
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="handbook_sent">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="medical_form_returned">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                            <option value="pending">Pending</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="new_entrant_form_returned">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="confidentiality_statement_returned">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
+                        </div>
+
+                        <!-- Employment Details -->
+                        <h3 class="my-4 text-center pt-3">Employment Details</h3>
+                        <hr>
+                        <div class="row mb-3">
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Employment Date <span class="text-danger">*</span></label>
+                                <input class="form-control" type="date" required name="employment_date"
+                                    value="{{ $user->employment_date }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>
+                                <input class="form-control" type="date" name="commencement_date" required  value="{{ $user->commencement_date }}"/>
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">NI Number <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="ni_number"
+                                    value="{{ $user->ni_number }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Default Cost Centre <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="default_cost_center"
+                                    value="{{ $user->default_cost_center }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Salaried / Monthly in Arrears <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="salaried"
+                                    value="{{ $user->salaried }}" />
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contacts -->
+                        <h3 class="my-4 text-center pt-3">Emergency Contacts</h3>
+                        <hr>
+                        <div class="row mb-3">
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Contact 1 Name <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="emergency_1_name"
+                                    value="{{ $user->emergency_1_name }}" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Contact 1 Mobile <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="emergency_1_ph_no"
+                                    value="{{ $user->emergency_1_ph_no }}" />
+                            </div>
+
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Contact 1 Relationship <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="emergency_1_relation"
+                                    value="{{ $user->emergency_1_relation }}" />
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="right_to_work_document">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="qualifications_checked">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}:</label>
-                        <select class="form-control" name="references_requested">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="references_returned">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="payroll_informed">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="probation_complete">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                            <option value="not_required">Not Required</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="equipment_required">
-                            <option value="" selected disabled></option>
-                            <option value="laptop">Laptop</option>
-                            <option value="desktop">Desktop</option>
-                            <option value="phone">Phone</option>
-                            <option value="none">None</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="equipment_ordered">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="p45_tax_form_received">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="employee_pack_sent">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">{{ $user-> }}</label>
-                        <select class="form-control" name="termination_form_to_payroll">
-                            <option value="" selected disabled></option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                      <label class="form-label">{{ $user-> }}</label>
-                      <input class="form-control" type="number" name="holiday_pay" />
-                  </div>
-                    
-                </div>
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="ni_number" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="default_cost_centre" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="salary_type" />
-                      </div>
-                  </div>
-
-                  <!-- Emergency Contacts -->
-                  <h4 class="my-4">Emergency Contacts</h4>
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact1_name" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact1_mobile" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact1_home" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact1_relationship" />
-                      </div>
-                  </div>
-                  <div class="row mb-3">
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact2_name" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact2_mobile" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact2_home" />
-                      </div>
-                      <div class="col-md-3">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <input class="form-control" type="text" name="emergency_contact2_relationship" />
-                      </div>
-                  </div>
-
-                  <!-- Notes -->
-                  <div class="row mb-3">
-                      <div class="col-md-12">
-                          <label class="form-label">{{ $user-> }}</label>
-                          <textarea class="form-control" name="notes" rows="4"></textarea>
-                      </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-          </div>
-      </div>
-  </div>
-</div>
-
-@endsection 
+            </div>
+        </div>
+    </div>
+@endsection
