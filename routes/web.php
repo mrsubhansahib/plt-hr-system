@@ -14,6 +14,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,11 @@ Route::middleware('auth')->group(function () {
         Route::post('update', [ProfileController::class, 'update'])->name('update.profile');
         Route::get('edit/password', [ProfileController::class, 'edit_password'])->name('edit.password');
         Route::post('update/password', [ProfileController::class, 'update_password'])->name('update.password');
+    });
+    // Routes for Jobs Crud
+    Route::group(['prefix' => 'job'], function () {
+        Route::get('list', [JobController::class, 'index'])->name('show.jobs');
+        Route::get('create', [JobController::class, 'create'])->name('create.job');
     });
 });
 
