@@ -65,8 +65,25 @@
         </div>
       </li>
 
-
-
+      {{--Job added by Wasi--}}
+      <li class="nav-item {{ active_class(['job/*']) }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#Jobs" role="button" aria-expanded="{{ is_active_route(['job/*']) }}" aria-controls="Jobs">
+          <i class="link-icon" data-feather="briefcase"></i>
+          <span class="link-title">Job</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse {{ show_class(['job/*']) }}" id="Jobs">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="{{ route('show.jobs') }}" class="nav-link {{ active_class(['job/list']) }}">List</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('create.job') }}" class="nav-link {{ active_class(['job/create']) }}">Create</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      
 
 
       <li class="nav-item {{ active_class(['apps/chat']) }}">

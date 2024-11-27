@@ -5,10 +5,8 @@
   <div class="col-md-12 grid-margin">
       <div class="card">
           <div class="card-body">
-
               <h4 class="card-title">Create</h4>
-              <form class="forms-sample" action="{{route('store.admin')}}" method="POST">
-                    @csrf
+              <form class="forms-sample">
                   <!-- Personal Details -->
                   <div class="row mb-3">
                       <div class="col-md-3">
@@ -64,13 +62,9 @@
                           <input class="form-control" type="text" name="home_tel" />
                       </div>
                       <div class="col-md-3">
-                          <label class="form-label">Email</label>
-                          <input class="form-control" type="email" name="email" />
+                          <label class="form-label">Personal Email Address:</label>
+                          <input class="form-control" type="email" name="email_address" />
                       </div>
-                      <div class="col-md-3">
-                        <label class="form-label">password</label>
-                        <input class="form-control" type="password" name="password" />
-                    </div>
                   </div>
 
                   <!-- Personal Info -->
@@ -113,7 +107,7 @@
                   <div class="row mb-3">
                       <div class="col-md-3">
                           <label class="form-label">Employment Date:</label>
-                          <input class="form-control" type="date" name="employment_date" />
+                          <input class="form-control" type="date" name="employment_start_date" />
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Contracted From Date:</label>
@@ -125,7 +119,7 @@
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Reason for Termination:</label>
-                          <input class="form-control" type="text" name="reason_termination" />
+                          <input class="form-control" type="text" name="termination_reason" />
                       </div>
                   </div>
 
@@ -168,7 +162,7 @@
                 <div class="row mb-3">
                     <div class="col-md-3">
                         <label class="form-label">Work Document Received:</label>
-                        <select class="form-control" name="work_document_received">
+                        <select class="form-control" name="right_to_work_document">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -239,7 +233,7 @@
                 <div class="row mb-3">
                     <div class="col-md-3">
                         <label class="form-label">P45 / Tax Form Received:</label>
-                        <select class="form-control" name="p45">
+                        <select class="form-control" name="p45_tax_form_received">
                             <option value="" selected disabled></option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -263,7 +257,7 @@
                     </div>
                     <div class="col-md-3">
                       <label class="form-label">Casual Holiday Pay:</label>
-                      <input class="form-control" type="number" name="casual_holiday_pay" />
+                      <input class="form-control" type="number" name="holiday_pay" />
                   </div>
                     
                 </div>
@@ -278,7 +272,7 @@
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Salaried / Monthly in Arrears:</label>
-                          <input class="form-control" type="text" name="salaried" />
+                          <input class="form-control" type="text" name="salary_type" />
                       </div>
                   </div>
 
@@ -287,37 +281,37 @@
                   <div class="row mb-3">
                       <div class="col-md-3">
                           <label class="form-label">Contact 1 Name:</label>
-                          <input class="form-control" type="text" name="emergency_1_name" />
+                          <input class="form-control" type="text" name="emergency_contact1_name" />
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Contact 1 Mobile:</label>
-                          <input class="form-control" type="text" name="emergency_1_ph_no" />
+                          <input class="form-control" type="text" name="emergency_contact1_mobile" />
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Contact 1 Home Number:</label>
-                          <input class="form-control" type="text" name="emergency_1_home_ph" />
+                          <input class="form-control" type="text" name="emergency_contact1_home" />
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Contact 1 Relationship:</label>
-                          <input class="form-control" type="text" name="emergency_1_relation" />
+                          <input class="form-control" type="text" name="emergency_contact1_relationship" />
                       </div>
                   </div>
                   <div class="row mb-3">
                       <div class="col-md-3">
                           <label class="form-label">Contact 2 Name:</label>
-                          <input class="form-control" type="text" name="emergency_2_name" />
+                          <input class="form-control" type="text" name="emergency_contact2_name" />
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Contact 2 Mobile:</label>
-                          <input class="form-control" type="text" name="emergency_2_ph_no" />
+                          <input class="form-control" type="text" name="emergency_contact2_mobile" />
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Contact 2 Home Number:</label>
-                          <input class="form-control" type="text" name="emergency_2_home_ph" />
+                          <input class="form-control" type="text" name="emergency_contact2_home" />
                       </div>
                       <div class="col-md-3">
                           <label class="form-label">Contact 2 Relationship:</label>
-                          <input class="form-control" type="text" name="emergency_2_relation" />
+                          <input class="form-control" type="text" name="emergency_contact2_relationship" />
                       </div>
                   </div>
 
