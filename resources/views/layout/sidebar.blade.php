@@ -53,7 +53,7 @@
         <div class="collapse {{ show_class(['admin/*']) }}" id="Admin">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ url('/admin/list') }}" class="nav-link {{ active_class(['admin/list']) }}">List</a>
+              <a href="{{ route('show.admins') }}" class="nav-link {{ active_class(['admin/list']) }}">List</a>
             </li>
             <li class="nav-item">
               <a href="{{ url('/admin/create') }}" class="nav-link {{ active_class(['admin/create']) }}">Create</a>

@@ -46,8 +46,7 @@ class UserController extends Controller
     {
         $user = User::create($request->all());
         
-        return redirect('/dashboard')
-            ->with('success', 'User created successfully.');
+        return redirect('/dashboard')->with('success', 'User created successfully.');
     }
 
     /**
@@ -55,12 +54,10 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
-    {
-        $user = User::find($id);
-
-        return view('admin.user.show', compact('user'));
-    }
+    public function show(User $user)
+        {
+            return view('pages.admin.show', compact('user'));
+        }
 
     /**
      * Show the form for editing the specified resource.
@@ -71,7 +68,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('admin.user.edit', compact('user'));
+        return view('pages.admin.edit', compact('user'));
     }
 
     /**
@@ -80,13 +77,24 @@ class UserController extends Controller
      * @param  User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
-    {
-        $user->update($request->all());
+    public function update(Request $request,User $user)
+{
+    // Validate the incoming data
+    // $request->validate([
+    //     'first_name' => 'required|string|max:255',
+    //     'email' => 'required|email|unique:users,email,' . $id,
+    // ]);
+    
+    // Find the user and update the record
+    // $user = User::find($id);
+    $user->update($request->all());
+        
+    
 
-        return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
-    }
+    // Redirect with a success message
+    return redirect()->route('show.admins')->with('success', 'User updated successfully.');
+}
+
 
     /**
      * @param int $id
