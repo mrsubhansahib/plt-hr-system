@@ -9,9 +9,12 @@ class Lateness extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'lateness_triggered',
         'lateness_stage',
         'warning_level',
+        'outcome',
+        'review_date',
         'notes'
     ];
 

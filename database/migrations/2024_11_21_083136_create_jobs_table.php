@@ -15,16 +15,20 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('main_job')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('facility');
-            $table->string('job_start_date');
+            $table->string('cost_center')->nullable();
+            $table->string('start_date');
             $table->string('rate_of_pay');
             $table->string('number_of_hours');
-            $table->text('contrac_type');
-            $table->string('termination_date');
-            $table->string('contract_returned');
-            $table->string('jd_returned');
-            $table->text('notes');
+            $table->text('contract_type');
+            $table->string('termination_date')->nullable();
+            $table->string('contract_returned')->nullable();
+            $table->string('jd_returned')->nullable();
+            $table->string('dbs_required');
+            $table->text('notes')->nullable();
 
             $table->timestamps();
         });

@@ -9,8 +9,9 @@ class Disclosure extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'dbs_evel',
-        'date_equested',
+        'user_id',
+        'dbs_level',
+        'date_requested',
         'date_on_certificate',
         'certificate_no',
         'paid_liberata',
@@ -23,8 +24,6 @@ class Disclosure extends Model
     // relationships one to one
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
-
 }

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('lateness_triggered');
             $table->text('lateness_stage');
             $table->text('warning_level');
+            $table->text('outcome');
+            $table->text('review_date');
             $table->text('notes');
             
             $table->timestamps();

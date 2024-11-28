@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('user_sicknesses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('reason_for_absence');
             $table->string('date_from');
             $table->string('date_to');
-            $table->string('total_hours');
-            $table->string('certification_form_received');
-            $table->string('fit_note_received');
-            $table->text('notes');
+            $table->string('total_hours')->nullable();
+            $table->string('certification_form_received')->nullable();
+            $table->string('fit_note_received')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

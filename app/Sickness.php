@@ -10,6 +10,7 @@ class Sickness extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'reason_for_absence',
         'date_from',
         'date_to',
         'total_hours',

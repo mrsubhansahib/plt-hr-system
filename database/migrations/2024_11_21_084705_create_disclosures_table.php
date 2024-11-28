@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('disclosures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('dbs_evel');
-            $table->string('date_equested');
+            $table->text('dbs_level');
+            $table->string('date_requested');
             $table->string('date_on_certificate');
             $table->string('certificate_no');
-            $table->string('paid_liberata');
-            $table->string('reimbursed_candidate');
-            $table->string('invoice_sent');
+            $table->string('paid_liberata')->nullable();
+            $table->string('reimbursed_candidate')->nullable();
+            $table->string('invoice_sent')->nullable();
             $table->text('contract_type');
-            $table->text('notes');
+            $table->text('notes')->nullable();
 
             $table->timestamps();
         });

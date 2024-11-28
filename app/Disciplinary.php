@@ -9,6 +9,7 @@ class Disciplinary extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'reason_for_disciplinary',
         'hearing_date',
         'outcome',
