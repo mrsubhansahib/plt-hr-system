@@ -9,8 +9,9 @@ class Capability extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'capability_rocedure',
-        'capability_stage',
+        'user_id',
+        'on_capability_procedure',
+        'stage',
         'date',
         'outcome',
         'warning_issued_type',

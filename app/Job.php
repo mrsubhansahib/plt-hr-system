@@ -9,14 +9,19 @@ class Job extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'title',
+        'main_job',
+        'user_id',
         'facility',
-        'job_start_date',
+        'cost_center',
+        'start_date',
         'rate_of_pay',
         'number_of_hours',
-        'contrac_type',
+        'contract_type',
         'termination_date',
         'contract_returned',
         'jd_returned',
+        'dbs_required',
         'notes'
     ];
 

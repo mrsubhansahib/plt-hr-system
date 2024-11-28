@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('capabilities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('capability_rocedure');
-            $table->string('capability_stage');
+            $table->string('on_capability_procedure');
+            $table->string('stage');
             $table->string('date');
             $table->string('outcome');
             $table->string('warning_issued_type');
