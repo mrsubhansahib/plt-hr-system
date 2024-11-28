@@ -77,23 +77,23 @@
                                 <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                 <select class="form-control" required name="ethnicity">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="female">White Britisha</option>
-                                    <option value="female">White Irish</option>
-                                    <option value="female">White Other</option>
-                                    <option value="female">Mixed White and Black Caribbean</option>
-                                    <option value="female">Mixed White and Black African</option>
-                                    <option value="female">Mixed White and Asian</option>
-                                    <option value="female">Mixed Other Background</option>
-                                    <option value="female">Asian or Asian British Indian</option>
-                                    <option value="female">Asian or Asian British Pakistani</option>
-                                    <option value="female">Asian or Asian British Bangladeshi</option>
-                                    <option value="female">Asian or Asian British Kashmiri</option>
-                                    <option value="female">Asian or Asian British Other</option>
-                                    <option value="female">Black or Black British Caribbean</option>
-                                    <option value="female">Black or Black British African</option>
-                                    <option value="female">Black or Black British Other</option>
-                                    <option value="other">Chinese</option>
-                                    <option value="male">Other Ethnic Group</option>
+                                    <option value="White Britisha">White Britisha</option>
+                                    <option value="White Irish">White Irish</option>
+                                    <option value="White Other">White Other</option>
+                                    <option value="Mixed White and Black Caribbean">Mixed White and Black Caribbean</option>
+                                    <option value="Mixed White and Black African">Mixed White and Black African</option>
+                                    <option value="Mixed White and Asian">Mixed White and Asian</option>
+                                    <option value="Mixed Other Background">Mixed Other Background</option>
+                                    <option value="Asian or Asian British Indian">Asian or Asian British Indian</option>
+                                    <option value="Asian or Asian British Pakistani">Asian or Asian British Pakistani</option>
+                                    <option value="Asian or Asian British Bangladeshi">Asian or Asian British Bangladeshi</option>
+                                    <option value="Asian or Asian British Kashmiri">Asian or Asian British Kashmiri</option>
+                                    <option value="Asian or Asian British Other">Asian or Asian British Other</option>
+                                    <option value="Black or Black British Caribbean">Black or Black British Caribbean</option>
+                                    <option value="Black or Black British African">Black or Black British African</option>
+                                    <option value="Black or Black British Other">Black or Black British Other</option>
+                                    <option value="Chinese">Chinese</option>
+                                    <option value="Other Ethnic Group">Other Ethnic Group</option>
                                 </select>
                             </div>
 
@@ -103,10 +103,6 @@
                         <h3 class="my-4 text-center pt-3">Employment Details</h3>
                         <hr>
                         <div class="row mb-3">
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Employment Date <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="employment_date" />
-                            </div>
                            
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>

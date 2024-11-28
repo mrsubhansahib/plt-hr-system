@@ -91,7 +91,26 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="ethnicity" />
+                                <select class="form-control" required name="ethnicity">
+                                    <option value="" selected disabled>Select</option>
+                                    <option value="White Britisha">White Britisha</option>
+                                    <option value="White Irish">White Irish</option>
+                                    <option value="White Other">White Other</option>
+                                    <option value="Mixed White and Black Caribbean">Mixed White and Black Caribbean</option>
+                                    <option value="Mixed White and Black African">Mixed White and Black African</option>
+                                    <option value="Mixed White and Asian">Mixed White and Asian</option>
+                                    <option value="Mixed Other Background">Mixed Other Background</option>
+                                    <option value="Asian or Asian British Indian">Asian or Asian British Indian</option>
+                                    <option value="Asian or Asian British Pakistani">Asian or Asian British Pakistani</option>
+                                    <option value="Asian or Asian British Bangladeshi">Asian or Asian British Bangladeshi</option>
+                                    <option value="Asian or Asian British Kashmiri">Asian or Asian British Kashmiri</option>
+                                    <option value="Asian or Asian British Other">Asian or Asian British Other</option>
+                                    <option value="Black or Black British Caribbean">Black or Black British Caribbean</option>
+                                    <option value="Black or Black British African">Black or Black British African</option>
+                                    <option value="Black or Black British Other">Black or Black British Other</option>
+                                    <option value="Chinese">Chinese</option>
+                                    <option value="Other Ethnic Group">Other Ethnic Group</option>
+                                </select>
                             </div>
 
                             <div class="col-md-3 mt-3">
@@ -108,10 +127,6 @@
                         <h3 class="my-4 text-center pt-3">Employment Details</h3>
                         <hr>
                         <div class="row mb-3">
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Employment Date <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="employment_date" />
-                            </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contracted From Date</label>
                                 <input class="form-control" type="date" name="contracted_from_date" />
@@ -224,8 +239,11 @@
                                 <label class="form-label">Equipment Ordered</label>
                                 <select class="form-control" name="equipment_ordered">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option value="Telphone Ext">Telphone Ext</option>
+                                    <option value="Computer / Laptop">Computer / Laptop</option>
+                                    <option value="Email Address / Login">Email Address / Login</option>
+                                    <option value="Mobile">Mobile</option>
+                                    <option value="other">other</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
