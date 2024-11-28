@@ -103,8 +103,7 @@
                         <h3 class="my-4 text-center pt-3">Employment Details</h3>
                         <hr>
                         <div class="row mb-3">
-                           
-                            <div class="col-md-3 mt-3">
+                           <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>
                                 <input class="form-control" type="date" name="commencement_date" required/>
                             </div>

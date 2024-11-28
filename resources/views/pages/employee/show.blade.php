@@ -42,7 +42,7 @@
                 <hr>
                 <p><strong>Employment Date:</strong> {{ $user->employment_date }}</p>
                 <p><strong>Contracted From:</strong> {{ $user->contracted_from_date }}</p>
-                <p><strong>Contracted From:</strong> {{ $user->commencement_date }}</p>
+                <p><strong>Employee Commencement Date:</strong> {{ $user->commencement_date }}</p>
                 <p><strong>Termination Date:</strong> {{ $user->termination_date }}</p>
                 <p><strong>Reason for Termination:</strong> {{ $user->reason_termination }}</p>
                 <p><strong>Handbook Sent:</strong> {{ ucfirst($user->handbook_sent) }}</p>
@@ -60,9 +60,10 @@
                 <p><strong>P45 / Tax Form Received:</strong> {{ ucfirst($user->p45) }}</p>
                 <p><strong>Employee Pack Sent:</strong> {{ ucfirst($user->employee_pack_sent) }}</p>
                 <p><strong>Termination Form to Payroll:</strong> {{ ucfirst($user->termination_form_to_payroll) }}</p>
-                <p><strong>Termination Date:</strong> {{ $user->termination_date }}</p>
-                <p><strong>Termination Date:</strong> {{ $user->termination_date }}</p>
-                <p><strong>Termination Date:</strong> {{ $user->termination_date }}</p>
+                <p><strong>Casual Holiday Pay:</strong> {{ $user->casual_holiday_pay }}</p>
+                <p><strong>NI Number:</strong> {{ $user->ni_number }}</p>
+                <p><strong>Default Cost Centre:</strong> {{ $user->default_cost_center }}</p>
+                <p><strong>Salaried / Monthly in Arrears:</strong> {{ $user->salaried }}</p>
 
                 
                 <!-- Add other fields as required -->
@@ -74,7 +75,6 @@
                 <p><strong>Emergency Contact 1 Mobile:</strong> {{ $user->emergency_1_ph_no }}</p>
                 <p><strong>Emergency Contact 1 Home Mobile:</strong> {{ $user->emergency_1_home_ph }}</p>
                 <p><strong>Emergency Contact 1 Relationship:</strong> {{ $user->emergency_1_relation }}</p>
-                
                 <p><strong>Emergency Contact 2 Name:</strong> {{ $user->emergency_2_name }}</p>
                 <p><strong>Emergency Contact 2 Mobile:</strong> {{ $user->emergency_2_ph_no }}</p>
                 <p><strong>Emergency Contact 2  Home Mobile:</strong> {{ $user->emergency_2_home_ph }}</p>
