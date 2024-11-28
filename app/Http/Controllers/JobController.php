@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -11,6 +12,7 @@ class JobController extends Controller
         return view('pages.job.list');
     }   
     public function create(){
-        return view('pages.job.create');
+        $employees = User::where('role', 'employee')->get();
+        return view('pages.job.create', compact('employees'));
     }
 }
