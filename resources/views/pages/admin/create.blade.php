@@ -75,7 +75,26 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="ethnicity" />
+                                <select class="form-control" required name="ethnicity">
+                                    <option value="" selected disabled>Select</option>
+                                    <option value="female">White Britisha</option>
+                                    <option value="female">White Irish</option>
+                                    <option value="female">White Other</option>
+                                    <option value="female">Mixed White and Black Caribbean</option>
+                                    <option value="female">Mixed White and Black African</option>
+                                    <option value="female">Mixed White and Asian</option>
+                                    <option value="female">Mixed Other Background</option>
+                                    <option value="female">Asian or Asian British Indian</option>
+                                    <option value="female">Asian or Asian British Pakistani</option>
+                                    <option value="female">Asian or Asian British Bangladeshi</option>
+                                    <option value="female">Asian or Asian British Kashmiri</option>
+                                    <option value="female">Asian or Asian British Other</option>
+                                    <option value="female">Black or Black British Caribbean</option>
+                                    <option value="female">Black or Black British African</option>
+                                    <option value="female">Black or Black British Other</option>
+                                    <option value="other">Chinese</option>
+                                    <option value="male">Other Ethnic Group</option>
+                                </select>
                             </div>
 
                         </div>

@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::get('list', [UserController::class, 'index'])->name('show.admins');
         Route::get('create', [UserController::class, 'create'])->name('create.admin');
         Route::post('store', [UserController::class, 'store'])->name('store.admin');
-        Route::get('detail', [UserController::class, 'show'])->name('detail.admin');
+        Route::get('detail/{id}', [UserController::class, 'show'])->name('detail.admin');
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit.admin');
         Route::post('update/{id}', [UserController::class, 'update'])->name('update.admin');
         Route::get('delete/{id}', [UserController::class, 'destroy'])->name('delete.admin');
@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
         Route::get('list', [EmployeeController::class, 'index'])->name('show.employees');
         Route::get('create', [EmployeeController::class, 'create'])->name('create.employee');
         Route::post('store', [EmployeeController::class, 'store'])->name('store.employee');
-        Route::get('detail', [EmployeeController::class, 'show'])->name('detail.employee');
+        Route::get('detail/{id}', [EmployeeController::class, 'show'])->name('detail.employee');
         Route::get('edit/{id}', [EmployeeController::class, 'edit'])->name('edit.employee');
         Route::post('update/{id}', [EmployeeController::class, 'update'])->name('update.employee');
         Route::get('delete/{id}', [EmployeeController::class, 'destroy'])->name('delete.employee');
