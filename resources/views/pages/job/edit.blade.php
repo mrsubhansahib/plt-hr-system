@@ -15,16 +15,16 @@
             <div class="card-body">
                 <h3 class="my-4 text-center">Job Details</h3>
                 <hr>
-                <form class="forms-sample" action="{{route('store.job')}}" method="POST">
+                <form class="forms-sample" action="" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Employee<span class="text-danger">*</span></label>
                             <select class="form-control" required name="user_id">
                                 <option value="" selected disabled>Select Employee</option>
-                                @foreach ($employees as $employee)
+                                {{-- @foreach ($employees as $employee)
                                 <option value="{{$employee->id}}">{{ $employee->first_name }}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                         </div>
                         <div class="col-md-3 mt-3">
