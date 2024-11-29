@@ -8,7 +8,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Employee Detail</li>
+            <li class="breadcrumb-item active" aria-current="page">User Detail</li>
         </ol>
     </nav>
     @include('layout.alert')
