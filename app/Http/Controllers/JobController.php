@@ -10,8 +10,8 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::all();
-        return view('pages.job.list' , compact('jobs'));
+        $jobs = Job::with('user')->get();
+        return view('pages.job.list', compact('jobs'));
     }
     public function create()
     {
@@ -34,8 +34,31 @@ class JobController extends Controller
         return redirect()->route('show.jobs')
             ->with('success', 'Job created successfully.');
     }
-    public function edit($id){
-        $job = Job::find($id);
-        return view('pages.job.edit', compact('job'));
+    public function edit($id)
+    {
+        $employees = User::where('role', 'employee')->get();
+        $job = Job::with('user')->findOrFail($id);
+        return view('pages.job.edit', compact('job' , 'employees'));
+    }
+    public function update(Request $request, $id){
+        $request->validate([
+            'title' => 'required',
+            'user_id' => 'required',
+            'facility' => 'required',
+            'start_date' => 'required',
+            'rate_of_pay' => 'required',
+            'number_of_hours' => 'required',
+            'contract_type' => 'required',
+            'dbs_required' => 'required',
+        ]);
+        $job = Job::findOrFail($id);
+        $job->update($request->all());
+        return redirect()->route('show.jobs')
+            ->with('success', 'Job updated successfully.');
+    }
+    public function destroy($id){
+        $job = Job::findOrFail($id)->delete();
+        return redirect()->route('show.jobs')
+            ->with('success', 'Job deleted successfully.');
     }
 }

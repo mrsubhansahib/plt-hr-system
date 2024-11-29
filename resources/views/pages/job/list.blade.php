@@ -22,9 +22,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Title</th>
                                     <th>Name</th>
-                                    <th>Facility</th>
+                                    <th>Title</th>
+                                    <th>Main Job</th>
                                     <th>Start Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -33,27 +33,31 @@
                                 @foreach ($jobs as $key => $job)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+                                        <td>{{ $job->user->first_name }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->main_job }}</td>
-                                        <td>{{ $job->facility }}</td>
                                         <td>{{ $job->start_date }}</td>
                                         <td>
-                                          <!-- Toggler Actions -->
-                                          <div class="dropdown">
-                                              <button class="btn btn-link p-0" type="button" id="dropdownMenuButton-{{ $job->id }}" 
-                                                      data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <i data-feather="align-justify"></i>
-                                              </button>
-                                              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton-{{ $job->id }}">
-                                                  <li><a class="dropdown-item" href="{{ route('detail.job', $job->id) }}">View</a></li>
-                                                  <li><a class="dropdown-item" href="{{ route('edit.job', $job->id) }}">Edit</a></li>
-                                                  <li>
-                                                      <button onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }" 
-                                                              class="dropdown-item">Delete</button>
-                                                  </li>
-                                              </ul>
-                                          </div>
-                                      </td>         
+                                            <div class="dropdown">
+                                                <button class="btn btn-link p-0" type="button"
+                                                    id="dropdownMenuButton-{{ $job->id }}" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <i data-feather="align-justify"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end"
+                                                    aria-labelledby="dropdownMenuButton-{{ $job->id }}">
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('detail.job', $job->id) }}">View</a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('edit.job', $job->id) }}">Edit</a></li>
+                                                    <li>
+                                                        <button
+                                                            onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
+                                                            class="dropdown-item">Delete</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
