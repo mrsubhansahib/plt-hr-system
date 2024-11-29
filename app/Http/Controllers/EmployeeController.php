@@ -70,8 +70,9 @@ class EmployeeController extends Controller
      * @param  int $id
      * @return \Illuminate\Contracts\View\View
      */
-    public function show(User $user)
+    public function show($id)
     {
+        $user = user::find($id);
         return view('pages.employee.show', compact('user'));
     }
 

@@ -51,7 +51,7 @@
             <li class="nav-item {{ active_class(['admin/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Admin" role="button"
                     aria-expanded="{{ is_active_route(['admin/*']) }}" aria-controls="Admin">
-                    <i class="link-icon" data-feather="users"></i>
+                    <i class="link-icon" data-feather="user-plus"></i>
                     <span class="link-title">Admin</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>

@@ -51,7 +51,7 @@
                                                     <ul class="dropdown-menu"
                                                         aria-labelledby="dropdownMenuButton-{{ $user->id }}">
                                                         <li><a class="dropdown-item"
-                                                                href="{{ route('detail.admin') }}">View</a></li>
+                                                                href="{{ route('detail.admin', $user->id) }}">View</a></li>
                                                         <li><a class="dropdown-item"
                                                                 href="{{ route('edit.admin', $user->id) }}">Edit</a></li>
                                                         <li><button
