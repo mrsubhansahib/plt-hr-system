@@ -116,6 +116,27 @@
                 </div>
             </li>
 
+            {{-- Disclosure Section --}}
+            <li class="nav-item {{ active_class(['disclosure/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Disclosures" role="button"
+                    aria-expanded="{{ is_active_route(['disclosure/*']) }}" aria-controls="Disclosures">
+                    <i class="link-icon" data-feather="file-text"></i>
+                    <span class="link-title">Disclosure</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['disclosure/*']) }}" id="Disclosures">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.disclosures') }}"
+                                class="nav-link {{ active_class(['disclosure/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.disclosure') }}"
+                                class="nav-link {{ active_class(['disclosure/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
 
             <li class="nav-item {{ active_class(['apps/chat']) }}">

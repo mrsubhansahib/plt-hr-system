@@ -56,6 +56,10 @@ class JobController extends Controller
         return redirect()->route('show.jobs')
             ->with('success', 'Job updated successfully.');
     }
+    public function show($id){
+        $job = Job::with('user')->findOrFail($id);
+        return view('pages.job.show', compact('job'));
+    }
     public function destroy($id){
         $job = Job::findOrFail($id)->delete();
         return redirect()->route('show.jobs')
