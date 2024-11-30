@@ -13,6 +13,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DisclosureController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobController;
@@ -62,10 +63,20 @@ Route::middleware('auth')->group(function () {
         Route::get('list', [JobController::class, 'index'])->name('show.jobs');
         Route::get('create', [JobController::class, 'create'])->name('create.job');
         Route::post('store', [JobController::class,'store'])->name('store.job');
-        Route::get('detail', [JobController::class,'show'])->name('detail.job');
+        Route::get('detail/{id}', [JobController::class,'show'])->name('detail.job');
         Route::get('edit/{id}', [JobController::class, 'edit'])->name('edit.job');
         Route::post('update/{id}', [JobController::class, 'update'])->name('update.job');
         Route::get('delete/{id}', [JobController::class, 'destroy'])->name('delete.job');
+    });
+    // Routes for disclosure crud
+    Route::group(['prefix' => 'disclosure'], function () {
+        Route::get('list', [DisclosureController::class, 'index'])->name('show.disclosures');
+        Route::get('create', [DisclosureController::class, 'create'])->name('create.disclosure');
+        Route::post('store', [DisclosureController::class, 'store'])->name('store.disclosure');
+        Route::get('detail/{id}', [DisclosureController::class, 'show'])->name('detail.disclosure');
+        Route::get('edit/{id}', [DisclosureController::class, 'edit'])->name('edit.disclosure');
+        Route::post('update/{id}', [DisclosureController::class, 'update'])->name('update.disclosure');
+        Route::get('delete/{id}', [DisclosureController::class, 'destroy'])->name('delete.disclosure');
     });
 });
 

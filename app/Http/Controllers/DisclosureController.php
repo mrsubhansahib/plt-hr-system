@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disclosure;
+use App\User;
 use Illuminate\Http\Request;
 
 class DisclosureController extends Controller
@@ -14,7 +15,8 @@ class DisclosureController extends Controller
      */
     public function index()
     {
-        //
+        $disclosures = Disclosure::with('user')->get();
+        return view('pages.disclosure.list', compact('disclosures'));
     }
 
     /**
@@ -24,7 +26,8 @@ class DisclosureController extends Controller
      */
     public function create()
     {
-        //
+        $employees = User::where('role', 'employee')->get();
+        return view('pages.disclosure.create', compact('employees'));
     }
 
     /**
@@ -35,7 +38,16 @@ class DisclosureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'dbs_level' => 'required',
+            'date_requested' => 'required|date',
+            'date_on_certificate' => 'required|date',
+            'certificate_no' => 'required',
+            'contract_type' => 'required',
+        ]);
+        $disclosure = Disclosure::create($request->all());
+        return redirect()->route('show.disclosures')->with('success', 'Disclosure created successfully.');
     }
 
     /**
@@ -44,9 +56,10 @@ class DisclosureController extends Controller
      * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function show(Disclosure $Disclosure)
+    public function show($id)
     {
-        //
+        $disclosure = Disclosure::with('user')->find($id);
+        return view('pages.disclosure.show', compact('disclosure'));
     }
 
     /**
@@ -55,9 +68,11 @@ class DisclosureController extends Controller
      * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function edit(Disclosure $Disclosure)
+    public function edit($id)
     {
-        //
+        $disclosure = Disclosure::with('user')->find($id);
+        $employees = User::where('role', 'employee')->get();
+        return view('pages.disclosure.edit', compact('disclosure', 'employees'));
     }
 
     /**
@@ -67,9 +82,19 @@ class DisclosureController extends Controller
      * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Disclosure $Disclosure)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'dbs_level' => 'required',
+            'date_requested' => 'required|date',
+            'date_on_certificate' => 'required|date',
+            'certificate_no' => 'required',
+            'contract_type' => 'required',
+        ]);
+        $disclosure = Disclosure::find($id);
+        $disclosure->update($request->all());
+        return redirect()->route('show.disclosures')->with('success', 'Disclosure updated successfully.');
     }
 
     /**
@@ -78,8 +103,10 @@ class DisclosureController extends Controller
      * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Disclosure $Disclosure)
+    public function destroy($id)
     {
-        //
+        $disclosure = Disclosure::find($id);
+        $disclosure->delete();
+        return redirect()->route('show.disclosures')->with('success', 'Disclosure deleted successfully.');
     }
 }
