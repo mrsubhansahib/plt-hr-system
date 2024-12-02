@@ -3,7 +3,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Training Record</a></li>
+            <li class="breadcrumb-item"><a href="#">Training</a></li>
             <li class="breadcrumb-item active" aria-current="page">Create</li>
         </ol>
     </nav>
@@ -12,7 +12,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="my-4 text-center">Training Record</h3>
+                    <h3 class="my-4 text-center">Training</h3>
                     <hr>
                     <form class="forms-sample" action="{{ route('store.training') }}" method="POST">
                         @csrf

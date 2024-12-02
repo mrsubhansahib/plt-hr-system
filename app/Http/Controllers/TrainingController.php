@@ -26,7 +26,7 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         return view('pages.training.create', compact('employees'));
     }
 
@@ -65,7 +65,7 @@ class TrainingController extends Controller
     public function edit($id)
     {
         $training = Training::with('user')->find($id);
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         return view('pages.training.edit', compact('training', 'employees'));
     }
 

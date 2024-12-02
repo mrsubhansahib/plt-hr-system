@@ -15,7 +15,7 @@ class JobController extends Controller
     }
     public function create()
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         return view('pages.job.create', compact('employees'));
     }
     public function store(Request $request)
@@ -36,7 +36,7 @@ class JobController extends Controller
     }
     public function edit($id)
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         $job = Job::with('user')->findOrFail($id);
         return view('pages.job.edit', compact('job' , 'employees'));
     }
