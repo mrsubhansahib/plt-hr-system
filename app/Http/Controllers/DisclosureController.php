@@ -39,12 +39,12 @@ class DisclosureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'dbs_level' => 'required',
-            'date_requested' => 'required|date',
-            'date_on_certificate' => 'required|date',
-            'certificate_no' => 'required',
-            'contract_type' => 'required',
+            'user_id'                   => 'required|exists:users,id',
+            'dbs_level'                 => 'required',
+            'date_requested'            => 'required|date',
+            'date_on_certificate'       => 'required|date',
+            'certificate_no'            => 'required',
+            'contract_type'             => 'required',
         ]);
         $disclosure = Disclosure::create($request->all());
         return redirect()->route('show.disclosures')->with('success', 'Disclosure created successfully.');
@@ -85,12 +85,12 @@ class DisclosureController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'dbs_level' => 'required',
-            'date_requested' => 'required|date',
-            'date_on_certificate' => 'required|date',
-            'certificate_no' => 'required',
-            'contract_type' => 'required',
+            'user_id'               => 'required|exists:users,id',
+            'dbs_level'             => 'required',
+            'date_requested'        => 'required|date',
+            'date_on_certificate'   => 'required|date',
+            'certificate_no'        => 'required',
+            'contract_type'         => 'required',
         ]);
         $disclosure = Disclosure::find($id);
         $disclosure->update($request->all());

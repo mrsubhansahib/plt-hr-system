@@ -155,6 +155,25 @@
                 </div>
             </li>
 
+            {{-- sickness Section --}}
+            <li class="nav-item {{ active_class(['sickness/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#sickness" role="button"
+                    aria-expanded="{{ is_active_route(['sickness/*']) }}" aria-controls="sickness">
+                    <i class="link-icon" data-feather="user-minus"></i>
+                    <span class="link-title">Sickness</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['sickness/*']) }}" id="sickness">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.sicknesses') }}" class="nav-link {{ active_class(['sickness/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.sickness') }}" class="nav-link {{ active_class(['sickness/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
             {{-- <li class="nav-item {{ active_class(['apps/chat']) }}">
                 <a href="{{ url('/apps/chat') }}" class="nav-link">

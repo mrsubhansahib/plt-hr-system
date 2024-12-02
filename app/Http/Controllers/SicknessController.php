@@ -14,7 +14,8 @@ class SicknessController extends Controller
      */
     public function index()
     {
-        //
+        $sickness = Sickness::with('user')->get();
+        return view("pages.sickness.list");
     }
 
     /**
@@ -24,7 +25,9 @@ class SicknessController extends Controller
      */
     public function create()
     {
-        //
+        // $user = User::findOrFail($userId);
+        return view("pages.sickness.create");
+
     }
 
     /**
@@ -35,7 +38,15 @@ class SicknessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id'               => 'required|exists:users,id',
+            'reason_for_absence'    => 'required',
+            'date_from'             => 'required',
+            'date_to'               => 'required'
+        ]);
+        dd($request->all());    
+        $Sickness = Sickness::create($request->all());
+        return redirect()->route('show.sicknesses')->with('success','sickness created successfully.');
     }
 
     /**
@@ -46,7 +57,8 @@ class SicknessController extends Controller
      */
     public function show(Sickness $Sickness)
     {
-        //
+        // return view("pages.sickness.show");
+
     }
 
     /**
@@ -57,7 +69,8 @@ class SicknessController extends Controller
      */
     public function edit(Sickness $Sickness)
     {
-        //
+        return view("pages.sickness.edit");
+
     }
 
     /**
@@ -78,8 +91,10 @@ class SicknessController extends Controller
      * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sickness $Sickness)
+    public function destroy($id)
     {
-        //
+        $sickness = Sickness::find($id);
+        $sickness->delete();
+        return redirect()->route('show.sicknesses')->with('success', 'sickness deleted successfully.');
     }
 }
