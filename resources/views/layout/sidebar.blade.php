@@ -175,6 +175,28 @@
                 </div>
             </li>
 
+            {{-- Capability Procedure Section --}}
+            <li class="nav-item {{ active_class(['capability/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Capabilities" role="button"
+                    aria-expanded="{{ is_active_route(['capability/*']) }}" aria-controls="Capabilities">
+                    <i class="link-icon" data-feather="settings"></i> <!-- Updated icon -->
+                    <span class="link-title">Capability</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['capability/*']) }}" id="Capabilities">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.capabilities') }}"
+                                class="nav-link {{ active_class(['capability/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.capability') }}"
+                                class="nav-link {{ active_class(['capability/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>                                    
+
             {{-- <li class="nav-item {{ active_class(['apps/chat']) }}">
                 <a href="{{ url('/apps/chat') }}" class="nav-link">
                     <i class="link-icon" data-feather="message-square"></i>

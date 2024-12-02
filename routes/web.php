@@ -14,6 +14,7 @@
 use App\Http\Controllers\SicknessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CapabilityController;
 use App\Http\Controllers\DisclosureController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
@@ -89,6 +90,16 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', [SicknessController::class, 'edit'])->name('edit.sickness');
         Route::post('update/{id}', [SicknessController::class, 'update'])->name('update.sickness');
         Route::get('delete/{id}', [SicknessController::class, 'destroy'])->name('delete.sickness');
+    });
+    // Routes for Capability crud
+    Route::group(['prefix' => 'capability'], function () {
+        Route::get('list', [CapabilityController::class, 'index'])->name('show.capabilities');
+        Route::get('create', [CapabilityController::class, 'create'])->name('create.capability');
+        Route::post('store', [CapabilityController::class,'store'])->name('store.capability');
+        Route::get('detail/{id}', [CapabilityController::class,'show'])->name('detail.capability');
+        Route::get('edit/{id}', [CapabilityController::class, 'edit'])->name('edit.capability');
+        Route::post('update/{id}', [CapabilityController::class, 'update'])->name('update.capability');
+        Route::get('delete/{id}', [CapabilityController::class, 'destroy'])->name('delete.capability');
     });
 });
 
