@@ -197,6 +197,28 @@
                 </div>
             </li>                                    
 
+            {{-- Training Record Section --}}
+            <li class="nav-item {{ active_class(['training/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Trainings" role="button"
+                    aria-expanded="{{ is_active_route(['training/*']) }}" aria-controls="Trainings">
+                    <i class="link-icon" data-feather="book"></i> <!-- Updated icon -->
+                    <span class="link-title">Training</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['training/*']) }}" id="Trainings">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.trainings') }}"
+                                class="nav-link {{ active_class(['training/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.training') }}"
+                                class="nav-link {{ active_class(['training/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             {{-- <li class="nav-item {{ active_class(['apps/chat']) }}">
                 <a href="{{ url('/apps/chat') }}" class="nav-link">
                     <i class="link-icon" data-feather="message-square"></i>

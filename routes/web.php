@@ -19,6 +19,7 @@ use App\Http\Controllers\DisclosureController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -100,6 +101,16 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', [CapabilityController::class, 'edit'])->name('edit.capability');
         Route::post('update/{id}', [CapabilityController::class, 'update'])->name('update.capability');
         Route::get('delete/{id}', [CapabilityController::class, 'destroy'])->name('delete.capability');
+    });
+    // Routes for Training Record
+    Route::group(['prefix' => 'training'], function () {
+        Route::get('list', [TrainingController::class, 'index'])->name('show.trainings');
+        Route::get('create', [TrainingController::class, 'create'])->name('create.training');
+        Route::post('store', [TrainingController::class,'store'])->name('store.training');
+        Route::get('detail/{id}', [TrainingController::class,'show'])->name('detail.training');
+        Route::get('edit/{id}', [TrainingController::class, 'edit'])->name('edit.training');
+        Route::post('update/{id}', [TrainingController::class, 'update'])->name('update.training');
+        Route::get('delete/{id}', [TrainingController::class, 'destroy'])->name('delete.training');
     });
 });
 
