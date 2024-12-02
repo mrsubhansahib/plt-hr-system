@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Capability;
+use App\User;
 use Illuminate\Http\Request;
 
 class CapabilityController extends Controller
@@ -14,7 +15,8 @@ class CapabilityController extends Controller
      */
     public function index()
     {
-        //
+        $capabilities = Capability::with('user')->get();
+        return view('pages.capability.list', compact('capabilities'));
     }
 
     /**
@@ -24,7 +26,8 @@ class CapabilityController extends Controller
      */
     public function create()
     {
-        //
+        $employees = User::where('role', 'employee')->get();
+        return view("pages.capability.create", compact('employees'));
     }
 
     /**
@@ -35,7 +38,11 @@ class CapabilityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+        Capability::create($request->all());
+        return redirect()->route('show.capabilities')->with('success', 'Capability Procedure created successfully');
     }
 
     /**
@@ -55,9 +62,11 @@ class CapabilityController extends Controller
      * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function edit(Capability $Capability)
+    public function edit($id)
     {
-        //
+        $capability = Capability::with('user')->find($id);
+        $employees = User::where('role', 'employee')->get();
+        return view("pages.capability.edit", compact('capability', 'employees'));
     }
 
     /**
@@ -67,9 +76,13 @@ class CapabilityController extends Controller
      * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Capability $Capability)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id' =>'required',
+        ]);
+        Capability::find($id)->update($request->all());
+        return redirect()->route('show.capabilities')->with('success', 'Capability Procedure updated successfully');
     }
 
     /**
@@ -78,8 +91,9 @@ class CapabilityController extends Controller
      * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Capability $Capability)
+    public function destroy($id)
     {
-        //
+        Capability::find($id)->delete();
+        return redirect()->route('show.capabilities')->with('success', 'Capability Procedure deleted successfully');
     }
 }
