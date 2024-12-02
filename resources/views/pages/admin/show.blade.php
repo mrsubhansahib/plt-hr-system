@@ -8,7 +8,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active" aria-current="page">User Detail</li>
+            <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
     </nav>
     @include('layout.alert')
@@ -16,7 +16,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center my-4">User Details</h3>
+                    <h3 class="text-center my-4">Personal Details</h3>
                     <hr>
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
@@ -66,7 +66,7 @@
                     </div>
     
                     <!-- Employment Details -->
-                    <h4 class="my-4 text-center">Employment Details</h4>
+                    <h3 class="my-4 text-center">Employment Details</h3>
                     <hr>
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
@@ -92,7 +92,7 @@
                     </div>
     
                     <!-- Emergency Contacts -->
-                    <h4 class="my-4 text-center">Emergency Contacts</h4>
+                    <h3 class="my-4 text-center">Emergency Contacts</h3>
                     <hr>
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">

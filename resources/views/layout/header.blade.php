@@ -12,7 +12,7 @@
       </div>
     </form>
     <ul class="navbar-nav">
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="{{ url('assets/images/flags/us.svg') }}" class="wd-20 me-1" title="us" alt="us"> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
         </a>
@@ -99,9 +99,9 @@
               </div>	
             </a>
             <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-              {{-- <div class="me-3">
+              <div class="me-3">
                 <img class="wd-30 ht-30 rounded-circle" src="{{ url('https://via.placeholder.com/30x30') }}" alt="userr">
-              </div> --}}
+              </div>
               <div class="d-flex justify-content-between flex-grow-1">
                 <div class="me-4">
                   <p>{{auth()->user()->surname}}</p>
@@ -191,7 +191,7 @@
             <a href="javascript:;">View all</a>
           </div>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img class="wd-30 ht-30 rounded-circle" src="{{ url('https://via.placeholder.com/30x30') }}" alt="profile">

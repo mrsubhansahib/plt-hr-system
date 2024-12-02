@@ -18,9 +18,16 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $users = User::where('role', 'employee')->get();
+        $users = User::where('role', 'employee')->where('status','active')->get();
         // dd($users);
         return view('pages.employee.list', compact('users'));
+    }
+    public function temp()
+    {
+
+        $users = User::where('role', 'employee')->where('status','pending')->get();
+        // dd($users);
+        return view('pages.employee.temp-list', compact('users'));
     }
 
     /**
