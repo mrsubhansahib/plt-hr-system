@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="nav-item nav-category">web apps</li>
-            <li class="nav-item {{ active_class(['email/*']) }}">
+            {{-- <li class="nav-item {{ active_class(['email/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#email" role="button"
                     aria-expanded="{{ is_active_route(['email/*']) }}" aria-controls="email">
                     <i class="link-icon" data-feather="mail"></i>
@@ -42,7 +42,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
 
 
@@ -139,7 +139,7 @@
             </li>
 
 
-            <li class="nav-item {{ active_class(['apps/chat']) }}">
+            {{-- <li class="nav-item {{ active_class(['apps/chat']) }}">
                 <a href="{{ url('/apps/chat') }}" class="nav-link">
                     <i class="link-icon" data-feather="message-square"></i>
                     <span class="link-title">Chat</span>
@@ -150,7 +150,7 @@
                     <i class="link-icon" data-feather="calendar"></i>
                     <span class="link-title">Calendar</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item nav-category">Components</li>
             <li class="nav-item {{ active_class(['ui-components/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button"
@@ -385,7 +385,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item nav-category">Pages</li>
+            {{-- <li class="nav-item nav-category">Pages</li>
             <li class="nav-item {{ active_class(['general/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#general" role="button"
                     aria-expanded="{{ is_active_route(['general/*']) }}" aria-controls="general">
@@ -468,11 +468,11 @@
                     <i class="link-icon" data-feather="hash"></i>
                     <span class="link-title">Documentation</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </nav>
-<nav class="settings-sidebar">
+{{-- <nav class="settings-sidebar">
     <div class="sidebar-body">
         <a href="#" class="settings-sidebar-toggler">
             <i data-feather="settings"></i>
@@ -505,4 +505,4 @@
             </a>
         </div>
     </div>
-</nav>
+</nav> --}}
