@@ -18,14 +18,14 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $users = User::where('role', 'employee')->where('status','active')->get();
+        $users = User::where('role', 'employee')->where('status', 'active')->get();
         // dd($users);
         return view('pages.employee.list', compact('users'));
     }
     public function temp()
     {
 
-        $users = User::where('role', 'employee')->where('status','pending')->get();
+        $users = User::where('role', 'employee')->where('status', 'pending')->get();
         // dd($users);
         return view('pages.employee.temp-list', compact('users'));
     }
@@ -68,8 +68,23 @@ class EmployeeController extends Controller
         ]);
         $user = User::create($request->all());
 
-        return redirect()->route('show.employees')
-            ->with('success', 'Employee created successfully.');
+        return redirect()->route('show.temp.employees')
+            ->with('success', 'Temp Employee created successfully.');
+    }
+    public function accept_employee($id)
+    {
+        // dd($id);
+        $user = User::find($id);
+        $user->update(['status' => 'active']);
+        return redirect()->route('show.temp.employees')
+            ->with('success', 'Employee activated successfully.');
+    }public function reject_employee($id)
+    {
+        // dd($id);
+        $user = User::find($id);
+        $user->update(['status' => 'rejected']);
+        return redirect()->route('show.temp.employees')
+            ->with('success', 'Employee rejected successfully.');
     }
 
     /**
