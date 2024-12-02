@@ -23,6 +23,15 @@
                         <input type="hidden" name="user_id" value="">
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
+                                <label class="form-label">Employee<span class="text-danger">*</span></label>
+                                <select class="form-control" required name="user_id">
+                                    <option value="" selected disabled>Select Employee</option>
+                                    @foreach ($employees as $employee)
+                                    <option value="{{$employee->id}}">{{ $employee->first_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-3 mt-3">
                                 <label class="form-label">Reason for Absence <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="reason_for_absence" />
                             </div>

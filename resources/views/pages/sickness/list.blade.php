@@ -22,6 +22,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Name</th>
                                     <th>Reason for Absence</th>
                                     <th>Date From</th>
                                     <th>Date To</th>
@@ -32,7 +33,8 @@
                                 @foreach ($sicknesses as $key => $sickness)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $sickness->reason_for_absence}}</td>
+                                        <td>{{ $sickness->user->first_name}}</td>
+                                        <td>{{ $sickness->reason_for_absence }}</td>
                                         <td>{{ $sickness->date_from }}</td>
                                         <td>{{ $sickness->date_to }}</td>
                                         <td>
