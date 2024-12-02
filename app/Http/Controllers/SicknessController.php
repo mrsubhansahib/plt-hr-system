@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sickness;
 use Illuminate\Http\Request;
+use App\User;
 
 class SicknessController extends Controller
 {
@@ -14,8 +15,8 @@ class SicknessController extends Controller
      */
     public function index()
     {
-        $sickness = Sickness::with('user')->get();
-        return view("pages.sickness.list");
+        $sicknesses = Sickness::with('user')->get();
+        return view("pages.sickness.list", compact( "sicknesses"));
     }
 
     /**
@@ -25,9 +26,8 @@ class SicknessController extends Controller
      */
     public function create()
     {
-        // $user = User::findOrFail($userId);
-        return view("pages.sickness.create");
-
+        $employees = User::where('role', 'employee')->get();
+        return view("pages.sickness.create", compact("employees"));
     }
 
     /**
@@ -44,7 +44,7 @@ class SicknessController extends Controller
             'date_from'             => 'required',
             'date_to'               => 'required'
         ]);
-        dd($request->all());    
+        // dd($request->all());    
         $Sickness = Sickness::create($request->all());
         return redirect()->route('show.sicknesses')->with('success','sickness created successfully.');
     }
@@ -67,10 +67,11 @@ class SicknessController extends Controller
      * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sickness $Sickness)
+    public function edit($id)
     {
-        return view("pages.sickness.edit");
-
+        $employees = User::where('role', 'employee')->get();
+        $sickness = sickness::with('user')->findOrFail($id);
+        return view("pages.sickness.edit", compact("sickness","employees"));
     }
 
     /**
@@ -80,9 +81,19 @@ class SicknessController extends Controller
      * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sickness $Sickness)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id'               => 'required|exists:users,id',
+            'reason_for_absence'    => 'required',
+            'date_from'             => 'required',
+            'date_to'               => 'required'
+        ]);
+            $sickness = sickness::findOrFail($id);
+            $sickness->update($request->all());
+            return redirect()->route('show.sicknesses')
+            ->with('success', 'sickness updated successfully.');
+
     }
 
     /**
