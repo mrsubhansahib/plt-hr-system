@@ -77,6 +77,26 @@
                 <a class="nav-link" data-bs-toggle="collapse" href="#Employee" role="button"
                     aria-expanded="{{ is_active_route(['employee/*']) }}" aria-controls="Employee">
                     <i class="link-icon" data-feather="users"></i>
+                    <span class="link-title">Temp Employee</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['employee/temp/*']) }}" id="Employee">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.temp.employees') }}"
+                                class="nav-link {{ active_class(['employee/temp/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/employee/temp/create') }}"
+                                class="nav-link {{ active_class(['employee/temp/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item {{ active_class(['employee/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Employee" role="button"
+                    aria-expanded="{{ is_active_route(['employee/*']) }}" aria-controls="Employee">
+                    <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Employee</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
@@ -86,10 +106,7 @@
                             <a href="{{ route('show.employees') }}"
                                 class="nav-link {{ active_class(['employee/list']) }}">List</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/employee/create') }}"
-                                class="nav-link {{ active_class(['employee/create']) }}">Create</a>
-                        </li>
+                 
                     </ul>
                 </div>
             </li>

@@ -3,7 +3,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Employee</a></li>
+            <li class="breadcrumb-item"><a href="#">Temp Employee</a></li>
             <li class="breadcrumb-item active" aria-current="page">Create</li>
         </ol>
     </nav>
@@ -336,6 +336,6 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 @endsection
