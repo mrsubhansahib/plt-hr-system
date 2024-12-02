@@ -37,26 +37,11 @@
                                         <td>{{ $user->status }} </td>
                                         <td>
                                             <!-- Toggler Actions -->
-                                            <div class="dropdown">
-                                                <button class="btn btn-link p-0" type="button"
-                                                    id="dropdownMenuButton-{{ $user->id }}" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
-                                                    <span class="navbar-toggler-icon">
-                                                        <div class="col-sm-6 col-md-4 col-lg-3"> <i
-                                                                data-feather="align-justify"></i></div>
-                                                    </span>
-                                                </button>
-                                                <ul class="dropdown-menu"
-                                                    aria-labelledby="dropdownMenuButton-{{ $user->id }}">
-                                                    <li><a class="dropdown-item" href="{{ route('detail.employee', $user->id) }}">View</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('edit.employee', $user->id) }}">Edit</a></li>
-                                                    <li><button
-                                                            onclick="if(confirm('Are you sure you want to delete this record?')){window.location.href='{{ route('delete.employee', $user->id) }}'}"
-                                                            class="dropdown-item">Delete</button></li>
-                                                </ul>
-                                            </div>
+
+                                            <a href="{{ route('accept.employee', $user->id) }}" title="Accept" onclick="return confirm('Are you sure you want to accept this employee?')"
+                                                class="btn btn-sm btn-success" style="padding:3px"><i data-feather="check"></i></a>
+                                            <a href="{{ route('reject.employee', $user->id) }}" title="Reject" onclick="return confirm('Are you sure you want to reject this employee?')"
+                                                class="btn btn-sm btn-danger" style="padding:3px"><i data-feather="x"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

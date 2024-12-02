@@ -73,14 +73,14 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item {{ active_class(['employee/*']) }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#Employee" role="button"
-                    aria-expanded="{{ is_active_route(['employee/*']) }}" aria-controls="Employee">
+            <li class="nav-item {{ active_class(['employee/temp/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#TempEmployee" role="button"
+                    aria-expanded="{{ is_active_route(['temp/*']) }}" aria-controls="TempEmployee">
                     <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Temp Employee</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse {{ show_class(['employee/temp/*']) }}" id="Employee">
+                <div class="collapse {{ show_class(['employee/temp/*']) }}" id="TempEmployee">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ route('show.temp.employees') }}"
@@ -93,14 +93,14 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item {{ active_class(['employee/*']) }}">
+            <li class="nav-item {{ active_class(['employee/list'])||active_class(['employee/create'])||active_class(['employee/update']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Employee" role="button"
-                    aria-expanded="{{ is_active_route(['employee/*']) }}" aria-controls="Employee">
+                    aria-expanded="{{ is_active_route(['employee/list*']) }}" aria-controls="Employee">
                     <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Employee</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse {{ show_class(['employee/*']) }}" id="Employee">
+                <div class="collapse {{ show_class(['employee/list']) }}" id="Employee">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ route('show.employees') }}"
