@@ -7,7 +7,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Capability Procedure</a></li>
+            <li class="breadcrumb-item"><a href="#">Capability</a></li>
             <li class="breadcrumb-item active" aria-current="page">List</li>
         </ol>
     </nav>
@@ -16,7 +16,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Capability Procedure</h6>
+                    <h6 class="card-title">Capability List</h6>
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table">
                             <thead>

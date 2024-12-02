@@ -26,7 +26,7 @@ class CapabilityController extends Controller
      */
     public function create()
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         return view("pages.capability.create", compact('employees'));
     }
 
@@ -42,7 +42,7 @@ class CapabilityController extends Controller
             'user_id' => 'required',
         ]);
         Capability::create($request->all());
-        return redirect()->route('show.capabilities')->with('success', 'Capability Procedure created successfully');
+        return redirect()->route('show.capabilities')->with('success', 'Capability created successfully');
     }
 
     /**
@@ -65,7 +65,7 @@ class CapabilityController extends Controller
     public function edit($id)
     {
         $capability = Capability::with('user')->find($id);
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         return view("pages.capability.edit", compact('capability', 'employees'));
     }
 
@@ -82,7 +82,7 @@ class CapabilityController extends Controller
             'user_id' =>'required',
         ]);
         Capability::find($id)->update($request->all());
-        return redirect()->route('show.capabilities')->with('success', 'Capability Procedure updated successfully');
+        return redirect()->route('show.capabilities')->with('success', 'Capability updated successfully');
     }
 
     /**
@@ -94,6 +94,6 @@ class CapabilityController extends Controller
     public function destroy($id)
     {
         Capability::find($id)->delete();
-        return redirect()->route('show.capabilities')->with('success', 'Capability Procedure deleted successfully');
+        return redirect()->route('show.capabilities')->with('success', 'Capability deleted successfully');
     }
 }

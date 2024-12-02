@@ -3,8 +3,8 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Training Record</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            <li class="breadcrumb-item"><a href="#">Training </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Update</li>
         </ol>
     </nav>
     @include('layout.alert')
@@ -12,7 +12,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="my-4 text-center">Edit Training Record</h3>
+                    <h3 class="my-4 text-center">Update Training </h3>
                     <hr>
                     <form class="forms-sample" action="{{ route('update.training', $training->id) }}" method="POST">
                         @csrf

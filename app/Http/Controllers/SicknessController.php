@@ -26,7 +26,7 @@ class SicknessController extends Controller
      */
     public function create()
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         return view("pages.sickness.create", compact("employees"));
     }
 
@@ -46,7 +46,7 @@ class SicknessController extends Controller
         ]);
         // dd($request->all());    
         $Sickness = Sickness::create($request->all());
-        return redirect()->route('show.sicknesses')->with('success','sickness created successfully.');
+        return redirect()->route('show.sicknesses')->with('success','Sickness created successfully.');
     }
 
     /**
@@ -69,7 +69,7 @@ class SicknessController extends Controller
      */
     public function edit($id)
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         $sickness = sickness::with('user')->findOrFail($id);
         return view("pages.sickness.edit", compact("sickness","employees"));
     }
@@ -92,7 +92,7 @@ class SicknessController extends Controller
             $sickness = sickness::findOrFail($id);
             $sickness->update($request->all());
             return redirect()->route('show.sicknesses')
-            ->with('success', 'sickness updated successfully.');
+            ->with('success', 'Sickness updated successfully.');
 
     }
 
@@ -106,6 +106,6 @@ class SicknessController extends Controller
     {
         $sickness = Sickness::find($id);
         $sickness->delete();
-        return redirect()->route('show.sicknesses')->with('success', 'sickness deleted successfully.');
+        return redirect()->route('show.sicknesses')->with('success', 'Sickness deleted successfully.');
     }
 }

@@ -12,7 +12,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="my-4 text-center">Capability Procedure</h3>
+                    <h3 class="my-4 text-center">Capability</h3>
                     <hr>
                     <form class="forms-sample" action="{{ route('store.capability') }}" method="POST">
                         @csrf
