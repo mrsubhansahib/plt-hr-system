@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Training;
+use App\User;
 use Illuminate\Http\Request;
 
 class TrainingController extends Controller
@@ -14,7 +15,8 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        $trainings = Training::with('user')->get();
+        return view('pages.training.list', compact('trainings'));
     }
 
     /**
@@ -24,7 +26,8 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        //
+        $employees = User::where('role', 'employee')->get();
+        return view('pages.training.create', compact('employees'));
     }
 
     /**
@@ -35,7 +38,11 @@ class TrainingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+        Training::create($request->all());
+        return redirect()->route('show.trainings')->with('success', 'Training created successfully.');
     }
 
     /**
@@ -55,9 +62,11 @@ class TrainingController extends Controller
      * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function edit(Training $Training)
+    public function edit($id)
     {
-        //
+        $training = Training::with('user')->find($id);
+        $employees = User::where('role', 'employee')->get();
+        return view('pages.training.edit', compact('training', 'employees'));
     }
 
     /**
@@ -67,9 +76,13 @@ class TrainingController extends Controller
      * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Training $Training)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+        Training::find($id)->update($request->all());
+        return redirect()->route('show.trainings')->with('success', 'Training updated successfully.');
     }
 
     /**
@@ -78,8 +91,9 @@ class TrainingController extends Controller
      * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Training $Training)
+    public function destroy($id)
     {
-        //
+        Training::find($id)->delete();
+        return redirect()->route('show.trainings')->with('success', 'Training deleted successfully.');
     }
 }
