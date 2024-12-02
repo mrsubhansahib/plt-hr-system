@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\SicknessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DisclosureController;
@@ -78,6 +79,16 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', [DisclosureController::class, 'edit'])->name('edit.disclosure');
         Route::post('update/{id}', [DisclosureController::class, 'update'])->name('update.disclosure');
         Route::get('delete/{id}', [DisclosureController::class, 'destroy'])->name('delete.disclosure');
+    });
+    // route for sickness crud
+    Route::group(['prefix' => 'sickness'], function () {
+        Route::get('list', [SicknessController::class, 'index'])->name('show.sicknesses');
+        Route::get('create', [SicknessController::class, 'create'])->name('create.sickness');
+        Route::post('store', [SicknessController::class, 'store'])->name('store.sickness');
+        // Route::get('detail/{id}', [SicknessController::class, 'show'])->name('detail.sickness');
+        Route::get('edit/{id}', [SicknessController::class, 'edit'])->name('edit.sickness');
+        Route::post('update/{id}', [SicknessController::class, 'update'])->name('update.sickness');
+        Route::get('delete/{id}', [SicknessController::class, 'destroy'])->name('delete.sickness');
     });
 });
 
