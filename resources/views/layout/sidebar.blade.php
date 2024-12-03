@@ -219,6 +219,49 @@
                 </div>
             </li>
 
+            {{-- disciplinary Section --}}
+            <li class="nav-item {{ active_class(['disciplinary/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#disciplinary" role="button"
+                    aria-expanded="{{ is_active_route(['disciplinary/*']) }}" aria-controls="disciplinary">
+                    <i class="link-icon" data-feather="users"></i>
+                    <span class="link-title">Disciplinary</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['disciplinary/*']) }}" id="disciplinary">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.disciplinaries') }}" class="nav-link {{ active_class(['disciplinary/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.disciplinary') }}" class="nav-link {{ active_class(['disciplinary/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            {{-- lateness section --}}
+            <li class="nav-item {{ active_class(['lateness/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Lateness" role="button"
+                   aria-expanded="{{ is_active_route(['lateness/*']) }}" aria-controls="Lateness">
+                    <i class="link-icon" data-feather="clock"></i>
+                    <span class="link-title">Lateness</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['lateness/*']) }}" id="Lateness">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.latenesses') }}"
+                               class="nav-link {{ active_class(['lateness/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.lateness') }}"
+                               class="nav-link {{ active_class(['lateness/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+
             {{-- <li class="nav-item {{ active_class(['apps/chat']) }}">
                 <a href="{{ url('/apps/chat') }}" class="nav-link">
                     <i class="link-icon" data-feather="message-square"></i>

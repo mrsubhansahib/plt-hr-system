@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Http\Controllers\LatenesController;
+use App\Http\Controllers\DisciplinaryController;
 use App\Http\Controllers\SicknessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
@@ -89,7 +90,6 @@ Route::middleware('auth')->group(function () {
         Route::get('list', [SicknessController::class, 'index'])->name('show.sicknesses');
         Route::get('create', [SicknessController::class, 'create'])->name('create.sickness');
         Route::post('store', [SicknessController::class, 'store'])->name('store.sickness');
-        // Route::get('detail/{id}', [SicknessController::class, 'show'])->name('detail.sickness');
         Route::get('edit/{id}', [SicknessController::class, 'edit'])->name('edit.sickness');
         Route::post('update/{id}', [SicknessController::class, 'update'])->name('update.sickness');
         Route::get('delete/{id}', [SicknessController::class, 'destroy'])->name('delete.sickness');
@@ -113,6 +113,26 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', [TrainingController::class, 'edit'])->name('edit.training');
         Route::post('update/{id}', [TrainingController::class, 'update'])->name('update.training');
         Route::get('delete/{id}', [TrainingController::class, 'destroy'])->name('delete.training');
+    });
+    // Routes for disciplinary
+    Route::group(['prefix' => 'disciplinary'], function () {
+        Route::get('list', [DisciplinaryController::class, 'index'])->name('show.disciplinaries');
+        Route::get('create', [DisciplinaryController::class, 'create'])->name('create.disciplinary');
+        Route::post('store', [DisciplinaryController::class, 'store'])->name('store.disciplinary');
+        Route::get('detail/{id}', [DisciplinaryController::class, 'show'])->name('detail.disciplinary');
+        Route::get('edit/{id}', [DisciplinaryController::class, 'edit'])->name('edit.disciplinary');
+        Route::post('update/{id}', [DisciplinaryController::class, 'update'])->name('update.disciplinary');
+        Route::get('delete/{id}', [DisciplinaryController::class, 'destroy'])->name('delete.disciplinary');
+    });
+    // Routes for Lateness
+    Route::group(['prefix' => 'lateness'], function () {
+        Route::get('list', [LatenesController::class, 'index'])->name('show.latenesses');
+        Route::get('create', [LatenesController::class, 'create'])->name('create.lateness');
+        Route::post('store', [LatenesController::class, 'store'])->name('store.lateness');
+        Route::get('detail/{id}', [LatenesController::class, 'show'])->name('detail.lateness');
+        Route::get('edit/{id}', [LatenesController::class, 'edit'])->name('edit.lateness');
+        Route::post('update/{id}', [LatenesController::class, 'update'])->name('update.lateness');
+        Route::get('delete/{id}', [LatenesController::class, 'destroy'])->name('delete.lateness');
     });
 });
 
