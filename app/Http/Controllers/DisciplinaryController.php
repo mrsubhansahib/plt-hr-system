@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disciplinary;
+use App\User;
 use Illuminate\Http\Request;
 
 class DisciplinaryController extends Controller
@@ -14,7 +15,8 @@ class DisciplinaryController extends Controller
      */
     public function index()
     {
-        //
+        $disciplinaries = disciplinary::with('user')->get();
+        return view("pages.disciplinary.list", compact( "disciplinaries"));
     }
 
     /**
@@ -24,7 +26,8 @@ class DisciplinaryController extends Controller
      */
     public function create()
     {
-        //
+        $employees = User::where('role', 'employee')->get();
+        return view("pages.disciplinary.create", compact("employees"));
     }
 
     /**
@@ -35,7 +38,11 @@ class DisciplinaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id'               => 'required|exists:users,id',
+        ]);
+        $disciplinary = disciplinary::create($request->all());
+        return redirect()->route('show.disciplinaries')->with('success','disciplinary created successfully.');
     }
 
     /**
@@ -55,9 +62,12 @@ class DisciplinaryController extends Controller
      * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function edit(Disciplinary $Disciplinary)
+    public function edit($id)
     {
-        //
+        
+        $employees = User::where('role', 'employee')->get();
+        $disciplinary = disciplinary::with('user')->findOrFail($id);
+        return view("pages.disciplinary.edit", compact("disciplinary","employees"));
     }
 
     /**
@@ -67,9 +77,15 @@ class DisciplinaryController extends Controller
      * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Disciplinary $Disciplinary)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id'               => 'required|exists:users,id'
+        ]);
+            $disciplinary = disciplinary::findOrFail($id);
+            $disciplinary->update($request->all());
+            return redirect()->route('show.disciplinaries')
+            ->with('success', 'disciplinary updated successfully.');
     }
 
     /**
@@ -78,8 +94,10 @@ class DisciplinaryController extends Controller
      * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Disciplinary $Disciplinary)
+    public function destroy($id)
     {
-        //
+        $disciplinary = disciplinary::find($id);
+        $disciplinary->delete();
+        return redirect()->route('show.disciplinaries')->with('success','dsiciplinary deleted successfully');
     }
 }

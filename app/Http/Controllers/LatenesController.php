@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Lateness;
+use App\User;
 use Illuminate\Http\Request;
 
-class UserLatenesController extends Controller
+class LatenesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class UserLatenesController extends Controller
      */
     public function index()
     {
-        //
+        $latenesses = lateness::with('user')->get();
+        return view("pages.lateness.list", compact( "latenesses"));
     }
 
     /**
@@ -24,7 +26,8 @@ class UserLatenesController extends Controller
      */
     public function create()
     {
-        //
+        $employees = User::where('role', 'employee')->get();
+        return view("pages.lateness.create", compact("employees"));
     }
 
     /**
@@ -35,7 +38,11 @@ class UserLatenesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id'               => 'required|exists:users,id',
+        ]);
+        $lateness = lateness::create($request->all());
+        return redirect()->route('show.latenesses')->with('success','lateness created successfully.');
     }
 
     /**
@@ -55,9 +62,11 @@ class UserLatenesController extends Controller
      * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lateness $Lateness)
+    public function edit($id)
     {
-        //
+        $employees = User::where('role', 'employee')->get();
+        $lateness = lateness::with('user')->findOrFail($id);
+        return view("pages.lateness.edit", compact("lateness","employees"));
     }
 
     /**
@@ -67,9 +76,15 @@ class UserLatenesController extends Controller
      * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lateness $Lateness)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id'               => 'required|exists:users,id'
+        ]);
+            $lateness = lateness::findOrFail($id);
+            $lateness->update($request->all());
+            return redirect()->route('show.latenesses')
+            ->with('success', 'lateness updated successfully.');
     }
 
     /**
@@ -78,8 +93,10 @@ class UserLatenesController extends Controller
      * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lateness $Lateness)
+    public function destroy($id)
     {
-        //
+        $lateness = lateness::find($id);
+        $lateness->delete();
+        return redirect()->route('show.latenesses')->with('success','lateness deleted successfully');
     }
 }
