@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="dob" value="{{$user->dob}}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="dob" value="{{$user->dob}}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Age <span class="text-danger">*</span></label>
@@ -112,7 +112,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Disability</label>
                                 <select class="form-control" name="disability" value="{{$user->disability}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->disability=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->disability=='no')?"selected":""}}>No</option>
                                 </select>
@@ -125,15 +124,15 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contracted From Date </label>
-                                <input class="form-control" type="date" name="contracted_from_date" value="{{$user->contracted_from_date}}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="contracted_from_date" value="{{$user->contracted_from_date}}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee Commencement Date<span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" name="commencement_date" required value="{{$user->commencement_date}}"/>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="commencement_date" required value="{{$user->commencement_date}}"/>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employment Termination Date</label>
-                                <input class="form-control" type="date" name="termination_date" value="{{$user->termination_date}}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="termination_date" value="{{$user->termination_date}}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Reason for Termination</label>
@@ -142,7 +141,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Handbook Sent</label>
                                 <select class="form-control" name="handbook_sent" value="{{$user->handbook_sent}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->handbook_sent=="yes")?'selected':''}}>Yes</option>
                                     <option value="no" {{($user->handbook_sent=="no")?'selected':''}}>No</option>
                                 </select>
@@ -150,7 +148,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Medical Form Returned</label>
                                 <select class="form-control" name="medical_form_returned" value="{{$user->medical_form_returned}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes"{{($user->medical_form_returned=='yes')?"selected":""}}>Yes</option>
                                     <option value="no"{{($user->medical_form_returned=='no')?"selected":""}}>No</option>
                                     <option value="pending" {{($user->medical_form_returned=='pending')?"selected":""}}>Pending</option>
@@ -159,7 +156,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">New Entrant Form Returned</label>
                                 <select class="form-control" name="new_entrant_form_returned" value="{{$user->new_entrant_form_returned}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->new_entrant_form_returned=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->new_entrant_form_returned=='no')?"selected":""}}>No</option>
                                 </select>
@@ -167,7 +163,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Confidentiality Statement</label>
                                 <select class="form-control" name="confidentiality_statement_returned" value="{{$user->confidentiality_statement_returned}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->confidentiality_statement_returned=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->confidentiality_statement_returned=='no')?"selected":""}}>No</option>
                                 </select>
@@ -175,7 +170,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Work Document Received</label>
                                 <select class="form-control" name="work_document_received" value="{{$user->work_document_received}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->work_document_received=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->work_document_received=='no')?"selected":""}}>No</option>
                                 </select>
@@ -183,7 +177,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Qualifications Checked</label>
                                 <select class="form-control" name="qualifications_checked" value="{{$user->qualifications_checked}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->qualifications_checked=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->qualifications_checked=='no')?"selected":""}}>No</option>
                                 </select>
@@ -191,7 +184,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">References Requested</label>
                                 <select class="form-control" name="references_requested" value="{{$user->references_requested}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->references_requested=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->references_requested=='no')?"selected":""}}>No</option>
                                 </select>
@@ -199,7 +191,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">References Returned</label>
                                 <select class="form-control" name="references_returned" value="{{$user->references_returned}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->references_returned=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->references_returned=='no')?"selected":""}}>No</option>
                                 </select>
@@ -207,7 +198,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Payroll Informed</label>
                                 <select class="form-control" name="payroll_informed" value="{{$user->payroll_informed}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->payroll_informed=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->payroll_informed=='no')?"selected":""}}>No</option>
                                 </select>
@@ -215,7 +205,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Probation Complete</label>
                                 <select class="form-control" name="probation_complete" value="{{$user->probation_complete}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->probation_complete=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->probation_complete=='no')?"selected":""}}>No</option>
                                     <option value="not_required" {{($user->probation_complete=='not_required')?"selected":""}}>Not Required</option>
@@ -245,7 +234,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">P45 / Tax Form Received</label>
                                 <select class="form-control" name="p45" value="{{$user->p45}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->p45=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->p45=='no')?"selected":""}}>No</option>
                                 </select>
@@ -253,7 +241,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee Pack Sent</label>
                                 <select class="form-control" name="employee_pack_sent" value="{{$user->employee_pack_sent}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->employee_pack_sent=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->employee_pack_sent=='no')?"selected":""}}>No</option>
                                 </select>
@@ -261,7 +248,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Termination Form to Payroll</label>
                                 <select class="form-control" name="termination_form_to_payroll" value="{{$user->termination_form_to_payroll}}">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{($user->termination_form_to_payroll=='yes')?"selected":""}}>Yes</option>
                                     <option value="no" {{($user->termination_form_to_payroll=='no')?"selected":""}}>No</option>
                                 </select>

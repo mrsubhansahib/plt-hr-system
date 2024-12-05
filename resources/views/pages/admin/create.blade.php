@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="dob" />
+                                <input class="form-control datepicker" type="text" id="" placeholder="Select Date" required name="dob" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Age <span class="text-danger">*</span></label>
@@ -103,11 +103,16 @@
                         <h3 class="my-4 text-center pt-3">Employment Details</h3>
                         <hr>
                         <div class="row mb-3">
-                           <div class="col-md-3 mt-3">
+                            <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" name="commencement_date" required/>
+                                <input class="form-control datepicker"  type="text" placeholder="Select Date" name="commencement_date" required/>
                             </div>
                             
+                            
+
+
+
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">NI Number <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="ni_number" />

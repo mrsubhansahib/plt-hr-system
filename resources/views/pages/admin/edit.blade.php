@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="dob" value="{{ $user->dob }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="dob" value="{{ $user->dob }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Age <span class="text-danger">*</span></label>
@@ -100,7 +100,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" name="commencement_date" required  value="{{ $user->commencement_date }}"/>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="commencement_date" required  value="{{ $user->commencement_date }}"/>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">NI Number <span class="text-danger">*</span></label>

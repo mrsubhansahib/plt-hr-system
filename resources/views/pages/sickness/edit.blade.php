@@ -39,12 +39,9 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">date_from <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="date_from" value="{{ $sickness->date_from }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_from" value="{{ $sickness->date_from }}" />
                             </div>
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Date To <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="date_to" value="{{ $sickness->date_to }}" />
-                            </div>
+                            
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Total Hours</label>
                                 <input class="form-control" type="text" name="total_hours" value="{{ $sickness->total_hours }}" />
@@ -52,7 +49,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Self Certification Form Received</label>
                                 <select class="form-control" name="certification_form_received">
-                                    <option value="" selected>No</option>
                                     <option value="yes" {{ $sickness->certification_form_received == 'yes' ? 'selected' : '' }}>yes</option>
                                     <option value="no" {{ $sickness->certification_form_received == 'no' ? 'selected' : '' }}>no</option>
                                 </select>
@@ -60,10 +56,13 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Fit Note Received</label>
                                 <select class="form-control" name="fit_note_received">
-                                    <option value="" selected>No</option>
                                     <option value="yes {{ $sickness->fit_note_received == 'yes' ? 'selected' : '' }}">yes</option>
                                     <option value="no" {{ $sickness->fit_note_received == 'no' ? 'selected' : '' }}>no</option>
                                 </select>
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Date To <span class="text-danger">*</span></label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_to" value="{{ $sickness->date_to }}" />
                             </div>
                         </div>
                         <div class="row mb-3">

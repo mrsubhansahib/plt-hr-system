@@ -243,7 +243,7 @@
             <li class="nav-item {{ active_class(['lateness/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Lateness" role="button"
                    aria-expanded="{{ is_active_route(['lateness/*']) }}" aria-controls="Lateness">
-                    <i class="link-icon" data-feather="clock"></i>
+                    <i class="link-icon" data-feather="minus-circle"></i>
                     <span class="link-title">Lateness</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>

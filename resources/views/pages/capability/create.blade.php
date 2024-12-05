@@ -29,9 +29,8 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">On Capability Procedure</label>
                                 <select class="form-control" required name="on_capability_procedure">
-                                    <option value="" selected disabled>Select Option</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
@@ -50,7 +49,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date</label>
-                                <input class="form-control" type="date" required name="date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome</label>
@@ -69,7 +68,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date</label>
-                                <input class="form-control" type="date" required name="review_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
