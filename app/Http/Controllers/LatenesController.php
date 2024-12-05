@@ -26,7 +26,7 @@ class LatenesController extends Controller
      */
     public function create()
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         return view("pages.lateness.create", compact("employees"));
     }
 
@@ -64,7 +64,7 @@ class LatenesController extends Controller
      */
     public function edit($id)
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status','active')->get();
         $lateness = lateness::with('user')->findOrFail($id);
         return view("pages.lateness.edit", compact("lateness","employees"));
     }
