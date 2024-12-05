@@ -26,11 +26,11 @@ class ProfileController extends Controller
             'surname' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'address1' => 'required',
-            'mobile_tel' => 'required',
+            'mobile_tel' => 'required', 
         ]);
-        $user->update($request->all());
-
         
+        $user->update($request->all());         
+                
         return redirect()->route('dashboard')->with('success', 'Profile updated successfully!');
     }
 
