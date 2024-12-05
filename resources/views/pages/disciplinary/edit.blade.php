@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date of Hearing</label>
-                                <input class="form-control" type="date"  name="hearing_date" value="{{ $disciplinary->hearing_date }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="hearing_date" value="{{ $disciplinary->hearing_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome</label>
@@ -50,14 +50,13 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Suspended</label>
                                 <select class="form-control" name="suspended">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes" {{ ($disciplinary->suspended == 'yes') ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ ($disciplinary->suspended == 'no') ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date Suspended</label>
-                                <input class="form-control" type="date" name="date_suspended" value="{{ $disciplinary->date_suspended }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="date_suspended" value="{{ $disciplinary->date_suspended }}" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

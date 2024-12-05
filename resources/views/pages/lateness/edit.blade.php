@@ -4,7 +4,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Lateness</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Create</li>
+            <li class="breadcrumb-item active" aria-current="page">Update</li>
         </ol>
     </nav>
     @include('layout.alert')
@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Triggered</label>
-                                <input class="form-control" type="date"  name="lateness_triggered" value="{{ $lateness->lateness_triggered }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="lateness_triggered" value="{{ $lateness->lateness_triggered }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Stage</label>
@@ -62,7 +62,7 @@
                             
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date</label>
-                                <input class="form-control" type="date"  name="review_date" value="{{ $lateness->review_date }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="review_date" value="{{ $lateness->review_date }}" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

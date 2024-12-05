@@ -125,6 +125,7 @@ Route::middleware('auth')->group(function () {
         Route::get('delete/{id}', [DisciplinaryController::class, 'destroy'])->name('delete.disciplinary');
     });
     // Routes for Lateness
+    
     Route::group(['prefix' => 'lateness'], function () {
         Route::get('list', [LatenesController::class, 'index'])->name('show.latenesses');
         Route::get('create', [LatenesController::class, 'create'])->name('create.lateness');

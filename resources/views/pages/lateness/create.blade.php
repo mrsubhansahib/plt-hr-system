@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Triggered </label>
-                                <input class="form-control" type="date"  name="lateness_triggered" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="lateness_triggered" />
                             </div>
                             
                             <div class="col-md-3 mt-3">
@@ -56,11 +56,11 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome / Action Taken</label>
-                                <input class="form-control" type="date"  name="outcome" />
+                                <input class="form-control"  name="outcome" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date</label>
-                                <input class="form-control" type="date"  name="review_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

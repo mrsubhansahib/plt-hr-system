@@ -98,9 +98,8 @@
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Main Job</label>
                             <select class="form-control" name="main_job">
-                                <option value="" selected disabled>Select</option>
                                 <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option selected value="no">No</option>
                             </select>
                         </div>
                         <div class="col-md-3 mt-3">
@@ -124,11 +123,11 @@
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Start Date <span class="text-danger">*</span></label>
-                            <input class="form-control" type="date" required name="start_date" />
+                            <input class="form-control datepicker" type="text" placeholder="Select Date" required name="start_date" />
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Termination Date </label>
-                            <input class="form-control" type="date" name="termination_date" />
+                            <input class="form-control datepicker" type="text" placeholder="Select Date" name="termination_date" />
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
@@ -154,23 +153,21 @@
                             <select class="form-control" required name="contract_returned">
                                 <option value="" selected disabled>Select Option</option>
                                 <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option selected value="no">No</option>
                             </select>
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">JD Returned</label>
                             <select class="form-control" required name="jd_returned">
-                                <option value="" selected disabled>Select</option>
                                 <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option selected value="no">No</option>
                             </select>
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">DBS Required <span class="text-danger">*</span></label>
                             <select class="form-control" required name="dbs_required">
-                                <option value="" selected disabled>Select</option>
                                 <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option selected value="no">No</option>
                             </select>
                         </div>
                         <div class="col-md-12 mt-3">

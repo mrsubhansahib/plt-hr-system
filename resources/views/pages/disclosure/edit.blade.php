@@ -38,11 +38,11 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date Requested<span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="date_requested" value="{{ $disclosure->date_requested }}"/>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_requested" value="{{ $disclosure->date_requested }}"/>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date on Certificate<span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="date_on_certificate" value="{{ $disclosure->date_on_certificate }}"/>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_on_certificate" value="{{ $disclosure->date_on_certificate }}"/>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Certificate Number<span class="text-danger">*</span></label>
@@ -61,7 +61,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Invoice Sent</label>
                                 <select class="form-control" name="invoice_sent">
-                                    <option value="" selected disabled>Select Option</option>
                                     <option value="yes" {{ ($disclosure->invoice_sent == 'yes') ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ ($disclosure->invoice_sent == 'no') ? 'selected' : '' }}>No</option>
                                 </select>

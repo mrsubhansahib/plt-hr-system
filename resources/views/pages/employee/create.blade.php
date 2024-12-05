@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" required name="dob" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="dob" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Age <span class="text-danger">*</span></label>
@@ -116,9 +116,8 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Disability</label>
                                 <select class="form-control" name="disability">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                         </div>
@@ -129,15 +128,15 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contracted From Date</label>
-                                <input class="form-control" type="date" name="contracted_from_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="contracted_from_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" name="commencement_date" required />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="commencement_date" required />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employment Termination Date</label>
-                                <input class="form-control" type="date" name="termination_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="termination_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Reason for Termination</label>
@@ -146,82 +145,72 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Handbook Sent</label>
                                 <select class="form-control" name="handbook_sent">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Medical Form Returned</label>
                                 <select class="form-control" name="medical_form_returned">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                     <option value="pending">Pending</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">New Entrant Form Returned</label>
                                 <select class="form-control" name="new_entrant_form_returned">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Confidentiality Statement</label>
                                 <select class="form-control" name="confidentiality_statement_returned">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Work Document Received</label>
                                 <select class="form-control" name="work_document_received">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Qualifications Checked</label>
                                 <select class="form-control" name="qualifications_checked">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">References Requested</label>
                                 <select class="form-control" name="references_requested">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">References Returned</label>
                                 <select class="form-control" name="references_returned">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Payroll Informed</label>
                                 <select class="form-control" name="payroll_informed">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Probation Complete</label>
                                 <select class="form-control" name="probation_complete">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                     <option value="not_required">Not Required</option>
                                 </select>
                             </div>
@@ -251,7 +240,7 @@
                                 <select class="form-control" name="p45">
                                     <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
@@ -259,7 +248,7 @@
                                 <select class="form-control" name="employee_pack_sent">
                                     <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
@@ -267,7 +256,7 @@
                                 <select class="form-control" name="termination_form_to_payroll">
                                     <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

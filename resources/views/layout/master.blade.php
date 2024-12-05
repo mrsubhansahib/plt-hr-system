@@ -35,6 +35,7 @@ License: For each use you must have a valid license purchased only from above li
   <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
   <!-- end plugin css -->
 
+
   @stack('plugin-styles')
 
   <!-- common css -->
@@ -72,6 +73,22 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ asset('assets/js/template.js') }}"></script>
     <!-- end common js -->
 
+    {{-- date formate change --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+  
+
     @stack('custom-scripts')
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          // Initialize Bootstrap Datepicker
+          $('.datepicker').datepicker({
+              format: 'dd-mm-yyyy', // Format for display
+              autoclose: true,      // Auto-close picker after date select
+              todayHighlight: true  // Highlight today's date
+          });
+      });
+  </script>
 </body>
 </html>

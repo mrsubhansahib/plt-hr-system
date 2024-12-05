@@ -73,18 +73,17 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Course Date</label>
-                                <input class="form-control" type="date" required name="course_date"
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="course_date"
                                     value="{{ $training->course_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Renewal Date</label>
-                                <input class="form-control" type="date" required name="renewal_date"
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="renewal_date"
                                     value="{{ $training->renewal_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Sent</label>
                                 <select class="form-control" name="ihasco_training_sent">
-                                    <option value="" selected disabled>Select Option</option>
                                     <option value="yes"
                                         {{ $training->ihasco_training_sent == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ $training->ihasco_training_sent == 'no' ? 'selected' : '' }}>
@@ -97,7 +96,6 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Complete</label>
                                 <select class="form-control" name="ihasco_training_complete">
-                                    <option value="" selected disabled>Select Option</option>
                                     <option value="yes"
                                         {{ $training->ihasco_training_complete == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no"

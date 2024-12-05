@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date of Hearing</label>
-                                <input class="form-control" type="date"  name="hearing_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="hearing_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome</label>
@@ -48,14 +48,13 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Suspended</label>
                                 <select class="form-control" name="suspended">
-                                    <option value="" selected disabled>Select</option>
                                     <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date Suspended</label>
-                                <input class="form-control" type="date"  name="date_suspended" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="date_suspended" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
