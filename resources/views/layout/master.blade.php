@@ -89,6 +89,36 @@ License: For each use you must have a valid license purchased only from above li
               todayHighlight: true  // Highlight today's date
           });
       });
-  </script>
+    </script>
+     <script>
+      function validatePassword() {
+          const password = document.getElementById("password").value;
+          const hint = document.getElementById("password-hint");
+          const checks = [
+              { valid: password.length >= 8, message: "Minimum 8 characters" },
+              { valid: /[0-9]/.test(password), message: "At least one number" },
+              { valid: /[!@#$%^&*(),.?":{}|<>]/.test(password), message: "At least one special character" },
+              { valid: /[A-Z]/.test(password), message: "At least one uppercase letter" },
+          ];
+          const unmetCondition = checks.find(check => !check.valid);
+          if (unmetCondition) {
+              hint.innerHTML = `<span style="color: red;">✘ ${unmetCondition.message}</span>`;
+          } else {
+              hint.innerHTML = '<span style="color: green;">✔ Password is strong</span>';
+          }
+      }
+      function checkPasswordComplexity() {
+          const password = document.getElementById("password").value;
+          const isPasswordValid = password.length >= 8 &&
+              /[0-9]/.test(password) &&
+              /[!@#$%^&*(),.?":{}|<>]/.test(password) &&
+              /[A-Z]/.test(password);
+          if (!isPasswordValid) {
+              alert("Password must meet all complexity requirements before submission.");
+              return false;
+          }
+          return true;
+      }
+  </script>  
 </body>
 </html>

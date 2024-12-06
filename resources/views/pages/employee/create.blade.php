@@ -16,7 +16,8 @@
                     {{-- <h3 class="card-title">Personal Details</h3> --}}
                     <h3 class="my-4 text-center">Personal Details</h3>
                     <hr>
-                    <form class="forms-sample" action="{{ route('store.employee') }}" method="POST">
+                    <form class="forms-sample" action="{{ route('store.employee') }}" method="POST"
+                    onsubmit="return checkPasswordComplexity()">
                         @csrf
                         <!-- Personal Details -->
                         <div class="row mb-3">
@@ -69,8 +70,16 @@
                                 <input class="form-control" type="email" required name="email" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">password <span class="text-danger">*</span></label>
-                                <input class="form-control" type="password" name="password" />
+                                <label class="form-label">Password <span class="text-danger">*</span></label>
+                                <input
+                                    class="form-control"
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    oninput="validatePassword()"
+                                    required
+                                />
+                                <div id="password-hint" class="mt-2"></div>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
