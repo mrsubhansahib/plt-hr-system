@@ -88,6 +88,32 @@ License: For each use you must have a valid license purchased only from above li
               autoclose: true,      // Auto-close picker after date select
               todayHighlight: true  // Highlight today's date
           });
+
+          // Get all forms with the class 'forms-sample'
+        let forms = document.querySelectorAll('.forms-sample');
+
+        forms.forEach(function (form) {
+            let isFormDirty = false;
+
+            // Track changes in each form
+            form.addEventListener('change', function () {
+                isFormDirty = true;
+            });
+
+            // Show warning alert when navigating away
+            window.addEventListener('beforeunload', function (e) {
+                if (isFormDirty) {
+                    // Modern browsers display a default message in the alert
+                    e.preventDefault();
+                    e.returnValue = ''; // Required for Chrome, Safari, and Edge
+                }
+            });
+
+            // Reset the flag when the form is submitted
+            form.addEventListener('submit', function () {
+                isFormDirty = false;
+            });
+        });
       });
   </script>
 </body>

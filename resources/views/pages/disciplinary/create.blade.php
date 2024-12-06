@@ -28,15 +28,16 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Reason for Disciplinary </label>
-                                <input class="form-control" type="text"  name="reason_for_disciplinary" />
+                                <input class="form-control" type="text" name="reason_for_disciplinary" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date of Hearing</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="hearing_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="hearing_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome</label>
-                                <select class="form-control"  name="outcome">
+                                <select class="form-control" name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
@@ -54,7 +55,8 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date Suspended</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="date_suspended" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="date_suspended" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
@@ -68,3 +70,4 @@
         </div>
     </div>
 @endsection
+
