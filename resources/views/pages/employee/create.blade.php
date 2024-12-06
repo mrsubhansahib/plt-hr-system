@@ -14,7 +14,6 @@
                 <div class="card-body">
                     <form class="forms-sample" action="{{ route('store.employee') }}" method="POST">
                         @csrf
-
                         <!-- Tabs for Required and Optional Fields -->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
