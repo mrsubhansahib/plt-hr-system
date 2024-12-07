@@ -17,8 +17,8 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">sickness List</h6>
-                    <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                    <div class="">
+                        <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -28,12 +28,25 @@
                                     <th>Date To</th>
                                     <th>Action</th>
                                 </tr>
+                                <!-- Search inputs row -->
+                                <tr class="filters">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Reason for Absence"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Date From"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Date To"></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($sicknesses as $key => $sickness)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $sickness->user->first_name}}</td>
+                                        <td>{{ $sickness->user->first_name }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
                                         <td>{{ $sickness->date_from }}</td>
                                         <td>{{ $sickness->date_to }}</td>
@@ -52,7 +65,8 @@
                                                     </li>
                                                     <li>
                                                         <button
-                                                            onclick="if(confirm('Are you sure you want to delete this sickness?')) { window.location.href='{{ route('delete.sickness', $sickness->id) }}' }" class="dropdown-item">Delete</button>
+                                                            onclick="if(confirm('Are you sure you want to delete this sickness?')) { window.location.href='{{ route('delete.sickness', $sickness->id) }}' }"
+                                                            class="dropdown-item">Delete</button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -73,6 +87,19 @@
     <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
 @endpush
 
-@push('custom-scripts')
-    <script src="{{ asset('assets/js/data-table.js') }}"></script>
-@endpush
+{{-- @push('custom-scripts')
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable
+            var table = $('#dataTableExample').DataTable({
+                autoWidth: false // Prevent table from stretching
+            });
+        
+            // Apply the search on each column
+            $('#dataTableExample .filters input').on('keyup change', function() {
+                let colIndex = $(this).parent().index(); // Get the column index
+                table.column(colIndex).search(this.value).draw(); // Search and redraw the table
+            });
+        });
+    </script>
+@endpush --}}

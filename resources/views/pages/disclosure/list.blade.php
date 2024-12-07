@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Disclosure List</h6>
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -26,6 +26,13 @@
                                     <th>DBS Level</th>
                                     <th>Certification No</th>
                                     <th>Action</th>
+                                </tr>
+                                 <!-- Search inputs row -->
+                                 <tr class="filters">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search DBS Level"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Certification No"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,3 +86,4 @@
 @push('custom-scripts')
     <script src="{{ asset('assets/js/data-table.js') }}"></script>
 @endpush
+

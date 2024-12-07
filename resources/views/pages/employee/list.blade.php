@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Employee List</h6>
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -27,6 +27,13 @@
                                     <th>Status</th> <!-- Status Column -->
                                     <th>Actions</th>
                                 </tr>
+                                <tr class="filters">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search First Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Email"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Status"></th>
+                                    <th></th> <!-- No search for Actions column -->
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $key => $user)
@@ -34,9 +41,8 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->status }} </td>
+                                        <td>{{ $user->status }}</td>
                                         <td>
-                                            <!-- Toggler Actions -->
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
                                                     id="dropdownMenuButton-{{ $user->id }}" data-bs-toggle="dropdown"
@@ -48,7 +54,8 @@
                                                 </button>
                                                 <ul class="dropdown-menu"
                                                     aria-labelledby="dropdownMenuButton-{{ $user->id }}">
-                                                    <li><a class="dropdown-item" href="{{ route('detail.employee', $user->id) }}">View</a>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('detail.employee', $user->id) }}">View</a>
                                                     </li>
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('edit.employee', $user->id) }}">Edit</a></li>
@@ -75,5 +82,5 @@
 @endpush
 
 @push('custom-scripts')
-    <script src="{{ asset('assets/js/data-table.js') }}"></script>
+    
 @endpush

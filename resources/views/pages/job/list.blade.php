@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Job List</h6>
-                    <div class="table-responsive">
+                    <div class="">
                         <table id="dataTableExample" class="table">
                             <thead>
                                 <tr>
@@ -27,6 +27,14 @@
                                     <th>Main Job</th>
                                     <th>Start Date</th>
                                     <th>Action</th>
+                                </tr>
+                                 <!-- Search inputs row -->
+                                 <tr class="filters">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Title"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Main Job"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Start Date"></th>
                                 </tr>
                             </thead>
                             <tbody>
