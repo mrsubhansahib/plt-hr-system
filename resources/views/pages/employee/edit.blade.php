@@ -12,7 +12,6 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    {{-- <h3 class="card-title">Personal Details</h3> --}}
                     <form class="forms-sample" action="{{ route('update.employee', $user->id) }}" method="POST">
                         @csrf
                         <!-- Tabs for Required and Optional Fields -->
