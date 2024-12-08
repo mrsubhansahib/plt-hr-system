@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">On Capability Procedure</label>
-                                <select class="form-control" required name="on_capability_procedure">
+                                <select class="form-control form-select" required name="on_capability_procedure">
                                     <option value="yes"
                                         {{ $capability->on_capability_procedure == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no"
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Capability Stage</label>
-                                <select class="form-control" required name="stage">
+                                <select class="form-control form-select" required name="stage">
                                     <option value="" disabled>Select Stage</option>
                                     <option value="Triggered Capability"
                                         {{ $capability->stage == 'Triggered Capability' ? 'selected' : '' }}>Triggered
@@ -79,7 +79,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Warning Issued Type</label>
-                                <select class="form-control" required name="warning_issued_type">
+                                <select class="form-control form-select" required name="warning_issued_type">
                                     <option value="" disabled>Select Warning Type</option>
                                     <option value="Verbal Warning"
                                         {{ $capability->warning_issued_type == 'Verbal Warning' ? 'selected' : '' }}>Verbal

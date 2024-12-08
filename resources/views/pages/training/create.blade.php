@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}">{{ $employee->first_name }}</option>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Training Title</label>
-                                <select class="form-control" required name="training_title">
+                                <select class="form-control form-select" required name="training_title">
                                     <option value="" selected disabled>Select Training Title</option>
                                     <option value="NPLQ">NPLQ</option>
                                     <option value="NPLQ Renewal">NPLQ Renewal</option>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Sent</label>
-                                <select class="form-control" name="ihasco_training_sent">
+                                <select class="form-control form-select" name="ihasco_training_sent">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                     <option value="Not Required">Not Required</option>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Complete</label>
-                                <select class="form-control" name="ihasco_training_complete">
+                                <select class="form-control form-select" name="ihasco_training_complete">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                     <option value="Not Required">Not Required</option>

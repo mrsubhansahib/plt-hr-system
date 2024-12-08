@@ -24,7 +24,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                     <option value="{{$employee->id}}">{{ $employee->first_name }}</option>
@@ -46,14 +46,14 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Self Certification Form Received</label>
-                                <select class="form-control" name="certification_form_received">
+                                <select class="form-control form-select" name="certification_form_received">
                                     <option value="yes">yes</option>
                                     <option selected value="no">no</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Fit Note Received</label>
-                                <select class="form-control" name="fit_note_received">
+                                <select class="form-control form-select" name="fit_note_received">
                                     <option value="yes">yes</option>
                                     <option selected value="no">no</option>
                                 </select>

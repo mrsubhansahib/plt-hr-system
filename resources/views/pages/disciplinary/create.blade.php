@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}">{{ $employee->first_name }}</option>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome</label>
-                                <select class="form-control" name="outcome">
+                                <select class="form-control form-select" name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Suspended</label>
-                                <select class="form-control" name="suspended">
+                                <select class="form-control form-select" name="suspended">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>

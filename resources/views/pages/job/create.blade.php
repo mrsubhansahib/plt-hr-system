@@ -20,7 +20,7 @@
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Employee<span class="text-danger">*</span></label>
-                            <select class="form-control" required name="user_id">
+                            <select class="form-control form-select" required name="user_id">
                                 <option value="" selected disabled>Select Employee</option>
                                 @foreach ($employees as $employee)
                                 <option value="{{$employee->id}}">{{ $employee->first_name }}</option>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Title<span class="text-danger">*</span></label>
-                            <select class="form-control" required name="title">
+                            <select class="form-control form-select" required name="title">
                                 <option value="" selected disabled>Select Title</option>
                                 <option value="Activo Administration Assistant">Activo Administration Assistant</option>
                                 <option value="Administration Assistant">Administration Assistant</option>
@@ -97,14 +97,14 @@
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Main Job</label>
-                            <select class="form-control" name="main_job">
+                            <select class="form-control form-select" name="main_job">
                                 <option value="yes">Yes</option>
                                 <option selected value="no">No</option>
                             </select>
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Facility<span class="text-danger">*</span></label>
-                            <select class="form-control" required name="facility">
+                            <select class="form-control form-select" required name="facility">
                                 <option value="" selected disabled>Select Facility</option>
                                 <option value="No 1 Market Street">No 1 Market Street</option>
                                 <option value="Pendle Leisure Centre">Pendle Leisure Centre</option>
@@ -139,7 +139,7 @@
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Contract Type <span class="text-danger">*</span></label>
-                            <select class="form-control" required name="contract_type">
+                            <select class="form-control form-select" required name="contract_type">
                                 <option value="" selected disabled>Select Contract Type</option>
                                 <option value="Permanent">Permanent</option>
                                 <option value="Casual">Casual</option>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Contract Returned</label>
-                            <select class="form-control" required name="contract_returned">
+                            <select class="form-control form-select" required name="contract_returned">
                                 <option value="" selected disabled>Select Option</option>
                                 <option value="yes">Yes</option>
                                 <option selected value="no">No</option>
@@ -158,14 +158,14 @@
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">JD Returned</label>
-                            <select class="form-control" required name="jd_returned">
+                            <select class="form-control form-select" required name="jd_returned">
                                 <option value="yes">Yes</option>
                                 <option selected value="no">No</option>
                             </select>
                         </div>
                         <div class="col-md-3 mt-3">
                             <label class="form-label">DBS Required <span class="text-danger">*</span></label>
-                            <select class="form-control" required name="dbs_required">
+                            <select class="form-control form-select" required name="dbs_required">
                                 <option value="yes">Yes</option>
                                 <option selected value="no">No</option>
                             </select>

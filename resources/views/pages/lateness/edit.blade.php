@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" {{ ($lateness->user_id == $employee->id) ? 'selected' : '' }}>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Stage</label>
-                                <select class="form-control"  name="lateness_stage">
+                                <select class="form-control form-select"  name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
                                     <option value="Triggered Lateness" {{ ($lateness->lateness_stage == 'Triggered Lateness') ? 'selected' : '' }}>Triggered Lateness</option>
                                     <option value="Lateness A Counselling Interview" {{ ($lateness->lateness_stage == 'Lateness A Counselling Interview') ? 'selected' : '' }}>Lateness A Counselling Interview</option>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Level of Warning Issued</label>
-                                <select class="form-control"  name="warning_level">
+                                <select class="form-control form-select"  name="warning_level">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA" {{ ($lateness->warning_level == 'NFA') ? 'selected' : '' }}>NFA</option>
                                     <option value="Verbal Warning" {{ ($lateness->warning_level == 'Verbal Warning') ? 'selected' : '' }}>Verbal Warning</option>

@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}">{{ $employee->first_name }}</option>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DBS Level<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="dbs_level">
+                                <select class="form-contro form-select" required name="dbs_level">
                                     <option value="" selected disabled>Select DBS Level</option>
                                     <option value="Enhanced">Enhanced</option>
                                     <option value="Basic">Basic</option>
@@ -58,14 +58,14 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Invoice Sent</label>
-                                <select class="form-control" name="invoice_sent">
+                                <select class="form-control form-select" name="invoice_sent">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Type<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="contract_type">
+                                <select class="form-control form-select" required name="contract_type">
                                     <option value="" selected disabled>Select Contract Type</option>
                                     <option value="Employee">Employee</option>
                                     <option value="Volunteer">Volunteer</option>

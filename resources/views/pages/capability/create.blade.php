@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}">{{ $employee->first_name }}</option>
@@ -28,14 +28,14 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">On Capability Procedure</label>
-                                <select class="form-control" required name="on_capability_procedure">
+                                <select class="form-control form-select" required name="on_capability_procedure">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Capability Stage</label>
-                                <select class="form-control" required name="stage">
+                                <select class="form-control form-select" required name="stage">
                                     <option value="" selected disabled>Select Stage</option>
                                     <option value="Triggered Capability">Triggered Capability</option>
                                     <option value="Capability A Counselling Interview">Capability A Counselling Interview</option>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Warning Issued Type</label>
-                                <select class="form-control" required name="warning_issued_type">
+                                <select class="form-control form-select" required name="warning_issued_type">
                                     <option value="" selected disabled>Select Warning Type</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
                                     <option value="Written Warning">Written Warning</option>

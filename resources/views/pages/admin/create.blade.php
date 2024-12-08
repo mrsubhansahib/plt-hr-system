@@ -75,7 +75,7 @@
                             <input type="hidden" value="active" name="status">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Gender <span class="text-danger">*</span></label>
-                                <select class="form-control" required name="gender">
+                                <select class="form-control form-select" required name="gender">
                                     <option value="" selected disabled>Select</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
-                                <select class="form-control" required name="ethnicity">
+                                <select class="form-control form-select" required name="ethnicity">
                                     <option value="" selected disabled>Select</option>
                                     <option value="White Britisha">White Britisha</option>
                                     <option value="White Irish">White Irish</option>

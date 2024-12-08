@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Gender <span class="text-danger">*</span></label>
-                                        <select class="form-control" required name="gender">
+                                        <select class="form-control form-select" required name="gender">
                                             <option value="" selected disabled>Select</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
-                                        <select class="form-control" required name="ethnicity">
+                                        <select class="form-control form-select" required name="ethnicity">
                                             <option value="" selected disabled>Select</option>
                                             <option value="White Britisha">White Britisha</option>
                                             <option value="White Irish">White Irish</option>
@@ -195,7 +195,7 @@
 
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Disability</label>
-                                        <select class="form-control" name="disability">
+                                        <select class="form-control form-select" name="disability">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
@@ -217,14 +217,14 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Handbook Sent</label>
-                                        <select class="form-control" name="handbook_sent">
+                                        <select class="form-control form-select" name="handbook_sent">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Medical Form Returned</label>
-                                        <select class="form-control" name="medical_form_returned">
+                                        <select class="form-control form-select" name="medical_form_returned">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                             <option value="pending">Pending</option>
@@ -232,56 +232,56 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">New Entrant Form Returned</label>
-                                        <select class="form-control" name="new_entrant_form_returned">
+                                        <select class="form-control form-select" name="new_entrant_form_returned">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Confidentiality Statement</label>
-                                        <select class="form-control" name="confidentiality_statement_returned">
+                                        <select class="form-control form-select" name="confidentiality_statement_returned">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Work Document Received</label>
-                                        <select class="form-control" name="work_document_received">
+                                        <select class="form-control form-select" name="work_document_received">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Qualifications Checked</label>
-                                        <select class="form-control" name="qualifications_checked">
+                                        <select class="form-control form-select" name="qualifications_checked">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">References Requested</label>
-                                        <select class="form-control" name="references_requested">
+                                        <select class="form-control form-select" name="references_requested">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">References Returned</label>
-                                        <select class="form-control" name="references_returned">
+                                        <select class="form-control form-select" name="references_returned">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Payroll Informed</label>
-                                        <select class="form-control" name="payroll_informed">
+                                        <select class="form-control form-select" name="payroll_informed">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Probation Complete</label>
-                                        <select class="form-control" name="probation_complete">
+                                        <select class="form-control form-select" name="probation_complete">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                             <option value="not_required">Not Required</option>
@@ -289,7 +289,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Equipment Required</label>
-                                        <select class="form-control" name="equipment_required">
+                                        <select class="form-control form-select" name="equipment_required">
                                             <option value="" selected disabled>Select</option>
                                             <option value="laptop">Laptop</option>
                                             <option value="desktop">Desktop</option>
@@ -299,7 +299,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Equipment Ordered</label>
-                                        <select class="form-control" name="equipment_ordered">
+                                        <select class="form-control form-select" name="equipment_ordered">
                                             <option value="" selected disabled>Select</option>
                                             <option value="Telphone Ext">Telphone Ext</option>
                                             <option value="Computer / Laptop">Computer / Laptop</option>
@@ -310,7 +310,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">P45 / Tax Form Received</label>
-                                        <select class="form-control" name="p45">
+                                        <select class="form-control form-select" name="p45">
                                             <option value="" selected disabled>Select</option>
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
@@ -318,7 +318,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employee Pack Sent</label>
-                                        <select class="form-control" name="employee_pack_sent">
+                                        <select class="form-control form-select" name="employee_pack_sent">
                                             <option value="" selected disabled>Select</option>
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
@@ -326,7 +326,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Termination Form to Payroll</label>
-                                        <select class="form-control" name="termination_form_to_payroll">
+                                        <select class="form-control form-select" name="termination_form_to_payroll">
                                             <option value="" selected disabled>Select</option>
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>

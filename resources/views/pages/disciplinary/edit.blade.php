@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" {{ ($disciplinary->user_id == $employee->id) ? 'selected' : '' }}>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome</label>
-                                <select class="form-control"  name="outcome">
+                                <select class="form-control form-select"  name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA" {{ ($disciplinary->outcome == 'NFA') ? 'selected' : '' }}>NFA</option>
                                     <option value="Verbal Warning" {{ ($disciplinary->outcome == 'Verbal Warning') ? 'selected' : '' }}>Verbal Warning</option>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Suspended</label>
-                                <select class="form-control" name="suspended">
+                                <select class="form-control form-select" name="suspended">
                                     <option value="yes" {{ ($disciplinary->suspended == 'yes') ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ ($disciplinary->suspended == 'no') ? 'selected' : '' }}>No</option>
                                 </select>
