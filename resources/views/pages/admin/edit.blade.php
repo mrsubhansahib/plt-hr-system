@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Gender <span class="text-danger">*</span></label>
-                                <select class="form-control" required name="gender" value="{{ $user->gender }}">
+                                <select class="form-control form-select" required name="gender" value="{{ $user->gender }}">
                                     <option value="" selected disabled>Select</option>
                                     <option value="male" {{($user->gender=='male')?"selected":""}}>Male</option>
                                     <option value="female" {{($user->gender=='female')?"selected":""}}>Female</option>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Ethnicity<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="ethnicity">
+                                <select class="form-control form-select" required name="ethnicity">
                                     <option value="" selected disabled>Select</option>
                                     <option value="White Britisha" {{($user->ethnicity=='White Britisha')?"selected":""}}>White Britisha</option>
                                     <option value="White Irish" {{($user->ethnicity=='White Irish')?"selected":""}}>White Irish</option>

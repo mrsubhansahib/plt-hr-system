@@ -20,7 +20,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="user_id">
+                                <select class="form-control form-select" required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" 
@@ -32,7 +32,7 @@
                             </div>                            
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="title">
+                                <select class="form-control form-select" required name="title">
                                     <option value="" selected disabled>Select Title</option>
                                     <option value="Activo Administration Assistant"
                                         {{ $job->title == 'Activo Administration Assistant' ? 'selected' : '' }}>Activo
@@ -209,14 +209,14 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Main Job</label>
-                                <select class="form-control" name="main_job">
+                                <select class="form-control form-select" name="main_job">
                                     <option value="yes" {{ $job->main_job == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ $job->main_job == 'no' ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Facility<span class="text-danger">*</span></label>
-                                <select class="form-control" required name="facility">
+                                <select class="form-control form-select" required name="facility">
                                     <option value="" selected disabled>Select Facility</option>
                                     <option value="No 1 Market Street"
                                         {{ $job->facility == 'No 1 Market Street' ? 'selected' : '' }}>No 1 Market Street
@@ -271,7 +271,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Type <span class="text-danger">*</span></label>
-                                <select class="form-control" required name="contract_type">
+                                <select class="form-control form-select" required name="contract_type">
                                     <option value="" selected disabled>Select Contract Type</option>
                                     <option value="Permanent" {{ $job->contract_type == 'Permanent' ? 'selected' : '' }}>
                                         Permanent</option>
@@ -288,7 +288,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
-                                <select class="form-control" required name="contract_returned">
+                                <select class="form-control form-select" required name="contract_returned">
                                     <option value="yes" {{ $job->contract_returned == 'yes' ? 'selected' : '' }}>Yes
                                     </option>
                                     <option value="no" {{ $job->contract_returned == 'no' ? 'selected' : '' }}>No
@@ -297,7 +297,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">JD Returned</label>
-                                <select class="form-control" required name="jd_returned">
+                                <select class="form-control form-select" required name="jd_returned">
                                     <option value="yes" {{ $job->jd_returned == 'yes' ? 'selected' : '' }}>Yes
                                     </option>
                                     <option value="no" {{ $job->jd_returned == 'no' ? 'selected' : '' }}>No</option>
@@ -305,7 +305,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DBS Required <span class="text-danger">*</span></label>
-                                <select class="form-control" required name="dbs_required">
+                                <select class="form-control form-select" required name="dbs_required">
                                     <option value="yes" {{ $job->dbs_required == 'yes' ? 'selected' : '' }}>Yes
                                     </option>
                                     <option value="no" {{ $job->dbs_required == 'no' ? 'selected' : '' }}>No
