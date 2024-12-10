@@ -56,6 +56,9 @@ Route::middleware('auth')->group(function () {
         Route::get('accept/{id}', [EmployeeController::class, 'accept_employee'])->name('accept.employee');
         Route::get('reject/{id}', [EmployeeController::class, 'reject_employee'])->name('reject.employee');
         Route::get('delete/{id}', [EmployeeController::class, 'destroy'])->name('delete.employee');
+        Route::get('left/{id}', [EmployeeController::class, 'left_employee'])->name('left.employee');
+        Route::get('left', [EmployeeController::class, 'left_employees'])->name('left.employees');
+        Route::get('active/{id}', [EmployeeController::class, 'active_employee'])->name('active.employee');
     });
     //Route for Admin Profile
     Route::group(['prefix' => 'profile'], function () {
