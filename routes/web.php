@@ -13,6 +13,7 @@
 use App\Http\Controllers\LatenesController;
 use App\Http\Controllers\DisciplinaryController;
 use App\Http\Controllers\SicknessController;
+// use App\Http\Controllers\TabController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CapabilityController;
@@ -138,6 +139,12 @@ Route::middleware('auth')->group(function () {
         Route::post('update/{id}', [LatenesController::class, 'update'])->name('update.lateness');
         Route::get('delete/{id}', [LatenesController::class, 'destroy'])->name('delete.lateness');
     });
+
+    // Routes for Tabs
+    
+    // Route::group(['prefix' => 'tab'], function () {
+    //     Route::get('detail/{id}', [TabController::class, 'show'])->name('detail.tab');
+    // });
 });
 
 
