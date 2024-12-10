@@ -149,7 +149,7 @@ class EmployeeController extends Controller
     public function left($id){
         $user = User::find($id);
         $user->update(['status' => 'left']);
-        return redirect()->route('left.employees')->with('success', 'Employee lefted successfully.');
+        return redirect()->route('show.left.employees')->with('success', 'Employee lefted successfully.');
     }
     public function left_employees(){
         $users = User::where('role', 'employee')->where('status', 'left')->get();
