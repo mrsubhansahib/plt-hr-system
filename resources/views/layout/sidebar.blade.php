@@ -114,7 +114,7 @@
             {{-- Left Employees --}}
             <li class="nav-item {{ active_class(['employee/left*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#LeftEmployee" role="button"
-                    aria-expanded="{{ is_active_route(['employee/left*']) }}" aria-controls="LeftEmployee">
+                    aria-expanded="{{ is_active_route(['left/*']) }}" aria-controls="LeftEmployee">
                     <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Left Employee</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
@@ -122,12 +122,12 @@
                 <div class="collapse {{ show_class(['employee/left*']) }}" id="LeftEmployee">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('left.employees') }}" 
-                               class="nav-link {{ active_class(['employee/left']) }}">List</a>
+                            <a href="{{ route('show.left.employees') }}" 
+                               class="nav-link {{ active_class(['employee/left/list']) }}">List</a>
                         </li>
                     </ul>
                 </div>
-            </li>            
+            </li>             
             {{-- Job added by Wasi --}}
             <li class="nav-item {{ active_class(['job/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Jobs" role="button"
