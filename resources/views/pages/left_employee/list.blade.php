@@ -7,7 +7,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Employee</a></li>
+            <li class="breadcrumb-item"><a href="#">Left Employee</a></li>
             <li class="breadcrumb-item active" aria-current="page">List</li>
         </ol>
     </nav>
@@ -16,7 +16,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Employee List</h6>
+                    <h6 class="card-title">Left Employee List</h6>
                     <div class="table-responsive">
                         <table id="" class="table dataTableExample">
                             <thead>
@@ -24,15 +24,19 @@
                                     <th>#</th>
                                     <th>First Name</th>
                                     <th>Email</th>
-                                    <th>Status</th> <!-- Status Column -->
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search First Name"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Email"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Status"></th>
-                                    <th></th> <!-- No search for Actions column -->
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search First Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Email"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Status"></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,19 +58,10 @@
                                                 </button>
                                                 <ul class="dropdown-menu"
                                                     aria-labelledby="dropdownMenuButton-{{ $user->id }}">
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('detail.employee', $user->id) }}">View</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('edit.employee', $user->id) }}">Edit</a></li>
                                                     <li>
-                                                        <button
-                                                            onclick="if(confirm('Are you sure you want to left this Employee?')){window.location.href='{{ route('left.employee', $user->id) }}'}"
-                                                            class="dropdown-item">Left</button>
-                                                    </li>                
-                                                    <li><button
-                                                            onclick="if(confirm('Are you sure you want to delete this record?')){window.location.href='{{ route('delete.employee', $user->id) }}'}"
-                                                            class="dropdown-item">Delete</button></li>
+                                                        <button onclick="if(confirm('Are you sure you want to activate this Employee?')){window.location.href='{{ route('active.employee', $user->id) }}'}"
+                                                            class="dropdown-item">Active</button>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -87,5 +82,4 @@
 @endpush
 
 @push('custom-scripts')
-    
 @endpush
