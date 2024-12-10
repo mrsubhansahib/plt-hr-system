@@ -26,7 +26,9 @@ class DisclosureController extends Controller
      */
     public function create()
     {
-        $employees = User::where('role', 'employee')->where('status','active')->get();
+        $employees = User::where('role', 'employee')
+        ->where('status', 'active')->doesntHave('disclosure') 
+        ->get();
         return view('pages.disclosure.create', compact('employees'));
     }
 
