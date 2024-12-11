@@ -11,8 +11,8 @@
             <li class="breadcrumb-item active" aria-current="page">Tabs with DataTables</li>
         </ol>
     </nav>
-
     <div class="container">
+        @include('layout.alert')
         <div class="card">
             <div class="card-body">
                 <!-- Static Tabs -->
@@ -62,10 +62,16 @@
                     <!-- Job Tab -->
                     <div class="tab-pane fade show active" id="job-tab-pane" role="tabpanel" aria-labelledby="job-tab"
                         tabindex="0">
-
-                        <h4 class="py-4">Job Data</h4>
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                                <h4 class="">Job Details</h4>
+                            </div>
+                            <div>
+                                <a href="{{ route('create.new.job' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
                         <div class="">
-                            <table id="table-job" class="table table-striped">
+                            <table id="table-job" class="table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -116,8 +122,14 @@
                     <!-- Disclosure Tab -->
                     <div class="tab-pane fade" id="disclosure-tab-pane" role="tabpanel" aria-labelledby="disclosure-tab"
                         tabindex="0">
-
-                        <h4 class="py-4">Disclosure Data</h4>
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                                <h4 class="">Disclosure Details</h4>
+                            </div>
+                            <div>
+                                <a href="{{ route('create.new.disclosure' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
                         <div class="">
                             <table id="table-disclosure" class="table table-striped">
                                 <thead>
@@ -158,8 +170,9 @@
                                                 </div>
                                             </td>
                                         </tr>
+
                                     @else
-                                        <tr class="table-striped">
+                                        <tr>
                                             <td colspan="5" class="text-center">No disclosure data available.</td>
                                             <!-- Display fallback message -->
                                         </tr>
@@ -174,8 +187,14 @@
                     <!-- Sickness Tab -->
                     <div class="tab-pane fade" id="sickness-tab-pane" role="tabpanel" aria-labelledby="sickness-tab"
                         tabindex="0">
-
-                        <h4 class="py-4">Sickness Data</h4>
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                                <h4 class="py-2">Sickness Details</h4>
+                            </div>
+                            <div>
+                                <a href="{{ route('create.new.sickness' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
                         <div class="">
                             <table id="table-sickness" class="table table-striped">
                                 <thead>
@@ -233,8 +252,14 @@
 
                     <div class="tab-pane fade" id="capability-tab-pane" role="tabpanel" aria-labelledby="capability-tab"
                         tabindex="0">
-
-                        <h4 class="py-4">Capability Data</h4>
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                        <h4 class="">Capability Data</h4>
+                            </div>
+                            <div>
+                                <a href="{{ route('create.new.capability' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
                         <div class="">
                             <table id="table-capability" class="table table-striped">
                                 <thead>
@@ -296,8 +321,14 @@
 
                     <div class="tab-pane fade" id="training-tab-pane" role="tabpanel" aria-labelledby="training-tab"
                         tabindex="0">
-
-                        <h4 class="py-4">Training Data</h4>
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                                <h4 class="">Training Details</h4>
+                            </div>
+                            <div>
+                                <a href="{{ route('create.new.training' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
                         <div class="">
                             <table id="table-training" class="table table-striped">
                                 <thead>
@@ -359,8 +390,14 @@
 
                     <div class="tab-pane fade" id="disciplinary-tab-pane" role="tabpanel"
                         aria-labelledby="disciplinary-tab" tabindex="0">
-
-                        <h4 class="py-4">Disciplinary Data</h4>
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                                <h4 class="py-2">Disciplinary Details</h4>
+                            </div>
+                            <div>
+                                <a href="{{ route('create.new.disciplinary' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
                         <div class="">
                             <table id="table-disciplinary" class="table table-striped">
                                 <thead>
@@ -417,8 +454,14 @@
 
                     <div class="tab-pane fade" id="lateness-tab-pane" role="tabpanel" aria-labelledby="lateness-tab"
                         tabindex="0">
-
-                        <h4 class="py-4">Lateness Data</h4>
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                                <h4 class="">Lateness Details</h4>
+                            </div>
+                            <div>
+                                <a href="{{ route('create.new.lateness' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
                         <div class="">
                             <table id="table-lateness" class="table table-striped">
                                 <thead>

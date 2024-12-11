@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\CreateController;
 use App\Http\Controllers\LatenesController;
 use App\Http\Controllers\DisciplinaryController;
 use App\Http\Controllers\SicknessController;
@@ -140,12 +141,33 @@ Route::middleware('auth')->group(function () {
         Route::get('delete/{id}', [LatenesController::class, 'destroy'])->name('delete.lateness');
     });
 
-    // Routes for Tabs
+    // Routes for Tab create
     
-    // Route::group(['prefix' => 'tab'], function () {
-    //     Route::get('detail/{id}', [TabController::class, 'show'])->name('detail.tab');
-    // });
+    Route::group(['prefix' => 'create'], function () {
+        Route::get('job/{id}', [CreateController::class, 'jobCreate'])->name('create.new.job');
+        Route::post('job/store' , [CreateController::class,'jobStore'])->name('store.new.job');
+        // disclosure
+        Route::get('disclosure/{id}', [CreateController::class, 'disclosureCreate'])->name('create.new.disclosure');
+        Route::post('disclosure/store' , [CreateController::class,'disclosureStore'])->name('store.new.disclosure');
+        // sickness
+        Route::get('sickness/{id}', [CreateController::class, 'sicknessCreate'])->name('create.new.sickness');
+        Route::post('sickness/store' , [CreateController::class,'sicknessStore'])->name('store.new.sickness');
+        // capability
+        Route::get('capability/{id}', [CreateController::class, 'capabilityCreate'])->name('create.new.capability');
+        Route::post('capability/store' , [CreateController::class,'capabilityStore'])->name('store.new.capability');
+        // training
+        Route::get('training/{id}', [CreateController::class, 'trainingCreate'])->name('create.new.training');
+        Route::post('training/store' , [CreateController::class,'trainingStore'])->name('store.new.training');
+        // disciplinary
+        Route::get('disciplinary/{id}', [CreateController::class, 'disciplinaryCreate'])->name('create.new.disciplinary');
+        Route::post('disciplinary/store' , [CreateController::class,'disciplinaryStore'])->name('store.new.disciplinary');
+        // lateness
+        Route::get('lateness/{id}', [CreateController::class, 'latenessCreate'])->name('create.new.lateness');
+        Route::post('lateness/store' , [CreateController::class,'latenessStore'])->name('store.new.lateness');
+    });
+    
 });
+
 
 
 Route::group(['prefix' => 'email'], function () {
