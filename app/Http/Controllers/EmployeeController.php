@@ -94,7 +94,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $user = user::find($id);
+        $user = User::with(['jobs', 'disclosure','sicknesses','capabilities','disciplinaries','latenesses','trainings'])->find($id);
+        // dd($user);
         return view('pages.employee.show', compact('user'));
     }
 
