@@ -22,16 +22,16 @@
                                 <input type="text" class="form-control" value="{{ $disciplinary->user->first_name }}" disabled>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Reason for Disciplinary</label>
-                                <input class="form-control" type="text"  name="reason_for_disciplinary" value="{{ $disciplinary->reason_for_disciplinary }}" />
+                                <label class="form-label">Reason for Disciplinary<span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required  name="reason_for_disciplinary" value="{{ $disciplinary->reason_for_disciplinary }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date of Hearing</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="hearing_date" value="{{ $disciplinary->hearing_date }}" />
+                                <label class="form-label">Date of Hearing<span class="text-danger">*</span></label>
+                                <input class="form-control datepicker" required type="text" placeholder="Select Date"  name="hearing_date" value="{{ $disciplinary->hearing_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome</label>
-                                <select class="form-control form-select"  name="outcome">
+                                <label class="form-label">Outcome<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA" {{ ($disciplinary->outcome == 'NFA') ? 'selected' : '' }}>NFA</option>
                                     <option value="Verbal Warning" {{ ($disciplinary->outcome == 'Verbal Warning') ? 'selected' : '' }}>Verbal Warning</option>
@@ -41,19 +41,19 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Suspended</label>
-                                <select class="form-control form-select" name="suspended">
+                                <label class="form-label">Suspended<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="suspended">
                                     <option value="yes" {{ ($disciplinary->suspended == 'yes') ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ ($disciplinary->suspended == 'no') ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date Suspended</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="date_suspended" value="{{ $disciplinary->date_suspended }}" />
+                                <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_suspended" value="{{ $disciplinary->date_suspended }}" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes</label>
-                                <textarea class="form-control" name="notes" rows="4">{{ $disciplinary->notes }}</textarea>
+                                <label class="form-label">Notes<span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="notes" required rows="4">{{ $disciplinary->notes }}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

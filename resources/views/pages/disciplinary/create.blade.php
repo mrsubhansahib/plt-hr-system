@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="user_id">
+                                <select class="form-control form-select" required required name="user_id">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}">{{ $employee->first_name }}</option>
@@ -27,17 +27,17 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Reason for Disciplinary </label>
-                                <input class="form-control" type="text" name="reason_for_disciplinary" />
+                                <label class="form-label">Reason for Disciplinary<span class="text-danger">*</span> </label>
+                                <input class="form-control" type="text" required name="reason_for_disciplinary" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date of Hearing</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                <label class="form-label">Date of Hearing<span class="text-danger">*</span></label>
+                                <input class="form-control datepicker" required type="text" placeholder="Select Date"
                                     name="hearing_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome</label>
-                                <select class="form-control form-select" name="outcome">
+                                <label class="form-label">Outcome<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
@@ -47,20 +47,20 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Suspended</label>
-                                <select class="form-control form-select" name="suspended">
+                                <label class="form-label">Suspended<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="suspended">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date Suspended</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
+                                <input class="form-control datepicker" required type="text" placeholder="Select Date"
                                     name="date_suspended" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes</label>
-                                <textarea class="form-control" name="notes" rows="4"></textarea>
+                                <label class="form-label">Notes<span class="text-danger">*</span></label>
+                                <textarea class="form-control" required name="notes" rows="4"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

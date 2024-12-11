@@ -19,22 +19,15 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="user_id">
-                                    <option value="" selected disabled>Select Employee</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" {{ ($lateness->user_id == $employee->id) ? 'selected' : '' }}>
-                                            {{ $employee->first_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" value="{{ $lateness->user->first_name }}" disabled>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Lateness Triggered</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="lateness_triggered" value="{{ $lateness->lateness_triggered }}" />
+                                <label class="form-label">Lateness Triggered<span class="text-danger">*</span></label>
+                                <input class="form-control datepicker" required type="text" placeholder="Select Date"  name="lateness_triggered" value="{{ $lateness->lateness_triggered }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Lateness Stage</label>
-                                <select class="form-control form-select"  name="lateness_stage">
+                                <label class="form-label">Lateness Stage<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
                                     <option value="Triggered Lateness" {{ ($lateness->lateness_stage == 'Triggered Lateness') ? 'selected' : '' }}>Triggered Lateness</option>
                                     <option value="Lateness A Counselling Interview" {{ ($lateness->lateness_stage == 'Lateness A Counselling Interview') ? 'selected' : '' }}>Lateness A Counselling Interview</option>
@@ -45,8 +38,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Level of Warning Issued</label>
-                                <select class="form-control form-select"  name="warning_level">
+                                <label class="form-label">Level of Warning Issued<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="warning_level">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA" {{ ($lateness->warning_level == 'NFA') ? 'selected' : '' }}>NFA</option>
                                     <option value="Verbal Warning" {{ ($lateness->warning_level == 'Verbal Warning') ? 'selected' : '' }}>Verbal Warning</option>
@@ -56,17 +49,17 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome / Action Taken</label>
-                                <input class="form-control" type="text" name="outcome" value="{{ $lateness->outcome }}" />
+                                <label class="form-label">Outcome / Action Taken<span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" required name="outcome" value="{{ $lateness->outcome }}" />
                             </div>
                             
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Review Date</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="review_date" value="{{ $lateness->review_date }}" />
+                                <label class="form-label">Review Date<span class="text-danger">*</span></label>
+                                <input class="form-control datepicker" required type="text" placeholder="Select Date"  name="review_date" value="{{ $lateness->review_date }}" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes</label>
-                                <textarea class="form-control" name="notes" rows="4">{{ $lateness->notes }}</textarea>
+                                <label class="form-label">Notes<span class="text-danger">*</span></label>
+                                <textarea class="form-control" required name="notes" rows="4">{{ $lateness->notes }}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

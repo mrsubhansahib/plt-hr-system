@@ -20,7 +20,6 @@
                         @csrf
                         <!-- Personal Details -->
                         <!-- Hidden input for the foreign key -->
-                        <input type="hidden" name="user_id" value="">
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>

@@ -84,7 +84,6 @@ class SicknessController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id'               => 'required|exists:users,id',
             'reason_for_absence'    => 'required',
             'date_from'             => 'required',
             'date_to'               => 'required'

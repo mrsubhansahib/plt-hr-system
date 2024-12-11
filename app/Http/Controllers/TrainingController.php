@@ -40,6 +40,12 @@ class TrainingController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
+            'training_title' => 'required',
+            'course_date' => 'required',
+            'renewal_date' => 'required',
+            'ihasco_training_sent' => 'required',
+            'ihasco_training_complete' => 'required',
+            'notes' => 'required',
         ]);
         Training::create($request->all());
         return redirect()->route('show.trainings')->with('success', 'Training created successfully.');
@@ -79,7 +85,12 @@ class TrainingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id' => 'required',
+            'training_title' => 'required',
+            'course_date' => 'required',
+            'renewal_date' => 'required',
+            'ihasco_training_sent' => 'required',
+            'ihasco_training_complete' => 'required',
+            'notes' => 'required',
         ]);
         Training::find($id)->update($request->all());
         return redirect()->route('show.trainings')->with('success', 'Training updated successfully.');

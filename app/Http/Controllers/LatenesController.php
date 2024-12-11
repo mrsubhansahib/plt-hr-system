@@ -39,7 +39,13 @@ class LatenesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id'               => 'required|exists:users,id',
+            'user_id' => 'required',
+            'lateness_triggered'=> 'required',
+            'lateness_stage'=> 'required',
+            'warning_level'=> 'required',
+            'outcome'=> 'required',
+            'review_date'=> 'required',
+            'notes'=> 'required',
         ]);
         $lateness = lateness::create($request->all());
         return redirect()->route('show.latenesses')->with('success','lateness created successfully.');
@@ -79,7 +85,12 @@ class LatenesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id'               => 'required|exists:users,id'
+            'lateness_triggered'=> 'required',
+            'lateness_stage'=> 'required',
+            'warning_level'=> 'required',
+            'outcome'=> 'required',
+            'review_date'=> 'required',
+            'notes'=> 'required',
         ]);
             $lateness = lateness::findOrFail($id);
             $lateness->update($request->all());

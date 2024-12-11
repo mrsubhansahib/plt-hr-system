@@ -87,7 +87,6 @@ class DisclosureController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id'               => 'required|exists:users,id',
             'dbs_level'             => 'required',
             'date_requested'        => 'required|date',
             'date_on_certificate'   => 'required|date',
