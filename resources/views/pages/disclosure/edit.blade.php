@@ -19,14 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="user_id">
-                                    <option value="" selected disabled>Select Employee</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" {{ ($disclosure->user_id == $employee->id) ? 'selected' : '' }}>
-                                            {{ $employee->first_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" value="{{ $disclosure->user->first_name }}" disabled>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DBS Level<span class="text-danger">*</span></label>

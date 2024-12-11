@@ -26,7 +26,9 @@ class DisclosureController extends Controller
      */
     public function create()
     {
-        $employees = User::where('role', 'employee')->where('status','active')->get();
+        $employees = User::where('role', 'employee')
+        ->where('status', 'active')->doesntHave('disclosure') 
+        ->get();
         return view('pages.disclosure.create', compact('employees'));
     }
 
@@ -85,7 +87,6 @@ class DisclosureController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id'               => 'required|exists:users,id',
             'dbs_level'             => 'required',
             'date_requested'        => 'required|date',
             'date_on_certificate'   => 'required|date',

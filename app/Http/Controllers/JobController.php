@@ -43,7 +43,6 @@ class JobController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'title' => 'required',
-            'user_id' => 'required',
             'facility' => 'required',
             'start_date' => 'required',
             'rate_of_pay' => 'required',

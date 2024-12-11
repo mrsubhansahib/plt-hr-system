@@ -20,16 +20,8 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="user_id">
-                                    <option value="" selected disabled>Select Employee</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" 
-                                            {{ $employee->id == $job->user_id ? 'selected' : '' }}>
-                                            {{ $employee->first_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>                            
+                                <input type="text" class="form-control" value="{{ $job->user->first_name }}" disabled>
+                            </div>                                                        
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="title">

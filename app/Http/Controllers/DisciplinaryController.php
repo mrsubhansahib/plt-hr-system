@@ -39,7 +39,13 @@ class DisciplinaryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id'               => 'required|exists:users,id',
+            'user_id' => 'required',
+            'reason_for_disciplinary' => 'required',
+            'hearing_date' => 'required',
+            'outcome' => 'required',
+            'suspended' => 'required',
+            'date_suspended' => 'required',
+            'notes' => 'required',
         ]);
         $disciplinary = disciplinary::create($request->all());
         return redirect()->route('show.disciplinaries')->with('success','disciplinary created successfully.');
@@ -80,12 +86,17 @@ class DisciplinaryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id'               => 'required|exists:users,id'
+            'reason_for_disciplinary' => 'required',
+            'hearing_date' => 'required',
+            'outcome' => 'required',
+            'suspended' => 'required',
+            'date_suspended' => 'required',
+            'notes' => 'required',
         ]);
             $disciplinary = disciplinary::findOrFail($id);
             $disciplinary->update($request->all());
             return redirect()->route('show.disciplinaries')
-            ->with('success', 'disciplinary updated successfully.');
+            ->with('success', 'Disciplinary updated successfully.');
     }
 
     /**

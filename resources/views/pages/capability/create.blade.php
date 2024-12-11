@@ -27,14 +27,14 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">On Capability Procedure</label>
+                                <label class="form-label">On Capability Procedure<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="on_capability_procedure">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Capability Stage</label>
+                                <label class="form-label">Capability Stage<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="stage">
                                     <option value="" selected disabled>Select Stage</option>
                                     <option value="Triggered Capability">Triggered Capability</option>
@@ -48,16 +48,16 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date</label>
+                                <label class="form-label">Date<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome</label>
+                                <label class="form-label">Outcome<span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="outcome" 
                                     placeholder="Enter Outcome" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Warning Issued Type</label>
+                                <label class="form-label">Warning Issued Type<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="warning_issued_type">
                                     <option value="" selected disabled>Select Warning Type</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
@@ -67,12 +67,12 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Review Date</label>
+                                <label class="form-label">Review Date<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes</label>
-                                <textarea class="form-control" name="notes" rows="4" placeholder="Enter any additional details"></textarea>
+                                <label class="form-label">Notes<span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="notes" rows="4" required placeholder="Enter any additional details"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
