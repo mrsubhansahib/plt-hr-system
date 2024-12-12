@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Disclosure List</h6>
                     <div class="table-responsive">
-                        <table id="" class="table dataTableExample">
+                        <table class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -27,19 +27,20 @@
                                     <th>Certification No</th>
                                     <th>Action</th>
                                 </tr>
-                                 <!-- Search inputs row -->
-                                 <tr class="filters">
+                                <!-- Search inputs row -->
+                                <tr class="filters">
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search DBS Level"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Certification No"></th>
+                                    <th></th> <!-- No search for Action column -->
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($disclosures as $key => $disclosure)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $disclosure->user->first_name}}</td>
+                                        <td>{{ $disclosure->user->first_name }}</td>
                                         <td>{{ $disclosure->dbs_level }}</td>
                                         <td>{{ $disclosure->certificate_no }}</td>
                                         <td>
@@ -82,8 +83,3 @@
     <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
 @endpush
-
-@push('custom-scripts')
-    <script src="{{ asset('assets/js/data-table.js') }}"></script>
-@endpush
-

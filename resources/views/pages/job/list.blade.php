@@ -17,8 +17,8 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Job List</h6>
-                    <div class="">
-                        <table id="dataTableExample" class="table">
+                    <div class="table-responsive">
+                        <table class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -28,13 +28,13 @@
                                     <th>Start Date</th>
                                     <th>Action</th>
                                 </tr>
-                                 <!-- Search inputs row -->
-                                 <tr class="filters">
+                                <tr class="filters">
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Title"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Main Job"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Start Date"></th>
+                                    <th></th> <!-- No search for Actions column -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,8 +80,4 @@
 @push('plugin-scripts')
     <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
-@endpush
-
-@push('custom-scripts')
-    <script src="{{ asset('assets/js/data-table.js') }}"></script>
 @endpush
