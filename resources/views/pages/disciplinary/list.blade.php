@@ -16,9 +16,9 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">disciplinary List</h6>
+                    <h6 class="card-title">Disciplinary List</h6>
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -27,12 +27,20 @@
                                     <th>Date of Hearing</th>
                                     <th>Action</th>
                                 </tr>
+                                <!-- Search inputs row -->
+                                <tr class="filters">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Reason"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Hearing Date"></th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($disciplinaries as $key => $disciplinary)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $disciplinary->user->first_name}}</td>
+                                        <td>{{ $disciplinary->user->first_name }}</td>
                                         <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                         <td>{{ $disciplinary->hearing_date }}</td>
                                         <td>
@@ -44,7 +52,6 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $disciplinary->id }}">
-
                                                     <li>
                                                         <a class="dropdown-item"
                                                             href="{{ route('edit.disciplinary', $disciplinary->id) }}">Edit</a>

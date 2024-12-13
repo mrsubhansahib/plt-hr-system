@@ -168,18 +168,47 @@ License: For each use you must have a valid license purchased only from above li
     {{-- datatable search bar script --}}
     <script>
         $(document).ready(function() {
-            // Initialize DataTable
+            // Initialize the DataTable with optimized options
             var table = $('.dataTableExample').DataTable({
-                autoWidth: false // Prevent table from stretching
+                autoWidth: false,        // Prevent table from stretching
+                paging: true,            // Enable pagination
+                searching: true,         // Enable column search
+                ordering: true,          // Enable sorting on columns
+                info: true,              // Show info (e.g., "Showing 1 to X of Y entries")
+                language: {
+                    emptyTable: "No records found", // Custom message for empty table
+                    infoEmpty: "No entries to show", // Message for empty table info
+                },
+                initComplete: function() {
+                    // Fix table layout after initialization
+                    var table = this.api();
+                    table.columns.adjust().draw();
+                    // Ensure consistent padding across cells
+                    $('table.dataTableExample td').css({
+                        'padding': '12px 15px'
+                    });
+                }
             });
-
-            // Apply the search on each column
+    
+            // Apply the column-wise search functionality
             $('.dataTableExample .filters input').on('keyup change', function() {
-                let colIndex = $(this).parent().index(); // Get the column index
-                table.column(colIndex).search(this.value).draw(); // Search and redraw the table
+                var colIndex = $(this).parent().index();  // Get column index
+                table.column(colIndex).search(this.value).draw(); // Search and redraw table
+            });
+    
+            // Style the 'No records found' message for better visibility
+            $('.dataTables_empty').css({
+                'text-align': 'center',   // Center the 'No records found' message
+                'font-style': 'italic',   // Optional: Make the message italic
+                'padding': '20px 0',      // Add padding to balance the space
+            });
+    
+            // Optional: Style the column search input for consistency
+            $('.dataTableExample .filters input').css({
+                'padding': '6px', // Make the search inputs uniform
             });
         });
-    </script> 
+    </script>         
 </body>
 
 </html>

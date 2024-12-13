@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Lateness List</h6>
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -27,12 +27,20 @@
                                     <th>Lateness Stage</th>
                                     <th>Action</th>
                                 </tr>
+                                <!-- Search inputs row -->
+                                <tr class="filters">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Lateness Triggered"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Lateness Stage"></th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($latenesses as $key => $lateness)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $lateness->user->first_name}}</td>
+                                        <td>{{ $lateness->user->first_name }}</td>
                                         <td>{{ $lateness->lateness_triggered }}</td>
                                         <td>{{ $lateness->lateness_stage }}</td>
                                         <td>
@@ -44,7 +52,6 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $lateness->id }}">
-
                                                     <li>
                                                         <a class="dropdown-item"
                                                             href="{{ route('edit.lateness', $lateness->id) }}">Edit</a>

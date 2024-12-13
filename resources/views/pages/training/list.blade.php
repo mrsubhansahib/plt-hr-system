@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Training List</h6>
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -27,6 +27,15 @@
                                     <th>Course Date</th>
                                     <th>Renewal Date</th>
                                     <th>Action</th>
+                                </tr>
+                                <!-- Search inputs row -->
+                                <tr class="filters">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Title"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Date"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Renewal"></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

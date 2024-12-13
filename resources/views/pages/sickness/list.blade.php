@@ -16,9 +16,9 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">sickness List</h6>
-                    <div class="">
-                        <table id="" class="table dataTableExample">
+                    <h6 class="card-title">Sickness List</h6>
+                    <div class="table-responsive">
+                        <table class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -30,16 +30,12 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
-                                    </th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Name"></th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Reason for Absence"></th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Date From"></th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Date To"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Reason for Absence"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Date From"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Date To"></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,20 +82,3 @@
     <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
 @endpush
-
-{{-- @push('custom-scripts')
-    <script>
-        $(document).ready(function() {
-            // Initialize DataTable
-            var table = $('#dataTableExample').DataTable({
-                autoWidth: false // Prevent table from stretching
-            });
-        
-            // Apply the search on each column
-            $('#dataTableExample .filters input').on('keyup change', function() {
-                let colIndex = $(this).parent().index(); // Get the column index
-                table.column(colIndex).search(this.value).draw(); // Search and redraw the table
-            });
-        });
-    </script>
-@endpush --}}
