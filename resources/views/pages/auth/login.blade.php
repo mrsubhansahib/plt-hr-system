@@ -21,15 +21,15 @@
               <form action="{{route('authenticate')}}" class="forms-sample" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="userEmail" class="form-label">Email address</label>
-                  <input type="email" name="email" required class="form-control" id="userEmail" placeholder="Email">
+                  <label for="userEmail" class="form-label">Email</label>
+                  <input type="email" name="email" required class="form-control" id="userEmail" placeholder="Enter your email here...">
                   @error('email')
                     <div class="text-danger">{{ $message }}</div>
                   @enderror 
                 </div>
                 <div class="mb-3">
                   <label for="userPassword" class="form-label">Password</label>
-                  <input type="password" name="password" required class="form-control" id="userPassword" autocomplete="current-password" placeholder="Password">
+                  <input type="password" name="password" required class="form-control" id="userPassword" autocomplete="current-password" placeholder="Enter your password here...">
                   @error('password')
                     <div class="text-danger">{{ $message }}</div>
                   @enderror 
