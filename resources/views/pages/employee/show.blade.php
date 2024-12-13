@@ -172,10 +172,10 @@
                                         </tr>
 
                                     @else
-                                        <tr>
-                                            <td colspan="5" class="text-center">No disclosure data available.</td>
+                                    
+                                            {{-- <td colspan="5" class="text-center">No disclosure data available.</td> --}}
                                             <!-- Display fallback message -->
-                                        </tr>
+                                        
                                     @endif
                                 </tbody>
                             </table>
@@ -240,9 +240,9 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <tr>
-                                            <td colspan="6" class="text-center">No sickness data available</td>
-                                        </tr>
+                                        
+                                            {{-- <td colspan="6" class="text-center">No sickness data available</td> --}}
+                                        
                                     @endif
                                 </tbody>
                             </table>
@@ -250,6 +250,7 @@
                         </div>
                     </div>
 
+                    <!-- capability Tab -->
                     <div class="tab-pane fade" id="capability-tab-pane" role="tabpanel" aria-labelledby="capability-tab"
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
@@ -309,9 +310,9 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <tr>
-                                            <td colspan="6" class="text-center">No capability data available</td>
-                                        </tr>
+                                        
+                                            {{-- <p class="text-center">No capability data available</> --}}
+                                        
                                     @endif
                                 </tbody>
                             </table>
@@ -319,6 +320,7 @@
                         </div>
                     </div>
 
+                    <!-- training Tab -->
                     <div class="tab-pane fade" id="training-tab-pane" role="tabpanel" aria-labelledby="training-tab"
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
@@ -378,9 +380,9 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <tr>
-                                            <td colspan="6" class="text-center">No training data available</td>
-                                        </tr>
+                                    
+                                            {{-- <td colspan="6" class="text-center">No training data available</td> --}}
+                                        
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
@@ -388,6 +390,7 @@
                         </div>
                     </div>
 
+                    <!-- disciplinary Tab -->
                     <div class="tab-pane fade" id="disciplinary-tab-pane" role="tabpanel"
                         aria-labelledby="disciplinary-tab" tabindex="0">
                         <div class="d-flex justify-content-between py-2">
@@ -412,39 +415,39 @@
                                 <tbody>
                                     @if ($user->disciplinaries->isNotEmpty())
                                         @foreach ($user->disciplinaries as $key => $disciplinary)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $disciplinary->user->first_name }}</td>
-                                                <td>{{ $disciplinary->reason_for_disciplinary }}</td>
-                                                <td>{{ $disciplinary->hearing_date }}</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $disciplinary->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i data-feather="align-justify"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton-{{ $disciplinary->id }}">
-
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('edit.disciplinary', $disciplinary->id) }}">Edit</a>
-                                                            </li>
-                                                            <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this disciplinary?')) { window.location.href='{{ route('delete.disciplinary', $disciplinary->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $disciplinary->user->first_name}}</td>
+                                            <td>{{ $disciplinary->reason_for_disciplinary }}</td>
+                                            <td>{{ $disciplinary->hearing_date }}</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-link p-0" type="button"
+                                                        id="dropdownMenuButton-{{ $disciplinary->id }}" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                        <i data-feather="align-justify"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end"
+                                                        aria-labelledby="dropdownMenuButton-{{ $disciplinary->id }}">
+    
+                                                        <li>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('edit.disciplinary', $disciplinary->id) }}">Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <button
+                                                                onclick="if(confirm('Are you sure you want to delete this disciplinary?')) { window.location.href='{{ route('delete.disciplinary', $disciplinary->id) }}' }"
+                                                                class="dropdown-item">Delete</button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     @else
-                                        <tr>
-                                            <td colspan="6" class="text-center">No disciplinary data available</td>
-                                        </tr>
+                                        
+                                            {{-- <td colspan="6" class="text-center">No disciplinary data available</td> --}}
+                                        
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
@@ -452,6 +455,7 @@
                         </div>
                     </div>
 
+                    <!-- lateness Tab -->
                     <div class="tab-pane fade" id="lateness-tab-pane" role="tabpanel" aria-labelledby="lateness-tab"
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
@@ -506,16 +510,16 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <tr>
-                                            <td colspan="6" class="text-center">No lateness data available</td>
-                                        </tr>
+                                        
+                                            {{-- <td colspan="6" class="text-center">No lateness data available</td> --}}
+                                        
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <!-- Add more tab panes manually here -->
+            
                 </div>
             </div>
         </div>

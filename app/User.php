@@ -97,7 +97,7 @@ class User extends Authenticatable
     // relationships one to one
     public function disciplinaries()
     {
-        return $this->hasMany(Disclosure::class);
+        return $this->hasMany(Disciplinary::class);
     }
 
     // relationships one to one

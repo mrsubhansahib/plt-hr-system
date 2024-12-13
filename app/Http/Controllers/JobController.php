@@ -61,7 +61,7 @@ class JobController extends Controller
     }
     public function destroy($id){
         $job = Job::findOrFail($id)->delete();
-        return redirect()->route('show.jobs')
+        return redirect()->back()
             ->with('success', 'Job deleted successfully.');
     }
 }

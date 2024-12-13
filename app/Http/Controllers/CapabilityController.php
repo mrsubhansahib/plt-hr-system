@@ -39,14 +39,14 @@ class CapabilityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id'=> 'required',
-            'on_capability_procedure'=> 'required',
-            'stage'=> 'required',
-            'date'=> 'required',
-            'outcome'=> 'required',
-            'warning_issued_type'=> 'required',
-            'review_date'=> 'required',
-            'notes'=> 'required',
+            'user_id'                       => 'required',
+            'on_capability_procedure'       => 'required',
+            'stage'                         => 'required',
+            'date'                          => 'required',
+            'outcome'                       => 'required',
+            'warning_issued_type'           => 'required',
+            'review_date'                   => 'required',
+            'notes'                         => 'required'
         ]);
         Capability::create($request->all());
         return redirect()->route('show.capabilities')->with('success', 'Capability created successfully');
@@ -86,13 +86,13 @@ class CapabilityController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'on_capability_procedure'=> 'required',
-            'stage'=> 'required',
-            'date'=> 'required',
-            'outcome'=> 'required',
-            'warning_issued_type'=> 'required',
-            'review_date'=> 'required',
-            'notes'=> 'required',
+            'on_capability_procedure'       => 'required',
+            'stage'                         => 'required',
+            'date'                          => 'required',
+            'outcome'                       => 'required',
+            'warning_issued_type'           => 'required',
+            'review_date'                   => 'required',
+            'notes'                         => 'required'
         ]);
         Capability::find($id)->update($request->all());
         return redirect()->route('show.capabilities')->with('success', 'Capability updated successfully');
@@ -107,6 +107,6 @@ class CapabilityController extends Controller
     public function destroy($id)
     {
         Capability::find($id)->delete();
-        return redirect()->route('show.capabilities')->with('success', 'Capability deleted successfully');
+        return redirect()->back()->with('success', 'Capability deleted successfully');
     }
 }
