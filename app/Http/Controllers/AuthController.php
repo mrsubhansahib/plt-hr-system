@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use App\User;
 
 class AuthController extends Controller
 {
@@ -43,15 +43,20 @@ class AuthController extends Controller
             'email' => 'required|email|exists:users,email',
             'password' => 'required'
         ]);
-        if (auth()->attempt($data)) {
-
-            return redirect('/dashboard')->with('success', 'Login Successful');
+        $user = User::where('email', $data['email'])->first();
+        
+        if ($user->role == 'admin') {
+            if (auth()->attempt($data)) {
+                return redirect('/dashboard')->with('success', 'Login Successful');
+            } else {
+                return back()->with('error', 'Invalid Credentials');
+            }
         } else {
-            return back()->with('error', 'Invalid Credentials');
+            return back()->with('error', 'You are not authorized to login');
         }
     }
 
-   
+
     public function logout(Request $request)
     {
         auth()->logout();
