@@ -44,8 +44,8 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         $user = User::where('email', $data['email'])->first();
-        
-        if ($user->role == 'admin') {
+
+        if ($user->role == 'admin'||$user->role == 'super_admin') {
             if (auth()->attempt($data)) {
                 return redirect('/dashboard')->with('success', 'Login Successful');
             } else {
