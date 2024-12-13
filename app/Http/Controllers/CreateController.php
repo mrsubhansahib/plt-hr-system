@@ -20,9 +20,11 @@ class CreateController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
-
+/*
+|--------------------------------------------------------------------------
+| Job tab create fuctoins
+|--------------------------------------------------------------------------
+|*/
     public function jobCreate($id)
     {
         $employee = User::where('id', $id)->where('role', 'employee')->first();
@@ -46,10 +48,11 @@ class CreateController extends Controller
 }
 
 
-
-
-
-
+/*
+|--------------------------------------------------------------------------
+| disclosure tab create fuctoins
+|--------------------------------------------------------------------------
+|*/
     public function disclosureCreate($id)
     {
         $employee = User::where('id', $id)->where('role', 'employee')->first();
@@ -73,9 +76,11 @@ class CreateController extends Controller
 }
 
 
-
-
-
+/*
+|--------------------------------------------------------------------------
+| sickness tab create fuctoins
+|--------------------------------------------------------------------------
+|*/
     public function sicknessCreate($id)
     {
         $employee = User::where('id', $id)->where('role', 'employee')->first();
@@ -98,10 +103,11 @@ class CreateController extends Controller
 
 
 
-
-
-
-
+/*
+|--------------------------------------------------------------------------
+| capability tab create fuctoins
+|--------------------------------------------------------------------------
+|*/
     public function capabilityCreate($id)
     {
         $employee = User::where('id', $id)->where('role', 'employee')->first();
@@ -128,9 +134,11 @@ class CreateController extends Controller
 
 
 
-
-
-
+/*
+|--------------------------------------------------------------------------
+| training tab create fuctoins
+|--------------------------------------------------------------------------
+|*/
     public function trainingCreate($id)
     {
         $employee = User::where('id', $id)->where('role', 'employee')->first();
@@ -155,9 +163,11 @@ class CreateController extends Controller
     }
 
 
-
-
-
+/*
+|--------------------------------------------------------------------------
+| disciplinary tab create fuctoins
+|--------------------------------------------------------------------------
+|*/
     public function disciplinaryCreate($id)
     {
         $employee = User::where('id', $id)->where('role', 'employee')->first();
@@ -181,10 +191,11 @@ class CreateController extends Controller
             ->with('success', 'Disciplinary created successfully.');
     }
 
-
-
-
-
+/*
+|--------------------------------------------------------------------------
+| lateness tab create fuctoins
+|--------------------------------------------------------------------------
+|*/
     public function latenessCreate($id)
     {
         $employee = User::where('id', $id)->where('role', 'employee')->first();

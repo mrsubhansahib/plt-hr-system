@@ -38,132 +38,132 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     // Route for Admin CRUD  
-    Route::group(['prefix' => 'admin'], function () {
-        Route::get('list', [UserController::class, 'index'])->name('show.admins');
-        Route::get('create', [UserController::class, 'create'])->name('create.admin');
-        Route::post('store', [UserController::class, 'store'])->name('store.admin');
-        Route::get('detail/{id}', [UserController::class, 'show'])->name('detail.admin');
-        Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit.admin');
-        Route::post('update/{id}', [UserController::class, 'update'])->name('update.admin');
-        Route::get('delete/{id}', [UserController::class, 'destroy'])->name('delete.admin');
+    Route::group(                    ['prefix' => 'admin'], function () {
+        Route::get('list',          [UserController::class, 'index'])       ->name('show.admins');
+        Route::get('create',        [UserController::class, 'create'])      ->name('create.admin');
+        Route::post('store',        [UserController::class, 'store'])       ->name('store.admin');
+        Route::get('detail/{id}',   [UserController::class, 'show'])        ->name('detail.admin');
+        Route::get('edit/{id}',     [UserController::class, 'edit'])        ->name('edit.admin');
+        Route::post('update/{id}',  [UserController::class, 'update'])      ->name('update.admin');
+        Route::get('delete/{id}',   [UserController::class, 'destroy'])     ->name('delete.admin');
     });
-    Route::group(['prefix' => 'employee'], function () {
-        Route::get('list', [EmployeeController::class, 'index'])->name('show.employees');
-        Route::get('temp/list', [EmployeeController::class, 'temp'])->name('show.temp.employees');
-        Route::get('temp/create', [EmployeeController::class, 'create'])->name('create.temp.employee');
-        Route::post('store', [EmployeeController::class, 'store'])->name('store.employee');
-        Route::get('detail/{id}', [EmployeeController::class, 'show'])->name('detail.employee');
-        Route::get('edit/{id}', [EmployeeController::class, 'edit'])->name('edit.employee');
-        Route::post('update/{id}', [EmployeeController::class, 'update'])->name('update.employee');
-        Route::get('accept/{id}', [EmployeeController::class, 'accept_employee'])->name('accept.employee');
-        Route::get('reject/{id}', [EmployeeController::class, 'reject_employee'])->name('reject.employee');
-        Route::get('delete/{id}', [EmployeeController::class, 'destroy'])->name('delete.employee');
-        Route::get('left/list', [EmployeeController::class, 'left_employees'])->name('show.left.employees');
-        Route::get('left/{id}', [EmployeeController::class, 'left'])->name('left.employee');
-        Route::get('active/{id}', [EmployeeController::class, 'active_employee'])->name('active.employee');
+    Route::group(                    ['prefix' => 'employee'], function () {
+        Route::get('list',          [EmployeeController::class, 'index'])               ->name('show.employees');
+        Route::get('temp/list',     [EmployeeController::class, 'temp'])                ->name('show.temp.employees');
+        Route::get('temp/create',   [EmployeeController::class, 'create'])              ->name('create.temp.employee');
+        Route::post('store',        [EmployeeController::class, 'store'])               ->name('store.employee');
+        Route::get('detail/{id}',   [EmployeeController::class, 'show'])                ->name('detail.employee');
+        Route::get('edit/{id}',     [EmployeeController::class, 'edit'])                ->name('edit.employee');
+        Route::post('update/{id}',  [EmployeeController::class, 'update'])              ->name('update.employee');
+        Route::get('accept/{id}',   [EmployeeController::class, 'accept_employee'])     ->name('accept.employee');
+        Route::get('reject/{id}',   [EmployeeController::class, 'reject_employee'])     ->name('reject.employee');
+        Route::get('delete/{id}',   [EmployeeController::class, 'destroy'])             ->name('delete.employee');
+        Route::get('left/list',     [EmployeeController::class, 'left_employees'])      ->name('show.left.employees');
+        Route::get('left/{id}',     [EmployeeController::class, 'left'])                ->name('left.employee');
+        Route::get('active/{id}',   [EmployeeController::class, 'active_employee'])     ->name('active.employee');
     });
     //Route for Admin Profile
-    Route::group(['prefix' => 'profile'], function () {
-        Route::get('/', [ProfileController::class, 'index'])->name('show.profile');
-        Route::get('edit', [ProfileController::class, 'edit'])->name('edit.profile');
-        Route::post('update', [ProfileController::class, 'update'])->name('update.profile');
-        Route::get('edit/password', [ProfileController::class, 'edit_password'])->name('edit.password');
-        Route::post('update/password', [ProfileController::class, 'update_password'])->name('update.password');
+    Route::group(                        ['prefix' => 'profile'], function () {
+        Route::get('/',                 [ProfileController::class, 'index'])            ->name('show.profile');
+        Route::get('edit',              [ProfileController::class, 'edit'])             ->name('edit.profile');
+        Route::post('update',           [ProfileController::class, 'update'])           ->name('update.profile');
+        Route::get('edit/password',     [ProfileController::class, 'edit_password'])    ->name('edit.password');
+        Route::post('update/password',  [ProfileController::class, 'update_password'])  ->name('update.password');
     });
     // Routes for Jobs Crud
-    Route::group(['prefix' => 'job'], function () {
-        Route::get('list', [JobController::class, 'index'])->name('show.jobs');
-        Route::get('create', [JobController::class, 'create'])->name('create.job');
-        Route::post('store', [JobController::class,'store'])->name('store.job');
-        Route::get('detail/{id}', [JobController::class,'show'])->name('detail.job');
-        Route::get('edit/{id}', [JobController::class, 'edit'])->name('edit.job');
-        Route::post('update/{id}', [JobController::class, 'update'])->name('update.job');
-        Route::get('delete/{id}', [JobController::class, 'destroy'])->name('delete.job');
+    Route::group(                    ['prefix' => 'job'], function () {
+        Route::get('list',          [JobController::class, 'index'])        ->name('show.jobs');
+        Route::get('create',        [JobController::class, 'create'])       ->name('create.job');
+        Route::post('store',        [JobController::class,'store'])         ->name('store.job');
+        Route::get('detail/{id}',   [JobController::class,'show'])          ->name('detail.job');
+        Route::get('edit/{id}',     [JobController::class, 'edit'])         ->name('edit.job');
+        Route::post('update/{id}',  [JobController::class, 'update'])       ->name('update.job');
+        Route::get('delete/{id}',   [JobController::class, 'destroy'])      ->name('delete.job');
     });
     // Routes for disclosure crud
-    Route::group(['prefix' => 'disclosure'], function () {
-        Route::get('list', [DisclosureController::class, 'index'])->name('show.disclosures');
-        Route::get('create', [DisclosureController::class, 'create'])->name('create.disclosure');
-        Route::post('store', [DisclosureController::class, 'store'])->name('store.disclosure');
-        Route::get('detail/{id}', [DisclosureController::class, 'show'])->name('detail.disclosure');
-        Route::get('edit/{id}', [DisclosureController::class, 'edit'])->name('edit.disclosure');
-        Route::post('update/{id}', [DisclosureController::class, 'update'])->name('update.disclosure');
-        Route::get('delete/{id}', [DisclosureController::class, 'destroy'])->name('delete.disclosure');
+    Route::group(                    ['prefix' => 'disclosure'], function () {
+        Route::get('list',          [DisclosureController::class, 'index'])     ->name('show.disclosures');
+        Route::get('create',        [DisclosureController::class, 'create'])    ->name('create.disclosure');
+        Route::post('store',        [DisclosureController::class, 'store'])     ->name('store.disclosure');
+        Route::get('detail/{id}',   [DisclosureController::class, 'show'])      ->name('detail.disclosure');
+        Route::get('edit/{id}',     [DisclosureController::class, 'edit'])      ->name('edit.disclosure');
+        Route::post('update/{id}',  [DisclosureController::class, 'update'])    ->name('update.disclosure');
+        Route::get('delete/{id}',   [DisclosureController::class, 'destroy'])   ->name('delete.disclosure');
     });
     // route for sickness crud
-    Route::group(['prefix' => 'sickness'], function () {
-        Route::get('list', [SicknessController::class, 'index'])->name('show.sicknesses');
-        Route::get('create', [SicknessController::class, 'create'])->name('create.sickness');
-        Route::post('store', [SicknessController::class, 'store'])->name('store.sickness');
-        Route::get('edit/{id}', [SicknessController::class, 'edit'])->name('edit.sickness');
-        Route::post('update/{id}', [SicknessController::class, 'update'])->name('update.sickness');
-        Route::get('delete/{id}', [SicknessController::class, 'destroy'])->name('delete.sickness');
+    Route::group(                    ['prefix' => 'sickness'], function () {
+        Route::get('list',          [SicknessController::class, 'index'])       ->name('show.sicknesses');
+        Route::get('create',        [SicknessController::class, 'create'])      ->name('create.sickness');
+        Route::post('store',        [SicknessController::class, 'store'])       ->name('store.sickness');
+        Route::get('edit/{id}',     [SicknessController::class, 'edit'])        ->name('edit.sickness');
+        Route::post('update/{id}',  [SicknessController::class, 'update'])      ->name('update.sickness');
+        Route::get('delete/{id}',   [SicknessController::class, 'destroy'])     ->name('delete.sickness');
     });
     // Routes for Capability crud
-    Route::group(['prefix' => 'capability'], function () {
-        Route::get('list', [CapabilityController::class, 'index'])->name('show.capabilities');
-        Route::get('create', [CapabilityController::class, 'create'])->name('create.capability');
-        Route::post('store', [CapabilityController::class,'store'])->name('store.capability');
-        Route::get('detail/{id}', [CapabilityController::class,'show'])->name('detail.capability');
-        Route::get('edit/{id}', [CapabilityController::class, 'edit'])->name('edit.capability');
-        Route::post('update/{id}', [CapabilityController::class, 'update'])->name('update.capability');
-        Route::get('delete/{id}', [CapabilityController::class, 'destroy'])->name('delete.capability');
+    Route::group(                    ['prefix' => 'capability'], function () {
+        Route::get('list',          [CapabilityController::class, 'index'])     ->name('show.capabilities');
+        Route::get('create',        [CapabilityController::class, 'create'])    ->name('create.capability');
+        Route::post('store',        [CapabilityController::class,'store'])      ->name('store.capability');
+        Route::get('detail/{id}',   [CapabilityController::class,'show'])       ->name('detail.capability');
+        Route::get('edit/{id}',     [CapabilityController::class, 'edit'])      ->name('edit.capability');
+        Route::post('update/{id}',  [CapabilityController::class, 'update'])    ->name('update.capability');
+        Route::get('delete/{id}',   [CapabilityController::class, 'destroy'])   ->name('delete.capability');
     });
     // Routes for Training Record
-    Route::group(['prefix' => 'training'], function () {
-        Route::get('list', [TrainingController::class, 'index'])->name('show.trainings');
-        Route::get('create', [TrainingController::class, 'create'])->name('create.training');
-        Route::post('store', [TrainingController::class,'store'])->name('store.training');
-        Route::get('detail/{id}', [TrainingController::class,'show'])->name('detail.training');
-        Route::get('edit/{id}', [TrainingController::class, 'edit'])->name('edit.training');
-        Route::post('update/{id}', [TrainingController::class, 'update'])->name('update.training');
-        Route::get('delete/{id}', [TrainingController::class, 'destroy'])->name('delete.training');
+    Route::group(                    ['prefix' => 'training'], function () {
+        Route::get('list',          [TrainingController::class, 'index'])       ->name('show.trainings');
+        Route::get('create',        [TrainingController::class, 'create'])      ->name('create.training');
+        Route::post('store',        [TrainingController::class,'store'])        ->name('store.training');
+        Route::get('detail/{id}',   [TrainingController::class,'show'])         ->name('detail.training');
+        Route::get('edit/{id}',     [TrainingController::class, 'edit'])        ->name('edit.training');
+        Route::post('update/{id}',  [TrainingController::class, 'update'])      ->name('update.training');
+        Route::get('delete/{id}',   [TrainingController::class, 'destroy'])     ->name('delete.training');
     });
     // Routes for disciplinary
-    Route::group(['prefix' => 'disciplinary'], function () {
-        Route::get('list', [DisciplinaryController::class, 'index'])->name('show.disciplinaries');
-        Route::get('create', [DisciplinaryController::class, 'create'])->name('create.disciplinary');
-        Route::post('store', [DisciplinaryController::class, 'store'])->name('store.disciplinary');
-        Route::get('detail/{id}', [DisciplinaryController::class, 'show'])->name('detail.disciplinary');
-        Route::get('edit/{id}', [DisciplinaryController::class, 'edit'])->name('edit.disciplinary');
-        Route::post('update/{id}', [DisciplinaryController::class, 'update'])->name('update.disciplinary');
-        Route::get('delete/{id}', [DisciplinaryController::class, 'destroy'])->name('delete.disciplinary');
+    Route::group(                    ['prefix' => 'disciplinary'], function () {
+        Route::get('list',          [DisciplinaryController::class, 'index'])   ->name('show.disciplinaries');
+        Route::get('create',        [DisciplinaryController::class, 'create'])  ->name('create.disciplinary');
+        Route::post('store',        [DisciplinaryController::class, 'store'])   ->name('store.disciplinary');
+        Route::get('detail/{id}',   [DisciplinaryController::class, 'show'])    ->name('detail.disciplinary');
+        Route::get('edit/{id}',     [DisciplinaryController::class, 'edit'])    ->name('edit.disciplinary');
+        Route::post('update/{id}',  [DisciplinaryController::class, 'update'])  ->name('update.disciplinary');
+        Route::get('delete/{id}',   [DisciplinaryController::class, 'destroy']) ->name('delete.disciplinary');
     });
     // Routes for Lateness
     
-    Route::group(['prefix' => 'lateness'], function () {
-        Route::get('list', [LatenesController::class, 'index'])->name('show.latenesses');
-        Route::get('create', [LatenesController::class, 'create'])->name('create.lateness');
-        Route::post('store', [LatenesController::class, 'store'])->name('store.lateness');
-        Route::get('detail/{id}', [LatenesController::class, 'show'])->name('detail.lateness');
-        Route::get('edit/{id}', [LatenesController::class, 'edit'])->name('edit.lateness');
-        Route::post('update/{id}', [LatenesController::class, 'update'])->name('update.lateness');
-        Route::get('delete/{id}', [LatenesController::class, 'destroy'])->name('delete.lateness');
+    Route::group(                     ['prefix' => 'lateness'], function () {
+        Route::get('list',           [LatenesController::class, 'index'])   ->name('show.latenesses');
+        Route::get('create',         [LatenesController::class, 'create'])  ->name('create.lateness');
+        Route::post('store',         [LatenesController::class, 'store'])   ->name('store.lateness');
+        Route::get('detail/{id}',    [LatenesController::class, 'show'])    ->name('detail.lateness');
+        Route::get('edit/{id}',      [LatenesController::class, 'edit'])    ->name('edit.lateness');
+        Route::post('update/{id}',   [LatenesController::class, 'update'])  ->name('update.lateness');
+        Route::get('delete/{id}',    [LatenesController::class, 'destroy']) ->name('delete.lateness');
     });
 
     // Routes for Tab create
     
-    Route::group(['prefix' => 'create'], function () {
-        Route::get('job/{id}', [CreateController::class, 'jobCreate'])->name('create.new.job');
-        Route::post('job/store' , [CreateController::class,'jobStore'])->name('store.new.job');
-        // disclosure
-        Route::get('disclosure/{id}', [CreateController::class, 'disclosureCreate'])->name('create.new.disclosure');
-        Route::post('disclosure/store' , [CreateController::class,'disclosureStore'])->name('store.new.disclosure');
-        // sickness
-        Route::get('sickness/{id}', [CreateController::class, 'sicknessCreate'])->name('create.new.sickness');
-        Route::post('sickness/store' , [CreateController::class,'sicknessStore'])->name('store.new.sickness');
-        // capability
-        Route::get('capability/{id}', [CreateController::class, 'capabilityCreate'])->name('create.new.capability');
-        Route::post('capability/store' , [CreateController::class,'capabilityStore'])->name('store.new.capability');
+    Route::group(                               ['prefix' => 'create'], function () {
+        Route::get('job/{id}',                  [CreateController::class, 'jobCreate'])             ->name('create.new.job');
+        Route::post('job/store' ,               [CreateController::class,'jobStore'])               ->name('store.new.job');
+        // disclosure           
+        Route::get('disclosure/{id}',           [CreateController::class, 'disclosureCreate'])      ->name('create.new.disclosure');
+        Route::post('disclosure/store',         [CreateController::class,'disclosureStore'])        ->name('store.new.disclosure');
+        // sickness 
+        Route::get('sickness/{id}',             [CreateController::class, 'sicknessCreate'])        ->name('create.new.sickness');
+        Route::post('sickness/store' ,          [CreateController::class,'sicknessStore'])          ->name('store.new.sickness');
+        // capability   
+        Route::get('capability/{id}',           [CreateController::class, 'capabilityCreate'])      ->name('create.new.capability');
+        Route::post('capability/store' ,        [CreateController::class,'capabilityStore'])        ->name('store.new.capability');
         // training
-        Route::get('training/{id}', [CreateController::class, 'trainingCreate'])->name('create.new.training');
-        Route::post('training/store' , [CreateController::class,'trainingStore'])->name('store.new.training');
+        Route::get('training/{id}',             [CreateController::class, 'trainingCreate'])        ->name('create.new.training');
+        Route::post('training/store' ,          [CreateController::class,'trainingStore'])          ->name('store.new.training');
         // disciplinary
-        Route::get('disciplinary/{id}', [CreateController::class, 'disciplinaryCreate'])->name('create.new.disciplinary');
-        Route::post('disciplinary/store' , [CreateController::class,'disciplinaryStore'])->name('store.new.disciplinary');
+        Route::get('disciplinary/{id}',         [CreateController::class, 'disciplinaryCreate'])    ->name('create.new.disciplinary');
+        Route::post('disciplinary/store' ,      [CreateController::class,'disciplinaryStore'])      ->name('store.new.disciplinary');
         // lateness
-        Route::get('lateness/{id}', [CreateController::class, 'latenessCreate'])->name('create.new.lateness');
-        Route::post('lateness/store' , [CreateController::class,'latenessStore'])->name('store.new.lateness');
+        Route::get('lateness/{id}',             [CreateController::class, 'latenessCreate'])        ->name('create.new.lateness');
+        Route::post('lateness/store' ,          [CreateController::class,'latenessStore'])          ->name('store.new.lateness');
     });
     
 });

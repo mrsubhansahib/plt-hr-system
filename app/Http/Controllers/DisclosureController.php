@@ -108,6 +108,6 @@ class DisclosureController extends Controller
     {
         $disclosure = Disclosure::find($id);
         $disclosure->delete();
-        return redirect()->route('show.disclosures')->with('success', 'Disclosure deleted successfully.');
+        return redirect()->back()->with('success', 'Disclosure deleted successfully.');
     }
 }

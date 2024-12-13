@@ -105,6 +105,6 @@ class TrainingController extends Controller
     public function destroy($id)
     {
         Training::find($id)->delete();
-        return redirect()->route('show.trainings')->with('success', 'Training deleted successfully.');
+        return redirect()->back()->with('success', 'Training deleted successfully.');
     }
 }

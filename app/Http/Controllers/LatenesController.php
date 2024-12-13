@@ -108,6 +108,6 @@ class LatenesController extends Controller
     {
         $lateness = lateness::find($id);
         $lateness->delete();
-        return redirect()->route('show.latenesses')->with('success','lateness deleted successfully');
+        return redirect()->back()->with('success','lateness deleted successfully');
     }
 }

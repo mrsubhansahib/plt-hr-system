@@ -105,6 +105,6 @@ class SicknessController extends Controller
     {
         $sickness = Sickness::find($id);
         $sickness->delete();
-        return redirect()->route('show.sicknesses')->with('success', 'Sickness deleted successfully.');
+        return redirect()->back()->with('success', 'Sickness deleted successfully.');
     }
 }
