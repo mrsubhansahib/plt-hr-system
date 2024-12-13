@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserController
@@ -62,7 +63,10 @@ class UserController extends Controller
             'emergency_1_ph_no'     => 'required',
             'emergency_1_relation'  => 'required',
         ]);
-        $user = User::create($request->all());
+        $user = $request->all();
+        $user['password'] = Hash::make($request->password);
+        // dd($user);
+        User::create($user);
 
         return redirect()->route('show.admins')
             ->with('success', 'Admin created successfully.');

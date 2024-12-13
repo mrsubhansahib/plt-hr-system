@@ -19,7 +19,7 @@ License: For each use you must have a valid license purchased only from above li
     <meta name="keywords"
         content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
 
-    <title>NobleUI - Laravel Admin Dashboard Template</title>
+    <title>PLT HR System | Dashboard</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +45,11 @@ License: For each use you must have a valid license purchased only from above li
     <!-- end common css -->
 
     @stack('style')
+    <style>
+        .datepicker {
+            padding: 7px !important;
+        }
+    </style>
 </head>
 
 <body data-base-url="{{ url('/') }}">

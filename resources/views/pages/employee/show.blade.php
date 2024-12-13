@@ -8,7 +8,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Tabs with DataTables</li>
+            <li class="breadcrumb-item active" aria-current="page">Personal Details</li>
         </ol>
     </nav>
     <div class="container">
@@ -64,14 +64,14 @@
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
-                                <h4 class="">Job Details</h4>
+                                <h4 class="py-2">Job Details</h4>
                             </div>
                             <div>
                                 <a href="{{ route('create.new.job' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-job" class="table">
+                            <table id="table-job" class="table table-striped ">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -124,7 +124,7 @@
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
-                                <h4 class="">Disclosure Details</h4>
+                                <h4 class="py-2">Disclosure Details</h4>
                             </div>
                             <div>
                                 <a href="{{ route('create.new.disclosure' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
@@ -255,7 +255,7 @@
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
-                        <h4 class="">Capability Data</h4>
+                        <h4 class="py-2">Capability Details</h4>
                             </div>
                             <div>
                                 <a href="{{ route('create.new.capability' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
@@ -325,7 +325,7 @@
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
-                                <h4 class="">Training Details</h4>
+                                <h4 class="py-2">Training Details</h4>
                             </div>
                             <div>
                                 <a href="{{ route('create.new.training' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
@@ -460,7 +460,7 @@
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
-                                <h4 class="">Lateness Details</h4>
+                                <h4 class="py-2">Lateness Details</h4>
                             </div>
                             <div>
                                 <a href="{{ route('create.new.lateness' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
