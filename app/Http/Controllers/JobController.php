@@ -58,7 +58,7 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
         $job->update($request->all());
         return redirect()->route('show.jobs')
-            ->with('success', 'Job updated successfully.');
+            ->with('success', 'Job edited successfully.');
     }
     public function show($id)
     {

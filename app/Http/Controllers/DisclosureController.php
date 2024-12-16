@@ -95,7 +95,7 @@ class DisclosureController extends Controller
         ]);
         $disclosure = Disclosure::find($id);
         $disclosure->update($request->all());
-        return redirect()->route('show.disclosures')->with('success', 'Disclosure updated successfully.');
+        return redirect()->route('show.disclosures')->with('success', 'Disclosure edited successfully.');
     }
 
     /**

@@ -93,7 +93,7 @@ class TrainingController extends Controller
             'notes' => 'required',
         ]);
         Training::find($id)->update($request->all());
-        return redirect()->route('show.trainings')->with('success', 'Training updated successfully.');
+        return redirect()->route('show.trainings')->with('success', 'Training edited successfully.');
     }
 
     /**

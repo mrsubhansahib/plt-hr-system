@@ -4,7 +4,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Training </a></li>
-            <li class="breadcrumb-item active" aria-current="page">Update</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
     </nav>
     @include('layout.alert')
@@ -12,7 +12,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="my-4 text-center">Update Training </h3>
+                    <h3 class="my-4 text-center">Edit Training </h3>
                     <hr>
                     <form class="forms-sample" action="{{ route('update.training', $training->id) }}" method="POST">
                         @csrf
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Sent<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" name="ihasco_training_sent">
+                                <select class="form-control form-select" required name="ihasco_training_sent">
                                     <option value="yes"
                                         {{ $training->ihasco_training_sent == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ $training->ihasco_training_sent == 'no' ? 'selected' : '' }}>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Complete<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" name="ihasco_training_complete">
+                                <select class="form-control form-select" required name="ihasco_training_complete">
                                     <option value="yes"
                                         {{ $training->ihasco_training_complete == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no"
@@ -99,10 +99,10 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="notes" placeholder="Enter Training Details" rows="4">{{ $training->notes }}</textarea>
+                                <textarea class="form-control" name="notes" required placeholder="Enter Training Details" rows="4">{{ $training->notes }}</textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

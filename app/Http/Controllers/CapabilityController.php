@@ -49,7 +49,7 @@ class CapabilityController extends Controller
             'notes'                         => 'required'
         ]);
         Capability::create($request->all());
-        return redirect()->route('show.capabilities')->with('success', 'Capability created successfully');
+        return redirect()->route('show.capabilities')->with('success', 'Capability created successfully.');
     }
 
     /**
@@ -95,7 +95,7 @@ class CapabilityController extends Controller
             'notes'                         => 'required'
         ]);
         Capability::find($id)->update($request->all());
-        return redirect()->route('show.capabilities')->with('success', 'Capability updated successfully');
+        return redirect()->route('show.capabilities')->with('success', 'Capability edited successfully.');
     }
 
     /**
@@ -107,6 +107,6 @@ class CapabilityController extends Controller
     public function destroy($id)
     {
         Capability::find($id)->delete();
-        return redirect()->back()->with('success', 'Capability deleted successfully');
+        return redirect()->back()->with('success', 'Capability deleted successfully.');
     }
 }

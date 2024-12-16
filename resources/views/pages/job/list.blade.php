@@ -54,8 +54,8 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $job->id }}">
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('detail.job', $job->id) }}">View</a></li>
+                                                    {{-- <li><a class="dropdown-item"
+                                                            href="{{ route('detail.job', $job->id) }}">View</a></li> --}}
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('edit.job', $job->id) }}">Edit</a></li>
                                                     <li>

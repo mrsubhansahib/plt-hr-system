@@ -50,10 +50,10 @@ class AuthController extends Controller
                 
                 return redirect('/dashboard')->with('success', 'Login Successful');
             } else {
-                return back()->with('error', 'Invalid Credentials');
+                return back()->with('error', 'Invalid Credentials.');
             }
         } else {
-            return back()->with('error', 'You are not authorized to login');
+            return back()->with('error', 'You are not authorized to login.');
         }
     }
 
@@ -61,7 +61,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         auth()->logout();
-        return redirect('/')->with('success', 'Logout Successful');
+        return redirect('/')->with('success', 'Logout Successful.');
     }
     public function dashboard()
     {

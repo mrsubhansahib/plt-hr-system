@@ -4,7 +4,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Capability</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Update</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
     </nav>
     @include('layout.alert')
@@ -12,7 +12,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="my-4 text-center">Update Capability</h3>
+                    <h3 class="my-4 text-center">Edit Capability</h3>
                     <hr>
                     <form class="forms-sample" action="{{ route('update.capability', $capability->id) }}" method="POST">
                         @csrf
@@ -94,10 +94,10 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="notes" rows="4" placeholder="Enter any additional details">{{ $capability->notes }}</textarea>
+                                <textarea class="form-control" name="notes" required rows="4" placeholder="Enter any additional details">{{ $capability->notes }}</textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
