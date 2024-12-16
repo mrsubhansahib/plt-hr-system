@@ -26,7 +26,7 @@ class DisciplinaryController extends Controller
      */
     public function create()
     {
-        $employees = User::where('role', 'employee')->get();
+        $employees = User::where('role', 'employee')->where('status', 'active')->get();
         return view("pages.disciplinary.create", compact("employees"));
     }
 
@@ -48,7 +48,7 @@ class DisciplinaryController extends Controller
             'notes' => 'required',
         ]);
         $disciplinary = disciplinary::create($request->all());
-        return redirect()->route('show.disciplinaries')->with('success','disciplinary created successfully.');
+        return redirect()->route('show.disciplinaries')->with('success','Disciplinary created successfully.');
     }
 
     /**

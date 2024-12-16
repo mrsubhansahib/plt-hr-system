@@ -94,9 +94,10 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
+
         $user = User::with(['jobs', 'disclosure','sicknesses','capabilities','disciplinaries','latenesses','trainings'])->find($id);
-        // dd($user);
-        return view('pages.employee.show', compact('user'));
+        $hasDisclosure = $user->disclosure()->count();
+        return view('pages.employee.show', compact('user','hasDisclosure'));
     }
 
     /**

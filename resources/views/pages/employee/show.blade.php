@@ -7,7 +7,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+            <li class="breadcrumb-item"><a href="#">Employee</a></li>
             <li class="breadcrumb-item active" aria-current="page">Personal Details</li>
         </ol>
     </nav>
@@ -67,7 +67,8 @@
                                 <h4 class="py-2">Job Details</h4>
                             </div>
                             <div>
-                                <a href="{{ route('create.new.job' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                                <a href="{{ route('create.new.job', $user->id) }}"
+                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
                             </div>
                         </div>
                         <div class="">
@@ -126,9 +127,12 @@
                             <div>
                                 <h4 class="py-2">Disclosure Details</h4>
                             </div>
-                            <div>
-                                <a href="{{ route('create.new.disclosure' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div>
+                            @if ($hasDisclosure == 0)
+                                <div>
+                                    <a href="{{ route('create.new.disclosure', $user->id) }}"
+                                        class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                                </div>
+                            @endif
                         </div>
                         <div class="">
                             <table id="table-disclosure" class="table table-striped">
@@ -170,12 +174,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-
                                     @else
-                                    
-                                            {{-- <td colspan="5" class="text-center">No disclosure data available.</td> --}}
-                                            <!-- Display fallback message -->
-                                        
+                                        {{-- <td colspan="5" class="text-center">No disclosure data available.</td> --}}
+                                        <!-- Display fallback message -->
                                     @endif
                                 </tbody>
                             </table>
@@ -192,7 +193,8 @@
                                 <h4 class="py-2">Sickness Details</h4>
                             </div>
                             <div>
-                                <a href="{{ route('create.new.sickness' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                                <a href="{{ route('create.new.sickness', $user->id) }}"
+                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
                             </div>
                         </div>
                         <div class="">
@@ -240,9 +242,7 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        
-                                            {{-- <td colspan="6" class="text-center">No sickness data available</td> --}}
-                                        
+                                        {{-- <td colspan="6" class="text-center">No sickness data available</td> --}}
                                     @endif
                                 </tbody>
                             </table>
@@ -255,10 +255,11 @@
                         tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
-                        <h4 class="py-2">Capability Details</h4>
+                                <h4 class="py-2">Capability Details</h4>
                             </div>
                             <div>
-                                <a href="{{ route('create.new.capability' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                                <a href="{{ route('create.new.capability', $user->id) }}"
+                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
                             </div>
                         </div>
                         <div class="">
@@ -310,9 +311,7 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        
-                                            {{-- <p class="text-center">No capability data available</> --}}
-                                        
+                                        {{-- <p class="text-center">No capability data available</> --}}
                                     @endif
                                 </tbody>
                             </table>
@@ -328,7 +327,8 @@
                                 <h4 class="py-2">Training Details</h4>
                             </div>
                             <div>
-                                <a href="{{ route('create.new.training' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                                <a href="{{ route('create.new.training', $user->id) }}"
+                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
                             </div>
                         </div>
                         <div class="">
@@ -380,9 +380,7 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                    
-                                            {{-- <td colspan="6" class="text-center">No training data available</td> --}}
-                                        
+                                        {{-- <td colspan="6" class="text-center">No training data available</td> --}}
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
@@ -398,7 +396,8 @@
                                 <h4 class="py-2">Disciplinary Details</h4>
                             </div>
                             <div>
-                                <a href="{{ route('create.new.disciplinary' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                                <a href="{{ route('create.new.disciplinary', $user->id) }}"
+                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
                             </div>
                         </div>
                         <div class="">
@@ -415,39 +414,37 @@
                                 <tbody>
                                     @if ($user->disciplinaries->isNotEmpty())
                                         @foreach ($user->disciplinaries as $key => $disciplinary)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $disciplinary->user->first_name}}</td>
-                                            <td>{{ $disciplinary->reason_for_disciplinary }}</td>
-                                            <td>{{ $disciplinary->hearing_date }}</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-link p-0" type="button"
-                                                        id="dropdownMenuButton-{{ $disciplinary->id }}" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i data-feather="align-justify"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end"
-                                                        aria-labelledby="dropdownMenuButton-{{ $disciplinary->id }}">
-    
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('edit.disciplinary', $disciplinary->id) }}">Edit</a>
-                                                        </li>
-                                                        <li>
-                                                            <button
-                                                                onclick="if(confirm('Are you sure you want to delete this disciplinary?')) { window.location.href='{{ route('delete.disciplinary', $disciplinary->id) }}' }"
-                                                                class="dropdown-item">Delete</button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $disciplinary->user->first_name }}</td>
+                                                <td>{{ $disciplinary->reason_for_disciplinary }}</td>
+                                                <td>{{ $disciplinary->hearing_date }}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-link p-0" type="button"
+                                                            id="dropdownMenuButton-{{ $disciplinary->id }}"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i data-feather="align-justify"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="dropdownMenuButton-{{ $disciplinary->id }}">
+
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('edit.disciplinary', $disciplinary->id) }}">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <button
+                                                                    onclick="if(confirm('Are you sure you want to delete this disciplinary?')) { window.location.href='{{ route('delete.disciplinary', $disciplinary->id) }}' }"
+                                                                    class="dropdown-item">Delete</button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     @else
-                                        
-                                            {{-- <td colspan="6" class="text-center">No disciplinary data available</td> --}}
-                                        
+                                        {{-- <td colspan="6" class="text-center">No disciplinary data available</td> --}}
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
@@ -463,7 +460,8 @@
                                 <h4 class="py-2">Lateness Details</h4>
                             </div>
                             <div>
-                                <a href="{{ route('create.new.lateness' , $user->id) }}" class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                                <a href="{{ route('create.new.lateness', $user->id) }}"
+                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
                             </div>
                         </div>
                         <div class="">
@@ -510,16 +508,14 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        
-                                            {{-- <td colspan="6" class="text-center">No lateness data available</td> --}}
-                                        
+                                        {{-- <td colspan="6" class="text-center">No lateness data available</td> --}}
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-            
+
                 </div>
             </div>
         </div>

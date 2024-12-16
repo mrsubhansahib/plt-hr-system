@@ -5,11 +5,11 @@
 @endpush
 
 @section('content')
-
-
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
-            <h4 class="mb-3 mb-md-0">Welcome to dashboard <b>{{auth()->user()->first_name.' '.auth()->user()->middle_name}}!</b></h4>
+            <h4 class="mb-3 mb-md-0">Welcome to dashboard
+                <b>{{ auth()->user()->first_name . ' ' . auth()->user()->middle_name }}!</b>
+            </h4>
         </div>
         {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
             <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
@@ -32,12 +32,12 @@
     <div class="row">
         <div class="col-12 col-xl-12 stretch-card">
             <div class="row flex-grow-1">
-                <div class="col-md-4 grid-margin stretch-card">
+                <div onclick=" window.location.href='{{ route('show.admins') }}'" class="col-md-4 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">New Customers</h6>
-                                <div class="dropdown mb-2">
+                                <h6 class="card-title mb-0">Total Admins</h6>
+                                {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -59,17 +59,17 @@
                                                 data-feather="download" class="icon-sm me-2"></i> <span
                                                 class="">Download</span></a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="col-6 col-md-12 col-xl-5">
-                                    <h3 class="mb-2">3,897</h3>
-                                    <div class="d-flex align-items-baseline">
+                                    <h3 class="mt-3 ms-5">{{ $total_admins }}</h3>
+                                    {{-- <div class="d-flex align-items-baseline">
                                         <p class="text-success">
                                             <span>+3.3%</span>
                                             <i data-feather="arrow-up" class="icon-sm mb-1"></i>
                                         </p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-7">
                                     <div id="customersChart" class="mt-md-3 mt-xl-0"></div>
@@ -78,12 +78,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 grid-margin stretch-card">
+                <div onclick=" window.location.href='{{ route('show.employees') }}'"
+                    class="col-md-4 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">New Orders</h6>
-                                <div class="dropdown mb-2">
+                                <h6 class="card-title mb-0">Total Employees</h6>
+                                {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton1"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -105,17 +106,17 @@
                                                 data-feather="download" class="icon-sm me-2"></i> <span
                                                 class="">Download</span></a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="col-6 col-md-12 col-xl-5">
-                                    <h3 class="mb-2">35,084</h3>
-                                    <div class="d-flex align-items-baseline">
+                                    <h3 class="mt-3 ms-5">{{ $total_employees }}</h3>
+                                    {{-- <div class="d-flex align-items-baseline">
                                         <p class="text-danger">
                                             <span>-2.8%</span>
                                             <i data-feather="arrow-down" class="icon-sm mb-1"></i>
                                         </p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-7">
                                     <div id="ordersChart" class="mt-md-3 mt-xl-0"></div>
@@ -124,12 +125,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 grid-margin stretch-card">
+                <div onclick=" window.location.href='{{ route('show.left.employees') }}'"
+                    class="col-md-4 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">Growth</h6>
-                                <div class="dropdown mb-2">
+                                <h6 class="card-title mb-0">Total Employees Left</h6>
+                                {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton2"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -151,17 +153,17 @@
                                                 data-feather="download" class="icon-sm me-2"></i> <span
                                                 class="">Download</span></a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="col-6 col-md-12 col-xl-5">
-                                    <h3 class="mb-2">89.87%</h3>
-                                    <div class="d-flex align-items-baseline">
+                                    <h3 class="mt-3 ms-5">{{ $total_employees_left }}</h3>
+                                    {{-- <div class="d-flex align-items-baseline">
                                         <p class="text-success">
                                             <span>+2.8%</span>
                                             <i data-feather="arrow-up" class="icon-sm mb-1"></i>
                                         </p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-7">
                                     <div id="growthChart" class="mt-md-3 mt-xl-0"></div>
@@ -174,7 +176,7 @@
         </div>
     </div> <!-- row -->
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12 col-xl-12 grid-margin stretch-card">
             <div class="card overflow-hidden">
                 <div class="card-body">
@@ -221,25 +223,24 @@
                 </div>
             </div>
         </div>
-    </div> <!-- row -->
+    </div> <!-- row --> --}}
 
     <div class="row">
         <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline mb-2">
-                        <h6 class="card-title mb-0">Monthly sales</h6>
-                        <div class="dropdown mb-2">
+                        <h6 class="card-title mb-0">Employees Performance</h6>
+                        {{-- <div class="dropdown mb-2">
                             <button class="btn btn-link p-0" type="button" id="dropdownMenuButton4"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye"
+                                        class="icon-sm me-2"></i> <span class="">View</span></a>
                                 <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                        data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                        data-feather="edit-2" class="icon-sm me-2"></i> <span
-                                        class="">Edit</span></a>
+                                        data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
                                 <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
                                         data-feather="trash" class="icon-sm me-2"></i> <span
                                         class="">Delete</span></a>
@@ -250,9 +251,9 @@
                                         data-feather="download" class="icon-sm me-2"></i> <span
                                         class="">Download</span></a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
-                    <p class="text-muted">Sales are activities related to selling or the number of goods or services sold
+                    <p class="text-muted">Employees Performance is activities related to selling or the number of goods or services sold
                         in a given time period.</p>
                     <div id="monthlySalesChart"></div>
                 </div>
@@ -263,7 +264,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline mb-2">
                         <h6 class="card-title mb-0">Cloud storage</h6>
-                        <div class="dropdown mb-2">
+                        {{-- <div class="dropdown mb-2">
                             <button class="btn btn-link p-0" type="button" id="dropdownMenuButton5"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -284,7 +285,7 @@
                                         data-feather="download" class="icon-sm me-2"></i> <span
                                         class="">Download</span></a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div id="storageChart"></div>
                     <div class="row mb-3">
@@ -312,7 +313,7 @@
         </div>
     </div> <!-- row -->
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-5 col-xl-4 grid-margin grid-margin-xl-0 stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -515,7 +516,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- row -->
+    </div> <!-- row --> --}}
 @endsection
 
 @push('plugin-scripts')
