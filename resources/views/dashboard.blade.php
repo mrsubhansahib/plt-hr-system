@@ -9,9 +9,9 @@
 
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
-            <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
+            <h4 class="mb-3 mb-md-0">Welcome to dashboard <b>{{auth()->user()->first_name.' '.auth()->user()->middle_name}}!</b></h4>
         </div>
-        <div class="d-flex align-items-center flex-wrap text-nowrap">
+        {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
             <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
                 <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
                         data-feather="calendar" class="text-primary"></i></span>
@@ -26,7 +26,7 @@
                 <i class="btn-icon-prepend" data-feather="download-cloud"></i>
                 Download Report
             </button>
-        </div>
+        </div> --}}
     </div>
     @include('layout.alert')
     <div class="row">
