@@ -3,14 +3,14 @@
         <i data-feather="menu"></i>
     </a>
     <div class="navbar-content">
-        <form class="search-form">
+        {{-- <form class="search-form">
             <div class="input-group">
                 <div class="input-group-text">
                     <i data-feather="search"></i>
                 </div>
                 <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
             </div>
-        </form>
+        </form> --}}
         <ul class="navbar-nav">
             {{-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -226,7 +226,7 @@
                                 <span>Edit Password</span>
                             </li>
                         </a>
-                        <li class="dropdown-item py-2" onclick="document.getElementById('logout').submit()">
+                        <li class="dropdown-item py-2" style="cursor: pointer" onclick="document.getElementById('logout').submit()">
                             <form action="{{ route('logout') }}" method="POST" id="logout" class="text-body ms-0">
                                 @csrf
                                 <i class="me-2 icon-md" data-feather="log-out"></i>

@@ -34,9 +34,7 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('authentica
 Route::middleware('auth')->group(function () {
     // Route for authentication
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
     // Route for Admin CRUD  
     Route::group(['prefix' => 'admin'], function () {

@@ -10,12 +10,16 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::with('user')->get();
+        $jobs = Job::with('user')->whereHas('user', function ($e) {
+            $e->where('role', 'employee')->where('status','active');
+        })->get();
+
+        // dd($jobs);
         return view('pages.job.list', compact('jobs'));
     }
     public function create()
     {
-        $employees = User::where('role', 'employee')->where('status','active')->get();
+        $employees = User::where('role', 'employee')->where('status', 'active')->get();
         return view('pages.job.create', compact('employees'));
     }
     public function store(Request $request)
@@ -36,11 +40,12 @@ class JobController extends Controller
     }
     public function edit($id)
     {
-        $employees = User::where('role', 'employee')->where('status','active')->get();
+        $employees = User::where('role', 'employee')->where('status', 'active')->get();
         $job = Job::with('user')->findOrFail($id);
-        return view('pages.job.edit', compact('job' , 'employees'));
+        return view('pages.job.edit', compact('job', 'employees'));
     }
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'title' => 'required',
             'facility' => 'required',
@@ -55,11 +60,13 @@ class JobController extends Controller
         return redirect()->route('show.jobs')
             ->with('success', 'Job updated successfully.');
     }
-    public function show($id){
+    public function show($id)
+    {
         $job = Job::with('user')->findOrFail($id);
         return view('pages.job.show', compact('job'));
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         $job = Job::findOrFail($id)->delete();
         return redirect()->back()
             ->with('success', 'Job deleted successfully.');
