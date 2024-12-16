@@ -91,7 +91,7 @@ class SicknessController extends Controller
             $sickness = sickness::findOrFail($id);
             $sickness->update($request->all());
             return redirect()->route('show.sicknesses')
-            ->with('success', 'Sickness updated successfully.');
+            ->with('success', 'Sickness edited successfully.');
 
     }
 

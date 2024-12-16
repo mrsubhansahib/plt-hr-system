@@ -131,7 +131,7 @@ class UserController extends Controller
 
 
         // Redirect with a success message
-        return redirect()->route('show.admins')->with('success', 'Admin updated successfully.');
+        return redirect()->route('show.admins')->with('success', 'Admin edited successfully.');
     }
 
 
@@ -145,6 +145,6 @@ class UserController extends Controller
         $user = User::find($id)->delete();
 
         return redirect()->route('show.admins')
-            ->with('success', 'Admin deleted successfully');
+            ->with('success', 'Admin deleted successfully.');
     }
 }

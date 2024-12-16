@@ -4,7 +4,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Sickness</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Update</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
     </nav>
 @include('layout.alert')
@@ -14,7 +14,7 @@
                 <div class="card-body">
 
                     {{-- <h3 class="card-title">Personal Details</h3> --}}
-                    <h3 class="my-4 text-center">Sickness Details</h3>
+                    <h3 class="my-4 text-center">Edit Sickness Details</h3>
                     <hr>
                     <form class="forms-sample" action="{{ route('update.sickness' , $sickness->id) }}" method="POST">
                         @csrf

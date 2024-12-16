@@ -4,7 +4,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Lateness</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Update</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
     </nav>
     @include('layout.alert')
@@ -12,7 +12,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="my-4 text-center">Lateness Details</h3>
+                    <h3 class="my-4 text-center">Edit Lateness Details</h3>
                     <hr>
                     <form class="forms-sample" action="{{ route('update.lateness', $lateness->id) }}" method="POST">
                         @csrf

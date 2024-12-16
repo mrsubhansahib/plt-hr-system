@@ -96,7 +96,7 @@ class DisciplinaryController extends Controller
             $disciplinary = disciplinary::findOrFail($id);
             $disciplinary->update($request->all());
             return redirect()->route('show.disciplinaries')
-            ->with('success', 'Disciplinary updated successfully.');
+            ->with('success', 'Disciplinary edited successfully.');
     }
 
     /**
@@ -109,6 +109,6 @@ class DisciplinaryController extends Controller
     {
         $disciplinary = disciplinary::find($id);
         $disciplinary->delete();
-        return redirect()->back()->with('success','dsiciplinary deleted successfully');
+        return redirect()->back()->with('success','Dsiciplinary deleted successfully.');
     }
 }

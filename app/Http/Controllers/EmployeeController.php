@@ -145,7 +145,7 @@ class EmployeeController extends Controller
 
 
         // Redirect with a success message
-        return redirect()->route('show.employees')->with('success', 'Employee updated successfully.');
+        return redirect()->route('show.employees')->with('success', 'Employee edited successfully.');
     }
 
     public function left($id){
@@ -172,6 +172,6 @@ class EmployeeController extends Controller
         $user = User::find($id)->delete();
 
         return redirect()->route('show.employees')
-            ->with('success', 'Employee deleted successfully');
+            ->with('success', 'Employee deleted successfully.');
     }
 }
