@@ -23,7 +23,7 @@
                                 <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id" >
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Training Title</label>
+                                <label class="form-label">Training Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="training_title">
                                     <option value="" selected disabled>Select Training Title</option>
                                     <option value="NPLQ">NPLQ</option>
@@ -43,15 +43,15 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Course Date</label>
+                                <label class="form-label">Course Date<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required name="course_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Renewal Date</label>
+                                <label class="form-label">Renewal Date<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required name="renewal_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">IHASCO Training Sent</label>
+                                <label class="form-label">IHASCO Training Sent<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" name="ihasco_training_sent">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
@@ -59,7 +59,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">IHASCO Training Complete</label>
+                                <label class="form-label">IHASCO Training Complete<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" name="ihasco_training_complete">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
@@ -67,7 +67,7 @@
                                 </select>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes</label>
+                                <label class="form-label">Notes<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="notes" placeholder="Enter Training Details" rows="4"></textarea>
                             </div>
                         </div>

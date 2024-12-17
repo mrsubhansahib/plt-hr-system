@@ -16,7 +16,15 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Sickness List</h6>
+                    <div class="d-flex justify-content-between py-2">
+                        <div>
+                            <h4 class="py-2">sickness List</h4>
+                        </div>
+                        <div>
+                            <a href="{{ route('create.sickness') }}"
+                                class="btn btn-primary"><strong>Create</strong><i data-feather="bookmark" class="ms-2"></i></a>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table dataTableExample">
                             <thead>

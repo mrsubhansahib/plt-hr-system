@@ -23,16 +23,16 @@
                                 <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id" >
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Reason for Disciplinary </label>
+                                <label class="form-label">Reason for Disciplinary<span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" name="reason_for_disciplinary" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date of Hearing</label>
+                                <label class="form-label">Date of Hearing<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="hearing_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome</label>
+                                <label class="form-label">Outcome<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
@@ -43,19 +43,19 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Suspended</label>
+                                <label class="form-label">Suspended<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" name="suspended">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date Suspended</label>
+                                <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="date_suspended" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes</label>
+                                <label class="form-label">Notes<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="notes" rows="4"></textarea>
                             </div>
                         </div>

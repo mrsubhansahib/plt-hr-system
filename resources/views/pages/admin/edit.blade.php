@@ -127,7 +127,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contact 1 Mobile <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" />
+                                <input class="form-control" type="number" placeholder="phone number" required name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" />
                             </div>
 
                             <div class="col-md-3 mt-3">

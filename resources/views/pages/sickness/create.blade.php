@@ -12,9 +12,15 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-
-                    {{-- <h3 class="card-title">Personal Details</h3> --}}
-                    <h3 class="my-4 text-center">Sickness Details</h3>
+                    <div class="d-flex justify-content-between py-2">
+                        <div>
+                            <h4 class="py-2">Sickness Details</h4>
+                        </div>
+                        <div>
+                            <a href="{{ route('show.sicknesses') }}"
+                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                        </div>
+                    </div>
                     <hr>
                     <form class="forms-sample" action="{{ route('store.sickness') }}" method="POST">
                         @csrf
