@@ -15,7 +15,9 @@ class DisclosureController extends Controller
      */
     public function index()
     {
-        $disclosures = Disclosure::with('user')->get();
+        $disclosures = Disclosure::with('user')->whereHas('user', function ($e) {
+            $e->where('role', 'employee')->where('status','active');
+        })->get();
         return view('pages.disclosure.list', compact('disclosures'));
     }
 

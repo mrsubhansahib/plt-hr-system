@@ -15,7 +15,9 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        $trainings = Training::with('user')->get();
+        $trainings = Training::with('user')->whereHas('user', function ($e) {
+            $e->where('role', 'employee')->where('status','active');
+        })->get();
         return view('pages.training.list', compact('trainings'));
     }
 

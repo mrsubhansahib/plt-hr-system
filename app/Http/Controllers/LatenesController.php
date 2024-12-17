@@ -15,7 +15,9 @@ class LatenesController extends Controller
      */
     public function index()
     {
-        $latenesses = lateness::with('user')->get();
+        $latenesses = lateness::with('user')->whereHas('user', function ($e) {
+            $e->where('role', 'employee')->where('status','active');
+        })->get();
         return view("pages.lateness.list", compact( "latenesses"));
     }
 
