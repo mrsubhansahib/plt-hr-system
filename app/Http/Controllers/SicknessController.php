@@ -15,7 +15,9 @@ class SicknessController extends Controller
      */
     public function index()
     {
-        $sicknesses = Sickness::with('user')->get();
+        $sicknesses = Sickness::with('user')->whereHas('user', function ($e) {
+            $e->where('role', 'employee')->where('status','active');
+        })->get();
         return view("pages.sickness.list", compact( "sicknesses"));
     }
 

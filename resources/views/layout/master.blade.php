@@ -204,7 +204,6 @@ License: For each use you must have a valid license purchased only from above li
             // Style the 'No records found' message for better visibility
             $('.dataTables_empty').css({
                 'text-align': 'center',   // Center the 'No records found' message
-                'font-style': 'italic',   // Optional: Make the message italic
                 'padding': '20px 0',      // Add padding to balance the space
             });
     

@@ -15,7 +15,9 @@ class DisciplinaryController extends Controller
      */
     public function index()
     {
-        $disciplinaries = disciplinary::with('user')->get();
+        $disciplinaries = disciplinary::with('user')->whereHas('user', function ($e) {
+            $e->where('role', 'employee')->where('status','active');
+        })->get();
         return view("pages.disciplinary.list", compact( "disciplinaries"));
     }
 
@@ -70,10 +72,12 @@ class DisciplinaryController extends Controller
      */
     public function edit($id)
     {
-        
-        $employees = User::where('role', 'employee')->get();
-        $disciplinary = disciplinary::with('user')->findOrFail($id);
-        return view("pages.disciplinary.edit", compact("disciplinary","employees"));
+        $disciplinary = Disciplinary::with('user')
+        ->whereHas('user', function ($query) {
+        $query->where('role', 'employee')->where('status', 'active');
+        })
+        ->findOrFail($id);
+        return view("pages.disciplinary.edit", compact("disciplinary"));
     }
 
     /**
