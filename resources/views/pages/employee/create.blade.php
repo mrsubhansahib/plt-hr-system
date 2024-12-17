@@ -34,7 +34,16 @@
                             <div class="tab-pane fade show active" id="required-fields-tab-pane" role="tabpanel"
                                 aria-labelledby="required-fields-tab" tabindex="0">
                                 <div class="row mb-3">
-                                    <h3 class="my-4 text-center">Employee Details</h3>
+                                    <div class="d-flex justify-content-between py-2">
+                                        <div></div>
+                                        <div>
+                                            <h4 class="py-2">Employee Detail</h4>
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('show.temp.employees') }}"
+                                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                                        </div>
+                                    </div>
 
                                     <!-- Required Fields Here -->
                                     <div class="col-md-3 mt-3">
@@ -148,7 +157,7 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Mobile <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="emergency_1_ph_no" />
+                                        <input class="form-control" type="number" placeholder="phone number" required name="emergency_1_ph_no" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Relationship <span
@@ -163,7 +172,16 @@
                             <div class="tab-pane fade" id="unrequired-fields-tab-pane" role="tabpanel"
                                 aria-labelledby="unrequired-fields-tab" tabindex="0">
                                 <div class="row mb-3">
-                                    <h3 class="my-4 text-center">Employee Details</h3>
+                                    <div class="d-flex justify-content-between py-2">
+                                        <div></div>
+                                        <div>
+                                            <h4 class="py-2">Employee Detail</h4>
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('show.temp.employees') }}"
+                                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                                        </div>
+                                    </div>
 
                                     <!-- Optional Fields Here -->
                                     <div class="col-md-3 mt-3">
@@ -338,7 +356,7 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Home Number</label>
-                                        <input class="form-control" type="text" name="emergency_1_home_ph" />
+                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_1_home_ph" />
                                     </div>
 
                                     <div class="col-md-3 mt-3">
@@ -347,11 +365,11 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Mobile</label>
-                                        <input class="form-control" type="text" name="emergency_2_ph_no" />
+                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_2_ph_no" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Home Number</label>
-                                        <input class="form-control" type="text" name="emergency_2_home_ph" />
+                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_2_home_ph" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Relationship</label>

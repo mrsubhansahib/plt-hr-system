@@ -14,7 +14,15 @@
                 <div class="card-body">
 
                     {{-- <h3 class="card-title">Personal Details</h3> --}}
-                    <h3 class="my-4 text-center">Personal Details</h3>
+                    <div class="d-flex justify-content-between py-2">
+                        <div>
+                            <h4 class="py-2">Admin List</h4>
+                        </div>
+                        <div>
+                            <a href="{{ route('show.admins') }}"
+                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                        </div>
+                    </div>
                     <hr>
                     <form class="forms-sample" action="{{ route('store.admin') }}" method="POST"  
                     onsubmit="return checkPasswordComplexity()">
@@ -147,7 +155,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contact 1 Mobile <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="emergency_1_ph_no" />
+                                <input class="form-control" type="number" placeholder="phone number" required name="emergency_1_ph_no" />
                             </div>
                            
                             <div class="col-md-3 mt-3">

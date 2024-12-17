@@ -23,12 +23,12 @@
                                 <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id" >
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Lateness Triggered </label>
+                                <label class="form-label">Lateness Triggered<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"  name="lateness_triggered" />
                             </div>
                             
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Lateness Stage</label>
+                                <label class="form-label">Lateness Stage<span class="text-danger">*</span></label>
                                 <select class="form-control form-select"  name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
                                     <option value="Triggered Lateness">Triggered Lateness</option>
@@ -40,7 +40,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Level of Warning Issued</label>
+                                <label class="form-label">Level of Warning Issued<span class="text-danger">*</span></label>
                                 <select class="form-control form-select"  name="warning_level">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
@@ -51,15 +51,15 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome / Action Taken</label>
+                                <label class="form-label">Outcome / Action Taken<span class="text-danger">*</span></label>
                                 <input class="form-control"  name="outcome" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Review Date</label>
+                                <label class="form-label">Review Date<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"  name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes</label>
+                                <label class="form-label">Notes<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="notes" rows="4"></textarea>
                             </div>
                         </div>
