@@ -38,11 +38,18 @@ class JobController extends Controller
         return redirect()->route('show.jobs')
             ->with('success', 'Job created successfully.');
     }
-    public function edit($id)
+    public function edit($id,$slug = null)
     {
+        if($slug){
+
+            $detail=1;
+        }else{
+            $detail=0;
+
+        }
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
         $job = Job::with('user')->findOrFail($id);
-        return view('pages.job.edit', compact('job', 'employees'));
+        return view('pages.job.edit', compact('job', 'employees','detail'));
     }
     public function update(Request $request, $id)
     {
@@ -56,9 +63,14 @@ class JobController extends Controller
             'dbs_required' => 'required',
         ]);
         $job = Job::findOrFail($id);
+        $user_id=$job->user_id;
         $job->update($request->all());
+        if($request->detail==0){
         return redirect()->route('show.jobs')
             ->with('success', 'Job edited successfully.');
+        }else{
+            return redirect('/employee/detail/'.$user_id);
+        }
     }
     public function show($id)
     {

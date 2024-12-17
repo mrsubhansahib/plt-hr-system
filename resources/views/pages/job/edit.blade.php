@@ -21,6 +21,7 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" value="{{ $job->user->first_name }}" disabled>
+                                <input type="hidden" name="detail" value="{{ $detail }}">
                             </div>                                                        
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
