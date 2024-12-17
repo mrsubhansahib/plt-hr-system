@@ -103,7 +103,8 @@
                                                         {{-- <li><a class="dropdown-item"
                                                             href="{{ route('detail.job', $job->id) }}">View</a></li> --}}
                                                         <li><a class="dropdown-item"
-                                                                href="{{ route('edit.job', $job->id) }}">Edit</a></li>
+                                                                href="{{ route('edit.job', $job->id.'/'.$job->user_id
+                                                                ) }}">Edit</a></li>
                                                         <li>
                                                             <button
                                                                 onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
