@@ -45,31 +45,31 @@
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
-                                                    id="dropdownMenuButton-{{ $user->id }}" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
-                                                    <span class="navbar-toggler-icon">
-                                                        <div class="col-sm-6 col-md-4 col-lg-3"> <i
-                                                                data-feather="align-justify"></i></div>
-                                                    </span>
+                                                        id="dropdownMenuButton-{{ $user->id }}" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                    <i data-feather="align-justify"></i>
                                                 </button>
-                                                <ul class="dropdown-menu"
+                                                <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $user->id }}">
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('detail.employee', $user->id) }}">View</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('edit.employee', $user->id) }}">Edit</a></li>
                                                     <li>
-                                                        <button
-                                                            onclick="if(confirm('Are you sure you want to left this Employee?')){window.location.href='{{ route('left.employee', $user->id) }}'}"
+                                                        <a class="dropdown-item" href="{{ route('detail.employee', $user->id) }}">View</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('edit.employee', $user->id) }}">Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <button onclick="if(confirm('Are you sure you want to left this Employee?')) { 
+                                                            window.location.href='{{ route('left.employee', $user->id) }}' }" 
                                                             class="dropdown-item">Left</button>
-                                                    </li>                
-                                                    <li><button
-                                                            onclick="if(confirm('Are you sure you want to delete this record?')){window.location.href='{{ route('delete.employee', $user->id) }}'}"
-                                                            class="dropdown-item">Delete</button></li>
+                                                    </li>
+                                                    <li>
+                                                        <button onclick="if(confirm('Are you sure you want to delete this record?')) { 
+                                                            window.location.href='{{ route('delete.employee', $user->id) }}' }" 
+                                                            class="dropdown-item">Delete</button>
+                                                    </li>
                                                 </ul>
                                             </div>
-                                        </td>
+                                        </td>                                        
                                     </tr>
                                 @endforeach
                             </tbody>
