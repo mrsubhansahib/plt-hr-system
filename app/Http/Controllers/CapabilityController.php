@@ -71,11 +71,12 @@ class CapabilityController extends Controller
      * @param  \App\Capability  $Capability
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $form_type = $request->form_type;
         $capability = Capability::with('user')->find($id);
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view("pages.capability.edit", compact('capability', 'employees'));
+        return view("pages.capability.edit", compact('capability', 'employees', 'form_type'));
     }
 
     /**
@@ -96,8 +97,14 @@ class CapabilityController extends Controller
             'review_date'                   => 'required',
             'notes'                         => 'required'
         ]);
-        Capability::find($id)->update($request->all());
+        $capability = Capability::findOrFail($id);
+        $capability->update($request->all());
+
+        if ($request->form_type == 'tab') {
+            return redirect()->route('detail.employee', $capability->user_id)->with('success', 'Capability edited successfully.');
+        } else {    
         return redirect()->route('show.capabilities')->with('success', 'Capability edited successfully.');
+        }
     }
 
     /**

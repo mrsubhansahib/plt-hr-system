@@ -20,6 +20,8 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" value="{{ $disclosure->user->first_name }}" disabled>
+                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type" >
+
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DBS Level<span class="text-danger">*</span></label>

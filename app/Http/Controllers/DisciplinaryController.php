@@ -70,14 +70,14 @@ class DisciplinaryController extends Controller
      * @param  \App\Disciplinary  $Disciplinary
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $form_type = $request->form_type;
         $disciplinary = Disciplinary::with('user')
         ->whereHas('user', function ($query) {
         $query->where('role', 'employee')->where('status', 'active');
-        })
-        ->findOrFail($id);
-        return view("pages.disciplinary.edit", compact("disciplinary"));
+        })->findOrFail($id);
+        return view("pages.disciplinary.edit", compact("disciplinary", "form_type"));
     }
 
     /**
@@ -99,8 +99,14 @@ class DisciplinaryController extends Controller
         ]);
             $disciplinary = disciplinary::findOrFail($id);
             $disciplinary->update($request->all());
-            return redirect()->route('show.disciplinaries')
-            ->with('success', 'Disciplinary edited successfully.');
+
+
+            if ($request->form_type == 'tab') {
+                return redirect()->route('detail.employee', $disciplinary->user_id)
+                ->with('success', 'Disciplinary edited successfully.');
+            } else {
+            return redirect()->route('show.disciplinaries')->with('success', 'Disciplinary edited successfully.');
+            }
     }
 
     /**

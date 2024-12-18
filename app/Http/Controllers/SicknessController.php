@@ -69,11 +69,12 @@ class SicknessController extends Controller
      * @param  \App\Sickness  $Sickness
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $form_type = $request->form_type;
         $employees = User::where('role', 'employee')->where('status','active')->get();
         $sickness = sickness::with('user')->findOrFail($id);
-        return view("pages.sickness.edit", compact("sickness","employees"));
+        return view("pages.sickness.edit", compact("sickness","employees", 'form_type'));
     }
 
     /**
@@ -92,8 +93,15 @@ class SicknessController extends Controller
         ]);
             $sickness = sickness::findOrFail($id);
             $sickness->update($request->all());
+
+            
+            if ($request->form_type == 'tab') {
+                return redirect()->route('detail.employee', $sickness->user_id)
+                    ->with('success', 'Sickness edited successfully.');
+            } else {
             return redirect()->route('show.sicknesses')
             ->with('success', 'Sickness edited successfully.');
+            }
 
     }
 

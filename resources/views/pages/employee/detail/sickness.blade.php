@@ -26,6 +26,8 @@
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" value="{{ $employee->first_name }}"  disabled>
                                 <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id" >
+                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type" >
+
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Reason for Absence <span class="text-danger">*</span></label>

@@ -103,8 +103,7 @@
                                                         {{-- <li><a class="dropdown-item"
                                                             href="{{ route('detail.job', $job->id) }}">View</a></li> --}}
                                                         <li><a class="dropdown-item"
-                                                                href="{{ route('edit.job', $job->id.'/'.$job->user_id
-                                                                ) }}">Edit</a></li>
+                                                                href="{{ route('edit.job', ['id' => $job->id, 'form_type' => 'tab']) }}">Edit</a></li>
                                                         <li>
                                                             <button
                                                                 onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
@@ -164,7 +163,7 @@
                                                         aria-labelledby="dropdownMenuButton-{{ $user->disclosure->id }}">
                                                         <li>
                                                             <a class="dropdown-item"
-                                                                href="{{ route('edit.disclosure', $user->disclosure->id) }}">Edit</a>
+                                                                href="{{ route('edit.disclosure', ['id' => $user->disclosure->id, 'form_type' => 'tab']) }}">Edit</a>
                                                         </li>
                                                         <li>
                                                             <button
@@ -230,7 +229,7 @@
                                                             aria-labelledby="dropdownMenuButton-{{ $sickness->id }}">
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('edit.sickness', $sickness->id) }}">Edit</a>
+                                                                    href="{{ route('edit.sickness', ['id' => $sickness->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <button
@@ -299,7 +298,7 @@
                                                             </li> --}}
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('edit.capability', $capability->id) }}">Edit</a>
+                                                                    href="{{ route('edit.capability', ['id' => $capability->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <button
@@ -368,7 +367,7 @@
                                                         </li> --}}
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('edit.training', $training->id) }}">Edit</a>
+                                                                    href="{{ route('edit.training', ['id' => $training->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <button
@@ -432,7 +431,7 @@
 
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('edit.disciplinary', $disciplinary->id) }}">Edit</a>
+                                                                    href="{{ route('edit.disciplinary', ['id' => $disciplinary->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <button
@@ -496,7 +495,7 @@
 
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('edit.lateness', $lateness->id) }}">Edit</a>
+                                                                    href="{{ route('edit.lateness', ['id' => $lateness->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <button

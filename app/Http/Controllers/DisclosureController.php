@@ -72,11 +72,13 @@ class DisclosureController extends Controller
      * @param  \App\Disclosure  $Disclosure
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $form_type = $request->form_type;
         $disclosure = Disclosure::with('user')->find($id);
+        // dd($disclosure);
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view('pages.disclosure.edit', compact('disclosure', 'employees'));
+        return view('pages.disclosure.edit', compact('disclosure', 'employees','form_type'));
     }
 
     /**
@@ -97,7 +99,14 @@ class DisclosureController extends Controller
         ]);
         $disclosure = Disclosure::find($id);
         $disclosure->update($request->all());
+
+
+        if ($request->form_type == "tab") {
+            return redirect()->route('detail.employee', $disclosure->user_id)
+                ->with('success', 'Disclosure edited successfully.');
+        } else {
         return redirect()->route('show.disclosures')->with('success', 'Disclosure edited successfully.');
+        }
     }
 
     /**
