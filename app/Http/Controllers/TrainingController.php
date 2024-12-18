@@ -70,11 +70,12 @@ class TrainingController extends Controller
      * @param  \App\Training  $Training
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $form_type = $request->form_type;
         $training = Training::with('user')->find($id);
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view('pages.training.edit', compact('training', 'employees'));
+        return view('pages.training.edit', compact('training', 'employees' ,'form_type'));
     }
 
     /**
@@ -94,8 +95,14 @@ class TrainingController extends Controller
             'ihasco_training_complete' => 'required',
             'notes' => 'required',
         ]);
-        Training::find($id)->update($request->all());
+        $training = Training::findOrFail($id);
+        $training->update($request->all());
+        if ($request->form_type == 'tab') {
+            return redirect()->route('detail.employee', $training->user_id)
+                ->with('success', 'Training edited successfully.');
+        } else {
         return redirect()->route('show.trainings')->with('success', 'Training edited successfully.');
+        }
     }
 
     /**

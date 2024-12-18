@@ -71,11 +71,12 @@ class LatenesController extends Controller
      * @param  \App\Lateness  $Lateness
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $form_type = $request->form_type;
         $employees = User::where('role', 'employee')->where('status','active')->get();
         $lateness = lateness::with('user')->findOrFail($id);
-        return view("pages.lateness.edit", compact("lateness","employees"));
+        return view("pages.lateness.edit", compact("lateness","employees", "form_type"));
     }
 
     /**
@@ -97,8 +98,13 @@ class LatenesController extends Controller
         ]);
             $lateness = lateness::findOrFail($id);
             $lateness->update($request->all());
+            if ($request->form_type == 'tab') {
+                return redirect()->route('detail.employee', $lateness->user_id)
+                    ->with('success', 'Lateness updated successfully.');
+            } else {
             return redirect()->route('show.latenesses')
             ->with('success', 'Lateness updated successfully.');
+            }
     }
 
     /**
