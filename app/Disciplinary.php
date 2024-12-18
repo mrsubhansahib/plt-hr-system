@@ -23,4 +23,8 @@ class Disciplinary extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
+    public function logs()
+    {
+        return $this->morphMany(Log::class, 'module');
+    }
 }
