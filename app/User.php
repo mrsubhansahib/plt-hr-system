@@ -111,8 +111,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Training::class);
     }
-
-
+    public function logs()
+    {
+        return $this->morphMany(Log::class, 'module');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
