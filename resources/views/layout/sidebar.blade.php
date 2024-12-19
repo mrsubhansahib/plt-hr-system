@@ -76,7 +76,13 @@
                     <span class="link-title">Left Employee</span>
                 </a>
             </li>
-            
+            {{-- Changes --}}
+            <li class="nav-item {{ active_class(['activities/list']) }}">
+                <a href="{{ route('logs.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="refresh-cw"></i>
+                    <span class="link-title">Activities</span>
+                </a>
+            </li>            
             {{-- Job added by Wasi --}}
             <li class="nav-item {{ active_class(['job/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Jobs" role="button"
