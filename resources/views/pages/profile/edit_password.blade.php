@@ -5,7 +5,7 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Update Password</h6>
+                    <h6 class="card-title">Edit Password</h6>
                     <form class="forms-sample" method="POST" action="{{ route('update.password') }}">
                         @csrf
                         <div class="row mb-3">
@@ -28,7 +28,7 @@
                                     name="new_password_confirmation" placeholder="Confirm your new password" />
                             </div>
                         </div>
-                        <input class="btn btn-primary" type="submit" value="Confirm">
+                        <input class="btn btn-primary" type="submit" value="Save">
                     </form>
                 </div>
             </div>

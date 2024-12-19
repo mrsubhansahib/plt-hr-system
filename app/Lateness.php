@@ -23,4 +23,8 @@ class Lateness extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function logs()
+    {
+        return $this->morphMany(Log::class, 'module');
+    }
 }

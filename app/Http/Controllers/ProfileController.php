@@ -22,16 +22,14 @@ class ProfileController extends Controller
         $user = Auth::user();
         $request->validate([
             'first_name' => 'required',
-            'middle_name' => 'required',
             'surname' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'address1' => 'required',
-            'mobile_tel' => 'required', 
         ]);
         
         $user->update($request->all());         
                 
-        return redirect()->route('dashboard')->with('success', 'Profile updated successfully!');
+        return redirect()->route('dashboard')->with('success', 'Profile edited successfully.');
     }
 
     public function edit_password()
@@ -54,7 +52,7 @@ class ProfileController extends Controller
             $user->update([
                 'password' => Hash::make($request->new_password)
             ]);
-            return redirect()->route('dashboard')->with('success', 'Password updated successfully!');
+            return redirect()->route('dashboard')->with('success', 'Password edited successfully.');
         }
     }
 }
