@@ -180,17 +180,14 @@ License: For each use you must have a valid license purchased only from above li
                 searching: true,         // Enable column search
                 ordering: true,          // Enable sorting on columns
                 info: true,              // Show info (e.g., "Showing 1 to X of Y entries")
-                language: {
-                    emptyTable: "No records found", // Custom message for empty table
-                    infoEmpty: "No entries to show", // Message for empty table info
-                },
+                
                 initComplete: function() {
                     // Fix table layout after initialization
                     var table = this.api();
                     table.columns.adjust().draw();
                     // Ensure consistent padding across cells
                     $('table.dataTableExample td').css({
-                        'padding': '12px 15px'
+                        'padding': '5px 0px'
                     });
                 }
             });
@@ -209,10 +206,10 @@ License: For each use you must have a valid license purchased only from above li
     
             // Optional: Style the column search input for consistency
             $('.dataTableExample .filters input').css({
-                'padding': '6px', // Make the search inputs uniform
+                'padding': '10px', // Make the search inputs uniform
             });
         });
-    </script>         
+    </script>           
 </body>
 
 </html>

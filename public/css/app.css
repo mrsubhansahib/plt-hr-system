@@ -22402,3 +22402,32 @@ div.tox .tox-dialog__body {
 }
 
 /*# sourceMappingURL=app.css.map*/
+
+
+/* Fixed layout for consistent column widths */
+table.dataTable {
+  table-layout: fixed; /* Prevents dynamic resizing */
+  width: 100%;         /* Full width of the container */
+}
+
+/* Prevent content overflow and maintain alignment */
+table.dataTableExample th, table.dataTableExample td {
+  overflow: hidden;         /* Hide overflow content */
+  text-overflow: ellipsis;  /* Ellipsis for overflowed text */
+  white-space: nowrap;      /* Prevent text wrapping */
+  vertical-align: middle;   /* Center-align text vertically */
+  padding-top: 10px;            /* Consistent padding */
+  /* text-align: center ; */
+}
+table.dataTableExample td {
+  padding: 10px 15px !important;
+}
+
+/* Style the search row */
+.dataTableExample .filters input {
+  margin-bottom: 15px; /* Add space between input and data */
+}
+
+
+
+  
