@@ -11,7 +11,8 @@ class Log extends Model
         'admin_id',
         'module_id',
         'module_type',
-        'action'
+        'action',
+        'user_id',
     ];
 
     public function module()
@@ -21,5 +22,9 @@ class Log extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'admin_id' , 'id');
+    }
+    public function employee()
+    {
+        return $this->belongsTo(User::class, 'user_id' , 'id')->where('role', 'employee');
     }
 }

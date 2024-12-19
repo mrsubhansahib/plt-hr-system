@@ -23,6 +23,7 @@ use App\Http\Controllers\DisclosureController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -163,6 +164,10 @@ Route::middleware('auth')->group(function () {
         // lateness
         Route::get('lateness/{id}',             [CreateController::class, 'latenessCreate'])->name('create.new.lateness');
         Route::post('lateness/store',          [CreateController::class, 'latenessStore'])->name('store.new.lateness');
+    });
+    // Route for changes.
+    Route::group(['prefix' => 'activities'], function () {
+        Route::get('/list', [LogController::class, 'index'])->name('logs.index');
     });
 });
 

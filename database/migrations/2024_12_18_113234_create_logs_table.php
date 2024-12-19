@@ -11,6 +11,7 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('module_id');
             $table->string('module_type');
             $table->string('action');
@@ -18,6 +19,7 @@ class CreateLogsTable extends Migration
 
             // Foreign key constraints
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
