@@ -41,10 +41,16 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $log->user->first_name ?? 'N/A' }}</td>
                                         <td>
-                                            @if ($log->employee && $log->employee->first_name)
-                                                {{ $log->employee->first_name }}
+                                            @if ($log->employee)
+                                                @if ($log->user->first_name === $log->employee->first_name)
+                                                    Self
+                                                @elseif ($log->employee->role === 'admin')
+                                                    {{ $log->employee->first_name }} (Admin)
+                                                @else
+                                                    {{ $log->employee->first_name }}
+                                                @endif
                                             @else
-                                                {{ 'Self' }}
+                                                Self
                                             @endif
                                         </td>                                        
                                         <td>{{ $log->module_type }}</td>
@@ -53,7 +59,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>                        
+                        </table>
                     </div>
                 </div>
             </div>

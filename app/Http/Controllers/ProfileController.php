@@ -22,11 +22,9 @@ class ProfileController extends Controller
         $user = Auth::user();
         $request->validate([
             'first_name' => 'required',
-            'middle_name' => 'required',
             'surname' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'address1' => 'required',
-            'mobile_tel' => 'required', 
         ]);
         
         $user->update($request->all());         
