@@ -16,7 +16,7 @@
                             <div class="col-md-6">
                                 <label class="form-label" for="middleName">Middle Name:</label>
                                 <input class="form-control" type="text" name="middle_name" id="middleName"
-                                    value="{{ auth()->user()->middle_name }}" required />
+                                    value="{{ auth()->user()->middle_name }}"/>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -40,7 +40,7 @@
                             <div class="col-md-6">
                                 <label class="form-label">Phone:</label>
                                 <input class="form-control mb-4 mb-md-0" type="number" name="mobile_tel"
-                                    value="{{ auth()->user()->mobile_tel }}" min="0" required>
+                                    value="{{ auth()->user()->mobile_tel }}" min="0">
                             </div>
                         </div>
                         <input class="btn btn-primary" type="submit" value="Save">

@@ -25,6 +25,6 @@ class Log extends Model
     }
     public function employee()
     {
-        return $this->belongsTo(User::class, 'user_id' , 'id')->where('role', 'employee');
+        return $this->belongsTo(User::class, 'user_id' , 'id');
     }
 }

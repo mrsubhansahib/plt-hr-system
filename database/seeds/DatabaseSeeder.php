@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'address3'=>'',
             'town'=>'',
             'post_code'=>'',
-            'mobile_tel'=>'(+92) 3052-2205',
+            'mobile_tel'=>'03052342205',
             'home_tel'=>'',
             'dob'=>'',
             'age'=>'',
