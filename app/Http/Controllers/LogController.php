@@ -9,7 +9,7 @@ class LogController extends Controller
 {
     public function index()
     {
-        $logs = Log::with(['user', 'employee'])->get();
+        $logs = Log::with(['admin', 'employee'])->get();
         return view('pages.changes.list', compact('logs'));
     }
 }
