@@ -39,20 +39,18 @@
                                 @foreach ($logs as $key => $log)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $log->user->first_name ?? 'N/A' }}</td>
+                                        <td>{{ $log->admin->first_name ?? 'N/A' }}</td>
                                         <td>
-                                            @if ($log->employee)
-                                                @if ($log->user->first_name === $log->employee->first_name)
-                                                    Self
-                                                @elseif ($log->employee->role === 'admin')
-                                                    {{ $log->employee->first_name }} (Admin)
-                                                @else
-                                                    {{ $log->employee->first_name }}
-                                                @endif
-                                            @else
+                                            @if (
+                                                ($log->employee->role === 'admin' || $log->employee->role === 'super_admin') &&
+                                                    $log->admin->id === $log->employee->id)
                                                 Self
+                                            @elseif ($log->employee->role === 'admin')
+                                                {{ $log->employee->first_name }} (Admin)
+                                            @else
+                                                {{ $log->employee->first_name }}
                                             @endif
-                                        </td>                                        
+                                        </td>
                                         <td>{{ $log->module_type }}</td>
                                         <td>{{ ucfirst($log->action) }}</td>
                                         <td>{{ $log->created_at->format('Y-m-d') }}</td>
