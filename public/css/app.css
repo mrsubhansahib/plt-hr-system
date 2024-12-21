@@ -22411,10 +22411,9 @@ table.dataTable {
 }
 
 /* Prevent content overflow and maintain alignment */
-table.dataTableExample th, table.dataTableExample td {
-  overflow: hidden;         /* Hide overflow content */
+table.dataTableExample th, table.dataTableExample td ,table.detailTable th, table.detailTable td {
   text-overflow: ellipsis;  /* Ellipsis for overflowed text */
-  white-space: nowrap;      /* Prevent text wrapping */
+  white-space: wrap;      /* Prevent text wrapping */
   vertical-align: middle;   /* Center-align text vertically */
   padding-top: 10px;            /* Consistent padding */
   /* text-align: center ; */

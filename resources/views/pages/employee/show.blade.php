@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-job" class="table table-striped ">
+                            <table id="table-job" class="table table-striped detailTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -135,7 +135,7 @@
                             @endif
                         </div>
                         <div class="">
-                            <table id="table-disclosure" class="table table-striped">
+                            <table id="table-disclosure" class="table table-striped detailTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -198,7 +198,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-sickness" class="table table-striped">
+                            <table id="table-sickness" class="table table-striped detailTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -263,7 +263,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-capability" class="table table-striped">
+                            <table id="table-capability" class="table table-striped detailTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -332,7 +332,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-training" class="table table-striped">
+                            <table id="table-training" class="table table-striped detailTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -401,7 +401,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-disciplinary" class="table table-striped">
+                            <table id="table-disciplinary" class="table table-striped detailTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -465,7 +465,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-lateness" class="table table-striped">
+                            <table id="table-lateness" class="table table-striped detailTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
