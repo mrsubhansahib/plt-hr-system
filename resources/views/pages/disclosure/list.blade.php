@@ -21,8 +21,8 @@
                             <h4 class="py-2">Disclosure List</h4>
                         </div>
                         <div>
-                            <a href="{{ route('create.disclosure') }}"
-                                class="btn btn-primary"><strong>Create</strong><i data-feather="bookmark" class="ms-2"></i></a>
+                            <a href="{{ route('create.disclosure') }}" class="btn btn-primary"><strong>Create</strong><i
+                                    data-feather="bookmark" class="ms-2"></i></a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -37,10 +37,14 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search DBS Level"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Certification No"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search DBS Level"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Certification No"></th>
                                     <th></th> <!-- No search for Action column -->
                                 </tr>
                             </thead>
@@ -68,11 +72,13 @@
                                                         <a class="dropdown-item"
                                                             href="{{ route('edit.disclosure', $disclosure->id) }}">Edit</a>
                                                     </li>
-                                                    <li>
-                                                        <button
-                                                            onclick="if(confirm('Are you sure you want to delete this disclosure?')) { window.location.href='{{ route('delete.disclosure', $disclosure->id) }}' }"
-                                                            class="dropdown-item">Delete</button>
-                                                    </li>
+                                                    @if (auth()->user()->role == 'super_admin')
+                                                        <li>
+                                                            <button
+                                                                onclick="if(confirm('Are you sure you want to delete this disclosure?')) { window.location.href='{{ route('delete.disclosure', $disclosure->id) }}' }"
+                                                                class="dropdown-item">Delete</button>
+                                                        </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </td>

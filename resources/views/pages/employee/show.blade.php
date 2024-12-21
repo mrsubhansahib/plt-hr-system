@@ -103,12 +103,15 @@
                                                         {{-- <li><a class="dropdown-item"
                                                             href="{{ route('detail.job', $job->id) }}">View</a></li> --}}
                                                         <li><a class="dropdown-item"
-                                                                href="{{ route('edit.job', ['id' => $job->id, 'form_type' => 'tab']) }}">Edit</a></li>
-                                                        <li>
-                                                            <button
-                                                                onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
-                                                                class="dropdown-item">Delete</button>
+                                                                href="{{ route('edit.job', ['id' => $job->id, 'form_type' => 'tab']) }}">Edit</a>
                                                         </li>
+                                                        @if (auth()->user()->role == 'super_admin')
+                                                            <li>
+                                                                <button
+                                                                    onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
+                                                                    class="dropdown-item">Delete</button>
+                                                            </li>
+                                                        @endif
                                                     </ul>
                                                 </div>
                                             </td>
@@ -165,11 +168,13 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('edit.disclosure', ['id' => $user->disclosure->id, 'form_type' => 'tab']) }}">Edit</a>
                                                         </li>
-                                                        <li>
-                                                            <button
-                                                                onclick="if(confirm('Are you sure you want to delete this disclosure?')) { window.location.href='{{ route('delete.disclosure', $user->disclosure->id) }}' }"
-                                                                class="dropdown-item">Delete</button>
-                                                        </li>
+                                                        @if (auth()->user()->role == 'super_admin')
+                                                            <li>
+                                                                <button
+                                                                    onclick="if(confirm('Are you sure you want to delete this disclosure?')) { window.location.href='{{ route('delete.disclosure', $user->disclosure->id) }}' }"
+                                                                    class="dropdown-item">Delete</button>
+                                                            </li>
+                                                        @endif
                                                     </ul>
                                                 </div>
                                             </td>
@@ -231,11 +236,13 @@
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.sickness', ['id' => $sickness->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
-                                                            <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this sickness?')) { window.location.href='{{ route('delete.sickness', $sickness->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
-                                                            </li>
+                                                            @if (auth()->user()->role == 'super_admin')
+                                                                <li>
+                                                                    <button
+                                                                        onclick="if(confirm('Are you sure you want to delete this sickness?')) { window.location.href='{{ route('delete.sickness', $sickness->id) }}' }"
+                                                                        class="dropdown-item">Delete</button>
+                                                                </li>
+                                                            @endif
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -300,11 +307,13 @@
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.capability', ['id' => $capability->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
-                                                            <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this capability?')) { window.location.href='{{ route('delete.capability', $capability->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
-                                                            </li>
+                                                            @if (auth()->user()->role == 'super_admin')
+                                                                <li>
+                                                                    <button
+                                                                        onclick="if(confirm('Are you sure you want to delete this capability?')) { window.location.href='{{ route('delete.capability', $capability->id) }}' }"
+                                                                        class="dropdown-item">Delete</button>
+                                                                </li>
+                                                            @endif
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -369,11 +378,13 @@
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.training', ['id' => $training->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
-                                                            <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this training?')) { window.location.href='{{ route('delete.training', $training->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
-                                                            </li>
+                                                            @if (auth()->user()->role == 'super_admin')
+                                                                <li>
+                                                                    <button
+                                                                        onclick="if(confirm('Are you sure you want to delete this training?')) { window.location.href='{{ route('delete.training', $training->id) }}' }"
+                                                                        class="dropdown-item">Delete</button>
+                                                                </li>
+                                                            @endif
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -433,11 +444,13 @@
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.disciplinary', ['id' => $disciplinary->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
-                                                            <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this disciplinary?')) { window.location.href='{{ route('delete.disciplinary', $disciplinary->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
-                                                            </li>
+                                                            @if (auth()->user()->role == 'super_admin')
+                                                                <li>
+                                                                    <button
+                                                                        onclick="if(confirm('Are you sure you want to delete this disciplinary?')) { window.location.href='{{ route('delete.disciplinary', $disciplinary->id) }}' }"
+                                                                        class="dropdown-item">Delete</button>
+                                                                </li>
+                                                            @endif
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -497,11 +510,19 @@
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.lateness', ['id' => $lateness->id, 'form_type' => 'tab']) }}">Edit</a>
                                                             </li>
-                                                            <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this lateness?')) { window.location.href='{{ route('delete.lateness', $lateness->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
-                                                            </li>
+                                                            @if (auth()->user()->role == 'super_admin')
+                                                                @if (auth()->user()->role == 'super_admin')
+                                                                @endif
+
+                                                                <li>
+                                                                    <button
+                                                                        onclick="if(confirm('Are you sure you want to delete this lateness?')) { window.location.href='{{ route('delete.lateness', $lateness->id) }}' }"
+                                                                        class="dropdown-item">Delete</button>
+                                                                </li>
+                                                            @endif
+                                                            @if (auth()->user()->role == 'super_admin')
+                                                            @endif
+
                                                         </ul>
                                                     </div>
                                                 </td>
