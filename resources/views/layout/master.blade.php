@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - Laravel Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_laravel
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
 <html>
 
 <head>
@@ -16,10 +7,9 @@ License: For each use you must have a valid license purchased only from above li
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Responsive Laravel Admin Dashboard Template based on Bootstrap 5">
     <meta name="author" content="NobleUI">
-    <meta name="keywords"
-        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
+    <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
 
-    <title>PLT HR System | Dashboard</title>
+    <title>PLT HR System</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,11 +25,15 @@ License: For each use you must have a valid license purchased only from above li
     <!-- plugin css -->
     <link href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <!-- end plugin css -->
 
 
     @stack('plugin-styles')
 
+    {{-- date formate change --}}
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <!-- common css -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- end common css -->
@@ -79,17 +73,12 @@ License: For each use you must have a valid license purchased only from above li
 
     <!-- common js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
-    <!-- end common js -->
-
-    {{-- date formate change --}}
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
 
-    @push('plugin-scripts')
-        <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
-        <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
-    @endpush
+
 
     @stack('custom-scripts')
     <script>
@@ -170,17 +159,17 @@ License: For each use you must have a valid license purchased only from above li
             return true;
         }
     </script>
-    {{-- datatable search bar script --}}
     <script>
         $(document).ready(function() {
             // Initialize the DataTable with optimized options
             var table = $('.dataTableExample').DataTable({
-                autoWidth: false,        // Prevent table from stretching
-                paging: true,            // Enable pagination
-                searching: true,         // Enable column search
-                ordering: true,          // Enable sorting on columns
-                info: true,              // Show info (e.g., "Showing 1 to X of Y entries")
-                
+                autoWidth: false, // Prevent table from stretching
+                paging: true, // Enable pagination
+                searching: true, // Enable column search
+                ordering: true, // Enable sorting on columns
+                info: true, // Show info (e.g., "Showing 1 to X of Y entries")
+                dom: 'Bfrtip', // Add buttons to the table
+                buttons: ['copy', 'csv', 'excel'],
                 initComplete: function() {
                     // Fix table layout after initialization
                     var table = this.api();
@@ -191,25 +180,25 @@ License: For each use you must have a valid license purchased only from above li
                     });
                 }
             });
-    
+
             // Apply the column-wise search functionality
             $('.dataTableExample .filters input').on('keyup change', function() {
-                var colIndex = $(this).parent().index();  // Get column index
+                var colIndex = $(this).parent().index(); // Get column index
                 table.column(colIndex).search(this.value).draw(); // Search and redraw table
             });
-    
+
             // Style the 'No records found' message for better visibility
             $('.dataTables_empty').css({
-                'text-align': 'center',   // Center the 'No records found' message
-                'padding': '20px 0',      // Add padding to balance the space
+                'text-align': 'center', // Center the 'No records found' message
+                'padding': '20px 0', // Add padding to balance the space
             });
-    
+
             // Optional: Style the column search input for consistency
             $('.dataTableExample .filters input').css({
                 'padding': '10px', // Make the search inputs uniform
             });
         });
-    </script>           
+    </script>
 
 </body>
 

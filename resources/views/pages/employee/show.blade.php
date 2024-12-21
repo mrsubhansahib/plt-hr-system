@@ -1,9 +1,7 @@
 @extends('layout.master')
-
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet">
 @endpush
-
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -15,7 +13,56 @@
         @include('layout.alert')
         <div class="card">
             <div class="card-body">
-                <!-- Static Tabs -->
+                <h4 class="text-center">Personal Details</h4>
+                <div class="my-4">
+                    <div class="row my-3">
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control mt-2" id="first_name"
+                                    value="{{ $user->first_name }}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="surname">Surname</label>
+                                <input type="text" class="form-control mt-2" id="surname" value="{{ $user->surname }}"
+                                    disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control mt-2" id="email" value="{{ $user->email }}"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="ni_number">Ni Number</label>
+                                <input type="text" class="form-control mt-2" id="ni_number"
+                                    value="{{ $user->ni_number }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="address1">Address-1</label>
+                                <input type="text" class="form-control mt-2" id="address1" value="{{ $user->address1 }}"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="town">Town</label>
+                                <input type="text" class="form-control mt-2" id="town" value="{{ $user->town }}"
+                                    disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                     <li class="nav-item" role="presentation">
@@ -39,9 +86,9 @@
                             aria-controls="capability-tab-pane" aria-selected="false">Capability</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="training-tab" data-bs-toggle="tab" data-bs-target="#training-tab-pane"
-                            type="button" role="tab" aria-controls="training-tab-pane"
-                            aria-selected="false">Training</button>
+                        <button class="nav-link" id="training-tab" data-bs-toggle="tab"
+                            data-bs-target="#training-tab-pane" type="button" role="tab"
+                            aria-controls="training-tab-pane" aria-selected="false">Training</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="disciplinary-tab" data-bs-toggle="tab"
@@ -49,16 +96,13 @@
                             aria-controls="disciplinary-tab-pane" aria-selected="false">Disciplinary</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="lateness-tab" data-bs-toggle="tab" data-bs-target="#lateness-tab-pane"
-                            type="button" role="tab" aria-controls="lateness-tab-pane"
-                            aria-selected="false">Lateness</button>
+                        <button class="nav-link" id="lateness-tab" data-bs-toggle="tab"
+                            data-bs-target="#lateness-tab-pane" type="button" role="tab"
+                            aria-controls="lateness-tab-pane" aria-selected="false">Lateness</button>
                     </li>
                 </ul>
-
                 <!-- Static Tab Panes -->
                 <div class="tab-content" id="myTabContent">
-
-
                     <!-- Job Tab -->
                     <div class="tab-pane fade show active" id="job-tab-pane" role="tabpanel" aria-labelledby="job-tab"
                         tabindex="0">
@@ -541,12 +585,10 @@
             </div>
         </div>
     </div>
-
     @push('plugin-scripts')
         <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
         <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
     @endpush
-
     @push('custom-scripts')
         <script>
             $(document).ready(function() {
