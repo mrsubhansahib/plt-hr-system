@@ -22,9 +22,9 @@
                                     aria-controls="required-fields-tab-pane" aria-selected="true">Required Fields</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="unrequired-fields-tab" data-bs-toggle="tab"
-                                    data-bs-target="#unrequired-fields-tab-pane" type="button" role="tab"
-                                    aria-controls="unrequired-fields-tab-pane" aria-selected="false">Unrequired
+                                <button class="nav-link" id="optional-fields-tab" data-bs-toggle="tab"
+                                    data-bs-target="#optional-fields-tab-pane" type="button" role="tab"
+                                    aria-controls="optional-fields-tab-pane" aria-selected="false">Optional
                                     Fields</button>
                             </li>
                         </ul>
@@ -168,9 +168,9 @@
                                 </div>
                             </div>
 
-                            <!-- Unrequired Fields Tab -->
-                            <div class="tab-pane fade" id="unrequired-fields-tab-pane" role="tabpanel"
-                                aria-labelledby="unrequired-fields-tab" tabindex="0">
+                            <!-- optional Fields Tab -->
+                            <div class="tab-pane fade" id="optional-fields-tab-pane" role="tabpanel"
+                                aria-labelledby="optional-fields-tab" tabindex="0">
                                 <div class="row mb-3">
                                     <div class="d-flex justify-content-between py-2">
                                         <div></div>

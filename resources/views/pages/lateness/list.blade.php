@@ -21,8 +21,8 @@
                             <h4 class="py-2">Lateness List</h4>
                         </div>
                         <div>
-                            <a href="{{ route('create.lateness') }}"
-                                class="btn btn-primary"><strong>Create</strong><i data-feather="bookmark" class="ms-2"></i></a>
+                            <a href="{{ route('create.lateness') }}" class="btn btn-primary"><strong>Create</strong><i
+                                    data-feather="bookmark" class="ms-2"></i></a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -37,10 +37,14 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Lateness Triggered"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Lateness Stage"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Lateness Triggered"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Lateness Stage"></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -64,11 +68,13 @@
                                                         <a class="dropdown-item"
                                                             href="{{ route('edit.lateness', $lateness->id) }}">Edit</a>
                                                     </li>
-                                                    <li>
-                                                        <button
-                                                            onclick="if(confirm('Are you sure you want to delete this lateness?')) { window.location.href='{{ route('delete.lateness', $lateness->id) }}' }"
-                                                            class="dropdown-item">Delete</button>
-                                                    </li>
+                                                    @if (auth()->user()->role == 'super_admin')
+                                                        <li>
+                                                            <button
+                                                                onclick="if(confirm('Are you sure you want to delete this lateness?')) { window.location.href='{{ route('delete.lateness', $lateness->id) }}' }"
+                                                                class="dropdown-item">Delete</button>
+                                                        </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </td>

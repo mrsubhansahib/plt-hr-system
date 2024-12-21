@@ -21,8 +21,8 @@
                             <h4 class="py-2">Job List</h4>
                         </div>
                         <div>
-                            <a href="{{ route('create.job') }}"
-                                class="btn btn-primary"><strong>Create</strong><i data-feather="bookmark" class="ms-2"></i></a>
+                            <a href="{{ route('create.job') }}" class="btn btn-primary"><strong>Create</strong><i
+                                    data-feather="bookmark" class="ms-2"></i></a>
                         </div>
                     </div>
                     <h6 class="card-title"></h6>
@@ -38,11 +38,16 @@
                                     <th>Action</th>
                                 </tr>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Title"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Main Job"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Start Date"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Title"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Main Job"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Start Date"></th>
                                     <th></th> <!-- No search for Actions column -->
                                 </tr>
                             </thead>
@@ -67,11 +72,13 @@
                                                             href="{{ route('detail.job', $job->id) }}">View</a></li> --}}
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('edit.job', $job->id) }}">Edit</a></li>
-                                                    <li>
-                                                        <button
-                                                            onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
-                                                            class="dropdown-item">Delete</button>
-                                                    </li>
+                                                    @if (auth()->user()->role == 'super_admin')
+                                                        <li>
+                                                            <button
+                                                                onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
+                                                                class="dropdown-item">Delete</button>
+                                                        </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </td>

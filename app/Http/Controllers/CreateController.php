@@ -20,72 +20,74 @@ class CreateController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | Job tab create fuctoins
 |--------------------------------------------------------------------------
 |*/
     public function jobCreate($id)
     {
+        $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.job" , compact("employee"));
+        return view("pages.employee.detail.job", compact("employee", "user_id"));
     }
     public function jobStore(Request $request)
-{
-    $request->validate([
-        'user_id'               => 'required',
-        'title'                 => 'required',
-        'facility'              => 'required',
-        'start_date'            => 'required',
-        'rate_of_pay'           => 'required',
-        'number_of_hours'       => 'required',
-        'contract_type'         => 'required',
-        'dbs_required'          => 'required',
-    ]);
-    Job::create($request->all());
-    return redirect()->route('detail.employee' , $request->user_id)
-        ->with('success', 'Job created successfully.');
-}
+    {
+        $request->validate([
+            'user_id'               => 'required',
+            'title'                 => 'required',
+            'facility'              => 'required',
+            'start_date'            => 'required',
+            'rate_of_pay'           => 'required',
+            'number_of_hours'       => 'required',
+            'contract_type'         => 'required',
+            'dbs_required'          => 'required',
+        ]);
+
+        Job::create($request->all());
+        return redirect()->route('detail.employee', $request->user_id)
+            ->with('success', 'Job created successfully.');
+    }
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | disclosure tab create fuctoins
 |--------------------------------------------------------------------------
 |*/
     public function disclosureCreate($id)
     {
+        $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.disclosure" , compact("employee"));
-
+        return view("pages.employee.detail.disclosure", compact("employee", "user_id"));
     }
     public function disclosureStore(Request $request)
-{
-    $request->validate([
-        'user_id'                   => 'required',
-        'dbs_level'                 => 'required',
-        'date_requested'            => 'required',
-        'date_on_certificate'       => 'required',
-        'certificate_no'            => 'required',
-        'contract_type'             => 'required',
-    ]);
-    Disclosure::create($request->all());
-    // dd($request->all());
-    return redirect()->route('detail.employee' , $request->user_id)
-        ->with('success', 'Disclosure created successfully.');
-}
+    {
+        $request->validate([
+            'user_id'                   => 'required',
+            'dbs_level'                 => 'required',
+            'date_requested'            => 'required',
+            'date_on_certificate'       => 'required',
+            'certificate_no'            => 'required',
+            'contract_type'             => 'required',
+        ]);
+        Disclosure::create($request->all());
+        // dd($request->all());
+        return redirect()->route('detail.employee', $request->user_id)
+            ->with('success', 'Disclosure created successfully.');
+    }
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | sickness tab create fuctoins
 |--------------------------------------------------------------------------
 |*/
     public function sicknessCreate($id)
     {
+        $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.sickness" , compact("employee"));
-
+        return view("pages.employee.detail.sickness", compact("employee", "user_id"));
     }
     public function sicknessStore(Request $request)
     {
@@ -97,22 +99,22 @@ class CreateController extends Controller
         ]);
         Sickness::create($request->all());
         // dd($request->all());
-        return redirect()->route('detail.employee' , $request->user_id)
+        return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Sickness created successfully.');
     }
 
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | capability tab create fuctoins
 |--------------------------------------------------------------------------
 |*/
     public function capabilityCreate($id)
     {
+        $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.capability" , compact("employee"));
-        
+        return view("pages.employee.detail.capability", compact("employee", "user_id"));
     }
     public function capabilityStore(Request $request)
     {
@@ -128,22 +130,22 @@ class CreateController extends Controller
         ]);
         Capability::create($request->all());
         // dd($request->all());
-        return redirect()->route('detail.employee' , $request->user_id)
+        return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Capability created successfully.');
     }
 
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | training tab create fuctoins
 |--------------------------------------------------------------------------
 |*/
     public function trainingCreate($id)
     {
+        $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.training" , compact("employee"));
-
+        return view("pages.employee.detail.training", compact("employee", "user_id"));
     }
     public function trainingStore(Request $request)
     {
@@ -158,21 +160,21 @@ class CreateController extends Controller
         ]);
         Training::create($request->all());
         // dd($request->all());
-        return redirect()->route('detail.employee' , $request->user_id)
+        return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Training created successfully.');
     }
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | disciplinary tab create fuctoins
 |--------------------------------------------------------------------------
 |*/
     public function disciplinaryCreate($id)
     {
+        $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.disciplinary" , compact("employee"));
-        
+        return view("pages.employee.detail.disciplinary", compact("employee", "user_id"));
     }
     public function disciplinaryStore(Request $request)
     {
@@ -187,20 +189,20 @@ class CreateController extends Controller
         ]);
         Disciplinary::create($request->all());
         // dd($request->all());
-        return redirect()->route('detail.employee' , $request->user_id)
+        return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Disciplinary created successfully.');
     }
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | lateness tab create fuctoins
 |--------------------------------------------------------------------------
 |*/
     public function latenessCreate($id)
     {
+        $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.lateness" , compact("employee"));
-        
+        return view("pages.employee.detail.lateness", compact("employee", "user_id"));
     }
     public function latenessStore(Request $request)
     {
@@ -215,13 +217,13 @@ class CreateController extends Controller
         ]);
         Lateness::create($request->all());
         // dd($request->all());
-        return redirect()->route('detail.employee' , $request->user_id)
+        return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Lateness created successfully.');
     }
 
 
 
-    
+
 
     /**
      * Show the form for creating a new resource.

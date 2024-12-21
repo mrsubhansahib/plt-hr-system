@@ -21,8 +21,8 @@
                             <h4 class="py-2">Capability List</h4>
                         </div>
                         <div>
-                            <a href="{{ route('create.capability') }}"
-                                class="btn btn-primary"><strong>Create</strong><i data-feather="bookmark" class="ms-2"></i></a>
+                            <a href="{{ route('create.capability') }}" class="btn btn-primary"><strong>Create</strong><i
+                                    data-feather="bookmark" class="ms-2"></i></a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -38,11 +38,16 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Stage"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Date"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Outcome"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Stage"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Date"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Outcome"></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -71,11 +76,13 @@
                                                         <a class="dropdown-item"
                                                             href="{{ route('edit.capability', $capability->id) }}">Edit</a>
                                                     </li>
-                                                    <li>
-                                                        <button
-                                                            onclick="if(confirm('Are you sure you want to delete this capability?')) { window.location.href='{{ route('delete.capability', $capability->id) }}' }"
-                                                            class="dropdown-item">Delete</button>
-                                                    </li>
+                                                    @if (auth()->user()->role == 'super_admin')
+                                                        <li>
+                                                            <button
+                                                                onclick="if(confirm('Are you sure you want to delete this capability?')) { window.location.href='{{ route('delete.capability', $capability->id) }}' }"
+                                                                class="dropdown-item">Delete</button>
+                                                        </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </td>

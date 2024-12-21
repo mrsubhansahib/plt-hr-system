@@ -28,10 +28,14 @@
                                     <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search First Name"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Email"></th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Status"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search First Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Email"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Status"></th>
                                     <th></th> <!-- No search for Actions column -->
                                 </tr>
                             </thead>
@@ -45,31 +49,37 @@
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
-                                                        id="dropdownMenuButton-{{ $user->id }}" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
+                                                    id="dropdownMenuButton-{{ $user->id }}" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
                                                     <i data-feather="align-justify"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $user->id }}">
                                                     <li>
-                                                        <a class="dropdown-item" href="{{ route('detail.employee', $user->id) }}">View</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('detail.employee', $user->id) }}">View</a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="{{ route('edit.employee', $user->id) }}">Edit</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('edit.employee', $user->id) }}">Edit</a>
                                                     </li>
                                                     <li>
-                                                        <button onclick="if(confirm('Are you sure you want to left this Employee?')) { 
-                                                            window.location.href='{{ route('left.employee', $user->id) }}' }" 
+                                                        <button
+                                                            onclick="if(confirm('Are you sure you want to left this Employee?')) { 
+                                                            window.location.href='{{ route('left.employee', $user->id) }}' }"
                                                             class="dropdown-item">Left</button>
                                                     </li>
-                                                    <li>
-                                                        <button onclick="if(confirm('Are you sure you want to delete this record?')) { 
-                                                            window.location.href='{{ route('delete.employee', $user->id) }}' }" 
-                                                            class="dropdown-item">Delete</button>
-                                                    </li>
+                                                    @if (auth()->user()->role == 'super_admin')
+                                                        <li>
+                                                            <button
+                                                                onclick="if(confirm('Are you sure you want to delete this record?')) { 
+                                                            window.location.href='{{ route('delete.employee', $user->id) }}' }"
+                                                                class="dropdown-item">Delete</button>
+                                                        </li>
+                                                    @endif
                                                 </ul>
                                             </div>
-                                        </td>                                        
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -87,5 +97,4 @@
 @endpush
 
 @push('custom-scripts')
-    
 @endpush
