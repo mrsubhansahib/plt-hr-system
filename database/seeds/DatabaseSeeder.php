@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         User::create([
             'status'=>'active',
-            'first_name'=>'Softic',
-            'middle_name'=>'Era',
+            'first_name'=>'Thumbs Up',
+            'middle_name'=>'Digital',
             'surname'=>'Admin',
             'preferred_name'=>'',
             'role'=>'super_admin',
-            'email'=>'admin@softicera.com',
+            'email'=>'admin@thumbsupdigital.com',
             'password'=>Hash::make('password'),
             'address1'=>'Jinnah Colony It Tower 2',
             'address2'=>'',
