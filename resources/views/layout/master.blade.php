@@ -28,8 +28,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <!-- end plugin css -->
 
+    @stack('plugin-styles') 
 
-    @stack('plugin-styles')
+
 
     {{-- date formate change --}}
     <link rel="stylesheet"
@@ -167,9 +168,9 @@
                 paging: true, // Enable pagination
                 searching: true, // Enable column search
                 ordering: true, // Enable sorting on columns
-                info: true, // Show info (e.g., "Showing 1 to X of Y entries")
-                dom: 'Bfrtip', // Add buttons to the table
-                buttons: ['copy', 'csv', 'excel'],
+                info: true, 
+                // dom: 'Bfrtip', // Add buttons to the table
+                // buttons: ['copy', 'csv', 'excel'],
                 initComplete: function() {
                     // Fix table layout after initialization
                     var table = this.api();
