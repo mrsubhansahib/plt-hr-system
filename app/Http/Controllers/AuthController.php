@@ -48,7 +48,7 @@ class AuthController extends Controller
         if ($user->role == 'admin' || $user->role == 'super_admin') {
             if (auth()->attempt($data)) {
                 
-                return redirect('/dashboard')->with('success', 'Login Successful');
+                return redirect('/dashboard')->with('success', 'Login Successful.');
             } else {
                 return back()->with('error', 'Invalid Credentials.');
             }
