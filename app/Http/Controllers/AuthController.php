@@ -48,7 +48,7 @@ class AuthController extends Controller
         if ($user->role == 'admin' || $user->role == 'super_admin') {
             if (auth()->attempt($data)) {
                 
-                return redirect('/dashboard')->with('success', 'Login Successful');
+                return redirect('/dashboard')->with('success', 'Login Successful.');
             } else {
                 return back()->with('error', 'Invalid Credentials.');
             }
@@ -65,7 +65,7 @@ class AuthController extends Controller
     }
     public function dashboard()
     {
-        $total_employees = User::where('role', 'employee')->where('status', 'active')->count();
+        $total_employees = User::where('role', 'employee')->where('status', 'accepted')->count();
         $total_admins = User::where('role', 'admin')->count();
         $total_employees_left = User::where('role', 'employee')->where('status', 'left')->count();
         return view('dashboard', compact('total_employees', 'total_admins', 'total_employees_left'));

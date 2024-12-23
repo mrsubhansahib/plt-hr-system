@@ -27,7 +27,11 @@ class LogObserver
      */
     public function updated(Model $model)
     {
-        $this->logAction($model, 'update');
+        if ($model->isDirty('status')) { // Check if 'status' field was updated
+            $newStatus = $model->getAttribute('status'); // Get the updated status value
+            $action = $newStatus === 'active' ? 'active' : ($newStatus === 'rejected' ? 'rejected' : ($newStatus === 'left' ? 'left' : ($newStatus === 'accepted' ? 'accepted' : ($newStatus === 'deleted' ? 'deleted' : 'updated'))));
+            $this->logAction($model, $action); // Log the specific action
+        }
     }
 
     /**
