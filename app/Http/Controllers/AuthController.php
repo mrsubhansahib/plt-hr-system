@@ -65,8 +65,8 @@ class AuthController extends Controller
     }
     public function dashboard()
     {
-        $total_employees = User::where('role', 'employee')->where('status', 'accepted')->count();
-        $total_admins = User::where('role', 'admin')->count();
+        $total_employees = User::where('role', 'employee')->where('status', 'active')->count();
+        $total_admins = User::where('role', 'admin')->where('status', 'active')->count();
         $total_employees_left = User::where('role', 'employee')->where('status', 'left')->count();
         return view('dashboard', compact('total_employees', 'total_admins', 'total_employees_left'));
     }
