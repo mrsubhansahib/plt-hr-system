@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
+                        <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
                                     <th>#</th>

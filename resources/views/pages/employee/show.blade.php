@@ -116,7 +116,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-job" class="table table-striped detailTable">
+                            <table  class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -182,7 +182,7 @@
                             @endif
                         </div>
                         <div class="">
-                            <table id="table-disclosure" class="table table-striped detailTable">
+                            <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -247,7 +247,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-sickness" class="table table-striped detailTable">
+                            <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -314,7 +314,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-capability" class="table table-striped detailTable">
+                            <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -385,7 +385,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-training" class="table table-striped detailTable">
+                            <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -456,7 +456,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-disciplinary" class="table table-striped detailTable">
+                            <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -522,7 +522,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="table-lateness" class="table table-striped detailTable">
+                            <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -592,15 +592,7 @@
     @push('custom-scripts')
         <script>
             $(document).ready(function() {
-                // Initialize DataTables for each table manually
-                $('#table-job').DataTable();
-                $('#table-disclosure').DataTable();
-                $('#table-sickness').DataTable();
-                $('#table-capability').DataTable();
-                $('#table-training').DataTable();
-                $('#table-dsciplinary').DataTable();
-                $('#table-lateness').DataTable();
-                // Add initialization for other tables here
+                
 
                 // Adjust DataTable columns when tab is shown
                 $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {

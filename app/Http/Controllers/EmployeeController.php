@@ -18,7 +18,7 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $users = User::where('role', 'employee')->where('status', 'accepted')->get();
+        $users = User::where('role', 'employee')->where('status', 'active')->get();
         // dd($users);
         return view('pages.employee.list', compact('users'));
     }
@@ -73,11 +73,12 @@ class EmployeeController extends Controller
     }
     public function accept_employee($id)
     {
-        // dd($id);
+        session()->put('is_acceptance', true); 
         $user = User::find($id);
-        $user->update(['status' => 'accepted']);
+        $user->update(['status' => 'active']);
+        session()->forget('is_acceptance');
         return redirect()->route('show.employees')
-            ->with('success', 'Employee activated successfully.');
+            ->with('success', 'Employee accepted successfully.');
     }
     public function reject_employee($id)
     {
@@ -173,8 +174,8 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id); 
-        $user->update(['status' => 'deleted']); 
+        $user = User::findOrFail($id);
+        $user->update(['status' => 'deleted']);
         return redirect()->route('show.employees')
             ->with('success', 'Employee deleted successfully.');
     }
