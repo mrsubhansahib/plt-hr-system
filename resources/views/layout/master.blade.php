@@ -164,13 +164,13 @@
         $(document).ready(function() {
             // Initialize the DataTable with optimized options
             var table = $('.dataTableExample').DataTable({
-                autoWidth: false, // Prevent table from stretching
-                paging: true, // Enable pagination
-                searching: true, // Enable column search
-                ordering: true, // Enable sorting on columns
-                info: true, 
+                // autoWidth: false, // Prevent table from stretching
+                // paging: true, // Enable pagination
+                // searching: true, // Enable column search
+                // ordering: true, // Enable sorting on columns
+                // info: true, 
                 // dom: 'Bfrtip', // Add buttons to the table
-                // buttons: ['copy', 'csv', 'excel'],
+                // buttons: ['csv', 'excel'],
                 initComplete: function() {
                     // Fix table layout after initialization
                     var table = this.api();
