@@ -142,8 +142,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
-
+        $user = User::findOrFail($id); 
+        $user->update(['status' => 'deleted']); 
         return redirect()->route('show.admins')
             ->with('success', 'Admin deleted successfully.');
     }

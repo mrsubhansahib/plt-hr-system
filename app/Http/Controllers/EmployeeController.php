@@ -18,7 +18,7 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $users = User::where('role', 'employee')->where('status', 'active')->get();
+        $users = User::where('role', 'employee')->where('status', 'accepted')->get();
         // dd($users);
         return view('pages.employee.list', compact('users'));
     }
@@ -75,10 +75,11 @@ class EmployeeController extends Controller
     {
         // dd($id);
         $user = User::find($id);
-        $user->update(['status' => 'active']);
+        $user->update(['status' => 'accepted']);
         return redirect()->route('show.employees')
             ->with('success', 'Employee activated successfully.');
-    }public function reject_employee($id)
+    }
+    public function reject_employee($id)
     {
         // dd($id);
         $user = User::find($id);
@@ -95,9 +96,9 @@ class EmployeeController extends Controller
     public function show($id)
     {
 
-        $user = User::with(['jobs', 'disclosure','sicknesses','capabilities','disciplinaries','latenesses','trainings'])->find($id);
+        $user = User::with(['jobs', 'disclosure', 'sicknesses', 'capabilities', 'disciplinaries', 'latenesses', 'trainings'])->find($id);
         $hasDisclosure = $user->disclosure()->count();
-        return view('pages.employee.show', compact('user','hasDisclosure'));
+        return view('pages.employee.show', compact('user', 'hasDisclosure'));
     }
 
     /**
@@ -148,16 +149,19 @@ class EmployeeController extends Controller
         return redirect()->route('show.employees')->with('success', 'Employee edited successfully.');
     }
 
-    public function left($id){
+    public function left($id)
+    {
         $user = User::find($id);
         $user->update(['status' => 'left']);
         return redirect()->route('show.left.employees')->with('success', 'Employee lefted successfully.');
     }
-    public function left_employees(){
+    public function left_employees()
+    {
         $users = User::where('role', 'employee')->where('status', 'left')->get();
         return view('pages.left_employee.list', compact('users'));
     }
-    public function active_employee($id){
+    public function active_employee($id)
+    {
         $user = User::find($id);
         $user->update(['status' => 'active']);
         return redirect()->route('show.employees')->with('success', 'Employee activated successfully.');
@@ -169,8 +173,8 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
-
+        $user = User::findOrFail($id); 
+        $user->update(['status' => 'deleted']); 
         return redirect()->route('show.employees')
             ->with('success', 'Employee deleted successfully.');
     }
