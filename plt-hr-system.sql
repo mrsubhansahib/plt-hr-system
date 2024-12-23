@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 19, 2024 at 01:04 PM
+-- Generation Time: Dec 23, 2024 at 08:52 AM
 -- Server version: 8.0.30
--- PHP Version: 8.2.19
+-- PHP Version: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -135,13 +135,6 @@ CREATE TABLE `jobs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `jobs`
---
-
-INSERT INTO `jobs` (`id`, `title`, `main_job`, `user_id`, `facility`, `cost_center`, `start_date`, `rate_of_pay`, `number_of_hours`, `contract_type`, `termination_date`, `contract_returned`, `jd_returned`, `dbs_required`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 'Swimming Teacher Co-ordinator', 'yes', 3, 'Seedhill Athletics and Fitness Centre', 'A occaecat facilis e', '10-Jan-2022', 'Dolor quas ea fugiat', '83', 'Casual', '07-Aug-1976', 'yes', 'yes', 'no', 'Est ex labore error', '2024-12-19 07:10:39', '2024-12-19 07:10:39');
-
 -- --------------------------------------------------------
 
 --
@@ -178,20 +171,6 @@ CREATE TABLE `logs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `logs`
---
-
-INSERT INTO `logs` (`id`, `admin_id`, `user_id`, `module_id`, `module_type`, `action`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 'User', 'update', '2024-12-19 07:09:29', '2024-12-19 07:09:29'),
-(2, 1, 2, 2, 'User', 'create', '2024-12-19 07:09:56', '2024-12-19 07:09:56'),
-(3, 1, 3, 3, 'User', 'create', '2024-12-19 07:10:24', '2024-12-19 07:10:24'),
-(4, 1, 3, 3, 'User', 'update', '2024-12-19 07:10:30', '2024-12-19 07:10:30'),
-(5, 1, 3, 1, 'Job', 'create', '2024-12-19 07:10:40', '2024-12-19 07:10:40'),
-(6, 1, 3, 3, 'User', 'update', '2024-12-19 07:12:00', '2024-12-19 07:12:00'),
-(7, 1, 3, 3, 'User', 'update', '2024-12-19 07:12:16', '2024-12-19 07:12:16'),
-(8, 1, 1, 1, 'User', 'update', '2024-12-19 07:14:43', '2024-12-19 07:14:43');
-
 -- --------------------------------------------------------
 
 --
@@ -221,7 +200,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2024_11_21_085848_create_capabilities_table', 1),
 (11, '2024_11_21_090732_create_disciplinaries_table', 1),
 (12, '2024_11_21_091749_create_trainings_table', 1),
-(13, '2024_12_18_113234_create_logs_table', 2);
+(13, '2024_12_18_113234_create_logs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -363,9 +342,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `status`, `first_name`, `middle_name`, `surname`, `preferred_name`, `role`, `email`, `password`, `address1`, `address2`, `address3`, `town`, `post_code`, `mobile_tel`, `home_tel`, `dob`, `age`, `gender`, `ethnicity`, `disability`, `ni_number`, `commencement_date`, `contracted_from_date`, `termination_date`, `reason_termination`, `handbook_sent`, `medical_form_returned`, `new_entrant_form_returned`, `confidentiality_statement_returned`, `work_document_received`, `qualifications_checked`, `references_requested`, `references_returned`, `payroll_informed`, `probation_complete`, `equipment_required`, `equipment_ordered`, `default_cost_center`, `salaried`, `casual_holiday_pay`, `p45`, `employee_pack_sent`, `emergency_1_name`, `emergency_1_ph_no`, `emergency_1_home_ph`, `emergency_1_relation`, `emergency_2_name`, `emergency_2_ph_no`, `emergency_2_home_ph`, `emergency_2_relation`, `termination_form_to_payroll`, `notes`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'active', 'Softic', 'Era', 'Admin', '', 'super_admin', 'admin@softicera.com', '$2y$10$7UYpyKjnMKx56py..nfb5ehzrFlatFgvTUxl07FuXrYTqmSwKSxT.', 'Jinnah Colony It Tower 2', '', '', '', '', '21123231321', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '2024-12-17 10:17:44', '2024-12-19 07:14:43'),
-(2, 'active', 'Emerald', NULL, 'Little', 'Carolyn Compton', 'admin', 'kudijopico@mailinator.com', '$2y$10$qOn2UNNDaLr6l5o7wt2o7e.V7oJDOcQmF2qF.ea4vPMrf2Xp.SwqS', '72 West Green Oak Parkway', NULL, NULL, 'Consequat Quos aliq', 'Cupiditate ipsam id', NULL, NULL, 'Minus asperiores qua', '88', 'other', 'Mixed White and Black African', NULL, '638', '21-Aug-1998', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Saepe qui iste et ea', 'Doloremque et nobis', NULL, NULL, NULL, 'Graham Hale', '51', NULL, 'Incididunt nihil acc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-12-19 07:09:56', '2024-12-19 07:09:56'),
-(3, 'active', 'Kenneth', 'Phyllis Barber', 'Sparks', 'Kalia Sheppard', 'employee', 'buhezagidi@mailinator.com', 'Pa$$w0rd!', '830 East First Drive', 'Facilis eligendi qui', 'Voluptatem Eveniet', 'Obcaecati saepe quis', 'Laborum ut accusanti', 'Aliquid adipisci neq', 'Mollit vel unde corp', 'Quia proident volup', '44', 'other', 'Black or Black British Caribbean', 'no', '196', '20-May-1981', '17-Mar-1987', '16-Jun-1990', 'Laborum qui magnam n', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'no', 'yes', 'no', 'not_required', 'phone', 'other', 'Exercitation minus q', 'Mollit excepteur nul', '9', 'no', 'yes', 'Heidi Norton', '34', '24', 'Libero rerum eligend', 'Scarlett Adams', '26', '100', 'Id quam exercitatio', 'no', 'Delectus ad sint q', NULL, NULL, '2024-12-19 07:10:24', '2024-12-19 07:12:16');
+(1, 'active', 'Thumbs Up', 'Digital', 'Admin', '', 'super_admin', 'admin@thumbsupdigital.com', '$2y$10$HGWEce5SeoBdypiVDpKbKeJGCbXzNFTlGhDshJs1OS89C2tTAY/NG', 'Jinnah Colony It Tower 2', '', '', '', '', '00000000000', '00000000000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '2024-12-23 03:51:29', '2024-12-23 03:51:29');
 
 --
 -- Indexes for dumped tables
@@ -505,7 +482,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `latenesses`
@@ -517,7 +494,7 @@ ALTER TABLE `latenesses`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -547,7 +524,7 @@ ALTER TABLE `trainings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
