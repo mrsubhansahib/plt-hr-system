@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Responsive Laravel Admin Dashboard Template based on Bootstrap 5">
     <meta name="author" content="NobleUI">
-    <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
+    <meta name="keywords"
+        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
 
     <title>PLT HR System</title>
 
@@ -25,10 +26,14 @@
     <!-- plugin css -->
     <link href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+    <!-- DataTables Buttons CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.0/css/buttons.dataTables.min.css">
     <!-- end plugin css -->
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
-    @stack('plugin-styles') 
+
+    @stack('plugin-styles')
 
 
 
@@ -75,12 +80,19 @@
     <!-- common js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
 
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
+    <!-- DataTables Buttons JS -->
+    <script src="https://cdn.datatables.net/buttons/2.2.0/js/dataTables.buttons.min.js"></script>
 
+    <!-- JSZip (for Excel export) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+    <!-- DataTables Buttons for Excel, CSV, etc. -->
+    <script src="https://cdn.datatables.net/buttons/2.2.0/js/buttons.html5.min.js"></script>
     @stack('custom-scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -160,17 +172,28 @@
             return true;
         }
     </script>
+
+
+
+
+
+
+
     <script>
         $(document).ready(function() {
             // Initialize the DataTable with optimized options
             var table = $('.dataTableExample').DataTable({
-                // autoWidth: false, // Prevent table from stretching
-                // paging: true, // Enable pagination
-                // searching: true, // Enable column search
-                // ordering: true, // Enable sorting on columns
-                // info: true, 
-                // dom: 'Bfrtip', // Add buttons to the table
-                // buttons: ['csv', 'excel'],
+                autoWidth: false, // Prevent table from stretching
+                paging: true, // Enable pagination
+                searching: true, // Enable column search
+                ordering: true, // Enable sorting on columns
+                info: true,
+                dom: 'Bfrtip', // Add the buttons above the table
+                buttons: [
+                    'csv', // CSV export
+                    'excel', // Excel export
+                    // You can also add other buttons like 'pdf', 'copy', etc.
+                ],
                 initComplete: function() {
                     // Fix table layout after initialization
                     var table = this.api();
@@ -200,6 +223,7 @@
             });
         });
     </script>
+
 
 </body>
 
