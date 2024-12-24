@@ -232,6 +232,28 @@
                 </div>
             </li>
 
+            {{-- Dropdowns --}}
+            <li class="nav-item {{ active_class(['dropdowns/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Dropdowns" role="button"
+                    aria-expanded="{{ is_active_route(['dropdowns/*']) }}" aria-controls="Dropdowns">
+                    <i class="link-icon" data-feather="menu"></i> <!-- Updated icon -->
+                    <span class="link-title">Dropdowns</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['dropdowns/*']) }}" id="Dropdowns">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.dropdowns') }}"
+                                class="nav-link {{ active_class(['dropdowns/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.dropdown') }}"
+                                class="nav-link {{ active_class(['dropdowns/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
             {{-- <li class="nav-item nav-category">Components</li>
             <li class="nav-item {{ active_class(['ui-components/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button"
