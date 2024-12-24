@@ -20,6 +20,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CapabilityController;
 use App\Http\Controllers\DisclosureController;
+use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobController;
@@ -168,6 +169,12 @@ Route::middleware('auth')->group(function () {
     // Route for changes.
     Route::group(['prefix' => 'activities'], function () {
         Route::get('/list', [LogController::class, 'index'])->name('logs.index');
+    });
+    // Routes for dropdowns
+    Route::prefix('dropdowns')->group(function () {
+        Route::get('list', [DropdownController::class, 'index'])->name('show.dropdowns');
+        Route::get('create', [DropdownController::class, 'create'])->name('create.dropdown');
+        Route::post('store', [DropdownController::class, 'store'])->name('store.dropdown');
     });
 });
 
