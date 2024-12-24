@@ -28,7 +28,7 @@
                             <!-- Module Type -->
                             <div class="col-md-4 mt-3">
                                 <label class="form-label">Module Type<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="module_type">
+                                <select class="form-control form-select" required name="module_type" id="moduleType">
                                     <option value="" selected disabled>Select Module Type</option>
                                     <option value="User">User</option>
                                     <option value="Job">Job</option>
@@ -40,7 +40,7 @@
                             <!-- Dropdown Name -->
                             <div class="col-md-4 mt-3">
                                 <label class="form-label">Name<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="dropdown_name">
+                                <select class="form-control form-select" required name="name" id="dropdownName">
                                     <option value="" selected disabled>Select Dropdown Name</option>
                                     <option value="Ethnicity">Ethnicity</option>
                                     <option value="Facility">Facility</option>
@@ -55,14 +55,44 @@
                             <!-- Dropdown Value -->
                             <div class="col-md-4 mt-3">
                                 <label class="form-label">Value<span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" placeholder="Enter Value" required
-                                    name="dropdown_value" />
+                                <input class="form-control" type="text" placeholder="Enter Value" required name="value" />
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    </form>                    
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get references to the dropdowns
+        const moduleTypeSelect = document.getElementById('moduleType');
+        const dropdownNameSelect = document.getElementById('dropdownName');
+        // Define options for each Module Type
+        const moduleOptions = {
+            User: ['Ethnicity', 'Equipment Required'],
+            Job: ['Job Title', 'Facility', 'Contract Type'],
+            Capability: ['Capability Stage'],
+            Lateness: ['Lateness Stage'],
+            Training: ['Training Course Titles'],
+        };
+        // Event listener for Module Type selection
+        moduleTypeSelect.addEventListener('change', function () {
+            const selectedModule = moduleTypeSelect.value;
+            // Clear existing options in Dropdown Name
+            dropdownNameSelect.innerHTML = '<option value="" selected disabled>Select Dropdown Name</option>';
+            // Populate options based on selected Module Type
+            if (moduleOptions[selectedModule]) {
+                moduleOptions[selectedModule].forEach(option => {
+                    const newOption = document.createElement('option');
+                    newOption.value = option;
+                    newOption.textContent = option;
+                    dropdownNameSelect.appendChild(newOption);
+                });
+            }
+        });
+    });
+</script>
