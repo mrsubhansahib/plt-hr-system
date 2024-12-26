@@ -55,7 +55,7 @@ class LogObserver
      */
     public function deleted(Model $model)
     {
-        $this->logAction($model, 'delete');
+        $this->logAction($model, 'deleted');
     }
 
     /**

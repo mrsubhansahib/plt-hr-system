@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('status')->default('active');
             $table->string('main_job')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('facility');

@@ -28,7 +28,7 @@ class CreateController extends Controller
     public function jobCreate($id)
     {
         $user_id = $id;
-        $employee = User::where('id', $id)->where('role', 'employee')->first();
+        $employee = User::where('id', $id)->where('role', 'employee')->where('status', 'active')->first();
         return view("pages.employee.detail.job", compact("employee", "user_id"));
     }
     public function jobStore(Request $request)

@@ -6,6 +6,7 @@ use App\Job;
 use App\Capability;
 use App\Disciplinary;
 use App\Disclosure;
+use App\Dropdown;
 use App\Lateness;
 use App\Sickness;
 use App\Training;
@@ -26,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
         Sickness::observe(LogObserver::class);
         Training::observe(LogObserver::class);
         User::observe(LogObserver::class);
+        Dropdown::observe(LogObserver::class);
     }
 }
