@@ -172,12 +172,12 @@ Route::middleware('auth')->group(function () {
     });
     // Routes for dropdowns
     Route::prefix('dropdowns')->group(function () {
-        Route::get('list', [DropdownController::class, 'index'])->name('show.dropdowns');
-        Route::get('create', [DropdownController::class, 'create'])->name('create.dropdown');
-        Route::post('store', [DropdownController::class, 'store'])->name('store.dropdown');
-        Route::get('edit/{id}', [DropdownController::class, 'edit'])->name('edit.dropdown');
-        Route::post('update/{id}', [DropdownController::class, 'update'])->name('update.dropdown');
-        Route::get('delete/{id}', [DropdownController::class, 'destroy'])->name('delete.dropdown');
+        Route::get('list',          [DropdownController::class, 'index'])->name('show.dropdowns');
+        Route::get('create',        [DropdownController::class, 'create'])->name('create.dropdown');
+        Route::post('store',        [DropdownController::class, 'store'])->name('store.dropdown');
+        Route::get('edit/{id}',     [DropdownController::class, 'edit'])->name('edit.dropdown');
+        Route::post('update/{id}',  [DropdownController::class, 'update'])->name('update.dropdown');
+        Route::get('delete/{id}',   [DropdownController::class, 'destroy'])->name('delete.dropdown');
     });
     
 });

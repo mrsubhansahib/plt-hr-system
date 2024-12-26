@@ -44,7 +44,7 @@
                                     <option value="" selected disabled>Select Dropdown Name</option>
                                     <option value="Ethnicity">Ethnicity</option>
                                     <option value="Facility">Facility</option>
-                                    <option value="Job Title">Job Title</option>
+                                    <option value="Title">Title</option>
                                     <option value="Contract Type">Contract Type</option>
                                     <option value="Equipment Required">Equipment Required</option>
                                     <option value="Capability Stage">Capability Stage</option>
@@ -74,7 +74,7 @@
         // Define options for each Module Type
         const moduleOptions = {
             User: ['Ethnicity', 'Equipment Required'],
-            Job: ['Job Title', 'Facility', 'Contract Type'],
+            Job: ['Title', 'Facility', 'Contract Type'],
             Capability: ['Capability Stage'],
             Lateness: ['Lateness Stage'],
             Training: ['Training Course Titles'],

@@ -15,14 +15,14 @@
                 <div class="card-body">
                     <h3 class="my-4 text-center">Job Details</h3>
                     <hr>
-                    <form class="forms-sample" action="{{ route('update.job' , $job->id) }}" method="POST">
+                    <form class="forms-sample" action="{{ route('update.job', $job->id) }}" method="POST">
                         @csrf
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" value="{{ $job->user->first_name }}" disabled>
-                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type" >
-                            </div>                                                        
+                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type">
+                            </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="title">
@@ -198,6 +198,13 @@
                                     <option value="Usher" {{ $job->title == 'Usher' ? 'selected' : '' }}>Usher</option>
                                     <option value="Wages Assistant"
                                         {{ $job->title == 'Wages Assistant' ? 'selected' : '' }}>Wages Assistant</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Title')
+                                            <option value="{{ $dropdown->value }}"
+                                                {{ old('title', $job->title) == $dropdown->value ? 'selected' : '' }}>
+                                                {{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
@@ -235,6 +242,13 @@
                                     <option value="All Facilities"
                                         {{ $job->facility == 'All Facilities' ? 'selected' : '' }}>All Facilities
                                     </option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Facility')
+                                            <option value="{{ $dropdown->value }}"
+                                                {{ old('facility', $job->facility) == $dropdown->value ? 'selected' : '' }}>
+                                                {{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
@@ -244,13 +258,13 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Start Date <span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" value="{{ $job->start_date }}" required
-                                    name="start_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    value="{{ $job->start_date }}" required name="start_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Termination Date </label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" value="{{ $job->termination_date }}"
-                                    name="termination_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    value="{{ $job->termination_date }}" name="termination_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
@@ -277,6 +291,13 @@
                                     <option value="Permanent Variable"
                                         {{ $job->contract_type == 'Permanent Variable' ? 'selected' : '' }}>Permanent
                                         Variable</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Contract Type')
+                                            <option value="{{ $dropdown->value }}"
+                                                {{ old('contract_type', $job->contract_type) == $dropdown->value ? 'selected' : '' }}>
+                                                {{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

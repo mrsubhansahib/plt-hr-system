@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dropdown;
 use App\Training;
 use App\User;
 use Illuminate\Http\Request;
@@ -28,8 +29,10 @@ class TrainingController extends Controller
      */
     public function create()
     {
+        $dropdowns = Dropdown::where('module_type', 'Training')->orderBy('name')->get()->all();
+
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view('pages.training.create', compact('employees'));
+        return view('pages.training.create', compact('employees', 'dropdowns'));
     }
 
     /**
@@ -72,10 +75,11 @@ class TrainingController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Training')->orderBy('name')->get()->all();
         $form_type = $request->form_type;
         $training = Training::with('user')->find($id);
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view('pages.training.edit', compact('training', 'employees' ,'form_type'));
+        return view('pages.training.edit', compact('training', 'employees' ,'form_type', 'dropdowns'));
     }
 
     /**

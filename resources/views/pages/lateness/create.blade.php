@@ -49,6 +49,11 @@
                                     <option value="Further Lateness">Further Lateness</option>
                                     <option value="Lateness Formal Interview"> Lateness Formal Interview</option>
                                     <option value="Other"> Other</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'Lateness' && $dropdown->name == 'Lateness Stage')
+                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

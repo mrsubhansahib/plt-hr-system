@@ -52,6 +52,11 @@
                                     <option value="IOSH Managing Safely">IOSH Managing Safely</option>
                                     <option value="Swimming Teaching Course">Swimming Teaching Course</option>
                                     <option value="Other">Other</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'Training' && $dropdown->name == 'Training Course Titles')
+                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

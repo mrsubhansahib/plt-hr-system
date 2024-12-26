@@ -131,6 +131,13 @@
                                                 {{ $user->ethnicity == 'Other Ethnic Group' ? 'selected' : '' }}>Other
                                                 Ethnic
                                                 Group</option>
+                                            @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
+                                                    <option value="{{ $dropdown->value }}"
+                                                        {{ old('ethnicity', $user->ethnicity) == $dropdown->value ? 'selected' : '' }}>
+                                                        {{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
@@ -156,8 +163,8 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Mobile <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="number" placeholder="phone number" required name="emergency_1_ph_no"
-                                            value="{{ $user->emergency_1_ph_no }}" />
+                                        <input class="form-control" type="number" placeholder="phone number" required
+                                            name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Relationship <span
@@ -235,7 +242,8 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Disability</label>
-                                        <select class="form-control form-select" name="disability" value="{{ $user->disability }}">
+                                        <select class="form-control form-select" name="disability"
+                                            value="{{ $user->disability }}">
                                             <option value="yes" {{ $user->disability == 'yes' ? 'selected' : '' }}>Yes
                                             </option>
                                             <option value="no" {{ $user->disability == 'no' ? 'selected' : '' }}>No
@@ -244,8 +252,8 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_1_home_ph"
-                                            value="{{ $user->emergency_1_home_ph }}" />
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_1_home_ph" value="{{ $user->emergency_1_home_ph }}" />
                                     </div>
 
                                     <div class="col-md-3 mt-3">
@@ -255,13 +263,13 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Mobile</label>
-                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_2_ph_no"
-                                            value="{{ $user->emergency_2_ph_no }}" />
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_2_home_ph"
-                                            value="{{ $user->emergency_2_home_ph }}" />
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Relationship</label>
@@ -417,6 +425,13 @@
                                                 {{ $user->equipment_required == 'phone' ? 'selected' : '' }}>Phone</option>
                                             <option value="none"
                                                 {{ $user->equipment_required == 'none' ? 'selected' : '' }}>None</option>
+                                            @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Equipment Required')
+                                                    <option value="{{ $dropdown->value }}"
+                                                        {{ old('equipment_required', $user->equipment_required) == $dropdown->value ? 'selected' : '' }}>
+                                                        {{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
@@ -438,11 +453,13 @@
                                             </option>
                                             <option value="other"
                                                 {{ $user->equipment_ordered == 'other' ? 'selected' : '' }}>other</option>
+
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">P45 / Tax Form Received</label>
-                                        <select class="form-control form-select" name="p45" value="{{ $user->p45 }}">
+                                        <select class="form-control form-select" name="p45"
+                                            value="{{ $user->p45 }}">
                                             <option value="yes" {{ $user->p45 == 'yes' ? 'selected' : '' }}>Yes
                                             </option>
                                             <option value="no" {{ $user->p45 == 'no' ? 'selected' : '' }}>No</option>

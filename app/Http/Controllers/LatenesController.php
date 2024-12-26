@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dropdown;
 use App\Lateness;
 use App\User;
 use Illuminate\Http\Request;
@@ -28,8 +29,9 @@ class LatenesController extends Controller
      */
     public function create()
     {
+        $dropdowns = Dropdown::where('module_type', 'Lateness')->orderBy('name')->get()->all();
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view("pages.lateness.create", compact("employees"));
+        return view("pages.lateness.create", compact("employees", 'dropdowns'));
     }
 
     /**
@@ -73,10 +75,11 @@ class LatenesController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Lateness')->orderBy('name')->get()->all();
         $form_type = $request->form_type;
         $employees = User::where('role', 'employee')->where('status','active')->get();
         $lateness = lateness::with('user')->findOrFail($id);
-        return view("pages.lateness.edit", compact("lateness","employees", "form_type"));
+        return view("pages.lateness.edit", compact("lateness","employees", "form_type", 'dropdowns'));
     }
 
     /**

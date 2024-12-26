@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Capability;
+use App\Dropdown;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -28,8 +29,9 @@ class CapabilityController extends Controller
      */
     public function create()
     {
+        $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view("pages.capability.create", compact('employees'));
+        return view("pages.capability.create", compact('employees', 'dropdowns'));
     }
 
     /**
@@ -73,10 +75,11 @@ class CapabilityController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
         $form_type = $request->form_type;
         $capability = Capability::with('user')->find($id);
         $employees = User::where('role', 'employee')->where('status','active')->get();
-        return view("pages.capability.edit", compact('capability', 'employees', 'form_type'));
+        return view("pages.capability.edit", compact('capability', 'employees', 'form_type', 'dropdowns'));
     }
 
     /**
