@@ -51,7 +51,6 @@ class EmployeeController extends Controller
             'surname'                   => 'required',
             'preferred_name'            => 'required',
             'email'                     => 'required',
-            'password'                  => 'required',
             'address1'                  => 'required',
             'town'                      => 'required',
             'post_code'                 => 'required',

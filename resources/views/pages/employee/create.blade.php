@@ -93,10 +93,6 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">password <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="password" name="password" required />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                         <select class="form-control form-select" required name="ethnicity">
                                             <option value="" selected disabled>Select</option>

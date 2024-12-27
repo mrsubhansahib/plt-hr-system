@@ -48,7 +48,6 @@ class CapabilityController extends Controller
             'outcome'                       => 'required',
             'warning_issued_type'           => 'required',
             'review_date'                   => 'required',
-            'notes'                         => 'required'
         ]);
         Capability::create($request->all());
         return redirect()->route('show.capabilities')->with('success', 'Capability created successfully.');
@@ -95,7 +94,6 @@ class CapabilityController extends Controller
             'outcome'                       => 'required',
             'warning_issued_type'           => 'required',
             'review_date'                   => 'required',
-            'notes'                         => 'required'
         ]);
         $capability = Capability::findOrFail($id);
         $capability->update($request->all());

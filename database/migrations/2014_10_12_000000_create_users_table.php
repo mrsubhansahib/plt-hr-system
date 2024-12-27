@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('preferred_name');
             $table->string('role')->default('employee'); // Role field
             $table->string('email');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('address1');
             $table->string('address2')->nullable();
             $table->string('address3')->nullable();

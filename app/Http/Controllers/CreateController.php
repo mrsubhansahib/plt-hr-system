@@ -126,7 +126,6 @@ class CreateController extends Controller
             'outcome'                       => 'required',
             'warning_issued_type'           => 'required',
             'review_date'                   => 'required',
-            'notes'                         => 'required'
         ]);
         Capability::create($request->all());
         // dd($request->all());
@@ -156,7 +155,6 @@ class CreateController extends Controller
             'renewal_date'                  => 'required',
             'ihasco_training_sent'          => 'required',
             'ihasco_training_complete'      => 'required',
-            'notes'                         => 'required'
         ]);
         Training::create($request->all());
         // dd($request->all());
@@ -185,7 +183,6 @@ class CreateController extends Controller
             'outcome'                           => 'required',
             'suspended'                         => 'required',
             'date_suspended'                    => 'required',
-            'notes'                             => 'required'
         ]);
         Disciplinary::create($request->all());
         // dd($request->all());
@@ -213,7 +210,6 @@ class CreateController extends Controller
             'warning_level'                     => 'required',
             'outcome'                           => 'required',
             'review_date'                       => 'required',
-            'notes'                             => 'required'
         ]);
         Lateness::create($request->all());
         // dd($request->all());

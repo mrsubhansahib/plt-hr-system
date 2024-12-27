@@ -61,7 +61,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <label class="form-label">Note</label>
+                                <label class="form-label">Notes</label>
                                 <textarea class="form-control" name="notes" rows="4" cols="4">{{ $sickness->notes }}</textarea>
                             </div>
                         </div>

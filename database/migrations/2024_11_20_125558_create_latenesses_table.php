@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('warning_level');
             $table->text('outcome');
             $table->text('review_date');
-            $table->text('notes');
+            $table->text('notes')->nullable();
             
             $table->timestamps();
         });
