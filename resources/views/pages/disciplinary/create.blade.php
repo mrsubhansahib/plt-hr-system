@@ -67,8 +67,8 @@
                                     name="date_suspended" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes<span class="text-danger">*</span></label>
-                                <textarea class="form-control" required name="notes" rows="4"></textarea>
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-control" name="notes" rows="4"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

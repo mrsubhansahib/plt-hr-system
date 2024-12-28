@@ -49,7 +49,6 @@ class LatenesController extends Controller
             'warning_level'=> 'required',
             'outcome'=> 'required',
             'review_date'=> 'required',
-            'notes'=> 'required',
         ]);
         $lateness = lateness::create($request->all());
         return redirect()->route('show.latenesses')->with('success','Lateness created successfully.');
@@ -94,10 +93,9 @@ class LatenesController extends Controller
         $request->validate([
             'lateness_triggered'=> 'required',
             'lateness_stage'=> 'required',
-        'warning_level'=> 'required',
+            'warning_level'=> 'required',
             'outcome'=> 'required',
             'review_date'=> 'required',
-            'notes'=> 'required',
         ]);
             $lateness = lateness::findOrFail($id);
             $lateness->update($request->all());

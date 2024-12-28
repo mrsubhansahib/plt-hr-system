@@ -53,7 +53,6 @@ class EmployeeController extends Controller
             'surname'                   => 'required',
             'preferred_name'            => 'required',
             'email'                     => 'required',
-            'password'                  => 'required',
             'address1'                  => 'required',
             'town'                      => 'required',
             'post_code'                 => 'required',
@@ -75,7 +74,7 @@ class EmployeeController extends Controller
     }
     public function accept_employee($id)
     {
-        session()->put('is_acceptance', true); 
+        session()->put('is_acceptance', true);
         $user = User::find($id);
         $user->update(['status' => 'active']);
         session()->forget('is_acceptance');
@@ -98,8 +97,17 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-
-        $user = User::with(['jobs', 'disclosure', 'sicknesses', 'capabilities', 'disciplinaries', 'latenesses', 'trainings'])->find($id);
+        $user = User::with([
+            'jobs' => function ($e) {
+                $e->where('status', 'active');
+            },
+            'disclosure',
+            'sicknesses',
+            'capabilities',
+            'disciplinaries',
+            'latenesses',
+            'trainings'
+        ])->find($id);
         $hasDisclosure = $user->disclosure()->count();
         return view('pages.employee.show', compact('user', 'hasDisclosure'));
     }
