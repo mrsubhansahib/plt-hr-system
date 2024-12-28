@@ -13,7 +13,15 @@
         @include('layout.alert')
         <div class="card">
             <div class="card-body">
-                <h4 class="text-center">Personal Details</h4>
+                <div class="d-flex justify-content-between py-2">
+                    <div>
+                        <h4 class="py-2">Personal Details</h4>
+                    </div>
+                    <div>
+                        <a href="{{ route('edit.employee', $user->id) }}"
+                            class="btn btn-primary"><strong class="me-1">Edit</strong><i data-feather="edit"></i></a>
+                    </div>
+                </div>
                 <div class="my-4">
                     <div class="row my-3">
                         <div class="col-md-4 my-2">

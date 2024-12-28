@@ -97,11 +97,39 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Bootstrap Datepicker
-            $('.datepicker').datepicker({
-                format: 'dd-mm-yyyy', // Format for display
-                autoclose: true, // Auto-close picker after date select
-                todayHighlight: true // Highlight today's date
-            });
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy', // Format for display
+            autoclose: true, // Auto-close picker after date select
+            todayHighlight: true // Highlight today's date
+        }).on('changeDate', function () {
+            calculateAge(); // Trigger age calculation when date is selected
+        });
+    });
+
+    // Age Calculator Function
+    function calculateAge() {
+        const dobInput = document.getElementById('dob').value;
+
+        // Parse DOB in the same format
+        const parts = dobInput.split('-');
+        const dob = new Date(parts[2], parts[1] - 1, parts[0]); // Convert dd-mm-yyyy to Date object
+        const today = new Date();
+
+        // Validate if DOB is valid
+        if (isNaN(dob)) {
+            document.getElementById('age').value = "Invalid Date!";
+            return;
+        }
+
+        // Calculate age
+        const diffInMilliseconds = today - dob;
+        const ageDate = new Date(diffInMilliseconds);
+        const years = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+        // Display the result
+        document.getElementById('age').value = `${years} years`;
+    }
 
             // Get all forms with the class 'forms-sample'
             let forms = document.querySelectorAll('.forms-sample');

@@ -24,7 +24,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="unrequired-fields-tab" data-bs-toggle="tab"
                                     data-bs-target="#unrequired-fields-tab-pane" type="button" role="tab"
-                                    aria-controls="unrequired-fields-tab-pane" aria-selected="false">Unrequired
+                                    aria-controls="unrequired-fields-tab-pane" aria-selected="false">Optional
                                     Fields</button>
                             </li>
                         </ul>
@@ -35,6 +35,7 @@
                                 aria-labelledby="required-fields-tab" tabindex="0">
                                 <div class="row mb-3">
                                     <h3 class="my-4 text-center">Personal Details</h3>
+                                    <!-- Personal Information -->
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">First Name <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="first_name"
@@ -51,34 +52,33 @@
                                             value="{{ $user->preferred_name }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Address 1 <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="address1"
-                                            value="{{ $user->address1 }}" />
+                                        <label class="form-label">DOB <span class="text-danger">*</span></label>
+                                        <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                            required name="dob" value="{{ $user->dob }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Town <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="town"
-                                            value="{{ $user->town }}" />
+                                        <label for="age" class="form-label">Age <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" id="age" readonly required
+                                            name="age" value="{{ $user->age }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Postcode <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="post_code"
-                                            value="{{ $user->post_code }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Email <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="email" required name="email"
-                                            value="{{ $user->email }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Age <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="number" required name="age"
-                                            value="{{ $user->age }}" />
+                                        <label class="form-label">Gender <span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="gender">
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Male
+                                            </option>
+                                            <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>Female
+                                            </option>
+                                            <option value="other" {{ $user->gender == 'other' ? 'selected' : '' }}>Other
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                         <select class="form-control form-select" required name="ethnicity">
                                             <option value="" selected disabled>Select</option>
+                                            <!-- Static Options -->
                                             <option value="White Britisha"
                                                 {{ $user->ethnicity == 'White Britisha' ? 'selected' : '' }}>White Britisha
                                             </option>
@@ -131,29 +131,42 @@
                                                 {{ $user->ethnicity == 'Other Ethnic Group' ? 'selected' : '' }}>Other
                                                 Ethnic
                                                 Group</option>
+                                            <!-- Other Ethnic Options... -->
                                             @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
                                                     <option value="{{ $dropdown->value }}"
                                                         {{ old('ethnicity', $user->ethnicity) == $dropdown->value ? 'selected' : '' }}>
-                                                        {{ $dropdown->value }}</option>
+                                                        {{ $dropdown->value }}
+                                                    </option>
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    <!-- Address Details -->
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Gender <span class="text-danger">*</span></label>
-                                        <select class="form-control form-select" required name="gender"
-                                            value="{{ $user->gender }}">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Male
-                                            </option>
-                                            <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>
-                                                Female
-                                            </option>
-                                            <option value="other" {{ $user->gender == 'other' ? 'selected' : '' }}>Other
-                                            </option>
-                                        </select>
+                                        <label class="form-label">Address 1 <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="address1"
+                                            value="{{ $user->address1 }}" />
                                     </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Town <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="town"
+                                            value="{{ $user->town }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Postcode <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="post_code"
+                                            value="{{ $user->post_code }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="email" required name="email"
+                                            value="{{ $user->email }}" />
+                                    </div>
+
+                                    <!-- Emergency Contact -->
+                                    <h3 class="my-4 text-center">Emergency Contact</h3>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Name <span
                                                 class="text-danger">*</span></label>
@@ -163,7 +176,7 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Mobile <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="number" placeholder="phone number" required
+                                        <input class="form-control" type="number" placeholder="Phone Number" required
                                             name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
@@ -172,16 +185,14 @@
                                         <input class="form-control" type="text" required name="emergency_1_relation"
                                             value="{{ $user->emergency_1_relation }}" />
                                     </div>
+
+                                    <!-- Employment Details -->
+                                    <h3 class="my-4 text-center">Employment Details</h3>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                        <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                            required name="dob" value="{{ $user->dob }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Employee Commencement Date<span
+                                        <label class="form-label">Employee Commencement Date <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                            name="commencement_date" required value="{{ $user->commencement_date }}" />
+                                            required name="commencement_date" value="{{ $user->commencement_date }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">NI Number <span class="text-danger">*</span></label>
@@ -202,6 +213,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
 
                             <div class="tab-pane fade" id="unrequired-fields-tab-pane" role="tabpanel"
