@@ -42,6 +42,11 @@
                                             value="{{ $user->first_name }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
+                                        <label class="form-label">Middle Name</label>
+                                        <input class="form-control" type="text" name="middle_name"
+                                            value="{{ $user->middle_name }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
                                         <label class="form-label">Surname <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="surname"
                                             value="{{ $user->surname }}" />
@@ -52,9 +57,11 @@
                                             value="{{ $user->preferred_name }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                        <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                            required name="dob" value="{{ $user->dob }}" />
+                                        <label for="dob" class="form-label">DOB <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control datepicker py-2" type="text" id="dob"
+                                            placeholder="Select Date" required name="dob" onchange="calculateAge()"
+                                            value="{{ $user->dob }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label for="age" class="form-label">Age <span
@@ -225,11 +232,7 @@
                                         <input class="form-control datepicker" type="text" placeholder="Select Date"
                                             name="contracted_from_date" value="{{ $user->contracted_from_date }}" />
                                     </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Middle Name</label>
-                                        <input class="form-control" type="text" name="middle_name"
-                                            value="{{ $user->middle_name }}" />
-                                    </div>
+
 
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Address 2</label>
