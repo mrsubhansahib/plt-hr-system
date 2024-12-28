@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dropdown;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('pages.employee.create');
+        $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
+        return view('pages.employee.create', compact('dropdowns'));
     }
 
     /**
@@ -117,9 +119,10 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
+        $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
         $user = User::find($id);
 
-        return view('pages.employee.edit', compact('user'));
+        return view('pages.employee.edit', compact('user', 'dropdowns'));
     }
 
     /**

@@ -19,8 +19,9 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ $training->user->first_name }}" disabled>
-                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type" >
+                                <input type="text" class="form-control" value="{{ $training->user->first_name }}"
+                                    disabled>
+                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type">
 
                             </div>
                             <div class="col-md-3 mt-3">
@@ -63,17 +64,26 @@
                                         Swimming Teaching Course</option>
                                     <option value="Other" {{ $training->training_title == 'Other' ? 'selected' : '' }}>
                                         Other</option>
+                                    <!-- Dynamic Options -->
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Training' && $dropdown->name == 'Training Course Titles')
+                                            <option value="{{ $dropdown->value }}"
+                                                {{ $training->training_title == $dropdown->value ? 'selected' : '' }}>
+                                                {{ $dropdown->value }}
+                                            </option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Course Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="course_date"
-                                    value="{{ $training->course_date }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                    name="course_date" value="{{ $training->course_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Renewal Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="renewal_date"
-                                    value="{{ $training->renewal_date }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                    name="renewal_date" value="{{ $training->renewal_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Sent<span class="text-danger">*</span></label>

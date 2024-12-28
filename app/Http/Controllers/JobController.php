@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dropdown;
 use App\Job;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class JobController extends Controller
     }
     public function create()
     {
+        $dropdowns = Dropdown::where('module_type', 'Job')->orderBy('name')->get()->all();
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
-        return view('pages.job.create', compact('employees'));
+        return view('pages.job.create', compact('employees' , 'dropdowns' ));
     }
     public function store(Request $request)
     {
@@ -43,10 +45,11 @@ class JobController extends Controller
     }
     public function edit(Request $request, $id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Job')->orderBy('name')->get()->all();
         $form_type = $request->form_type;
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
         $job = Job::with('user')->findOrFail($id);
-        return view('pages.job.edit', compact('job', 'employees', 'form_type'));
+        return view('pages.job.edit', compact('job', 'employees','form_type', 'dropdowns'));
     }
     public function update(Request $request, $id)
     {

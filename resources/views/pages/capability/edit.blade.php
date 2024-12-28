@@ -19,8 +19,9 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ $capability->user->first_name }}" disabled>
-                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type" >
+                                <input type="text" class="form-control" value="{{ $capability->user->first_name }}"
+                                    disabled>
+                                <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type">
 
                             </div>
                             <div class="col-md-3 mt-3">
@@ -59,12 +60,21 @@
                                         Capability Formal Interview</option>
                                     <option value="Other" {{ $capability->stage == 'Other' ? 'selected' : '' }}>Other
                                     </option>
+                                    <!-- Dynamic Options -->
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Capability Stage')
+                                            <option value="{{ $dropdown->value }}"
+                                                {{ $capability->stage == $dropdown->value ? 'selected' : '' }}>
+                                                {{ $dropdown->value }}
+                                            </option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date"
-                                    value="{{ $capability->date }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                    name="date" value="{{ $capability->date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome<span class="text-danger">*</span></label>
@@ -91,8 +101,8 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="review_date"
-                                    value="{{ $capability->review_date }}" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                    name="review_date" value="{{ $capability->review_date }}" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

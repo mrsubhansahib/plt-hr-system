@@ -32,7 +32,7 @@
                                     <th>#</th>
                                     <th>Module</th>
                                     <th>Type</th>
-                                    <th>Option</th>
+                                    <th>Value</th>
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->

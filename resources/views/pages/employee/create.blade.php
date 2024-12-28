@@ -41,7 +41,8 @@
                                         </div>
                                         <div>
                                             <a href="{{ route('show.temp.employees') }}"
-                                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                                                class="btn btn-primary"><strong>List</strong><i data-feather="list"
+                                                    class="ms-2"></i></a>
                                         </div>
                                     </div>
 
@@ -123,6 +124,11 @@
                                             </option>
                                             <option value="Chinese">Chinese</option>
                                             <option value="Other Ethnic Group">Other Ethnic Group</option>
+                                            @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
+                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
@@ -153,7 +159,8 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Mobile <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="number" placeholder="phone number" required name="emergency_1_ph_no" />
+                                        <input class="form-control" type="number" placeholder="phone number" required
+                                            name="emergency_1_ph_no" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Relationship <span
@@ -175,7 +182,8 @@
                                         </div>
                                         <div>
                                             <a href="{{ route('show.temp.employees') }}"
-                                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                                                class="btn btn-primary"><strong>List</strong><i data-feather="list"
+                                                    class="ms-2"></i></a>
                                         </div>
                                     </div>
 
@@ -253,7 +261,8 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Confidentiality Statement</label>
-                                        <select class="form-control form-select" name="confidentiality_statement_returned">
+                                        <select class="form-control form-select"
+                                            name="confidentiality_statement_returned">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
@@ -309,6 +318,11 @@
                                             <option value="desktop">Desktop</option>
                                             <option value="phone">Phone</option>
                                             <option value="none">None</option>
+                                            @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Equipment Required')
+                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
@@ -352,7 +366,8 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 1 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_1_home_ph" />
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_1_home_ph" />
                                     </div>
 
                                     <div class="col-md-3 mt-3">
@@ -361,11 +376,13 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Mobile</label>
-                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_2_ph_no" />
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_ph_no" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number" name="emergency_2_home_ph" />
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_home_ph" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contact 2 Relationship</label>
