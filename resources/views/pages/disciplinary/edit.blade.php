@@ -46,15 +46,15 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Suspended<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="suspended">
+                                <select id="suspended" class="form-control form-select" required name="suspended">
                                     <option value="yes" {{ ($disciplinary->suspended == 'yes') ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ ($disciplinary->suspended == 'no') ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
-                            <div class="col-md-3 mt-3">
+                            <div class="col-md-3 mt-3" id="date-suspended-container">
                                 <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_suspended" value="{{ $disciplinary->date_suspended }}" />
-                            </div>
+                                <input id="date_suspended" class="form-control datepicker" type="text" placeholder="Select Date" name="date_suspended" value="{{ $disciplinary->date_suspended }}" />
+                            </div>                            
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
                                 <textarea class="form-control" name="notes" rows="4">{{ $disciplinary->notes }}</textarea>
@@ -67,3 +67,24 @@
         </div>
     </div>
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const suspendedDropdown = document.getElementById('suspended');
+        const dateSuspendedContainer = document.getElementById('date-suspended-container');
+        const dateSuspendedField = document.getElementById('date_suspended');
+
+        const toggleDateSuspended = () => {
+            const isSuspended = suspendedDropdown.value === "yes";
+            dateSuspendedContainer.style.display = isSuspended ? "block" : "none";
+            if (isSuspended) {
+                dateSuspendedField.setAttribute("required", "true");
+            } else {
+                dateSuspendedField.removeAttribute("required");
+                dateSuspendedField.value = "";
+            }
+        };
+        toggleDateSuspended();
+        suspendedDropdown.addEventListener('change', toggleDateSuspended);
+    });
+</script>

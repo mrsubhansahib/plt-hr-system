@@ -46,7 +46,7 @@ class DisciplinaryController extends Controller
             'hearing_date' => 'required',
             'outcome' => 'required',
             'suspended' => 'required',
-            'date_suspended' => 'required',
+            // 'date_suspended' => 'required',
         ]);
         $disciplinary = disciplinary::create($request->all());
         return redirect()->route('show.disciplinaries')->with('success','Disciplinary created successfully.');
@@ -93,7 +93,7 @@ class DisciplinaryController extends Controller
             'hearing_date' => 'required',
             'outcome' => 'required',
             'suspended' => 'required',
-            'date_suspended' => 'required',
+            // 'date_suspended' => 'required',
         ]);
             $disciplinary = disciplinary::findOrFail($id);
             $disciplinary->update($request->all());
