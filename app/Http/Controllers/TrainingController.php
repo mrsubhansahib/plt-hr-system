@@ -47,7 +47,6 @@ class TrainingController extends Controller
             'renewal_date' => 'required',
             'ihasco_training_sent' => 'required',
             'ihasco_training_complete' => 'required',
-            'notes' => 'required',
         ]);
         Training::create($request->all());
         return redirect()->route('show.trainings')->with('success', 'Training created successfully.');
@@ -93,7 +92,6 @@ class TrainingController extends Controller
             'renewal_date' => 'required',
             'ihasco_training_sent' => 'required',
             'ihasco_training_complete' => 'required',
-            'notes' => 'required',
         ]);
         $training = Training::findOrFail($id);
         $training->update($request->all());

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('outcome');
             $table->string('suspended');
             $table->string('date_suspended');
-            $table->text('notes');
+            $table->text('notes')->nullable();
 
             $table->timestamps();
         });

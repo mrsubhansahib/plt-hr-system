@@ -10,9 +10,12 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::with('user')->whereHas('user', function ($e) {
-            $e->where('role', 'employee')->where('status','active');
-        })->get();
+        $jobs = Job::with('user')
+            ->where('status', 'active')
+            ->whereHas('user', function ($e) {
+                $e->where('role', 'employee')->where('status', 'active');
+            })
+            ->get();
 
         // dd($jobs);
         return view('pages.job.list', compact('jobs'));
@@ -43,7 +46,7 @@ class JobController extends Controller
         $form_type = $request->form_type;
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
         $job = Job::with('user')->findOrFail($id);
-        return view('pages.job.edit', compact('job', 'employees','form_type'));
+        return view('pages.job.edit', compact('job', 'employees', 'form_type'));
     }
     public function update(Request $request, $id)
     {
@@ -61,22 +64,23 @@ class JobController extends Controller
 
 
         // $user_id=$job->user_id;
-        if($request->form_type=="tab"){
-        return redirect()->route('detail.employee', $job->user_id)
-            ->with('success', 'Job edited successfully.');
-        }else{
-            return redirect()->route('show.jobs') ->with('success', 'Job edited successfully.');
+        if ($request->form_type == "tab") {
+            return redirect()->route('detail.employee', $job->user_id)
+                ->with('success', 'Job edited successfully.');
+        } else {
+            return redirect()->route('show.jobs')->with('success', 'Job edited successfully.');
             // return redirect('/employee/detail/'.$user_id);
         }
     }
     public function show($id)
     {
-        $job = Job::with('user')->findOrFail($id);
+        $job = Job::where('status', 'active')->with('user')->findOrFail($id);
         return view('pages.job.show', compact('job'));
     }
     public function destroy($id)
     {
-        $job = Job::findOrFail($id)->delete();
+        $job = Job::findOrFail($id);
+        $job->update(['status' => 'deleted']);
         return redirect()->back()
             ->with('success', 'Job deleted successfully.');
     }

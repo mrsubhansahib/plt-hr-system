@@ -61,7 +61,7 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"  name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes<span class="text-danger">*</span></label>
+                                <label class="form-label">Notes</label>
                                 <textarea class="form-control" name="notes" rows="4"></textarea>
                             </div>
                         </div>

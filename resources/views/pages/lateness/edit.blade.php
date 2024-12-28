@@ -60,8 +60,8 @@
                                 <input class="form-control datepicker" required type="text" placeholder="Select Date"  name="review_date" value="{{ $lateness->review_date }}" />
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes<span class="text-danger">*</span></label>
-                                <textarea class="form-control" required name="notes" rows="4">{{ $lateness->notes }}</textarea>
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-control" name="notes" rows="4">{{ $lateness->notes }}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

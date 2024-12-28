@@ -10,6 +10,7 @@ class Job extends Model
     use HasFactory;
     protected $fillable = [
         'title',
+        'status',
         'main_job',
         'user_id',
         'facility',

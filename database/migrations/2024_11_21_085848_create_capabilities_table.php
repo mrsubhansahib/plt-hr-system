@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('outcome');
             $table->string('warning_issued_type');
             $table->string('review_date');
-            $table->text('notes');
+            $table->text('notes')->nullable();
 
 
             $table->timestamps();

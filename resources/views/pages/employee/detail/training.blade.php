@@ -69,7 +69,7 @@
                                 </select>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <label class="form-label">Notes<span class="text-danger">*</span></label>
+                                <label class="form-label">Notes</label>
                                 <textarea class="form-control" name="notes" placeholder="Enter Training Details" rows="4"></textarea>
                             </div>
                         </div>
