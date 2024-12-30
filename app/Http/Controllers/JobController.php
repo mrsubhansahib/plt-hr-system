@@ -30,14 +30,14 @@ class JobController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'user_id' => 'required',
-            'facility' => 'required',
-            'start_date' => 'required',
-            'rate_of_pay' => 'required',
-            'number_of_hours' => 'required',
-            'contract_type' => 'required',
-            'dbs_required' => 'required',
+            'title'             => 'required',
+            'user_id'           => 'required',
+            'facility'          => 'required',
+            'start_date'        => 'required',
+            'rate_of_pay'       => 'required',
+            'number_of_hours'   => 'required',
+            'contract_type'     => 'required',
+            'dbs_required'      => 'required'
         ]);
         $job = Job::create($request->all());
         return redirect()->route('show.jobs')
