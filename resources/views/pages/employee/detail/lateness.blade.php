@@ -19,31 +19,31 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ $employee->first_name }}"  disabled>
-                                <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id" >
-                                <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id" >
+                                <input type="text" class="form-control" value="{{ $employee->first_name }}" disabled>
+                                <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id">
+                                <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id">
 
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Triggered<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="lateness_triggered" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="lateness_triggered" />
                             </div>
-                            
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Stage<span class="text-danger">*</span></label>
-                                <select class="form-control form-select"  name="lateness_stage">
+                                <select class="form-control form-select" name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="Triggered Lateness">Triggered Lateness</option>
-                                    <option value="Lateness A Counselling Interview">Lateness A Counselling Interview</option>
-                                    <option value="Restart Lateness Procedure">Restart Lateness Procedure</option>
-                                    <option value="Further Lateness">Further Lateness</option>
-                                    <option value="Lateness Formal Interview"> Lateness Formal Interview</option>
-                                    <option value="Other"> Other</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Lateness' && $dropdown->name == 'Lateness Stage')
+                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Level of Warning Issued<span class="text-danger">*</span></label>
-                                <select class="form-control form-select"  name="warning_level">
+                                <select class="form-control form-select" name="warning_level">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
@@ -54,11 +54,12 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome / Action Taken<span class="text-danger">*</span></label>
-                                <input class="form-control"  name="outcome" />
+                                <input class="form-control" name="outcome" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="review_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

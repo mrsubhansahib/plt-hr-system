@@ -43,12 +43,6 @@
                                 <label class="form-label">Lateness Stage<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="Triggered Lateness">Triggered Lateness</option>
-                                    <option value="Lateness A Counselling Interview">Lateness A Counselling Interview</option>
-                                    <option value="Restart Lateness Procedure">Restart Lateness Procedure</option>
-                                    <option value="Further Lateness">Further Lateness</option>
-                                    <option value="Lateness Formal Interview"> Lateness Formal Interview</option>
-                                    <option value="Other"> Other</option>
                                     @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'Lateness' && $dropdown->name == 'Lateness Stage')
                                                     <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>

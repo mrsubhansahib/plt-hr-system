@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Capability;
 use App\Disciplinary;
 use App\Disclosure;
+use App\Dropdown;
 use App\Job;
 use App\Lateness;
 use App\Sickness;
@@ -27,9 +28,10 @@ class CreateController extends Controller
 |*/
     public function jobCreate($id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Job')->orderBy('name')->get()->all();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->where('status', 'active')->first();
-        return view("pages.employee.detail.job", compact("employee", "user_id"));
+        return view("pages.employee.detail.job", compact("employee", "user_id", 'dropdowns'));
     }
     public function jobStore(Request $request)
     {
@@ -112,9 +114,10 @@ class CreateController extends Controller
 |*/
     public function capabilityCreate($id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.capability", compact("employee", "user_id"));
+        return view("pages.employee.detail.capability", compact("employee", "user_id", 'dropdowns'));
     }
     public function capabilityStore(Request $request)
     {
@@ -142,9 +145,10 @@ class CreateController extends Controller
 |*/
     public function trainingCreate($id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Training')->orderBy('name')->get()->all();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.training", compact("employee", "user_id"));
+        return view("pages.employee.detail.training", compact("employee", "user_id", 'dropdowns'));
     }
     public function trainingStore(Request $request)
     {
@@ -197,9 +201,10 @@ class CreateController extends Controller
 |*/
     public function latenessCreate($id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Lateness')->orderBy('name')->get()->all();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.lateness", compact("employee", "user_id"));
+        return view("pages.employee.detail.lateness", compact("employee", "user_id", 'dropdowns'));
     }
     public function latenessStore(Request $request)
     {
@@ -215,75 +220,5 @@ class CreateController extends Controller
         // dd($request->all());
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Lateness created successfully.');
-    }
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
