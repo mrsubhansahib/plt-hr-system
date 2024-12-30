@@ -64,12 +64,16 @@
                                         <input class="form-control" type="text" required name="preferred_name" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label for="dob" class="form-label">DOB <span class="text-danger">*</span></label>
-                                        <input class="form-control datepicker py-2" type="text" id="dob" placeholder="Select Date" required name="dob" onchange="calculateAge()" />
+                                        <label for="dob" class="form-label">DOB <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control datepicker py-2" type="text" id="dob"
+                                            placeholder="Select Date" required name="dob" onchange="calculateAge()" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" id="age" readonly required name="age" />
+                                        <label for="age" class="form-label">Age <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" id="age" readonly required
+                                            name="age" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Gender <span class="text-danger">*</span></label>
@@ -87,15 +91,22 @@
                                             <option value="White British">White British</option>
                                             <option value="White Irish">White Irish</option>
                                             <option value="White Other">White Other</option>
-                                            <option value="Mixed White and Black Caribbean">Mixed White and Black Caribbean</option>
-                                            <option value="Mixed White and Black African">Mixed White and Black African</option>
+                                            <option value="Mixed White and Black Caribbean">Mixed White and Black Caribbean
+                                            </option>
+                                            <option value="Mixed White and Black African">Mixed White and Black African
+                                            </option>
                                             <option value="Mixed White and Asian">Mixed White and Asian</option>
                                             <option value="Mixed Other Background">Mixed Other Background</option>
-                                            <option value="Asian or Asian British Indian">Asian or Asian British Indian</option>
-                                            <option value="Asian or Asian British Pakistani">Asian or Asian British Pakistani</option>
-                                            <option value="Asian or Asian British Bangladeshi">Asian or Asian British Bangladeshi</option>
-                                            <option value="Black or Black British Caribbean">Black or Black British Caribbean</option>
-                                            <option value="Black or Black British African">Black or Black British African</option>
+                                            <option value="Asian or Asian British Indian">Asian or Asian British Indian
+                                            </option>
+                                            <option value="Asian or Asian British Pakistani">Asian or Asian British
+                                                Pakistani</option>
+                                            <option value="Asian or Asian British Bangladeshi">Asian or Asian British
+                                                Bangladeshi</option>
+                                            <option value="Black or Black British Caribbean">Black or Black British
+                                                Caribbean</option>
+                                            <option value="Black or Black British African">Black or Black British African
+                                            </option>
                                             <option value="Chinese">Chinese</option>
                                             <option value="Other Ethnic Group">Other Ethnic Group</option>
                                             @foreach ($dropdowns as $dropdown)
@@ -105,7 +116,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                
+
                                     <!-- Address and Contact Details -->
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Address 1 <span class="text-danger">*</span></label>
@@ -123,37 +134,98 @@
                                         <label class="form-label">Email <span class="text-danger">*</span></label>
                                         <input class="form-control" type="email" required name="email" />
                                     </div>
-                                
-                                    <!-- Employment Information -->
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>
-                                        <input class="form-control datepicker py-2" type="text" placeholder="Select Date" name="commencement_date" required />
+                                        <label class="form-label">DOB <span class="text-danger">*</span></label>
+                                        <input class="form-control datepicker py-2" type="text" placeholder="Select Date"
+                                            required name="dob" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Age <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="number" required name="age" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Gender <span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="gender">
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="ethnicity">
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="White Britisha">White Britisha</option>
+                                            <option value="White Irish">White Irish</option>
+                                            <option value="White Other">White Other</option>
+                                            <option value="Mixed White and Black Caribbean">Mixed White and Black
+                                                Caribbean</option>
+                                            <option value="Mixed White and Black African">Mixed White and Black African
+                                            </option>
+                                            <option value="Mixed White and Asian">Mixed White and Asian</option>
+                                            <option value="Mixed Other Background">Mixed Other Background</option>
+                                            <option value="Asian or Asian British Indian">Asian or Asian British Indian
+                                            </option>
+                                            <option value="Asian or Asian British Pakistani">Asian or Asian British
+                                                Pakistani</option>
+                                            <option value="Asian or Asian British Bangladeshi">Asian or Asian British
+                                                Bangladeshi</option>
+                                            <option value="Asian or Asian British Kashmiri">Asian or Asian British
+                                                Kashmiri</option>
+                                            <option value="Asian or Asian British Other">Asian or Asian British Other
+                                            </option>
+                                            <option value="Black or Black British Caribbean">Black or Black British
+                                                Caribbean</option>
+                                            <option value="Black or Black British African">Black or Black British
+                                                African</option>
+                                            <option value="Black or Black British Other">Black or Black British Other
+                                            </option>
+                                            <option value="Chinese">Chinese</option>
+                                            <option value="Other Ethnic Group">Other Ethnic Group</option>
+                                            @foreach ($dropdowns as $dropdown)  
+                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
+                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Employee Commencement Date <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control datepicker py-2" type="text"
+                                            placeholder="Select Date" name="commencement_date" required />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">NI Number <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="ni_number" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Default Cost Centre <span class="text-danger">*</span></label>
+                                        <label class="form-label">Default Cost Centre <span
+                                                class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="default_cost_center" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Salaried / Monthly in Arrears <span class="text-danger">*</span></label>
+                                        <label class="form-label">Salaried / Monthly in Arrears <span
+                                                class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="salaried" />
                                     </div>
-                                
-                                    <!-- Emergency Contact Information -->
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Name <span class="text-danger">*</span></label>
+                                        <label class="form-label">Contact 1 Name <span
+                                                class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="emergency_1_name" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Mobile <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="number" placeholder="Phone Number" required name="emergency_1_ph_no" />
+                                        <label class="form-label">Contact 1 Mobile <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="number" placeholder="phone number" required
+                                            name="emergency_1_ph_no" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Relationship <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="emergency_1_relation" />
+                                        <label class="form-label">Contact 1 Relationship <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required
+                                            name="emergency_1_relation" />
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +247,10 @@
                                     </div>
 
                                     <!-- Optional Fields Here -->
-                                    
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Middle Name</label>
+                                        <input class="form-control" type="text" name="middle_name" />
+                                    </div>
 
 
                                     <div class="col-md-3 mt-3">
