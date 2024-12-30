@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('hearing_date');
             $table->text('outcome');
             $table->string('suspended');
-            $table->string('date_suspended');
+            $table->string('date_suspended')->nullable();
             $table->text('notes')->nullable();
 
             $table->timestamps();
