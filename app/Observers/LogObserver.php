@@ -67,13 +67,6 @@ class LogObserver
      */
     private function logAction(Model $model, string $action)
     {
-        $userId = $model->user_id ?? $model->id;
-        Log::create([
-            'admin_id' => Auth::id(),  // Assuming you use Laravel's default Auth
-            'module_id' => $model->id,  // The ID of the affected model
-            'module_type' => class_basename($model),  // The name of the model (e.g., Job, Capability)
-            'action' => $action,  // The action type (create, update, delete)
-            'user_id' => $userId,
-        ]);
+       
     }
 }
