@@ -38,20 +38,6 @@
                                 <label class="form-label">Training Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="training_title">
                                     <option value="" selected disabled>Select Training Title</option>
-                                    <option value="NPLQ">NPLQ</option>
-                                    <option value="NPLQ Renewal">NPLQ Renewal</option>
-                                    <option value="FAAW">FAAW</option>
-                                    <option value="FAAW Renewal">FAAW Renewal</option>
-                                    <option value="Emergency First Aid">Emergency First Aid</option>
-                                    <option value="Monthly Staff Training">Monthly Staff Training</option>
-                                    <option value="Emergency Response">Emergency Response</option>
-                                    <option value="Pool Plant Operators">Pool Plant Operators</option>
-                                    <option value="Ladder and Steps Inspection Training">Ladder and Steps Inspection
-                                        Training</option>
-                                    <option value="iHasco allocated modules">iHasco allocated modules</option>
-                                    <option value="IOSH Managing Safely">IOSH Managing Safely</option>
-                                    <option value="Swimming Teaching Course">Swimming Teaching Course</option>
-                                    <option value="Other">Other</option>
                                     @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'Training' && $dropdown->name == 'Training Course Titles')
                                                     <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>

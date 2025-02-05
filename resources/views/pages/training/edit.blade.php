@@ -28,42 +28,6 @@
                                 <label class="form-label">Training Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="training_title">
                                     <option value="" selected disabled>Select Training Title</option>
-                                    <option value="NPLQ" {{ $training->training_title == 'NPLQ' ? 'selected' : '' }}>NPLQ
-                                    </option>
-                                    <option value="NPLQ Renewal"
-                                        {{ $training->training_title == 'NPLQ Renewal' ? 'selected' : '' }}>NPLQ Renewal
-                                    </option>
-                                    <option value="FAAW" {{ $training->training_title == 'FAAW' ? 'selected' : '' }}>FAAW
-                                    </option>
-                                    <option value="FAAW Renewal"
-                                        {{ $training->training_title == 'FAAW Renewal' ? 'selected' : '' }}>FAAW Renewal
-                                    </option>
-                                    <option value="Emergency First Aid"
-                                        {{ $training->training_title == 'Emergency First Aid' ? 'selected' : '' }}>Emergency
-                                        First Aid</option>
-                                    <option value="Monthly Staff Training"
-                                        {{ $training->training_title == 'Monthly Staff Training' ? 'selected' : '' }}>
-                                        Monthly Staff Training</option>
-                                    <option value="Emergency Response"
-                                        {{ $training->training_title == 'Emergency Response' ? 'selected' : '' }}>Emergency
-                                        Response</option>
-                                    <option value="Pool Plant Operators"
-                                        {{ $training->training_title == 'Pool Plant Operators' ? 'selected' : '' }}>Pool
-                                        Plant Operators</option>
-                                    <option value="Ladder and Steps Inspection Training"
-                                        {{ $training->training_title == 'Ladder and Steps Inspection Training' ? 'selected' : '' }}>
-                                        Ladder and Steps Inspection Training</option>
-                                    <option value="iHasco allocated modules"
-                                        {{ $training->training_title == 'iHasco allocated modules' ? 'selected' : '' }}>
-                                        iHasco allocated modules</option>
-                                    <option value="IOSH Managing Safely"
-                                        {{ $training->training_title == 'IOSH Managing Safely' ? 'selected' : '' }}>IOSH
-                                        Managing Safely</option>
-                                    <option value="Swimming Teaching Course"
-                                        {{ $training->training_title == 'Swimming Teaching Course' ? 'selected' : '' }}>
-                                        Swimming Teaching Course</option>
-                                    <option value="Other" {{ $training->training_title == 'Other' ? 'selected' : '' }}>
-                                        Other</option>
                                     <!-- Dynamic Options -->
                                     @foreach ($dropdowns as $dropdown)
                                         @if ($dropdown->module_type == 'Training' && $dropdown->name == 'Training Course Titles')

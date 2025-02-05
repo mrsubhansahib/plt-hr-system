@@ -19,9 +19,9 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ $employee->first_name }}"  disabled>
-                                <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id" >
-                                <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id" >
+                                <input type="text" class="form-control" value="{{ $employee->first_name }}" disabled>
+                                <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id">
+                                <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id">
 
                             </div>
                             <div class="col-md-3 mt-3">
@@ -35,23 +35,22 @@
                                 <label class="form-label">Capability Stage<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="stage">
                                     <option value="" selected disabled>Select Stage</option>
-                                    <option value="Triggered Capability">Triggered Capability</option>
-                                    <option value="Capability A Counselling Interview">Capability A Counselling Interview</option>
-                                    <option value="Restart Capability Procedure">Restart Capability Procedure</option>
-                                    <option value="Further Sickness">Further Sickness</option>
-                                    <option value="Long Term Sickness Counselling Interview">Long Term Sickness Counselling Interview</option>
-                                    <option value="Long Term Sickness Review">Long Term Sickness Review</option>
-                                    <option value="Capability Formal Interview">Capability Formal Interview</option>
-                                    <option value="Other">Other </option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Capability Stage')
+                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                    name="date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Outcome<span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="outcome" 
+                                <input class="form-control" type="text" required name="outcome"
                                     placeholder="Enter Outcome" />
                             </div>
                             <div class="col-md-3 mt-3">
@@ -66,7 +65,8 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="review_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                    name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

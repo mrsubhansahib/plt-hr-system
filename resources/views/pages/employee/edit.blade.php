@@ -85,60 +85,6 @@
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                         <select class="form-control form-select" required name="ethnicity">
                                             <option value="" selected disabled>Select</option>
-                                            <!-- Static Options -->
-                                            <option value="White Britisha"
-                                                {{ $user->ethnicity == 'White Britisha' ? 'selected' : '' }}>White Britisha
-                                            </option>
-                                            <option value="White Irish"
-                                                {{ $user->ethnicity == 'White Irish' ? 'selected' : '' }}>White Irish
-                                            </option>
-                                            <option value="White Other"
-                                                {{ $user->ethnicity == 'White Other' ? 'selected' : '' }}>White Other
-                                            </option>
-                                            <option value="Mixed White and Black Caribbean"
-                                                {{ $user->ethnicity == 'Mixed White and Black Caribbean' ? 'selected' : '' }}>
-                                                Mixed White and Black Caribbean</option>
-                                            <option value="Mixed White and Black African"
-                                                {{ $user->ethnicity == 'Mixed White and Black African' ? 'selected' : '' }}>
-                                                Mixed White and Black African</option>
-                                            <option value="Mixed White and Asian"
-                                                {{ $user->ethnicity == 'Mixed White and Asian' ? 'selected' : '' }}>Mixed
-                                                White
-                                                and Asian</option>
-                                            <option value="Mixed Other Background"
-                                                {{ $user->ethnicity == 'Mixed Other Background' ? 'selected' : '' }}>Mixed
-                                                Other Background</option>
-                                            <option value="Asian or Asian British Indian"
-                                                {{ $user->ethnicity == 'Asian or Asian British Indian' ? 'selected' : '' }}>
-                                                Asian or Asian British Indian</option>
-                                            <option value="Asian or Asian British Pakistani"
-                                                {{ $user->ethnicity == 'Asian or Asian British Pakistani' ? 'selected' : '' }}>
-                                                Asian or Asian British Pakistani</option>
-                                            <option value="Asian or Asian British Bangladeshi"
-                                                {{ $user->ethnicity == 'Asian or Asian British Bangladeshi' ? 'selected' : '' }}>
-                                                Asian or Asian British Bangladeshi</option>
-                                            <option value="Asian or Asian British Kashmiri"
-                                                {{ $user->ethnicity == 'Asian or Asian British Kashmir' ? 'selected' : '' }}>
-                                                Asian or Asian British Kashmiri</option>
-                                            <option value="Asian or Asian British Other"
-                                                {{ $user->ethnicity == 'Asian or Asian British Other' ? 'selected' : '' }}>
-                                                Asian or Asian British Other</option>
-                                            <option value="Black or Black British Caribbean"
-                                                {{ $user->ethnicity == 'Black or Black British Caribbean' ? 'selected' : '' }}>
-                                                Black or Black British Caribbean</option>
-                                            <option value="Black or Black British African"
-                                                {{ $user->ethnicity == 'Black or Black British African' ? 'selected' : '' }}>
-                                                Black or Black British African</option>
-                                            <option value="Black or Black British Other"
-                                                {{ $user->ethnicity == 'Black or Black British Other' ? 'selected' : '' }}>
-                                                Black or Black British Other</option>
-                                            <option value="Chinese" {{ $user->ethnicity == 'Chinese' ? 'selected' : '' }}>
-                                                Chinese</option>
-                                            <option value="Other Ethnic Group"
-                                                {{ $user->ethnicity == 'Other Ethnic Group' ? 'selected' : '' }}>Other
-                                                Ethnic
-                                                Group</option>
-                                            <!-- Other Ethnic Options... -->
                                             @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
                                                     <option value="{{ $dropdown->value }}"

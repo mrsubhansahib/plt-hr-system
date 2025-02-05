@@ -33,23 +33,6 @@
                                 <label class="form-label">Lateness Stage<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="Triggered Lateness"
-                                        {{ $lateness->lateness_stage == 'Triggered Lateness' ? 'selected' : '' }}>
-                                        Triggered Lateness</option>
-                                    <option value="Lateness A Counselling Interview"
-                                        {{ $lateness->lateness_stage == 'Lateness A Counselling Interview' ? 'selected' : '' }}>
-                                        Lateness A Counselling Interview</option>
-                                    <option value="Restart Lateness Procedure"
-                                        {{ $lateness->lateness_stage == 'Restart Lateness Procedure' ? 'selected' : '' }}>
-                                        Restart Lateness Procedure</option>
-                                    <option value="Further Lateness"
-                                        {{ $lateness->lateness_stage == 'Further Lateness' ? 'selected' : '' }}>Further
-                                        Lateness</option>
-                                    <option value="Lateness Formal Interview"
-                                        {{ $lateness->lateness_stage == 'Lateness Formal Interview' ? 'selected' : '' }}>
-                                        Lateness Formal Interview</option>
-                                    <option value="Other" {{ $lateness->lateness_stage == 'Dismissal' ? 'Other' : '' }}>
-                                        Other</option>
                                     <!-- Dynamic Options -->
                                     @foreach ($dropdowns as $dropdown)
                                         @if ($dropdown->module_type == 'Lateness' && $dropdown->name == 'Lateness Stage')

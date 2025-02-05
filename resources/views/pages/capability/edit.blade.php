@@ -37,29 +37,6 @@
                                 <label class="form-label">Capability Stage<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="stage">
                                     <option value="" disabled>Select Stage</option>
-                                    <option value="Triggered Capability"
-                                        {{ $capability->stage == 'Triggered Capability' ? 'selected' : '' }}>Triggered
-                                        Capability</option>
-                                    <option value="Capability A Counselling Interview"
-                                        {{ $capability->stage == 'Capability A Counselling Interview' ? 'selected' : '' }}>
-                                        Capability A Counselling Interview</option>
-                                    <option value="Restart Capability Procedure"
-                                        {{ $capability->stage == 'Restart Capability Procedure' ? 'selected' : '' }}>Restart
-                                        Capability Procedure</option>
-                                    <option value="Further Sickness"
-                                        {{ $capability->stage == 'Further Sickness' ? 'selected' : '' }}>Further Sickness
-                                    </option>
-                                    <option value="Long Term Sickness Counselling Interview"
-                                        {{ $capability->stage == 'Long Term Sickness Counselling Interview' ? 'selected' : '' }}>
-                                        Long Term Sickness Counselling Interview</option>
-                                    <option value="Long Term Sickness Review"
-                                        {{ $capability->stage == 'Long Term Sickness Review' ? 'selected' : '' }}>Long Term
-                                        Sickness Review</option>
-                                    <option value="Capability Formal Interview"
-                                        {{ $capability->stage == 'Capability Formal Interview' ? 'selected' : '' }}>
-                                        Capability Formal Interview</option>
-                                    <option value="Other" {{ $capability->stage == 'Other' ? 'selected' : '' }}>Other
-                                    </option>
                                     <!-- Dynamic Options -->
                                     @foreach ($dropdowns as $dropdown)
                                         @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Capability Stage')

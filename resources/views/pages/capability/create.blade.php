@@ -45,14 +45,6 @@
                                 <label class="form-label">Capability Stage<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="stage">
                                     <option value="" selected disabled>Select Stage</option>
-                                    <option value="Triggered Capability">Triggered Capability</option>
-                                    <option value="Capability A Counselling Interview">Capability A Counselling Interview</option>
-                                    <option value="Restart Capability Procedure">Restart Capability Procedure</option>
-                                    <option value="Further Sickness">Further Sickness</option>
-                                    <option value="Long Term Sickness Counselling Interview">Long Term Sickness Counselling Interview</option>
-                                    <option value="Long Term Sickness Review">Long Term Sickness Review</option>
-                                    <option value="Capability Formal Interview">Capability Formal Interview</option>
-                                    <option value="Other">Other </option>
                                     @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Capability Stage')
                                                     <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>

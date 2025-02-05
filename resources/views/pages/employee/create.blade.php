@@ -87,28 +87,6 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                         <select class="form-control form-select" required name="ethnicity">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="White British">White British</option>
-                                            <option value="White Irish">White Irish</option>
-                                            <option value="White Other">White Other</option>
-                                            <option value="Mixed White and Black Caribbean">Mixed White and Black Caribbean
-                                            </option>
-                                            <option value="Mixed White and Black African">Mixed White and Black African
-                                            </option>
-                                            <option value="Mixed White and Asian">Mixed White and Asian</option>
-                                            <option value="Mixed Other Background">Mixed Other Background</option>
-                                            <option value="Asian or Asian British Indian">Asian or Asian British Indian
-                                            </option>
-                                            <option value="Asian or Asian British Pakistani">Asian or Asian British
-                                                Pakistani</option>
-                                            <option value="Asian or Asian British Bangladeshi">Asian or Asian British
-                                                Bangladeshi</option>
-                                            <option value="Black or Black British Caribbean">Black or Black British
-                                                Caribbean</option>
-                                            <option value="Black or Black British African">Black or Black British African
-                                            </option>
-                                            <option value="Chinese">Chinese</option>
-                                            <option value="Other Ethnic Group">Other Ethnic Group</option>
                                             @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
                                                     <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
@@ -134,62 +112,7 @@
                                         <label class="form-label">Email <span class="text-danger">*</span></label>
                                         <input class="form-control" type="email" required name="email" />
                                     </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                        <input class="form-control datepicker py-2" type="text" placeholder="Select Date"
-                                            required name="dob" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Age <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="number" required name="age" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Gender <span class="text-danger">*</span></label>
-                                        <select class="form-control form-select" required name="gender">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
-                                        <select class="form-control form-select" required name="ethnicity">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="White Britisha">White Britisha</option>
-                                            <option value="White Irish">White Irish</option>
-                                            <option value="White Other">White Other</option>
-                                            <option value="Mixed White and Black Caribbean">Mixed White and Black
-                                                Caribbean</option>
-                                            <option value="Mixed White and Black African">Mixed White and Black African
-                                            </option>
-                                            <option value="Mixed White and Asian">Mixed White and Asian</option>
-                                            <option value="Mixed Other Background">Mixed Other Background</option>
-                                            <option value="Asian or Asian British Indian">Asian or Asian British Indian
-                                            </option>
-                                            <option value="Asian or Asian British Pakistani">Asian or Asian British
-                                                Pakistani</option>
-                                            <option value="Asian or Asian British Bangladeshi">Asian or Asian British
-                                                Bangladeshi</option>
-                                            <option value="Asian or Asian British Kashmiri">Asian or Asian British
-                                                Kashmiri</option>
-                                            <option value="Asian or Asian British Other">Asian or Asian British Other
-                                            </option>
-                                            <option value="Black or Black British Caribbean">Black or Black British
-                                                Caribbean</option>
-                                            <option value="Black or Black British African">Black or Black British
-                                                African</option>
-                                            <option value="Black or Black British Other">Black or Black British Other
-                                            </option>
-                                            <option value="Chinese">Chinese</option>
-                                            <option value="Other Ethnic Group">Other Ethnic Group</option>
-                                            @foreach ($dropdowns as $dropdown)  
-                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
-                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employee Commencement Date <span
                                                 class="text-danger">*</span></label>
