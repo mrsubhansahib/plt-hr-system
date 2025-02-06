@@ -69,6 +69,7 @@
                                     <option value="Written Warning">Written Warning</option>
                                     <option value="Final Written Warning">Final Written Warning</option>
                                     <option value="Dismissal">Dismissal</option>
+                                    <option value="NFA">NFA</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

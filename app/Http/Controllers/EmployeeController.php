@@ -27,7 +27,7 @@ class EmployeeController extends Controller
     {
 
         $users = User::where('role', 'employee')->where('status', 'pending')->get();
-        // dd($users);
+            // dd($users);
         return view('pages.employee.temp-list', compact('users'));
     }
 
@@ -68,7 +68,6 @@ class EmployeeController extends Controller
             'emergency_1_relation'      => 'required',
         ]);
         $user = User::create($request->all());
-
         return redirect()->route('show.temp.employees')
             ->with('success', 'Temporary Employee created successfully.');
     }

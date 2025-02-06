@@ -32,7 +32,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Title</th>
+                                    <th>Job Title</th>
                                     <th>Main Job</th>
                                     <th>Start Date</th>
                                     <th>Action</th>
