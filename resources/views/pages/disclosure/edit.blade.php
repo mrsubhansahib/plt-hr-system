@@ -45,8 +45,10 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Paid Liberata</label>
-                                <input type="text" class="form-control" name="paid_liberata"
-                                    placeholder="Enter Paid Liberata" value="{{ $disclosure->paid_liberata }}">
+                                <select class="form-control form-select" name="paid_liberata">
+                                    <option value="yes" {{ ($disclosure->paid_liberata == 'yes') ? 'selected' : '' }}>Yes</option>
+                                    <option value="no" {{ ($disclosure->paid_liberata == 'no') ? 'selected' : '' }}>No</option>
+                                </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Reimbursed Candidate</label>

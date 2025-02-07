@@ -74,6 +74,9 @@
                                     <option value="Dismissal"
                                         {{ $capability->warning_issued_type == 'Dismissal' ? 'selected' : '' }}>Dismissal
                                     </option>
+                                    <option value="NFA"
+                                        {{ $capability->warning_issued_type == 'NFA' ? 'selected' : '' }}>NFA
+                                    </option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

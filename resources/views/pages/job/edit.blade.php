@@ -24,7 +24,7 @@
                                 <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type">
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Title<span class="text-danger">*</span></label>
+                                <label class="form-label">Job Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="title">
                                     <option value="" selected disabled>Select Title</option>
                                     @foreach ($dropdowns as $dropdown)
@@ -57,7 +57,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Cost Center </label>
+                                <label class="form-label">Cost Centre </label>
                                 <input class="form-control" type="text" value="{{ $job->cost_center }}"
                                     name="cost_center" />
                             </div>
@@ -73,8 +73,10 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required value="{{ $job->rate_of_pay }}"
-                                    name="rate_of_pay" />
+                                <select class="form-control form-select" name="rate_of_pay">
+                                    <option value="Per Annum" {{ $job->rate_of_pay == 'Per Annum' ? 'selected' : '' }}>Per Annum</option>
+                                    <option value="Per Hour" {{ $job->rate_of_pay == 'Per Hour' ? 'selected' : '' }}>Per Hour</option>
+                                </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Number of Hours <span class="text-danger">*</span></label>

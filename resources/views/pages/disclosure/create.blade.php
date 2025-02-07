@@ -56,8 +56,10 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Paid Liberata</label>
-                                <input type="text" class="form-control" name="paid_liberata"
-                                    placeholder="Enter Paid Liberata">
+                                <select class="form-control form-select" name="paid_liberata">
+                                    <option value="yes">Yes</option>
+                                    <option selected value="no">No</option>
+                                </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Reimbursed Candidate</label>
