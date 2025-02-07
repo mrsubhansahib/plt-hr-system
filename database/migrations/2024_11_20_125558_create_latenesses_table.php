@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('latenesses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('lateness_triggered');
-            $table->text('lateness_stage');
-            $table->text('warning_level');
-            $table->text('outcome');
-            $table->text('review_date');
+            $table->string('lateness_triggered')->nullable();
+            $table->text('lateness_stage')->nullable();
+            $table->text('warning_level')->nullable();
+            $table->text('outcome')->nullable();
+            $table->text('review_date')->nullable();
             $table->text('notes')->nullable();
             
             $table->timestamps();

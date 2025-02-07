@@ -25,13 +25,13 @@
 
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Lateness Triggered<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" required type="text" placeholder="Select Date"
+                                <label class="form-label">Lateness Triggered</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="lateness_triggered" value="{{ $lateness->lateness_triggered }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Lateness Stage<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="lateness_stage">
+                                <label class="form-label">Lateness Stage</label>
+                                <select class="form-control form-select" name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
                                     <!-- Dynamic Options -->
                                     @foreach ($dropdowns as $dropdown)
@@ -45,8 +45,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Level of Warning Issued<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="warning_level">
+                                <label class="form-label">Level of Warning Issued</label>
+                                <select class="form-control form-select" name="warning_level">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA" {{ $lateness->warning_level == 'NFA' ? 'selected' : '' }}>NFA
                                     </option>
@@ -65,14 +65,14 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome / Action Taken<span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="outcome"
+                                <label class="form-label">Outcome / Action Taken</label>
+                                <input class="form-control" type="text" name="outcome"
                                     value="{{ $lateness->outcome }}" />
                             </div>
 
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Review Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" required type="text" placeholder="Select Date"
+                                <label class="form-label">Review Date</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="review_date" value="{{ $lateness->review_date }}" />
                             </div>
                             <div class="col-md-12 mt-3">

@@ -22,11 +22,10 @@
                                 <input type="text" class="form-control" value="{{ $training->user->first_name }}"
                                     disabled>
                                 <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type">
-
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Training Title<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="training_title">
+                                <label class="form-label">Training Title</label>
+                                <select class="form-control form-select" name="training_title">
                                     <option value="" selected disabled>Select Training Title</option>
                                     <!-- Dynamic Options -->
                                     @foreach ($dropdowns as $dropdown)
@@ -40,18 +39,18 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Course Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                <label class="form-label">Course Date</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="course_date" value="{{ $training->course_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Renewal Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                <label class="form-label">Renewal Date</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="renewal_date" value="{{ $training->renewal_date }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">IHASCO Training Sent<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="ihasco_training_sent">
+                                <label class="form-label">IHASCO Training Sent</label>
+                                <select class="form-control form-select" name="ihasco_training_sent">
                                     <option value="yes"
                                         {{ $training->ihasco_training_sent == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no" {{ $training->ihasco_training_sent == 'no' ? 'selected' : '' }}>
@@ -62,8 +61,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">IHASCO Training Complete<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="ihasco_training_complete">
+                                <label class="form-label">IHASCO Training Complete</label>
+                                <select class="form-control form-select" name="ihasco_training_complete">
                                     <option value="yes"
                                         {{ $training->ihasco_training_complete == 'yes' ? 'selected' : '' }}>Yes</option>
                                     <option value="no"

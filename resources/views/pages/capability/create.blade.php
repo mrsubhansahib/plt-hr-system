@@ -35,15 +35,15 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">On Capability Procedure<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="on_capability_procedure">
+                                <label class="form-label">On Capability Procedure</label>
+                                <select class="form-control form-select" name="on_capability_procedure">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Capability Stage<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="stage">
+                                <label class="form-label">Capability Stage</label>
+                                <select class="form-control form-select" name="stage">
                                     <option value="" selected disabled>Select Stage</option>
                                     @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Capability Stage')
@@ -53,17 +53,17 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date" />
+                                <label class="form-label">Date</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"  name="date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome<span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="outcome" 
+                                <label class="form-label">Outcome</label>
+                                <input class="form-control" type="text" name="outcome" 
                                     placeholder="Enter Outcome" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Warning Issued Type<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="warning_issued_type">
+                                <label class="form-label">Warning Issued Type</label>
+                                <select class="form-control form-select" name="warning_issued_type">
                                     <option value="" selected disabled>Select Warning Type</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
                                     <option value="Written Warning">Written Warning</option>
@@ -73,8 +73,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Review Date<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="review_date" />
+                                <label class="form-label">Review Date</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('training_title');
-            $table->string('course_date');
-            $table->string('renewal_date');
-            $table->string('ihasco_training_sent');
-            $table->string('ihasco_training_complete');
+            $table->text('training_title')->nullable();
+            $table->string('course_date')->nullable();
+            $table->string('renewal_date')->nullable();
+            $table->string('ihasco_training_sent')->nullable();
+            $table->string('ihasco_training_complete')->nullable();
             $table->text('notes')->nullable();
 
             $table->timestamps();

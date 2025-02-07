@@ -44,11 +44,11 @@ class LatenesController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'lateness_triggered'=> 'required',
-            'lateness_stage'=> 'required',
-            'warning_level'=> 'required',
-            'outcome'=> 'required',
-            'review_date'=> 'required',
+            // 'lateness_triggered'=> 'required',
+            // 'lateness_stage'=> 'required',
+            // 'warning_level'=> 'required',
+            // 'outcome'=> 'required',
+            // 'review_date'=> 'required',
         ]);
         $lateness = lateness::create($request->all());
         return redirect()->route('show.latenesses')->with('success','Lateness created successfully.');
@@ -90,13 +90,13 @@ class LatenesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'lateness_triggered'=> 'required',
-            'lateness_stage'=> 'required',
-            'warning_level'=> 'required',
-            'outcome'=> 'required',
-            'review_date'=> 'required',
-        ]);
+        // $request->validate([
+            // 'lateness_triggered'=> 'required',
+            // 'lateness_stage'=> 'required',
+            // 'warning_level'=> 'required',
+            // 'outcome'=> 'required',
+            // 'review_date'=> 'required',
+        // ]);
             $lateness = lateness::findOrFail($id);
             $lateness->update($request->all());
             if ($request->form_type == 'tab') {
