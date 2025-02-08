@@ -21,31 +21,51 @@
                         <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>First Name</th>
-                                    <th>Email</th>
-                                    <th>Status</th> <!-- Status Column -->
+                                    <th>Surname</th>
+                                    <th>Main Job</th>
+                                    <th>Facility</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
-                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search First Name"></th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Email"></th>
+                                            placeholder="Search Surname"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Main Job"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Facility"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Status"></th>
                                     <th></th> <!-- No search for Actions column -->
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $key => $user)
+                                @foreach ($users as $user)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $user->first_name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->status }}</td>
+                                        <td>{{ $user->surname }}</td>
+                                        <td>
+                                            @if ($user->jobs->isNotEmpty())
+                                                {{ $user->jobs->first()->main_job }} <!-- Adjust column name if needed -->
+                                            @else
+                                                No Job Assigned
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($user->jobs->isNotEmpty())
+                                                <ul class="list-unstyled">
+                                                    @foreach ($user->jobs as $job)
+                                                        <li>{{ $job->facility }}</li> <!-- Adjust column name -->
+                                                    @endforeach
+                                                </ul>
+                                            @else
+                                                No Facility Assigned
+                                            @endif
+                                        </td>
+                                        <td>{{ ucfirst($user->status) }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"

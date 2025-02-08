@@ -18,16 +18,18 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-
-        $users = User::where('role', 'employee')->where('status', 'active')->get();
-        // dd($users);
+        $users = User::where('role', 'employee')
+            ->where('status', 'active')
+            ->with('jobs')
+            ->get();
         return view('pages.employee.list', compact('users'));
     }
     public function temp()
     {
-
-        $users = User::where('role', 'employee')->where('status', 'pending')->get();
-            // dd($users);
+        $users = User::where('role', 'employee')
+            ->where('status', 'pending')
+            ->with('jobs')
+            ->get();
         return view('pages.employee.temp-list', compact('users'));
     }
 
@@ -153,10 +155,10 @@ class EmployeeController extends Controller
         ]);
         $user = User::find($id);
         $user->update($request->all());
-
-
-
         // Redirect with a success message
+        if ($user->status == 'pending') {
+            return redirect()->route('show.temp.employees')->with('success', 'Employee edited successfully.');
+        }
         return redirect()->route('show.employees')->with('success', 'Employee edited successfully.');
     }
 

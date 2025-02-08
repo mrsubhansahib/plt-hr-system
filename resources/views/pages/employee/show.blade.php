@@ -18,8 +18,8 @@
                         <h4 class="py-2">Personal Details</h4>
                     </div>
                     <div>
-                        <a href="{{ route('edit.employee', $user->id) }}"
-                            class="btn btn-primary"><strong class="me-1">Edit</strong><i data-feather="edit"></i></a>
+                        <a href="{{ route('edit.employee', $user->id) }}" class="btn btn-primary"><strong
+                                class="me-1">Edit</strong><i data-feather="edit"></i></a>
                     </div>
                 </div>
                 <div class="my-4">
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table  class="table table-striped detailTable dataTableExample">
+                            <table class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -201,39 +201,46 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($user->disclosure)
-                                        <tr>
-                                            <td>1</td>
-                                            <td>{{ $user->first_name }}</td> <!-- Access user's name directly -->
-                                            <td>{{ $user->disclosure->dbs_level }}</td>
-                                            <td>{{ $user->disclosure->certificate_no }}</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-link p-0" type="button"
-                                                        id="dropdownMenuButton-{{ $user->disclosure->id }}"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <i data-feather="align-justify"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end"
-                                                        aria-labelledby="dropdownMenuButton-{{ $user->disclosure->id }}">
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('edit.disclosure', ['id' => $user->disclosure->id, 'form_type' => 'tab']) }}">Edit</a>
-                                                        </li>
-                                                        @if (auth()->user()->role == 'super_admin')
+                                    @if ($user->disclosure->isNotEmpty())
+                                        <!-- Check if there are any disclosures -->
+                                        @foreach ($user->disclosure as $index => $disclosure)
+                                            <!-- Loop through each disclosure -->
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $user->first_name }}</td>
+                                                <td>{{ $disclosure->dbs_level }}</td>
+                                                <td>{{ $disclosure->certificate_no }}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-link p-0" type="button"
+                                                            id="dropdownMenuButton-{{ $disclosure->id }}"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i data-feather="align-justify"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="dropdownMenuButton-{{ $disclosure->id }}">
                                                             <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this disclosure?')) { window.location.href='{{ route('delete.disclosure', $user->disclosure->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('edit.disclosure', ['id' => $disclosure->id, 'form_type' => 'tab']) }}">
+                                                                    Edit
+                                                                </a>
                                                             </li>
-                                                        @endif
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                            @if (auth()->user()->role == 'super_admin')
+                                                                <li>
+                                                                    <button
+                                                                        onclick="if(confirm('Are you sure you want to delete this disclosure?')) { window.location.href='{{ route('delete.disclosure', $disclosure->id) }}' }"
+                                                                        class="dropdown-item">Delete</button>
+                                                                </li>
+                                                            @endif
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     @else
-                                        {{-- <td colspan="5" class="text-center">No disclosure data available.</td> --}}
-                                        <!-- Display fallback message -->
+                                        <tr>
+                                            <td colspan="5" class="text-center">No disclosure data available.</td>
+                                        </tr>
                                     @endif
                                 </tbody>
                             </table>
@@ -600,7 +607,7 @@
     @push('custom-scripts')
         <script>
             $(document).ready(function() {
-                
+
 
                 // Adjust DataTable columns when tab is shown
                 $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
