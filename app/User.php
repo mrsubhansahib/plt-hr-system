@@ -79,7 +79,7 @@ class User extends Authenticatable
     // relationships one to one
     public function disclosure()
     {
-        return $this->hasOne(Disclosure::class);
+        return $this->hasMany(Disclosure::class);
     }
 
     // relationships one to one

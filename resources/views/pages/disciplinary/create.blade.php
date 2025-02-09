@@ -35,17 +35,17 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Reason for Disciplinary<span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="reason_for_disciplinary" />
+                                <label class="form-label">Reason for Disciplinary</label>
+                                <input class="form-control" type="text" name="reason_for_disciplinary" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date of Hearing<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" required type="text" placeholder="Select Date"
+                                <label class="form-label">Date of Hearing</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="hearing_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="outcome">
+                                <label class="form-label">Outcome</label>
+                                <select class="form-control form-select" name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
@@ -55,15 +55,15 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Suspended<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="suspended" id="suspended">
+                                <label class="form-label">Suspended</label>
+                                <select class="form-control form-select" name="suspended" id="suspended">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3" id="date-suspended-container" style="display:none;">
-                                <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" required type="text" placeholder="Select Date"
+                                <label class="form-label">Date Suspended</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="date_suspended" id="date_suspended" />
                             </div>
                             <div class="col-md-12 mt-3">
@@ -80,7 +80,7 @@
 @endsection
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const suspendedDropdown = document.getElementById('suspended');
         const dateSuspendedContainer = document.getElementById('date-suspended-container');
         const dateSuspendedField = document.getElementById('date_suspended');

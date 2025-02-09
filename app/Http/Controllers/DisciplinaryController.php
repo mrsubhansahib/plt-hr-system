@@ -42,10 +42,10 @@ class DisciplinaryController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'reason_for_disciplinary' => 'required',
-            'hearing_date' => 'required',
-            'outcome' => 'required',
-            'suspended' => 'required',
+            // // 'reason_for_disciplinary' => 'required',
+            // // 'hearing_date' => 'required',
+            // // 'outcome' => 'required',
+            // // 'suspended' => 'required',
             // 'date_suspended' => 'required',
         ]);
         $disciplinary = disciplinary::create($request->all());
@@ -89,10 +89,10 @@ class DisciplinaryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'reason_for_disciplinary' => 'required',
-            'hearing_date' => 'required',
-            'outcome' => 'required',
-            'suspended' => 'required',
+            // 'reason_for_disciplinary' => 'required',
+            // 'hearing_date' => 'required',
+            // 'outcome' => 'required',
+            // 'suspended' => 'required',
             // 'date_suspended' => 'required',
         ]);
             $disciplinary = disciplinary::findOrFail($id);

@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('disciplinaries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('reason_for_disciplinary');
-            $table->string('hearing_date');
-            $table->text('outcome');
-            $table->string('suspended');
+            $table->text('reason_for_disciplinary')->nullable();
+            $table->string('hearing_date')->nullable();
+            $table->text('outcome')->nullable();
+            $table->string('suspended')->nullable();
             $table->string('date_suspended')->nullable();
             $table->text('notes')->nullable();
 

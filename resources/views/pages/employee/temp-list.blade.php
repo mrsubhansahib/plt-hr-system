@@ -21,8 +21,8 @@
                             <h4 class="py-2">Temporary Employee List</h4>
                         </div>
                         <div>
-                            <a href="{{ route('create.temp.employee') }}"
-                                class="btn btn-primary"><strong>Create</strong><i data-feather="bookmark" class="ms-2"></i></a>
+                            <a href="{{ route('create.temp.employee') }}" class="btn btn-primary"><strong>Create</strong><i
+                                    data-feather="bookmark" class="ms-2"></i></a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -46,10 +46,19 @@
                                         <td>
                                             <!-- Toggler Actions -->
 
-                                            <a href="{{ route('accept.employee', $user->id) }}" title="Accept" onclick="return confirm('Are you sure you want to accept this employee?')"
-                                                class="btn btn-sm btn-success" style="padding:3px"><i data-feather="check"></i></a>
-                                            <a href="{{ route('reject.employee', $user->id) }}" title="Reject" onclick="return confirm('Are you sure you want to reject this employee?')"
-                                                class="btn btn-sm btn-danger" style="padding:3px"><i data-feather="x"></i></a>
+                                            <a href="{{ route('accept.employee', $user->id) }}" title="Accept"
+                                                onclick="return confirm('Are you sure you want to accept this employee?')"
+                                                class="btn btn-sm btn-success" style="padding:3px"><i
+                                                    data-feather="check"></i></a>
+                                            <a href="{{ route('reject.employee', $user->id) }}" title="Reject"
+                                                onclick="return confirm('Are you sure you want to reject this employee?')"
+                                                class="btn btn-sm btn-danger" style="padding:3px"><i
+                                                    data-feather="x"></i></a>
+                                            <a href="{{ route('edit.employee', $user->id) }}" title="Edit"
+                                                class="btn btn-sm btn-primary" style="padding:3px">
+                                                <i data-feather="edit"></i>
+                                            </a>
+
                                         </td>
                                     </tr>
                                 @endforeach

@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('capabilities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('on_capability_procedure');
-            $table->string('stage');
-            $table->string('date');
-            $table->string('outcome');
-            $table->string('warning_issued_type');
-            $table->string('review_date');
+            $table->string('on_capability_procedure')->nullable();
+            $table->string('stage')->nullable();
+            $table->string('date')->nullable();
+            $table->string('outcome')->nullable();
+            $table->string('warning_issued_type')->nullable();
+            $table->string('review_date')->nullable();
             $table->text('notes')->nullable();
 
 
