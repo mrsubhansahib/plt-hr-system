@@ -24,7 +24,7 @@
                                 <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id">
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Title<span class="text-danger">*</span></label>
+                                <label class="form-label">Job Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="title">
                                     <option value="" selected disabled>Select Title</option>
                                     @foreach ($dropdowns as $dropdown)
@@ -57,12 +57,12 @@
                                 <input class="form-control" type="text" name="cost_center" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Start Date <span class="text-danger">*</span></label>
+                                <label class="form-label">Job Start Date <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required
                                     name="start_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Termination Date </label>
+                                <label class="form-label">Job Termination Date </label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="termination_date" />
                             </div>

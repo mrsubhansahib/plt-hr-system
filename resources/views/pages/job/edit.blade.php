@@ -62,20 +62,22 @@
                                     name="cost_center" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Start Date <span class="text-danger">*</span></label>
+                                <label class="form-label">Job Start Date <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     value="{{ $job->start_date }}" required name="start_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Termination Date </label>
+                                <label class="form-label">Job Termination Date </label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     value="{{ $job->termination_date }}" name="termination_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" name="rate_of_pay">
-                                    <option value="Per Annum" {{ $job->rate_of_pay == 'Per Annum' ? 'selected' : '' }}>Per Annum</option>
-                                    <option value="Per Hour" {{ $job->rate_of_pay == 'Per Hour' ? 'selected' : '' }}>Per Hour</option>
+                                    <option value="Per Annum" {{ $job->rate_of_pay == 'Per Annum' ? 'selected' : '' }}>Per
+                                        Annum</option>
+                                    <option value="Per Hour" {{ $job->rate_of_pay == 'Per Hour' ? 'selected' : '' }}>Per
+                                        Hour</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
@@ -91,8 +93,8 @@
                                         Permanent</option>
                                     <option value="Casual" {{ $job->contract_type == 'Casual' ? 'selected' : '' }}>
                                         Casual</option>
-                                    <option value="Fixed Term"
-                                        {{ $job->contract_type == 'Fixed Term' ? 'selected' : '' }}>Fixed Term</option>
+                                    <option value="Fixed Term" {{ $job->contract_type == 'Fixed Term' ? 'selected' : '' }}>
+                                        Fixed Term</option>
                                     <option value="Temporary" {{ $job->contract_type == 'Temporary' ? 'selected' : '' }}>
                                         Temporary</option>
                                     <option value="Permanent Variable"
