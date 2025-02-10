@@ -129,7 +129,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Title</th>
+                                        <th>Job Title</th>
                                         <th>Main Job</th>
                                         <th>Start Date</th>
                                         <th>Action</th>
@@ -201,9 +201,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($user->disclosure->isNotEmpty())
+                                    @if ($user->disclosures->isNotEmpty())
                                         <!-- Check if there are any disclosures -->
-                                        @foreach ($user->disclosure as $index => $disclosure)
+                                        @foreach ($user->disclosures as $index => $disclosure)
                                             <!-- Loop through each disclosure -->
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>

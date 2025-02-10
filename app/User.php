@@ -77,7 +77,7 @@ class User extends Authenticatable
     }
 
     // relationships one to one
-    public function disclosure()
+    public function disclosures()
     {
         return $this->hasMany(Disclosure::class);
     }

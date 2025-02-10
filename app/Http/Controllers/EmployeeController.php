@@ -102,14 +102,14 @@ class EmployeeController extends Controller
             'jobs' => function ($e) {
                 $e->where('status', 'active');
             },
-            'disclosure',
+            'disclosures',
             'sicknesses',
             'capabilities',
             'disciplinaries',
             'latenesses',
             'trainings'
         ])->find($id);
-        $hasDisclosure = $user->disclosure()->count();
+        $hasDisclosure = $user->disclosures()->count();
         return view('pages.employee.show', compact('user', 'hasDisclosure'));
     }
 
