@@ -175,7 +175,7 @@
             </div>
         </div>
     </div> <!-- row -->
-{{-- THis is to test a pull request. --}}
+{{-- THis is to test a merge code request. --}}
     {{-- <div class="row">
         <div class="col-12 col-xl-12 grid-margin stretch-card">
             <div class="card overflow-hidden">
