@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>SurName</th>
                                     <th>Reason for Absence</th>
                                     <th>Date From</th>
                                     <th>Date To</th>
@@ -37,10 +38,10 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Name"></th>
+                                            placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Reason for Absence"></th>
                                     <th><input type="text" class="form-control form-control-sm"

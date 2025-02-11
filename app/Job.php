@@ -17,6 +17,7 @@ class Job extends Model
         'cost_center',
         'start_date',
         'rate_of_pay',
+        'pay_frequency',
         'number_of_hours',
         'contract_type',
         'termination_date',

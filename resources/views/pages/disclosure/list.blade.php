@@ -30,16 +30,17 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>SurName</th>
                                     <th>DBS Level</th>
                                     <th>Certification No</th>
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Name"></th>
+                                            placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search DBS Level"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -51,6 +52,7 @@
                                 @foreach ($disclosures as $key => $disclosure)
                                     <tr>
                                         <td>{{ $disclosure->user->first_name }}</td>
+                                        <td>{{ $disclosure->user->surname }}</td>
                                         <td>{{ $disclosure->dbs_level }}</td>
                                         <td>{{ $disclosure->certificate_no }}</td>
                                         <td>

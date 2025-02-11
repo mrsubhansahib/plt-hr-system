@@ -31,6 +31,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>SurName</th>
                                     <th>Job Title</th>
                                     <th>Main Job</th>
                                     <th>Start Date</th>
@@ -39,6 +40,7 @@
                                 </tr>
                                 <tr class="filters">
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Title"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Main Job"></th>
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Start Date"></th>
@@ -51,7 +53,7 @@
                                     <tr>
 
                                         <td>{{ $job->user?->first_name ?? 'N/A' }}</td>
-
+                                        <td>{{ $job->user?->surname ?? 'N/A' }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->main_job }}</td>
                                         <td>{{ $job->start_date }}</td>

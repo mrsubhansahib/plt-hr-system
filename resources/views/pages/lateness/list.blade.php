@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Surname</th>
                                     <th>Lateness Triggered</th>
                                     <th>Lateness Stage</th>
                                     <th>Action</th>
@@ -51,6 +52,7 @@
                                 @foreach ($latenesses as $key => $lateness)
                                     <tr>
                                         <td>{{ $lateness->user->first_name }}</td>
+                                        <td>{{ $lateness->user->surname }}</td>
                                         <td>{{ $lateness->lateness_triggered }}</td>
                                         <td>{{ $lateness->lateness_stage }}</td>
                                         <td>

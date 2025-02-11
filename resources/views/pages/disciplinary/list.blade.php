@@ -30,16 +30,17 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Surname</th>
                                     <th>Reason for Disciplinary</th>
                                     <th>Date of Hearing</th>
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Name"></th>
+                                            placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Reason"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -51,6 +52,7 @@
                                 @foreach ($disciplinaries as $key => $disciplinary)
                                     <tr>
                                         <td>{{ $disciplinary->user->first_name }}</td>
+                                        <td>{{ $disciplinary->user->surname }}</td>
                                         <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                         <td>{{ $disciplinary->hearing_date }}</td>
                                         <td>

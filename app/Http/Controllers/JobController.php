@@ -38,6 +38,7 @@ class JobController extends Controller
             'facility'          => 'required',
             'start_date'        => 'required|date',
             'rate_of_pay'       => 'required',
+            'pay_frequency'     => 'required',
             'number_of_hours'   => 'required',
             'contract_type'     => 'required',
             'dbs_required'      => 'required',

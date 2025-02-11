@@ -7,7 +7,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Temporary Employee</a></li>
+            <li class="breadcrumb-item"><a href="#">New Entrants</a></li>
             <li class="breadcrumb-item active" aria-current="page">List</li>
         </ol>
     </nav>
@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between py-2">
                         <div>
-                            <h4 class="py-2">Temporary Employee List</h4>
+                            <h4 class="py-2">New Entrants List</h4>
                         </div>
                         <div>
                             <a href="{{ route('create.temp.employee') }}" class="btn btn-primary"><strong>Create</strong><i

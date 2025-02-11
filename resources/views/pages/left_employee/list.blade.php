@@ -22,13 +22,16 @@
                             <thead>
                                 <tr>
                                     <th>First Name</th>
+                                    <th>SurName</th>
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search First Name"></th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
+                                    </th>
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Surname">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Email"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -40,6 +43,7 @@
                                 @foreach ($users as $key => $user)
                                     <tr>
                                         <td>{{ $user->first_name }}</td>
+                                        <td>{{ $user->surname }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->status }}</td>
                                         <td>

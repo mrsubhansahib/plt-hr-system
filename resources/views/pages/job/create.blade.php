@@ -83,7 +83,11 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
-                                <select class="form-control form-select" name="rate_of_pay">
+                                <input class="form-control" type="text" required name="rate_of_pay" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Pay Frequency<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="pay_frequency">
                                     <option selected value="Per Annum">Per Annum</option>
                                     <option value="Per Hour"> Per Hour</option>
                                 </select>
