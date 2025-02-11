@@ -29,7 +29,6 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>DBS Level</th>
                                     <th>Certification No</th>
@@ -51,7 +50,6 @@
                             <tbody>
                                 @foreach ($disclosures as $key => $disclosure)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $disclosure->user->first_name }}</td>
                                         <td>{{ $disclosure->dbs_level }}</td>
                                         <td>{{ $disclosure->certificate_no }}</td>

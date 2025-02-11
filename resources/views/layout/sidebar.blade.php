@@ -26,7 +26,7 @@
                 <a class="nav-link" data-bs-toggle="collapse" href="#Admin" role="button"
                     aria-expanded="{{ is_active_route(['admin/*']) }}" aria-controls="Admin">
                     <i class="link-icon" data-feather="user"></i>
-                    <span class="link-title">Admin</span>
+                    <span class="link-title">Users</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 <div class="collapse {{ show_class(['admin/*']) }}" id="Admin">
@@ -48,7 +48,7 @@
                 <a class="nav-link" data-bs-toggle="collapse" href="#TempEmployee" role="button"
                     aria-expanded="{{ is_active_route(['temp/*']) }}" aria-controls="TempEmployee">
                     <i class="link-icon" data-feather="user-plus"></i>
-                    <span class="link-title">Temporary Employee</span>
+                    <span class="link-title">New Entrants</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 <div class="collapse {{ show_class(['employee/temp/*']) }}" id="TempEmployee">
@@ -73,7 +73,9 @@
             <li class="nav-item {{ active_class(['employee/left/list']) }}">
                 <a href="{{route('show.left.employees')}}" class="nav-link">
                     <i class="link-icon" data-feather="user-x"></i>
-                    <span class="link-title">Termianted</span>
+
+                    <span class="link-title">Terminated</span>
+
                 </a>
             </li>
             {{-- Changes --}}

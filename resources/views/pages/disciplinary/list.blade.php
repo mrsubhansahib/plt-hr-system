@@ -29,7 +29,6 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Reason for Disciplinary</th>
                                     <th>Date of Hearing</th>
@@ -51,7 +50,6 @@
                             <tbody>
                                 @foreach ($disciplinaries as $key => $disciplinary)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $disciplinary->user->first_name }}</td>
                                         <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                         <td>{{ $disciplinary->hearing_date }}</td>

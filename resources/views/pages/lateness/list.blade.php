@@ -29,7 +29,6 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Lateness Triggered</th>
                                     <th>Lateness Stage</th>
@@ -51,7 +50,6 @@
                             <tbody>
                                 @foreach ($latenesses as $key => $lateness)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $lateness->user->first_name }}</td>
                                         <td>{{ $lateness->lateness_triggered }}</td>
                                         <td>{{ $lateness->lateness_stage }}</td>

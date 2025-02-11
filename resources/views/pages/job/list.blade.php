@@ -49,7 +49,9 @@
                             <tbody>
                                 @foreach ($jobs as $key => $job)
                                     <tr>
+
                                         <td>{{ $job->user?->first_name ?? 'N/A' }}</td>
+
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->main_job }}</td>
                                         <td>{{ $job->start_date }}</td>

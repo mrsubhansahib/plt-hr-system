@@ -29,7 +29,6 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Module</th>
                                     <th>Type</th>
                                     <th>Value</th>
@@ -37,8 +36,7 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
-                                    </th>
+                                    
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search module"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -51,7 +49,6 @@
                             <tbody>
                                 @foreach ($dropdowns as $dropdown)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $dropdown->module_type }}</td>
                                         <td>{{ $dropdown->name }}</td>
                                         <td>{{ $dropdown->value }}</td>
