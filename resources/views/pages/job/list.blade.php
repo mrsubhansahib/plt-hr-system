@@ -30,7 +30,6 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Job Title</th>
                                     <th>Main Job</th>
@@ -54,7 +53,6 @@
                             <tbody>
                                 @foreach ($jobs as $key => $job)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $job->user->first_name }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->main_job }}</td>

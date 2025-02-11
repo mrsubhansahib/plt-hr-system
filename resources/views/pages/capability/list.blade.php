@@ -29,7 +29,6 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Stage</th>
                                     <th>Date</th>
@@ -54,7 +53,6 @@
                             <tbody>
                                 @foreach ($capabilities as $key => $capability)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $capability->user->first_name }}</td>
                                         <td>{{ $capability->stage }}</td>
                                         <td>{{ $capability->date }}</td>

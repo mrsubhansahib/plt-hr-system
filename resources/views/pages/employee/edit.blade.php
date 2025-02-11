@@ -3,7 +3,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Employee</a></li>
+            <li class="breadcrumb-item"><a href="#">{{ $user->status === 'pending' ? 'New Entrant' : 'Employee' }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
     </nav>
