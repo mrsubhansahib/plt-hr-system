@@ -29,10 +29,12 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="user_id">
+                                <select class="form-control form-select" required name="user_id" id="employeeSelect">
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}">{{ $employee->first_name }}</option>
+                                        <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
+                                            {{ $employee->first_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
