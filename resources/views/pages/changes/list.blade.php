@@ -27,7 +27,6 @@
                         <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Admin Name</th>
                                     <th>Employee Name</th>
                                     <th>Module</th>
@@ -38,7 +37,6 @@
                             <tbody>
                                 @foreach ($logs as $key => $log)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $log->admin->first_name ?? 'N/A' }}</td>
                                         <td>
                                             @if (
