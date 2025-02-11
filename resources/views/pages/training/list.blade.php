@@ -29,7 +29,6 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Training Title</th>
                                     <th>Course Date</th>
@@ -54,7 +53,6 @@
                             <tbody>
                                 @foreach ($trainings as $key => $training)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $training->user->first_name }}</td>
                                         <td>{{ $training->training_title }}</td>
                                         <td>{{ $training->course_date }}</td>

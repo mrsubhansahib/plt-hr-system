@@ -29,9 +29,9 @@
                         <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>First Name</th>
-                                    <th>Email</th>
+                                    <th>Surname</th>
+                                    <th>Facility</th>
                                     <th>Status</th> <!-- Status Column -->
                                     <th>Actions</th>
                                 </tr>
@@ -39,9 +39,9 @@
                             <tbody>
                                 @foreach ($users as $key => $user)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $user->first_name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->surname }}</td>
+                                        <td>{{ $user->facility }}</td>
                                         <td>{{ $user->status }} </td>
                                         <td>
                                             <!-- Toggler Actions -->

@@ -21,7 +21,6 @@
                         <table id="" class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>First Name</th>
                                     <th>Email</th>
                                     <th>Status</th>
@@ -42,7 +41,6 @@
                             <tbody>
                                 @foreach ($users as $key => $user)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->status }}</td>

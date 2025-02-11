@@ -3,7 +3,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Temp Employee</a></li>
+            <li class="breadcrumb-item"><a href="#">New Entrant</a></li>
             <li class="breadcrumb-item active" aria-current="page">Create</li>
         </ol>
     </nav>
@@ -19,13 +19,12 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="required-fields-tab" data-bs-toggle="tab"
                                     data-bs-target="#required-fields-tab-pane" type="button" role="tab"
-                                    aria-controls="required-fields-tab-pane" aria-selected="true">Required Fields</button>
+                                    aria-controls="required-fields-tab-pane" aria-selected="true">Personal Details</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="optional-fields-tab" data-bs-toggle="tab"
                                     data-bs-target="#optional-fields-tab-pane" type="button" role="tab"
-                                    aria-controls="optional-fields-tab-pane" aria-selected="false">Optional
-                                    Fields</button>
+                                    aria-controls="optional-fields-tab-pane" aria-selected="false">Job Details</button>
                             </li>
                         </ul>
 
@@ -101,6 +100,29 @@
                                         <input class="form-control" type="text" required name="address1" />
                                     </div>
                                     <div class="col-md-3 mt-3">
+                                        <label class="form-label">Address 2</label>
+                                        <input class="form-control" type="text" name="address2" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Address 3</label>
+                                        <input class="form-control" type="text" name="address3" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Mobile Tel</label>
+                                        <input class="form-control" type="text" name="mobile_tel" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Home Tel</label>
+                                        <input class="form-control" type="text" name="home_tel" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Disability</label>
+                                        <select class="form-control form-select" name="disability">
+                                            <option value="yes">Yes</option>
+                                            <option selected value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
                                         <label class="form-label">Town <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="town" />
                                     </div>
@@ -114,7 +136,7 @@
                                     </div>
                                     
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Employee Commencement Date <span
+                                        <label class="form-label">Employment Commencement Date<span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control datepicker py-2" type="text"
                                             placeholder="Select Date" name="commencement_date" required />
@@ -123,32 +145,46 @@
                                         <label class="form-label">NI Number <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="ni_number" />
                                     </div>
+                                    
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Default Cost Centre <span
-                                                class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="default_cost_center" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Salaried / Monthly in Arrears <span
-                                                class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="salaried" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Name <span
+                                        <label class="form-label">Emergency Contact 1 Name <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="emergency_1_name" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Mobile <span
+                                        <label class="form-label">Emergency Contact 1 Mobile <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="number" placeholder="phone number" required
                                             name="emergency_1_ph_no" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Relationship <span
+                                        <label class="form-label">Emergency Contact 1 Relationship <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required
                                             name="emergency_1_relation" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 1 Home Number</label>
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_1_home_ph" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Name</label>
+                                        <input class="form-control" type="text" name="emergency_2_name" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Mobile</label>
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_ph_no" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Home Number</label>
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_home_ph" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Relationship</label>
+                                        <input class="form-control" type="text" name="emergency_2_relation" />
                                     </div>
                                 </div>
                             </div>
@@ -170,39 +206,16 @@
                                     </div>
 
                                     <!-- Optional Fields Here -->
+                                    
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Middle Name</label>
-                                        <input class="form-control" type="text" name="middle_name" />
-                                    </div>
-
-
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Address 2</label>
-                                        <input class="form-control" type="text" name="address2" />
+                                        <label class="form-label">Default Cost Centre <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="default_cost_center" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Address 3</label>
-                                        <input class="form-control" type="text" name="address3" />
-                                    </div>
-
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Mobile Tel</label>
-                                        <input class="form-control" type="text" name="mobile_tel" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Home Tel</label>
-                                        <input class="form-control" type="text" name="home_tel" />
-                                    </div>
-
-
-
-
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Disability</label>
-                                        <select class="form-control form-select" name="disability">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
+                                        <label class="form-label">Salaried / Monthly in Arrears <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="salaried" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contracted From Date</label>
@@ -250,7 +263,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Work Document Received</label>
+                                        <label class="form-label">Right To Work Document Received</label>
                                         <select class="form-control form-select" name="work_document_received">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
@@ -346,30 +359,7 @@
                                         <label class="form-label">Casual Holiday Pay</label>
                                         <input class="form-control" type="number" name="casual_holiday_pay" />
                                     </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            name="emergency_1_home_ph" />
-                                    </div>
-
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Name</label>
-                                        <input class="form-control" type="text" name="emergency_2_name" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Mobile</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            name="emergency_2_ph_no" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            name="emergency_2_home_ph" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Relationship</label>
-                                        <input class="form-control" type="text" name="emergency_2_relation" />
-                                    </div>
+                                    
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
                                         <textarea class="form-control" name="notes" rows="4"></textarea>
