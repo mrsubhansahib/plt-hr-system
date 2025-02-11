@@ -37,9 +37,10 @@ class LogObserver
                     'rejected'  => 'rejected',
                     'left'      => 'left',
                     'accepted'  => 'accepted',
-                    'deleted'   => 'deleted'
+                    'deleted'   => 'deleted',
+                    'terminated' => 'terminated',
                 ];
-                $action = $statusActions[$newStatus] ?? 'unknown_action';
+                $action = $statusActions[$newStatus] ?? $newStatus;
                 $this->logAction($model, $action);
             }
         } else {
@@ -67,6 +68,13 @@ class LogObserver
      */
     private function logAction(Model $model, string $action)
     {
-       
+        $userId = $model->user_id ?? $model->id;
+        Log::create([
+            'admin_id' => Auth::id(),  
+            'module_id' => $model->id,  
+            'module_type' => class_basename($model),
+            'action' => $action,
+            'user_id' => $userId,
+        ]);
     }
 }

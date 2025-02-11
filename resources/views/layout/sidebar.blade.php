@@ -70,12 +70,10 @@
                     <span class="link-title">Employee</span>
                 </a>
             </li>
-            <li class="nav-item {{ active_class(['employee/left/list']) }}">
+            <li class="nav-item {{ active_class(['employee/terminated/list']) }}">
                 <a href="{{route('show.left.employees')}}" class="nav-link">
                     <i class="link-icon" data-feather="user-x"></i>
-
-                    <span class="link-title">Terminated</span>
-
+                    <span class="link-title">Termianted</span>
                 </a>
             </li>
             {{-- Changes --}}

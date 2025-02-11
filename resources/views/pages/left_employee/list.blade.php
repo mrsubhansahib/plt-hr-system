@@ -7,7 +7,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Left Employee</a></li>
+            <li class="breadcrumb-item"><a href="#">Terminated Employee</a></li>
             <li class="breadcrumb-item active" aria-current="page">List</li>
         </ol>
     </nav>
@@ -16,7 +16,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Left Employee List</h6>
+                    <h6 class="card-title">Terminated Employee List</h6>
                     <div class="table-responsive">
                         <table id="" class="table dataTableExample">
                             <thead>
