@@ -14,25 +14,6 @@
                 <div class="card-body">
                     <form class="forms-sample" action="{{ route('update.employee', $user->id) }}" method="POST">
                         @csrf
-                        <!-- Tabs for Required and Optional Fields -->
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="required-fields-tab" data-bs-toggle="tab"
-                                    data-bs-target="#required-fields-tab-pane" type="button" role="tab"
-                                    aria-controls="required-fields-tab-pane" aria-selected="true">Required Fields</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="unrequired-fields-tab" data-bs-toggle="tab"
-                                    data-bs-target="#unrequired-fields-tab-pane" type="button" role="tab"
-                                    aria-controls="unrequired-fields-tab-pane" aria-selected="false">Optional
-                                    Fields</button>
-                            </li>
-                        </ul>
-                        <!-- Personal Details -->
-                        <div class="tab-content" id="myTabContent">
-                            <!-- Required Fields Tab -->
-                            <div class="tab-pane fade show active" id="required-fields-tab-pane" role="tabpanel"
-                                aria-labelledby="required-fields-tab" tabindex="0">
                                 <div class="row mb-3">
                                     <h3 class="my-4 text-center">Personal Details</h3>
                                     <!-- Personal Information -->
@@ -95,12 +76,27 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Disability</label>
+                                        <select class="form-control form-select" name="disability"
+                                            value="{{ $user->disability }}">
+                                            <option value="yes" {{ $user->disability == 'yes' ? 'selected' : '' }}>Yes
+                                            </option>
+                                            <option value="no" {{ $user->disability == 'no' ? 'selected' : '' }}>No
+                                            </option>
+                                        </select>
+                                    </div>
 
                                     <!-- Address Details -->
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Address 1 <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="address1"
                                             value="{{ $user->address1 }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Address 2</label>
+                                        <input class="form-control" type="text" name="address2"
+                                            value="{{ $user->address2 }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Town <span class="text-danger">*</span></label>
@@ -117,30 +113,73 @@
                                         <input class="form-control" type="email" required name="email"
                                             value="{{ $user->email }}" />
                                     </div>
-
-                                    <!-- Emergency Contact -->
-                                    <h3 class="my-4 text-center">Emergency Contact</h3>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Name <span
+                                        <label class="form-label">Mobile Tel</label>
+                                        <input class="form-control" type="text" name="mobile_tel"
+                                            value="{{ $user->mobile_tel }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Home Tel</label>
+                                        <input class="form-control" type="text" name="home_tel"
+                                            value="{{ $user->home_tel }}" />
+                                    </div>
+                                    
+                                    <!-- Emergency Contact -->
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 1 Name <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="emergency_1_name"
                                             value="{{ $user->emergency_1_name }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Mobile <span
+                                        <label class="form-label">Emergency Contact 1 Mobile <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="number" placeholder="Phone Number" required
                                             name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Relationship <span
+                                        <label class="form-label">Emergency Contact 1 Relationship <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="emergency_1_relation"
                                             value="{{ $user->emergency_1_relation }}" />
                                     </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 1 Home Number</label>
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_1_home_ph" value="{{ $user->emergency_1_home_ph }}" />
+                                    </div>
+                                    
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Address 3</label>
+                                        <input class="form-control" type="text" name="address3"
+                                            value="{{ $user->address3 }}" />
+                                    </div>
+                                    
+
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Name</label>
+                                        <input class="form-control" type="text" name="emergency_2_name"
+                                            value="{{ $user->emergency_2_name }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Mobile</label>
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Relationship</label>
+                                        <input class="form-control" type="text" name="emergency_2_relation"
+                                            value="{{ $user->emergency_2_relation }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Home Number</label>
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" />
+                                    </div>
+                                    
 
                                     <!-- Employment Details -->
-                                    <h3 class="my-4 text-center">Employment Details</h3>
+                                    <h3 class="my-4 text-center">Job Details</h3>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employment Commencement Date <span
                                                 class="text-danger">*</span></label>
@@ -165,81 +204,12 @@
                                             value="{{ $user->salaried }}" />
                                     </div>
                                 </div>
-                            </div>
-
-
-
-                            <div class="tab-pane fade" id="unrequired-fields-tab-pane" role="tabpanel"
-                                aria-labelledby="unrequired-fields-tab" tabindex="0">
                                 <div class="row mb-3">
-                                    <h3 class="my-4 text-center">Personal Details</h3>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contracted From Date </label>
                                         <input class="form-control datepicker" type="text" placeholder="Select Date"
                                             name="contracted_from_date" value="{{ $user->contracted_from_date }}" />
                                     </div>
-
-
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Address 2</label>
-                                        <input class="form-control" type="text" name="address2"
-                                            value="{{ $user->address2 }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Address 3</label>
-                                        <input class="form-control" type="text" name="address3"
-                                            value="{{ $user->address3 }}" />
-                                    </div>
-
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Mobile Tel</label>
-                                        <input class="form-control" type="text" name="mobile_tel"
-                                            value="{{ $user->mobile_tel }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Home Tel</label>
-                                        <input class="form-control" type="text" name="home_tel"
-                                            value="{{ $user->home_tel }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Disability</label>
-                                        <select class="form-control form-select" name="disability"
-                                            value="{{ $user->disability }}">
-                                            <option value="yes" {{ $user->disability == 'yes' ? 'selected' : '' }}>Yes
-                                            </option>
-                                            <option value="no" {{ $user->disability == 'no' ? 'selected' : '' }}>No
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 1 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            name="emergency_1_home_ph" value="{{ $user->emergency_1_home_ph }}" />
-                                    </div>
-
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Name</label>
-                                        <input class="form-control" type="text" name="emergency_2_name"
-                                            value="{{ $user->emergency_2_name }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Mobile</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contact 2 Relationship</label>
-                                        <input class="form-control" type="text" name="emergency_2_relation"
-                                            value="{{ $user->emergency_2_relation }}" />
-                                    </div>
-
-
-
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employment Termination Date</label>
                                         <input class="form-control datepicker" type="text" placeholder="Select Date"
@@ -413,8 +383,8 @@
                                                 {{ $user->equipment_ordered == 'Mobile' ? 'selected' : '' }}>Mobile
                                             </option>
                                             <option value="other"
-                                                {{ $user->equipment_ordered == 'other' ? 'selected' : '' }}>other</option>
-
+                                                {{ $user->equipment_ordered == 'other' ? 'selected' : '' }}>other
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
@@ -455,15 +425,11 @@
                                         <input class="form-control" type="number" name="casual_holiday_pay"
                                             value="{{ $user->casual_holiday_pay }}" />
                                     </div>
-
-
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
                                         <textarea class="form-control" name="notes" value="" rows="4">{{ $user->notes }}</textarea>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                         <div class=" mt-4">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

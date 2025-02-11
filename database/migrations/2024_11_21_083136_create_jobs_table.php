@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('cost_center')->nullable();
             $table->string('start_date');
             $table->string('rate_of_pay');
+            $table->string('pay_frequency');
             $table->string('number_of_hours');
             $table->text('contract_type');
             $table->string('termination_date')->nullable();

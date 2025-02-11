@@ -73,10 +73,14 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
-                                <select class="form-control form-select" name="rate_of_pay">
-                                    <option value="Per Annum" {{ $job->rate_of_pay == 'Per Annum' ? 'selected' : '' }}>Per
+                                <input class="form-control" value="{{ $job->rate_of_pay }}" type="text" required name="rate_of_pay" />
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Pay Frequency<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" name="pay_frequency">
+                                    <option value="Per Annum" {{ $job->pay_frequency == 'Per Annum' ? 'selected' : '' }}>Per
                                         Annum</option>
-                                    <option value="Per Hour" {{ $job->rate_of_pay == 'Per Hour' ? 'selected' : '' }}>Per
+                                    <option value="Per Hour" {{ $job->pay_frequency == 'Per Hour' ? 'selected' : '' }}>Per
                                         Hour</option>
                                 </select>
                             </div>
