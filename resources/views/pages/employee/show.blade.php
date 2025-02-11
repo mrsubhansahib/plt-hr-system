@@ -127,8 +127,8 @@
                             <table class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
+                                        <th>Surname</th>
                                         <th>Job Title</th>
                                         <th>Main Job</th>
                                         <th>Job Status</th>
@@ -139,8 +139,8 @@
                                 <tbody>
                                     @foreach ($user->jobs as $key => $job)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
                                             <td>{{ $job->user->first_name }}</td>
+                                            <td>{{ $job->user->surname }}</td>
                                             <td>{{ $job->title }}</td>
                                             <td>{{ $job->main_job }}</td>
                                             <td>{{ ucfirst($job->status) }}</td>
@@ -193,8 +193,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
+                                        <th>Surname</th>
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
                                         <th>Action</th>
@@ -206,8 +206,8 @@
                                         @foreach ($user->disclosures as $index => $disclosure)
                                             <!-- Loop through each disclosure -->
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
                                                 <td>{{ $user->first_name }}</td>
+                                                <td>{{ $user->surname }}</td>
                                                 <td>{{ $disclosure->dbs_level }}</td>
                                                 <td>{{ $disclosure->certificate_no }}</td>
                                                 <td>
@@ -265,8 +265,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
+                                        <th>Surname</th>
                                         <th>Reason for Absence</th>
                                         <th>Date From</th>
                                         <th>Date To</th>
@@ -277,8 +277,8 @@
                                     @if ($user->sicknesses->isNotEmpty())
                                         @foreach ($user->sicknesses as $key => $sickness)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
                                                 <td>{{ $sickness->user->first_name }}</td>
+                                                <td>{{ $sickness->user->surname }}</td>
                                                 <td>{{ $sickness->reason_for_absence }}</td>
                                                 <td>{{ $sickness->date_from }}</td>
                                                 <td>{{ $sickness->date_to }}</td>
@@ -332,8 +332,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
+                                        <th>Surname</th>
                                         <th>Stage</th>
                                         <th>Date</th>
                                         <th>Outcome</th>
@@ -344,8 +344,8 @@
                                     @if ($user->capabilities->isNotEmpty())
                                         @foreach ($user->capabilities as $key => $capability)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
                                                 <td>{{ $capability->user->first_name }}</td>
+                                                <td>{{ $capability->user->surname }}</td>
                                                 <td>{{ $capability->stage }}</td>
                                                 <td>{{ $capability->date }}</td>
                                                 <td>{{ $capability->outcome }}</td>
@@ -403,8 +403,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
+                                        <th>Surname</th>
                                         <th>Training Title</th>
                                         <th>Course Date</th>
                                         <th>Renewal Date</th>
@@ -415,8 +415,8 @@
                                     @if ($user->trainings->isNotEmpty())
                                         @foreach ($user->trainings as $key => $training)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
                                                 <td>{{ $training->user->first_name }}</td>
+                                                <td>{{ $training->user->surname }}</td>
                                                 <td>{{ $training->training_title }}</td>
                                                 <td>{{ $training->course_date }}</td>
                                                 <td>{{ $training->renewal_date }}</td>
@@ -474,8 +474,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
+                                        <th>Surname</th>
                                         <th>Reason for Disciplinary</th>
                                         <th>Date of Hearing</th>
                                         <th>Action</th>
@@ -485,8 +485,8 @@
                                     @if ($user->disciplinaries->isNotEmpty())
                                         @foreach ($user->disciplinaries as $key => $disciplinary)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
                                                 <td>{{ $disciplinary->user->first_name }}</td>
+                                                <td>{{ $disciplinary->user->surname }}</td>
                                                 <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                                 <td>{{ $disciplinary->hearing_date }}</td>
                                                 <td>
@@ -540,8 +540,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
+                                        <th>Surname</th>
                                         <th>Lateness Triggered</th>
                                         <th>Lateness Stage</th>
                                         <th>Action</th>
@@ -551,8 +551,8 @@
                                     @if ($user->latenesses->isNotEmpty())
                                         @foreach ($user->latenesses as $key => $lateness)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
                                                 <td>{{ $lateness->user->first_name }}</td>
+                                                <td>{{ $lateness->user->surname }}</td>
                                                 <td>{{ $lateness->lateness_triggered }}</td>
                                                 <td>{{ $lateness->lateness_stage }}</td>
                                                 <td>
@@ -619,77 +619,3 @@
     @endpush
 @endsection
 
-
-
-
-
-{{-- <!-- Personal Details -->
-                <h4 class="text-center pt-4">Personal Details</h4>
-                <hr>
-                <p><strong>First Name:</strong> {{ $user->first_name }}</p>
-                <p><strong>Middle Name:</strong> {{ $user->middle_name }}</p>
-                <p><strong>Surname:</strong> {{ $user->surname }}</p>
-                <p><strong>Preferred Name:</strong> {{ $user->preferred_name }}</p>
-                <p><strong>Address 1:</strong> {{ $user->address1 }}</p>
-                <p><strong>Address 2:</strong> {{ $user->address2 }}</p>
-                <p><strong>Address 3:</strong> {{ $user->address3 }}</p>
-                <p><strong>Town:</strong> {{ $user->town }}</p>
-                <p><strong>Postcode:</strong> {{ $user->post_code }}</p>
-                <p><strong>Mobile Tel:</strong> {{ $user->mobile_tel }}</p>
-                <p><strong>Home Tel:</strong> {{ $user->home_tel }}</p>
-                <p><strong>Email:</strong> {{ $user->email }}</p>
-                <p><strong>Gender:</strong> {{ ucfirst($user->gender) }}</p>
-                <p><strong>Ethnicity:</strong> {{ $user->ethnicity }}</p>
-                <p><strong>DOB:</strong> {{ $user->dob }}</p>
-                <p><strong>Age:</strong> {{ $user->age }}</p>
-                <p><strong>Disability:</strong> {{ ucfirst($user->disability) }}</p>
-
-    
-                <!-- Employment Details -->
-                <h4 class="text-center pt-4">Employment Details</h4>
-                <hr>
-                <p><strong>Employment Date:</strong> {{ $user->employment_date }}</p>
-                <p><strong>Contracted From:</strong> {{ $user->contracted_from_date }}</p>
-                <p><strong>Employee Commencement Date:</strong> {{ $user->commencement_date }}</p>
-                <p><strong>Termination Date:</strong> {{ $user->termination_date }}</p>
-                <p><strong>Reason for Termination:</strong> {{ $user->reason_termination }}</p>
-                <p><strong>Handbook Sent:</strong> {{ ucfirst($user->handbook_sent) }}</p>
-                <p><strong>Medical Form Returned:</strong> {{ ucfirst($user->medical_form_returned) }}</p>
-                <p><strong>New Entrant Form Returned:</strong> {{ ucfirst($user->new_entrant_form_returned) }}</p>
-                <p><strong>Confidentiality Statement:</strong> {{ ucfirst($user->confidentiality_statement_returned) }}</p>
-                <p><strong>Work Document Received:</strong> {{ ucfirst($user->work_document_received) }}</p>
-                <p><strong>Qualifications Checked:</strong> {{ ucfirst($user->qualifications_checked) }}</p>
-                <p><strong>References Requested:</strong> {{ ucfirst($user->references_requested) }}</p>
-                <p><strong>References Returned:</strong> {{ ucfirst($user->references_returned) }}</p>
-                <p><strong>Payroll Informed:</strong> {{ ucfirst($user->payroll_informed) }}</p>
-                <p><strong>Probation Complete:</strong> {{ ucfirst($user->probation_complete) }}</p>
-                <p><strong>Equipment Required:</strong> {{ ucfirst($user->equipment_required) }}</p>
-                <p><strong>Equipment Ordered:</strong> {{ ucfirst($user->equipment_ordered) }}</p>
-                <p><strong>P45 / Tax Form Received:</strong> {{ ucfirst($user->p45) }}</p>
-                <p><strong>Employee Pack Sent:</strong> {{ ucfirst($user->employee_pack_sent) }}</p>
-                <p><strong>Termination Form to Payroll:</strong> {{ ucfirst($user->termination_form_to_payroll) }}</p>
-                <p><strong>Casual Holiday Pay:</strong> {{ $user->casual_holiday_pay }}</p>
-                <p><strong>NI Number:</strong> {{ $user->ni_number }}</p>
-                <p><strong>Default Cost Centre:</strong> {{ $user->default_cost_center }}</p>
-                <p><strong>Salaried / Monthly in Arrears:</strong> {{ $user->salaried }}</p>
-
-                
-                <!-- Add other fields as required -->
-    
-                <!-- Emergency Contacts -->
-                <h4 class="text-center pt-4">Emergency Contacts</h4>
-                <hr>
-                <p><strong>Emergency Contact 1 Name:</strong> {{ $user->emergency_1_name }}</p>
-                <p><strong>Emergency Contact 1 Mobile:</strong> {{ $user->emergency_1_ph_no }}</p>
-                <p><strong>Emergency Contact 1 Home Mobile:</strong> {{ $user->emergency_1_home_ph }}</p>
-                <p><strong>Emergency Contact 1 Relationship:</strong> {{ $user->emergency_1_relation }}</p>
-                <p><strong>Emergency Contact 2 Name:</strong> {{ $user->emergency_2_name }}</p>
-                <p><strong>Emergency Contact 2 Mobile:</strong> {{ $user->emergency_2_ph_no }}</p>
-                <p><strong>Emergency Contact 2  Home Mobile:</strong> {{ $user->emergency_2_home_ph }}</p>
-                <p><strong>Emergency Contact 2 Relationship:</strong> {{ $user->emergency_2_relation }}</p>
-    
-                <!-- Notes -->
-                <h4 class="text-center pt-4">Notes</h4>
-                <hr>
-                <p>{{ $user->notes }}</p>
-                <a href="{{ route('show.employees') }}" class="btn btn-secondary mt-4">Back to List</a> --}}

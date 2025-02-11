@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Surname</th>
                                     <th>Stage</th>
                                     <th>Date</th>
                                     <th>Outcome</th>
@@ -37,10 +38,10 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Name"></th>
+                                            placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Stage"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -54,6 +55,7 @@
                                 @foreach ($capabilities as $key => $capability)
                                     <tr>
                                         <td>{{ $capability->user->first_name }}</td>
+                                        <td>{{ $capability->user->surname }}</td>
                                         <td>{{ $capability->stage }}</td>
                                         <td>{{ $capability->date }}</td>
                                         <td>{{ $capability->outcome }}</td>

@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Surname</th>
                                     <th>Training Title</th>
                                     <th>Course Date</th>
                                     <th>Renewal Date</th>
@@ -37,10 +38,10 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Name"></th>
+                                            placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Title"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -54,6 +55,7 @@
                                 @foreach ($trainings as $key => $training)
                                     <tr>
                                         <td>{{ $training->user->first_name }}</td>
+                                        <td>{{ $training->user->surname }}</td>
                                         <td>{{ $training->training_title }}</td>
                                         <td>{{ $training->course_date }}</td>
                                         <td>{{ $training->renewal_date }}</td>

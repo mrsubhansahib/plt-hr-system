@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>First Name</th>
+                                    <th>SurName</th>
                                     <th>Email</th>
                                     @if (auth()->user()->role == 'super_admin')
                                         <th>Actions</th>
@@ -41,6 +42,7 @@
                                 @foreach ($users as $key => $user)
                                     <tr>
                                         <td>{{ $user->first_name }}</td>
+                                        <td>{{ $user->surname }}</td>
                                         <td>{{ $user->email }}</td>
                                         @if (auth()->user()->role == 'super_admin')
                                             <td>
