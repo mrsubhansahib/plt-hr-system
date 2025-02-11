@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
         Route::get('accept/{id}',   [EmployeeController::class, 'accept_employee'])->name('accept.employee');
         Route::get('reject/{id}',   [EmployeeController::class, 'reject_employee'])->name('reject.employee');
         Route::get('delete/{id}',   [EmployeeController::class, 'destroy'])->name('delete.employee');
-        Route::get('left/list',     [EmployeeController::class, 'left_employees'])->name('show.left.employees');
+        Route::get('terminated/list',     [EmployeeController::class, 'left_employees'])->name('show.left.employees');
         Route::get('left/{id}',     [EmployeeController::class, 'left'])->name('left.employee');
         Route::get('active/{id}',   [EmployeeController::class, 'active_employee'])->name('active.employee');
     });
