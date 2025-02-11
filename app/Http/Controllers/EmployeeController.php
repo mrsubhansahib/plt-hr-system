@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dropdown;
+use App\Job;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -99,9 +100,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $user = User::with([
-            'jobs' => function ($e) {
-                $e->where('status', 'active');
-            },
+            'jobs',
             'disclosures',
             'sicknesses',
             'capabilities',
@@ -164,10 +163,12 @@ class EmployeeController extends Controller
 
     public function left($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->update(['status' => 'left']);
-        return redirect()->route('show.left.employees')->with('success', 'Employee lefted successfully.');
+        Job::where('user_id', $id)->update(['status' => 'terminated']);
+        return redirect()->route('show.left.employees')->with('success', 'Employee left successfully.');
     }
+
     public function left_employees()
     {
         $users = User::where('role', 'employee')->where('status', 'left')->get();

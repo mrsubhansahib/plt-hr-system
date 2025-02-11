@@ -73,7 +73,9 @@
             <li class="nav-item {{ active_class(['employee/left/list']) }}">
                 <a href="{{route('show.left.employees')}}" class="nav-link">
                     <i class="link-icon" data-feather="user-x"></i>
+
                     <span class="link-title">Terminated</span>
+
                 </a>
             </li>
             {{-- Changes --}}

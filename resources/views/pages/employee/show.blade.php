@@ -131,6 +131,7 @@
                                         <th>Name</th>
                                         <th>Job Title</th>
                                         <th>Main Job</th>
+                                        <th>Job Status</th>
                                         <th>Start Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -142,6 +143,7 @@
                                             <td>{{ $job->user->first_name }}</td>
                                             <td>{{ $job->title }}</td>
                                             <td>{{ $job->main_job }}</td>
+                                            <td>{{ ucfirst($job->status) }}</td>
                                             <td>{{ $job->start_date }}</td>
                                             <td>
                                                 <div class="dropdown">
@@ -182,12 +184,10 @@
                             <div>
                                 <h4 class="py-2">Disclosure Details</h4>
                             </div>
-                            @if ($hasDisclosure == 0)
-                                <div>
-                                    <a href="{{ route('create.new.disclosure', $user->id) }}"
-                                        class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                                </div>
-                            @endif
+                            <div>
+                                <a href="{{ route('create.new.disclosure', $user->id) }}"
+                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
+                            </div>
                         </div>
                         <div class="">
                             <table id="" class="table table-striped detailTable dataTableExample">

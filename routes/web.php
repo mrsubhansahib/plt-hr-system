@@ -80,6 +80,7 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}',     [JobController::class, 'edit'])->name('edit.job');
         Route::post('update/{id}',  [JobController::class, 'update'])->name('update.job');
         Route::get('delete/{id}',   [JobController::class, 'destroy'])->name('delete.job');
+        Route::post('terminate/{id}', [JobController::class, 'terminate'])->name('terminate.job');
     });
     // Routes for disclosure crud
     Route::group(['prefix' => 'disclosure'], function () {
