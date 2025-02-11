@@ -52,7 +52,6 @@ class LatenesController extends Controller
         ]);
         $lateness = lateness::create($request->all());
         return redirect()->route('show.latenesses')->with('success','Lateness created successfully.');
-        return redirect()->route('show.latenesses')->with('success','Lateness created successfully.');
     }
 
     /**

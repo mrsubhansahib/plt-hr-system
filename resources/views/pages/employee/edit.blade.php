@@ -142,7 +142,7 @@
                                     <!-- Employment Details -->
                                     <h3 class="my-4 text-center">Employment Details</h3>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Employee Commencement Date <span
+                                        <label class="form-label">Employment Commencement Date <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control datepicker" type="text" placeholder="Select Date"
                                             required name="commencement_date" value="{{ $user->commencement_date }}" />
