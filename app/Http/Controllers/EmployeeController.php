@@ -88,7 +88,7 @@ class EmployeeController extends Controller
         ]);
         $user = User::create($request->all());
         return redirect()->route('show.temp.employees')
-            ->with('success', 'Temporary Employee created successfully.');
+            ->with('success', 'New entrant created successfully.');
     }
     public function accept_employee($id)
     {
