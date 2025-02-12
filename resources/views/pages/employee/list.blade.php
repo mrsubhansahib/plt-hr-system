@@ -23,9 +23,9 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
-                                    <th>Main Job</th>
+                                    <th>Job Title</th>
                                     <th>Facility</th>
-                                    <th>Status</th>
+                                    <th>Cost Center</th> <!-- Changed from 'Status' to 'Center' -->
                                     <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
@@ -34,11 +34,11 @@
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Main Job"></th>
+                                            placeholder="Search Job Title"></th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Facility"></th>
+                                        placeholder="Search Facility"></th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Status"></th>
+                                            placeholder="Search Cost Center"></th> <!-- Updated -->
                                     <th></th> <!-- No search for Actions column -->
                                 </tr>
                             </thead>
@@ -48,24 +48,14 @@
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
                                         <td>
-                                            @if ($user->jobs->isNotEmpty())
-                                                {{ $user->jobs->first()->main_job }} <!-- Adjust column name if needed -->
-                                            @else
-                                                No Job Assigned
-                                            @endif
+                                            {{ $user->mainJob ? $user->mainJob->title : 'No Main Job Assigned' }}
                                         </td>
                                         <td>
-                                            @if ($user->jobs->isNotEmpty())
-                                                <ul class="list-unstyled">
-                                                    @foreach ($user->jobs as $job)
-                                                        <li>{{ $job->facility }}</li> <!-- Adjust column name -->
-                                                    @endforeach
-                                                </ul>
-                                            @else
-                                                No Facility Assigned
-                                            @endif
+                                            {{ $user->mainJob ? $user->mainJob->facility : 'No Facility Assigned' }}
                                         </td>
-                                        <td>{{ ucfirst($user->status) }}</td>
+                                        <td>
+                                            {{ $user->mainJob ? $user->mainJob->cost_center : 'No Center Assigned' }}
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
@@ -85,9 +75,9 @@
                                                     </li>
                                                     <li>
                                                         <button
-                                                            onclick="if(confirm('Are you sure you want to left this Employee?')) { 
+                                                            onclick="if(confirm('Are you sure you want to terminate this Employee?')) { 
                                                             window.location.href='{{ route('left.employee', $user->id) }}' }"
-                                                            class="dropdown-item">Left</button>
+                                                            class="dropdown-item">Terminate</button>
                                                     </li>
                                                     @if (auth()->user()->role == 'super_admin')
                                                         <li>

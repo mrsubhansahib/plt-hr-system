@@ -127,12 +127,15 @@
                             <table class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>Job Title</th>
+                                        <th>Facility</th>
+                                        <th>Number of Hours</th>
                                         <th>Main Job</th>
+                                        <th>Types of Contract</th>
+                                        <th>Job Start Date</th>
                                         <th>Job Status</th>
-                                        <th>Start Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -142,9 +145,12 @@
                                             <td>{{ $job->user->first_name }}</td>
                                             <td>{{ $job->user->surname }}</td>
                                             <td>{{ $job->title }}</td>
+                                            <td>{{ $job->facility }}</td>
+                                            <td>{{ $job->number_of_hours }}</td>
                                             <td>{{ $job->main_job }}</td>
-                                            <td>{{ ucfirst($job->status) }}</td>
+                                            <td>{{ $job->contract_type }}</td>
                                             <td>{{ $job->start_date }}</td>
+                                            <td>{{ ucfirst($job->status) }}</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="btn btn-link p-0" type="button"
