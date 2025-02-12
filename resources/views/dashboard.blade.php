@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">Total Admins</h6>
+                                <h6 class="card-title mb-0">Total Users</h6>
                                 {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -130,7 +130,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">Total Employees Left</h6>
+                                <h6 class="card-title mb-0">Total Terminated</h6>
                                 {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton2"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -122,16 +122,16 @@
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Contact 1 Name <span class="text-danger">*</span></label>
+                                <label class="form-label">Emergency Contact 1 Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="emergency_1_name" value="{{ $user->emergency_1_name }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Contact 1 Mobile <span class="text-danger">*</span></label>
+                                <label class="form-label">Emergency Contact 1 Mobile <span class="text-danger">*</span></label>
                                 <input class="form-control" type="number" placeholder="phone number" required name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" />
                             </div>
 
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Contact 1 Relationship <span class="text-danger">*</span></label>
+                                <label class="form-label">Emergency Contact 1 Relationship <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="emergency_1_relation" value="{{ $user->emergency_1_relation }}" />
                             </div>
 

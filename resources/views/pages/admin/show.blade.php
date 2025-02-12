@@ -96,15 +96,15 @@
                     <hr>
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
-                            <strong>Contact 1 Name:</strong>
+                            <strong>Emergency Contact 1 Name:</strong>
                             <p>{{ $user->emergency_1_name }}</p>
                         </div>
                         <div class="col-md-3 mt-3">
-                            <strong>Contact 1 Mobile:</strong>
+                            <strong>Emergency Contact 1 Mobile:</strong>
                             <p>{{ $user->emergency_1_ph_no }}</p>
                         </div>
                         <div class="col-md-3 mt-3">
-                            <strong>Contact 1 Relationship:</strong>
+                            <strong>Emergency Contact 1 Relationship:</strong>
                             <p>{{ $user->emergency_1_relation }}</p>
                         </div>
                     </div>
