@@ -71,14 +71,18 @@
                                 />
                                 <div id="password-hint" class="mt-2"></div>
                             </div>
+
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" id="" placeholder="Select Date" required name="dob" />
+                                <input class="form-control datepicker" type="text" id="dob" placeholder="Select Date" required name="dob" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Age <span class="text-danger">*</span></label>
-                                <input class="form-control" type="number" required name="age" />
+                                <input class="form-control" type="text" id="age" required name="age" readonly />
                             </div>
+
+
                             <input type="hidden" value="admin" name="role">
                             <input type="hidden" value="active" name="status">
                             <div class="col-md-3 mt-3">

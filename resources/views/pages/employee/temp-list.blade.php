@@ -58,6 +58,10 @@
                                                 class="btn btn-sm btn-primary" style="padding:3px">
                                                 <i data-feather="edit"></i>
                                             </a>
+                                            <a href="{{ route('view.temp.employees', $user->id) }}" title="view"
+                                                class="btn btn-sm btn-primary" style="padding:3px">
+                                                <i data-feather="eye"></i>
+                                            </a>
 
                                         </td>
                                     </tr>

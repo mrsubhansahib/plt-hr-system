@@ -101,9 +101,9 @@
                 $('.datepicker').datepicker({
                     format: 'dd-mm-yyyy', // Format for display
                     autoclose: true, // Auto-close picker after date select
-                    todayHighlight: true // Highlight today's date
-                }).on('changeDate', function() {
-                    calculateAge(); // Trigger age calculation when date is selected
+                    todayHighlight: true
+                }).on('changeDate', function(e) {
+                    calculateAge();
                 });
             });
 
@@ -111,25 +111,36 @@
             function calculateAge() {
                 const dobInput = document.getElementById('dob').value;
 
-                // Parse DOB in the same format
+                if (!dobInput) {
+                    document.getElementById('age').value = "";
+                    return;
+                }
+
+                // Convert DD-MM-YYYY to Date object
                 const parts = dobInput.split('-');
-                const dob = new Date(parts[2], parts[1] - 1, parts[0]); // Convert dd-mm-yyyy to Date object
+                const dob = new Date(parts[2], parts[1] - 1, parts[0]);
                 const today = new Date();
 
-                // Validate if DOB is valid
-                if (isNaN(dob)) {
+                if (isNaN(dob.getTime())) {
                     document.getElementById('age').value = "Invalid Date!";
                     return;
                 }
 
                 // Calculate age
-                const diffInMilliseconds = today - dob;
-                const ageDate = new Date(diffInMilliseconds);
-                const years = Math.abs(ageDate.getUTCFullYear() - 1970);
+                let age = today.getFullYear() - dob.getFullYear();
+                const monthDiff = today.getMonth() - dob.getMonth();
+                const dayDiff = today.getDate() - dob.getDate();
+
+                // Adjust if birthday hasn't occurred yet this year
+                // if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                //     age--;
+                // }
 
                 // Display the result
-                document.getElementById('age').value = `${years} years`;
+                document.getElementById('age').value = age + " years";
             }
+
+
 
             // Get all forms with the class 'forms-sample'
             let forms = document.querySelectorAll('.forms-sample');
@@ -249,10 +260,10 @@
     <script>
         document.getElementById('employeeSelect').addEventListener('change', function() {
             const selectedOption = this.options[this.selectedIndex];
-            const firstName = selectedOption.text.split(' ')[0]; 
+            const firstName = selectedOption.text.split(' ')[0];
             const surname = selectedOption.getAttribute('data-surname');
             if (!selectedOption.text.includes(surname)) {
-                const fullName = firstName + ' ' + surname; 
+                const fullName = firstName + ' ' + surname;
                 selectedOption.text = fullName;
             }
         });
