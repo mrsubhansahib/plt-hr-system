@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'employee'], function () {
         Route::get('list',          [EmployeeController::class, 'index'])->name('show.employees');
         Route::get('temp/list',     [EmployeeController::class, 'temp'])->name('show.temp.employees');
+        Route::get('temp/view/{id}', [EmployeeController::class, 'temp_view'])->name('view.temp.employees');
         Route::get('temp/create',   [EmployeeController::class, 'create'])->name('create.temp.employee');
         Route::post('store',        [EmployeeController::class, 'store'])->name('store.employee');
         Route::get('detail/{id}',   [EmployeeController::class, 'show'])->name('detail.employee');

@@ -22,6 +22,11 @@
                                 class="me-1">Edit</strong><i data-feather="edit"></i></a>
                     </div>
                 </div>
+
+
+
+
+
                 <div class="my-4">
                     <div class="row my-3">
                         <div class="col-md-4 my-2">
@@ -48,28 +53,48 @@
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
-                                <label for="ni_number">Ni Number</label>
-                                <input type="text" class="form-control mt-2" id="ni_number"
-                                    value="{{ $user->ni_number }}" disabled>
+                                <label for="dob">DOB</label>
+                                <input type="text" class="form-control mt-2" id="dob"
+                                    value="{{ $user->dob }}" disabled>
                             </div>
                         </div>
 
                         <div class="col-md-4 my-2">
                             <div class="form-group">
-                                <label for="address1">Address-1</label>
-                                <input type="text" class="form-control mt-2" id="address1" value="{{ $user->address1 }}"
+                                <label for="age">Age</label>
+                                <input type="text" class="form-control mt-2" id="age" value="{{ $user->age }}"
                                     disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
-                                <label for="town">Town</label>
-                                <input type="text" class="form-control mt-2" id="town" value="{{ $user->town }}"
+                                <label for="mobile_tel">Mobile No</label>
+                                <input type="text" class="form-control mt-2" id="mobile_tel" value="{{ $user->mobile_tel }}"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="commencement_date">Employment Commencement Date</label>
+                                <input type="text" class="form-control mt-2" id="commencement_date" value="{{ $user->commencement_date }}"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="contracted_from_date">Contract From Date</label>
+                                <input type="text" class="form-control mt-2" id="contracted_from_date" value="{{ $user->contracted_from_date }}"
                                     disabled>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
                 <hr>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 

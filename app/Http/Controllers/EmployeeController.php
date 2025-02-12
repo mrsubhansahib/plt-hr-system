@@ -28,6 +28,8 @@ class EmployeeController extends Controller
         }
         return view('pages.employee.list', compact('users'));
     }
+
+
     public function temp()
     {
         $users = User::where('role', 'employee')
@@ -35,6 +37,17 @@ class EmployeeController extends Controller
             ->with('jobs')
             ->get();
         return view('pages.employee.temp-list', compact('users'));
+    }
+
+
+    public function temp_view($id)
+    {
+    $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
+    $user = User::find($id);
+    if (!$user) {
+        return redirect()->route('employee.list')->with('error', 'User  not found.');
+    }
+    return view('pages.employee.temp-view', compact('user', 'dropdowns'));
     }
 
     /**
