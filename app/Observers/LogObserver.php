@@ -68,9 +68,10 @@ class LogObserver
      */
     private function logAction(Model $model, string $action)
     {
+        $adminId = Auth::id() ?? 1;
         $userId = $model->user_id ?? $model->id;
         Log::create([
-            'admin_id' => Auth::id(),  
+            'admin_id' => $adminId,  
             'module_id' => $model->id,  
             'module_type' => class_basename($model),
             'action' => $action,

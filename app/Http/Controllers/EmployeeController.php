@@ -23,6 +23,9 @@ class EmployeeController extends Controller
             ->where('status', 'active')
             ->with('jobs')
             ->get();
+        foreach ($users as $user) {
+            $user->mainJob = $user->jobs->firstWhere('main_job', 'yes');
+        }
         return view('pages.employee.list', compact('users'));
     }
     public function temp()
@@ -100,7 +103,9 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $user = User::with([
-            'jobs',
+            'jobs' => function ($query) {
+                $query->whereIn('status', ['terminated', 'active']);
+            },
             'disclosures',
             'sicknesses',
             'capabilities',
@@ -164,14 +169,16 @@ class EmployeeController extends Controller
     public function left($id)
     {
         $user = User::findOrFail($id);
-        $user->update(['status' => 'left']);
-        Job::where('user_id', $id)->update(['status' => 'terminated']);
+        $user->update(['status' => 'terminated']);
+        Job::where('user_id', $id)
+            ->where('status', 'active')  
+            ->update(['status' => 'terminated']);  
         return redirect()->route('show.left.employees')->with('success', 'Employee left successfully.');
     }
 
     public function left_employees()
     {
-        $users = User::where('role', 'employee')->where('status', 'left')->get();
+        $users = User::where('role', 'employee')->where('status', 'terminated')->get();
         return view('pages.left_employee.list', compact('users'));
     }
     public function active_employee($id)

@@ -45,7 +45,7 @@
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->status }}</td>
+                                        <td>{{ ucfirst($user->status) }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
