@@ -69,7 +69,7 @@ class UserController extends Controller
         User::create($user);
 
         return redirect()->route('show.admins')
-            ->with('success', 'Admin created successfully.');
+            ->with('success', 'User created successfully.');
     }
 
     /**
@@ -131,7 +131,7 @@ class UserController extends Controller
 
 
         // Redirect with a success message
-        return redirect()->route('show.admins')->with('success', 'Admin edited successfully.');
+        return redirect()->route('show.admins')->with('success', 'User edited successfully.');
     }
 
 
@@ -145,6 +145,6 @@ class UserController extends Controller
         $user = User::findOrFail($id); 
         $user->update(['status' => 'deleted']); 
         return redirect()->route('show.admins')
-            ->with('success', 'Admin deleted successfully.');
+            ->with('success', 'User deleted successfully.');
     }
 }

@@ -7,7 +7,7 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+            <li class="breadcrumb-item"><a href="#">User</a></li>
             <li class="breadcrumb-item active" aria-current="page">List</li>
         </ol>
     </nav>
@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between py-2">
                         <div>
-                            <h4 class="py-2">Admin List</h4>
+                            <h4 class="py-2">User List</h4>
                         </div>
                         <div>
                             <a href="{{ route('create.admin') }}"
