@@ -134,7 +134,7 @@
                                         <label class="form-label">Email <span class="text-danger">*</span></label>
                                         <input class="form-control" type="email" required name="email" />
                                     </div>
-                                    
+
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employment Commencement Date<span
                                                 class="text-danger">*</span></label>
@@ -145,7 +145,17 @@
                                         <label class="form-label">NI Number <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="ni_number" />
                                     </div>
-                                    
+
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Default Cost Centre <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="default_cost_center" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Salaried / Monthly in Arrears <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="salaried" />
+                                    </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 1 Name <span
                                                 class="text-danger">*</span></label>
@@ -196,7 +206,7 @@
                                     <div class="d-flex justify-content-between py-2">
                                         <div></div>
                                         <div>
-                                            <h4 class="py-2">Employee Detail</h4>
+                                            <h4 class="py-2">Job Details</h4>
                                         </div>
                                         <div>
                                             <a href="{{ route('show.temp.employees') }}"
@@ -206,169 +216,107 @@
                                     </div>
 
                                     <!-- Optional Fields Here -->
-                                    
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Default Cost Centre <span
-                                                class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="default_cost_center" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Salaried / Monthly in Arrears <span
-                                                class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" required name="salaried" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Contracted From Date</label>
-                                        <input class="form-control datepicker py-2" type="text"
-                                            placeholder="Select Date" name="contracted_from_date" />
-                                    </div>
 
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Employment Termination Date</label>
-                                        <input class="form-control datepicker py-2" type="text"
-                                            placeholder="Select Date" name="termination_date" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Reason for Termination</label>
-                                        <input class="form-control" type="text" name="reason_termination" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Handbook Sent</label>
-                                        <select class="form-control form-select" name="handbook_sent">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Medical Form Returned</label>
-                                        <select class="form-control form-select" name="medical_form_returned">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                            <option value="pending">Pending</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">New Entrant Form Returned</label>
-                                        <select class="form-control form-select" name="new_entrant_form_returned">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Confidentiality Statement</label>
-                                        <select class="form-control form-select"
-                                            name="confidentiality_statement_returned">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Right To Work Document Received</label>
-                                        <select class="form-control form-select" name="work_document_received">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Qualifications Checked</label>
-                                        <select class="form-control form-select" name="qualifications_checked">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">References Requested</label>
-                                        <select class="form-control form-select" name="references_requested">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">References Returned</label>
-                                        <select class="form-control form-select" name="references_returned">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Payroll Informed</label>
-                                        <select class="form-control form-select" name="payroll_informed">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Probation Complete</label>
-                                        <select class="form-control form-select" name="probation_complete">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                            <option value="not_required">Not Required</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Equipment Required</label>
-                                        <select class="form-control form-select" name="equipment_required">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="laptop">Laptop</option>
-                                            <option value="desktop">Desktop</option>
-                                            <option value="phone">Phone</option>
-                                            <option value="none">None</option>
+                                        <label class="form-label">Job Title<span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="title">
+                                            <option value="" selected disabled>Select Title</option>
                                             @foreach ($dropdowns as $dropdown)
-                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Equipment Required')
+                                                @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Title')
                                                     <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Equipment Ordered</label>
-                                        <select class="form-control form-select" name="equipment_ordered">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="Telphone Ext">Telphone Ext</option>
-                                            <option value="Computer / Laptop">Computer / Laptop</option>
-                                            <option value="Email Address / Login">Email Address / Login</option>
-                                            <option value="Mobile">Mobile</option>
-                                            <option value="other">other</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">P45 / Tax Form Received</label>
-                                        <select class="form-control form-select" name="p45">
-                                            <option value="" selected disabled>Select</option>
+                                        <label class="form-label">Main Job</label>
+                                        <select class="form-control form-select" name="main_job">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Employee Pack Sent</label>
-                                        <select class="form-control form-select" name="employee_pack_sent">
-                                            <option value="" selected disabled>Select</option>
+                                        <label class="form-label">Facility<span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="facility">
+                                            <option value="" selected disabled>Select Facility</option>
+                                            @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Facility')
+                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Cost Centre </label>
+                                        <input class="form-control" type="text" name="cost_center" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Job Start Date <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                            required name="start_date" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Job Termination Date </label>
+                                        <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                            name="termination_date" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="rate_of_pay" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Pay Frequency<span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="pay_frequency">
+                                            <option selected value="Per Annum">Per Annum</option>
+                                            <option value="Per Hour"> Per Hour</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Number of Hours <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" required name="number_of_hours" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Contract Type <span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="contract_type">
+                                            <option value="" selected disabled>Select Contract Type</option>
+                                            @foreach ($dropdowns as $dropdown)
+                                                @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Contract Type')
+                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Contract Returned</label>
+                                        <select class="form-control form-select" required name="contract_returned">
+                                            <option value="" selected disabled>Select Option</option>
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Termination Form to Payroll</label>
-                                        <select class="form-control form-select" name="termination_form_to_payroll">
-                                            <option value="" selected disabled>Select</option>
+                                        <label class="form-label">JD Returned</label>
+                                        <select class="form-control form-select" required name="jd_returned">
                                             <option value="yes">Yes</option>
                                             <option selected value="no">No</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Casual Holiday Pay</label>
-                                        <input class="form-control" type="number" name="casual_holiday_pay" />
+                                        <label class="form-label">DBS Required <span class="text-danger">*</span></label>
+                                        <select class="form-control form-select" required name="dbs_required">
+                                            <option selected value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
                                     </div>
-                                    
                                     <div class="col-md-12 mt-3">
-                                        <label class="form-label">Notes</label>
+                                        <label class="form-label">Notes </label>
                                         <textarea class="form-control" name="notes" rows="4"></textarea>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
                         <!-- Single Submit Button -->
                         <div class=" mt-4">
                             <button type="submit" class="btn btn-primary">Submit</button>

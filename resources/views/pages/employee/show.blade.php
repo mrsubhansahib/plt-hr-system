@@ -54,8 +54,8 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="dob">DOB</label>
-                                <input type="text" class="form-control mt-2" id="dob"
-                                    value="{{ $user->dob }}" disabled>
+                                <input type="text" class="form-control mt-2" id="dob" value="{{ $user->dob }}"
+                                    disabled>
                             </div>
                         </div>
 
@@ -69,22 +69,22 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="mobile_tel">Mobile No</label>
-                                <input type="text" class="form-control mt-2" id="mobile_tel" value="{{ $user->mobile_tel }}"
-                                    disabled>
+                                <input type="text" class="form-control mt-2" id="mobile_tel"
+                                    value="{{ $user->mobile_tel }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="commencement_date">Employment Commencement Date</label>
-                                <input type="text" class="form-control mt-2" id="commencement_date" value="{{ $user->commencement_date }}"
-                                    disabled>
+                                <input type="text" class="form-control mt-2" id="commencement_date"
+                                    value="{{ $user->commencement_date }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="contracted_from_date">Contract From Date</label>
-                                <input type="text" class="form-control mt-2" id="contracted_from_date" value="{{ $user->contracted_from_date }}"
-                                    disabled>
+                                <input type="text" class="form-control mt-2" id="contracted_from_date"
+                                    value="{{ $user->contracted_from_date }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -108,9 +108,9 @@
                             aria-controls="disclosure-tab-pane" aria-selected="false">Disclosure</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="sickness-tab" data-bs-toggle="tab" data-bs-target="#sickness-tab-pane"
-                            type="button" role="tab" aria-controls="sickness-tab-pane"
-                            aria-selected="false">Sickness</button>
+                        <button class="nav-link" id="sickness-tab" data-bs-toggle="tab"
+                            data-bs-target="#sickness-tab-pane" type="button" role="tab"
+                            aria-controls="sickness-tab-pane" aria-selected="false">Sickness</button>
                     </li>
                     <!-- Add more tabs manually here -->
                     <li class="nav-item" role="presentation">
@@ -132,6 +132,11 @@
                         <button class="nav-link" id="lateness-tab" data-bs-toggle="tab"
                             data-bs-target="#lateness-tab-pane" type="button" role="tab"
                             aria-controls="lateness-tab-pane" aria-selected="false">Lateness</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane"
+                            type="button" role="tab" aria-controls="notes-tab-pane"
+                            aria-selected="false">Notes</button>
                     </li>
                 </ul>
                 <!-- Static Tab Panes -->
@@ -627,6 +632,47 @@
                         </div>
                     </div>
 
+                    {{-- notes tab --}}
+                    <div class="tab-pane fade" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab"
+                        tabindex="0">
+                        <div class="d-flex justify-content-between py-2">
+                            <div>
+                                <h4 class="py-2">Notes</h4>
+                            </div>
+                        </div>
+                        <div class="">
+                            <table class="table table-striped detailTable dataTableExample">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Surname</th>
+                                        <th>Admin Name</th>
+                                        <th>Note</th>
+                                        <th>Module Name</th>
+                                        <th>Created At</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($user->all_notes->isNotEmpty())
+                                        @foreach ($user->all_notes as $note)
+                                            <tr>
+                                                <td>{{ $note->user->first_name }}</td>
+                                                <td>{{ $note->user->surname }}</td>
+                                                <td>{{ $note->admin->first_name }}</td> 
+                                                <td>{{ $note->notes }}</td>
+                                                <td>{{ $note->module_name }}</td> 
+                                                <td>{{ $note->created_at->format('d-m-Y') }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="6" class="text-center">No notes available</td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -649,4 +695,3 @@
         </script>
     @endpush
 @endsection
-

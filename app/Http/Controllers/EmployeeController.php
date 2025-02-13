@@ -42,12 +42,12 @@ class EmployeeController extends Controller
 
     public function temp_view($id)
     {
-    $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
-    $user = User::find($id);
-    if (!$user) {
-        return redirect()->route('employee.list')->with('error', 'User  not found.');
-    }
-    return view('pages.employee.temp-view', compact('user', 'dropdowns'));
+        $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('employee.list')->with('error', 'User  not found.');
+        }
+        return view('pages.employee.temp-view', compact('user', 'dropdowns'));
     }
 
     /**
@@ -56,7 +56,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
+        $dropdowns = Dropdown::whereIn('module_type', ['User', 'Job'])->orderBy('name')->get()->all();
         return view('pages.employee.create', compact('dropdowns'));
     }
 
@@ -67,6 +67,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the employee data
         $request->validate([
             'first_name'                => 'required',
             'surname'                   => 'required',
@@ -82,13 +83,32 @@ class EmployeeController extends Controller
             'commencement_date'         => 'required',
             'default_cost_center'       => 'required',
             'salaried'                  => 'required',
+            'ni_number'                 => 'required',
             'emergency_1_name'          => 'required',
             'emergency_1_ph_no'         => 'required',
             'emergency_1_relation'      => 'required',
         ]);
         $user = User::create($request->all());
+        $jobData = $request->only([
+            'title',
+            'main_job',
+            'facility',
+            'cost_center',
+            'start_date',
+            'termination_date',
+            'rate_of_pay',
+            'pay_frequency',
+            'number_of_hours',
+            'contract_type',
+            'contract_returned',
+            'jd_returned',
+            'dbs_required',
+            'notes',
+        ]);
+        $jobData['user_id'] = $user->id;  
+        Job::create($jobData);
         return redirect()->route('show.temp.employees')
-            ->with('success', 'New entrant created successfully.');
+            ->with('success', 'New Entrant created successfully.');
     }
     public function accept_employee($id)
     {
@@ -115,6 +135,7 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
+        // dd($id);
         $user = User::with([
             'jobs' => function ($query) {
                 $query->whereIn('status', ['terminated', 'active']);
@@ -124,12 +145,15 @@ class EmployeeController extends Controller
             'capabilities',
             'disciplinaries',
             'latenesses',
-            'trainings'
+            'trainings',
+            'all_notes' => function ($query) {
+                $query->orderBy('created_at', 'desc');
+            },
         ])->find($id);
+        // dd($user);
         $hasDisclosure = $user->disclosures()->count();
         return view('pages.employee.show', compact('user', 'hasDisclosure'));
     }
-
     /**
      * Show the form for editing the specified resource.
      * @param  int $id
@@ -184,8 +208,8 @@ class EmployeeController extends Controller
         $user = User::findOrFail($id);
         $user->update(['status' => 'terminated']);
         Job::where('user_id', $id)
-            ->where('status', 'active')  
-            ->update(['status' => 'terminated']);  
+            ->where('status', 'active')
+            ->update(['status' => 'terminated']);
         return redirect()->route('show.left.employees')->with('success', 'Employee left successfully.');
     }
 
