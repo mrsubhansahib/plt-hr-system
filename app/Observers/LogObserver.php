@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Log;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class LogObserver
@@ -68,11 +69,14 @@ class LogObserver
      */
     private function logAction(Model $model, string $action)
     {
+        if (App::runningInConsole()) {
+            return; 
+        }
         $adminId = Auth::id() ?? 1;
         $userId = $model->user_id ?? $model->id;
         Log::create([
-            'admin_id' => $adminId,  
-            'module_id' => $model->id,  
+            'admin_id' => $adminId,
+            'module_id' => $model->id,
             'module_type' => class_basename($model),
             'action' => $action,
             'user_id' => $userId,
