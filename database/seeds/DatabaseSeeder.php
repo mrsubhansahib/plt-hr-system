@@ -166,6 +166,9 @@ class DatabaseSeeder extends Seeder
     ];
     public function run()
     {
+           // Truncate logs table before seeding
+    // DB::table('logs')->truncate();
+
         // $this->call(UsersTableSeeder::class);
         User::create([
             'status' => 'active',
