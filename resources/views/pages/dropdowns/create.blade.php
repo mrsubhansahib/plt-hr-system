@@ -16,10 +16,10 @@
                         <div>
                             <h4 class="py-2">Add New Dropdown</h4>
                         </div>
-                        <div>
-                            <a href="{{ route('show.dropdowns') }}" class="btn btn-primary"><strong>List</strong><i
+                        {{-- <div>
+                            <a href="" class="btn btn-primary"><strong>List</strong><i
                                     data-feather="list" class="ms-2"></i></a>
-                        </div>
+                        </div> --}}
                     </div>
                     <hr>
                     <form class="forms-sample" action="{{ route('store.dropdown') }}" method="POST">

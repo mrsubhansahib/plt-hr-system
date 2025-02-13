@@ -172,15 +172,22 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'activities'], function () {
         Route::get('/list', [LogController::class, 'index'])->name('logs.index');
     });
-    // Routes for dropdowns
     Route::prefix('dropdowns')->group(function () {
-        Route::get('list',          [DropdownController::class, 'index'])->name('show.dropdowns');
+        // Route::get('list',          [DropdownController::class, 'index'])->name('show.dropdowns');
         Route::get('create',        [DropdownController::class, 'create'])->name('create.dropdown');
         Route::post('store',        [DropdownController::class, 'store'])->name('store.dropdown');
         Route::get('edit/{id}',     [DropdownController::class, 'edit'])->name('edit.dropdown');
         Route::post('update/{id}',  [DropdownController::class, 'update'])->name('update.dropdown');
         Route::get('delete/{id}',   [DropdownController::class, 'destroy'])->name('delete.dropdown');
+    
+        // Separate Routes for Each Dropdown Category
+        Route::get('user',          [DropdownController::class, 'userDropdowns'])->name('dropdown.user');
+        Route::get('job',           [DropdownController::class, 'jobDropdowns'])->name('dropdown.job');
+        Route::get('capability',    [DropdownController::class, 'capabilityDropdowns'])->name('dropdown.capability');
+        Route::get('lateness',       [DropdownController::class, 'latenessDropdowns'])->name('dropdown.lateness');
+        Route::get('training',      [DropdownController::class, 'trainingDropdowns'])->name('dropdown.training');
     });
+    
     
 });
 

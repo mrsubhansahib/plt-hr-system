@@ -11,12 +11,42 @@ class DropdownController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //     // Fetch all dropdown records
+    //     $dropdowns = Dropdown::all();
+    //     return view('pages.dropdowns.list', compact('dropdowns'));
+    // }
+    public function userDropdowns()
     {
-        // Fetch all dropdown records
-        $dropdowns = Dropdown::all();
-        return view('pages.dropdowns.list', compact('dropdowns'));
+        $dropdowns = Dropdown::where('module_type', 'user')->get();
+        return view('pages.dropdowns.user', compact('dropdowns'));
     }
+
+    public function jobDropdowns()
+    {
+        $dropdowns = Dropdown::where('module_type', 'job')->get();
+        return view('pages.dropdowns.job', compact('dropdowns'));
+    }
+
+    public function capabilityDropdowns()
+    {
+        $dropdowns = Dropdown::where('module_type', 'capability')->get();
+        return view('pages.dropdowns.capability', compact('dropdowns'));
+    }
+
+    public function latenessDropdowns()
+    {
+        $dropdowns = Dropdown::where('module_type', 'lateness')->get();
+        return view('pages.dropdowns.lateness', compact('dropdowns'));
+    }
+
+    public function trainingDropdowns()
+    {
+        $dropdowns = Dropdown::where('module_type', 'training')->get();
+        return view('pages.dropdowns.training', compact('dropdowns'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,24 +60,38 @@ class DropdownController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        // Validate the input
-        $request->validate([
-            'module_type' => 'required|string',
-            'name' => 'required|string',
-            'value' => 'required|string',
-        ]);
-
-        // Create the dropdown entry
-        Dropdown::create([
-            'module_type' => $request->module_type,
-            'name' => $request->name,
-            'value' => $request->value,
-            'user_id' => Auth::id(),
-        ]);
-
-        return redirect()->route('show.dropdowns')->with('success', 'Dropdown added successfully!');
+{
+    // Validate the input
+    $request->validate([
+        'module_type' => 'required|string',
+        'name' => 'required|string',
+        'value' => 'required|string',
+    ]);
+    
+    // Create the dropdown entry
+    $dropdown = Dropdown::create([
+        'module_type' => $request->module_type,
+        'name' => $request->name,
+        'value' => $request->value,
+        'user_id' => Auth::id(),
+    ]);
+    
+    switch ($dropdown->module_type) {
+        case 'User': 
+            return redirect()->route('dropdown.user')->with('success', 'User dropdown added successfully!');
+        case 'Job': 
+            return redirect()->route('dropdown.job')->with('success', 'Job dropdown added successfully!');
+        case 'Capability': 
+            return redirect()->route('dropdown.capability')->with('success', 'Capability dropdown added successfully!');
+        case 'Lateness':
+            return redirect()->route('dropdown.lateness')->with('success', 'Lateness dropdown added successfully!');
+        case 'Training': 
+            return redirect()->route('dropdown.training')->with('success', 'Training dropdown added successfully!');
+        default: 
+            return redirect()->route('show.list.dropdowns')->with('success', 'Dropdown added successfully!');
     }
+}
+
 
     /**
      * Show the form for editing the specified resource.
@@ -63,6 +107,7 @@ class DropdownController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd(123);
         // Validate the input
         $request->validate([
             'module_type' => 'required|string',
@@ -71,7 +116,11 @@ class DropdownController extends Controller
         ]);
 
         // Find the dropdown by its ID
-        $dropdown = Dropdown::findOrFail($id);
+        $dropdown = Dropdown::find($id);
+        if (!$dropdown) {
+            return redirect()->route('dropdown.list')->with('error', 'Dropdown not found!');
+        }
+        
 
         // Update the dropdown with the new values
         $dropdown->update([
@@ -80,7 +129,21 @@ class DropdownController extends Controller
             'value' => $request->value,
         ]);
 
-        return redirect()->route('show.dropdowns')->with('success', 'Dropdown updated successfully!');
+        switch ($dropdown->module_type) {
+            case 'User': 
+                return redirect()->route('dropdown.user')->with('success', 'User dropdown updated successfully!');
+            case 'Job': 
+                return redirect()->route('dropdown.job')->with('success', 'Job dropdown updated successfully!');
+            case 'Capability': 
+                return redirect()->route('dropdown.capability')->with('success', 'Capability dropdown updated successfully!');
+            case 'Lateness': 
+                return redirect()->route('dropdown.lateness')->with('success', 'Lateness dropdown updated successfully!');
+            case 'Training': 
+                return redirect()->route('dropdown.training')->with('success', 'Training dropdown updated successfully!');
+            default: 
+                return redirect()->route('dropdown.list')->with('success', 'Dropdown updated successfully!');
+        }
+        
     }
 
     /**

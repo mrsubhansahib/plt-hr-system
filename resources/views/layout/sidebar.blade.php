@@ -243,15 +243,34 @@
                 <div class="collapse {{ show_class(['dropdowns/*']) }}" id="Dropdowns">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('show.dropdowns') }}"
-                                class="nav-link {{ active_class(['dropdowns/list']) }}">List</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('create.dropdown') }}"
                                 class="nav-link {{ active_class(['dropdowns/create']) }}">Create</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.user') }}"
+                                class="nav-link {{ active_class(['dropdowns/user']) }}">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.job') }}"
+                                class="nav-link {{ active_class(['dropdowns/job']) }}">Job</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.capability') }}"
+                                class="nav-link {{ active_class(['dropdowns/capability']) }}">Capability</a>
+                        </li>
+                        <li class="nav-item">   
+                            <a href="{{ route('dropdown.lateness') }}"
+                                class="nav-link {{ active_class(['dropdowns/lateness']) }}">Lateness</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.training') }}"
+                                class="nav-link {{ active_class(['dropdowns/training']) }}">Training</a>
+                        </li>
                     </ul>
                 </div>
+                
+                
+                
             </li>
             
             {{-- <li class="nav-item nav-category">Components</li>
