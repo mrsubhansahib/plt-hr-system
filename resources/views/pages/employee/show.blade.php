@@ -659,7 +659,7 @@
                                             <tr>
                                                 <td>{{ $note->user->first_name }}</td>
                                                 <td>{{ $note->user->surname }}</td>
-                                                <td>{{ $note->admin->first_name }}</td> 
+                                                <td>{{ $note->admin->first_name.' '.$note->admin->surname }}</td> 
                                                 <td>{{ $note->notes }}</td>
                                                 <td>
                                                     @if($note->module_name == "User")

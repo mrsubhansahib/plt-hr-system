@@ -19,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ $employee->first_name }}"  disabled>
+                                <input type="text" class="form-control" value="{{ $employee->first_name.' '.$employee->surname  }}"  disabled>
                                 <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id" >
 
                             </div>

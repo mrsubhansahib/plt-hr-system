@@ -31,7 +31,7 @@
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
-                                            {{ $employee->first_name }}
+                                            {{ $employee->first_name.' '.$employee->surname  }}
                                         </option>
                                     @endforeach
                                 </select>
