@@ -146,7 +146,7 @@
                                     name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" disabled />
                             </div>
                             <!-- Employment Details -->
-                            <h3 class="my-4 text-center">Job Details</h3>
+                            {{-- <h3 class="my-4 text-center">Job Details</h3>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employment Commencement Date</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
@@ -380,7 +380,7 @@
                                 <label class="form-label">Casual Holiday Pay</label>
                                 <input class="form-control" type="number" name="casual_holiday_pay"
                                     value="{{ $user->casual_holiday_pay }}" disabled />
-                            </div>
+                            </div> --}}
                         </div>
 
 

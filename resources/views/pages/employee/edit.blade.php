@@ -179,7 +179,7 @@
                                     
 
                                     <!-- Employment Details -->
-                                    <h3 class="my-4 text-center">Job Details</h3>
+                                    {{-- <h3 class="my-4 text-center">Job Details</h3>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employment Commencement Date <span
                                                 class="text-danger">*</span></label>
@@ -424,7 +424,7 @@
                                         <label class="form-label">Casual Holiday Pay</label>
                                         <input class="form-control" type="number" name="casual_holiday_pay"
                                             value="{{ $user->casual_holiday_pay }}" />
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
                                         <textarea class="form-control" name="notes" value="" rows="4">{{ $user->notes }}</textarea>
