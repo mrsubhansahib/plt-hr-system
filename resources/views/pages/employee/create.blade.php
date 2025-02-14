@@ -385,26 +385,30 @@
 <script>
     $(document).ready(function() {
         $("#add-job").click(function() {
-            let jobEntry = $(".job-entry:first").clone(); // Clone first job-entry
-            let jobCount = $(".job-entry").length + 1; // Get new job number
-            // Reset cloned input/select fields
-            jobEntry.find("input").val("");
-            jobEntry.find("textarea").val("");
+            let jobEntry = $(".job-entry:first").clone();
+            let jobCount = $(".job-entry").length + 1;
+            jobEntry.find("input, textarea").not(".datepicker").val(""); 
             jobEntry.find("select").prop("selectedIndex", 0);
-            // Remove existing hr & job heading (to avoid duplication on cloning)
             jobEntry.find("hr, h5").remove();
-            // Add heading and horizontal line with spacing
-            jobEntry.prepend(`<hr style="margin: 20px 0;"><h4 class="mt-4 mb-2">Job #  ${jobCount}</h4>`);
-            // Append cloned job-entry to the job-fields container
+            jobEntry.prepend(`<hr class="my-3"><h5 class="mt-4 mb-2">Job ${jobCount}</h5>`);
+            // Remove ID (so master file datepicker applies automatically)
+            jobEntry.find(".datepicker").removeAttr("id").val("");
+
             $("#job-fields").append(jobEntry);
         });
         $("#remove-job").click(function() {
-            if ($(".job-entry").length > 1) {
-                $(".job-entry:last").prev("hr").remove(); // Remove the preceding hr
-                $(".job-entry:last").remove(); // Remove last job entry
-            } else {
-                alert("At least one job entry is required.");
-            }
+            let jobs = $(".job-entry");
+            if (jobs.length > 1) jobs.last().prev("hr").remove().end().remove();
+            else alert("At least one job entry is required.");
+        });
+        // Ensure new datepicker fields get initialized
+        $(document).on("focus", ".datepicker", function() {
+            $(this).datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+                todayHighlight: true,
+                endDate: new Date()
+            });
         });
     });
 </script>
