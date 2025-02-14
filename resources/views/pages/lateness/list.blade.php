@@ -29,7 +29,7 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>First Name</th>
                                     <th>Surname</th>
                                     <th>Lateness Triggered</th>
                                     <th>Lateness Stage</th>

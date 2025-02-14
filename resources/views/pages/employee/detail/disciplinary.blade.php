@@ -19,42 +19,42 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ $employee->first_name }}"  disabled>
-                                <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id" >
-                                <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id" >
+                                <input type="text" class="form-control" value="{{ $employee->first_name }}" disabled>
+                                <input type="hidden" class="form-control" value="{{ $employee->id }}" name="user_id">
+                                <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id">
 
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Reason for Disciplinary<span class="text-danger">*</span></label>
+                                <label class="form-label">Reason for Disciplinary</label>
                                 <input class="form-control" type="text" name="reason_for_disciplinary" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date of Hearing<span class="text-danger">*</span></label>
+                                <label class="form-label">Date of Hearing</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="hearing_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Outcome<span class="text-danger">*</span></label>
+                                <label class="form-label">Outcome</label>
                                 <select class="form-control form-select" name="outcome">
                                     <option value="" selected disabled>Select</option>
                                     <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
                                     <option value="Written Warning">Written Warning</option>
                                     <option value="Final Written Warning">Final Written Warning</option>
-                                    <option value="Dismissal"> Dismissal</option>
+                                    <option value="Dismissal">Dismissal</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Suspended<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" name="suspended">
-                                    <option value="yes">Yes</option>
-                                    <option selected value="no">No</option>
+                                <label class="form-label">Suspended</label>
+                                <select class="form-control form-select" name="suspended" id="suspended">
+                                    <option selected value="yes">Yes</option>
+                                    <option value="no">No</option>
                                 </select>
                             </div>
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
+                            <div class="col-md-3 mt-3" id="date-suspended-container" style="display:none;">
+                                <label class="form-label">Date Suspended</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                    name="date_suspended" />
+                                    name="date_suspended" id="date_suspended" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
@@ -67,5 +67,23 @@
             </div>
         </div>
     </div>
-@endsection
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const suspendedDropdown = document.getElementById('suspended');
+            const dateSuspendedContainer = document.getElementById('date-suspended-container');
+            const dateSuspendedField = document.getElementById('date_suspended');
+            const toggleDateSuspended = () => {
+                const isSuspended = suspendedDropdown.value === "yes";
+                dateSuspendedContainer.style.display = isSuspended ? "block" : "none";
+                if (isSuspended) {
+                    dateSuspendedField.setAttribute("required", "true");
+                } else {
+                    dateSuspendedField.removeAttribute("required");
+                }
+            };
+            toggleDateSuspended();
+            suspendedDropdown.addEventListener('change', toggleDateSuspended);
+        });
+    </script>
+@endsection

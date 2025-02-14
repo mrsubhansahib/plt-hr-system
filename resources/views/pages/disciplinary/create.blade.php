@@ -79,8 +79,7 @@
             </div>
         </div>
     </div>
-@endsection
-
+    
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const suspendedDropdown = document.getElementById('suspended');
@@ -99,3 +98,5 @@
         suspendedDropdown.addEventListener('change', toggleDateSuspended);
     });
 </script>
+@endsection
+
