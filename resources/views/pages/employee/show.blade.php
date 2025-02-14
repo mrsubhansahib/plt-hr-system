@@ -70,7 +70,7 @@
                             <div class="form-group">
                                 <label for="mobile_tel">Mobile No</label>
                                 <input type="text" class="form-control mt-2" id="mobile_tel"
-                                    value="{{ $user->mobile_tel }}" disabled>
+                                    value="{{ $user->mobile_tel ?? 'Not Entered'}}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label for="contracted_from_date">Contract From Date</label>
                                 <input type="text" class="form-control mt-2" id="contracted_from_date"
-                                    value="{{ $user->contracted_from_date }}" disabled>
+                                    value="{{ $user->contracted_from_date ?? 'Not Entered'  }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
@@ -301,7 +301,7 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>Reason for Absence</th>
                                         <th>Date From</th>
@@ -368,7 +368,7 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>Stage</th>
                                         <th>Date</th>
@@ -439,7 +439,7 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>Training Title</th>
                                         <th>Course Date</th>
@@ -510,7 +510,7 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>Reason for Disciplinary</th>
                                         <th>Date of Hearing</th>
@@ -576,7 +576,7 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>Lateness Triggered</th>
                                         <th>Lateness Stage</th>
@@ -644,7 +644,7 @@
                             <table class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>Admin Name</th>
                                         <th>Note</th>

@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between py-2">
                         <div>
-                            <h4 class="py-2">sickness List</h4>
+                            <h4 class="py-2">Sickness List</h4>
                         </div>
                         <div>
                             <a href="{{ route('create.sickness') }}" class="btn btn-primary"><strong>Create</strong><i
@@ -29,7 +29,7 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>First Name</th>
                                     <th>SurName</th>
                                     <th>Reason for Absence</th>
                                     <th>Date From</th>

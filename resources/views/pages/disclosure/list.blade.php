@@ -29,7 +29,7 @@
                         <table class="table dataTableExample">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>First Name</th>
                                     <th>SurName</th>
                                     <th>DBS Level</th>
                                     <th>Certification No</th>
