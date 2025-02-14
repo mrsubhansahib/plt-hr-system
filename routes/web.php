@@ -23,6 +23,7 @@ use App\Http\Controllers\DisclosureController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HrController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\TrainingController;
@@ -186,6 +187,13 @@ Route::middleware('auth')->group(function () {
         Route::get('capability',    [DropdownController::class, 'capabilityDropdowns'])->name('dropdown.capability');
         Route::get('lateness',       [DropdownController::class, 'latenessDropdowns'])->name('dropdown.lateness');
         Route::get('training',      [DropdownController::class, 'trainingDropdowns'])->name('dropdown.training');
+    });
+    // Routes for HR List
+
+    Route::group(['prefix' => 'hr_list'], function () {
+        Route::get('list',           [HrController::class, 'index'])->name('hr_list');
+        Route::get('edit/{id}',      [HrController::class, 'edit'])->name('edit.hr_list');
+        Route::post('update/{id}',   [HrController::class, 'update'])->name('update.hr_list');
     });
     
     
