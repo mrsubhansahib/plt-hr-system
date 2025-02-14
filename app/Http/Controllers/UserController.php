@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dropdown;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -33,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.create');
+          $dropdowns = Dropdown::whereIn('module_type', ['User', 'Job'])->orderBy('name')->get()->all();
+        return view('pages.admin.create', compact('dropdowns'));
     }
 
     /**
@@ -80,7 +82,7 @@ class UserController extends Controller
     public function show($id)
     {
         // dd($id);
-        $user = user::find($id);
+        $user = User::find($id);
         return view('pages.admin.show', compact('user'));
     }
 
