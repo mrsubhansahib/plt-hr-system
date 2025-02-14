@@ -69,6 +69,13 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="rate_of_pay" />
+                            </div> <!-- Pay Frequency Field -->
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Pay Frequency<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="pay_frequency">
+                                    <option selected value="Per Annum">Per Annum</option>
+                                    <option value="Per Hour"> Per Hour</option>
+                                </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Number of Hours <span class="text-danger">*</span></label>
@@ -102,8 +109,8 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DBS Required <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="dbs_required">
-                                    <option value="yes">Yes</option>
-                                    <option selected value="no">No</option>
+                                    <option selected value="yes">Yes</option>
+                                    <option  value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-12 mt-3">

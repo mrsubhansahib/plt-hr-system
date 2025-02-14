@@ -254,7 +254,7 @@ class EmployeeController extends Controller
         Job::where('user_id', $id)
             ->where('status', 'active')
             ->update(['status' => 'terminated']);
-        return redirect()->route('show.left.employees')->with('success', 'Employee left successfully.');
+        return redirect()->route('show.left.employees')->with('success', 'Employee terminated successfully.');
     }
 
     public function left_employees()

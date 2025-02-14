@@ -48,13 +48,13 @@
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
                                         <td>
-                                            {{ $user->mainJob ? $user->mainJob->title : 'No Main Job Assigned' }}
+                                            {{ $user->jobs->where('main_job','yes')->where('status','active')->first()->title??'No Main Job Assigned' }}
                                         </td>
                                         <td>
-                                            {{ $user->mainJob ? $user->mainJob->facility : 'No Facility Assigned' }}
+                                            {{ $user->jobs->where('main_job','yes')->where('status','active')->first()->facility ?? $user->jobs->first()->facility ?? 'No Facility Assigned' }}
                                         </td>
                                         <td>
-                                            {{ $user->mainJob ? $user->mainJob->cost_center : 'No Center Assigned' }}
+                                            {{ $user->jobs->where('main_job','yes')->where('status','active')->first()->cost_center ?? $user->jobs->first()->cost_center?? 'No Center Assigned' }}
                                         </td>
                                         <td>
                                             <div class="dropdown">

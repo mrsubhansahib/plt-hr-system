@@ -18,7 +18,7 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item nav-category">web apps</li>
+            {{-- <li class="nav-item nav-category">web apps</li> --}}
            
             {{-- admin added by haider --}}
 
@@ -67,13 +67,13 @@
             <li class="nav-item {{ active_class(['employee/list']) }}">
                 <a href="{{route('show.employees')}}" class="nav-link">
                     <i class="link-icon" data-feather="user-check"></i>
-                    <span class="link-title">Employee</span>
+                    <span class="link-title">Employees</span>
                 </a>
             </li>
             <li class="nav-item {{ active_class(['employee/terminated/list']) }}">
                 <a href="{{route('show.left.employees')}}" class="nav-link">
                     <i class="link-icon" data-feather="user-x"></i>
-                    <span class="link-title">Termianted</span>
+                    <span class="link-title">Terminated</span>
                 </a>
             </li>
             {{-- Changes --}}
