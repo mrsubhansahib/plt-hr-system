@@ -18,7 +18,14 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
-            {{-- <li class="nav-item nav-category">web apps</li> --}}
+            <li class="nav-item {{ active_class(['hr_list/list']) }}">
+                <a href="{{ route('hr_list') }}" class="nav-link">
+                    <i class="link-icon" data-feather="list"></i>
+                    <span class="link-title">HR List</span>
+                </a>
+            </li>
+            
+            <li class="nav-item nav-category">web apps</li>
            
             {{-- admin added by haider --}}
 

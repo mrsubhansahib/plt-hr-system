@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Age <span class="text-danger">*</span></label>
-                                <input class="form-control" type="number" required name="age" value="{{ $user->age }}" />
+                                <input class="form-control" type="text" required name="age" id="age" value="{{ $user->age }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Gender <span class="text-danger">*</span></label>
