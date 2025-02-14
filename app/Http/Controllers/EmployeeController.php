@@ -251,9 +251,12 @@ class EmployeeController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update(['status' => 'terminated']);
-        Job::where('user_id', $id)
+        $job=Job::where('user_id', $id)
             ->where('status', 'active')
-            ->update(['status' => 'terminated']);
+            // ->update(['status' => 'terminated','termination_date' => now()]);
+            //just need date bro like in this formate 07-02-2023
+            ->update(['status' => 'terminated','termination_date' => now()->format('d-m-Y')]);
+            // dd($job);
         return redirect()->route('show.left.employees')->with('success', 'Employee terminated successfully.');
     }
 

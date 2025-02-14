@@ -21,7 +21,7 @@ class JobController extends Controller
             ->whereHas('user', function ($e) {
                 $e->where('role', 'employee')->where('status', 'active');
             })
-            ->where('status', 'active')
+            ->whereIn('status', ['active', 'terminated'])
             ->get();
         return view('pages.job.list', compact('jobs'));
     }
