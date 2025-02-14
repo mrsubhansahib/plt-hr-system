@@ -62,6 +62,10 @@
                                                         <button onclick="if(confirm('Are you sure you want to activate this Employee?')){window.location.href='{{ route('active.employee', $user->id) }}'}"
                                                             class="dropdown-item">Active</button>
                                                     </li>
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('terminated.detail.employee', $user->id) }}">View</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>
