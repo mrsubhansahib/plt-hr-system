@@ -7,8 +7,8 @@
             <li class="breadcrumb-item active" aria-current="page">Create</li>
         </ol>
     </nav>
-@include('layout.alert')
-<div class="row">
+    @include('layout.alert')
+    <div class="row">
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
@@ -19,13 +19,13 @@
                             <h4 class="py-2">User List</h4>
                         </div>
                         <div>
-                            <a href="{{ route('show.admins') }}"
-                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                            <a href="{{ route('show.admins') }}" class="btn btn-primary"><strong>List</strong><i
+                                    data-feather="list" class="ms-2"></i></a>
                         </div>
                     </div>
                     <hr>
-                    <form class="forms-sample" action="{{ route('store.admin') }}" method="POST"  
-                    onsubmit="return checkPasswordComplexity()">
+                    <form class="forms-sample" action="{{ route('store.admin') }}" method="POST"
+                        onsubmit="return checkPasswordComplexity()">
                         @csrf
                         <!-- Personal Details -->
                         <div class="row mb-3">
@@ -45,7 +45,7 @@
                                 <label class="form-label">Address 1 <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="address1" />
                             </div>
-                            
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Town <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="town" />
@@ -54,32 +54,28 @@
                                 <label class="form-label">Postcode <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="post_code" />
                             </div>
-                           
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Email <span class="text-danger">*</span></label>
                                 <input class="form-control" type="email" required name="email" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Password <span class="text-danger">*</span></label>
-                                <input
-                                    class="form-control"
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    oninput="validatePassword()"
-                                    required
-                                />
+                                <input class="form-control" type="password" id="password" name="password"
+                                    oninput="validatePassword()" required />
                                 <div id="password-hint" class="mt-2"></div>
                             </div>
 
 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" id="dob" placeholder="Select Date" required name="dob" />
+                                <input class="form-control datepicker" type="text" id="dob"
+                                    placeholder="Select Date" required name="dob" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Age <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" id="age" required name="age" readonly />
+                                <input class="form-control" placeholder="auto-calculated" type="text" id="age" required name="age"
+                                    readonly />
                             </div>
 
 
@@ -98,23 +94,11 @@
                                 <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="ethnicity">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="White Britisha">White Britisha</option>
-                                    <option value="White Irish">White Irish</option>
-                                    <option value="White Other">White Other</option>
-                                    <option value="Mixed White and Black Caribbean">Mixed White and Black Caribbean</option>
-                                    <option value="Mixed White and Black African">Mixed White and Black African</option>
-                                    <option value="Mixed White and Asian">Mixed White and Asian</option>
-                                    <option value="Mixed Other Background">Mixed Other Background</option>
-                                    <option value="Asian or Asian British Indian">Asian or Asian British Indian</option>
-                                    <option value="Asian or Asian British Pakistani">Asian or Asian British Pakistani</option>
-                                    <option value="Asian or Asian British Bangladeshi">Asian or Asian British Bangladeshi</option>
-                                    <option value="Asian or Asian British Kashmiri">Asian or Asian British Kashmiri</option>
-                                    <option value="Asian or Asian British Other">Asian or Asian British Other</option>
-                                    <option value="Black or Black British Caribbean">Black or Black British Caribbean</option>
-                                    <option value="Black or Black British African">Black or Black British African</option>
-                                    <option value="Black or Black British Other">Black or Black British Other</option>
-                                    <option value="Chinese">Chinese</option>
-                                    <option value="Other Ethnic Group">Other Ethnic Group</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
+                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -125,11 +109,13 @@
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Employee Commencement Date <span class="text-danger">*</span></label>
-                                <input class="form-control datepicker"  type="text" placeholder="Select Date" name="commencement_date" required/>
+                                <label class="form-label">Commencement Date <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="commencement_date" required />
                             </div>
-                            
-                            
+
+
 
 
 
@@ -143,7 +129,7 @@
                                 <input class="form-control" type="text" required name="default_cost_center" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Salaried / Monthly in Arrears <span
+                                <label class="form-label">Salaried/Monthly in Arrears <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="salaried" />
                             </div>
@@ -154,20 +140,23 @@
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Emergency Contact 1 Name <span class="text-danger">*</span></label>
+                                <label class="form-label">Contact 1 Name <span
+                                        class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="emergency_1_name" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Emergency Contact 1 Mobile <span class="text-danger">*</span></label>
-                                <input class="form-control" type="number" placeholder="phone number" required name="emergency_1_ph_no" />
+                                <label class="form-label">Contact 1 Mobile <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="number" placeholder="phone number" required
+                                    name="emergency_1_ph_no" />
                             </div>
-                           
+
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Emergency Contact 1 Relationship <span
+                                <label class="form-label">Contact 1 Relationship <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="emergency_1_relation" />
                             </div>
-                          
+
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

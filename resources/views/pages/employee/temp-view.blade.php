@@ -385,10 +385,10 @@
 
 
                         <!-- Notes Section -->
-                        <div class="col-md-12 mt-3">
+                        {{-- <div class="col-md-12 mt-3">
                             <label class="form-label">Notes</label>
                             <textarea class="form-control" name="notes" rows="4" disabled>{{ $user->notes }}</textarea>
-                        </div>
+                        </div> --}}
 
                         <div class="mt-4">
                             <a href="{{ route('show.temp.employees') }}" class="btn btn-secondary">Back</a>

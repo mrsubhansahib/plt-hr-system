@@ -69,10 +69,10 @@
                     <h3 class="my-4 text-center">Employment Details</h3>
                     <hr>
                     <div class="row mb-3">
-                        <div class="col-md-3 mt-3">
+                        {{-- <div class="col-md-3 mt-3">
                             <strong>Employment Date:</strong>
                             <p>{{ $user->employment_date }}</p>
-                        </div>
+                        </div> --}}
                         <div class="col-md-3 mt-3">
                             <strong>Commencement Date:</strong>
                             <p>{{ $user->commencement_date }}</p>
@@ -86,7 +86,7 @@
                             <p>{{ $user->default_cost_center }}</p>
                         </div>
                         <div class="col-md-3 mt-3">
-                            <strong>Salaried:</strong>
+                            <strong>Salaried/Monthly in Arrears:</strong>
                             <p>{{ $user->salaried }}</p>
                         </div>
                     </div>
@@ -96,15 +96,15 @@
                     <hr>
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
-                            <strong>Emergency Contact 1 Name:</strong>
+                            <strong>Contact 1 Name:</strong>
                             <p>{{ $user->emergency_1_name }}</p>
                         </div>
                         <div class="col-md-3 mt-3">
-                            <strong>Emergency Contact 1 Mobile:</strong>
+                            <strong>Contact 1 Mobile:</strong>
                             <p>{{ $user->emergency_1_ph_no }}</p>
                         </div>
                         <div class="col-md-3 mt-3">
-                            <strong>Emergency Contact 1 Relationship:</strong>
+                            <strong>Contact 1 Relationship:</strong>
                             <p>{{ $user->emergency_1_relation }}</p>
                         </div>
                     </div>

@@ -71,7 +71,7 @@
                                     <div class="col-md-3 mt-3">
                                         <label for="age" class="form-label">Age <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" id="age" readonly required
+                                        <input class="form-control" placeholder="auto-calculated" type="text" id="age" readonly required
                                             name="age" />
                                     </div>
                                     <div class="col-md-3 mt-3">
@@ -86,6 +86,7 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                         <select class="form-control form-select" required name="ethnicity">
+                                            <option value="" selected disabled>Select</option>
                                             @foreach ($dropdowns as $dropdown)
                                                 @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
                                                     <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
@@ -136,7 +137,7 @@
                                     </div>
 
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Employment Commencement Date<span
+                                        <label class="form-label">Commencement Date<span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control datepicker py-2" type="text"
                                             placeholder="Select Date" name="commencement_date" required />
@@ -152,7 +153,7 @@
                                         <input class="form-control" type="text" required name="default_cost_center" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Salaried / Monthly in Arrears <span
+                                        <label class="form-label">Salaried/Monthly in Arrears <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="salaried" />
                                     </div>
@@ -200,7 +201,8 @@
                             </div>
 
                             <!-- optional Fields Tab -->
-                            <div class="tab-pane fade" id="optional-fields-tab-pane" role="tabpanel" aria-labelledby="optional-fields-tab" tabindex="0">
+                            <div class="tab-pane fade" id="optional-fields-tab-pane" role="tabpanel"
+                                aria-labelledby="optional-fields-tab" tabindex="0">
                                 <div class="row mb-3">
                                     <div class="d-flex justify-content-between py-2">
                                         <div></div>
@@ -208,114 +210,136 @@
                                             <h4 class="py-2">Job Details</h4>
                                         </div>
                                         <div>
-                                            <a href="{{ route('show.temp.employees') }}" class="btn btn-primary">
+                                            {{-- <a href="{{ route('show.temp.employees') }}" class="btn btn-primary">
                                                 <strong>List</strong><i data-feather="list" class="ms-2"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-success ms-2" id="add-job"><strong>Add Job</strong></button>
-                                            <button type="button" class="btn btn-danger ms-2" id="remove-job"><strong>Remove</strong></button>
+                                            </a> --}}
+                                            <button type="button" class="btn btn-sm btn-success ms-2" title="Add New Job"
+                                                id="add-job"><i data-feather="plus"></i></button>
+                                            <button type="button" class="btn btn-sm btn-danger  ms-2" title="Remove Last Job"
+                                                id="remove-job"><i data-feather="minus"></i></button>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Job Fields -->
+                                    <hr style="margin: 5px 0;"><h4 class="my-3 ">Job # 1</h4>
                                     <div id="job-fields">
                                         <div class="row job-entry">
                                             <!-- Job Title Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Job Title<span class="text-danger">*</span></label>
-                                                <select class="form-control form-select title-select" required name="title[]">
+                                                <label class="form-label">Job Title<span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-control form-select title-select" required
+                                                    name="title[]">
                                                     <option value="" selected disabled>Select Title</option>
                                                     @foreach ($dropdowns as $dropdown)
                                                         @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Title')
-                                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}
+                                                            </option>
                                                         @endif
                                                     @endforeach
                                                 </select>
                                             </div>
-                            
+
                                             <!-- Main Job Field -->
                                             <div class="col-md-3 mt-3">
                                                 <label class="form-label">Main Job</label>
-                                                <select class="form-control form-select main-job-select" name="main_job[]">
+                                                <select class="form-control form-select main-job-select"
+                                                    name="main_job[]">
                                                     <option value="yes">Yes</option>
                                                     <option selected value="no">No</option>
                                                 </select>
                                             </div>
-                            
+
                                             <!-- Facility Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Facility<span class="text-danger">*</span></label>
-                                                <select class="form-control form-select facility-select" required name="facility[]">
+                                                <label class="form-label">Facility<span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-control form-select facility-select" required
+                                                    name="facility[]">
                                                     <option value="" selected disabled>Select Facility</option>
                                                     @foreach ($dropdowns as $dropdown)
                                                         @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Facility')
-                                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}
+                                                            </option>
                                                         @endif
                                                     @endforeach
                                                 </select>
                                             </div>
-                            
+
                                             <!-- Cost Centre Field -->
                                             <div class="col-md-3 mt-3">
                                                 <label class="form-label">Cost Centre</label>
-                                                <input class="form-control cost-center" type="text" name="cost_center[]" />
+                                                <input class="form-control cost-center" type="text"
+                                                    name="cost_center[]" />
                                             </div>
-                            
+
                                             <!-- Job Start Date Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Job Start Date <span class="text-danger">*</span></label>
-                                                <input class="form-control datepicker start-date" type="text" placeholder="Select Date" required name="start_date[]" />
+                                                <label class="form-label">Job Start Date <span
+                                                        class="text-danger">*</span></label>
+                                                <input class="form-control datepicker start-date" type="text"
+                                                    placeholder="Select Date" required name="start_date[]" />
                                             </div>
-                            
+
                                             <!-- Job Termination Date Field -->
                                             <div class="col-md-3 mt-3">
                                                 <label class="form-label">Job Termination Date</label>
-                                                <input class="form-control datepicker termination-date" type="text" placeholder="Select Date" name="termination_date[]" />
+                                                <input class="form-control datepicker termination-date" type="text"
+                                                    placeholder="Select Date" name="termination_date[]" />
                                             </div>
-                            
+
                                             <!-- Rate of Pay Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
-                                                <input class="form-control rate-of-pay" type="text" required name="rate_of_pay[]" />
+                                                <label class="form-label">Rate of Pay <span
+                                                        class="text-danger">*</span></label>
+                                                <input class="form-control rate-of-pay" type="text" required
+                                                    name="rate_of_pay[]" />
                                             </div>
-                            
+
                                             <!-- Pay Frequency Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Pay Frequency<span class="text-danger">*</span></label>
+                                                <label class="form-label">Pay Frequency<span
+                                                        class="text-danger">*</span></label>
                                                 <select class="form-control form-select" required name="pay_frequency[]">
                                                     <option selected value="Per Annum">Per Annum</option>
                                                     <option value="Per Hour"> Per Hour</option>
                                                 </select>
                                             </div>
-                            
+
                                             <!-- Number of Hours Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Number of Hours <span class="text-danger">*</span></label>
-                                                <input class="form-control" type="text" required name="number_of_hours[]" />
+                                                <label class="form-label">Number of Hours <span
+                                                        class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" required
+                                                    name="number_of_hours[]" />
                                             </div>
-                            
+
                                             <!-- Contract Type Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Contract Type <span class="text-danger">*</span></label>
+                                                <label class="form-label">Contract Type <span
+                                                        class="text-danger">*</span></label>
                                                 <select class="form-control form-select" required name="contract_type[]">
                                                     <option value="" selected disabled>Select Contract Type</option>
                                                     @foreach ($dropdowns as $dropdown)
                                                         @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Contract Type')
-                                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}
+                                                            </option>
                                                         @endif
                                                     @endforeach
                                                 </select>
                                             </div>
-                            
+
                                             <!-- Contract Returned Field -->
                                             <div class="col-md-3 mt-3">
                                                 <label class="form-label">Contract Returned</label>
-                                                <select class="form-control form-select" required name="contract_returned[]">
+                                                <select class="form-control form-select" required
+                                                    name="contract_returned[]">
                                                     <option value="" selected disabled>Select Option</option>
                                                     <option value="yes">Yes</option>
                                                     <option selected value="no">No</option>
                                                 </select>
                                             </div>
-                            
+
                                             <!-- JD Returned Field -->
                                             <div class="col-md-3 mt-3">
                                                 <label class="form-label">JD Returned</label>
@@ -324,16 +348,17 @@
                                                     <option selected value="no">No</option>
                                                 </select>
                                             </div>
-                            
+
                                             <!-- DBS Required Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">DBS Required <span class="text-danger">*</span></label>
+                                                <label class="form-label">DBS Required <span
+                                                        class="text-danger">*</span></label>
                                                 <select class="form-control form-select" required name="dbs_required[]">
                                                     <option selected value="yes">Yes</option>
                                                     <option value="no">No</option>
                                                 </select>
                                             </div>
-                            
+
                                             <!-- Notes Field -->
                                             <div class="col-md-12 mt-3">
                                                 <label class="form-label">Notes</label>
@@ -343,7 +368,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <!-- Single Submit Button -->
                         <div class=" mt-4">
@@ -369,7 +394,7 @@
             // Remove existing hr & job heading (to avoid duplication on cloning)
             jobEntry.find("hr, h5").remove();
             // Add heading and horizontal line with spacing
-            jobEntry.prepend(`<hr style="margin: 20px 0;"><h5 class="mt-4 mb-2">Job ${jobCount}</h5>`);
+            jobEntry.prepend(`<hr style="margin: 20px 0;"><h4 class="mt-4 mb-2">Job #  ${jobCount}</h4>`);
             // Append cloned job-entry to the job-fields container
             $("#job-fields").append(jobEntry);
         });

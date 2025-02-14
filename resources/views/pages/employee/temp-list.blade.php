@@ -41,7 +41,7 @@
                                     <tr>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
-                                        <td>{{ $user->jobs->first()->facility ?? 'No Job Assigned' }}</td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->first()->facility ?? $user->jobs->first()->facility ?? 'No Job Assigned' }}</td>
                                         <td>{{ $user->status }} </td>
                                         <td>
                                             <!-- Toggler Actions -->
