@@ -74,23 +74,8 @@ class HrController extends Controller
     {
         $user = User::findOrFail($id);
 
-        // // Validate the request
-        // $request->validate([
-        //     'main_job' => 'required|in:yes,no',
-        //     'cost_center' => 'nullable|string|max:255',
-        //     'termination_date' => 'nullable|date',
-        //     'pay_frequency' => 'required|in:Per Annum,Per Hour',
-        //     'notes' => 'nullable|string'
-        // ]);
-
-        // Update user data
-        $user->update([
-            'main_job' => $request->main_job,
-            'cost_center' => $request->cost_center,
-            'termination_date' => $request->termination_date,
-            'pay_frequency' => $request->pay_frequency,
-            'notes' => $request->notes,
-        ]);
+        
+        $user->update($request->all());
 
         return redirect()->route('hr_list')->with('success', 'Employee updated successfully.');
     }
