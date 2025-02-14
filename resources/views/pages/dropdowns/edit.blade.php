@@ -17,7 +17,7 @@
                     <hr>
                     <form class="forms-sample" action="{{ route('update.dropdown', $dropdown->id) }}" method="POST">
                         @csrf
-                        @method('PUT')
+                        {{-- @method('PUT') --}}
 
                         <div class="row mb-3">
                             <!-- Module Type (Disabled Field) -->
