@@ -118,11 +118,7 @@
                             data-bs-target="#capability-tab-pane" type="button" role="tab"
                             aria-controls="capability-tab-pane" aria-selected="false">Capability</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="training-tab" data-bs-toggle="tab"
-                            data-bs-target="#training-tab-pane" type="button" role="tab"
-                            aria-controls="training-tab-pane" aria-selected="false">Training</button>
-                    </li>
+                  
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="disciplinary-tab" data-bs-toggle="tab"
                             data-bs-target="#disciplinary-tab-pane" type="button" role="tab"
@@ -132,6 +128,11 @@
                         <button class="nav-link" id="lateness-tab" data-bs-toggle="tab"
                             data-bs-target="#lateness-tab-pane" type="button" role="tab"
                             aria-controls="lateness-tab-pane" aria-selected="false">Lateness</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="training-tab" data-bs-toggle="tab"
+                            data-bs-target="#training-tab-pane" type="button" role="tab"
+                            aria-controls="training-tab-pane" aria-selected="false">Training</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane"

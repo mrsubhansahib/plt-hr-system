@@ -121,15 +121,15 @@ class CreateController extends Controller
     }
     public function capabilityStore(Request $request)
     {
-        $request->validate([
-            'user_id'                       => 'required',
-            'on_capability_procedure'       => 'required',
-            'stage'                         => 'required',
-            'date'                          => 'required',
-            'outcome'                       => 'required',
-            'warning_issued_type'           => 'required',
-            'review_date'                   => 'required',
-        ]);
+        // $request->validate([
+        //     'user_id'                       => 'required',
+        //     'on_capability_procedure'       => 'required',
+        //     'stage'                         => 'required',
+        //     'date'                          => 'required',
+        //     'outcome'                       => 'required',
+        //     'warning_issued_type'           => 'required',
+        //     'review_date'                   => 'required',
+        // ]);
         Capability::create($request->all());
         // dd($request->all());
         return redirect()->route('detail.employee', $request->user_id)
