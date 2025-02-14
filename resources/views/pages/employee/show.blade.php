@@ -661,7 +661,13 @@
                                                 <td>{{ $note->user->surname }}</td>
                                                 <td>{{ $note->admin->first_name }}</td> 
                                                 <td>{{ $note->notes }}</td>
-                                                <td>{{ $note->module_name }}</td> 
+                                                <td>
+                                                    @if($note->module_name == "User")
+                                                        Employee
+                                                    @else
+                                                        {{ $note->module_name }}
+                                                    @endif
+                                                </td>                                                
                                                 <td>{{ $note->created_at->format('d-m-Y') }}</td>
                                             </tr>
                                         @endforeach
