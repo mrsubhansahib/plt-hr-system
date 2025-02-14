@@ -391,24 +391,37 @@
             jobEntry.find("select").prop("selectedIndex", 0);
             jobEntry.find("hr, h5").remove();
             jobEntry.prepend(`<hr class="my-3"><h5 class="mt-4 mb-2">Job ${jobCount}</h5>`);
+
             // Remove ID (so master file datepicker applies automatically)
             jobEntry.find(".datepicker").removeAttr("id").val("");
 
             $("#job-fields").append(jobEntry);
         });
+
         $("#remove-job").click(function() {
             let jobs = $(".job-entry");
             if (jobs.length > 1) jobs.last().prev("hr").remove().end().remove();
             else alert("At least one job entry is required.");
         });
+
         // Ensure new datepicker fields get initialized
         $(document).on("focus", ".datepicker", function() {
-            $(this).datepicker({
-                format: 'dd-mm-yyyy',
-                autoclose: true,
-                todayHighlight: true,
-                endDate: new Date()
-            });
+            if ($(this).attr("id") === "dob") {
+                // Restrict future dates only for Age Datepicker
+                $(this).datepicker({
+                    format: 'dd-mm-yyyy',
+                    autoclose: true,
+                    todayHighlight: true,
+                    endDate: new Date() // Restrict future dates
+                });
+            } else {
+                // Allow future dates for all other datepickers
+                $(this).datepicker({
+                    format: 'dd-mm-yyyy',
+                    autoclose: true,
+                    todayHighlight: true
+                });
+            }
         });
     });
 </script>
