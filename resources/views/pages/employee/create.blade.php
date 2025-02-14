@@ -97,6 +97,13 @@
 
                                     <!-- Address and Contact Details -->
                                     <div class="col-md-3 mt-3">
+                                        <label class="form-label">Disability</label>
+                                        <select class="form-control form-select" name="disability">
+                                            <option value="yes">Yes</option>
+                                            <option selected value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
                                         <label class="form-label">Address 1 <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="address1" />
                                     </div>
@@ -107,21 +114,6 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Address 3</label>
                                         <input class="form-control" type="text" name="address3" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Mobile Tel</label>
-                                        <input class="form-control" type="text" name="mobile_tel" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Home Tel</label>
-                                        <input class="form-control" type="text" name="home_tel" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
-                                        <label class="form-label">Disability</label>
-                                        <select class="form-control form-select" name="disability">
-                                            <option value="yes">Yes</option>
-                                            <option selected value="no">No</option>
-                                        </select>
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Town <span class="text-danger">*</span></label>
@@ -156,6 +148,14 @@
                                         <label class="form-label">Salaried/Monthly in Arrears <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="text" required name="salaried" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Mobile Tel</label>
+                                        <input class="form-control" type="text" name="mobile_tel" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Home Tel</label>
+                                        <input class="form-control" type="text" name="home_tel" />
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 1 Name <span

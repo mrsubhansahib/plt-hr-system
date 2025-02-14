@@ -219,6 +219,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $request->validate([
             'first_name'                => 'required',
             'surname'                   => 'required',
@@ -240,7 +241,6 @@ class EmployeeController extends Controller
         ]);
         $user = User::find($id);
         $user->update($request->all());
-        // Redirect with a success message
         if ($user->status == 'pending') {
             return redirect()->route('show.temp.employees')->with('success', 'Employee edited successfully.');
         }
