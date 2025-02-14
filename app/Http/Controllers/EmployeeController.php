@@ -198,6 +198,27 @@ class EmployeeController extends Controller
         $hasDisclosure = $user->disclosures()->count();
         return view('pages.employee.show', compact('user', 'hasDisclosure'));
     }
+    public function terminatedShow($id)
+    {
+        // dd($id);
+        $user = User::with([
+            'jobs' => function ($query) {
+                $query->whereIn('status', ['terminated', 'active']);
+            },
+            'disclosures',
+            'sicknesses',
+            'capabilities',
+            'disciplinaries',
+            'latenesses',
+            'trainings',
+            'all_notes' => function ($query) {
+                $query->orderBy('created_at', 'desc');
+            },
+        ])->find($id);
+        // dd($user);
+        $hasDisclosure = $user->disclosures()->count();
+        return view('pages.employee.show-terminated', compact('user', 'hasDisclosure'));
+    }
     /**
      * Show the form for editing the specified resource.
      * @param  int $id
