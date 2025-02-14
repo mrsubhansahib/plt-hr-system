@@ -41,7 +41,8 @@
                                     <tr>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
-                                        <td>{{ $user->jobs->where('main_job', 'yes')->first()->facility ?? $user->jobs->first()->facility ?? 'No Job Assigned' }}</td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->first()->facility ?? ($user->jobs->first()->facility ?? 'No Job Assigned') }}
+                                        </td>
                                         <td>{{ $user->status }} </td>
                                         <td>
                                             <!-- Toggler Actions -->
@@ -50,10 +51,12 @@
                                                 onclick="return confirm('Are you sure you want to accept this new entrant?')"
                                                 class="btn btn-sm btn-success" style="padding:3px"><i
                                                     data-feather="check"></i></a>
-                                            <a href="{{ route('reject.employee', $user->id) }}" title="Reject"
-                                                onclick="return confirm('Are you sure you want to reject this new entrant?')"
-                                                class="btn btn-sm btn-danger" style="padding:3px"><i
-                                                    data-feather="x"></i></a>
+                                            @if ($user->role == 'super_admin')
+                                                <a href="{{ route('reject.employee', $user->id) }}" title="Reject"
+                                                    onclick="return confirm('Are you sure you want to reject this new entrant?')"
+                                                    class="btn btn-sm btn-danger" style="padding:3px"><i
+                                                        data-feather="x"></i></a>
+                                            @endif
                                             <a href="{{ route('edit.employee', $user->id) }}" title="Edit"
                                                 class="btn btn-sm btn-primary" style="padding:3px">
                                                 <i data-feather="edit"></i>
