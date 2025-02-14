@@ -69,24 +69,24 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'first_name'         => 'required',
-            'surname'            => 'required',
-            'preferred_name'     => 'required',
-            'email'              => 'required|email',
-            'address1'           => 'required',
-            'town'               => 'required',
-            'post_code'          => 'required',
-            'dob'                => 'required|date',
-            'age'                => 'required|integer',
-            'gender'             => 'required',
-            'ethnicity'          => 'required',
-            'commencement_date'  => 'required|date',
-            'default_cost_center' => 'required',
-            'salaried'           => 'required',
-            'ni_number'          => 'required',
-            'emergency_1_name'   => 'required',
-            'emergency_1_ph_no'  => 'required',
-            'emergency_1_relation' => 'required'
+            'first_name',
+            'surname',
+            'preferred_name',
+            'email',
+            'address1',
+            'town',
+            'post_code',
+            'dob',
+            'age',
+            'gender',
+            'ethnicity',
+            'commencement_date',
+            'default_cost_center',
+            'salaried',
+            'ni_number',
+            'emergency_1_name',
+            'emergency_1_ph_no',
+            'emergency_1_relation'
         ]);
         $user = User::create($request->only([
             'first_name',
@@ -110,34 +110,22 @@ class EmployeeController extends Controller
         ]));
         if ($request->has('title')) {
             foreach ($request->title as $index => $title) {
-                $validatedJobData = $request->validate([
-                    'title.' . $index        => 'required',
-                    'user_id.' . $index      => 'required',
-                    'facility.' . $index     => 'required',
-                    'start_date.' . $index   => 'required|date',
-                    'rate_of_pay.' . $index  => 'required',
-                    'pay_frequency.' . $index => 'required',
-                    'number_of_hours.' . $index => 'required',
-                    'contract_type.' . $index => 'required',
-                    'dbs_required.' . $index  => 'required',
-                    'termination_date.' . $index => 'nullable|date',
-                ]);
                 Job::create([
-                    'user_id'           => $user->id,
-                    'title'             => $title,
-                    'main_job'          => $request->main_job[$index] ?? 'no',
-                    'facility'          => $request->facility[$index] ?? null,
-                    'cost_center'       => $request->cost_center[$index] ?? null,
-                    'start_date'        => $request->start_date[$index] ?? null,
-                    'termination_date'  => $request->termination_date[$index] ?? null,
-                    'rate_of_pay'       => $request->rate_of_pay[$index] ?? null,
-                    'pay_frequency'     => $request->pay_frequency[$index] ?? null,
-                    'number_of_hours'   => $request->number_of_hours[$index] ?? null,
-                    'contract_type'     => $request->contract_type[$index] ?? null,
+                    'user_id' => $user->id,
+                    'title' => $title,
+                    'main_job' => $request->main_job[$index] ?? 'no',
+                    'facility' => $request->facility[$index] ?? null,
+                    'cost_center' => $request->cost_center[$index] ?? null,
+                    'start_date' => $request->start_date[$index] ?? null,
+                    'termination_date' => $request->termination_date[$index] ?? null,
+                    'rate_of_pay' => $request->rate_of_pay[$index] ?? null,
+                    'pay_frequency' => $request->pay_frequency[$index] ?? null,
+                    'number_of_hours' => $request->number_of_hours[$index] ?? null,
+                    'contract_type' => $request->contract_type[$index] ?? null,
                     'contract_returned' => $request->contract_returned[$index] ?? null,
-                    'jd_returned'       => $request->jd_returned[$index] ?? null,
-                    'dbs_required'      => $request->dbs_required[$index] ?? null,
-                    'notes'             => $request->notes[$index] ?? null,
+                    'jd_returned' => $request->jd_returned[$index] ?? null,
+                    'dbs_required' => $request->dbs_required[$index] ?? null,
+                    'notes' => $request->notes[$index] ?? null,
                 ]);
             }
         }
