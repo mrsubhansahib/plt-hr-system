@@ -8,15 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DropdownController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // public function index()
-    // {
-    //     // Fetch all dropdown records
-    //     $dropdowns = Dropdown::all();
-    //     return view('pages.dropdowns.list', compact('dropdowns'));
-    // }
     public function userDropdowns()
     {
         $dropdowns = Dropdown::where('module_type', 'user')->get();
@@ -107,6 +98,7 @@ class DropdownController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         // dd(123);
         // Validate the input
         $request->validate([
@@ -120,7 +112,6 @@ class DropdownController extends Controller
         if (!$dropdown) {
             return redirect()->route('dropdown.list')->with('error', 'Dropdown not found!');
         }
-        
 
         // Update the dropdown with the new values
         $dropdown->update([
@@ -128,7 +119,6 @@ class DropdownController extends Controller
             'name' => $request->name,
             'value' => $request->value,
         ]);
-
         switch ($dropdown->module_type) {
             case 'User': 
                 return redirect()->route('dropdown.user')->with('success', 'User dropdown updated successfully!');
