@@ -11,11 +11,12 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
     public function index()
-    {   Job::whereNotNull('termination_date')
+    {
+        Job::whereNotNull('termination_date')
             ->where('termination_date', '<', Carbon::today())
             ->where('status', 'active')
             ->update(['status' => 'terminated']);
-     
+
         $jobs = Job::with('user')
             ->whereHas('user', function ($e) {
                 $e->where('role', 'employee')->where('status', 'active');
@@ -73,15 +74,16 @@ class JobController extends Controller
             'dbs_required'      => 'required',
             'termination_date'  => 'nullable|date'
         ]);
-
         $job = Job::findOrFail($id);
         $jobData = $request->all();
-
-        // Check if termination_date is before today
         if (!empty($jobData['termination_date']) && strtotime($jobData['termination_date']) < strtotime(now())) {
             $jobData['status'] = 'terminated';
         }
-
+        if (!empty($jobData['termination_date']) && strtotime($jobData['termination_date']) > strtotime(now())) {
+            if ($job->status == 'terminated') {
+                $jobData['status'] = 'active';
+            }
+        }
         $job->update($jobData);
 
         if ($request->form_type == "tab") {
@@ -91,7 +93,6 @@ class JobController extends Controller
             return redirect()->route('show.jobs')->with('success', 'Job edited successfully.');
         }
     }
-
     public function terminate($id)
     {
         $job = Job::findOrFail($id);
