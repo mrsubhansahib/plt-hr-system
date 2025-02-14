@@ -55,6 +55,7 @@
                                 @foreach ($sicknesses as $key => $sickness)
                                     <tr>
                                         <td>{{ $sickness->user->first_name }}</td>
+                                        <td>{{ $sickness->user->surname  }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
                                         <td>{{ $sickness->date_from }}</td>
                                         <td>{{ $sickness->date_to }}</td>
