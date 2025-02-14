@@ -69,24 +69,24 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'first_name',
-            'surname',
-            'preferred_name',
-            'email',
-            'address1',
-            'town',
-            'post_code',
-            'dob',
-            'age',
-            'gender',
-            'ethnicity',
-            'commencement_date',
-            'default_cost_center',
-            'salaried',
-            'ni_number',
-            'emergency_1_name',
-            'emergency_1_ph_no',
-            'emergency_1_relation'
+            'first_name' => 'required',
+            'surname' => 'required',
+            'preferred_name' => 'required',
+            'email' => 'required',
+            'address1' => 'required',
+            'town' => 'required',
+            'post_code' => 'required',
+            'dob' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'ethnicity' => 'required',
+            'commencement_date' => 'required',
+            'default_cost_center' => 'required',
+            'salaried' => 'required',
+            'ni_number' => 'required',
+            'emergency_1_name' => 'required',
+            'emergency_1_ph_no' => 'required',
+            'emergency_1_relation' => 'required',
         ]);
         $user = User::create($request->only([
             'first_name',
@@ -108,23 +108,34 @@ class EmployeeController extends Controller
             'emergency_1_ph_no',
             'emergency_1_relation',
         ]));
-        if ($request->has('title')) {
+        if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
+            $request->validate([
+                'title.*'             => 'required',
+                'user_id.*'           => 'required',
+                'facility.*'          => 'required',
+                'start_date.*'        => 'required|date',
+                'rate_of_pay.*'       => 'required',
+                'pay_frequency.*'     => 'required',
+                'number_of_hours.*'   => 'required',
+                'contract_type.*'     => 'required',
+                'dbs_required.*'      => 'required',
+            ]);
             foreach ($request->title as $index => $title) {
                 Job::create([
                     'user_id' => $user->id,
                     'title' => $title,
                     'main_job' => $request->main_job[$index] ?? 'no',
-                    'facility' => $request->facility[$index] ?? null,
+                    'facility' => $request->facility[$index],
                     'cost_center' => $request->cost_center[$index] ?? null,
-                    'start_date' => $request->start_date[$index] ?? null,
+                    'start_date' => $request->start_date[$index],
                     'termination_date' => $request->termination_date[$index] ?? null,
-                    'rate_of_pay' => $request->rate_of_pay[$index] ?? null,
-                    'pay_frequency' => $request->pay_frequency[$index] ?? null,
-                    'number_of_hours' => $request->number_of_hours[$index] ?? null,
-                    'contract_type' => $request->contract_type[$index] ?? null,
+                    'rate_of_pay' => $request->rate_of_pay[$index],
+                    'pay_frequency' => $request->pay_frequency[$index],
+                    'number_of_hours' => $request->number_of_hours[$index],
+                    'contract_type' => $request->contract_type[$index],
                     'contract_returned' => $request->contract_returned[$index] ?? null,
                     'jd_returned' => $request->jd_returned[$index] ?? null,
-                    'dbs_required' => $request->dbs_required[$index] ?? null,
+                    'dbs_required' => $request->dbs_required[$index],
                     'notes' => $request->notes[$index] ?? null,
                 ]);
             }
