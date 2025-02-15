@@ -51,7 +51,7 @@
                                                 onclick="return confirm('Are you sure you want to accept this new entrant?')"
                                                 class="btn btn-sm btn-success" style="padding:3px"><i
                                                     data-feather="check"></i></a>
-                                            @if ($user->role == 'super_admin')
+                                            @if (Auth::user()->role == 'super_admin')
                                                 <a href="{{ route('reject.employee', $user->id) }}" title="Reject"
                                                     onclick="return confirm('Are you sure you want to reject this new entrant?')"
                                                     class="btn btn-sm btn-danger" style="padding:3px"><i

@@ -77,7 +77,7 @@ class HrController extends Controller
         
         $user->update($request->all());
 
-        return redirect()->route('hr_list')->with('success', 'Employee updated successfully.');
+        return redirect()->route('hr_list')->with('success', 'Employee edited successfully.');
     }
 
 
