@@ -86,7 +86,7 @@
                                                         <li>
                                                             <form id="delete-job-form-{{ $job->id }}" 
                                                                   action="{{ route('delete.job', $job->id) }}" 
-                                                                  method="POST" style="display: none;">
+                                                                  method="get" style="display: none;">
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
