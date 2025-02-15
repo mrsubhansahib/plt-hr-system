@@ -92,9 +92,12 @@
                                                     {{-- Show "Delete" option only for super admins --}}
                                                     @if (auth()->user()->role == 'super_admin')
                                                         <li>
-                                                            <form id="delete-job-form-{{ $job->id }}"
-                                                                action="{{ route('delete.job', $job->id) }}"
-                                                                style="display: none;">
+                                                            <form id="delete-job-form-{{ $job->id }}" 
+                                                                  action="{{ route('delete.job', $job->id) }}" 
+                                                                  method="get" style="display: none;">
+                                                                @csrf
+                                                                @method('DELETE')
+
                                                             </form>
                                                             <button class="dropdown-item"
                                                                 onclick="if(confirm('Are you sure you want to delete this record?')) {
