@@ -36,17 +36,19 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @php
+                                $trainingTitleDropdowns = collect($dropdowns)->where('module_type', 'Training')->where('name', 'Training Course Titles')->sortBy('value');
+                            @endphp
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Training Title</label>
                                 <select class="form-control form-select" name="training_title">
                                     <option value="" selected disabled>Select Training Title</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                                @if ($dropdown->module_type == 'Training' && $dropdown->name == 'Training Course Titles')
-                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                                @endif
-                                            @endforeach
+                                    @foreach ($trainingTitleDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Course Date</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" name="course_date" />

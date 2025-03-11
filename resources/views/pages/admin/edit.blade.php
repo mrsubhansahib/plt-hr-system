@@ -29,7 +29,7 @@
                                 <label class="form-label">Surname <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="surname" value="{{ $user->surname }}" />
                             </div>
-                            <div class="col-md-3 mt-3">
+                            <!-- <div class="col-md-3 mt-3">
                                 <label class="form-label">Preferred Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="preferred_name" value="{{ $user->preferred_name }}" />
                             </div>
@@ -45,13 +45,13 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Postcode <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="post_code" value="{{ $user->post_code }}" />
-                            </div>
+                            </div> -->
 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Email <span class="text-danger">*</span></label>
                                 <input class="form-control" type="email" required name="email" value="{{ $user->email }}" />
                             </div>
-                            <div class="col-md-3 mt-3">
+                            <!-- <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required name="dob" value="{{ $user->dob }}" />
                             </div>
@@ -90,12 +90,12 @@
                                     <option value="Chinese" {{($user->ethnicity=='Chinese')?"selected":""}}>Chinese</option>
                                     <option value="Other Ethnic Group" {{($user->ethnicity=='Other Ethnic Group')?"selected":""}}>Other Ethnic Group</option>
                                 </select>
-                            </div>
+                            </div> -->
 
                         </div>
 
                         <!-- Employment Details -->
-                        <h3 class="my-4 text-center pt-3">Employment Details</h3>
+                        <!-- <h3 class="my-4 text-center pt-3">Employment Details</h3>
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
@@ -115,10 +115,10 @@
                                 <input class="form-control" type="text" required name="salaried"
                                     value="{{ $user->salaried }}" />
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Emergency Contacts -->
-                        <h3 class="my-4 text-center pt-3">Emergency Contacts</h3>
+                        <!-- <h3 class="my-4 text-center pt-3">Emergency Contacts</h3>
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
@@ -135,7 +135,7 @@
                                 <input class="form-control" type="text" required name="emergency_1_relation" value="{{ $user->emergency_1_relation }}" />
                             </div>
 
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

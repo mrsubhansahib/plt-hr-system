@@ -37,7 +37,7 @@
                                 <label class="form-label">Surname <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="surname" />
                             </div>
-                            <div class="col-md-3 mt-3">
+                            <!-- <div class="col-md-3 mt-3">
                                 <label class="form-label">Preferred Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="preferred_name" />
                             </div>
@@ -53,7 +53,7 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Postcode <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="post_code" />
-                            </div>
+                            </div> -->
 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Email <span class="text-danger">*</span></label>
@@ -67,7 +67,7 @@
                             </div>
 
 
-                            <div class="col-md-3 mt-3">
+                            <!-- <div class="col-md-3 mt-3">
                                 <label class="form-label">DOB <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" id="dob"
                                     placeholder="Select Date" required name="dob" />
@@ -104,7 +104,6 @@
 
                         </div>
 
-                        <!-- Employment Details -->
                         <h3 class="my-4 text-center pt-3">Employment Details</h3>
                         <hr>
                         <div class="row mb-3">
@@ -135,7 +134,6 @@
                             </div>
                         </div>
 
-                        <!-- Emergency Contacts -->
                         <h3 class="my-4 text-center pt-3">Emergency Contacts</h3>
                         <hr>
                         <div class="row mb-3">
@@ -155,7 +153,7 @@
                                 <label class="form-label">Contact 1 Relationship <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="emergency_1_relation" />
-                            </div>
+                            </div> -->
 
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

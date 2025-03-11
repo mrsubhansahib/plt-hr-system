@@ -25,8 +25,7 @@
                                     <th>Surname</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
-                                    <th>Cost Center</th> <!-- Changed from 'Status' to 'Center' -->
-                                    <th>Actions</th>
+                                    <th>Actions</th> 
                                 </tr>
                                 <tr class="filters">
                                     <th><input type="text" class="form-control form-control-sm"
@@ -36,9 +35,7 @@
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Job Title"></th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                        placeholder="Search Facility"></th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Cost Center"></th> <!-- Updated -->
+                                            placeholder="Search Facility"></th>
                                     <th></th> <!-- No search for Actions column -->
                                 </tr>
                             </thead>
@@ -52,9 +49,6 @@
                                         </td>
                                         <td>
                                             {{ $user->jobs->where('main_job','yes')->where('status','active')->first()->facility ?? $user->jobs->first()->facility ?? 'No Facility Assigned' }}
-                                        </td>
-                                        <td>
-                                            {{ $user->jobs->where('main_job','yes')->where('status','active')->first()->cost_center ?? $user->jobs->first()->cost_center?? 'No Center Assigned' }}
                                         </td>
                                         <td>
                                             <div class="dropdown">
