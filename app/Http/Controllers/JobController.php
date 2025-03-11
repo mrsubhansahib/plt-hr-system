@@ -12,10 +12,15 @@ class JobController extends Controller
 {
     public function index()
     {
+<<<<<<< Updated upstream
         // dd(Carbon::today());
         Job::whereNotNull('termination_date')
             ->where('termination_date', '<', Carbon::today()->format('d-m-Y'))
 
+=======
+        Job::whereNotNull('termination_date')
+            ->where('termination_date', '<', Carbon::today())
+>>>>>>> Stashed changes
             ->where('status', 'active')
             ->update(['status' => 'terminated']);
 
@@ -95,6 +100,7 @@ class JobController extends Controller
             return redirect()->route('show.jobs')->with('success', 'Job edited successfully.');
         }
     }
+<<<<<<< Updated upstream
     public function activate($id)
     {
         $job = Job::findOrFail($id);
@@ -103,6 +109,8 @@ class JobController extends Controller
         $job->save();
         return redirect()->back()->with('success', 'Job activated successfully.');
     }
+=======
+>>>>>>> Stashed changes
     public function terminate($id)
     {
         $job = Job::findOrFail($id);

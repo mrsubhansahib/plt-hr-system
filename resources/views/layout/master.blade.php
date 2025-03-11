@@ -98,6 +98,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Bootstrap Datepicker
             $(document).ready(function() {
+<<<<<<< Updated upstream
     // Datepicker for Age (Restrict Future Dates)
     $('#dob').datepicker({
         format: 'dd-mm-yyyy', // Format for display
@@ -149,6 +150,50 @@
     }
 });
 
+=======
+                $('.datepicker').datepicker({
+                    format: 'dd-mm-yyyy', // Format for display
+                    autoclose: true, // Auto-close picker after date select
+                    todayHighlight: true,
+                    endDate: new Date() // Restrict future dates
+                }).on('changeDate', function(e) {
+                    calculateAge();
+                });
+            });
+
+            // Age Calculator Function
+            function calculateAge() {
+                const dobInput = document.getElementById('dob').value;
+
+                if (!dobInput) {
+                    document.getElementById('age').value = "";
+                    return;
+                }
+
+                // Convert DD-MM-YYYY to Date object
+                const parts = dobInput.split('-');
+                const dob = new Date(parts[2], parts[1] - 1, parts[0]);
+                const today = new Date();
+
+                if (isNaN(dob.getTime())) {
+                    document.getElementById('age').value = "Invalid Date!";
+                    return;
+                }
+
+                // Calculate age
+                let age = today.getFullYear() - dob.getFullYear();
+                const monthDiff = today.getMonth() - dob.getMonth();
+                const dayDiff = today.getDate() - dob.getDate();
+
+                // Adjust if the birthday hasn't occurred this year yet
+                if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                    age--;
+                }
+
+                // Display the result
+                document.getElementById('age').value = age + " years";
+            }
+>>>>>>> Stashed changes
 
 
 
