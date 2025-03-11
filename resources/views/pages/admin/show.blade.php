@@ -27,7 +27,7 @@
                             <strong>Surname:</strong>
                             <p>{{ $user->surname }}</p>
                         </div>
-                        <div class="col-md-3 mt-3">
+                        <!-- <div class="col-md-3 mt-3">
                             <strong>Preferred Name:</strong>
                             <p>{{ $user->preferred_name }}</p>
                         </div>
@@ -42,12 +42,12 @@
                         <div class="col-md-3 mt-3">
                             <strong>Postcode:</strong>
                             <p>{{ $user->post_code }}</p>
-                        </div>
+                        </div> -->
                         <div class="col-md-3 mt-3">
                             <strong>Email:</strong>
                             <p>{{ $user->email }}</p>
                         </div>
-                        <div class="col-md-3 mt-3">
+                        <!-- <div class="col-md-3 mt-3">
                             <strong>DOB:</strong>
                             <p>{{ $user->dob }}</p>
                         </div>
@@ -62,11 +62,11 @@
                         <div class="col-md-3 mt-3">
                             <strong>Ethnicity:</strong>
                             <p>{{ $user->ethnicity }}</p>
-                        </div>
+                        </div> -->
                     </div>
     
                     <!-- Employment Details -->
-                    <h3 class="my-4 text-center">Employment Details</h3>
+                    <!-- <h3 class="my-4 text-center">Employment Details</h3>
                     <hr>
                     <div class="row mb-3">
                         {{-- <div class="col-md-3 mt-3">
@@ -89,10 +89,10 @@
                             <strong>Salaried/Monthly in Arrears:</strong>
                             <p>{{ $user->salaried }}</p>
                         </div>
-                    </div>
+                    </div> -->
     
                     <!-- Emergency Contacts -->
-                    <h3 class="my-4 text-center">Emergency Contacts</h3>
+                    <!-- <h3 class="my-4 text-center">Emergency Contacts</h3>
                     <hr>
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
@@ -107,7 +107,7 @@
                             <strong>Contact 1 Relationship:</strong>
                             <p>{{ $user->emergency_1_relation }}</p>
                         </div>
-                    </div>
+                    </div> -->
     
                     <a href="{{ route('show.admins') }}" class="btn btn-secondary mt-4">Back to List</a>
                 </div>

@@ -85,12 +85,13 @@
                                     </div>
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
+                                        @php
+                                            $dropdownCollection = collect($dropdowns)->where('module_type', 'User')->where('name', 'Ethnicity')->sortBy('value');
+                                        @endphp
                                         <select class="form-control form-select" required name="ethnicity">
                                             <option value="" selected disabled>Select</option>
-                                            @foreach ($dropdowns as $dropdown)
-                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
-                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                                @endif
+                                            @foreach ($dropdownCollection as $dropdown)
+                                                <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
                                             @endforeach
                                         </select>
                                     </div>

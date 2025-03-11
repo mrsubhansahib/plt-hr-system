@@ -10,31 +10,31 @@ class DropdownController extends Controller
 {
     public function userDropdowns()
     {
-        $dropdowns = Dropdown::where('module_type', 'user')->get();
+        $dropdowns = Dropdown::where('module_type', 'user')->orderBy('value', 'asc')->get();
         return view('pages.dropdowns.user', compact('dropdowns'));
     }
 
     public function jobDropdowns()
     {
-        $dropdowns = Dropdown::where('module_type', 'job')->get();
+        $dropdowns = Dropdown::where('module_type', 'job')->orderBy('value', 'asc')->get();
         return view('pages.dropdowns.job', compact('dropdowns'));
     }
 
     public function capabilityDropdowns()
     {
-        $dropdowns = Dropdown::where('module_type', 'capability')->get();
+        $dropdowns = Dropdown::where('module_type', 'capability')->orderBy('value', 'asc')->get();
         return view('pages.dropdowns.capability', compact('dropdowns'));
     }
 
     public function latenessDropdowns()
     {
-        $dropdowns = Dropdown::where('module_type', 'lateness')->get();
+        $dropdowns = Dropdown::where('module_type', 'lateness')->orderBy('value', 'asc')->get();
         return view('pages.dropdowns.lateness', compact('dropdowns'));
     }
 
     public function trainingDropdowns()
     {
-        $dropdowns = Dropdown::where('module_type', 'training')->get();
+        $dropdowns = Dropdown::where('module_type', 'training')->orderBy('value', 'asc')->get();
         return view('pages.dropdowns.training', compact('dropdowns'));
     }
 

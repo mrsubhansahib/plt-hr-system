@@ -41,26 +41,28 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" name="lateness_triggered" />
                             </div>
                             
+                            @php
+                                $latenessStageDropdowns = collect($dropdowns)->where('module_type', 'Lateness')->where('name', 'Lateness Stage')->sortBy('value');
+                            @endphp 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Stage</label>
                                 <select class="form-control form-select" name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                                @if ($dropdown->module_type == 'Lateness' && $dropdown->name == 'Lateness Stage')
-                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                                @endif
-                                            @endforeach
+                                    @foreach ($latenessStageDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Level of Warning Issued</label>
                                 <select class="form-control form-select" name="warning_level">
                                     <option value="" selected disabled>Select</option>
+                                    <option value="Dismissal"> Dismissal</option>
+                                    <option value="Final Written Warning">Final Written Warning</option>
                                     <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
                                     <option value="Written Warning">Written Warning</option>
-                                    <option value="Final Written Warning">Final Written Warning</option>
-                                    <option value="Dismissal"> Dismissal</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

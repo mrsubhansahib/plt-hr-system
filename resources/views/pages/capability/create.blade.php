@@ -43,17 +43,20 @@
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
+                            @php
+                                $capabilityStageDropdowns = collect($dropdowns)->where('module_type', 'Capability')->where('name', 'Capability Stage')->sortBy('value');
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Capability Stage</label>
                                 <select class="form-control form-select" name="stage">
                                     <option value="" selected disabled>Select Stage</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                                @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Capability Stage')
-                                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                                @endif
-                                            @endforeach
+                                    @foreach ($capabilityStageDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"  name="date" />
@@ -67,11 +70,11 @@
                                 <label class="form-label">Warning Issued Type</label>
                                 <select class="form-control form-select" name="warning_issued_type">
                                     <option value="" selected disabled>Select Warning Type</option>
+                                    <option value="Dismissal">Dismissal</option>
+                                    <option value="Final Written Warning">Final Written Warning</option>
+                                    <option value="NFA">NFA</option>
                                     <option value="Verbal Warning">Verbal Warning</option>
                                     <option value="Written Warning">Written Warning</option>
-                                    <option value="Final Written Warning">Final Written Warning</option>
-                                    <option value="Dismissal">Dismissal</option>
-                                    <option value="NFA">NFA</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

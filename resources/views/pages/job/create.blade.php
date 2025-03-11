@@ -27,17 +27,20 @@
                     <form class="forms-sample" action="{{ route('store.job') }}" method="POST">
                         @csrf
                         <div class="row mb-3">
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="user_id" id="employeeSelect">
-                                    <option value="" selected disabled>Select Employee</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
-                                            {{ $employee->first_name.' '.$employee->surname }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        @php
+                            $jobDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Job Title')->sortBy('value');
+                        @endphp
+
+                        <div class="col-md-3 mt-3">
+                            <label class="form-label">Job Title <span class="text-danger">*</span></label>
+                            <select class="form-control form-select" required name="job_title">
+                                <option value="" selected disabled>Select Job</option>
+                                @foreach ($jobDropdowns as $dropdown)
+                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Job Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="title">
@@ -56,17 +59,20 @@
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
+                            @php
+                                $facilityDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Facility')->sortBy('value');
+                            @endphp
+
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Facility<span class="text-danger">*</span></label>
+                                <label class="form-label">Facility <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="facility">
                                     <option value="" selected disabled>Select Facility</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Facility')
-                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                        @endif
+                                    @foreach ($facilityDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Cost Centre </label>
                                 <input class="form-control" type="text" name="cost_center" />
@@ -96,17 +102,20 @@
                                 <label class="form-label">Number of Hours <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="number_of_hours" />
                             </div>
+                            @php
+                                $contractTypeDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Contract Type')->sortBy('value');
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Type <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="contract_type">
                                     <option value="" selected disabled>Select Contract Type</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Contract Type')
-                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                        @endif
+                                    @foreach ($contractTypeDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
                                 <select class="form-control form-select" required name="contract_returned">
