@@ -51,7 +51,7 @@
                                         </td>
                                         <td>{{ $log->module_type }}</td>
                                         <td>{{ ucfirst($log->action) }}</td>
-                                        <td>{{ $log->created_at->format('d-m-Y') }}</td>
+                                        <td>{{ $log->created_at->format('d-M-Y') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

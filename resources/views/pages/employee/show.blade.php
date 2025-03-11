@@ -70,7 +70,7 @@
                             <div class="form-group">
                                 <label for="mobile_tel">Mobile No</label>
                                 <input type="text" class="form-control mt-2" id="mobile_tel"
-                                    value="{{ $user->mobile_tel ?? 'Not Entered'}}" disabled>
+                                    value="{{ $user->mobile_tel ?? 'Not Entered' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label for="contracted_from_date">Contract From Date</label>
                                 <input type="text" class="form-control mt-2" id="contracted_from_date"
-                                    value="{{ $user->contracted_from_date ?? 'Not Entered'  }}" disabled>
+                                    value="{{ $user->contracted_from_date ?? 'Not Entered' }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                             data-bs-target="#capability-tab-pane" type="button" role="tab"
                             aria-controls="capability-tab-pane" aria-selected="false">Capability</button>
                     </li>
-                  
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="disciplinary-tab" data-bs-toggle="tab"
                             data-bs-target="#disciplinary-tab-pane" type="button" role="tab"
@@ -158,8 +158,8 @@
                             <table class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>Job Title</th>
                                         <th>Facility</th>
                                         <th>Number of Hours</th>
@@ -173,8 +173,8 @@
                                 <tbody>
                                     @foreach ($user->jobs as $key => $job)
                                         <tr>
-                                            <td>{{ $job->user->first_name }}</td>
-                                            <td>{{ $job->user->surname }}</td>
+                                            {{-- <td>{{ $job->user->first_name }}</td>
+                                            <td>{{ $job->user->surname }}</td> --}}
                                             <td>{{ $job->title }}</td>
                                             <td>{{ $job->facility }}</td>
                                             <td>{{ $job->number_of_hours }}</td>
@@ -191,16 +191,52 @@
                                                     </button>
                                                     <ul class="dropdown-menu dropdown-menu-end"
                                                         aria-labelledby="dropdownMenuButton-{{ $job->id }}">
-                                                        {{-- <li><a class="dropdown-item"
-                                                            href="{{ route('detail.job', $job->id) }}">View</a></li> --}}
-                                                        <li><a class="dropdown-item"
-                                                                href="{{ route('edit.job', ['id' => $job->id, 'form_type' => 'tab']) }}">Edit</a>
+                                                        @if ($job->status == 'terminated')
+                                                            <li>
+                                                                <button class="dropdown-item"
+                                                                    onclick="confirmActivation({{ $job->id }})">
+                                                                    Activate
+                                                                </button>
+                                                                <form id="activate-job-form-{{ $job->id }}"
+                                                                    action="{{ route('activate.job', $job->id) }}"
+                                                                    method="POST" style="display: none;">
+                                                                    @csrf
+                                                                    @method('POST')
+                                                                </form>
+                                                            </li>
+                                                        @elseif ($job->status == 'active')
+                                                            <li>
+                                                                <button class="dropdown-item"
+                                                                    onclick="confirmTermination({{ $job->id }})">
+                                                                    Terminate
+                                                                </button>
+                                                                <form id="terminate-job-form-{{ $job->id }}"
+                                                                    action="{{ route('terminate.job', $job->id) }}"
+                                                                    method="POST" style="display: none;">
+                                                                    @csrf
+                                                                    @method('POST')
+                                                                </form>
+                                                            </li>
+                                                        @endif
+                                                        <li>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('edit.job', ['id' => $job->id, 'form_type' => 'tab']) }}">
+                                                                Edit
+                                                            </a>
                                                         </li>
                                                         @if (auth()->user()->role == 'super_admin')
                                                             <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
+                                                                <form id="delete-job-form-{{ $job->id }}"
+                                                                    action="{{ route('delete.job', $job->id) }}"
+                                                                    style="display: none;">
+                                                                    @csrf
+                                                                </form>
+                                                                <button class="dropdown-item"
+                                                                    onclick="if(confirm('Are you sure you want to delete this record?')) { 
+                                                                        document.getElementById('delete-job-form-{{ $job->id }}').submit();
+                                                                    }">
+                                                                    Delete
+                                                                </button>
                                                             </li>
                                                         @endif
                                                     </ul>
@@ -230,8 +266,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
                                         <th>Action</th>
@@ -243,8 +279,8 @@
                                         @foreach ($user->disclosures as $index => $disclosure)
                                             <!-- Loop through each disclosure -->
                                             <tr>
-                                                <td>{{ $user->first_name }}</td>
-                                                <td>{{ $user->surname }}</td>
+                                                {{-- <td>{{ $user->first_name }}</td>
+                                                <td>{{ $user->surname }}</td> --}}
                                                 <td>{{ $disclosure->dbs_level }}</td>
                                                 <td>{{ $disclosure->certificate_no }}</td>
                                                 <td>
@@ -302,8 +338,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>Reason for Absence</th>
                                         <th>Date From</th>
                                         <th>Date To</th>
@@ -314,8 +350,8 @@
                                     @if ($user->sicknesses->isNotEmpty())
                                         @foreach ($user->sicknesses as $key => $sickness)
                                             <tr>
-                                                <td>{{ $sickness->user->first_name }}</td>
-                                                <td>{{ $sickness->user->surname }}</td>
+                                                {{-- <td>{{ $sickness->user->first_name }}</td>
+                                                <td>{{ $sickness->user->surname }}</td> --}}
                                                 <td>{{ $sickness->reason_for_absence }}</td>
                                                 <td>{{ $sickness->date_from }}</td>
                                                 <td>{{ $sickness->date_to }}</td>
@@ -369,8 +405,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>Stage</th>
                                         <th>Date</th>
                                         <th>Outcome</th>
@@ -381,8 +417,8 @@
                                     @if ($user->capabilities->isNotEmpty())
                                         @foreach ($user->capabilities as $key => $capability)
                                             <tr>
-                                                <td>{{ $capability->user->first_name }}</td>
-                                                <td>{{ $capability->user->surname }}</td>
+                                                {{-- <td>{{ $capability->user->first_name }}</td>
+                                                <td>{{ $capability->user->surname }}</td> --}}
                                                 <td>{{ $capability->stage }}</td>
                                                 <td>{{ $capability->date }}</td>
                                                 <td>{{ $capability->outcome }}</td>
@@ -440,8 +476,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>Training Title</th>
                                         <th>Course Date</th>
                                         <th>Renewal Date</th>
@@ -452,8 +488,8 @@
                                     @if ($user->trainings->isNotEmpty())
                                         @foreach ($user->trainings as $key => $training)
                                             <tr>
-                                                <td>{{ $training->user->first_name }}</td>
-                                                <td>{{ $training->user->surname }}</td>
+                                                {{-- <td>{{ $training->user->first_name }}</td>
+                                                <td>{{ $training->user->surname }}</td> --}}
                                                 <td>{{ $training->training_title }}</td>
                                                 <td>{{ $training->course_date }}</td>
                                                 <td>{{ $training->renewal_date }}</td>
@@ -511,8 +547,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>Reason for Disciplinary</th>
                                         <th>Date of Hearing</th>
                                         <th>Action</th>
@@ -522,8 +558,8 @@
                                     @if ($user->disciplinaries->isNotEmpty())
                                         @foreach ($user->disciplinaries as $key => $disciplinary)
                                             <tr>
-                                                <td>{{ $disciplinary->user->first_name }}</td>
-                                                <td>{{ $disciplinary->user->surname }}</td>
+                                                {{-- <td>{{ $disciplinary->user->first_name }}</td>
+                                                <td>{{ $disciplinary->user->surname }}</td> --}}
                                                 <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                                 <td>{{ $disciplinary->hearing_date }}</td>
                                                 <td>
@@ -577,8 +613,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>Lateness Triggered</th>
                                         <th>Lateness Stage</th>
                                         <th>Action</th>
@@ -588,8 +624,8 @@
                                     @if ($user->latenesses->isNotEmpty())
                                         @foreach ($user->latenesses as $key => $lateness)
                                             <tr>
-                                                <td>{{ $lateness->user->first_name }}</td>
-                                                <td>{{ $lateness->user->surname }}</td>
+                                                {{-- <td>{{ $lateness->user->first_name }}</td>
+                                                <td>{{ $lateness->user->surname }}</td> --}}
                                                 <td>{{ $lateness->lateness_triggered }}</td>
                                                 <td>{{ $lateness->lateness_stage }}</td>
                                                 <td>
@@ -645,8 +681,8 @@
                             <table class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>Admin Name</th>
                                         <th>Note</th>
                                         <th>Module Name</th>
@@ -657,17 +693,17 @@
                                     @if ($user->all_notes->isNotEmpty())
                                         @foreach ($user->all_notes as $note)
                                             <tr>
-                                                <td>{{ $note->user->first_name }}</td>
-                                                <td>{{ $note->user->surname }}</td>
-                                                <td>{{ $note->admin->first_name.' '.$note->admin->surname }}</td> 
+                                                {{-- <td>{{ $note->user->first_name }}</td>
+                                                <td>{{ $note->user->surname }}</td> --}}
+                                                <td>{{ $note->admin->first_name . ' ' . $note->admin->surname }}</td>
                                                 <td>{{ $note->notes }}</td>
                                                 <td>
-                                                    @if($note->module_name == "User")
+                                                    @if ($note->module_name == 'User')
                                                         Employee
                                                     @else
                                                         {{ $note->module_name }}
                                                     @endif
-                                                </td>                                                
+                                                </td>
                                                 <td>{{ $note->created_at->format('d-m-Y') }}</td>
                                             </tr>
                                         @endforeach
@@ -691,14 +727,24 @@
     @push('custom-scripts')
         <script>
             $(document).ready(function() {
-
-
                 // Adjust DataTable columns when tab is shown
                 $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
                     const target = $(e.target).data('bs-target');
                     $(target).find('table').DataTable().columns.adjust();
                 });
             });
+
+            function confirmTermination(jobId) {
+                if (confirm('Are you sure you want to terminate this job?')) {
+                    document.getElementById('terminate-job-form-' + jobId).submit();
+                }
+            }
+
+            function confirmActivation(jobId) {
+                if (confirm('Are you sure you want to activate this job?')) {
+                    document.getElementById('activate-job-form-' + jobId).submit();
+                }
+            }
         </script>
     @endpush
 @endsection

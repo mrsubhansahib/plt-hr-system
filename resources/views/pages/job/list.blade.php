@@ -73,13 +73,11 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $job->id }}">
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('edit.job', $job->id) }}">Edit</a></li>
                                                     @if ($job->status == 'active')
                                                         <li>
                                                             <button class="dropdown-item"
                                                                 onclick="confirmTermination({{ $job->id }})">
-                                                                Terminate Job
+                                                                Terminate
                                                             </button>
                                                             <form id="terminate-job-form-{{ $job->id }}"
                                                                 action="{{ route('terminate.job', $job->id) }}"
@@ -88,16 +86,31 @@
                                                                 @method('POST')
                                                             </form>
                                                         </li>
+                                                    @elseif ($job->status == 'terminated')
+                                                        <li>
+                                                            <button class="dropdown-item"
+                                                                onclick="confirmActivation({{ $job->id }})">
+                                                                Activate
+                                                            </button>
+                                                            <form id="activate-job-form-{{ $job->id }}"
+                                                                action="{{ route('activate.job', $job->id) }}"
+                                                                method="POST" style="display: none;">
+                                                                @csrf
+                                                                @method('POST')
+                                                            </form>
+                                                        </li>
                                                     @endif
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('edit.job', $job->id) }}">Edit</a>
+                                                    </li>
                                                     {{-- Show "Delete" option only for super admins --}}
                                                     @if (auth()->user()->role == 'super_admin')
                                                         <li>
-                                                            <form id="delete-job-form-{{ $job->id }}" 
-                                                                  action="{{ route('delete.job', $job->id) }}" 
-                                                                  method="get" style="display: none;">
+                                                            <form id="delete-job-form-{{ $job->id }}"
+                                                                action="{{ route('delete.job', $job->id) }}"
+                                                                style="display: none;">
                                                                 @csrf
-                                                                @method('DELETE')
-
                                                             </form>
                                                             <button class="dropdown-item"
                                                                 onclick="if(confirm('Are you sure you want to delete this record?')) {
@@ -128,6 +141,11 @@
         function confirmTermination(jobId) {
             if (confirm('Are you sure you want to terminate this job?')) {
                 document.getElementById('terminate-job-form-' + jobId).submit();
+            }
+        }
+        function confirmActivation(jobId) {
+            if (confirm('Are you sure you want to activate this job?')) {
+                document.getElementById('activate-job-form-' + jobId).submit();
             }
         }
     </script>

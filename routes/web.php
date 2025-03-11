@@ -83,6 +83,7 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}',     [JobController::class, 'edit'])->name('edit.job');
         Route::post('update/{id}',  [JobController::class, 'update'])->name('update.job');
         Route::get('delete/{id}',   [JobController::class, 'destroy'])->name('delete.job');
+        Route::post('active/{id}', [JobController::class, 'activate'])->name('activate.job');
         Route::post('terminate/{id}', [JobController::class, 'terminate'])->name('terminate.job');
     });
     // Routes for disclosure crud
@@ -181,7 +182,7 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}',     [DropdownController::class, 'edit'])->name('edit.dropdown');
         Route::post('update/{id}',  [DropdownController::class, 'update'])->name('update.dropdown');
         Route::get('delete/{id}',   [DropdownController::class, 'destroy'])->name('delete.dropdown');
-    
+
         // Separate Routes for Each Dropdown Category
         Route::get('user',          [DropdownController::class, 'userDropdowns'])->name('dropdown.user');
         Route::get('job',           [DropdownController::class, 'jobDropdowns'])->name('dropdown.job');
@@ -196,8 +197,8 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}',      [HrController::class, 'edit'])->name('edit.hr_list');
         Route::post('update/{id}',   [HrController::class, 'update'])->name('update.hr_list');
     });
-    
-    
+
+
 });
 
 
