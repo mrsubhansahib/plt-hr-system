@@ -15,7 +15,7 @@ class JobController extends Controller
         // dd(Carbon::today());
         Job::whereNotNull('termination_date')
             ->where('termination_date', '<', Carbon::today()->format('d-m-Y'))
-            
+
             ->where('status', 'active')
             ->update(['status' => 'terminated']);
 
@@ -95,17 +95,21 @@ class JobController extends Controller
             return redirect()->route('show.jobs')->with('success', 'Job edited successfully.');
         }
     }
+    public function activate($id)
+    {
+        $job = Job::findOrFail($id);
+        $job->status = 'active';
+        $job->termination_date = null;
+        $job->save();
+        return redirect()->back()->with('success', 'Job activated successfully.');
+    }
     public function terminate($id)
     {
         $job = Job::findOrFail($id);
-        if ($job->status !== 'active') {
-            return redirect()->route('show.jobs')->with('error', 'Only active jobs can be terminated.');
-        }
         $job->status = 'terminated';
         $job->termination_date = Carbon::now()->format('d-m-Y');
         $job->save();
-
-        return redirect()->route('show.jobs')->with('success', 'Job terminated successfully.');
+        return redirect()->back()->with('success', 'Job terminated successfully.');
     }
     public function show($id)
     {
