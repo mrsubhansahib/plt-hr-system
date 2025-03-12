@@ -41,17 +41,22 @@
                             </select>
                         </div>
 
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Job Title<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="title">
-                                    <option value="" selected disabled>Select Title</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Title')
-                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
+                        @php
+                            $jobTitleDropdowns = collect($dropdowns)
+                                ->where('module_type', 'Job')->where('name', 'Title')->pluck('value')->unique()->sort(); // Alphabetic order
+                        @endphp
+
+                        <div class="col-md-3 mt-3">
+                            <label class="form-label">Job Title <span class="text-danger">*</span></label>
+                            <select class="form-control form-select" required name="title">
+                                <option value="" selected disabled>Select Title</option>
+                                
+                                @foreach ($jobTitleDropdowns as $title)
+                                    <option value="{{ $title }}">{{ $title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Main Job</label>
                                 <select class="form-control form-select" name="main_job">

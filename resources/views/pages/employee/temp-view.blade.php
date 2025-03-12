@@ -1,5 +1,14 @@
-@extends('layout.master')
 
+@extends('layout.master')
+<style>
+    .title-bg{
+        background-color: #6571ff;
+        padding: 10px ;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        color: white;
+    }
+</style>
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -381,6 +390,86 @@
                                 <input class="form-control" type="number" name="casual_holiday_pay"
                                     value="{{ $user->casual_holiday_pay }}" disabled />
                             </div> --}}
+                            <h3 class="my-4 text-center">Job Details</h3>
+                            @if($user->jobs->count() > 0)
+                                @foreach($user->jobs as $index => $job)
+                                    <h5 class="mt-3 title-bg">Job :{{ $index + 1 }}</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Job Title</label>
+                                            <input type="text" class="form-control" value="{{ $job->title ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Main Job</label>
+                                            <input type="text" class="form-control" value="{{ $job->main_job ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Facility</label>
+                                            <input type="text" class="form-control" value="{{ $job->facility ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Cost Center</label>
+                                            <input type="text" class="form-control" value="{{ $job->cost_center ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Start Date</label>
+                                            <input type="text" class="form-control" value="{{ $job->start_date ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Termination Date</label>
+                                            <input type="text" class="form-control" value="{{ $job->termination_date ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Rate of Pay</label>
+                                            <input type="text" class="form-control" value="{{ $job->rate_of_pay ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Pay Frequency</label>
+                                            <input type="text" class="form-control" value="{{ $job->pay_frequency ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Number of Hours</label>
+                                            <input type="text" class="form-control" value="{{ $job->number_of_hours ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Contract Type</label>
+                                            <input type="text" class="form-control" value="{{ $job->contract_type ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Contract Returned</label>
+                                            <input type="text" class="form-control" value="{{ $job->contract_returned ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">JD Returned</label>
+                                            <input type="text" class="form-control" value="{{ $job->jd_returned ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">DBS Required</label>
+                                            <input type="text" class="form-control" value="{{ $job->dbs_required ?? 'Not Entered' }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label">Notes</label>
+                                        <textarea class="form-control" disabled>{{ $job->notes ?? 'Not Entered' }}</textarea>
+                                    </div>
+
+                                    <hr class="mt-3">
+                                @endforeach
+                            @else
+                                <p class="text-muted">No job details available.</p>
+                            @endif
                         </div>
 
 

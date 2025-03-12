@@ -43,19 +43,25 @@
                                     <option value="no" {{ $job->main_job == 'no' ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
+                            @php
+                                $facilityDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Facility')
+                                    ->sortBy('value');
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Facility<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="facility">
                                     <option value="" selected disabled>Select Facility</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Facility')
-                                            <option value="{{ $dropdown->value }}"
-                                                {{ old('facility', $job->facility) == $dropdown->value ? 'selected' : '' }}>
-                                                {{ $dropdown->value }}</option>
-                                        @endif
+                                    @foreach ($facilityDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}" {{ old('facility', $job->facility) == $dropdown->value ? 'selected' : '' }}>
+                                            {{ $dropdown->value }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Cost Centre </label>
                                 <input class="form-control" type="text" value="{{ $job->cost_center }}"
@@ -89,30 +95,33 @@
                                 <input class="form-control" type="text" required value="{{ $job->number_of_hours }}"
                                     name="number_of_hours" />
                             </div>
+                            @php
+                                $defaultContractTypes = collect([
+                                    'Permanent',
+                                    'Casual',
+                                    'Fixed Term',
+                                    'Temporary',
+                                    'Permanent Variable'
+                                ]);
+
+                                $contractTypeDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Contract Type')->pluck('value');
+                                $allContractTypes = $defaultContractTypes->merge($contractTypeDropdowns)->unique()->sort();
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Type <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="contract_type">
                                     <option value="" selected disabled>Select Contract Type</option>
-                                    <option value="Permanent" {{ $job->contract_type == 'Permanent' ? 'selected' : '' }}>
-                                        Permanent</option>
-                                    <option value="Casual" {{ $job->contract_type == 'Casual' ? 'selected' : '' }}>
-                                        Casual</option>
-                                    <option value="Fixed Term" {{ $job->contract_type == 'Fixed Term' ? 'selected' : '' }}>
-                                        Fixed Term</option>
-                                    <option value="Temporary" {{ $job->contract_type == 'Temporary' ? 'selected' : '' }}>
-                                        Temporary</option>
-                                    <option value="Permanent Variable"
-                                        {{ $job->contract_type == 'Permanent Variable' ? 'selected' : '' }}>Permanent
-                                        Variable</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Contract Type')
-                                            <option value="{{ $dropdown->value }}"
-                                                {{ old('contract_type', $job->contract_type) == $dropdown->value ? 'selected' : '' }}>
-                                                {{ $dropdown->value }}</option>
-                                        @endif
+
+                                    @foreach ($allContractTypes as $contractType)
+                                        <option value="{{ $contractType }}" {{ old('contract_type', $job->contract_type) == $contractType ? 'selected' : '' }}>
+                                            {{ $contractType }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
+
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
                                 <select class="form-control form-select" required name="contract_returned">

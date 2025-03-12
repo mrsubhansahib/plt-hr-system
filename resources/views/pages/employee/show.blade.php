@@ -32,8 +32,8 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="first_name">First Name</label>
-                                <input type="text" class="form-control mt-2" id="first_name"
-                                    value="{{ $user->first_name }}" disabled>
+                                <input type="text" class="form-control mt-2" id="first_name" value="{{ $user->first_name }}"
+                                    disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
@@ -54,16 +54,14 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="dob">DOB</label>
-                                <input type="text" class="form-control mt-2" id="dob" value="{{ $user->dob }}"
-                                    disabled>
+                                <input type="text" class="form-control mt-2" id="dob" value="{{ $user->dob }}" disabled>
                             </div>
                         </div>
 
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="age">Age</label>
-                                <input type="text" class="form-control mt-2" id="age" value="{{ $user->age }}"
-                                    disabled>
+                                <input type="text" class="form-control mt-2" id="age" value="{{ $user->age }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
@@ -87,6 +85,21 @@
                                     value="{{ $user->contracted_from_date ?? 'Not Entered' }}" disabled>
                             </div>
                         </div>
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label for="termination_date">Employment Termination Date</label>
+                                <input class="form-control datepicker mt-2" type="text"
+                                    value="{{ $user->termination_date ?? 'Not Entered' }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                            <label for="reason_termination">Reason for Termination</label>
+                            <input class="form-control mt-2" type="text" 
+                                value="{{ $user->reason_termination ?? 'Not Entered' }}" disabled>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -108,9 +121,9 @@
                             aria-controls="disclosure-tab-pane" aria-selected="false">Disclosure</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="sickness-tab" data-bs-toggle="tab"
-                            data-bs-target="#sickness-tab-pane" type="button" role="tab"
-                            aria-controls="sickness-tab-pane" aria-selected="false">Sickness</button>
+                        <button class="nav-link" id="sickness-tab" data-bs-toggle="tab" data-bs-target="#sickness-tab-pane"
+                            type="button" role="tab" aria-controls="sickness-tab-pane"
+                            aria-selected="false">Sickness</button>
                     </li>
                     <!-- Add more tabs manually here -->
                     <li class="nav-item" role="presentation">
@@ -125,19 +138,18 @@
                             aria-controls="disciplinary-tab-pane" aria-selected="false">Disciplinary</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="lateness-tab" data-bs-toggle="tab"
-                            data-bs-target="#lateness-tab-pane" type="button" role="tab"
-                            aria-controls="lateness-tab-pane" aria-selected="false">Lateness</button>
+                        <button class="nav-link" id="lateness-tab" data-bs-toggle="tab" data-bs-target="#lateness-tab-pane"
+                            type="button" role="tab" aria-controls="lateness-tab-pane"
+                            aria-selected="false">Lateness</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="training-tab" data-bs-toggle="tab"
-                            data-bs-target="#training-tab-pane" type="button" role="tab"
-                            aria-controls="training-tab-pane" aria-selected="false">Training</button>
+                        <button class="nav-link" id="training-tab" data-bs-toggle="tab" data-bs-target="#training-tab-pane"
+                            type="button" role="tab" aria-controls="training-tab-pane"
+                            aria-selected="false">Training</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane"
-                            type="button" role="tab" aria-controls="notes-tab-pane"
-                            aria-selected="false">Notes</button>
+                            type="button" role="tab" aria-controls="notes-tab-pane" aria-selected="false">Notes</button>
                     </li>
                 </ul>
                 <!-- Static Tab Panes -->
@@ -185,8 +197,8 @@
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="btn btn-link p-0" type="button"
-                                                        id="dropdownMenuButton-{{ $job->id }}"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        id="dropdownMenuButton-{{ $job->id }}" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
                                                         <i data-feather="align-justify"></i>
                                                     </button>
                                                     <ul class="dropdown-menu dropdown-menu-end"
@@ -198,8 +210,8 @@
                                                                     Activate
                                                                 </button>
                                                                 <form id="activate-job-form-{{ $job->id }}"
-                                                                    action="{{ route('activate.job', $job->id) }}"
-                                                                    method="POST" style="display: none;">
+                                                                    action="{{ route('activate.job', $job->id) }}" method="POST"
+                                                                    style="display: none;">
                                                                     @csrf
                                                                     @method('POST')
                                                                 </form>
@@ -211,8 +223,8 @@
                                                                     Terminate
                                                                 </button>
                                                                 <form id="terminate-job-form-{{ $job->id }}"
-                                                                    action="{{ route('terminate.job', $job->id) }}"
-                                                                    method="POST" style="display: none;">
+                                                                    action="{{ route('terminate.job', $job->id) }}" method="POST"
+                                                                    style="display: none;">
                                                                     @csrf
                                                                     @method('POST')
                                                                 </form>
@@ -231,10 +243,9 @@
                                                                     style="display: none;">
                                                                     @csrf
                                                                 </form>
-                                                                <button class="dropdown-item"
-                                                                    onclick="if(confirm('Are you sure you want to delete this record?')) { 
-                                                                        document.getElementById('delete-job-form-{{ $job->id }}').submit();
-                                                                    }">
+                                                                <button class="dropdown-item" onclick="if(confirm('Are you sure you want to delete this record?')) { 
+                                                                                    document.getElementById('delete-job-form-{{ $job->id }}').submit();
+                                                                                }">
                                                                     Delete
                                                                 </button>
                                                             </li>
@@ -286,8 +297,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $disclosure->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            id="dropdownMenuButton-{{ $disclosure->id }}" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
                                                             <i data-feather="align-justify"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end"
@@ -358,8 +369,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $sickness->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            id="dropdownMenuButton-{{ $sickness->id }}" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
                                                             <i data-feather="align-justify"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end"
@@ -425,15 +436,15 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $capability->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            id="dropdownMenuButton-{{ $capability->id }}" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
                                                             <i data-feather="align-justify"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="dropdownMenuButton-{{ $capability->id }}">
                                                             {{-- <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('detail.capability', $capability->id) }}">View</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('detail.capability', $capability->id) }}">View</a>
                                                             </li> --}}
                                                             <li>
                                                                 <a class="dropdown-item"
@@ -496,16 +507,16 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $training->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            id="dropdownMenuButton-{{ $training->id }}" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
                                                             <i data-feather="align-justify"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="dropdownMenuButton-{{ $training->id }}">
                                                             {{-- <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('detail.training', $training->id) }}">View</a>
-                                                        </li> --}}
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('detail.training', $training->id) }}">View</a>
+                                                            </li> --}}
                                                             <li>
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.training', ['id' => $training->id, 'form_type' => 'tab']) }}">Edit</a>
@@ -532,8 +543,8 @@
                     </div>
 
                     <!-- disciplinary Tab -->
-                    <div class="tab-pane fade" id="disciplinary-tab-pane" role="tabpanel"
-                        aria-labelledby="disciplinary-tab" tabindex="0">
+                    <div class="tab-pane fade" id="disciplinary-tab-pane" role="tabpanel" aria-labelledby="disciplinary-tab"
+                        tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
                                 <h4 class="py-2">Disciplinary Details</h4>
@@ -631,8 +642,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $lateness->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            id="dropdownMenuButton-{{ $lateness->id }}" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
                                                             <i data-feather="align-justify"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end"
@@ -670,8 +681,7 @@
                     </div>
 
                     {{-- notes tab --}}
-                    <div class="tab-pane fade" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab"
-                        tabindex="0">
+                    <div class="tab-pane fade" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab" tabindex="0">
                         <div class="d-flex justify-content-between py-2">
                             <div>
                                 <h4 class="py-2">Notes</h4>
@@ -726,9 +736,9 @@
     @endpush
     @push('custom-scripts')
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // Adjust DataTable columns when tab is shown
-                $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+                $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
                     const target = $(e.target).data('bs-target');
                     $(target).find('table').DataTable().columns.adjust();
                 });
