@@ -62,7 +62,7 @@
                                     name="start_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Job Termination Date </label>
+                                <label class="form-label" id="terminationLabel">Job Termination Date </label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="termination_date" />
                             </div>
@@ -84,13 +84,12 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Type <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="contract_type">
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Contract Type')
-                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                        @endif
+                                    <option value="" selected disabled>Select Contract Type</option>
+                                    @foreach ($dropdowns->where('module_type', 'Job')->where('name', 'Contract Type')->unique('value') as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div>                            
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
                                 <select class="form-control form-select" required name="contract_returned">
@@ -125,3 +124,19 @@
         </div>
     </div>
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const contractTypeSelect = document.querySelector("select[name='contract_type']");
+        const terminationLabel = document.getElementById("terminationLabel");
+
+        contractTypeSelect.addEventListener("change", function () {
+            const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
+
+            if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
+                terminationLabel.textContent = "Fix/Tem Expiry";
+            } else {
+                terminationLabel.textContent = "Job Termination Date";
+            }
+        });
+    });
+</script>
