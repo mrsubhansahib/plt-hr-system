@@ -111,15 +111,15 @@ class EmployeeController extends Controller
         ]));
         if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
             $request->validate([
-                'title.*'           => 'required',
-                'user_id.*'         => 'required',
-                'facility.*'        => 'required',
-                'start_date.*'      => 'required|date',
-                'rate_of_pay.*'     => 'required',
-                'pay_frequency.*'   => 'required',
-                'number_of_hours.*' => 'required',
-                'contract_type.*'   => 'required',
-                'dbs_required.*'    => 'required',
+                'title.*'               => 'required',
+                'user_id.*'             => 'required',
+                'facility.*'            => 'required',
+                'start_date.*'          => 'required|date',
+                'rate_of_pay.*'         => 'required',
+                'pay_frequency.*'       => 'required',
+                'number_of_hours.*'     => 'required',
+                'contract_type.*'       => 'required',
+                'dbs_required.*'        => 'required',
             ]);
             foreach ($request->title as $index => $title) {
                 Job::create([
@@ -229,23 +229,23 @@ class EmployeeController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'first_name'            => 'required',
-            'surname'               => 'required',
-            'preferred_name'        => 'required',
-            'email'                 => 'required',
-            'address1'              => 'required',
-            'town'                  => 'required',
-            'post_code'             => 'required',
-            'dob'                   => 'required',
-            'age'                   => 'required',
-            'gender'                => 'required',
-            'ethnicity'             => 'required',
-            'commencement_date'     => 'required',
-            'default_cost_center'   => 'required',
-            'salaried'              => 'required',
-            'emergency_1_name'      => 'required',
-            'emergency_1_ph_no'     => 'required',
-            'emergency_1_relation'  => 'required',
+            'first_name'                => 'required',
+            'surname'                   => 'required',
+            'preferred_name'            => 'required',
+            'email'                     => 'required',
+            'address1'                  => 'required',
+            'town'                      => 'required',
+            'post_code'                 => 'required',
+            'dob'                       => 'required',
+            'age'                       => 'required',
+            'gender'                    => 'required',
+            'ethnicity'                 => 'required',
+            'commencement_date'         => 'required',
+            'default_cost_center'       => 'required',
+            'salaried'                  => 'required',
+            'emergency_1_name'          => 'required',
+            'emergency_1_ph_no'         => 'required',
+            'emergency_1_relation'      => 'required',
         ]);
         $user = User::find($id);
         $user->update($request->all());

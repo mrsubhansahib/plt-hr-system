@@ -9,11 +9,8 @@ use Illuminate\Http\Request;
 
 class CapabilityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function index()
     {
         $capabilities = Capability::with('user')->whereHas('user', function ($e) {
@@ -22,11 +19,8 @@ class CapabilityController extends Controller
         return view('pages.capability.list', compact('capabilities'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function create()
     {
         $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
@@ -34,12 +28,8 @@ class CapabilityController extends Controller
         return view("pages.capability.create", compact('employees', 'dropdowns'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function store(Request $request)
     {
         // $request->validate([
@@ -55,23 +45,15 @@ class CapabilityController extends Controller
         return redirect()->route('show.capabilities')->with('success', 'Capability created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Capability  $Capability
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function show(Capability $Capability)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Capability  $Capability
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function edit(Request $request, $id)
     {
         $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
@@ -81,13 +63,8 @@ class CapabilityController extends Controller
         return view("pages.capability.edit", compact('capability', 'employees', 'form_type', 'dropdowns'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Capability  $Capability
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function update(Request $request, $id)
     {
         // $request->validate([
@@ -108,12 +85,9 @@ class CapabilityController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Capability  $Capability
-     * @return \Illuminate\Http\Response
-     */
+    
+
+    
     public function destroy($id)
     {
         Capability::find($id)->delete();

@@ -51,37 +51,37 @@ class DropdownController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Validate the input
-    $request->validate([
-        'module_type' => 'required|string',
-        'name' => 'required|string',
-        'value' => 'required|string',
-    ]);
-    
-    // Create the dropdown entry
-    $dropdown = Dropdown::create([
-        'module_type' => $request->module_type,
-        'name' => $request->name,
-        'value' => $request->value,
-        'user_id' => Auth::id(),
-    ]);
-    
-    switch ($dropdown->module_type) {
-        case 'User': 
-            return redirect()->route('dropdown.user')->with('success', 'User dropdown added successfully!');
-        case 'Job': 
-            return redirect()->route('dropdown.job')->with('success', 'Job dropdown added successfully!');
-        case 'Capability': 
-            return redirect()->route('dropdown.capability')->with('success', 'Capability dropdown added successfully!');
-        case 'Lateness':
-            return redirect()->route('dropdown.lateness')->with('success', 'Lateness dropdown added successfully!');
-        case 'Training': 
-            return redirect()->route('dropdown.training')->with('success', 'Training dropdown added successfully!');
-        default: 
-            return redirect()->route('show.list.dropdowns')->with('success', 'Dropdown added successfully!');
+    {
+        // Validate the input
+        $request->validate([
+            'module_type' => 'required|string',
+            'name' => 'required|string',
+            'value' => 'required|string',
+        ]);
+
+        // Create the dropdown entry
+        $dropdown = Dropdown::create([
+            'module_type' => $request->module_type,
+            'name' => $request->name,
+            'value' => $request->value,
+            'user_id' => Auth::id(),
+        ]);
+
+        switch ($dropdown->module_type) {
+            case 'User':
+                return redirect()->route('dropdown.user')->with('success', 'User dropdown added successfully!');
+            case 'Job':
+                return redirect()->route('dropdown.job')->with('success', 'Job dropdown added successfully!');
+            case 'Capability':
+                return redirect()->route('dropdown.capability')->with('success', 'Capability dropdown added successfully!');
+            case 'Lateness':
+                return redirect()->route('dropdown.lateness')->with('success', 'Lateness dropdown added successfully!');
+            case 'Training':
+                return redirect()->route('dropdown.training')->with('success', 'Training dropdown added successfully!');
+            default:
+                return redirect()->route('show.list.dropdowns')->with('success', 'Dropdown added successfully!');
+        }
     }
-}
 
 
     /**
@@ -98,7 +98,7 @@ class DropdownController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         // dd(123);
         // Validate the input
         $request->validate([
@@ -120,20 +120,20 @@ class DropdownController extends Controller
             'value' => $request->value,
         ]);
         switch ($dropdown->module_type) {
-            case 'User': 
+            case 'User':
                 return redirect()->route('dropdown.user')->with('success', 'User dropdown updated successfully!');
-            case 'Job': 
+            case 'Job':
                 return redirect()->route('dropdown.job')->with('success', 'Job dropdown updated successfully!');
-            case 'Capability': 
+            case 'Capability':
                 return redirect()->route('dropdown.capability')->with('success', 'Capability dropdown updated successfully!');
-            case 'Lateness': 
+            case 'Lateness':
                 return redirect()->route('dropdown.lateness')->with('success', 'Lateness dropdown updated successfully!');
-            case 'Training': 
+            case 'Training':
                 return redirect()->route('dropdown.training')->with('success', 'Training dropdown updated successfully!');
-            default: 
+            default:
                 return redirect()->route('dropdown.list')->with('success', 'Dropdown updated successfully!');
         }
-        
+
     }
 
     /**

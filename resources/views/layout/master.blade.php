@@ -79,7 +79,8 @@
 
     <!-- common js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
 
     <!-- DataTables JS -->
@@ -95,59 +96,59 @@
     <script src="https://cdn.datatables.net/buttons/2.2.0/js/buttons.html5.min.js"></script>
     @stack('custom-scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Initialize Bootstrap Datepicker
-            $(document).ready(function() {
-    // Datepicker for Age (Restrict Future Dates)
-    $('#dob').datepicker({
-        format: 'dd-mm-yyyy', // Format for display
-        autoclose: true, // Auto-close picker after date select
-        todayHighlight: true,
-        endDate: new Date() // Restricts future dates
-    }).on('changeDate', function(e) {
-        calculateAge();
-    });
+            $(document).ready(function () {
+                // Datepicker for Age (Restrict Future Dates)
+                $('#dob').datepicker({
+                    format: 'dd-mm-yyyy', // Format for display
+                    autoclose: true, // Auto-close picker after date select
+                    todayHighlight: true,
+                    endDate: new Date() // Restricts future dates
+                }).on('changeDate', function (e) {
+                    calculateAge();
+                });
 
-    // Generic Datepicker (No Restrictions)
-    $('.datepicker').not('#dob').datepicker({
-        format: 'dd-mm-yyyy', // Format for display
-        autoclose: true, // Auto-close picker after date select
-        todayHighlight: true
-    });
+                // Generic Datepicker (No Restrictions)
+                $('.datepicker').not('#dob').datepicker({
+                    format: 'dd-mm-yyyy', // Format for display
+                    autoclose: true, // Auto-close picker after date select
+                    todayHighlight: true
+                });
 
-    // Age Calculator Function
-    function calculateAge() {
-        const dobInput = document.getElementById('dob').value;
+                // Age Calculator Function
+                function calculateAge() {
+                    const dobInput = document.getElementById('dob').value;
 
-        if (!dobInput) {
-            document.getElementById('age').value = "";
-            return;
-        }
+                    if (!dobInput) {
+                        document.getElementById('age').value = "";
+                        return;
+                    }
 
-        // Convert DD-MM-YYYY to Date object
-        const parts = dobInput.split('-');
-        const dob = new Date(parts[2], parts[1] - 1, parts[0]);
-        const today = new Date();
+                    // Convert DD-MM-YYYY to Date object
+                    const parts = dobInput.split('-');
+                    const dob = new Date(parts[2], parts[1] - 1, parts[0]);
+                    const today = new Date();
 
-        if (isNaN(dob.getTime())) {
-            document.getElementById('age').value = "Invalid Date!";
-            return;
-        }
+                    if (isNaN(dob.getTime())) {
+                        document.getElementById('age').value = "Invalid Date!";
+                        return;
+                    }
 
-        // Calculate age
-        let age = today.getFullYear() - dob.getFullYear();
-        const monthDiff = today.getMonth() - dob.getMonth();
-        const dayDiff = today.getDate() - dob.getDate();
+                    // Calculate age
+                    let age = today.getFullYear() - dob.getFullYear();
+                    const monthDiff = today.getMonth() - dob.getMonth();
+                    const dayDiff = today.getDate() - dob.getDate();
 
-        // Adjust age if birthdate hasn't occurred this year yet
-        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-            age--;
-        }
+                    // Adjust age if birthdate hasn't occurred this year yet
+                    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                        age--;
+                    }
 
-        // Display the result
-        document.getElementById('age').value = age + " years";
-    }
-});
+                    // Display the result
+                    document.getElementById('age').value = age + " years";
+                }
+            });
 
 
 
@@ -156,16 +157,16 @@
             // Get all forms with the class 'forms-sample'
             let forms = document.querySelectorAll('.forms-sample');
 
-            forms.forEach(function(form) {
+            forms.forEach(function (form) {
                 let isFormDirty = false;
 
                 // Track changes in each form
-                form.addEventListener('change', function() {
+                form.addEventListener('change', function () {
                     isFormDirty = true;
                 });
 
                 // Show warning alert when navigating away
-                window.addEventListener('beforeunload', function(e) {
+                window.addEventListener('beforeunload', function (e) {
                     if (isFormDirty) {
                         // Modern browsers display a default message in the alert
                         e.preventDefault();
@@ -174,7 +175,7 @@
                 });
 
                 // Reset the flag when the form is submitted
-                form.addEventListener('submit', function() {
+                form.addEventListener('submit', function () {
                     isFormDirty = false;
                 });
             });
@@ -185,21 +186,21 @@
             const password = document.getElementById("password").value;
             const hint = document.getElementById("password-hint");
             const checks = [{
-                    valid: password.length >= 8,
-                    message: "Minimum 8 characters"
-                },
-                {
-                    valid: /[0-9]/.test(password),
-                    message: "At least one number"
-                },
-                {
-                    valid: /[!@#$%^&*(),.?":{}|<>]/.test(password),
-                    message: "At least one special character"
-                },
-                {
-                    valid: /[A-Z]/.test(password),
-                    message: "At least one uppercase letter"
-                },
+                valid: password.length >= 8,
+                message: "Minimum 8 characters"
+            },
+            {
+                valid: /[0-9]/.test(password),
+                message: "At least one number"
+            },
+            {
+                valid: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                message: "At least one special character"
+            },
+            {
+                valid: /[A-Z]/.test(password),
+                message: "At least one uppercase letter"
+            },
             ];
             const unmetCondition = checks.find(check => !check.valid);
             if (unmetCondition) {
@@ -224,7 +225,7 @@
     </script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Initialize the DataTable with optimized options
             var table = $('.dataTableExample').DataTable({
                 autoWidth: false, // Prevent table from stretching
@@ -238,7 +239,7 @@
                     'excel', // Excel export
                     // You can also add other buttons like 'pdf', 'copy', etc.
                 ],
-                initComplete: function() {
+                initComplete: function () {
                     // Fix table layout after initialization
                     var table = this.api();
                     table.columns.adjust().draw();
@@ -250,7 +251,7 @@
             });
 
             // Apply the column-wise search functionality
-            $('.dataTableExample .filters input').on('keyup change', function() {
+            $('.dataTableExample .filters input').on('keyup change', function () {
                 var colIndex = $(this).parent().index(); // Get column index
                 table.column(colIndex).search(this.value).draw(); // Search and redraw table
             });
@@ -269,7 +270,7 @@
     </script>
 
     <script>
-        document.getElementById('employeeSelect').addEventListener('change', function() {
+        document.getElementById('employeeSelect').addEventListener('change', function () {
             const selectedOption = this.options[this.selectedIndex];
             const firstName = selectedOption.text.split(' ')[0];
             const surname = selectedOption.getAttribute('data-surname');

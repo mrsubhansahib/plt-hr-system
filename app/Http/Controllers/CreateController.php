@@ -15,13 +15,8 @@ use Illuminate\Http\Request;
 
 class CreateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-    /*
+/**
 |--------------------------------------------------------------------------
 | Job tab create fuctoins
 |--------------------------------------------------------------------------
@@ -79,8 +74,7 @@ class CreateController extends Controller
             ->with('success', 'Disclosure created successfully.');
     }
 
-
-    /*
+/*
 |--------------------------------------------------------------------------
 | sickness tab create fuctoins
 |--------------------------------------------------------------------------
@@ -107,7 +101,7 @@ class CreateController extends Controller
 
 
 
-    /*
+/*
 |--------------------------------------------------------------------------
 | capability tab create fuctoins
 |--------------------------------------------------------------------------
@@ -138,7 +132,7 @@ class CreateController extends Controller
 
 
 
-    /*
+/*
 |--------------------------------------------------------------------------
 | training tab create fuctoins
 |--------------------------------------------------------------------------
@@ -167,7 +161,7 @@ class CreateController extends Controller
     }
 
 
-    /*
+/*
 |--------------------------------------------------------------------------
 | disciplinary tab create fuctoins
 |--------------------------------------------------------------------------
@@ -194,7 +188,7 @@ class CreateController extends Controller
             ->with('success', 'Disciplinary created successfully.');
     }
 
-    /*
+/*
 |--------------------------------------------------------------------------
 | lateness tab create fuctoins
 |--------------------------------------------------------------------------
