@@ -50,10 +50,10 @@ class HrController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-
-
         $user->update($request->all());
-
+        if ($request->has('hr_checklist_employee_detail')) {
+            return redirect()->back()->with('success', 'Employee edited successfully.');
+        }
         return redirect()->route('hr_list')->with('success', 'Employee edited successfully.');
     }
 

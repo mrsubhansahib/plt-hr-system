@@ -167,7 +167,6 @@ class EmployeeController extends Controller
 
     public function show($id)
     {
-        // dd($id);
         $user = User::with([
             'jobs' => function ($query) {
                 $query->whereIn('status', ['terminated', 'active']);
@@ -182,9 +181,16 @@ class EmployeeController extends Controller
                 $query->orderBy('created_at', 'desc');
             },
         ])->find($id);
-        // dd($user);
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found.');
+        }
         $hasDisclosure = $user->disclosures()->count();
-        return view('pages.employee.show', compact('user', 'hasDisclosure'));
+        $dropdowns = Dropdown::all();
+        return view('pages.employee.show', compact(
+            'user',
+            'hasDisclosure',
+            'dropdowns'
+        ));
     }
     public function terminatedShow($id)
     {

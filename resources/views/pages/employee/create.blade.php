@@ -392,7 +392,10 @@
             jobEntry.find("select").prop("selectedIndex", 0);
             jobEntry.find("hr, h5").remove();
             jobEntry.prepend(`<hr class="my-3"><h5 class="mt-4 mb-2">Job ${jobCount}</h5>`);
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             // Remove ID (so master file datepicker applies automatically)
             jobEntry.find(".datepicker").removeAttr("id").val("");
 
@@ -404,6 +407,7 @@
             if (jobs.length > 1) jobs.last().prev("hr").remove().end().remove();
             else alert("At least one job entry is required.");
         });
+<<<<<<< Updated upstream
 
         // Ensure new datepicker fields get initialized
         $(document).on("focus", ".datepicker", function() {
@@ -423,6 +427,16 @@
                     todayHighlight: true
                 });
             }
+=======
+        // Ensure new datepicker fields get initialized
+        $(document).on("focus", ".datepicker", function() {
+            $(this).datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+                todayHighlight: true,
+                endDate: new Date()
+            });
+>>>>>>> Stashed changes
         });
     });
 </script>
