@@ -12,31 +12,31 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    
+
     public function index()
     {
 
-        $users = User::where('role', 'admin')->where('status','active')->get();
+        $users = User::where('role', 'admin')->where('status', 'active')->get();
         // dd($users);
         return view('pages.admin.list', compact('users'));
     }
 
-    
+
     public function create()
     {
         $dropdowns = Dropdown::whereIn('module_type', ['User', 'Job'])->orderBy('name')->get()->all();
         return view('pages.admin.create', compact('dropdowns'));
     }
 
-    
+
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'            => 'required',
-            'surname'               => 'required',
+            'first_name' => 'required',
+            'surname' => 'required',
             // 'preferred_name'        => 'required',
-            'email'                 => 'required',
-            'password'              => 'required',
+            'email' => 'required',
+            'password' => 'required',
             // 'address1'              => 'required',
             // 'town'                  => 'required',
             // 'post_code'             => 'required',
@@ -61,7 +61,7 @@ class UserController extends Controller
             ->with('success', 'User created successfully.');
     }
 
-    
+
     public function show($id)
     {
         // dd($id);
@@ -69,7 +69,7 @@ class UserController extends Controller
         return view('pages.admin.show', compact('user'));
     }
 
-    
+
     public function edit($id)
     {
         $user = User::find($id);
@@ -77,14 +77,14 @@ class UserController extends Controller
         return view('pages.admin.edit', compact('user'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
         $request->validate([
-            'first_name'                => 'required',
-            'surname'                   => 'required',
+            'first_name' => 'required',
+            'surname' => 'required',
             // 'preferred_name'            => 'required',
-            'email'                     => 'required',
+            'email' => 'required',
             // 'address1'                  => 'required',
             // 'town'                      => 'required',
             // 'post_code'                 => 'required',
@@ -101,7 +101,7 @@ class UserController extends Controller
         ]);
         // dd($id);
 
-        $user= User::find($id);
+        $user = User::find($id);
         $user->update($request->all());
 
 
@@ -111,11 +111,11 @@ class UserController extends Controller
     }
 
 
-    
+
     public function destroy($id)
     {
-        $user = User::findOrFail($id); 
-        $user->update(['status' => 'deleted']); 
+        $user = User::findOrFail($id);
+        $user->update(['status' => 'deleted']);
         return redirect()->route('show.admins')
             ->with('success', 'User deleted successfully.');
     }
