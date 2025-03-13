@@ -29,21 +29,29 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="lateness_triggered" value="{{ $lateness->lateness_triggered }}" />
                             </div>
+                            @php
+                                // Collect lateness stage options, ensuring uniqueness and sorting alphabetically
+                                $latenessStages = collect($dropdowns)
+                                    ->where('module_type', 'Lateness')
+                                    ->where('name', 'Lateness Stage')
+                                    ->pluck('value')
+                                    ->unique()
+                                    ->sort()
+                                    ->values();
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Stage</label>
                                 <select class="form-control form-select" name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
-                                    <!-- Dynamic Options -->
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Lateness' && $dropdown->name == 'Lateness Stage')
-                                            <option value="{{ $dropdown->value }}"
-                                                {{ $lateness->lateness_stage == $dropdown->value ? 'selected' : '' }}>
-                                                {{ $dropdown->value }}
-                                            </option>
-                                        @endif
+                                    @foreach ($latenessStages as $stage)
+                                        <option value="{{ $stage }}" {{ isset($lateness->lateness_stage) && $lateness->lateness_stage == $stage ? 'selected' : '' }}>
+                                            {{ $stage }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Level of Warning Issued</label>
                                 <select class="form-control form-select" name="warning_level">

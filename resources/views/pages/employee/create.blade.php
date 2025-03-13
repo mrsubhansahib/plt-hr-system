@@ -284,7 +284,7 @@
 
                                             <!-- Job Termination Date Field -->
                                             <div class="col-md-3 mt-3">
-                                                <label class="form-label">Job Termination Date</label>
+                                                <label class="form-label" id="terminationLabel">Job Termination Date</label>
                                                 <input class="form-control datepicker termination-date" type="text"
                                                     placeholder="Select Date" name="termination_date[]" />
                                             </div>
@@ -433,4 +433,6 @@
             });
         });
     });
+
+    
 </script>
