@@ -28,7 +28,13 @@ class LogObserver
      */
     public function updated(Model $model)
     {
-        if ($model->isDirty('status')) {
+        $dirtyAttributes = $model->getDirty();
+        unset($dirtyAttributes['updated_at']);
+        if (array_keys($dirtyAttributes) === ['notes']) {
+            $this->logAction($model, 'Notes Updated');
+            return;
+        }
+        if (isset($dirtyAttributes['status'])) {
             $newStatus = $model->getAttribute('status');
             if ($newStatus === 'active' && session('is_acceptance')) {
                 $this->logAction($model, 'accepted');
@@ -48,7 +54,6 @@ class LogObserver
             $this->logAction($model, 'updated');
         }
     }
-
     /**
      * Handle the deleted event for any model.
      *

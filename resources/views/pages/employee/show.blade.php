@@ -892,7 +892,7 @@
                                     @endif
                                     @if (empty($user->confidentiality_statement_returned))
                                         <div class="col-md-3 mt-3">
-                                            <label class="form-label">Confidentiality Statement</label>
+                                            <label class="form-label">Confidentiality Statement Returned</label>
                                             <select class="form-control form-select"
                                                 name="confidentiality_statement_returned">
                                                 <option value="yes">Yes</option>
