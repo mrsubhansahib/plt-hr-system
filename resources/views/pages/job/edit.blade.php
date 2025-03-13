@@ -73,7 +73,7 @@
                                     value="{{ $job->start_date }}" required name="start_date" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Job Termination Date </label>
+                                <label class="form-label" id="terminationLabel">Job Termination Date </label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     value="{{ $job->termination_date }}" name="termination_date" />
                             </div>
@@ -160,3 +160,19 @@
         </div>
     </div>
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const contractTypeSelect = document.querySelector("select[name='contract_type']");
+        const terminationLabel = document.getElementById("terminationLabel");
+
+        contractTypeSelect.addEventListener("change", function () {
+            const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
+
+            if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
+                terminationLabel.textContent = "Fix/Tem Expiry";
+            } else {
+                terminationLabel.textContent = "Job Termination Date";
+            }
+        });
+    });
+</script>
