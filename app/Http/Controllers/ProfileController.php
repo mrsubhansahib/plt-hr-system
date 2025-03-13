@@ -21,14 +21,14 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $request->validate([
-            'first_name' => 'required',
-            'surname' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'address1' => 'required',
+            'first_name'    => 'required',
+            'surname'       => 'required',
+            'email'         => 'required|email|unique:users,email,' . $user->id,
+            'address1'      => 'required',
         ]);
-        
-        $user->update($request->all());         
-                
+
+        $user->update($request->all());
+
         return redirect()->route('dashboard')->with('success', 'Profile edited successfully.');
     }
 
@@ -40,8 +40,8 @@ class ProfileController extends Controller
     public function update_password(Request $request)
     {
         $request->validate([
-            'currentPassword' => 'required',
-            'new_password' => 'required|confirmed|min:8',
+            'currentPassword'           => 'required',
+            'new_password'              => 'required|confirmed|min:8',
             'new_password_confirmation' => 'required'
         ]);
 

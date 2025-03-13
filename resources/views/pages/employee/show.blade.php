@@ -317,8 +317,8 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
+                                         <th>First Name</th>
+                                        <th>Surname</th>
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
                                         <th>Action</th>

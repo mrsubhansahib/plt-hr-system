@@ -62,20 +62,29 @@
                                             </option>
                                         </select>
                                     </div>
+                                    @php
+                                    // Collect ethnicity options from both seeder and dropdowns
+                                        $ethnicityOptions = collect($dropdowns)
+                                            ->filter(fn($dropdown) => $dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
+                                            ->pluck('value')
+                                            ->merge($seededEthnicities ?? []) // Ensure seeded options are included
+                                            ->unique()
+                                            ->sort() // Sort alphabetically
+                                            ->values();
+                                    @endphp
+
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
                                         <select class="form-control form-select" required name="ethnicity">
                                             <option value="" selected disabled>Select</option>
-                                            @foreach ($dropdowns as $dropdown)
-                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Ethnicity')
-                                                    <option value="{{ $dropdown->value }}"
-                                                        {{ old('ethnicity', $user->ethnicity) == $dropdown->value ? 'selected' : '' }}>
-                                                        {{ $dropdown->value }}
-                                                    </option>
-                                                @endif
+                                            @foreach ($ethnicityOptions as $option)
+                                                <option value="{{ $option }}" {{ old('ethnicity', $user->ethnicity) == $option ? 'selected' : '' }}>
+                                                    {{ $option }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
+
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Disability</label>
                                         <select class="form-control form-select" name="disability"
