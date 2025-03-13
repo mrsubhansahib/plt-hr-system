@@ -27,36 +27,39 @@
                     <form class="forms-sample" action="{{ route('store.job') }}" method="POST">
                         @csrf
                         <div class="row mb-3">
-                        @php
-                            $jobDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Job Title')->sortBy('value');
-                        @endphp
 
-                        <div class="col-md-3 mt-3">
-                            <label class="form-label">Job Title <span class="text-danger">*</span></label>
-                            <select class="form-control form-select" required name="job_title">
-                                <option value="" selected disabled>Select Job</option>
-                                @foreach ($jobDropdowns as $dropdown)
-                                    <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Employee<span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="user_id" id="employeeSelect">
+                                    <option value="" selected disabled>Select Employee</option>
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
+                                            {{ $employee->first_name . ' ' . $employee->surname }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @php
+                                // Ensure dropdowns exist before processing
+                                $jobDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Title') // Check if 'Title' is the correct name
+                                    ->pluck('value') // Extract only the values
+                                    ->filter() // Remove null or empty values
+                                    ->unique() // Ensure no duplicates
+                                    ->sort() // Sort alphabetically
+                                    ->values(); // Reset index keys
+                            @endphp
 
-                        @php
-                            $jobTitleDropdowns = collect($dropdowns)
-                                ->where('module_type', 'Job')->where('name', 'Title')->pluck('value')->unique()->sort(); // Alphabetic order
-                        @endphp
-
-                        <div class="col-md-3 mt-3">
-                            <label class="form-label">Job Title <span class="text-danger">*</span></label>
-                            <select class="form-control form-select" required name="title">
-                                <option value="" selected disabled>Select Title</option>
-                                
-                                @foreach ($jobTitleDropdowns as $title)
-                                    <option value="{{ $title }}">{{ $title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Job Title <span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="title">
+                                    <option value="" selected disabled>Select Job</option>
+                                    @foreach ($jobDropdowns as $title)
+                                        <option value="{{ $title }}">{{ $title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Main Job</label>
                                 <select class="form-control form-select" name="main_job">
@@ -65,7 +68,10 @@
                                 </select>
                             </div>
                             @php
-                                $facilityDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Facility')->sortBy('value');
+                                $facilityDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Facility')
+                                    ->sortBy('value');
                             @endphp
 
                             <div class="col-md-3 mt-3">
@@ -87,10 +93,27 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required
                                     name="start_date" />
                             </div>
+                            @php
+                                $contractTypeDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Contract Type')
+                                    ->sortBy('value');
+                            @endphp
+
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Contract Type <span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="contract_type">
+                                    <option value="" selected disabled>Select Contract Type</option>
+                                    @foreach ($contractTypeDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label" id="terminationLabel">Job Termination Date</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="termination_date" />
-                            </div>                                                    
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="termination_date" />
+                            </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="rate_of_pay" />
@@ -106,19 +129,8 @@
                                 <label class="form-label">Number of Hours <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="number_of_hours" />
                             </div>
-                            @php
-                                $contractTypeDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Contract Type')->sortBy('value');
-                            @endphp
 
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Contract Type <span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="contract_type">
-                                    <option value="" selected disabled>Select Contract Type</option>
-                                    @foreach ($contractTypeDropdowns as $dropdown)
-                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+
 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
@@ -154,19 +166,21 @@
         </div>
     </div>
 @endsection
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const contractTypeSelect = document.querySelector("select[name='contract_type']");
-        const terminationLabel = document.getElementById("terminationLabel");
+@push('custom-script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contractTypeSelect = document.querySelector("select[name='contract_type']");
+            const terminationLabel = document.getElementById("terminationLabel");
 
-        contractTypeSelect.addEventListener("change", function () {
-            const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
+            contractTypeSelect.addEventListener("change", function() {
+                const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
 
-            if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
-                terminationLabel.textContent = "Fix/Tem Expiry";
-            } else {
-                terminationLabel.textContent = "Job Termination Date";
-            }
+                if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
+                    terminationLabel.textContent = "Fix/Tem Expiry";
+                } else {
+                    terminationLabel.textContent = "Job Termination Date";
+                }
+            });
         });
-    });
-</script>
+    </script>
+@endpush

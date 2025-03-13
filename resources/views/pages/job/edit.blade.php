@@ -26,7 +26,9 @@
                             @php
                                 // Collect job title options, ensuring uniqueness and sorting alphabetically
                                 $jobTitleOptions = collect($dropdowns)
-                                    ->filter(fn($dropdown) => $dropdown->module_type == 'Job' && $dropdown->name == 'Title')
+                                    ->filter(
+                                        fn($dropdown) => $dropdown->module_type == 'Job' && $dropdown->name == 'Title',
+                                    )
                                     ->pluck('value')
                                     ->unique()
                                     ->sort() // Sort alphabetically
@@ -38,7 +40,8 @@
                                 <select class="form-control form-select" required name="title">
                                     <option value="" selected disabled>Select Title</option>
                                     @foreach ($jobTitleOptions as $option)
-                                        <option value="{{ $option }}" {{ old('title', $job->title) == $option ? 'selected' : '' }}>
+                                        <option value="{{ $option }}"
+                                            {{ old('title', $job->title) == $option ? 'selected' : '' }}>
                                             {{ $option }}
                                         </option>
                                     @endforeach
@@ -64,7 +67,8 @@
                                 <select class="form-control form-select" required name="facility">
                                     <option value="" selected disabled>Select Facility</option>
                                     @foreach ($facilityDropdowns as $dropdown)
-                                        <option value="{{ $dropdown->value }}" {{ old('facility', $job->facility) == $dropdown->value ? 'selected' : '' }}>
+                                        <option value="{{ $dropdown->value }}"
+                                            {{ old('facility', $job->facility) == $dropdown->value ? 'selected' : '' }}>
                                             {{ $dropdown->value }}
                                         </option>
                                     @endforeach
@@ -81,6 +85,39 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     value="{{ $job->start_date }}" required name="start_date" />
                             </div>
+                            @php
+                                $defaultContractTypes = collect([
+                                    'Permanent',
+                                    'Casual',
+                                    'Fixed Term',
+                                    'Temporary',
+                                    'Permanent Variable',
+                                ]);
+
+                                $contractTypeDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Contract Type')
+                                    ->pluck('value');
+                                $allContractTypes = $defaultContractTypes
+                                    ->merge($contractTypeDropdowns)
+                                    ->unique()
+                                    ->sort();
+                            @endphp
+
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Contract Type <span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="contract_type">
+                                    <option value="" selected disabled>Select Contract Type</option>
+
+                                    @foreach ($allContractTypes as $contractType)
+                                        <option value="{{ $contractType }}"
+                                            {{ old('contract_type', $job->contract_type) == $contractType ? 'selected' : '' }}>
+                                            {{ $contractType }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label" id="terminationLabel">Job Termination Date </label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
@@ -88,12 +125,14 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
-                                <input class="form-control" value="{{ $job->rate_of_pay }}" type="text" required name="rate_of_pay" />
+                                <input class="form-control" value="{{ $job->rate_of_pay }}" type="text" required
+                                    name="rate_of_pay" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Pay Frequency<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" name="pay_frequency">
-                                    <option value="Per Annum" {{ $job->pay_frequency == 'Per Annum' ? 'selected' : '' }}>Per
+                                    <option value="Per Annum" {{ $job->pay_frequency == 'Per Annum' ? 'selected' : '' }}>
+                                        Per
                                         Annum</option>
                                     <option value="Per Hour" {{ $job->pay_frequency == 'Per Hour' ? 'selected' : '' }}>Per
                                         Hour</option>
@@ -103,31 +142,6 @@
                                 <label class="form-label">Number of Hours <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required value="{{ $job->number_of_hours }}"
                                     name="number_of_hours" />
-                            </div>
-                            @php
-                                $defaultContractTypes = collect([
-                                    'Permanent',
-                                    'Casual',
-                                    'Fixed Term',
-                                    'Temporary',
-                                    'Permanent Variable'
-                                ]);
-
-                                $contractTypeDropdowns = collect($dropdowns)->where('module_type', 'Job')->where('name', 'Contract Type')->pluck('value');
-                                $allContractTypes = $defaultContractTypes->merge($contractTypeDropdowns)->unique()->sort();
-                            @endphp
-
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Contract Type <span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="contract_type">
-                                    <option value="" selected disabled>Select Contract Type</option>
-
-                                    @foreach ($allContractTypes as $contractType)
-                                        <option value="{{ $contractType }}" {{ old('contract_type', $job->contract_type) == $contractType ? 'selected' : '' }}>
-                                            {{ $contractType }}
-                                        </option>
-                                    @endforeach
-                                </select>
                             </div>
 
 
@@ -169,19 +183,21 @@
         </div>
     </div>
 @endsection
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const contractTypeSelect = document.querySelector("select[name='contract_type']");
-        const terminationLabel = document.getElementById("terminationLabel");
+@push('custom-script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contractTypeSelect = document.querySelector("select[name='contract_type']");
+            const terminationLabel = document.getElementById("terminationLabel");
 
-        contractTypeSelect.addEventListener("change", function () {
-            const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
+            contractTypeSelect.addEventListener("change", function() {
+                const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
 
-            if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
-                terminationLabel.textContent = "Fix/Tem Expiry";
-            } else {
-                terminationLabel.textContent = "Job Termination Date";
-            }
+                if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
+                    terminationLabel.textContent = "Fix/Tem Expiry";
+                } else {
+                    terminationLabel.textContent = "Job Termination Date";
+                }
+            });
         });
-    });
-</script>
+    </script>
+@endpush

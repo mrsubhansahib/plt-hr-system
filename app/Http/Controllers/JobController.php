@@ -29,10 +29,12 @@ class JobController extends Controller
     {
         $dropdowns = Dropdown::where('module_type', 'Job')->orderBy('name')->get()->all();
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
+        
         return view('pages.job.create', compact('employees', 'dropdowns'));
     }
     public function store(Request $request)
     {
+        
         $request->validate([
             'title'             => 'required',
             'user_id'           => 'required',
@@ -46,10 +48,16 @@ class JobController extends Controller
             'termination_date'  => 'nullable|date' // Ensuring termination_date is a valid date if provided
         ]);
         $jobData = $request->all();
-        if (!empty($jobData['termination_date']) && strtotime($jobData['termination_date']) < strtotime(now())) {
-            $jobData['status'] = 'terminated';
-        }
+        if (!empty($request->termination_date)) {
 
+            if (strtotime($request->termination_date) > strtotime(now())) {
+                $request['status'] = 'active';
+            } else {
+                $request['status'] = 'terminated';
+            }
+        }else{
+            $request['status'] = 'active';
+        }
         Job::create($jobData);
 
         return redirect()->route('show.jobs')->with('success', 'Job created successfully.');
@@ -74,16 +82,18 @@ class JobController extends Controller
             'dbs_required'      => 'required',
             'termination_date'  => 'nullable|date'
         ]);
+        if (!empty($request->termination_date)) {
+            
+            if (strtotime($request->termination_date) > strtotime(now())) {
+                $request['status'] = 'active';
+            } else {
+                $request['status'] = 'terminated';
+            }
+        }else{
+            $request['status'] = 'active';
+        }
         $job = Job::findOrFail($id);
         $jobData = $request->all();
-        if (!empty($jobData['termination_date']) && strtotime($jobData['termination_date']) < strtotime(now())) {
-            $jobData['status'] = 'terminated';
-        }
-        if (!empty($jobData['termination_date']) && strtotime($jobData['termination_date']) > strtotime(now())) {
-            if ($job->status == 'terminated') {
-                $jobData['status'] = 'active';
-            }
-        }
         $job->update($jobData);
 
         if ($request->form_type == "tab") {

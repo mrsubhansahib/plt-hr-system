@@ -16,11 +16,7 @@ use Illuminate\Http\Request;
 class CreateController extends Controller
 {
 
-/**
-|--------------------------------------------------------------------------
-| Job tab create fuctoins
-|--------------------------------------------------------------------------
-|*/
+
     public function jobCreate($id)
     {
         $dropdowns = Dropdown::where('module_type', 'Job')->orderBy('name')->get()->all();
@@ -40,7 +36,16 @@ class CreateController extends Controller
             'contract_type'         => 'required',
             'dbs_required'          => 'required',
         ]);
+        if (!empty($request->termination_date)) {
 
+            if (strtotime($request->termination_date) > strtotime(now())) {
+                $request['status'] = 'active';
+            } else {
+                $request['status'] = 'terminated';
+            }
+        }else{
+            $request['status'] = 'active';
+        }
         Job::create($request->all());
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Job created successfully.');
@@ -74,7 +79,7 @@ class CreateController extends Controller
             ->with('success', 'Disclosure created successfully.');
     }
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | sickness tab create fuctoins
 |--------------------------------------------------------------------------
@@ -101,7 +106,7 @@ class CreateController extends Controller
 
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | capability tab create fuctoins
 |--------------------------------------------------------------------------
@@ -132,7 +137,7 @@ class CreateController extends Controller
 
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | training tab create fuctoins
 |--------------------------------------------------------------------------
@@ -161,7 +166,7 @@ class CreateController extends Controller
     }
 
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | disciplinary tab create fuctoins
 |--------------------------------------------------------------------------
@@ -188,7 +193,7 @@ class CreateController extends Controller
             ->with('success', 'Disciplinary created successfully.');
     }
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | lateness tab create fuctoins
 |--------------------------------------------------------------------------

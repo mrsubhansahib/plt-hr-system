@@ -24,7 +24,7 @@ class HrController extends Controller
                 ->orWhereNull('emergency_2_ph_no')
                 ->orWhereNull('emergency_2_home_ph')
                 ->orWhereNull('emergency_2_relation')
-                ->orWhereNull('emergency_2_ph_no')
+            ->orWhereNull('emergency_2_ph_no')
                 ->orWhereNull('emergency_2_relation')
                 ->orWhereNull('contracted_from_date')
                 ->orWhereNull('termination_date')
