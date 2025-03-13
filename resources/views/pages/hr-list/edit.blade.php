@@ -299,15 +299,10 @@
                                 
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Cost Centre </label>
-                                    <input class="form-control" type="text" value="{{ $user->cost_center }}"
-                                    name="cost_center" />
+                                    <input class="form-control" type="text" value="{{ $user->default_cost_center }}"
+                                    name="default_cost_center" />
                                 </div>
                                 
-                                <div class="col-md-3 mt-3">
-                                    <label class="form-label">Job Termination Date </label>
-                                    <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                    value="{{ $user->termination_date }}" name="termination_date" />
-                                </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="form-label">Notes</label>
                                     <textarea class="form-control" name="notes" value="" rows="4">{{ $user->notes }}</textarea>

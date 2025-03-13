@@ -93,6 +93,14 @@ class JobController extends Controller
             return redirect()->route('show.jobs')->with('success', 'Job edited successfully.');
         }
     }
+    public function activate($id)
+    {
+        $job = Job::findOrFail($id);
+        $job->status = 'active';
+        $job->termination_date = null;
+        $job->save();
+        return redirect()->back()->with('success', 'Job activated successfully.');
+    }
     public function terminate($id)
     {
         $job = Job::findOrFail($id);

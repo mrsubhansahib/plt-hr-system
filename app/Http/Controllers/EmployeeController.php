@@ -9,9 +9,14 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-
-
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+  
+     * Display a listing of the resource.
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $users = User::where('role', 'employee')
@@ -45,38 +50,43 @@ class EmployeeController extends Controller
         return view('pages.employee.temp-view', compact('user', 'dropdowns'));
     }
 
-
-
-
+    /**
+     * Show the form for creating a new resource.
+     * @return \Illuminate\Contracts\View\View
+     */
     public function create()
     {
         $dropdowns = Dropdown::whereIn('module_type', ['User', 'Job'])->orderBy('name')->get()->all();
         return view('pages.employee.create', compact('dropdowns'));
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'first_name'                => 'required',
-            'surname'                   => 'required',
-            'preferred_name'            => 'required',
-            'dob'                       => 'required',
-            'age'                       => 'required',
-            'gender'                    => 'required',
-            'ethnicity'                 => 'required',
-            'address1'                  => 'required',
-            'town'                      => 'required',
-            'post_code'                 => 'required',
-            'email'                     => 'required',
-            'commencement_date'         => 'required',
-            'ni_number'                 => 'required',
-            'default_cost_center'       => 'required',
-            'salaried'                  => 'required',
-            'emergency_1_name'          => 'required',
-            'emergency_1_ph_no'         => 'required',
-            'emergency_1_relation'      => 'required',
+            'first_name' => 'required',
+            'surname' => 'required',
+            'preferred_name' => 'required',
+            'dob' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'ethnicity' => 'required',
+            'address1' => 'required',
+            'town' => 'required',
+            'post_code' => 'required',
+            'email' => 'required',
+            'commencement_date' => 'required',
+            'ni_number' => 'required',
+            'default_cost_center' => 'required',
+            'salaried' => 'required',
+            'emergency_1_name' => 'required',
+            'emergency_1_ph_no' => 'required',
+            'emergency_1_relation' => 'required',
         ]);
         $user = User::create($request->only([
             'first_name',
@@ -111,33 +121,33 @@ class EmployeeController extends Controller
         ]));
         if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
             $request->validate([
-                'title.*'           => 'required',
-                'user_id.*'         => 'required',
-                'facility.*'        => 'required',
-                'start_date.*'      => 'required|date',
-                'rate_of_pay.*'     => 'required',
-                'pay_frequency.*'   => 'required',
-                'number_of_hours.*' => 'required',
-                'contract_type.*'   => 'required',
-                'dbs_required.*'    => 'required',
+                'title.*'             => 'required',
+                'user_id.*'           => 'required',
+                'facility.*'          => 'required',
+                'start_date.*'        => 'required|date',
+                'rate_of_pay.*'       => 'required',
+                'pay_frequency.*'     => 'required',
+                'number_of_hours.*'   => 'required',
+                'contract_type.*'     => 'required',
+                'dbs_required.*'      => 'required',
             ]);
             foreach ($request->title as $index => $title) {
                 Job::create([
-                    'user_id'           => $user->id,
-                    'title'             => $title,
-                    'main_job'          => $request->main_job[$index] ?? 'no',
-                    'facility'          => $request->facility[$index],
-                    'cost_center'       => $request->cost_center[$index] ?? null,
-                    'start_date'        => $request->start_date[$index],
-                    'termination_date'  => $request->termination_date[$index] ?? null,
-                    'rate_of_pay'       => $request->rate_of_pay[$index],
-                    'pay_frequency'     => $request->pay_frequency[$index],
-                    'number_of_hours'   => $request->number_of_hours[$index],
-                    'contract_type'     => $request->contract_type[$index],
+                    'user_id' => $user->id,
+                    'title' => $title,
+                    'main_job' => $request->main_job[$index] ?? 'no',
+                    'facility' => $request->facility[$index],
+                    'cost_center' => $request->cost_center[$index] ?? null,
+                    'start_date' => $request->start_date[$index],
+                    'termination_date' => $request->termination_date[$index] ?? null,
+                    'rate_of_pay' => $request->rate_of_pay[$index],
+                    'pay_frequency' => $request->pay_frequency[$index],
+                    'number_of_hours' => $request->number_of_hours[$index],
+                    'contract_type' => $request->contract_type[$index],
                     'contract_returned' => $request->contract_returned[$index] ?? null,
-                    'jd_returned'       => $request->jd_returned[$index] ?? null,
-                    'dbs_required'      => $request->dbs_required[$index],
-                    'notes'             => $request->notes[$index] ?? null,
+                    'jd_returned' => $request->jd_returned[$index] ?? null,
+                    'dbs_required' => $request->dbs_required[$index],
+                    'notes' => $request->notes[$index] ?? null,
                 ]);
             }
         }
@@ -162,9 +172,11 @@ class EmployeeController extends Controller
             ->with('success', 'Employee rejected successfully.');
     }
 
-
-
-
+    /**
+     * Display the specified resource.
+     * @param  int $id
+     * @return \Illuminate\Contracts\View\View
+     */
     public function show($id)
     {
         $user = User::with([
@@ -213,39 +225,46 @@ class EmployeeController extends Controller
         $hasDisclosure = $user->disclosures()->count();
         return view('pages.employee.show-terminated', compact('user', 'hasDisclosure'));
     }
-
-
-
+    /**
+     * Show the form for editing the specified resource.
+     * @param  int $id
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
         $user = User::find($id);
+
         return view('pages.employee.edit', compact('user', 'dropdowns'));
     }
 
-
-
+    /**
+     * Update the specified resource in storage.
+     * @param  \Illuminate\Http\Request $request
+     * @param  User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         // dd($request->all());
         $request->validate([
-            'first_name'            => 'required',
-            'surname'               => 'required',
-            'preferred_name'        => 'required',
-            'email'                 => 'required',
-            'address1'              => 'required',
-            'town'                  => 'required',
-            'post_code'             => 'required',
-            'dob'                   => 'required',
-            'age'                   => 'required',
-            'gender'                => 'required',
-            'ethnicity'             => 'required',
-            'commencement_date'     => 'required',
-            'default_cost_center'   => 'required',
-            'salaried'              => 'required',
-            'emergency_1_name'      => 'required',
-            'emergency_1_ph_no'     => 'required',
-            'emergency_1_relation'  => 'required',
+            'first_name'                => 'required',
+            'surname'                   => 'required',
+            'preferred_name'            => 'required',
+            'email'                     => 'required',
+            'address1'                  => 'required',
+            'town'                      => 'required',
+            'post_code'                 => 'required',
+            'dob'                       => 'required',
+            'age'                       => 'required',
+            'gender'                    => 'required',
+            'ethnicity'                 => 'required',
+            'commencement_date'         => 'required',
+            'default_cost_center'       => 'required',
+            'salaried'                  => 'required',
+            'emergency_1_name'          => 'required',
+            'emergency_1_ph_no'         => 'required',
+            'emergency_1_relation'      => 'required',
         ]);
         $user = User::find($id);
         $user->update($request->all());
@@ -276,9 +295,11 @@ class EmployeeController extends Controller
         $user->update(['status' => 'active']);
         return redirect()->route('show.employees')->with('success', 'Employee activated successfully.');
     }
-
-
-
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);
