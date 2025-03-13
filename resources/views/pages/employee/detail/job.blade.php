@@ -20,17 +20,28 @@
                         <div class="row mb-3">
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ $employee->first_name.' '.$employee->surname  }}" disabled>
+                                <input type="text" class="form-control"
+                                    value="{{ $employee->first_name . ' ' . $employee->surname }}" disabled>
                                 <input type="hidden" class="form-control" value="{{ $user_id }}" name="user_id">
                             </div>
+                            @php
+                                // Ensure dropdowns exist before processing
+                                $jobDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Title') // Check if 'Title' is the correct name
+                                    ->pluck('value') // Extract only the values
+                                    ->filter() // Remove null or empty values
+                                    ->unique() // Ensure no duplicates
+                                    ->sort() // Sort alphabetically
+                                    ->values(); // Reset index keys
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Job Title<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="title">
                                     <option value="" selected disabled>Select Title</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Title')
-                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                        @endif
+                                    @foreach ($jobDropdowns as $dropdown)
+                                        <option value="{{ $dropdown }}">{{ $dropdown }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -41,14 +52,19 @@
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
+                            @php
+                                $facilityDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Facility')
+                                    ->sortBy('value');
+                            @endphp
+
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Facility<span class="text-danger">*</span></label>
+                                <label class="form-label">Facility <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="facility">
                                     <option value="" selected disabled>Select Facility</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Facility')
-                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                        @endif
+                                    @foreach ($facilityDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -60,6 +76,22 @@
                                 <label class="form-label">Job Start Date <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required
                                     name="start_date" />
+                            </div>
+                            @php
+                                $contractTypeDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Job')
+                                    ->where('name', 'Contract Type')
+                                    ->sortBy('value');
+                            @endphp
+
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Contract Type <span class="text-danger">*</span></label>
+                                <select class="form-control form-select" required name="contract_type">
+                                    <option value="" selected disabled>Select Contract Type</option>
+                                    @foreach ($contractTypeDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label" id="terminationLabel">Job Termination Date </label>
@@ -81,15 +113,7 @@
                                 <label class="form-label">Number of Hours <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="number_of_hours" />
                             </div>
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">Contract Type <span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="contract_type">
-                                    <option value="" selected disabled>Select Contract Type</option>
-                                    @foreach ($dropdowns->where('module_type', 'Job')->where('name', 'Contract Type')->unique('value') as $dropdown)
-                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
-                                    @endforeach
-                                </select>
-                            </div>                            
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
                                 <select class="form-control form-select" required name="contract_returned">
@@ -109,7 +133,7 @@
                                 <label class="form-label">DBS Required <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="dbs_required">
                                     <option selected value="yes">Yes</option>
-                                    <option  value="no">No</option>
+                                    <option value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-12 mt-3">
@@ -125,11 +149,11 @@
     </div>
 @endsection
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const contractTypeSelect = document.querySelector("select[name='contract_type']");
         const terminationLabel = document.getElementById("terminationLabel");
 
-        contractTypeSelect.addEventListener("change", function () {
+        contractTypeSelect.addEventListener("change", function() {
             const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
 
             if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
