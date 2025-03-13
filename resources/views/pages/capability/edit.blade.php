@@ -33,20 +33,29 @@
                                         {{ $capability->on_capability_procedure == 'no' ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
+                            @php
+                                // Collect capability stage options, ensuring uniqueness and sorting alphabetically
+                                $capabilityStages = collect($dropdowns)
+                                    ->where('module_type', 'Capability')
+                                    ->where('name', 'Capability Stage')
+                                    ->pluck('value')
+                                    ->unique()
+                                    ->sort()
+                                    ->values();
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Capability Stage</label>
                                 <select class="form-control form-select" name="stage">
                                     <option value="" disabled {{ empty($capability->stage) ? 'selected' : '' }}>Select Stage</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Capability Stage')
-                                            <option value="{{ $dropdown->value }}"
-                                                {{ isset($capability->stage) && $capability->stage == $dropdown->value ? 'selected' : '' }}>
-                                                {{ $dropdown->value }}
-                                            </option>
-                                        @endif
+                                    @foreach ($capabilityStages as $stage)
+                                        <option value="{{ $stage }}" {{ isset($capability->stage) && $capability->stage == $stage ? 'selected' : '' }}>
+                                            {{ $stage }}
+                                        </option>
                                     @endforeach
                                 </select>                                
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"

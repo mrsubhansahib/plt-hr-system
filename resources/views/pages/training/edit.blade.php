@@ -23,21 +23,29 @@
                                     disabled>
                                 <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type">
                             </div>
+                            @php
+                                // Collect training title options, ensuring uniqueness and sorting alphabetically
+                                $trainingTitles = collect($dropdowns)
+                                    ->where('module_type', 'Training')
+                                    ->where('name', 'Training Course Titles')
+                                    ->pluck('value')
+                                    ->unique()
+                                    ->sort()
+                                    ->values();
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Training Title</label>
                                 <select class="form-control form-select" name="training_title">
                                     <option value="" selected disabled>Select Training Title</option>
-                                    <!-- Dynamic Options -->
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Training' && $dropdown->name == 'Training Course Titles')
-                                            <option value="{{ $dropdown->value }}"
-                                                {{ $training->training_title == $dropdown->value ? 'selected' : '' }}>
-                                                {{ $dropdown->value }}
-                                            </option>
-                                        @endif
+                                    @foreach ($trainingTitles as $title)
+                                        <option value="{{ $title }}" {{ isset($training->training_title) && $training->training_title == $title ? 'selected' : '' }}>
+                                            {{ $title }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Course Date</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"

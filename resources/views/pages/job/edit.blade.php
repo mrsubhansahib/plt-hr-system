@@ -23,19 +23,28 @@
                                 <input type="text" class="form-control" value="{{ $job->user->first_name }}" disabled>
                                 <input type="hidden" class="form-control" value="{{ $form_type }}" name="form_type">
                             </div>
+                            @php
+                                // Collect job title options, ensuring uniqueness and sorting alphabetically
+                                $jobTitleOptions = collect($dropdowns)
+                                    ->filter(fn($dropdown) => $dropdown->module_type == 'Job' && $dropdown->name == 'Title')
+                                    ->pluck('value')
+                                    ->unique()
+                                    ->sort() // Sort alphabetically
+                                    ->values();
+                            @endphp
+
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Job Title<span class="text-danger">*</span></label>
+                                <label class="form-label">Job Title <span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="title">
                                     <option value="" selected disabled>Select Title</option>
-                                    @foreach ($dropdowns as $dropdown)
-                                        @if ($dropdown->module_type == 'Job' && $dropdown->name == 'Title')
-                                            <option value="{{ $dropdown->value }}"
-                                                {{ old('title', $job->title) == $dropdown->value ? 'selected' : '' }}>
-                                                {{ $dropdown->value }}</option>
-                                        @endif
+                                    @foreach ($jobTitleOptions as $option)
+                                        <option value="{{ $option }}" {{ old('title', $job->title) == $option ? 'selected' : '' }}>
+                                            {{ $option }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Main Job</label>
                                 <select class="form-control form-select" name="main_job">
