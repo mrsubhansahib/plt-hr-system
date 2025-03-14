@@ -68,6 +68,7 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validatedData = $request->validate([
             'first_name' => 'required',
             'surname' => 'required',
@@ -122,7 +123,6 @@ class EmployeeController extends Controller
         if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
             $request->validate([
                 'title.*'             => 'required',
-                'user_id.*'           => 'required',
                 'facility.*'          => 'required',
                 'start_date.*'        => 'required|date',
                 'rate_of_pay.*'       => 'required',
