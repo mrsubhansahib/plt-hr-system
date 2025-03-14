@@ -245,7 +245,7 @@
                                             <div class="col-md-3 mt-3">
                                                 <label class="form-label">Job Title <span
                                                         class="text-danger">*</span></label>
-                                                <select class="form-control form-select" required name="title">
+                                                <select class="form-control form-select" required name="title[]">
                                                     <option value="" selected disabled>Select Job</option>
                                                     @foreach ($jobDropdowns as $title)
                                                         <option value="{{ $title }}">{{ $title }}</option>
@@ -412,10 +412,8 @@
         function initializeDatepicker() {
             $(".datepicker").each(function () {
                 let $this = $(this);
-
                 // Skip re-initialization if already initialized
                 if ($this.data("datepicker")) return;
-
                 let options = {
                     format: "dd-mm-yyyy",
                     autoclose: true,
@@ -458,12 +456,17 @@
                 alert("At least one job entry is required.");
             }
         });
-        // ✅ Handle contract type change dynamically
-        $(document).on("change", "select[name='contract_type[]']", function () {
-            let selectedValue = $(this).val().trim();
-            $(".termination-label").text(
-                ["Fixed Term", "Temporary"].includes(selectedValue) ? "Fix/Temp Expiry" : "Job Termination Date"
-            );
+         // ✅ Handle contract type change for the specific job entry
+         $(document).on("change", "select[name='contract_type[]']", function () {
+            let selectedValue = $(this).val();
+            let jobEntry = $(this).closest(".job-entry"); // Find closest job-entry
+            let label = jobEntry.find(".termination-label");
+            
+            if (["Fixed Term", "Temporary"].includes(selectedValue)) {
+                label.text("Fix/Temp Expiry");
+            } else {
+                label.text("Job Termination Date");
+            }
         });
     });
 </script>
