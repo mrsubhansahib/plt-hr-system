@@ -184,20 +184,22 @@
     </div>
 @endsection
 @push('custom-scripts')
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const contractTypeSelect = document.querySelector("select[name='contract_type']");
-            const terminationLabel = document.getElementById("terminationLabel");
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const contractTypeSelect = document.querySelector("select[name='contract_type']");
+        const terminationLabel = document.getElementById("terminationLabel");
 
-            contractTypeSelect.addEventListener("change", function() {
-                const selectedValue = this.value.trim(); // Trim to remove any unwanted spaces
-
-                if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
-                    terminationLabel.textContent = "Fix/Tem Expiry";
-                } else {
-                    terminationLabel.textContent = "Job Termination Date";
-                }
-            });
-        });
-    </script>
+        function updateTerminationLabel() {
+            const selectedValue = contractTypeSelect.value.trim(); // Get selected value
+            
+            if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
+                terminationLabel.textContent = "Fix/Temp Expiry";
+            } else {
+                terminationLabel.textContent = "Job Termination Date";
+            }
+        }
+        updateTerminationLabel();
+        contractTypeSelect.addEventListener("change", updateTerminationLabel);
+    });
+</script>
 @endpush
