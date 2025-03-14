@@ -183,7 +183,7 @@
         </div>
     </div>
 @endsection
-@push('custom-script')
+@push('custom-scripts')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const contractTypeSelect = document.querySelector("select[name='contract_type']");
