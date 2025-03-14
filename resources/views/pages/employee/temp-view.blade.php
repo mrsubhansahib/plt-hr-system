@@ -433,7 +433,9 @@
                                             <input type="text" class="form-control" value="{{ $job->start_date ?? 'Not Entered' }}" disabled>
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="form-label">Termination Date</label>
+                                            <label class="form-label">
+                                                {{ in_array($job->contract_type, ['Fixed Term', 'Temporary']) ? 'Fix/Temp Expiry' : 'Job Termination Date' }}
+                                            </label>
                                             <input type="text" class="form-control" value="{{ $job->termination_date ?? 'Not Entered' }}" disabled>
                                         </div>
                                     </div>
