@@ -36,12 +36,12 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_requested" value="{{ $disclosure->date_requested }}"/>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date on Certificate<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_on_certificate" value="{{ $disclosure->date_on_certificate }}"/>
+                                <label class="form-label">Date on Certificate</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="date_on_certificate" value="{{ $disclosure->date_on_certificate }}"/>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Certificate Number<span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" required name="certificate_no" value="{{ $disclosure->certificate_no }}"/>
+                                <label class="form-label">Certificate Number</label>
+                                <input class="form-control" type="text" name="certificate_no" value="{{ $disclosure->certificate_no }}"/>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Paid Liberata</label>

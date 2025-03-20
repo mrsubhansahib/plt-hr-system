@@ -32,7 +32,7 @@
                                     <th>First Name</th>
                                     <th>SurName</th>
                                     <th>DBS Level</th>
-                                    <th>Certification No</th>
+                                    <!-- <th>Certification No</th> -->
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
@@ -43,8 +43,8 @@
                                             placeholder="Search Surname"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search DBS Level"></th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Certification No"></th>
+                                    <!-- <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Certification No"></th> -->
                                     <th></th> <!-- No search for Action column -->
                                 </tr>
                             </thead>
@@ -54,7 +54,7 @@
                                         <td>{{ $disclosure->user->first_name }}</td>
                                         <td>{{ $disclosure->user->surname }}</td>
                                         <td>{{ $disclosure->dbs_level }}</td>
-                                        <td>{{ $disclosure->certificate_no }}</td>
+                                        <!-- <td>{{ $disclosure->certificate_no }}</td> -->
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"

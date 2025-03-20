@@ -35,8 +35,8 @@ class DisclosureController extends Controller
             'user_id' => 'required|exists:users,id',
             'dbs_level' => 'required',
             'date_requested' => 'required|date',
-            'date_on_certificate' => 'required|date',
-            'certificate_no' => 'required',
+            // 'date_on_certificate' => 'required|date',
+            // 'certificate_no' => 'required',
             'contract_type' => 'required',
         ]);
         $disclosure = Disclosure::create($request->all());
@@ -69,8 +69,8 @@ class DisclosureController extends Controller
         $request->validate([
             'dbs_level' => 'required',
             'date_requested' => 'required|date',
-            'date_on_certificate' => 'required|date',
-            'certificate_no' => 'required',
+            // 'date_on_certificate' => 'required|date',
+            // 'certificate_no' => 'required',
             'contract_type' => 'required',
         ]);
         $disclosure = Disclosure::find($id);

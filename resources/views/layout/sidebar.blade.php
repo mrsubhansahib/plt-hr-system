@@ -274,12 +274,12 @@
                 
                 
             </li>
-            <li class="nav-item {{ active_class(['hr_list/list']) }}">
+            <!-- <li class="nav-item {{ active_class(['hr_list/list']) }}">
                 <a href="{{ route('hr_list') }}" class="nav-link">
                     <i class="link-icon" data-feather="check-square"></i>
                     <span class="link-title">HR Checklist</span>
                 </a>
-            </li>
+            </li> -->
             {{-- <li class="nav-item nav-category">Components</li>
             <li class="nav-item {{ active_class(['ui-components/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button"

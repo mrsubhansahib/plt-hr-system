@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('dbs_level');
             $table->string('date_requested');
-            $table->string('date_on_certificate');
-            $table->string('certificate_no');
+            $table->string('date_on_certificate')->nullable();
+            $table->string('certificate_no')->nullable();
             $table->string('paid_liberata')->nullable();
             $table->string('reimbursed_candidate')->nullable();
             $table->string('invoice_sent')->nullable();

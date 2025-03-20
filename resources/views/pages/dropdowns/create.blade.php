@@ -46,7 +46,7 @@
                                     <option value="Facility">Facility</option>
                                     <option value="Title">Title</option>
                                     <option value="Contract Type">Contract Type</option>
-                                    <option value="Equipment Required">Equipment Required</option>
+                                    <!-- <option value="Equipment Required">Equipment Required</option> -->
                                     <option value="Capability Stage">Capability Stage</option>
                                     <option value="Lateness Stage">Lateness Stage</option>
                                     <option value="Training Course Titles">Training Course Titles</option>
@@ -73,7 +73,7 @@
         const dropdownNameSelect = document.getElementById('dropdownName');
         // Define options for each Module Type
         const moduleOptions = {
-            User: ['Ethnicity', 'Equipment Required'],
+            User: ['Ethnicity'],
             Job: ['Title', 'Facility', 'Contract Type'],
             Capability: ['Capability Stage'],
             Lateness: ['Lateness Stage'],
