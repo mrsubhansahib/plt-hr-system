@@ -1103,9 +1103,12 @@
                                     {{-- @if (empty($user->casual_holiday_pay)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Casual Holiday Pay</label>
-                                        <input class="form-control" type="number"
-                                            value="{{ $user->casual_holiday_pay }}" name="casual_holiday_pay" />
+                                        <select class="form-control" name="casual_holiday_pay">
+                                            <option value="no" {{ $user->casual_holiday_pay == 'no' ? 'selected' : '' }}>No</option>
+                                            <option value="yes" {{ $user->casual_holiday_pay == 'yes' ? 'selected' : '' }}>Yes</option>
+                                        </select>
                                     </div>
+
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->default_cost_center)) --}}
                                     <div class="col-md-3 mt-3">

@@ -33,13 +33,13 @@ class DatabaseSeeder extends Seeder
                 'Chinese',
                 'Other Ethnic Group'
             ],
-            'Equipment Required' => [
-                'Telphone Ext',
-                'Computer / Laptop',
-                'Email Address / Login',
-                'Mobile',
-                'Other'
-            ]
+            // 'Equipment Required' => [
+            //     'Telphone Ext',
+            //     'Computer / Laptop',
+            //     'Email Address / Login',
+            //     'Mobile',
+            //     'Other'
+            // ]
         ],
         'Job' => [
             'Facility' => [
