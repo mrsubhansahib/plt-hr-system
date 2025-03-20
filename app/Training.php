@@ -13,8 +13,6 @@ class Training extends Model
         'training_title',
         'course_date',
         'renewal_date',
-        'ihasco_training_sent',
-        'ihasco_training_complete',
         'notes'
     ];
 

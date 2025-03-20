@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('reason_for_absence');
             $table->string('date_from');
-            $table->string('date_to');
+            $table->string('date_to')->nullable();
             $table->string('total_hours')->nullable();
             $table->string('certification_form_received')->nullable();
             $table->string('fit_note_received')->nullable();

@@ -56,7 +56,7 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="renewal_date" value="{{ $training->renewal_date }}" />
                             </div>
-                            <div class="col-md-3 mt-3">
+                            {{-- <div class="col-md-3 mt-3">
                                 <label class="form-label">IHASCO Training Sent</label>
                                 <select class="form-control form-select" name="ihasco_training_sent">
                                     <option value="yes"
@@ -79,7 +79,7 @@
                                         {{ $training->ihasco_training_complete == 'Not Required' ? 'selected' : '' }}>Not
                                         Required</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
                                 <textarea class="form-control" name="notes" placeholder="Enter Training Details" rows="4">{{ $training->notes }}</textarea>

@@ -55,8 +55,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">Date To <span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_to" value="{{ $sickness->date_to }}" />
+                                <label class="form-label">Date To</label>
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="date_to" value="{{ $sickness->date_to }}" />
                             </div>
                         </div>
                         <div class="row mb-3">

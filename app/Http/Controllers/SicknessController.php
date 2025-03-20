@@ -34,7 +34,6 @@ class SicknessController extends Controller
             'user_id'               => 'required|exists:users,id',
             'reason_for_absence'    => 'required',
             'date_from'             => 'required',
-            'date_to'               => 'required'
         ]);
         // dd($request->all());    
         $Sickness = Sickness::create($request->all());
@@ -66,7 +65,6 @@ class SicknessController extends Controller
         $request->validate([
             'reason_for_absence'    => 'required',
             'date_from'             => 'required',
-            'date_to'               => 'required'
         ]);
         $sickness = sickness::findOrFail($id);
         $sickness->update($request->all());

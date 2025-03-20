@@ -63,6 +63,9 @@ class User extends Authenticatable
         'emergency_2_relation',
         'termination_form_to_payroll',
         'notes',
+        // training fields
+        'ihasco_training_sent',
+        'ihasco_training_complete',
     ];
 
     // relationships one to one 
