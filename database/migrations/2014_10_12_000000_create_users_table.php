@@ -69,6 +69,9 @@ class CreateUsersTable extends Migration
             $table->string('termination_form_to_payroll')->nullable();
             $table->text('notes')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            // training fields
+            $table->string('ihasco_training_sent')->nullable();
+            $table->string('ihasco_training_complete')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

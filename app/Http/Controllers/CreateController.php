@@ -96,7 +96,6 @@ class CreateController extends Controller
             'user_id'               => 'required',
             'reason_for_absence'    => 'required',
             'date_from'             => 'required',
-            'date_to'               => 'required'
         ]);
         Sickness::create($request->all());
         // dd($request->all());

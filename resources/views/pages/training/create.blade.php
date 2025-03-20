@@ -57,22 +57,6 @@
                                 <label class="form-label">Renewal Date</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" name="renewal_date" />
                             </div>
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">IHASCO Training Sent</label>
-                                <select class="form-control form-select" name="ihasco_training_sent">
-                                    <option value="yes">Yes</option>
-                                    <option selected value="no">No</option>
-                                    <option value="Not Required">Not Required</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 mt-3">
-                                <label class="form-label">IHASCO Training Complete</label>
-                                <select class="form-control form-select" name="ihasco_training_complete">
-                                    <option value="yes">Yes</option>
-                                    <option selected value="no">No</option>
-                                    <option value="Not Required">Not Required</option>
-                                </select>
-                            </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
                                 <textarea class="form-control" name="notes" placeholder="Enter Training Details" rows="4"></textarea>

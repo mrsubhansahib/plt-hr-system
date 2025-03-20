@@ -19,8 +19,6 @@ return new class extends Migration
             $table->text('training_title')->nullable();
             $table->string('course_date')->nullable();
             $table->string('renewal_date')->nullable();
-            $table->string('ihasco_training_sent')->nullable();
-            $table->string('ihasco_training_complete')->nullable();
             $table->text('notes')->nullable();
 
             $table->timestamps();

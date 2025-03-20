@@ -97,9 +97,9 @@
 
                         <div class="col-md-4 my-2">
                             <div class="form-group">
-                            <label for="reason_termination">Reason for Termination</label>
-                            <input class="form-control mt-2" type="text" 
-                                value="{{ $user->reason_termination ?? 'Not Entered' }}" disabled>
+                                <label for="reason_termination">Reason for Termination</label>
+                                <input class="form-control mt-2" type="text"
+                                    value="{{ $user->reason_termination ?? 'Not Entered' }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -317,7 +317,7 @@
                             <table id="" class="table table-striped detailTable dataTableExample">
                                 <thead>
                                     <tr>
-                                         <th>First Name</th>
+                                        <th>First Name</th>
                                         <th>Surname</th>
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
@@ -780,81 +780,81 @@
                                 @csrf
                                 <div class="row mb-3">
                                     {{-- @if (empty($user->home_tel)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Home Tel</label>
                                         <input class="form-control" type="text" name="home_tel"
                                             value="{{ $user->home_tel }}" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->address2)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Address 2</label>
                                         <input class="form-control" type="text" name="address2"
                                             value="{{ $user->address2 }}" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->address3)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Address 3</label>
                                         <input class="form-control" type="text" name="address3"
                                             value="{{ $user->address3 }}" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->disability)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Disability</label>
                                         <select class="form-control form-select" value="{{ $user->disability }}"
                                             name="disability">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
 
                                     {{-- @if (empty($user->emergency_2_name)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 2 Name</label>
                                         <input class="form-control" type="text" value="{{ $user->emergency_2_name }}"
                                             name="emergency_2_name" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->emergency_2_ph_no)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 2 Mobile</label>
                                         <input class="form-control" type="number" placeholder="phone number"
                                             value="{{ $user->emergency_2_ph_no }}" name="emergency_2_ph_no" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
 
                                     {{-- @if (empty($user->emergency_2_home_ph)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 2 Home Number</label>
                                         <input class="form-control" type="number" placeholder="phone number"
                                             value="{{ $user->emergency_2_home_ph }}" name="emergency_2_home_ph" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
 
                                     {{-- @if (empty($user->emergency_2_relation)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 2 Relationship</label>
                                         <input class="form-control" type="text"
                                             value="{{ $user->emergency_2_relation }}" name="emergency_2_relation" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->emergency_2_ph_no)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 2 Mobile</label>
                                         <input class="form-control" type="number" placeholder="phone number"
                                             value="{{ $user->emergency_2_ph_no }}" name="emergency_2_ph_no" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
 
                                     {{-- @if (empty($user->emergency_2_relation)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 2 Relationship</label>
                                         <input class="form-control" type="text"
                                             value="{{ $user->emergency_2_relation }}" name="emergency_2_relation" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
 
                                     {{-- @if (empty($user->contracted_from_date)) --}}
@@ -883,26 +883,27 @@
                                     {{-- @if (empty($user->handbook_sent)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Handbook Sent</label>
-                                        <select class="form-control form-select" value="{{ $user->handbook_sent }}"
-                                            name="handbook_sent">
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                        <select class="form-control form-select" name="handbook_sent">
+                                            <option value="yes" {{ $user->handbook_sent == 'yes' ? 'selected' : '' }}>
+                                                Yes</option>
+                                            <option value="no"
+                                                {{ empty($user->handbook_sent) || $user->handbook_sent == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->medical_form_returned)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Medical Form Returned</label>
-                                        <select class="form-control form-select"
-                                            value="{{ $user->medical_form_returned }}" name="medical_form_returned">
+                                        <select class="form-control form-select" name="medical_form_returned">
                                             <option value="yes"
                                                 {{ $user->medical_form_returned == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->medical_form_returned == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->medical_form_returned) || $user->medical_form_returned == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                             <option value="pending"
                                                 {{ $user->medical_form_returned == 'pending' ? 'selected' : '' }}>Pending
                                             </option>
-
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -915,8 +916,8 @@
                                                 {{ $user->new_entrant_form_returned == 'yes' ? 'selected' : '' }}>Yes
                                             </option>
                                             <option value="no"
-                                                {{ $user->new_entrant_form_returned == 'no' ? 'selected' : '' }}>No
-                                            </option>
+                                                {{ empty($user->new_entrant_form_returned) || $user->new_entrant_form_returned == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -925,12 +926,11 @@
                                         <label class="form-label">Confidentiality Statement</label>
                                         <select class="form-control form-select"
                                             name="confidentiality_statement_returned">
-
                                             <option value="yes"
                                                 {{ $user->confidentiality_statement_returned == 'yes' ? 'selected' : '' }}>
                                                 Yes</option>
                                             <option value="no"
-                                                {{ $user->confidentiality_statement_returned == 'no' ? 'selected' : '' }}>
+                                                {{ empty($user->confidentiality_statement_returned) || $user->confidentiality_statement_returned == 'no' ? 'selected' : '' }}>
                                                 No</option>
                                         </select>
                                     </div>
@@ -940,12 +940,11 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Work Document Received</label>
                                         <select class="form-control form-select" name="work_document_received">
-
                                             <option value="yes"
-                                                {{ $user->work_document_received == 'yes' ? 'selected' : '' }}>Yes
-                                            </option>
+                                                {{ $user->work_document_received == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->work_document_received == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->work_document_received) || $user->work_document_received == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -953,12 +952,11 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Qualifications Checked</label>
                                         <select class="form-control form-select" name="qualifications_checked">
-
                                             <option value="yes"
-                                                {{ $user->qualifications_checked == 'yes' ? 'selected' : '' }}>Yes
-                                            </option>
+                                                {{ $user->qualifications_checked == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->qualifications_checked == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->qualifications_checked) || $user->qualifications_checked == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -967,11 +965,11 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">References Requested</label>
                                         <select class="form-control form-select" name="references_requested">
-
                                             <option value="yes"
                                                 {{ $user->references_requested == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->references_requested == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->references_requested) || $user->references_requested == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -979,11 +977,11 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">References Returned</label>
                                         <select class="form-control form-select" name="references_returned">
-
                                             <option value="yes"
                                                 {{ $user->references_returned == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->references_returned == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->references_returned) || $user->references_returned == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -992,12 +990,11 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Payroll Informed</label>
                                         <select class="form-control form-select" name="payroll_informed">
-                                            {{-- <option value="yes">Yes</option>
-                                                <option value="no">No</option> --}}
                                             <option value="yes"
                                                 {{ $user->payroll_informed == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->payroll_informed == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->payroll_informed) || $user->payroll_informed == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -1009,7 +1006,8 @@
                                             <option value="yes"
                                                 {{ $user->probation_complete == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->probation_complete == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->probation_complete) || $user->probation_complete == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                             <option value="not_required"
                                                 {{ $user->probation_complete == 'not_required' ? 'selected' : '' }}>Not
                                                 Required</option>
@@ -1019,25 +1017,12 @@
                                     {{-- @if (empty($user->equipment_required)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Equipment Required</label>
-                                        <select class="form-control form-select" value="{{ $user->equipment_required }}"
-                                            name="equipment_required">
-
-                                            <option {{ $user->equipment_required == 'laptop' ? 'selected' : '' }}
-                                                value="laptop">Laptop</option>
-                                            <option {{ $user->equipment_required == 'desktop' ? 'selected' : '' }}
-                                                value="desktop">Desktop</option>
-                                            <option {{ $user->equipment_required == 'phone' ? 'selected' : '' }}
-                                                value="phone">Phone</option>
-                                            <option {{ $user->equipment_required == 'none' ? 'selected' : '' }}
-                                                value="none">None</option>
-                                            @foreach ($dropdowns as $dropdown)
-                                                @if ($dropdown->module_type == 'User' && $dropdown->name == 'Equipment Required')
-                                                    <option
-                                                        {{ $user->equipment_required == $dropdown->value ? 'selected' : '' }}
-                                                        value="{{ $dropdown->value }}">{{ $dropdown->value }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
+                                        <select class="form-control form-select" name="equipment_required">
+                                            <option value="yes"
+                                                {{ $user->equipment_required == 'yes' ? 'selected' : '' }}>Yes</option>
+                                            <option value="no"
+                                                {{ empty($user->equipment_required) || $user->equipment_required == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -1046,19 +1031,21 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Equipment Ordered</label>
                                         <select class="form-control form-select" name="equipment_ordered">
-
-                                            <option {{ $user->equipment_ordered == 'Telphone Ext' ? 'selected' : '' }}
-                                                value="Telphone Ext">Telephone Ext</option>
-                                            <option
-                                                {{ $user->equipment_ordered == 'Computer / Laptop' ? 'selected' : '' }}
-                                                value="Computer / Laptop">Computer / Laptop</option>
-                                            <option
-                                                {{ $user->equipment_ordered == 'Email Address / Login' ? 'selected' : '' }}
-                                                value="Email Address / Login">Email Address / Login</option>
-                                            <option {{ $user->equipment_ordered == 'Mobile' ? 'selected' : '' }}
-                                                value="Mobile">Mobile</option>
-                                            <option {{ $user->equipment_ordered == 'other' ? 'selected' : '' }}
-                                                value="other">Other</option>
+                                            <option value="Telphone Ext"
+                                                {{ $user->equipment_ordered == 'Telphone Ext' ? 'selected' : '' }}>
+                                                Telephone Ext</option>
+                                            <option value="Computer / Laptop"
+                                                {{ $user->equipment_ordered == 'Computer / Laptop' ? 'selected' : '' }}>
+                                                Computer / Laptop</option>
+                                            <option value="Email Address / Login"
+                                                {{ $user->equipment_ordered == 'Email Address / Login' ? 'selected' : '' }}>
+                                                Email Address / Login</option>
+                                            <option value="Mobile"
+                                                {{ $user->equipment_ordered == 'Mobile' ? 'selected' : '' }}>Mobile
+                                            </option>
+                                            <option value="other"
+                                                {{ empty($user->equipment_ordered) || $user->equipment_ordered == 'other' ? 'selected' : '' }}>
+                                                Other</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -1068,7 +1055,9 @@
                                         <select class="form-control form-select" name="p45">
                                             <option value="yes" {{ $user->p45 == 'yes' ? 'selected' : '' }}>Yes
                                             </option>
-                                            <option value="no" {{ $user->p45 == 'no' ? 'selected' : '' }}>No</option>
+                                            <option value="no"
+                                                {{ empty($user->p45) || $user->p45 == 'no' ? 'selected' : '' }}>No
+                                            </option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -1077,11 +1066,11 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employee Pack Sent</label>
                                         <select class="form-control form-select" name="employee_pack_sent">
-
                                             <option value="yes"
                                                 {{ $user->employee_pack_sent == 'yes' ? 'selected' : '' }}>Yes</option>
                                             <option value="no"
-                                                {{ $user->employee_pack_sent == 'no' ? 'selected' : '' }}>No</option>
+                                                {{ empty($user->employee_pack_sent) || $user->employee_pack_sent == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -1094,8 +1083,8 @@
                                                 {{ $user->termination_form_to_payroll == 'yes' ? 'selected' : '' }}>Yes
                                             </option>
                                             <option value="no"
-                                                {{ $user->termination_form_to_payroll == 'no' ? 'selected' : '' }}>No
-                                            </option>
+                                                {{ empty($user->termination_form_to_payroll) || $user->termination_form_to_payroll == 'no' ? 'selected' : '' }}>
+                                                No</option>
                                         </select>
                                     </div>
                                     {{-- @endif --}}
@@ -1108,14 +1097,43 @@
                                     </div>
                                     {{-- @endif --}}
                                     {{-- @if (empty($user->default_cost_center)) --}}
-                                    <div class="col-md-3 mt-3">
+                                    {{-- <div class="col-md-3 mt-3">
                                         <label class="form-label">Cost Centre </label>
                                         <input class="form-control" type="text"
                                             value="{{ $user->default_cost_center }}" name="default_cost_center" />
-                                    </div>
+                                    </div> --}}
                                     {{-- @endif --}}
-                                  
+
                                     {{-- @if (empty($user->notes)) --}}
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">IHASCO Training Sent</label>
+                                        <select class="form-control form-select" name="ihasco_training_sent">
+                                            <option value="yes"
+                                                {{ ($user->ihasco_training_sent ?? 'no') == 'yes' ? 'selected' : '' }}>
+                                                Yes</option>
+                                            <option value="no"
+                                                {{ ($user->ihasco_training_sent ?? 'no') == 'no' ? 'selected' : '' }}>
+                                                No</option>
+                                            <option value="Not Required"
+                                                {{ ($user->ihasco_training_sent ?? 'no') == 'Not Required' ? 'selected' : '' }}>
+                                                Not Required</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">IHASCO Training Complete</label>
+                                        <select class="form-control form-select" name="ihasco_training_complete">
+                                            <option value="yes"
+                                                {{ ($user->ihasco_training_complete ?? 'no') == 'yes' ? 'selected' : '' }}>
+                                                Yes</option>
+                                            <option value="no"
+                                                {{ ($user->ihasco_training_complete ?? 'no') == 'no' ? 'selected' : '' }}>
+                                                No</option>
+                                            <option value="Not Required"
+                                                {{ ($user->ihasco_training_complete ?? 'no') == 'Not Required' ? 'selected' : '' }}>
+                                                Not Required</option>
+                                        </select>
+                                    </div>
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
                                         <textarea class="form-control" name="notes" rows="4">{{ $user->notes }}</textarea>
