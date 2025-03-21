@@ -69,8 +69,6 @@ class CreateController extends Controller
             'user_id'                   => 'required',
             'dbs_level'                 => 'required',
             'date_requested'            => 'required',
-            'date_on_certificate'       => 'required',
-            'certificate_no'            => 'required',
             'contract_type'             => 'required',
         ]);
         Disclosure::create($request->all());
