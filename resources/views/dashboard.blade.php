@@ -32,13 +32,14 @@
     <div class="row">
         <div class="col-12 col-xl-12 stretch-card">
             <div class="row flex-grow-1">
-
-                <div  @if(Auth::user()->role !== 'manager') onclick=" window.location.href='{{ route('show.admins') }}'" @endif class="col-md-4 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">Total Users</h6>
-                                {{-- <div class="dropdown mb-2">
+                @if (Auth::user()->role !== 'manager')
+                    <div onclick=" window.location.href='{{ route('show.admins') }}'"
+                        class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">Total Users</h6>
+                                    {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -61,31 +62,31 @@
                                                 class="">Download</span></a>
                                     </div>
                                 </div> --}}
-                            </div>
-                            <div class="row">
-                                <div class="col-6 col-md-12 col-xl-5">
-                                    <h3 class="mt-3 ms-5">{{ $total_admins }}</h3>
-                                    {{-- <div class="d-flex align-items-baseline">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-md-12 col-xl-5">
+                                        <h3 class="mt-3 ms-5">{{ $total_admins }}</h3>
+                                        {{-- <div class="d-flex align-items-baseline">
                                         <p class="text-success">
                                             <span>+3.3%</span>
                                             <i data-feather="arrow-up" class="icon-sm mb-1"></i>
                                         </p>
                                     </div> --}}
-                                </div>
-                                <div class="col-6 col-md-12 col-xl-7">
-                                    <div id="customersChart" class="mt-md-3 mt-xl-0"></div>
+                                    </div>
+                                    <div class="col-6 col-md-12 col-xl-7">
+                                        <div id="customersChart" class="mt-md-3 mt-xl-0"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div  @if(Auth::user()->role !== 'manager') onclick=" window.location.href='{{ route('show.employees') }}'" @endif
-                    class="col-md-4 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">Total Employees</h6>
-                                {{-- <div class="dropdown mb-2">
+                    <div onclick=" window.location.href='{{ route('show.employees') }}'"
+                        class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">Total Employees</h6>
+                                    {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton1"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -108,31 +109,31 @@
                                                 class="">Download</span></a>
                                     </div>
                                 </div> --}}
-                            </div>
-                            <div class="row">
-                                <div class="col-6 col-md-12 col-xl-5">
-                                    <h3 class="mt-3 ms-5">{{ $total_employees }}</h3>
-                                    {{-- <div class="d-flex align-items-baseline">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-md-12 col-xl-5">
+                                        <h3 class="mt-3 ms-5">{{ $total_employees }}</h3>
+                                        {{-- <div class="d-flex align-items-baseline">
                                         <p class="text-danger">
                                             <span>-2.8%</span>
                                             <i data-feather="arrow-down" class="icon-sm mb-1"></i>
                                         </p>
                                     </div> --}}
-                                </div>
-                                <div class="col-6 col-md-12 col-xl-7">
-                                    <div id="ordersChart" class="mt-md-3 mt-xl-0"></div>
+                                    </div>
+                                    <div class="col-6 col-md-12 col-xl-7">
+                                        <div id="ordersChart" class="mt-md-3 mt-xl-0"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div  @if(Auth::user()->role !== 'manager') onclick=" window.location.href='{{ route('show.left.employees') }}'" @endif
-                    class="col-md-4 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 class="card-title mb-0">Total Terminated</h6>
-                                {{-- <div class="dropdown mb-2">
+                    <div onclick=" window.location.href='{{ route('show.left.employees') }}'"
+                        class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">Total Terminated</h6>
+                                    {{-- <div class="dropdown mb-2">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton2"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -155,16 +156,36 @@
                                                 class="">Download</span></a>
                                     </div>
                                 </div> --}}
-                            </div>
-                            <div class="row">
-                                <div class="col-6 col-md-12 col-xl-5">
-                                    <h3 class="mt-3 ms-5">{{ $total_employees_left }}</h3>
-                                    {{-- <div class="d-flex align-items-baseline">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-md-12 col-xl-5">
+                                        <h3 class="mt-3 ms-5">{{ $total_employees_left }}</h3>
+                                        {{-- <div class="d-flex align-items-baseline">
                                         <p class="text-success">
                                             <span>+2.8%</span>
                                             <i data-feather="arrow-up" class="icon-sm mb-1"></i>
                                         </p>
                                     </div> --}}
+                                    </div>
+                                    <div class="col-6 col-md-12 col-xl-7">
+                                        <div id="growthChart" class="mt-md-3 mt-xl-0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if (Auth::user()->role == 'manager')
+                <div onclick=" window.location.href='{{ route('show.temp.employees') }}'"
+                    class="col-md-4 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <h6 class="card-title mb-0">New Entrants</h6>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-md-12 col-xl-5">
+                                    <h3 class="mt-3 ms-5">{{ $new_entrants }}</h3>
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-7">
                                     <div id="growthChart" class="mt-md-3 mt-xl-0"></div>
@@ -173,10 +194,11 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div> <!-- row -->
-{{-- THis is to test a merge code request. --}}
+    {{-- THis is to test a merge code request. --}}
     {{-- <div class="row">
         <div class="col-12 col-xl-12 grid-margin stretch-card">
             <div class="card overflow-hidden">
