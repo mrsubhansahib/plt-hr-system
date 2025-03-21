@@ -36,12 +36,14 @@
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_requested" />
                             </div>
                             <div class="col-md-3 mt-3">
+
                                 <label class="form-label">Date on Certificate</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" name="date_on_certificate" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Certificate Number</label>
                                 <input class="form-control" type="text" name="certificate_no" />
+
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Paid Liberata</label>
