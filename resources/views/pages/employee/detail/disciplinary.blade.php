@@ -47,8 +47,8 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Suspended</label>
                                 <select class="form-control form-select" name="suspended" id="suspended">
-                                    <option selected value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3" id="date-suspended-container" style="display:none;">
