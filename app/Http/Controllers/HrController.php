@@ -89,6 +89,7 @@ class HrController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
         if ($request->has('hr_checklist_employee_detail')) {
+        session()->flash('active_tab', 'hr-checklist-tab');
             return redirect()->back()->with('success', 'Employee edited successfully.');
         }
         return redirect()->route('hr_list')->with('success', 'Employee edited successfully.');

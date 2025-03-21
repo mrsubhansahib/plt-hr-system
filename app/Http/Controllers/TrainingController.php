@@ -77,6 +77,7 @@ class TrainingController extends Controller
         $training = Training::findOrFail($id);
         $training->update($request->all());
         if ($request->form_type == 'tab') {
+            session()->flash('active_tab', 'training-tab');
             return redirect()->route('detail.employee', $training->user_id)
                 ->with('success', 'Training edited successfully.');
         } else {
@@ -89,6 +90,7 @@ class TrainingController extends Controller
     public function destroy($id)
     {
         Training::find($id)->delete();
+        session()->flash('active_tab', 'training-tab');
         return redirect()->back()->with('success', 'Training deleted successfully.');
     }
 }

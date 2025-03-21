@@ -75,6 +75,7 @@ class CreateController extends Controller
         ]);
         Disclosure::create($request->all());
         // dd($request->all());
+        session()->flash('active_tab', 'disclosure-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Disclosure created successfully.');
     }
@@ -99,6 +100,7 @@ class CreateController extends Controller
         ]);
         Sickness::create($request->all());
         // dd($request->all());
+        session()->flash('active_tab', 'sickness-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Sickness created successfully.');
     }
@@ -130,6 +132,7 @@ class CreateController extends Controller
         // ]);
         Capability::create($request->all());
         // dd($request->all());
+        session()->flash('active_tab', 'capability-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Capability created successfully.');
     }
@@ -160,6 +163,7 @@ class CreateController extends Controller
         // ]);
         Training::create($request->all());
         // dd($request->all());
+        session()->flash('active_tab', 'training-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Training created successfully.');
     }
@@ -188,6 +192,7 @@ class CreateController extends Controller
         // ]);
         Disciplinary::create($request->all());
         // dd($request->all());
+        session()->flash('active_tab', 'disciplinary-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Disciplinary created successfully.');
     }
@@ -216,6 +221,7 @@ class CreateController extends Controller
         // ]);
         Lateness::create($request->all());
         // dd($request->all());
+        session()->flash('active_tab', 'lateness-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Lateness created successfully.');
     }

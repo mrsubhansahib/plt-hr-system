@@ -1180,5 +1180,27 @@
                 }
             }
         </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get tab from sessionStorage or use default
+                let activeTab = sessionStorage.getItem("activeTab") || "{{ session('active_tab', 'default-tab-id') }}";
+                if (activeTab) {
+                    let tabButton = document.getElementById(activeTab);
+                    if (tabButton) {
+                        new bootstrap.Tab(tabButton).show();
+                    }
+                }
+                // Save clicked tab in sessionStorage
+                document.querySelectorAll(".nav-link").forEach(tab => {
+                    tab.addEventListener("click", function () {
+                        sessionStorage.setItem("activeTab", this.id);
+                    });
+                });
+                // Reset on full reload
+                window.addEventListener("beforeunload", function () {
+                    sessionStorage.removeItem("activeTab");
+                });
+            });
+        </script>            
     @endpush
 @endsection

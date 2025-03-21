@@ -78,6 +78,7 @@ class DisclosureController extends Controller
 
 
         if ($request->form_type == "tab") {
+            session()->flash('active_tab', 'disclosure-tab');
             return redirect()->route('detail.employee', $disclosure->user_id)
                 ->with('success', 'Disclosure edited successfully.');
         } else {
@@ -91,6 +92,7 @@ class DisclosureController extends Controller
     {
         $disclosure = Disclosure::find($id);
         $disclosure->delete();
+        session()->flash('active_tab', 'disclosure-tab');
         return redirect()->back()->with('success', 'Disclosure deleted successfully.');
     }
 }
