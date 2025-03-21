@@ -33,7 +33,7 @@
                                     <th>SurName</th>
                                     <th>Reason for Absence</th>
                                     <th>Date From</th>
-                                    <th>Date To</th>
+                                    {{-- <th>Date To</th> --}}
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
@@ -46,8 +46,8 @@
                                             placeholder="Search Reason for Absence"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Date From"></th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Date To"></th>
+                                    {{-- <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Date To"></th> --}}
                                     <th></th>
                                 </tr>
                             </thead>
@@ -58,7 +58,7 @@
                                         <td>{{ $sickness->user->surname  }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
                                         <td>{{ $sickness->date_from }}</td>
-                                        <td>{{ $sickness->date_to }}</td>
+                                        {{-- <td>{{ $sickness->date_to }}</td> --}}
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"

@@ -393,7 +393,7 @@
                                         <th>Surname</th> --}}
                                         <th>Reason for Absence</th>
                                         <th>Date From</th>
-                                        <th>Date To</th>
+                                        {{-- <th>Date To</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -405,7 +405,7 @@
                                                 <td>{{ $sickness->user->surname }}</td> --}}
                                                 <td>{{ $sickness->reason_for_absence }}</td>
                                                 <td>{{ $sickness->date_from }}</td>
-                                                <td>{{ $sickness->date_to }}</td>
+                                                {{-- <td>{{ $sickness->date_to }}</td> --}}
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
