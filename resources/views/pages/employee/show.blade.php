@@ -330,8 +330,8 @@
                                         @foreach ($user->disclosures as $index => $disclosure)
                                             <!-- Loop through each disclosure -->
                                             <tr>
-                                                {{-- <td>{{ $user->first_name }}</td>
-                                                <td>{{ $user->surname }}</td> --}}
+                                                <td>{{ $user->first_name }}</td>
+                                                <td>{{ $user->surname }}</td>
                                                 <td>{{ $disclosure->dbs_level }}</td>
                                                 <td>{{ $disclosure->certificate_no }}</td>
                                                 <td>
