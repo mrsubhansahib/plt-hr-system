@@ -31,7 +31,7 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>SurName</th>
-                                    <!-- <th>Centre </th> -->
+                                    <th>Role </th>
                                     <th>Email</th>
                                     @if (auth()->user()->role == 'super_admin')
                                         <th>Actions</th>
@@ -44,7 +44,8 @@
                                     <tr>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
-                                        <!-- <td>{{ $user->default_cost_center }}</td> -->
+                                        <td>{{ ucfirst($user->role) }}</td>
+                                        {{-- <!-- <td>{{ $user->default_cost_center }}</td> --> --}}
                                         <td>{{ $user->email }}</td>
                                         @if (auth()->user()->role == 'super_admin')
                                             <td>

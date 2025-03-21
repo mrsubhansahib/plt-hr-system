@@ -32,7 +32,7 @@ class AuthController extends Controller
         ]);
         $user = User::where('email', $data['email'])->first();
 
-        if ($user->role == 'admin' || $user->role == 'super_admin') {
+        if ($user->role == 'admin' || $user->role == 'super_admin' || $user->role == 'manager') {
             if (auth()->attempt($data)) {
 
                 return redirect('/dashboard')->with('success', 'Login Successful.');
@@ -55,7 +55,8 @@ class AuthController extends Controller
         $total_employees = User::where('role', 'employee')->where('status', 'active')->count();
         $total_admins = User::where('role', 'admin')->where('status', 'active')->count();
         $total_employees_left = User::where('role', 'employee')->where('status', 'left')->count();
-        return view('dashboard', compact('total_employees', 'total_admins', 'total_employees_left'));
+        $new_entrants = User::where('role', 'employee')->where('status', 'pending')->count();
+        return view('dashboard', compact('total_employees', 'total_admins', 'total_employees_left' , 'new_entrants'));
     }
 
 

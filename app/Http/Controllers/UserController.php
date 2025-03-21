@@ -15,8 +15,9 @@ class UserController extends Controller
 
     public function index()
     {
-
-        $users = User::where('role', 'admin')->where('status', 'active')->get();
+        $users = User::whereIn('role', ['admin', 'manager'])
+            ->where('status', 'active')
+            ->get();
         // dd($users);
         return view('pages.admin.list', compact('users'));
     }
@@ -35,6 +36,7 @@ class UserController extends Controller
             'first_name' => 'required',
             'surname' => 'required',
             // 'preferred_name'        => 'required',
+            'role' => 'required',
             'email' => 'required',
             'password' => 'required',
             // 'address1'              => 'required',
@@ -53,7 +55,6 @@ class UserController extends Controller
         ]);
         $user = $request->all();
         $user['password'] = Hash::make($request->password);
-        $user['role'] = 'admin'; // Set role as admin
         $user['status'] = 'active'; //  Ensure status is saved as "active"
         User::create($user);
         // dd($user);

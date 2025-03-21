@@ -76,6 +76,7 @@ class LatenesController extends Controller
         $lateness = lateness::findOrFail($id);
         $lateness->update($request->all());
         if ($request->form_type == 'tab') {
+            session()->flash('active_tab', 'lateness-tab');
             return redirect()->route('detail.employee', $lateness->user_id)
                 ->with('success', 'Lateness updated successfully.');
         } else {
@@ -90,6 +91,7 @@ class LatenesController extends Controller
     {
         $lateness = lateness::find($id);
         $lateness->delete();
+        session()->flash('active_tab', 'lateness-tab');
         return redirect()->back()->with('success', 'Lateness deleted successfully');
     }
 }

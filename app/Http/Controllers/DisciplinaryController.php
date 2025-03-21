@@ -77,6 +77,7 @@ class DisciplinaryController extends Controller
 
 
         if ($request->form_type == 'tab') {
+            session()->flash('active_tab', 'disciplinary-tab');
             return redirect()->route('detail.employee', $disciplinary->user_id)
                 ->with('success', 'Disciplinary edited successfully.');
         } else {
@@ -90,6 +91,7 @@ class DisciplinaryController extends Controller
     {
         $disciplinary = disciplinary::find($id);
         $disciplinary->delete();
+        session()->flash('active_tab', 'disciplinary-tab');
         return redirect()->back()->with('success', 'Dsiciplinary deleted successfully.');
     }
 }

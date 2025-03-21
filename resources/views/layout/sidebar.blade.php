@@ -23,7 +23,7 @@
             {{-- <li class="nav-item nav-category">web apps</li> --}}
            
             {{-- admin added by haider --}}
-
+            @if (auth()->user()->role !== 'manager')
             <li class="nav-item {{ active_class(['admin/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Admin" role="button"
                     aria-expanded="{{ is_active_route(['admin/*']) }}" aria-controls="Admin">
@@ -46,6 +46,7 @@
                     </ul>
                 </div>
             </li>
+            @endif
             <li class="nav-item {{ active_class(['employee/temp/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#TempEmployee" role="button"
                     aria-expanded="{{ is_active_route(['temp/*']) }}" aria-controls="TempEmployee">
@@ -66,6 +67,7 @@
                     </ul>
                 </div>
             </li>
+            @if (auth()->user()->role !== 'manager')
             <li class="nav-item {{ active_class(['employee/list']) }}">
                 <a href="{{route('show.employees')}}" class="nav-link">
                     <i class="link-icon" data-feather="user-check"></i>
@@ -270,10 +272,8 @@
                         </li>
                     </ul>
                 </div>
-                
-                
-                
             </li>
+            @endif
             <!-- <li class="nav-item {{ active_class(['hr_list/list']) }}">
                 <a href="{{ route('hr_list') }}" class="nav-link">
                     <i class="link-icon" data-feather="check-square"></i>

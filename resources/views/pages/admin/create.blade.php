@@ -37,6 +37,14 @@
                                 <label class="form-label">Surname <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="surname" />
                             </div>
+                            <div class="col-md-3 mt-3">
+                                <label class="form-label">Role <span class="text-danger">*</span></label>
+                                <select class="form-control form-select" name="role" required>
+                                    <option value="" disabled selected>Select Role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
                             <!-- <div class="col-md-3 mt-3">
                                 <label class="form-label">Preferred Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" required name="preferred_name" />

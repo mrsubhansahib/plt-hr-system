@@ -79,6 +79,7 @@ class CapabilityController extends Controller
         $capability->update($request->all());
 
         if ($request->form_type == 'tab') {
+            session()->flash('active_tab', 'capability-tab');
             return redirect()->route('detail.employee', $capability->user_id)->with('success', 'Capability edited successfully.');
         } else {    
         return redirect()->route('show.capabilities')->with('success', 'Capability edited successfully.');
@@ -91,6 +92,7 @@ class CapabilityController extends Controller
     public function destroy($id)
     {
         Capability::find($id)->delete();
+        session()->flash('active_tab', 'capability-tab');
         return redirect()->back()->with('success', 'Capability deleted successfully.');
     }
 }

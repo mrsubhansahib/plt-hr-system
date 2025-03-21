@@ -71,6 +71,7 @@ class SicknessController extends Controller
 
 
         if ($request->form_type == 'tab') {
+            session()->flash('active_tab', 'sickness-tab');
             return redirect()->route('detail.employee', $sickness->user_id)
                 ->with('success', 'Sickness edited successfully.');
         } else {
@@ -86,6 +87,7 @@ class SicknessController extends Controller
     {
         $sickness = Sickness::find($id);
         $sickness->delete();
+        session()->flash('active_tab', 'sickness-tab');
         return redirect()->back()->with('success', 'Sickness deleted successfully.');
     }
 }
