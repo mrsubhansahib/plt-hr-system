@@ -43,15 +43,15 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Self Certification Form Received</label>
                                 <select class="form-control form-select" name="certification_form_received">
-                                    <option value="yes" {{ $sickness->certification_form_received == 'yes' ? 'selected' : '' }}>yes</option>
-                                    <option value="no" {{ $sickness->certification_form_received == 'no' ? 'selected' : '' }}>no</option>
+                                    <option value="yes" {{ $sickness->certification_form_received == 'yes' ? 'selected' : '' }}>Yes</option>
+                                    <option value="no" {{ $sickness->certification_form_received == 'no' ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Fit Note Received</label>
                                 <select class="form-control form-select" name="fit_note_received">
-                                    <option value="yes {{ $sickness->fit_note_received == 'yes' ? 'selected' : '' }}">yes</option>
-                                    <option value="no" {{ $sickness->fit_note_received == 'no' ? 'selected' : '' }}>no</option>
+                                    <option value="yes {{ $sickness->fit_note_received == 'yes' ? 'selected' : '' }}">Yes</option>
+                                    <option value="no" {{ $sickness->fit_note_received == 'no' ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

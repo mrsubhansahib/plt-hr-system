@@ -229,7 +229,7 @@
                                             <td>{{ $job->title }}</td>
                                             <td>{{ $job->facility }}</td>
                                             <td>{{ $job->number_of_hours }}</td>
-                                            <td>{{ $job->main_job }}</td>
+                                            <td>{{ ucfirst($job->main_job) }}</td>
                                             <td>{{ $job->contract_type }}</td>
                                             <td>{{ $job->start_date }}</td>
                                             <td>{{ ucfirst($job->status) }}</td>

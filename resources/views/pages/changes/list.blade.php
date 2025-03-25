@@ -45,6 +45,8 @@
                                                 Self
                                             @elseif ($log->employee->role === 'admin')
                                                 {{ $log->employee->first_name }} (Admin)
+                                            @elseif ($log->employee->role === 'manager')
+                                                {{ $log->employee->first_name }} (Manager)
                                             @else
                                                 {{ $log->employee->first_name }}
                                             @endif
