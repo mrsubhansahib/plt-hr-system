@@ -61,7 +61,7 @@
                                         <td>{{ $job->user?->first_name ?? 'N/A' }}</td>
                                         <td>{{ $job->user?->surname ?? 'N/A' }}</td>
                                         <td>{{ $job->title }}</td>
-                                        <td>{{ $job->main_job }}</td>
+                                        <td>{{ ucfirst($job->main_job) }}</td>
                                         <td>{{ $job->start_date }}</td>
                                         <td>{{ ucfirst($job->status) }}</td>
                                         <td>

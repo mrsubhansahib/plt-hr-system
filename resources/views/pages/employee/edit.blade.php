@@ -192,14 +192,14 @@
                                             name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no }}" />
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Emergency Contact 2 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" />
-                                    </div>
-                                    <div class="col-md-3 mt-3">
                                         <label class="form-label">Emergency Contact 2 Relationship</label>
                                         <input class="form-control" type="text" name="emergency_2_relation"
                                             value="{{ $user->emergency_2_relation }}" />
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <label class="form-label">Emergency Contact 2 Home Number</label>
+                                        <input class="form-control" type="number" placeholder="phone number"
+                                            name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" />
                                     </div>
                                 </div>
                         <div class=" mt-4">
