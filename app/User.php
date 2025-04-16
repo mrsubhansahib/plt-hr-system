@@ -117,8 +117,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Note::class);
     }
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 
-    
 
     protected $hidden = [
         'password',
@@ -130,4 +133,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }
