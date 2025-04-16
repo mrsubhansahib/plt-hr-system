@@ -20,12 +20,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CapabilityController;
 use App\Http\Controllers\DisclosureController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HrController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +50,28 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}',     [UserController::class, 'edit'])->name('edit.admin');
         Route::post('update/{id}',  [UserController::class, 'update'])->name('update.admin');
         Route::get('delete/{id}',   [UserController::class, 'destroy'])->name('delete.admin');
+        
+    });
+    // Route for template CRUD  
+    Route::group(['prefix' => 'template'], function () {
+        Route::get('list',          [TemplateController::class, 'index'])->name('show.templates');
+        Route::get('create',        [TemplateController::class, 'create'])->name('create.template');
+        Route::post('store',        [TemplateController::class, 'store'])->name('store.template');
+        Route::get('detail/{id}',   [TemplateController::class, 'show'])->name('detail.template');
+        Route::get('edit/{template}',     [TemplateController::class, 'edit'])->name('edit.template');
+        Route::post('update/{template}',  [TemplateController::class, 'update'])->name('update.template');
+        Route::get('delete/{template}',   [TemplateController::class, 'destroy'])->name('delete.template');
+
+    });
+    // Route for document CRUD  
+    Route::group(['prefix' => 'document'], function () {
+        Route::get('list',          [DocumentController::class, 'index'])->name('show.documents');
+        Route::get('create',        [DocumentController::class, 'create'])->name('create.document');
+        Route::post('store',        [DocumentController::class, 'store'])->name('store.document');
+        Route::get('detail/{id}',   [DocumentController::class, 'show'])->name('detail.document');
+        Route::get('edit/{document}',     [DocumentController::class, 'edit'])->name('edit.document');
+        Route::post('update/{document}',  [DocumentController::class, 'update'])->name('update.document');
+        Route::get('delete/{document}',   [DocumentController::class, 'destroy'])->name('delete.document');
     });
     Route::group(['prefix' => 'employee'], function () {
         Route::get('list',          [EmployeeController::class, 'index'])->name('show.employees');
