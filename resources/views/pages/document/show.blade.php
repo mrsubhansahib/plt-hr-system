@@ -2,12 +2,37 @@
 
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
+    <style>
+        #content {
+            display: none;
+            border: none;
+            box-shadow: none;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        @media print {
+            #app {
+                display: none;
+            }
+
+            #content {
+                display: block !important;
+            }
+        }
+    </style>
+    <div class="text-center mb-4">
+        <h3>{{ $document->title }}</h3>
+    </div>
+     <pre id="content">
+        <p>{{ $document->content }}</p>
+    </pre>
 @endpush
 
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Disclosure</a></li>
+            <li class="breadcrumb-item"><a href="#">Document</a></li>
             <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
     </nav>
@@ -16,52 +41,42 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center my-4">Disclosure Details</h3>
-                    <hr>
-                    <div class="row mb-3">
-                        <div class="col-md-3 mt-3">
-                            <strong>Employee:</strong>
-                            <p>{{ $disclosure->user->first_name }} {{ $disclosure->user->surname }}</p>
+                    <div class="d-flex justify-content-between py-2">
+                        <div>
+                            <h4 class="py-2">Document Details</h4>
                         </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>DBS Level:</strong>
-                            <p>{{ $disclosure->dbs_level }}</p>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>Date Requested:</strong>
-                            <p>{{ $disclosure->date_requested }}</p>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>Date on Certificate:</strong>
-                            <p>{{ $disclosure->date_on_certificate }}</p>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>Certificate Number:</strong>
-                            <p>{{ $disclosure->certificate_no }}</p>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>Paid Liberata:</strong>
-                            <p>{{ $disclosure->paid_liberata }}</p>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>Reimbursed Candidate:</strong>
-                            <p>{{ $disclosure->reimbursed_candidate }}</p>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>Invoice Sent:</strong>
-                            <p>{{ ucfirst($disclosure->invoice_sent) }}</p>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <strong>Contract Type:</strong>
-                            <p>{{ $disclosure->contract_type }}</p>
-                        </div>
-                        <div class="col-md-12 mt-3">
-                            <strong>Notes:</strong>
-                            <p>{{ $disclosure->notes }}</p>
+                        <div>
+                            <button class="btn btn-secondary" onclick="window.print()"><strong>Print</strong><i
+                                    data-feather="printer" class="ms-2"></i></button>
+                            <a href="{{ route('edit.document', $document->id) }}"
+                                class="btn btn-primary"><strong>Edit</strong><i data-feather="edit" class="ms-2"></i></a>
                         </div>
                     </div>
-    
-                    <a href="{{ route('show.disclosures') }}" class="btn btn-secondary mt-4">Back to List</a>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-md-4  mt-3">
+                            <label class="form-label">Template Used</label>
+                            <input class="form-control" type="text" disabled value="{{ $document->template->title }}">
+                        </div>
+                        <div class="col-md-4  mt-3">
+                            <label class="form-label">Employee</label>
+                            <input class="form-control" type="text" disabled
+                                value="{{ $document->user->first_name . ' ' . $document->user->surname }}">
+                        </div>
+                        <div class="col-md-4  mt-3">
+                            <label class="form-label">Title Used</label>
+                            <input class="form-control" type="text" name="title" disabled
+                                value="{{ $document->title }}" />
+                        </div>
+                        <div class="col-md-12 mt-3 border p-3">
+                            <strong>Content:</strong>
+                            <pre>
+                                <p>{{ $document->content }}</p>
+                            </pre>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('show.documents') }}" class="btn btn-secondary mt-4">Back to List</a>
                 </div>
             </div>
         </div>

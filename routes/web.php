@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
         Route::get('list',          [DocumentController::class, 'index'])->name('show.documents');
         Route::get('create',        [DocumentController::class, 'create'])->name('create.document');
         Route::post('store',        [DocumentController::class, 'store'])->name('store.document');
-        Route::get('detail/{id}',   [DocumentController::class, 'show'])->name('detail.document');
+        Route::get('detail/{document}',   [DocumentController::class, 'show'])->name('detail.document');
         Route::get('edit/{document}',     [DocumentController::class, 'edit'])->name('edit.document');
         Route::post('update/{document}',  [DocumentController::class, 'update'])->name('update.document');
         Route::get('delete/{document}',   [DocumentController::class, 'destroy'])->name('delete.document');
