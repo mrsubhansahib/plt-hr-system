@@ -66,13 +66,9 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $document->id }}">
-                                                    {{-- <li>
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('detail.disclosure', $disclosure->id) }}">View</a>
-                                                    </li> --}}
                                                     <li>
                                                         <a class="dropdown-item"
-                                                            href="{{ route('edit.document', $document->id) }}">Edit</a>
+                                                            href="{{ route('detail.document', $document->id) }}">View</a>
                                                     </li>
                                                     @if (auth()->user()->role == 'super_admin')
                                                         <li>

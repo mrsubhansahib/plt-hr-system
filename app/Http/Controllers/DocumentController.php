@@ -70,7 +70,12 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        //
+  
+        // Get the template and user associated with the document
+        $template = $document->template;
+        $user = $document->user;
+
+        return view('pages.document.show', compact('document', 'template', 'user'));
     }
 
     /**
