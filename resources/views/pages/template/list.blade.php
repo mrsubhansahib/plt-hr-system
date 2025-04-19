@@ -54,7 +54,7 @@
                                 @foreach ($templates as $key => $template)
                                     <tr>
                                         <td>{{ $template->title }}</td>
-                                        <td>{{ $template->content }}</td>
+                                        <td>{{ Str::limit($template->content, 60) }}</td>
                                         <td>{{ $template->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $template->updated_at->format('d-m-Y') }}</td>
                                         <td>
