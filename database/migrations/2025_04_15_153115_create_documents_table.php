@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('template_id')->constrained();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
-            $table->string('content')->nullable();
+            $table->longText ('content')->nullable();
             
             $table->timestamps();
         });
