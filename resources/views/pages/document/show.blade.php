@@ -3,8 +3,8 @@
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
     <style>
-        #content {
-            display: none;
+        #printContent {
+            display: none!important;
             border: none;
             box-shadow: none;
             margin-bottom: 0px;
@@ -16,17 +16,30 @@
                 display: none;
             }
 
-            #content {
+            #printContent {
                 display: block !important;
             }
         }
+
+        .cke_notification_warning {
+            display: none !important;
+        }
+
+        .cke_top ,.cke_bottom {
+            display: none !important;
+        }
+
+        .cke_editor_contentEditor,.cke_editor_content  {
+            border: none !important;
+        }
     </style>
-    <div class="text-center mb-4">
-        <h3>{{ $document->title }}</h3>
+    <div id="printContent">
+
+        <div class="text-center mb-4">
+            <h3>{{ $document->title }}</h3>
+        </div>
+        <textarea id="content">{{ $document->content }}</textarea>
     </div>
-     <pre id="content">
-        <p>{{ $document->content }}</p>
-    </pre>
 @endpush
 
 @section('content')
@@ -70,9 +83,9 @@
                         </div>
                         <div class="col-md-12 mt-3 border p-3">
                             <strong>Content:</strong>
-                            <pre>
-                                <p>{{ $document->content }}</p>
-                            </pre>
+
+                            <textarea id="contentEditor" disabled>{{ $document->content }}</textarea>
+
                         </div>
                     </div>
 
@@ -90,4 +103,23 @@
 
 @push('custom-scripts')
     <script src="{{ asset('assets/js/data-table.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof CKEDITOR !== 'undefined') {
+                CKEDITOR.replace('contentEditor', {
+                    height: 700,
+                });
+            } else {
+                console.error('CKEditor not loaded.');
+            }
+            if (typeof CKEDITOR !== 'undefined') {
+                CKEDITOR.replace('content', {
+                    height: 900,
+                });
+            } else {
+                console.error('CKEditor not loaded.');
+            }
+        });
+    </script>
 @endpush

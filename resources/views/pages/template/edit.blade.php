@@ -1,5 +1,12 @@
 @extends('layout.master')
 
+@push('plugin-styles')
+    <style>
+        .cke_notification_warning {
+            display: none !important;
+        }
+    </style>
+@endpush
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -14,12 +21,14 @@
                 <div class="card-body">
                     <h3 class="my-4 text-center">Template Details</h3>
                     <hr>
-                    <form class="forms-sample" action="{{ route('update.template', $template->id) }}" method="POST">
+                    <form class="forms-sample" action="{{ route('update.template', $template->id) }}" id="form"
+                        method="POST">
                         @csrf
                         <div class="row mb-3">
                             <div class="col-5 mt-3">
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
-                                <input class="form-control" required type="text" name="title" value="{{ $template->title }}" />
+                                <input class="form-control" required type="text" name="title"
+                                    value="{{ $template->title }}" />
                             </div>
                             <div class="col-6 mt-3">
                                 <label class="form-label" class="mergerFieldSelect">Merger Field</label>
@@ -50,7 +59,8 @@
                                     <option value="{ $user->handbook_sent }">Handbook Sent</option>
                                     <option value="{ $user->medical_form_returned }">Medical Form Returned</option>
                                     <option value="{ $user->new_entrant_form_returned }">New Entrant Form Returned</option>
-                                    <option value="{ $user->confidentiality_statement_returned }">Confidentiality StatementReturned</option>
+                                    <option value="{ $user->confidentiality_statement_returned }">Confidentiality
+                                        StatementReturned</option>
                                     <option value="{ $user->work_document_received }">Work Document Received</option>
                                     <option value="{ $user->qualifications_checked }">Qualifications Checked</option>
                                     <option value="{ $user->references_requested }">References Requested</option>
@@ -72,7 +82,8 @@
                                     <option value="{ $user->emergency_2_ph_no }">Emergency Contact 2 Phone</option>
                                     <option value="{ $user->emergency_2_home_ph }">Emergency Contact 2 Home Phone</option>
                                     <option value="{ $user->emergency_2_relation }">Emergency Contact 2 Relation</option>
-                                    <option value="{ $user->termination_form_to_payroll }">Termination Form to Payroll</option>
+                                    <option value="{ $user->termination_form_to_payroll }">Termination Form to Payroll
+                                    </option>
                                     <option value="{ $user->ihasco_training_sent }">iHasco Training Sent</option>
                                     <option value="{ $user->ihasco_training_complete }">iHasco Training Complete</option>
                                 </select>
@@ -83,7 +94,7 @@
                             </div>
                             <div class="col-12 mt-3">
                                 <label class="form-label">Content<span class="text-danger">*</span></label>
-                                <textarea class="form-control" required name="content" rows="10">{{ $template->content }}</textarea>
+                                <textarea class="form-control" required name="content" id="contentEditor" rows="10">{{ $template->content }}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
@@ -92,24 +103,90 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove the click event listener for the button since it's now a submit button
+            const form = document.querySelector('#form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                // alert('Form submitted!');
+                const contentEditor = CKEDITOR.instances.contentEditor;
+                if (contentEditor) {
+                    const content = contentEditor.getData();
+                    // Replace &gt; with >
+                    const updatedContent = content.replace(/&gt;/g, '>');
+                    contentEditor.setData(updatedContent);
+                    form.submit();
+                }
+            });
+        });
+    </script>
 @endsection
 @push('custom-scripts')
+    <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
     <script>
-        // Custom script can be added here
         document.addEventListener('DOMContentLoaded', function() {
-            const addButton = document.querySelector('#add_field_button');
-            addButton.addEventListener('click', function() {
-                // on the click of this button the selected merger field will be added to the content textarea as blade php variable
-                const mergerFieldSelect = document.querySelector('#mergerFieldSelect');
-                const selectedField = mergerFieldSelect.options[mergerFieldSelect.selectedIndex].value;
-                const contentTextarea = document.querySelector('textarea[name="content"]');
-                const currentContent = contentTextarea.value;
-                //i am already adding single  in valure just add 1 more non the side of the varirable
-                contentTextarea.value = currentContent + '{' + selectedField + '}' + ' ';
-                // Reset the select field to the default option
-                mergerFieldSelect.selectedIndex = 0;
+            if (typeof CKEDITOR !== 'undefined') {
+                CKEDITOR.replace('contentEditor', {
+                    height: 700,
+                    toolbar: [{
+                            name: 'clipboard',
+                            items: ['Cut', 'Copy', 'Paste', 'Undo', 'Redo']
+                        },
+                        {
+                            name: 'find',
+                            items: ['Find', 'Replace', 'SelectAll']
+                        },
+                        {
+                            name: 'basicstyles',
+                            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript',
+                                'RemoveFormat'
+                            ]
+                        },
+                        {
+                            name: 'paragraph',
+                            items: ['NumberedList', 'BulletedList', 'Blockquote', 'Indent', 'Outdent']
+                        },
+                        {
+                            name: 'align',
+                            items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+                        },
+                        {
+                            name: 'styles',
+                            items: ['Styles', 'Format', 'Font', 'FontSize']
+                        },
+                        {
+                            name: 'insert',
+                            items: ['HorizontalRule']
+                        },
 
-            });
+                        {
+                            name: 'colors',
+                            items: ['TextColor']
+                        },
+
+                    ]
+                });
+
+                // Insert merge fields
+                CKEDITOR.instances.contentEditor.on('instanceReady', function() {
+                    const addButton = document.querySelector('#add_field_button');
+                    const mergerFieldSelect = document.querySelector('#mergerFieldSelect');
+
+                    if (addButton && mergerFieldSelect) {
+                        addButton.addEventListener('click', function() {
+                            const selectedField = mergerFieldSelect.value;
+                            if (selectedField) {
+                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
+                                    '} ');
+                                mergerFieldSelect.selectedIndex = 0;
+                            }
+                        });
+                    }
+                });
+            } else {
+                console.error('CKEditor not loaded.');
+            }
         });
     </script>
 @endpush
