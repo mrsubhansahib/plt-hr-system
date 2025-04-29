@@ -1,5 +1,4 @@
 @extends('layout.master')
-
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -17,47 +16,19 @@
                             <h4 class="py-2">Document Details</h4>
                         </div>
                         <div>
-                            <a href="{{ route('show.documents') }}" class="btn btn-primary"><strong>List</strong><i
-                                    data-feather="list" class="ms-2"></i></a>
+                            <a href="{{ route('show.documents') }}" class="btn btn-primary">
+                                <strong>List</strong><i data-feather="list" class="ms-2"></i>
+                            </a>
                         </div>
                     </div>
                     <hr>
-                    <form class="forms-sample" action="{{ route('store.document') }}" method="POST">
-                        @csrf
-                        <div class="row">
+                    @livewire('document-form')
 
-                            <div class="col-12 mt-3">
-                                <label class="form-label">New Title<span class="text-danger">*</span></label>
-                                <input class="form-control" required type="text" name="title" />
-                            </div>
-                            <div class="col-6 mt-3">
-                                <label class="form-label">Employee<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="user_id" id="employeeSelect">
-                                    <option value="" selected disabled>Select Employee</option>
-                                    @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
-                                        {{ $employee->first_name.' '.$employee->surname  }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-6 mt-3">
-                                <label class="form-label">Template<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" required name="template_id" id="template">
-                                    <option value="" selected disabled>Select Template</option>
-                                    @foreach ($templates as $template)
-                                    <option value="{{ $template->id }}">
-                                        {{ $template->title }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('custom-scripts')
+    @livewireScripts
+@endpush
