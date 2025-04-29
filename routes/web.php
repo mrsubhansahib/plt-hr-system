@@ -72,6 +72,8 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{document}',     [DocumentController::class, 'edit'])->name('edit.document');
         Route::post('update/{document}',  [DocumentController::class, 'update'])->name('update.document');
         Route::get('delete/{document}',   [DocumentController::class, 'destroy'])->name('delete.document');
+        Route::get('/get-employee-data/{id}', [DocumentController::class, 'getEmployeeData'])->name('get.employee.data');
+
     });
     Route::group(['prefix' => 'employee'], function () {
         Route::get('list',          [EmployeeController::class, 'index'])->name('show.employees');

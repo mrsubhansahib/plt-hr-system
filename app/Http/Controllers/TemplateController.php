@@ -36,17 +36,66 @@ class TemplateController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
         ]);
+    
+        $content = $request->content;
+    
         $template = new Template();
         $template->title = $request->title;
-        $template->content = $request->content;
+        $template->content = $content;
+    
+        // Dynamically set the flags based on the presence of placeholders
+        $template->personal_info = $this->hasPlaceholder($content, [
+            '{{ $user->',
+        ]);
+    
+        $template->job_info = $this->hasPlaceholder($content, [
+            '{{ $job->',
+        ]);
+    
+        $template->disclosure_info = $this->hasPlaceholder($content, [
+            '{{ $disclosure',
+        ]);
+    
+        $template->sickness_info = $this->hasPlaceholder($content, [
+            '{{ $sickness',
+        ]);
+    
+        $template->capability_info = $this->hasPlaceholder($content, [
+            '{{ $capability',
+        ]);
+    
+        $template->disciplinary_info = $this->hasPlaceholder($content, [
+            '{{ $disciplinary',
+        ]);
+    
+        $template->lateness_info = $this->hasPlaceholder($content, [
+            '{{ $lateness',
+        ]);
+    
+        $template->training_info = $this->hasPlaceholder($content, [
+            '{{ $training',
+        ]);
+
         $template->save();
+    
         return redirect()->route('show.templates')->with('success', 'Template created successfully.');
     }
+    
+    // Helper function
+    private function hasPlaceholder($content, array $placeholders)
+    {
+        foreach ($placeholders as $placeholder) {
+            if (strpos($content, $placeholder) !== false) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 
     /**
      * Display the specified resource.
@@ -88,6 +137,39 @@ class TemplateController extends Controller
         ]);
         $template->title = $request->title;
         $template->content = $request->content;
+        $content = $request->content;
+    
+        $template->personal_info = $this->hasPlaceholder($content, [
+            '{{ $user->',
+        ]);
+    
+        $template->job_info = $this->hasPlaceholder($content, [
+            '{{ $job->',
+        ]);
+    
+        $template->disclosure_info = $this->hasPlaceholder($content, [
+            '{{ $disclosure',
+        ]);
+    
+        $template->sickness_info = $this->hasPlaceholder($content, [
+            '{{ $sickness',
+        ]);
+    
+        $template->capability_info = $this->hasPlaceholder($content, [
+            '{{ $capability',
+        ]);
+    
+        $template->disciplinary_info = $this->hasPlaceholder($content, [
+            '{{ $disciplinary',
+        ]);
+    
+        $template->lateness_info = $this->hasPlaceholder($content, [
+            '{{ $lateness',
+        ]);
+    
+        $template->training_info = $this->hasPlaceholder($content, [
+            '{{ $training',
+        ]);
         $template->save();
         return redirect()->route('show.templates')->with('success', 'Template updated successfully.');
     }

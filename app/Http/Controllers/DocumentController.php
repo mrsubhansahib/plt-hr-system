@@ -117,4 +117,12 @@ class DocumentController extends Controller
     {
         //
     }
+    public function getEmployeeData($id)
+    {
+    
+        $user = User::with('jobs')->find($id);
+        return response()->json([
+            'jobs'=> $user->jobs,
+        ]);
+    }
 }
