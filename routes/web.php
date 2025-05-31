@@ -29,6 +29,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\TrainingController;
+use App\User;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +51,6 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}',     [UserController::class, 'edit'])->name('edit.admin');
         Route::post('update/{id}',  [UserController::class, 'update'])->name('update.admin');
         Route::get('delete/{id}',   [UserController::class, 'destroy'])->name('delete.admin');
-        
     });
     // Route for template CRUD  
     Route::group(['prefix' => 'template'], function () {
@@ -61,7 +61,6 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{template}',     [TemplateController::class, 'edit'])->name('edit.template');
         Route::post('update/{template}',  [TemplateController::class, 'update'])->name('update.template');
         Route::get('delete/{template}',   [TemplateController::class, 'destroy'])->name('delete.template');
-
     });
     // Route for document CRUD  
     Route::group(['prefix' => 'document'], function () {
@@ -73,7 +72,6 @@ Route::middleware('auth')->group(function () {
         Route::post('update/{document}',  [DocumentController::class, 'update'])->name('update.document');
         Route::get('delete/{document}',   [DocumentController::class, 'destroy'])->name('delete.document');
         Route::get('/get-employee-data/{id}', [DocumentController::class, 'getEmployeeData'])->name('get.employee.data');
-
     });
     Route::group(['prefix' => 'employee'], function () {
         Route::get('list',          [EmployeeController::class, 'index'])->name('show.employees');
@@ -223,8 +221,18 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}',      [HrController::class, 'edit'])->name('edit.hr_list');
         Route::post('update/{id}',   [HrController::class, 'update'])->name('update.hr_list');
     });
-
-
+    Route::group(['prefix' => 'reports'], function () {
+        Route::get('/colleagues', function () {
+            $users = User::where('role', 'employee')
+                ->where('status', 'active')
+                ->with('jobs')
+                ->get();
+            foreach ($users as $user) {
+                $user->mainJob = $user->jobs->firstWhere('main_job', 'yes');
+            }
+            return view('pages.reports.colleagues', compact('users'));
+        })->name('reports.colleagues');
+    });
 });
 
 

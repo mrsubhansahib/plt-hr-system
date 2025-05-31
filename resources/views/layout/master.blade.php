@@ -234,6 +234,7 @@
                 ordering: true, // Enable sorting on columns
                 info: true,
                 dom: 'Bfrtip', // Add the buttons above the table
+                ordering: false, // Disable default column sorting
                 buttons: [
                     'csv', // CSV export
                     'excel', // Excel export
@@ -269,17 +270,7 @@
         });
     </script>
 
-    <script>
-        document.getElementById('employeeSelect').addEventListener('change', function () {
-            const selectedOption = this.options[this.selectedIndex];
-            const firstName = selectedOption.text.split(' ')[0];
-            const surname = selectedOption.getAttribute('data-surname');
-            if (!selectedOption.text.includes(surname)) {
-                const fullName = firstName + ' ' + surname;
-                selectedOption.text = fullName;
-            }
-        });
-    </script>
+    
 </body>
 
 </html>

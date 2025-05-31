@@ -5,7 +5,7 @@
             display: none !important;
         }
     </style>
-   @endpush
+@endpush
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -35,7 +35,7 @@
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" name="title" required />
                             </div>
-                           {{-- <hr> --}}
+                            {{-- <hr> --}}
                             <h4 style="text-align: center; text-decoration: underline;">Merge Fields</h4>
                             <div class="col-5 mt-2">
                                 <label class="form-label" class="personalInfoSelect">Personal Info</label>
@@ -122,6 +122,87 @@
                                 <button type="button" id="add_job_info_button"
                                     class="btn btn-secondary btn-sm mt-2">Add</button>
                             </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Disclosure Info</label>
+                                <select class="form-control form-select" id="disclosureInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $disclosure->dbs_level }">DBS Level</option>
+                                    <option value="{ $disclosure->date_requested }">Date Requested</option>
+                                    <option value="{ $disclosure->date_on_certificate }">Date on Certificate</option>
+                                    <option value="{ $disclosure->certificate_no }">Certificate No</option>
+                                    <option value="{ $disclosure->paid_liberata }">Paid Liberata</option>
+                                    <option value="{ $disclosure->reimbursed_candidate }">Reimbursed Candidate</option>
+                                    <option value="{ $disclosure->invoice_sent }">Invoice Sent</option>
+                                    <option value="{ $disclosure->contract_type }">Contract Type</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_disclosure_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Sickness Info</label>
+                                <select class="form-control form-select" id="sicknessInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $sickness->reason_for_absence }">Reason for Absence</option>
+                                    <option value="{ $sickness->date_from }">Date From</option>
+                                    <option value="{ $sickness->date_to }">Date To</option>
+                                    <option value="{ $sickness->total_hours }">Total Hours</option>
+                                    <option value="{ $sickness->certification_form_received }">Certification Form Received
+                                    </option>
+                                    <option value="{ $sickness->fit_note_received }">Fit Note Received</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_sickness_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Capability Info</label>
+                                <select class="form-control form-select" id="capabilityInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $capability->on_capability_procedure }">On Capability Procedure
+                                    </option>
+                                    <option value="{ $capability->stage }">Stage</option>
+                                    <option value="{ $capability->date }">Date</option>
+                                    <option value="{ $capability->outcome }">Outcome</option>
+                                    <option value="{ $capability->warning_issued_type }">Warning Issued Type</option>
+                                    <option value="{ $capability->review_date }">Review Date</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_capability_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Disciplinary Info</label>
+                                <select class="form-control form-select" id="disciplinaryInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $disciplinary->reason_for_disciplinary }">Reason</option>
+                                    <option value="{ $disciplinary->hearing_date }">Hearing Date</option>
+                                    <option value="{ $disciplinary->outcome }">Outcome</option>
+                                    <option value="{ $disciplinary->suspended }">Suspended</option>
+                                    <option value="{ $disciplinary->date_suspended }">Date Suspended</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_disciplinary_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Training Info</label>
+                                <select class="form-control form-select" id="trainingInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $training->training_title }">Training Title</option>
+                                    <option value="{ $training->course_date }">Course Date</option>
+                                    <option value="{ $training->renewal_date }">Renewal Date</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_training_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+
                         </div>
                         <input type="hidden" name="personal_info" id="personal_info" value="false">
                         <input type="hidden" name="job_info" id="job_info" value="false">
@@ -132,7 +213,7 @@
                         <input type="hidden" name="lateness_info" id="lateness_info" value="false">
                         <input type="hidden" name="training_info" id="training_info" value="false">
                         <div class="row">
-                           
+
                             <div class="col-12 mt-3">
                                 <label class="form-label">Content<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="content" id="contentEditor" required rows="10"></textarea>
@@ -200,7 +281,7 @@
                         {
                             name: 'insert',
                             items: ['HorizontalRule']
-                        }, 
+                        },
 
                         {
                             name: 'colors',
@@ -233,10 +314,84 @@
                             if (selectedField) {
                                 CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
                                     '} ');
-                                jobInfoSelect.selectedIndex = 0; // Update this line to reset jobInfoSelect
+                                jobInfoSelect.selectedIndex =
+                                    0; // Update this line to reset jobInfoSelect
                             }
                         });
                     }
+                    // Disclosure Info
+                    const disclosureInfoSelect = document.querySelector('#disclosureInfoSelect');
+                    const add_disclosure_info_button = document.querySelector(
+                    '#add_disclosure_info_button');
+                    if (disclosureInfoSelect && add_disclosure_info_button) {
+                        add_disclosure_info_button.addEventListener('click', function() {
+                            const selectedField = disclosureInfoSelect.value;
+                            if (selectedField) {
+                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
+                                    '} ');
+                                disclosureInfoSelect.selectedIndex = 0;
+                            }
+                        });
+                    }
+
+                    // Sickness Info
+                    const sicknessInfoSelect = document.querySelector('#sicknessInfoSelect');
+                    const add_sickness_info_button = document.querySelector('#add_sickness_info_button');
+                    if (sicknessInfoSelect && add_sickness_info_button) {
+                        add_sickness_info_button.addEventListener('click', function() {
+                            const selectedField = sicknessInfoSelect.value;
+                            if (selectedField) {
+                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
+                                    '} ');
+                                sicknessInfoSelect.selectedIndex = 0;
+                            }
+                        });
+                    }
+
+                    // Capability Info
+                    const capabilityInfoSelect = document.querySelector('#capabilityInfoSelect');
+                    const add_capability_info_button = document.querySelector(
+                    '#add_capability_info_button');
+                    if (capabilityInfoSelect && add_capability_info_button) {
+                        add_capability_info_button.addEventListener('click', function() {
+                            const selectedField = capabilityInfoSelect.value;
+                            if (selectedField) {
+                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
+                                    '} ');
+                                capabilityInfoSelect.selectedIndex = 0;
+                            }
+                        });
+                    }
+
+                    // Disciplinary Info
+                    const disciplinaryInfoSelect = document.querySelector('#disciplinaryInfoSelect');
+                    const add_disciplinary_info_button = document.querySelector(
+                        '#add_disciplinary_info_button');
+                    if (disciplinaryInfoSelect && add_disciplinary_info_button) {
+                        add_disciplinary_info_button.addEventListener('click', function() {
+                            const selectedField = disciplinaryInfoSelect.value;
+                            if (selectedField) {
+                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
+                                    '} ');
+                                disciplinaryInfoSelect.selectedIndex = 0;
+                            }
+                        });
+                    }
+
+                    // Training Info
+                    const trainingInfoSelect = document.querySelector('#trainingInfoSelect');
+                    const add_training_info_button = document.querySelector('#add_training_info_button');
+                    if (trainingInfoSelect && add_training_info_button) {
+                        add_training_info_button.addEventListener('click', function() {
+                            const selectedField = trainingInfoSelect.value;
+                            if (selectedField) {
+                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
+                                    '} ');
+                                trainingInfoSelect.selectedIndex = 0;
+                            }
+                        });
+                    }
+
                 });
             } else {
                 console.error('CKEditor not loaded.');

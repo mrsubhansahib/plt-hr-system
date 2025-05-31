@@ -558,44 +558,24 @@
                     </ul>
                 </div>
             </li> --}}
-            {{-- <li class="nav-item nav-category">Pages</li>
-            <li class="nav-item {{ active_class(['general/*']) }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#general" role="button"
-                    aria-expanded="{{ is_active_route(['general/*']) }}" aria-controls="general">
-                    <i class="link-icon" data-feather="book"></i>
-                    <span class="link-title">Special Pages</span>
+            <li class="nav-item {{ active_class(['reports/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#reports" role="button"
+                    aria-expanded="{{ is_active_route(['reports/*']) }}" aria-controls="reports">
+                    <i class="link-icon" data-feather="filter"></i>
+                    <span class="link-title">Reports</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse {{ show_class(['general/*']) }}" id="general">
+                <div class="collapse {{ show_class(['reports/*']) }}" id="reports">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ url('/general/blank-page') }}"
-                                class="nav-link {{ active_class(['general/blank-page']) }}">Blank page</a>
+                            <a href="{{ url('/reports/colleagues') }}"
+                                class="nav-link {{ active_class(['reports/colleagues']) }}">Colleagues</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/general/faq') }}"
-                                class="nav-link {{ active_class(['general/faq']) }}">Faq</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/general/invoice') }}"
-                                class="nav-link {{ active_class(['general/invoice']) }}">Invoice</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/general/profile') }}"
-                                class="nav-link {{ active_class(['general/profile']) }}">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/general/pricing') }}"
-                                class="nav-link {{ active_class(['general/pricing']) }}">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/general/timeline') }}"
-                                class="nav-link {{ active_class(['general/timeline']) }}">Timeline</a>
-                        </li>
+                    
                     </ul>
                 </div>
             </li>
-            <li class="nav-item {{ active_class(['auth/*']) }}">
+            {{--<li class="nav-item {{ active_class(['auth/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#auth" role="button"
                     aria-expanded="{{ is_active_route(['auth/*']) }}" aria-controls="auth">
                     <i class="link-icon" data-feather="unlock"></i>

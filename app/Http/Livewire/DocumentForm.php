@@ -46,12 +46,12 @@ class DocumentForm extends Component
         if ($template) {
             $this->templateFlags = [
                 'job' => $template->job_info,
-                // 'sickness' => $template->sickness_info,
-                // 'disclosure' => $template->disclosure_info,
-                // 'capability' => $template->capability_info,
-                // 'disciplinary' => $template->disciplinary_info,
-                // 'lateness' => $template->lateness_info,
-                // 'training' => $template->training_info,
+                'sickness' => $template->sickness_info,
+                'disclosure' => $template->disclosure_info,
+                'capability' => $template->capability_info,
+                'disciplinary' => $template->disciplinary_info,
+                'lateness' => $template->lateness_info,
+                'training' => $template->training_info,
             ];
         }
 
@@ -60,20 +60,20 @@ class DocumentForm extends Component
         // Reset selected employee and dependent data
         $this->selectedEmployee = null;
         $this->selectedJob = null;
-        // $this->selectedSickness = null;
-        // $this->selectedDisclosure = null;
-        // $this->selectedCapability = null;
-        // $this->selectedDisciplinary = null;
-        // $this->selectedLateness = null;
-        // $this->selectedTraining = null;
+        $this->selectedSickness = null;
+        $this->selectedDisclosure = null;
+        $this->selectedCapability = null;
+        $this->selectedDisciplinary = null;
+        $this->selectedLateness = null;
+        $this->selectedTraining = null;
 
         $this->userJobs = [];
-        // $this->sicknesses = [];
-        // $this->disclosures = [];
-        // $this->capabilities = [];
-        // $this->disciplinaries = [];
-        // $this->latenesses = [];
-        // $this->trainings = [];
+        $this->sicknesses = [];
+        $this->disclosures = [];
+        $this->capabilities = [];
+        $this->disciplinaries = [];
+        $this->latenesses = [];
+        $this->trainings = [];
     }
 
     public function updatedSelectedEmployee($employeeId)
@@ -88,29 +88,29 @@ class DocumentForm extends Component
             $this->userJobs = $user->jobs;
         }
 
-        // if ($this->templateFlags['sickness']) {
-        //     $this->sicknesses = $user->sicknesses;
-        // }
+        if ($this->templateFlags['sickness']) {
+            $this->sicknesses = $user->sicknesses;
+        }
 
-        // if ($this->templateFlags['disclosure']) {
-        //     $this->disclosures = $user->disclosures;
-        // }
+        if ($this->templateFlags['disclosure']) {
+            $this->disclosures = $user->disclosures;
+        }
 
-        // if ($this->templateFlags['capability']) {
-        //     $this->capabilities = $user->capabilities;
-        // }
+        if ($this->templateFlags['capability']) {
+            $this->capabilities = $user->capabilities;
+        }
 
-        // if ($this->templateFlags['disciplinary']) {
-        //     $this->disciplinaries = $user->disciplinaries;
-        // }
+        if ($this->templateFlags['disciplinary']) {
+            $this->disciplinaries = $user->disciplinaries;
+        }
 
-        // if ($this->templateFlags['lateness']) {
-        //     $this->latenesses = $user->latenesses;
-        // }
+        if ($this->templateFlags['lateness']) {
+            $this->latenesses = $user->latenesses;
+        }
 
-        // if ($this->templateFlags['training']) {
-        //     $this->trainings = $user->trainings;
-        // }
+        if ($this->templateFlags['training']) {
+            $this->trainings = $user->trainings;
+        }
     }
 
     public function save()
@@ -120,12 +120,12 @@ class DocumentForm extends Component
             'selectedTemplate' => 'required|exists:templates,id',
             'selectedEmployee' => 'required|exists:users,id',
             'selectedJob' => 'nullable|exists:jobs,id',
-            // 'selectedSickness' => 'nullable|exists:sicknesses,id',
-            // 'selectedDisclosure' => 'nullable|exists:disclosures,id',
-            // 'selectedCapability' => 'nullable|exists:capabilities,id',
-            // 'selectedDisciplinary' => 'nullable|exists:disciplinaries,id',
-            // 'selectedLateness' => 'nullable|exists:latenesses,id',
-            // 'selectedTraining' => 'nullable|exists:trainings,id',
+            'selectedSickness' => 'nullable|exists:sicknesses,id',
+            'selectedDisclosure' => 'nullable|exists:disclosures,id',
+            'selectedCapability' => 'nullable|exists:capabilities,id',
+            'selectedDisciplinary' => 'nullable|exists:disciplinaries,id',
+            'selectedLateness' => 'nullable|exists:latenesses,id',
+            'selectedTraining' => 'nullable|exists:trainings,id',
 
         ]);
 
@@ -136,12 +136,12 @@ class DocumentForm extends Component
         $variables = [
             'user' => $user,
             'job' => $job,
-            // 'sickness' => $this->selectedSickness ? \App\Sickness::find($this->selectedSickness) : null,
-            // 'disclosure' => $this->selectedDisclosure ? \App\Disclosure::find($this->selectedDisclosure) : null,
-            // 'capability' => $this->selectedCapability ? \App\Capability::find($this->selectedCapability) : null,
-            // 'disciplinary' => $this->selectedDisciplinary ? \App\Disciplinary::find($this->selectedDisciplinary) : null,
-            // 'lateness' => $this->selectedLateness ? \App\Lateness::find($this->selectedLateness) : null,
-            // 'training' => $this->selectedTraining ? \App\Training::find($this->selectedTraining) : null,
+            'sickness' => $this->selectedSickness ? \App\Sickness::find($this->selectedSickness) : null,
+            'disclosure' => $this->selectedDisclosure ? \App\Disclosure::find($this->selectedDisclosure) : null,
+            'capability' => $this->selectedCapability ? \App\Capability::find($this->selectedCapability) : null,
+            'disciplinary' => $this->selectedDisciplinary ? \App\Disciplinary::find($this->selectedDisciplinary) : null,
+            'lateness' => $this->selectedLateness ? \App\Lateness::find($this->selectedLateness) : null,
+            'training' => $this->selectedTraining ? \App\Training::find($this->selectedTraining) : null,
         ];
 
         $content = Blade::render($template->content, $variables);

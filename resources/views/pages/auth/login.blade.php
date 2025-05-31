@@ -41,7 +41,10 @@
                   </label>
                 </div> --}}
                 <div>
-                  <button class="btn btn-primary me-2 mb-2 mb-md-0">Login</button>
+                  <div class="d-flex justify-content-center">
+
+                    <button class="btn btn-primary w-100">Login</button>
+                  </div>
                   {{-- <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="twitter"></i>
                     Login with twitter
