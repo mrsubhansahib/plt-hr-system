@@ -25,7 +25,7 @@
                                     <th>Surname</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
-                                    <th>Actions</th> 
+                                    <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
                                     <th><input type="text" class="form-control form-control-sm"
@@ -45,10 +45,10 @@
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
                                         <td>
-                                            {{ $user->jobs->where('main_job','yes')->where('status','active')->first()->title??'No Main Job Assigned' }}
+                                            {{ $user->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
                                         </td>
                                         <td>
-                                            {{ $user->jobs->where('main_job','yes')->where('status','active')->first()->facility ?? $user->jobs->first()->facility ?? 'No Facility Assigned' }}
+                                            {{ $user->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($user->jobs->first()->facility ?? 'No Facility Assigned') }}
                                         </td>
                                         <td>
                                             <div class="dropdown">

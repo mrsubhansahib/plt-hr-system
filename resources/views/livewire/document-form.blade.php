@@ -42,7 +42,7 @@
                 </div>
             @endif
             {{-- Other Modules Dynamic data --}}
-            {{-- @if (!empty($templateFlags['sickness']) && !empty($sicknesses))
+            @if (!empty($templateFlags['sickness']) && !empty($sicknesses))
                 <div class="col-6 mt-3">
                     <label class="form-label">Sickness</label>
                     <select class="form-select" wire:model="selectedSickness">
@@ -118,7 +118,7 @@
                         @endforeach
                     </select>
                 </div>
-            @endif --}}
+            @endif
 
 
         </div>

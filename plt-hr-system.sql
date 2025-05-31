@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 15, 2025 at 11:15 PM
+-- Generation Time: Apr 30, 2025 at 12:41 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.14
 
@@ -83,13 +83,29 @@ CREATE TABLE `disclosures` (
   `user_id` bigint UNSIGNED NOT NULL,
   `dbs_level` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_requested` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_on_certificate` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `certificate_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_on_certificate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `certificate_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `paid_liberata` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `reimbursed_candidate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `invoice_sent` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contract_type` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documents`
+--
+
+CREATE TABLE `documents` (
+  `id` bigint UNSIGNED NOT NULL,
+  `template_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -115,130 +131,126 @@ CREATE TABLE `dropdowns` (
 --
 
 INSERT INTO `dropdowns` (`id`, `user_id`, `module_type`, `name`, `value`, `created_at`, `updated_at`) VALUES
-(1, 1, 'User', 'Ethnicity', 'White British', '2025-02-15 13:14:34', '2025-02-15 13:14:34'),
-(2, 1, 'User', 'Ethnicity', 'White Irish', '2025-02-15 13:14:34', '2025-02-15 13:14:34'),
-(3, 1, 'User', 'Ethnicity', 'White Other', '2025-02-15 13:14:34', '2025-02-15 13:14:34'),
-(4, 1, 'User', 'Ethnicity', 'Mixed White and Black Caribbean', '2025-02-15 13:14:34', '2025-02-15 13:14:34'),
-(5, 1, 'User', 'Ethnicity', 'Mixed White and Black African', '2025-02-15 13:14:34', '2025-02-15 13:14:34'),
-(6, 1, 'User', 'Ethnicity', 'Mixed White and Asian', '2025-02-15 13:14:34', '2025-02-15 13:14:34'),
-(7, 1, 'User', 'Ethnicity', 'Mixed Other Background', '2025-02-15 13:14:34', '2025-02-15 13:14:34'),
-(8, 1, 'User', 'Ethnicity', 'Asian or Asian British Indian', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(9, 1, 'User', 'Ethnicity', 'Asian or Asian British Pakistani', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(10, 1, 'User', 'Ethnicity', 'Asian or Asian British Bangladeshi', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(11, 1, 'User', 'Ethnicity', 'Asian or Asian British Kashmiri', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(12, 1, 'User', 'Ethnicity', 'Asian or Asian British Other', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(13, 1, 'User', 'Ethnicity', 'Black or Black British Caribbean', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(14, 1, 'User', 'Ethnicity', 'Black or Black British African', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(15, 1, 'User', 'Ethnicity', 'Black or Black British Other', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(16, 1, 'User', 'Ethnicity', 'Chinese', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(17, 1, 'User', 'Ethnicity', 'Other Ethnic Group', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(18, 1, 'User', 'Equipment Required', 'Telephone Ext', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(19, 1, 'User', 'Equipment Required', 'Computer / Laptop', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(20, 1, 'User', 'Equipment Required', 'Pool Phone / Login', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(21, 1, 'User', 'Equipment Required', 'Tablet', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(22, 1, 'User', 'Equipment Required', 'other', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(23, 1, 'Job', 'Facility', 'No 1 Market Street', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(24, 1, 'Job', 'Facility', 'Profile Leisure Centre', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(25, 1, 'Job', 'Facility', 'House Warwickshire', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(26, 1, 'Job', 'Facility', 'West Point Sports Centre', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(27, 1, 'Job', 'Facility', 'The Main', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(28, 1, 'Job', 'Facility', 'Sandhill Athletics and Fitness Centre', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(29, 1, 'Job', 'Facility', 'Inside Spa', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(30, 1, 'Job', 'Facility', 'Good Life', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(31, 1, 'Job', 'Facility', 'All Facilities', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(32, 1, 'Job', 'Title', 'Active Administration Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(33, 1, 'Job', 'Title', 'Administration Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(34, 1, 'Job', 'Title', 'Administration Assistant Senior', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(35, 1, 'Job', 'Title', 'Administration Assistant/Wages Clerk (REC)', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(36, 1, 'Job', 'Title', 'Allotment Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(37, 1, 'Job', 'Title', 'Apprentice Development Worker', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(38, 1, 'Job', 'Title', 'Aqua/Hydro Teacher', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(39, 1, 'Job', 'Title', 'Assistant Finance Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(40, 1, 'Job', 'Title', 'Assistant Treatment Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(41, 1, 'Job', 'Title', 'Bar and Catering Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(42, 1, 'Job', 'Title', 'Bar Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(43, 1, 'Job', 'Title', 'Bar Supervisor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(44, 1, 'Job', 'Title', 'Box Office / Information Sales Co-Ordinator', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(45, 1, 'Job', 'Title', 'Business Development Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(46, 1, 'Job', 'Title', 'Catering Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(47, 1, 'Job', 'Title', 'Catering Supervisor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(48, 1, 'Job', 'Title', 'Centre Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(49, 1, 'Job', 'Title', 'Chief Executive', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(50, 1, 'Job', 'Title', 'Cleaner', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(51, 1, 'Job', 'Title', 'Course Co-ordinator', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(52, 1, 'Job', 'Title', 'Credit Controller', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(53, 1, 'Job', 'Title', 'Customer Service / Finance Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(54, 1, 'Job', 'Title', 'Digital Content Co-ordinator', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(55, 1, 'Job', 'Title', 'Executive Manager (Finance)', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(56, 1, 'Job', 'Title', 'Executive Manager (Human Resources)', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(57, 1, 'Job', 'Title', 'Feelgood Suite Instructor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(58, 1, 'Job', 'Title', 'Fitness / Class Instructor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(59, 1, 'Job', 'Title', 'Fitness Suite Instructor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(60, 1, 'Job', 'Title', 'Fitness Instructor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(61, 1, 'Job', 'Title', 'Front of House Supervisor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(62, 1, 'Job', 'Title', 'Grant Funding/Administration Manager/PA', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(63, 1, 'Job', 'Title', 'Graphic Designer', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(64, 1, 'Job', 'Title', 'Groundsman', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(65, 1, 'Job', 'Title', 'Hairdresser', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(66, 1, 'Job', 'Title', 'Health Activator', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(67, 1, 'Job', 'Title', 'Health Project Lead', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(68, 1, 'Job', 'Title', 'Healthy Weight Co-ordinator', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(69, 1, 'Job', 'Title', 'Health Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(70, 1, 'Job', 'Title', 'Marketing Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(71, 1, 'Job', 'Title', 'Marketing Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(72, 1, 'Job', 'Title', 'Operations Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(73, 1, 'Job', 'Title', 'Personal Training Instructor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(74, 1, 'Job', 'Title', 'Pegasus Trainer', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(75, 1, 'Job', 'Title', 'Receptionist', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(76, 1, 'Job', 'Title', 'Relief Assistant Customer Focus Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(77, 1, 'Job', 'Title', 'Relief Customer Focus Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(78, 1, 'Job', 'Title', 'Repair and Maintenance Operative', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(79, 1, 'Job', 'Title', 'Sandhill Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(80, 1, 'Job', 'Title', 'Security Officer', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(81, 1, 'Job', 'Title', 'Senior Usher', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(82, 1, 'Job', 'Title', 'Site Supervisor', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(83, 1, 'Job', 'Title', 'Spa and Treatment Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(84, 1, 'Job', 'Title', 'Spa Receptionist', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(85, 1, 'Job', 'Title', 'Spa Therapist', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(86, 1, 'Job', 'Title', 'Stage Technician', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(87, 1, 'Job', 'Title', 'Swimming Teacher', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(88, 1, 'Job', 'Title', 'Swimming Teacher Administration', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(89, 1, 'Job', 'Title', 'Swimming Teacher Co-ordinator', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(90, 1, 'Job', 'Title', 'Technical Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(91, 1, 'Job', 'Title', 'Treatment Manager', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(92, 1, 'Job', 'Title', 'Usher', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(93, 1, 'Job', 'Title', 'Wages Assistant', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(94, 1, 'Job', 'Contract Type', 'Permanent', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(95, 1, 'Job', 'Contract Type', 'Fixed Term', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(96, 1, 'Job', 'Contract Type', 'Temporary', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(97, 1, 'Job', 'Contract Type', 'Permanent Variable', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(98, 1, 'Job', 'Contract Type', 'Other', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(99, 1, 'Capability', 'Capability Stage', 'Triggered Capability', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(100, 1, 'Capability', 'Capability Stage', 'Capability A Counselling Interview', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(101, 1, 'Capability', 'Capability Stage', 'Return Capability Procedure', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(102, 1, 'Capability', 'Capability Stage', 'Further Capability', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(103, 1, 'Capability', 'Capability Stage', 'Long Term Sickness Counselling Interview', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(104, 1, 'Capability', 'Capability Stage', 'Long Term Sickness Review', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(105, 1, 'Capability', 'Capability Stage', 'Capability Formal Interview', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(106, 1, 'Capability', 'Capability Stage', 'Other', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(107, 1, 'Lateness', 'Lateness Stage', 'Triggered Lateness', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(108, 1, 'Lateness', 'Lateness Stage', 'Lateness A Counselling Interview', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(109, 1, 'Lateness', 'Lateness Stage', 'Return Lateness Procedure', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(110, 1, 'Lateness', 'Lateness Stage', 'Further Lateness', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(111, 1, 'Lateness', 'Lateness Stage', 'Lateness Formal Interview', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(112, 1, 'Lateness', 'Lateness Stage', 'Other', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(113, 1, 'Training', 'Training Course Titles', 'NPLQ', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(114, 1, 'Training', 'Training Course Titles', 'NPLQ Renewal', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(115, 1, 'Training', 'Training Course Titles', 'FAAW', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(116, 1, 'Training', 'Training Course Titles', 'FAAW Renewal', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(117, 1, 'Training', 'Training Course Titles', 'Monthly Staff Training', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(118, 1, 'Training', 'Training Course Titles', 'Emergency Response', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(119, 1, 'Training', 'Training Course Titles', 'Pool Plant Operation', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(120, 1, 'Training', 'Training Course Titles', 'Ladder and Steps Inspection Training', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(121, 1, 'Training', 'Training Course Titles', 'iHasco allocated modules', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(122, 1, 'Training', 'Training Course Titles', 'IOSH Managing Safety', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(123, 1, 'Training', 'Training Course Titles', 'SwimmingTraining Course', '2025-02-15 13:14:35', '2025-02-15 13:14:35'),
-(124, 1, 'Training', 'Training Course Titles', 'Other', '2025-02-15 13:14:35', '2025-02-15 13:14:35');
+(1, 1, 'User', 'Ethnicity', 'White British', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(2, 1, 'User', 'Ethnicity', 'White Irish', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(3, 1, 'User', 'Ethnicity', 'White Other', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(4, 1, 'User', 'Ethnicity', 'Mixed White and Black Caribbean', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(5, 1, 'User', 'Ethnicity', 'Mixed White and Black African', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(6, 1, 'User', 'Ethnicity', 'Mixed White and Asian', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(7, 1, 'User', 'Ethnicity', 'Mixed Other Background', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(8, 1, 'User', 'Ethnicity', 'Asian or Asian British Indian', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(9, 1, 'User', 'Ethnicity', 'Asian or Asian British Pakistani', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(10, 1, 'User', 'Ethnicity', 'Asian or Asian British Bangladeshi', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(11, 1, 'User', 'Ethnicity', 'Asian or Asian British Kashmiri', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(12, 1, 'User', 'Ethnicity', 'Asian or Asian British Other', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(13, 1, 'User', 'Ethnicity', 'Black or Black British Caribbean', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(14, 1, 'User', 'Ethnicity', 'Black or Black British African', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(15, 1, 'User', 'Ethnicity', 'Black or Black British Other', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(16, 1, 'User', 'Ethnicity', 'Chinese', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(17, 1, 'User', 'Ethnicity', 'Other Ethnic Group', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(18, 1, 'Job', 'Facility', 'No 1 Market Street', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(19, 1, 'Job', 'Facility', 'Profile Leisure Centre', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(20, 1, 'Job', 'Facility', 'Pendle Wavelengths', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(21, 1, 'Job', 'Facility', 'West Point Sports Centre', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(22, 1, 'Job', 'Facility', 'The Muni', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(23, 1, 'Job', 'Facility', 'Seedhill Athletics and Fitness Centre', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(24, 1, 'Job', 'Facility', 'Inside Spa', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(25, 1, 'Job', 'Facility', 'Good Life', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(26, 1, 'Job', 'Facility', 'All Facilities', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(27, 1, 'Job', 'Title', 'Activo Administration Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(28, 1, 'Job', 'Title', 'Administration Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(29, 1, 'Job', 'Title', 'Administration Assistant Senior', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(30, 1, 'Job', 'Title', 'Administration Assistant/Wages Clerk (REC)', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(31, 1, 'Job', 'Title', 'Allotment Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(32, 1, 'Job', 'Title', 'Allotment Development Worker', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(33, 1, 'Job', 'Title', 'Aquarhythmics Teacher', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(34, 1, 'Job', 'Title', 'Assistant Finance Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(35, 1, 'Job', 'Title', 'Assistant Theatre Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(36, 1, 'Job', 'Title', 'Bar and Catering Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(37, 1, 'Job', 'Title', 'Bar Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(38, 1, 'Job', 'Title', 'Bar Supervisor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(39, 1, 'Job', 'Title', 'Box Office / Information Sales Co-Ordinator', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(40, 1, 'Job', 'Title', 'Business Development Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(41, 1, 'Job', 'Title', 'Catering Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(42, 1, 'Job', 'Title', 'Catering Supervisor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(43, 1, 'Job', 'Title', 'Centre Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(44, 1, 'Job', 'Title', 'Chief Executive', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(45, 1, 'Job', 'Title', 'Cleaner', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(46, 1, 'Job', 'Title', 'Course Co-ordinator', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(47, 1, 'Job', 'Title', 'Credit Controller / Finance Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(48, 1, 'Job', 'Title', 'Customer Focus Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(49, 1, 'Job', 'Title', 'Digital Content Co-ordinator', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(50, 1, 'Job', 'Title', 'Executive Manager (Finance)', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(51, 1, 'Job', 'Title', 'Executive Manager (Human Resources)', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(52, 1, 'Job', 'Title', 'Feelgood Suite Instructor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(53, 1, 'Job', 'Title', 'Fitness / Class Instructor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(54, 1, 'Job', 'Title', 'Fitness Class Instructor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(55, 1, 'Job', 'Title', 'Fitness Instructor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(56, 1, 'Job', 'Title', 'Front of House Supervisor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(57, 1, 'Job', 'Title', 'Grant Funding/Administration Manager/PA', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(58, 1, 'Job', 'Title', 'Graphic Designer', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(59, 1, 'Job', 'Title', 'Gym Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(60, 1, 'Job', 'Title', 'Hallkeeper', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(61, 1, 'Job', 'Title', 'Health Activator', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(62, 1, 'Job', 'Title', 'Healthy Weight Coach', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(63, 1, 'Job', 'Title', 'Healthy Weight Co-ordinator', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(64, 1, 'Job', 'Title', 'Leisure Attendant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(65, 1, 'Job', 'Title', 'Marketing Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(66, 1, 'Job', 'Title', 'Marketing Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(67, 1, 'Job', 'Title', 'Operations Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(68, 1, 'Job', 'Title', 'Personal Training Instructor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(69, 1, 'Job', 'Title', 'Pinpoint Trainer', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(70, 1, 'Job', 'Title', 'Receptionist', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(71, 1, 'Job', 'Title', 'Relief Assistant Customer Focus Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(72, 1, 'Job', 'Title', 'Relief Customer Focus Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(73, 1, 'Job', 'Title', 'Repair and Maintenance Operative', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(74, 1, 'Job', 'Title', 'Seedhill Supervisor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(75, 1, 'Job', 'Title', 'Senior Spa Therapist', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(76, 1, 'Job', 'Title', 'Senior Usher', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(77, 1, 'Job', 'Title', 'Site Supervisor', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(78, 1, 'Job', 'Title', 'Spa Customer Focus Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(79, 1, 'Job', 'Title', 'Spa Receptionist', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(80, 1, 'Job', 'Title', 'Spa Therapist', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(81, 1, 'Job', 'Title', 'Stage Technician', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(82, 1, 'Job', 'Title', 'Swimming Teacher', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(83, 1, 'Job', 'Title', 'Swimming Teacher Administration', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(84, 1, 'Job', 'Title', 'Swimming Teacher Co-ordinator', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(85, 1, 'Job', 'Title', 'Technical Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(86, 1, 'Job', 'Title', 'Theatre Manager', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(87, 1, 'Job', 'Title', 'Usher', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(88, 1, 'Job', 'Title', 'Wages Assistant', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(89, 1, 'Job', 'Contract Type', 'Permanent', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(90, 1, 'Job', 'Contract Type', 'Casual', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(91, 1, 'Job', 'Contract Type', 'Fixed Term', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(92, 1, 'Job', 'Contract Type', 'Temporary', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(93, 1, 'Job', 'Contract Type', 'Permanent Variable', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(94, 1, 'Capability', 'Capability Stage', 'Triggered Capability', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(95, 1, 'Capability', 'Capability Stage', 'Capability A Counselling Interview', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(96, 1, 'Capability', 'Capability Stage', 'Restart Capability Procedure', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(97, 1, 'Capability', 'Capability Stage', 'Further Sikness', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(98, 1, 'Capability', 'Capability Stage', 'Long Term Sickness Counselling Interview', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(99, 1, 'Capability', 'Capability Stage', 'Long Term Sickness Review', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(100, 1, 'Capability', 'Capability Stage', 'Capability Formal Interview', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(101, 1, 'Capability', 'Capability Stage', 'Other', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(102, 1, 'Lateness', 'Lateness Stage', 'Triggered Lateness', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(103, 1, 'Lateness', 'Lateness Stage', 'Lateness A Counselling Interview', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(104, 1, 'Lateness', 'Lateness Stage', 'Restart Lateness Procedure', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(105, 1, 'Lateness', 'Lateness Stage', 'Further Lateness', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(106, 1, 'Lateness', 'Lateness Stage', 'Lateness Formal Interview', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(107, 1, 'Lateness', 'Lateness Stage', 'Other', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(108, 1, 'Training', 'Training Course Titles', 'NPLQ', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(109, 1, 'Training', 'Training Course Titles', 'NPLQ Renewal', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(110, 1, 'Training', 'Training Course Titles', 'FAAW', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(111, 1, 'Training', 'Training Course Titles', 'FAAW Renewal', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(112, 1, 'Training', 'Training Course Titles', 'Emergency First Aid', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(113, 1, 'Training', 'Training Course Titles', 'Monthly Staff Training', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(114, 1, 'Training', 'Training Course Titles', 'Emergency Response', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(115, 1, 'Training', 'Training Course Titles', 'Pool Plant Operators', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(116, 1, 'Training', 'Training Course Titles', 'Ladder and Steps Inspection Training', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(117, 1, 'Training', 'Training Course Titles', 'iHasco allocated modules', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(118, 1, 'Training', 'Training Course Titles', 'IOSH Managing Safely', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(119, 1, 'Training', 'Training Course Titles', 'Swimming Teaching Course', '2025-04-29 14:39:55', '2025-04-29 14:39:55'),
+(120, 1, 'Training', 'Training Course Titles', 'Other', '2025-04-29 14:39:55', '2025-04-29 14:39:55');
 
 -- --------------------------------------------------------
 
@@ -350,7 +362,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2024_11_21_091749_create_trainings_table', 1),
 (13, '2024_12_18_113234_create_logs_table', 1),
 (14, '2024_12_24_102349_create_dropdown-table', 1),
-(15, '2025_02_13_083714_create_notes_table', 1);
+(15, '2025_02_13_083714_create_notes_table', 1),
+(16, '2025_04_15_142925_create_templates_table', 1),
+(17, '2025_04_15_153115_create_documents_table', 1);
 
 -- --------------------------------------------------------
 
@@ -410,11 +424,33 @@ CREATE TABLE `sicknesses` (
   `user_id` bigint UNSIGNED NOT NULL,
   `reason_for_absence` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_from` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_to` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_to` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total_hours` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `certification_form_received` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fit_note_received` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `templates`
+--
+
+CREATE TABLE `templates` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `personal_info` tinyint(1) NOT NULL DEFAULT '0',
+  `job_info` tinyint(1) NOT NULL DEFAULT '0',
+  `disclosure_info` tinyint(1) NOT NULL DEFAULT '0',
+  `sickness_info` tinyint(1) NOT NULL DEFAULT '0',
+  `capability_info` tinyint(1) NOT NULL DEFAULT '0',
+  `disciplinary_info` tinyint(1) NOT NULL DEFAULT '0',
+  `lateness_info` tinyint(1) NOT NULL DEFAULT '0',
+  `training_info` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -431,8 +467,6 @@ CREATE TABLE `trainings` (
   `training_title` text COLLATE utf8mb4_unicode_ci,
   `course_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `renewal_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ihasco_training_sent` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ihasco_training_complete` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -450,24 +484,24 @@ CREATE TABLE `users` (
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middle_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `surname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `preferred_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preferred_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'employee',
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `town` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `town` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `post_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile_tel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `home_tel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dob` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `age` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ethnicity` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dob` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `age` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ethnicity` text COLLATE utf8mb4_unicode_ci,
   `disability` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ni_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `commencement_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ni_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `commencement_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contracted_from_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `termination_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `reason_termination` text COLLATE utf8mb4_unicode_ci,
@@ -483,15 +517,15 @@ CREATE TABLE `users` (
   `probation_complete` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `equipment_required` text COLLATE utf8mb4_unicode_ci,
   `equipment_ordered` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `default_cost_center` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `salaried` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `default_cost_center` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `salaried` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `casual_holiday_pay` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `p45` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `employee_pack_sent` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `emergency_1_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emergency_1_ph_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `emergency_1_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `emergency_1_ph_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `emergency_1_home_ph` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `emergency_1_relation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `emergency_1_relation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `emergency_2_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `emergency_2_ph_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `emergency_2_home_ph` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -499,6 +533,8 @@ CREATE TABLE `users` (
   `termination_form_to_payroll` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci,
   `email_verified_at` timestamp NULL DEFAULT NULL,
+  `ihasco_training_sent` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ihasco_training_complete` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -508,8 +544,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `status`, `first_name`, `middle_name`, `surname`, `preferred_name`, `role`, `email`, `password`, `address1`, `address2`, `address3`, `town`, `post_code`, `mobile_tel`, `home_tel`, `dob`, `age`, `gender`, `ethnicity`, `disability`, `ni_number`, `commencement_date`, `contracted_from_date`, `termination_date`, `reason_termination`, `handbook_sent`, `medical_form_returned`, `new_entrant_form_returned`, `confidentiality_statement_returned`, `work_document_received`, `qualifications_checked`, `references_requested`, `references_returned`, `payroll_informed`, `probation_complete`, `equipment_required`, `equipment_ordered`, `default_cost_center`, `salaried`, `casual_holiday_pay`, `p45`, `employee_pack_sent`, `emergency_1_name`, `emergency_1_ph_no`, `emergency_1_home_ph`, `emergency_1_relation`, `emergency_2_name`, `emergency_2_ph_no`, `emergency_2_home_ph`, `emergency_2_relation`, `termination_form_to_payroll`, `notes`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'active', 'Thumbs Up', 'Digital', 'Admin', '', 'super_admin', 'admin@thumbsupdigital.com', '$2y$10$mp9T/04XXsoNcsuanoLJ0OxCDhc3sWUf7Llv3k9Jpp6NXB7JAn97W', 'Jinnah Colony It Tower 2', '', '', '', '', '00000000000', '00000000000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '2025-02-15 13:14:34', '2025-02-15 13:14:34');
+INSERT INTO `users` (`id`, `status`, `first_name`, `middle_name`, `surname`, `preferred_name`, `role`, `email`, `password`, `address1`, `address2`, `address3`, `town`, `post_code`, `mobile_tel`, `home_tel`, `dob`, `age`, `gender`, `ethnicity`, `disability`, `ni_number`, `commencement_date`, `contracted_from_date`, `termination_date`, `reason_termination`, `handbook_sent`, `medical_form_returned`, `new_entrant_form_returned`, `confidentiality_statement_returned`, `work_document_received`, `qualifications_checked`, `references_requested`, `references_returned`, `payroll_informed`, `probation_complete`, `equipment_required`, `equipment_ordered`, `default_cost_center`, `salaried`, `casual_holiday_pay`, `p45`, `employee_pack_sent`, `emergency_1_name`, `emergency_1_ph_no`, `emergency_1_home_ph`, `emergency_1_relation`, `emergency_2_name`, `emergency_2_ph_no`, `emergency_2_home_ph`, `emergency_2_relation`, `termination_form_to_payroll`, `notes`, `email_verified_at`, `ihasco_training_sent`, `ihasco_training_complete`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'active', 'Thumbs Up', 'Digital', 'Admin', '', 'super_admin', 'admin@thumbsupdigital.com', '$2y$10$6hOhA3Qc8COL54GvZ.blpOUTxrSDjuFPXeqwiSv0SL9evJz4rLlWy', 'Jinnah Colony It Tower 2', '', '', '', '', '00000000000', '00000000000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, '2025-04-29 14:39:55', '2025-04-29 14:39:55');
 
 --
 -- Indexes for dumped tables
@@ -541,6 +577,14 @@ ALTER TABLE `disciplinaries`
 ALTER TABLE `disclosures`
   ADD PRIMARY KEY (`id`),
   ADD KEY `disclosures_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `documents`
+--
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `documents_template_id_foreign` (`template_id`),
+  ADD KEY `documents_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `dropdowns`
@@ -613,6 +657,12 @@ ALTER TABLE `sicknesses`
   ADD KEY `sicknesses_user_id_foreign` (`user_id`);
 
 --
+-- Indexes for table `templates`
+--
+ALTER TABLE `templates`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `trainings`
 --
 ALTER TABLE `trainings`
@@ -655,10 +705,16 @@ ALTER TABLE `disclosures`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `dropdowns`
 --
 ALTER TABLE `dropdowns`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -688,7 +744,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `notes`
@@ -706,6 +762,12 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `sicknesses`
 --
 ALTER TABLE `sicknesses`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `templates`
+--
+ALTER TABLE `templates`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -741,6 +803,13 @@ ALTER TABLE `disciplinaries`
 --
 ALTER TABLE `disclosures`
   ADD CONSTRAINT `disclosures_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `documents`
+--
+ALTER TABLE `documents`
+  ADD CONSTRAINT `documents_template_id_foreign` FOREIGN KEY (`template_id`) REFERENCES `templates` (`id`),
+  ADD CONSTRAINT `documents_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `dropdowns`
