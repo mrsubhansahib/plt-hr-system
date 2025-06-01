@@ -1,6 +1,5 @@
 <div>
-    @include('layout.alert')
-    
+
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
@@ -34,6 +33,8 @@
             </div>
         </div>
     </div>
+    @include('layout.alert')
+
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
@@ -46,6 +47,7 @@
                                     <th>Surname</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
+                                    <th>Status</th>
                                 </tr>
                                 <tr class="filters">
                                     <th><input type="text" class="form-control form-control-sm"
@@ -56,6 +58,8 @@
                                             placeholder="Search Job Title"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Facility"></th>
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Status"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,6 +73,14 @@
                                             </td>
                                             <td>
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
+                                            </td>
+                                            <td>
+                                                @if ($colleague->status === 'active')
+                                                    <span class="badge bg-success">Active</span>
+                                                @else
+                                                    <span class="badge bg-danger">Terminated</span>
+                                                @endif
+
                                             </td>
                                         </tr>
                                     @endforeach
