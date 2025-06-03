@@ -8,10 +8,10 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Reports</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Colleagues</li>
+            <li class="breadcrumb-item active" aria-current="page">Colleague Terms</li>
         </ol>
     </nav>
-    @livewire('search-colleagues')
+    @livewire('colleague-terms')
 @endsection
 
 @push('custom-scripts')

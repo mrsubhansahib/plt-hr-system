@@ -3,100 +3,65 @@
 namespace App\Http\Livewire;
 
 use App\User;
+use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
 
 class SearchColleagues extends Component
 {
+    public $successMsg;
+    public $errorMsg;
     public $status;
     public $start_date = '';
     public $end_date = '';
     public $colleagues = [];
     public function filterColleagues()
     {
-        if ($this->status !== "Select" && $this->start_date !== "" && $this->end_date !== "") {
-            if ($this->start_date > $this->end_date) {
-                dd('start date is greater than end date');
-            } else {
-                if ($this->status === "active") {
-                    $this->colleagues = User::where('role', 'employee')->where('status', 'active')
-                        ->whereBetween('created_at', [$this->start_date, $this->end_date. ' 23:59:59'])
-                        ->get();
+        $this->successMsg = $this->errorMsg = '';
 
-                    // dd('active status with date');
-                } elseif ($this->status === "terminated") {
-                    $this->colleagues = User::where('role', 'employee')->where('status', 'terminated')
-                        ->whereBetween('created_at', [$this->start_date, $this->end_date. ' 23:59:59'])
-                        ->get();
-                    // dd('terminated status with date');
-                } else {
-                    dd('status error with start date and end date');
-                }
-            }
-            // dd('have data');
-        } elseif ($this->start_date !== "" && $this->end_date !== "" && $this->status === "Select") {
-            if ($this->start_date > $this->end_date) {
-                dd('start date is greater than end date');
-            } else {
-                $this->colleagues = User::where('role', 'employee')->whereBetween('created_at', [$this->start_date, $this->end_date. ' 23:59:59'])
-                    ->get();
-                // dd('have dates but no status');
-            }
-        } elseif ($this->start_date !== "" && $this->end_date === "" && $this->status !== "Select") {
-            if ($this->status === "active") {
-                $this->colleagues = User::where('role', 'employee')->where('status', 'active')
-                    ->where('created_at', '>=', $this->start_date)
-                    ->get();
-                // dd('active status with start date only');
-            } elseif ($this->status === "terminated") {
-                $this->colleagues = User::where('role', 'employee')->where('status', 'terminated')
-                    ->where('created_at', '>=', $this->start_date)
-                    ->get();
-                // dd('terminated status with start date only');
-            } else {
-                dd('status error with start date only');
-            }
-        } elseif ($this->start_date === "" && $this->end_date !== "" && $this->status !== "Select") {
-            if ($this->status === "active") {
-                $this->colleagues = User::where('role', 'employee')->where('status', 'active')
-                    ->where('created_at', '<=', $this->end_date. ' 23:59:59')
-                    ->get();
-                // dd('active status with end date only');
-            } elseif ($this->status === "terminated") {
-                $this->colleagues = User::where('role', 'employee')->where('status', 'terminated')
-                    ->where('created_at', '<=', $this->end_date. ' 23:59:59')
-                    ->get();
-                // dd('terminated status with end date only');
-            } else {
-                dd('status error with end date only');
-            }
-        } elseif ($this->start_date === "" && $this->end_date === "" && $this->status !== "Select") {
-            if ($this->status === "active") {
-                $this->colleagues = User::where('role', 'employee')->where('status', 'active')
-                    ->get();
-                // dd('active status with no dates');
-            } elseif ($this->status === "terminated") {
-                $this->colleagues = User::where('role', 'employee')->where('status', 'terminated')
-                    ->get();
-                // dd('terminated status with no dates');
-            } else {
-                dd('status error with no dates');
-            }
-        } elseif ($this->start_date === "" && $this->end_date !== "" && $this->status === "Select") {
-            $this->colleagues = User::where('role', 'employee')->whereIn('status',  ['active', 'terminated'])
-                ->where('created_at', '<=', $this->end_date. ' 23:59:59')
-                ->get();
-            // dd('end date only with no status');
-        } elseif ($this->start_date !== "" && $this->end_date === "" && $this->status === "Select") {
-            $this->colleagues = User::where('role', 'employee')->whereIn('status',  ['active', 'terminated'])
-                ->where('created_at', '>=', $this->start_date)
-                ->get();
-            // dd('start date only with no status');
-        } else {
-            dd('no data');
+        // Validate date range
+        if ($this->start_date && $this->end_date && $this->start_date > $this->end_date) {
+            $this->errorMsg = 'Start date cannot be greater than end date.';
+            return;
         }
-        // dd($this->colleagues);
+
+        $query = User::query()->where('role', 'employee');
+        // dd($query->toSql());
+        // Status filter
+        if ($this->status !== "Select") {
+            $query->where('status', $this->status);
+        } else {
+            $query->whereIn('status', ['active', 'terminated']);
+        }
+
+        // Date filters
+        if ($this->start_date && $this->end_date) {
+            $query->whereBetween('created_at', [
+                $this->start_date,
+                $this->end_date . ' 23:59:59'
+            ]);
+        } elseif ($this->start_date) {
+            $query->where('created_at', '>=', $this->start_date);
+        } elseif ($this->end_date) {
+            $query->where('created_at', '<=', $this->end_date . ' 23:59:59');
+        }
+
+        $this->colleagues = $query->get();
+
+        if ($this->colleagues->isEmpty()) {
+            $this->errorMsg = 'No data found. Please adjust your filters.';
+        } else {
+            $this->success($this->colleagues->count());
+        }
 
         $this->resetFilters();
+    }
+    public function success($number)
+    {
+        $this->successMsg = 'Colleagues filtered successfully. We found ' . $number . ' colleagues.';
+    }
+    public function error($message)
+    {
+        $this->errorMsg = $message;
     }
     public function resetFilters()
     {
