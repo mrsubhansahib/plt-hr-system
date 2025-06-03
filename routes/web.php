@@ -223,15 +223,11 @@ Route::middleware('auth')->group(function () {
     });
     Route::group(['prefix' => 'reports'], function () {
         Route::get('/colleagues', function () {
-            $users = User::where('role', 'employee')
-                ->where('status', 'active')
-                ->with('jobs')
-                ->get();
-            foreach ($users as $user) {
-                $user->mainJob = $user->jobs->firstWhere('main_job', 'yes');
-            }
-            return view('pages.reports.colleagues', compact('users'));
+            return view('pages.reports.colleagues');
         })->name('reports.colleagues');
+        Route::get('/colleague-terms', function () {
+            return view('pages.reports.colleagues-terms');
+        })->name('reports.colleague-terms');
     });
 });
 
