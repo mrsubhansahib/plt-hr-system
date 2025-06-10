@@ -11,8 +11,11 @@
                                 <label for="colleagueTerm" class="form-label">Colleague Term</label>
                                 <select class="form-select" wire:model="colleagueTerm" id="colleagueTerm">
                                     <option selected disabled>Select</option>
-                                    <option value="Temporary">Temporary</option>
+                                    <option value="Casual">Casual</option>
                                     <option value="Fixed Term">Fixed Term</option>
+                                    <option value="Permanent">Permanent</option>
+                                    <option value="Permanent Variable">Permanent Variable</option>
+                                    <option value="Temporary">Temporary</option>
                                 </select>
                             </div>
                             <div class="col-md-1 mt-4  pt-1">
