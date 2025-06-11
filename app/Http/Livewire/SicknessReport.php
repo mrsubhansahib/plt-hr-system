@@ -16,39 +16,46 @@ class SicknessReport extends Component
     public function filterColleagues()
     {
         $this->successMsg = $this->errorMsg = '';
-
-        // Validate date range
+        $this->colleagues = []; // Reset colleagues collection
         if ($this->start_date && $this->end_date && $this->start_date > $this->end_date) {
             $this->errorMsg = 'Start date cannot be greater than end date.';
             return;
         }
 
         $query = Sickness::query();
-        // dd($query->toSql());
-        // Status filter
 
-
-        // Date filters
         if ($this->start_date && $this->end_date) {
-            $query->where('date_from', '>=', $this->start_date)
-                ->where('date_to', '<=', $this->end_date . ' 23:59:59');
+            $query->whereBetween('date_from', [
+                $this->start_date,
+                $this->end_date . ' 23:59:59'
+            ]);
         } elseif ($this->start_date) {
             $query->where('date_from', '>=', $this->start_date);
         } elseif ($this->end_date) {
-            $query->where('date_to', '<=', $this->end_date . ' 23:59:59');
+            $query->where('date_from', '<=', $this->end_date . ' 23:59:59');
         }
 
         $sicknesses = $query->latest()->with('user')->get();
-        $this->colleagues = $sicknesses->map->user->filter()->unique('id')->values();
-        dd($this->colleagues);
+
+        // Group by user ID, filter to users with 3+ sicknesses
+        $userSicknessCounts = $sicknesses->groupBy('user_id')->filter(function ($group) {
+            return $group->count() >= 3;
+        });
+
+        // Extract users
+        $this->colleagues = $userSicknessCounts->map(function ($sicknessGroup) {
+            return $sicknessGroup->first()->user;
+        })->filter()->unique('id')->values();
+
         if ($this->colleagues->isEmpty()) {
-            $this->errorMsg = 'No data found. Please adjust your filters.';
+            $this->errorMsg = 'No colleagues found with 3 or more sickness records.';
         } else {
             $this->success($this->colleagues->count());
         }
 
         $this->resetFilters();
     }
+
     public function success($number)
     {
         $this->successMsg = 'Colleagues filtered successfully. We found ' . $number . ' colleagues.';

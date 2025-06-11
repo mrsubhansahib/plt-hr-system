@@ -17,6 +17,7 @@ class SearchColleagues extends Component
     public function filterColleagues()
     {
         $this->successMsg = $this->errorMsg = '';
+        $this->colleagues = []; // Reset colleagues collection
 
         // Validate date range
         if ($this->start_date && $this->end_date && $this->start_date > $this->end_date) {

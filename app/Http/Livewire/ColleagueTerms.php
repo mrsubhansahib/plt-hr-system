@@ -15,6 +15,7 @@ class ColleagueTerms extends Component
     public function filterColleagues()
     {
         $this->successMsg = $this->errorMsg = '';
+        $this->colleagues = []; // Reset colleagues collection
         $query = Job::query();
 
         if ($this->colleagueTerm !== "Select") {

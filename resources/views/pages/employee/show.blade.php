@@ -54,7 +54,8 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="dob">DOB</label>
-                                <input type="text" class="form-control mt-2" id="dob" value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') }}"
+                                <input type="text" class="form-control mt-2" id="dob"
+                                    value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') }}"
                                     disabled>
                             </div>
                         </div>
@@ -404,9 +405,12 @@
                                                 {{-- <td>{{ $sickness->user->first_name }}</td>
                                                 <td>{{ $sickness->user->surname }}</td> --}}
                                                 <td>{{ $sickness->reason_for_absence }}</td>
-                                                <td>{{ $sickness->date_from }}</td>
-                                                {{-- <td>{{ $sickness->date_to }}</td> --}}
-                                                <td>
+
+                                                <td>{{ $sickness->date_from ? \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') : '' }}
+                                                </td>
+                                                <td>{{ $sickness->date_to ? \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') : '' }}
+                                                </td>
+                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
                                                             id="dropdownMenuButton-{{ $sickness->id }}"
@@ -1093,8 +1097,10 @@
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Casual Holiday Pay</label>
                                         <select class="form-control form-select" name="casual_holiday_pay">
-                                            <option value="no" {{ $user->casual_holiday_pay == 'no' ? 'selected' : '' }}>No</option>
-                                            <option value="yes" {{ $user->casual_holiday_pay == 'yes' ? 'selected' : '' }}>Yes</option>
+                                            <option value="no"
+                                                {{ $user->casual_holiday_pay == 'no' ? 'selected' : '' }}>No</option>
+                                            <option value="yes"
+                                                {{ $user->casual_holiday_pay == 'yes' ? 'selected' : '' }}>Yes</option>
                                         </select>
                                     </div>
 
@@ -1181,9 +1187,10 @@
             }
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 // Get tab from sessionStorage or use default
-                let activeTab = sessionStorage.getItem("activeTab") || "{{ session('active_tab', 'default-tab-id') }}";
+                let activeTab = sessionStorage.getItem("activeTab") ||
+                "{{ session('active_tab', 'default-tab-id') }}";
                 if (activeTab) {
                     let tabButton = document.getElementById(activeTab);
                     if (tabButton) {
@@ -1192,15 +1199,15 @@
                 }
                 // Save clicked tab in sessionStorage
                 document.querySelectorAll(".nav-link").forEach(tab => {
-                    tab.addEventListener("click", function () {
+                    tab.addEventListener("click", function() {
                         sessionStorage.setItem("activeTab", this.id);
                     });
                 });
                 // Reset on full reload
-                window.addEventListener("beforeunload", function () {
+                window.addEventListener("beforeunload", function() {
                     sessionStorage.removeItem("activeTab");
                 });
             });
-        </script>            
+        </script>
     @endpush
 @endsection

@@ -14,6 +14,7 @@ class RetirementReport extends Component
 
     public function render()
     {
+        $this->successMsg = $this->errorMsg = '';
         // Targeting users aged between 66 years 11 months and 67 years
         $minDob = Carbon::now()->subYears(67)->startOfDay();              // 1958-06-10
         $maxDob = Carbon::now()->subYears(66)->subMonths(11)->endOfDay(); // 1958-07-10
