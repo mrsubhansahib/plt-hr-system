@@ -14,7 +14,7 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        $templates = Template::orderBy('created_at', 'desc')->get();
+        $templates = Template::latest()->get();
         return view('pages.template.list', compact('templates'));
     }
 

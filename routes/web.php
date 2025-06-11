@@ -231,6 +231,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/retirement', function () {
             return view('pages.reports.retirement-report');
         })->name('reports.retirement');
+        Route::get('/sickness', function () {
+            return view('pages.reports.sickness-report');
+        })->name('reports.sickness');
     });
 });
 
