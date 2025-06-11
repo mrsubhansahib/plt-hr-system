@@ -583,6 +583,10 @@
                             <a href="{{ url('/reports/sickness') }}"
                                 class="nav-link {{ active_class(['reports/sickness']) }}">Sickness Report</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/emergency-info') }}"
+                                class="nav-link {{ active_class(['reports/emergency-info']) }}">Emergency Info</a>
+                        </li>
 
                     </ul>
                 </div>

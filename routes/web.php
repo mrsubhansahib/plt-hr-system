@@ -234,6 +234,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/sickness', function () {
             return view('pages.reports.sickness-report');
         })->name('reports.sickness');
+         Route::get('/emergency-info', function () {
+            return view('pages.reports.emergency-info');
+        })->name('reports.emergency-info');
+        //
     });
 });
 
