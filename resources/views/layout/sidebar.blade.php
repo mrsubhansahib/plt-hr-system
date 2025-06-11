@@ -575,7 +575,11 @@
                             <a href="{{ url('/reports/colleague-terms') }}"
                                 class="nav-link {{ active_class(['reports/colleague-terms']) }}">Colleague Terms</a>
                         </li>
-                    
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/retirement') }}"
+                                class="nav-link {{ active_class(['reports/retirement']) }}">Retirement Report</a>
+                        </li>
+
                     </ul>
                 </div>
             </li>

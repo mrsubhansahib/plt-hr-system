@@ -45,7 +45,7 @@ class SearchColleagues extends Component
             $query->where('created_at', '<=', $this->end_date . ' 23:59:59');
         }
 
-        $this->colleagues = $query->get();
+        $this->colleagues = $query->latest()->get();
 
         if ($this->colleagues->isEmpty()) {
             $this->errorMsg = 'No data found. Please adjust your filters.';

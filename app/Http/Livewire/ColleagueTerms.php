@@ -23,7 +23,7 @@ class ColleagueTerms extends Component
             $query->whereIn('contract_type', ['Temporary', 'Fixed Term','Permanent','Permanent Variable','Casual']);
         }
         
-        $query->where('status', 'active');
+        $query->where('status', 'active')->latest();
         // Get users related to jobs
         $jobs = $query->with('user')->get();
         $this->colleagues = $jobs->map->user->filter()->unique('id')->values();

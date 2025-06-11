@@ -228,6 +228,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/colleague-terms', function () {
             return view('pages.reports.colleagues-terms');
         })->name('reports.colleague-terms');
+        Route::get('/retirement', function () {
+            return view('pages.reports.retirement-report');
+        })->name('reports.retirement');
     });
 });
 
