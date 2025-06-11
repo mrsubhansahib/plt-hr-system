@@ -2,15 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\User;
-use Illuminate\Contracts\Session\Session;
+use App\Job;
+use App\Sickness;
 use Livewire\Component;
 
-class SearchColleagues extends Component
+class SicknessReport extends Component
 {
     public $successMsg;
     public $errorMsg;
-    public $status;
     public $start_date = '';
     public $end_date = '';
     public $colleagues = [];
@@ -24,29 +23,24 @@ class SearchColleagues extends Component
             return;
         }
 
-        $query = User::query()->where('role', 'employee');
+        $query = Sickness::query();
         // dd($query->toSql());
         // Status filter
-        if ($this->status !== "Select") {
-            $query->where('status', $this->status);
-        } else {
-            $query->whereIn('status', ['active', 'terminated']);
-        }
+
 
         // Date filters
         if ($this->start_date && $this->end_date) {
-            $query->whereBetween('created_at', [
-                $this->start_date,
-                $this->end_date . ' 23:59:59'
-            ]);
+            $query->where('date_from', '>=', $this->start_date)
+                ->where('date_to', '<=', $this->end_date . ' 23:59:59');
         } elseif ($this->start_date) {
-            $query->where('created_at', '>=', $this->start_date);
+            $query->where('date_from', '>=', $this->start_date);
         } elseif ($this->end_date) {
-            $query->where('created_at', '<=', $this->end_date . ' 23:59:59');
+            $query->where('date_to', '<=', $this->end_date . ' 23:59:59');
         }
 
-        $this->colleagues = $query->latest()->get();
-
+        $sicknesses = $query->latest()->with('user')->get();
+        $this->colleagues = $sicknesses->map->user->filter()->unique('id')->values();
+        dd($this->colleagues);
         if ($this->colleagues->isEmpty()) {
             $this->errorMsg = 'No data found. Please adjust your filters.';
         } else {
@@ -69,15 +63,8 @@ class SearchColleagues extends Component
         $this->start_date = ''; // Reset start date
         $this->end_date = ''; // Reset end date
     }
-    public function mount()
-    {
-        // Initialize default values for the properties
-        $this->status = 'Select'; // Default status
-        // $this->start_date = now()->subMonth()->toDateString(); // Default start date (1 month ago)
-        // $this->end_date = now()->toDateString(); // Default end date (today)
-    }
     public function render()
     {
-        return view('livewire.search-colleagues');
+        return view('livewire.sickness-report');
     }
 }

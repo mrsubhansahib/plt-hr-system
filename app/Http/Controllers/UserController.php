@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::whereIn('role', ['admin', 'manager'])
-            ->where('status', 'active')
+            ->where('status', 'active')->latest()
             ->get();
         // dd($users);
         return view('pages.admin.list', compact('users'));

@@ -54,7 +54,7 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="dob">DOB</label>
-                                <input type="text" class="form-control mt-2" id="dob" value="{{ $user->dob }}"
+                                <input type="text" class="form-control mt-2" id="dob" value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') }}"
                                     disabled>
                             </div>
                         </div>

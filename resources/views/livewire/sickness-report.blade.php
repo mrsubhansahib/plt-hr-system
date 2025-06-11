@@ -6,22 +6,19 @@
                 <div class="card-body">
                     <form wire:submit.prevent="filterColleagues">
                         <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-md-3 mb-3">
-                                <label for="colleagueTerm" class="form-label">Colleague Term</label>
-                                <select class="form-select" wire:model="colleagueTerm" id="colleagueTerm">
-                                    <option selected disabled>Select</option>
-                                    <option value="Casual">Casual</option>
-                                    <option value="Fixed Term">Fixed Term</option>
-                                    <option value="Permanent">Permanent</option>
-                                    <option value="Permanent Variable">Permanent Variable</option>
-                                    <option value="Temporary">Temporary</option>
-                                </select>
+                            <div class="col-md-4 mb-3">
+                                <label for="from" class="form-label">From</label>
+                                <input type="date" wire:model="start_date" class="form-control"
+                                    placeholder="Select Date" id="from">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="to" class="form-label">To</label>
+                                <input type="date" wire:model="end_date" class="form-control"
+                                    placeholder="Select Date" id="to">
                             </div>
                             <div class="col-md-1 mt-4  pt-1">
                                 <button class="btn btn-primary">Filter</button>
                             </div>
-                            <div class="col-4"></div>
                         </div>
                     </form>
                 </div>
@@ -41,6 +38,7 @@
         </div>
     @endif
 
+
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
@@ -53,9 +51,8 @@
                                     <th>Surname</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
-                                    <th>Status</th>
                                 </tr>
-
+                               
                             </thead>
                             <tbody>
                                 @if ($colleagues !== [])
@@ -70,13 +67,6 @@
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
                                             </td>
                                             <td>
-                                                @if ($colleague->status === 'active')
-                                                    <span class="badge bg-success">Active</span>
-                                                @else
-                                                    <span class="badge bg-danger">Terminated</span>
-                                                @endif
-
-                                            </td>
                                         </tr>
                                     @endforeach
                                 @endif

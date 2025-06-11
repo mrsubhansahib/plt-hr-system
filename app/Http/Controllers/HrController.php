@@ -47,7 +47,7 @@ class HrController extends Controller
                 ->orWhereNull('casual_holiday_pay')
                 ->orWhereNull('default_cost_center')
                 ->orWhereNull('notes');
-        })->get();
+        })->latest()->get();
 
         return view('pages.hr-list.list', compact('users'));
     }

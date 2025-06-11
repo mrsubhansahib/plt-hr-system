@@ -1,33 +1,5 @@
 <div>
-
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <form wire:submit.prevent="filterColleagues">
-                        <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-md-3 mb-3">
-                                <label for="colleagueTerm" class="form-label">Colleague Term</label>
-                                <select class="form-select" wire:model="colleagueTerm" id="colleagueTerm">
-                                    <option selected disabled>Select</option>
-                                    <option value="Casual">Casual</option>
-                                    <option value="Fixed Term">Fixed Term</option>
-                                    <option value="Permanent">Permanent</option>
-                                    <option value="Permanent Variable">Permanent Variable</option>
-                                    <option value="Temporary">Temporary</option>
-                                </select>
-                            </div>
-                            <div class="col-md-1 mt-4  pt-1">
-                                <button class="btn btn-primary">Filter</button>
-                            </div>
-                            <div class="col-4"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
     @if ($errorMsg)
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>{{ $errorMsg }}</strong>
@@ -51,9 +23,9 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
+                                    <th>Days Left for Retirement</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
-                                    <th>Status</th>
                                 </tr>
 
                             </thead>
@@ -64,19 +36,29 @@
                                             <td>{{ $colleague->first_name }}</td>
                                             <td>{{ $colleague->surname }}</td>
                                             <td>
+                                                @php
+                                                    $retirementDate = \Carbon\Carbon::parse($colleague->dob)->addYears(
+                                                        67,
+                                                    );
+                                                    $daysLeft = now()->diffInDays($retirementDate, false); // false = allow negative values
+                                                @endphp
+
+                                                @if ($daysLeft > 0)
+                                                    {{ $daysLeft }} days left
+                                                @elseif ($daysLeft === 0)
+                                                    Retiring today
+                                                @else
+                                                    Retired {{ abs($daysLeft) }} days ago
+                                                @endif
+                                            </td>
+                                            <td>
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
                                             </td>
                                             <td>
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
                                             </td>
-                                            <td>
-                                                @if ($colleague->status === 'active')
-                                                    <span class="badge bg-success">Active</span>
-                                                @else
-                                                    <span class="badge bg-danger">Terminated</span>
-                                                @endif
 
-                                            </td>
+
                                         </tr>
                                     @endforeach
                                 @endif

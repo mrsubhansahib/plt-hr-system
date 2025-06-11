@@ -15,7 +15,7 @@ class LatenesController extends Controller
     {
         $latenesses = lateness::with('user')->whereHas('user', function ($e) {
             $e->where('role', 'employee')->where('status', 'active');
-        })->get();
+        })->latest()->get();
         return view("pages.lateness.list", compact("latenesses"));
     }
 

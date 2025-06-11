@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class ColleagueTerms extends Component
 {
-            public $successMsg;
-            public $errorMsg;
+    public $successMsg;
+    public $errorMsg;
     public $colleagueTerm;
     public $colleagues = [];
     public function filterColleagues()
@@ -20,9 +20,10 @@ class ColleagueTerms extends Component
         if ($this->colleagueTerm !== "Select") {
             $query->where('contract_type', $this->colleagueTerm);
         } else {
-            $query->whereIn('contract_type', ['Temporary', 'Fixed Term']);
+            $query->whereIn('contract_type', ['Temporary', 'Fixed Term','Permanent','Permanent Variable','Casual']);
         }
-
+        
+        $query->where('status', 'active')->latest();
         // Get users related to jobs
         $jobs = $query->with('user')->get();
         $this->colleagues = $jobs->map->user->filter()->unique('id')->values();
@@ -37,7 +38,7 @@ class ColleagueTerms extends Component
     }
     public function success($number)
     {
-        $this->successMsg= 'Colleagues filtered successfully. We found ' . $number . ' colleagues.';
+        $this->successMsg = 'Colleagues filtered successfully. We found ' . $number . ' colleagues.';
     }
     public function error($message)
     {

@@ -22,6 +22,7 @@ class EmployeeController extends Controller
         $users = User::where('role', 'employee')
             ->where('status', 'active')
             ->with('jobs')
+            ->latest()
             ->get();
         foreach ($users as $user) {
             $user->mainJob = $user->jobs->firstWhere('main_job', 'yes');
@@ -34,6 +35,7 @@ class EmployeeController extends Controller
     {
         $users = User::where('role', 'employee')
             ->where('status', 'pending')
+            ->latest()
             ->with('jobs')
             ->get();
         return view('pages.employee.temp-list', compact('users'));
@@ -68,7 +70,7 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+   
         $validatedData = $request->validate([
             'first_name' => 'required',
             'surname' => 'required',
@@ -89,6 +91,7 @@ class EmployeeController extends Controller
             'emergency_1_ph_no' => 'required',
             'emergency_1_relation' => 'required',
         ]);
+
         $user = User::create($request->only([
             'first_name',
             'middle_name',
@@ -120,6 +123,9 @@ class EmployeeController extends Controller
             'emergency_2_home_ph',
             'emergency_2_relation'
         ]));
+        $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
+
+        // dd($user);
         if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
             $request->validate([
                 'title.*'             => 'required',
@@ -268,6 +274,7 @@ class EmployeeController extends Controller
         ]);
         $user = User::find($id);
         $user->update($request->all());
+        $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
         if ($user->status == 'pending') {
             return redirect()->route('show.temp.employees')->with('success', 'Employee edited successfully.');
         }

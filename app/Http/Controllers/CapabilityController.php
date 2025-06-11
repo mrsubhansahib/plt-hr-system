@@ -15,7 +15,7 @@ class CapabilityController extends Controller
     {
         $capabilities = Capability::with('user')->whereHas('user', function ($e) {
             $e->where('role', 'employee')->where('status','active');
-        })->get();
+        })->latest()->get();
         return view('pages.capability.list', compact('capabilities'));
     }
 
