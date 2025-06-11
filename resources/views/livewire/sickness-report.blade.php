@@ -6,6 +6,7 @@
                 <div class="card-body">
                     <form wire:submit.prevent="filterColleagues">
                         <div class="row">
+                            <div class="col-md-2"></div>
                             <div class="col-md-4 mb-3">
                                 <label for="from" class="form-label">From</label>
                                 <input type="date" wire:model="start_date" class="form-control"
@@ -19,6 +20,7 @@
                             <div class="col-md-1 mt-4  pt-1">
                                 <button class="btn btn-primary">Filter</button>
                             </div>
+                            <div class="col-md-1"></div>
                         </div>
                     </form>
                 </div>

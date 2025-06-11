@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Sickness;
 use Illuminate\Http\Request;
 use App\User;
+use Carbon\Carbon;
 
 class SicknessController extends Controller
 {
@@ -37,6 +38,10 @@ class SicknessController extends Controller
         ]);
         // dd($request->all());    
         $Sickness = Sickness::create($request->all());
+        $Sickness->update(['date_from' => Carbon::createFromFormat('d-m-Y', $request->date_from)->format('Y-m-d')]);
+        if ($request->date_to) {
+            $Sickness->update(['date_to' => Carbon::createFromFormat('d-m-Y', $request->date_to)->format('Y-m-d')]);
+        }
         return redirect()->route('show.sicknesses')->with('success', 'Sickness created successfully.');
     }
 
@@ -68,7 +73,10 @@ class SicknessController extends Controller
         ]);
         $sickness = sickness::findOrFail($id);
         $sickness->update($request->all());
-
+        $sickness->update(['date_from' => Carbon::createFromFormat('d-m-Y', $request->date_from)->format('Y-m-d')]);
+        if ($request->date_to) {
+            $sickness->update(['date_to' => Carbon::createFromFormat('d-m-Y', $request->date_to)->format('Y-m-d')]);
+        }
 
         if ($request->form_type == 'tab') {
             session()->flash('active_tab', 'sickness-tab');
@@ -78,7 +86,6 @@ class SicknessController extends Controller
             return redirect()->route('show.sicknesses')
                 ->with('success', 'Sickness edited successfully.');
         }
-
     }
 
 

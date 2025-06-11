@@ -57,8 +57,8 @@
                                         <td>{{ $sickness->user->first_name }}</td>
                                         <td>{{ $sickness->user->surname  }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
-                                        <td>{{ $sickness->date_from }}</td>
-                                        <td>{{ $sickness->date_to }}</td>
+                                        <td>{{ ($sickness->date_from)?\Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') : '' }}</td>
+                                        <td>{{ ($sickness->date_to) ? \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') : '' }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
