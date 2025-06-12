@@ -225,6 +225,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/current-colleagues', function () {
             return view('pages.reports.current-colleagues');
         })->name('reports.current-colleagues');
+        Route::get('/new-colleagues', function () {
+            return view('pages.reports.new-colleagues');
+        })->name('reports.new-colleagues');
         // Route::get('/colleagues', function () {
         //     return view('pages.reports.colleagues');
         // })->name('reports.colleagues');
