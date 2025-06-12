@@ -55,15 +55,15 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Self Certification Form Received</label>
                                 <select class="form-control form-select" name="certification_form_received">
-                                    <option value="yes">yes</option>
-                                    <option selected value="no">no</option>
+                                    <option value="yes">Yes</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Fit Note Received</label>
                                 <select class="form-control form-select" name="fit_note_received">
-                                    <option value="yes">yes</option>
-                                    <option selected value="no">no</option>
+                                    <option value="yes">Yes</option>
+                                    <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
