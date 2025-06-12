@@ -207,11 +207,9 @@
                             </div>
                         </div>
                         <div class="">
-                            <table class="table table-striped detailTable dataTableExample">
+                            <table class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>Job Title</th>
                                         <th>Facility</th>
                                         <th>Number of Hours</th>
@@ -225,8 +223,6 @@
                                 <tbody>
                                     @foreach ($user->jobs as $key => $job)
                                         <tr>
-                                            {{-- <td>{{ $job->user->first_name }}</td>
-                                            <td>{{ $job->user->surname }}</td> --}}
                                             <td>{{ $job->title }}</td>
                                             <td>{{ $job->facility }}</td>
                                             <td>{{ $job->number_of_hours }}</td>
@@ -315,7 +311,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="" class="table table-striped detailTable dataTableExample">
+                            <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
                                         <th>First Name</th>
@@ -362,10 +358,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        <tr>
-                                            <td colspan="5" class="text-center">No disclosure data available.</td>
-                                        </tr>
                                     @endif
                                 </tbody>
                             </table>
@@ -387,14 +379,12 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="" class="table table-striped detailTable dataTableExample">
+                            <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>Reason for Absence</th>
                                         <th>Date From</th>
-                                        {{-- <th>Date To</th> --}}
+                                        <th>Date To</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -402,8 +392,7 @@
                                     @if ($user->sicknesses->isNotEmpty())
                                         @foreach ($user->sicknesses as $key => $sickness)
                                             <tr>
-                                                {{-- <td>{{ $sickness->user->first_name }}</td>
-                                                <td>{{ $sickness->user->surname }}</td> --}}
+
                                                 <td>{{ $sickness->reason_for_absence }}</td>
                                                 <td>{{ $sickness->date_from }}</td>
                                                 <td>{{ $sickness->date_to }}</td>
@@ -432,8 +421,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        {{-- <td colspan="6" class="text-center">No sickness data available</td> --}}
                                     @endif
                                 </tbody>
                             </table>
@@ -454,11 +441,9 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="" class="table table-striped detailTable dataTableExample">
+                            <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>Stage</th>
                                         <th>Date</th>
                                         <th>Outcome</th>
@@ -469,8 +454,6 @@
                                     @if ($user->capabilities->isNotEmpty())
                                         @foreach ($user->capabilities as $key => $capability)
                                             <tr>
-                                                {{-- <td>{{ $capability->user->first_name }}</td>
-                                                <td>{{ $capability->user->surname }}</td> --}}
                                                 <td>{{ $capability->stage }}</td>
                                                 <td>{{ $capability->date }}</td>
                                                 <td>{{ $capability->outcome }}</td>
@@ -483,10 +466,7 @@
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="dropdownMenuButton-{{ $capability->id }}">
-                                                            {{-- <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('detail.capability', $capability->id) }}">View</a>
-                                                            </li> --}}
+
                                                             <li>
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.capability', ['id' => $capability->id, 'form_type' => 'tab']) }}">Edit</a>
@@ -503,8 +483,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        {{-- <p class="text-center">No capability data available</> --}}
                                     @endif
                                 </tbody>
                             </table>
@@ -525,11 +503,9 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="" class="table table-striped detailTable dataTableExample">
+                            <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>Training Title</th>
                                         <th>Course Date</th>
                                         <th>Renewal Date</th>
@@ -540,8 +516,6 @@
                                     @if ($user->trainings->isNotEmpty())
                                         @foreach ($user->trainings as $key => $training)
                                             <tr>
-                                                {{-- <td>{{ $training->user->first_name }}</td>
-                                                <td>{{ $training->user->surname }}</td> --}}
                                                 <td>{{ $training->training_title }}</td>
                                                 <td>{{ $training->course_date }}</td>
                                                 <td>{{ $training->renewal_date }}</td>
@@ -574,8 +548,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        {{-- <td colspan="6" class="text-center">No training data available</td> --}}
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
@@ -596,11 +568,9 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="" class="table table-striped detailTable dataTableExample">
+                            <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>Reason for Disciplinary</th>
                                         <th>Date of Hearing</th>
                                         <th>Action</th>
@@ -610,8 +580,6 @@
                                     @if ($user->disciplinaries->isNotEmpty())
                                         @foreach ($user->disciplinaries as $key => $disciplinary)
                                             <tr>
-                                                {{-- <td>{{ $disciplinary->user->first_name }}</td>
-                                                <td>{{ $disciplinary->user->surname }}</td> --}}
                                                 <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                                 <td>{{ $disciplinary->hearing_date }}</td>
                                                 <td>
@@ -640,8 +608,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        {{-- <td colspan="6" class="text-center">No disciplinary data available</td> --}}
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
@@ -662,11 +628,9 @@
                             </div>
                         </div>
                         <div class="">
-                            <table id="" class="table table-striped detailTable dataTableExample">
+                            <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>Lateness Triggered</th>
                                         <th>Lateness Stage</th>
                                         <th>Action</th>
@@ -676,8 +640,6 @@
                                     @if ($user->latenesses->isNotEmpty())
                                         @foreach ($user->latenesses as $key => $lateness)
                                             <tr>
-                                                {{-- <td>{{ $lateness->user->first_name }}</td>
-                                                <td>{{ $lateness->user->surname }}</td> --}}
                                                 <td>{{ $lateness->lateness_triggered }}</td>
                                                 <td>{{ $lateness->lateness_stage }}</td>
                                                 <td>
@@ -712,8 +674,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        {{-- <td colspan="6" class="text-center">No lateness data available</td> --}}
                                     @endif
                                     <!-- Add your data here -->
                                 </tbody>
@@ -730,11 +690,9 @@
                             </div>
                         </div>
                         <div class="">
-                            <table class="table table-striped detailTable dataTableExample">
+                            <table class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>Admin Name</th>
                                         <th>Note</th>
                                         <th>Module Name</th>
@@ -745,8 +703,6 @@
                                     @if ($user->all_notes->isNotEmpty())
                                         @foreach ($user->all_notes as $note)
                                             <tr>
-                                                {{-- <td>{{ $note->user->first_name }}</td>
-                                                <td>{{ $note->user->surname }}</td> --}}
                                                 <td>{{ $note->admin->first_name . ' ' . $note->admin->surname }}</td>
                                                 <td>{{ $note->notes }}</td>
                                                 <td>
@@ -759,10 +715,6 @@
                                                 <td>{{ $note->created_at->format('d-m-Y') }}</td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        <tr>
-                                            <td colspan="6" class="text-center">No notes available</td>
-                                        </tr>
                                     @endif
                                 </tbody>
                             </table>
@@ -1164,6 +1116,59 @@
     @push('custom-scripts')
         <script>
             $(document).ready(function() {
+                function initDataTables() {
+                    $('.dataTableExampleDetail').each(function() {
+                        const table = $(this);
+
+                        // Destroy existing if already initialized
+                        if ($.fn.DataTable.isDataTable(table)) {
+                            table.DataTable().destroy();
+                        }
+
+                        table.DataTable({
+                            autoWidth: false,
+                            paging: true,
+                            searching: true,
+                            ordering: true,
+                            info: true,
+                            dom: 'Bfrtip', // B = Buttons, f = filter, r = processing, t = table, i = info, p = pagination
+                            buttons: [{
+                                    extend: 'excelHtml5',
+                                    className: 'btn btn-sm btn-outline-success',
+                                    exportOptions: {
+                                        columns: ':visible'
+                                    }
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    className: 'btn btn-sm btn-outline-primary',
+                                    exportOptions: {
+                                        columns: ':visible'
+                                    }
+                                }
+                            ],
+                            initComplete: function() {
+                                let api = this.api();
+                                api.columns.adjust().draw();
+                                table.find('td').css({
+                                    'padding': '5px 0px'
+                                });
+                            }
+                        });
+                    });
+                }
+
+                // Initial load
+                initDataTables();
+
+                // Re-initialize when tab is shown
+                $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function() {
+                    initDataTables();
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
                 // Adjust DataTable columns when tab is shown
                 $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
                     const target = $(e.target).data('bs-target');
@@ -1187,7 +1192,7 @@
             document.addEventListener("DOMContentLoaded", function() {
                 // Get tab from sessionStorage or use default
                 let activeTab = sessionStorage.getItem("activeTab") ||
-                "{{ session('active_tab', 'default-tab-id') }}";
+                    "{{ session('active_tab', 'default-tab-id') }}";
                 if (activeTab) {
                     let tabButton = document.getElementById(activeTab);
                     if (tabButton) {
