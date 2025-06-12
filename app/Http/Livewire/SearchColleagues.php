@@ -29,21 +29,46 @@ class SearchColleagues extends Component
         // dd($query->toSql());
         // Status filter
         if ($this->status !== "Select") {
-            $query->where('status', $this->status);
+            if ($this->status === "active") {
+                $query->where('status', 'active');
+            } elseif ($this->status === "terminated") {
+                $query->where('status', 'terminated');
+            }
         } else {
             $query->whereIn('status', ['active', 'terminated']);
         }
 
         // Date filters
         if ($this->start_date && $this->end_date) {
-            $query->whereBetween('created_at', [
-                $this->start_date,
-                $this->end_date . ' 23:59:59'
-            ]);
+            if ($this->status === "Select") {
+                $query->whereBetween('joined_date', [
+                    $this->start_date,
+                    $this->end_date . ' 23:59:59'
+                ])->orWhereBetween('left_date', [
+                    $this->start_date,
+                    $this->end_date . ' 23:59:59'
+                ]);
+            } elseif ($this->status === "active") {
+                $query->whereBetween('joined_date', [
+                    $this->start_date,
+                    $this->end_date . ' 23:59:59'
+                ])->where('left_date', '>=', $this->end_date . ' 23:59:59');
+            } elseif ($this->status === "terminated") {
+                $query->whereBetween('left_date', [
+                    $this->start_date,
+                    $this->end_date . ' 23:59:59'
+                ])->where('joined_date', '<=', $this->start_date);
+            }
         } elseif ($this->start_date) {
-            $query->where('created_at', '>=', $this->start_date);
+            if($this->status === "Select") {
+                $query->where('joined_date', '>=', $this->start_date)->orWhere('left_date', '>=', $this->start_date);
+            } elseif ($this->status === "active") {
+                $query->where('joined_date', '>=', $this->start_date);
+            } elseif ($this->status === "terminated") {
+                $query->where('left_date', '>=', $this->start_date);
+            }
         } elseif ($this->end_date) {
-            $query->where('created_at', '<=', $this->end_date . ' 23:59:59');
+            $query->where('left_date', '<=', $this->end_date . ' 23:59:59')->orWhere('joined_date', '<=', $this->end_date );
         }
 
         $this->colleagues = $query->latest()->get();

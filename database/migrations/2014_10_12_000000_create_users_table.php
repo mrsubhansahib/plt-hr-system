@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('surname');
+            $table->string('joined_date')->nullable();
+            $table->string('left_date')->nullable();
             $table->string('preferred_name')->nullable();
             $table->string('role')->default('employee'); // Role field
             $table->string('email');

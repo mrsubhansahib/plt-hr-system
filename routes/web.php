@@ -222,9 +222,12 @@ Route::middleware('auth')->group(function () {
         Route::post('update/{id}',   [HrController::class, 'update'])->name('update.hr_list');
     });
     Route::group(['prefix' => 'reports'], function () {
-        Route::get('/colleagues', function () {
-            return view('pages.reports.colleagues');
-        })->name('reports.colleagues');
+        Route::get('/current-colleagues', function () {
+            return view('pages.reports.current-colleagues');
+        })->name('reports.current-colleagues');
+        // Route::get('/colleagues', function () {
+        //     return view('pages.reports.colleagues');
+        // })->name('reports.colleagues');
         Route::get('/colleague-terms', function () {
             return view('pages.reports.colleagues-terms');
         })->name('reports.colleague-terms');

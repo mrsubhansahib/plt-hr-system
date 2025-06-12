@@ -164,7 +164,7 @@ class EmployeeController extends Controller
     {
         session()->put('is_acceptance', true);
         $user = User::find($id);
-        $user->update(['status' => 'active']);
+        $user->update(['status' => 'active', 'joined_date' => now()->format('Y-m-d'),'left_date' => null]);
         session()->forget('is_acceptance');
         return redirect()->route('show.employees')
             ->with('success', 'Employee accepted successfully.');
@@ -284,7 +284,7 @@ class EmployeeController extends Controller
     public function left($id)
     {
         $user = User::findOrFail($id);
-        $user->update(['status' => 'terminated']);
+        $user->update(['status' => 'terminated','left_date' => now()->format('Y-m-d')]);
         $job = Job::where('user_id', $id)
             ->where('status', 'active')
             ->update(['status' => 'terminated', 'termination_date' => now()->format('d-m-Y')]);
@@ -299,7 +299,7 @@ class EmployeeController extends Controller
     public function active_employee($id)
     {
         $user = User::find($id);
-        $user->update(['status' => 'active']);
+        $user->update(['status' => 'active','joined_date' => now()->format('Y-m-d'),'left_date'=>null]);
         return redirect()->route('show.employees')->with('success', 'Employee activated successfully.');
     }
     /**
