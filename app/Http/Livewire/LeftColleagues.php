@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\User;
 use Livewire\Component;
 
-class NewColleagues extends Component
+class LeftColleagues extends Component
 {
     public $successMsg;
     public $errorMsg;
@@ -29,13 +29,10 @@ class NewColleagues extends Component
         $query = User::query()->where('role', 'employee');
         // Date filters
         if ($this->start_date && $this->end_date) {
-            $query->whereBetween('joined_date', [
+            $query->whereBetween('left_date', [
                 $this->start_date,
                 $this->end_date . ' 23:59:59'
-            ])->where(function ($q) {
-                $q->orWhereNull('left_date')
-                    ->orWhere('left_date', '>', $this->end_date);
-            });
+            ])->where('status', 'terminated');
         }
 
 
@@ -64,6 +61,6 @@ class NewColleagues extends Component
     }
     public function render()
     {
-        return view('livewire.new-colleagues');
+        return view('livewire.left-colleagues');
     }
 }
