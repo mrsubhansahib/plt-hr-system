@@ -249,6 +249,9 @@ Route::middleware('auth')->group(function () {
          Route::get('/full-time-equivalent', function () {
             return view('pages.reports.full-time-equivalent');
         })->name('reports.full-time-equivalent');
+         Route::get('/dbs-check', function () {
+            return view('pages.reports.dbs-check');
+        })->name('reports.dbs-check');
         //
     });
 });

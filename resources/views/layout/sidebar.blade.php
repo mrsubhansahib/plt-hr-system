@@ -603,6 +603,10 @@
                             <a href="{{ url('/reports/full-time-equivalent') }}"
                                 class="nav-link {{ active_class(['reports/full-time-equivalent']) }}">Full Time Equivalent</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/dbs-check') }}"
+                                class="nav-link {{ active_class(['reports/dbs-check']) }}">DBS Check</a>
+                        </li>
 
                     </ul>
                 </div>
