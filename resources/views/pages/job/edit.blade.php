@@ -121,7 +121,7 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label" id="terminationLabel">Job Termination Date </label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                    value="{{ $job->termination_date }}" name="termination_date" />
+                                    value="{{ ($job->termination_date) ? \Carbon\Carbon::parse($job->termination_date)->format('d-m-Y') : '' }}" name="termination_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>

@@ -599,6 +599,10 @@
                             <a href="{{ url('/reports/emergency-info') }}"
                                 class="nav-link {{ active_class(['reports/emergency-info']) }}">Emergency Info</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/full-time-equivalent') }}"
+                                class="nav-link {{ active_class(['reports/full-time-equivalent']) }}">Full Time Equivalent</a>
+                        </li>
 
                     </ul>
                 </div>

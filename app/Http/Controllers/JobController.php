@@ -21,7 +21,7 @@ class JobController extends Controller
             ->whereHas('user', function ($e) {
                 $e->where('role', 'employee')->where('status', 'active');
             })
-            ->whereIn('status', ['active', 'terminated'])
+            ->whereIn('status', ['active', 'terminated'])->latest()
             ->get();
         return view('pages.job.list', compact('jobs'));
     }
@@ -58,8 +58,13 @@ class JobController extends Controller
         }else{
             $request['status'] = 'active';
         }
-        Job::create($jobData);
-
+        $job = Job::create($jobData);
+        if (!empty($request->termination_date)) {
+            $request['termination_date'] = Carbon::createFromFormat('d-m-Y', $request->termination_date)->format('Y-m-d');
+        } else {
+            $request['termination_date'] = null;
+        }
+        $job->update(['termination_date' => $request['termination_date']]);
         return redirect()->route('show.jobs')->with('success', 'Job created successfully.');
     }
     public function edit(Request $request, $id)
@@ -95,6 +100,9 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
         $jobData = $request->all();
         $job->update($jobData);
+        if (!empty($request->termination_date)) {
+            $job->update(['termination_date' => Carbon::createFromFormat('d-m-Y', $request->termination_date)->format('Y-m-d')]);
+        }
 
         if ($request->form_type == "tab") {
             return redirect()->route('detail.employee', $job->user_id)

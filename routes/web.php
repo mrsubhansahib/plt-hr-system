@@ -246,6 +246,9 @@ Route::middleware('auth')->group(function () {
          Route::get('/emergency-info', function () {
             return view('pages.reports.emergency-info');
         })->name('reports.emergency-info');
+         Route::get('/full-time-equivalent', function () {
+            return view('pages.reports.full-time-equivalent');
+        })->name('reports.full-time-equivalent');
         //
     });
 });
