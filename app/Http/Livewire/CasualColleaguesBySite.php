@@ -39,7 +39,7 @@ class CasualColleaguesBySite extends Component
     }
     public function success($number)
     {
-        $this->successMsg = 'Colleagues filtered successfully. We found ' . $number . ' colleagues.';
+        $this->successMsg = 'We found ' . $number . ' colleagues at ' . $this->nowFacility . '.';
     }
     public function error($message)
     {
