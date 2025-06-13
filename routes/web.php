@@ -234,6 +234,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/casual-colleagues-by-site', function () {
             return view('pages.reports.casual-colleagues-by-site');
         })->name('reports.casual-colleagues-by-site');
+        Route::get('/hours-by-site', function () {
+            return view('pages.reports.hours-by-site');
+        })->name('reports.hours-by-site');
         // Route::get('/colleagues', function () {
         //     return view('pages.reports.colleagues');
         // })->name('reports.colleagues');

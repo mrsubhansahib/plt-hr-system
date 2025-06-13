@@ -583,6 +583,10 @@
                             <a href="{{ url('/reports/casual-colleagues-by-site') }}"
                                 class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual Colleagues by Site</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/hours-by-site') }}"
+                                    class="nav-link {{ active_class(['reports/hours-by-site']) }}">Hours by Site</a>
+                        </li>
                         {{-- <li class="nav-item">
                             <a href="{{ url('/reports/colleagues') }}"
                                 class="nav-link {{ active_class(['reports/colleagues']) }}">Colleagues</a>
