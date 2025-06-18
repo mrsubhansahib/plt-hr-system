@@ -37,16 +37,18 @@ class FullTimeEquivalent extends Component
             })
             ->latest()
             ->get();
-
-        if ($this->colleagues->isEmpty()) {
-            $this->error('No active employees with active jobs found.');
-        } else {
-            foreach ($this->colleagues as $colleague) {
-                foreach ($colleague->jobs as $job) {
-                    $this->total_hours += $job->number_of_hours;
+            if ($this->colleagues->isEmpty()) {
+                $this->error('No active employees with active jobs found.');
+            } else {
+                foreach ($this->colleagues as $colleague) {
+                    foreach ($colleague->jobs as $job) {
+                        if ($job->status === 'active') {
+                            // Only count hours for active jobs
+                            $this->total_hours += $job->number_of_hours;
+                        }
+                    }
                 }
-            }
-            $this->success();
+                $this->success();
         }
 
         return view('livewire.full-time-equivalent');

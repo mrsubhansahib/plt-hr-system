@@ -36,8 +36,10 @@
                                             <td>
                                                 @php
                                                             $hours = 0;
-
-                                                    foreach ($colleague->jobs as $job) {
+                                                            $jobs = \App\Job::where('user_id', $colleague->id)
+                                                                ->where('status', 'active')
+                                                                ->get();
+                                                    foreach ($jobs as $job) {
                                                         if ($job->status === 'active') {
                                                             $hours += $job->number_of_hours;
                                                         }else {
