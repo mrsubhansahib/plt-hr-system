@@ -13,7 +13,7 @@ class EmployeeController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-  
+     
      * Display a listing of the resource.
      * @return \Illuminate\Contracts\View\View
      */
@@ -70,7 +70,7 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-   
+
         $validatedData = $request->validate([
             'first_name' => 'required',
             'surname' => 'required',
@@ -138,14 +138,13 @@ class EmployeeController extends Controller
                 'dbs_required.*'      => 'required',
             ]);
             foreach ($request->title as $index => $title) {
-                Job::create([
+                $job =  Job::create([
                     'user_id' => $user->id,
                     'title' => $title,
                     'main_job' => $request->main_job[$index] ?? 'no',
                     'facility' => $request->facility[$index],
                     'cost_center' => $request->cost_center[$index] ?? null,
-                    'start_date' => $request->start_date[$index],
-                    'termination_date' => $request->termination_date[$index] ?? null,
+                    'start_date' => ($request->start_date[$index])? \Carbon\Carbon::createFromFormat('d-m-Y', $request->start_date[$index])->format('Y-m-d') : null,
                     'rate_of_pay' => $request->rate_of_pay[$index],
                     'pay_frequency' => $request->pay_frequency[$index],
                     'number_of_hours' => $request->number_of_hours[$index],
@@ -155,6 +154,12 @@ class EmployeeController extends Controller
                     'dbs_required' => $request->dbs_required[$index],
                     'notes' => $request->notes[$index] ?? null,
                 ]);
+                if (!empty($request->termination_date[$index])) {
+                    $job->update(['termination_date' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->termination_date[$index])->format('Y-m-d')]);
+                } else {
+                    $job->update(['termination_date' => null]);
+                }
+
             }
         }
         return redirect()->route('show.temp.employees')
@@ -164,7 +169,7 @@ class EmployeeController extends Controller
     {
         session()->put('is_acceptance', true);
         $user = User::find($id);
-        $user->update(['status' => 'active', 'joined_date' => now()->format('Y-m-d'),'left_date' => null]);
+        $user->update(['status' => 'active', 'joined_date' => now()->format('Y-m-d'), 'left_date' => null]);
         session()->forget('is_acceptance');
         return redirect()->route('show.employees')
             ->with('success', 'Employee accepted successfully.');
@@ -284,7 +289,7 @@ class EmployeeController extends Controller
     public function left($id)
     {
         $user = User::findOrFail($id);
-        $user->update(['status' => 'terminated','left_date' => now()->format('Y-m-d')]);
+        $user->update(['status' => 'terminated', 'left_date' => now()->format('Y-m-d')]);
         $job = Job::where('user_id', $id)
             ->where('status', 'active')
             ->update(['status' => 'terminated', 'termination_date' => now()->format('d-m-Y')]);
@@ -299,7 +304,7 @@ class EmployeeController extends Controller
     public function active_employee($id)
     {
         $user = User::find($id);
-        $user->update(['status' => 'active','joined_date' => now()->format('Y-m-d'),'left_date'=>null]);
+        $user->update(['status' => 'active', 'joined_date' => now()->format('Y-m-d'), 'left_date' => null]);
         return redirect()->route('show.employees')->with('success', 'Employee activated successfully.');
     }
     /**

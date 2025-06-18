@@ -8,7 +8,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Reports</a></li>
-            <li class="breadcrumb-item active" aria-current="page">New Colleagues</li>
+            <li class="breadcrumb-item active" aria-current="page">New Colleagues Each Month</li>
         </ol>
     </nav>
     @livewire('new-colleagues')

@@ -37,6 +37,31 @@
         .select2-container--default .select2-selection--single .select2-selection__clear {
             display: none;
         }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #printSection,
+            #printSection * {
+                visibility: visible;
+            }
+
+            #printSection {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                /* Ensures full width */
+                page-break-before: always;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 1in;
+        }
     </style>
 @endsection
 
@@ -46,6 +71,21 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @livewireScripts
+    <script>
+        function printDiv(divId) {
+            const printContents = document.getElementById(divId).innerHTML;
+            const originalContents = document.body.innerHTML;
+
+            // Replace body content with the section to print
+            document.body.innerHTML = printContents;
+
+            window.print(); // Trigger the print dialog
+
+            // Restore original page content
+            document.body.innerHTML = originalContents;
+            location.reload(); // Optional: reload to rebind JS/CSS
+        }
+    </script>
     <script>
         document.addEventListener('livewire:load', function() {
             function initSelect2Sync() {

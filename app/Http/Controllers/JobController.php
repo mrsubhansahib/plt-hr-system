@@ -13,7 +13,7 @@ class JobController extends Controller
     public function index()
     {
         Job::whereNotNull('termination_date')
-            ->where('termination_date', '<', Carbon::today())
+            ->where('termination_date', '<', Carbon::createFromFormat('Y-m-d', now()->format('Y-m-d')))
             ->where('status', 'active')
             ->update(['status' => 'terminated']);
 

@@ -573,11 +573,11 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/new-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">New Colleagues</a>
+                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">New Colleagues each month</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/left-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Left Colleagues</a>
+                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers each month</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/casual-colleagues-by-site') }}"
@@ -585,7 +585,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/hours-by-site') }}"
-                                    class="nav-link {{ active_class(['reports/hours-by-site']) }}">Hours by Site</a>
+                                    class="nav-link {{ active_class(['reports/hours-by-site']) }}">Current Contracted Hours</a>
                         </li>
                         {{-- <li class="nav-item">
                             <a href="{{ url('/reports/colleagues') }}"
@@ -593,7 +593,7 @@
                         </li> --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/colleague-terms') }}"
-                                class="nav-link {{ active_class(['reports/colleague-terms']) }}">Colleague Terms</a>
+                                class="nav-link {{ active_class(['reports/colleague-terms']) }}">Temp/Fix Term Colleague</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/retirement') }}"

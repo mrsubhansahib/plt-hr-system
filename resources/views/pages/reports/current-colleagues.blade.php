@@ -11,7 +11,7 @@
             <li class="breadcrumb-item active" aria-current="page">Current Colleagues</li>
         </ol>
     </nav>
-    @livewire('new-colleagues')
+    @livewire('current-colleagues')
 @endsection
 
 @push('custom-scripts')

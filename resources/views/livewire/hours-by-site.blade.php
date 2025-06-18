@@ -20,7 +20,6 @@
                                         Centre</option>
                                     <option value="Inside Spa">Inside Spa</option>
                                     <option value="Good Life">Good Life</option>
-                                    <option value="All Facilities">All Facilities</option>
                                 </select>
                             </div>
                             <div class="col-md-1 mt-4  pt-1">

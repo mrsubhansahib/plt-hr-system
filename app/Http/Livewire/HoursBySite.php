@@ -22,12 +22,12 @@ class HoursBySite extends Component
         if ($this->facility !== "Select") {
             $this->nowFacility = $this->facility; // Store the selected facility
             $query->where('facility', $this->facility)->where('status', 'active')->latest();
-        } else {
+        }else {
             $this->error('Please select a facility to filter by.');
             return; // Exit if no facility is selected
         }
 
-        $jobs = $query->with('user')->get();
+        $jobs = $query->whereHas('user',function($q){$q->where('status', 'active');})->get();
         $this->colleagues = $jobs->map->user->filter()->unique('id')->values();
         if ($this->colleagues->isEmpty()) {
             $this->error('No data found. Please adjust your filters.');
