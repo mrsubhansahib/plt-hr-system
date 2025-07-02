@@ -23,6 +23,8 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
                                     <th>Actions</th>
@@ -32,6 +34,14 @@
                                             placeholder="Search First Name"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employement Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Job Title"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -44,6 +54,8 @@
                                     <tr>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
+                                        <td>{{ $user->commencement_date }}</td>
+                                        <td>{{ $user->contracted_from_date }}</td>
                                         <td>
                                             {{ $user->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
                                         </td>

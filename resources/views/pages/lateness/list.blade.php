@@ -31,16 +31,26 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>Lateness Triggered</th>
                                     <th>Lateness Stage</th>
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search #">
+                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Name"></th>
+                                            placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employement Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Lateness Triggered"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -53,6 +63,8 @@
                                     <tr>
                                         <td>{{ $lateness->user->first_name }}</td>
                                         <td>{{ $lateness->user->surname }}</td>
+                                        <td>{{ $lateness->user->commencement_date }}</td>
+                                        <td>{{ $lateness->user->contracted_from_date }}</td>
                                         <td>{{ $lateness->lateness_triggered }}</td>
                                         <td>{{ $lateness->lateness_stage }}</td>
                                         <td>

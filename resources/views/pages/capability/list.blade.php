@@ -31,6 +31,8 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>Stage</th>
                                     <th>Date</th>
                                     <th>Outcome</th>
@@ -42,6 +44,14 @@
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employement Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Stage"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -56,6 +66,8 @@
                                     <tr>
                                         <td>{{ $capability->user->first_name }}</td>
                                         <td>{{ $capability->user->surname }}</td>
+                                        <td>{{ $capability->user->commencement_date }}</td>                                    
+                                        <td>{{ $capability->user->contracted_from_date }}</td>
                                         <td>{{ $capability->stage }}</td>
                                         <td>{{ $capability->date }}</td>
                                         <td>{{ $capability->outcome }}</td>

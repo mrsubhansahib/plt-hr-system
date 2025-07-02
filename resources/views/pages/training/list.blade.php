@@ -31,6 +31,8 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>Training Title</th>
                                     <th>Course Date</th>
                                     <th>Renewal Date</th>
@@ -42,6 +44,14 @@
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employement Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Title"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -56,6 +66,8 @@
                                     <tr>
                                         <td>{{ $training->user->first_name }}</td>
                                         <td>{{ $training->user->surname }}</td>
+                                        <td>{{ $training->user->commencement_date }}</td>
+                                        <td>{{ $training->user->contracted_from_date }}</td>
                                         <td>{{ $training->training_title }}</td>
                                         <td>{{ $training->course_date }}</td>
                                         <td>{{ $training->renewal_date }}</td>

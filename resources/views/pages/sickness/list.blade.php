@@ -31,6 +31,8 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>SurName</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>Reason for Absence</th>
                                     <th>Date From</th>
                                     {{-- <th>Date To</th> --}}
@@ -42,6 +44,14 @@
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employement Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Reason for Absence"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -56,6 +66,10 @@
                                     <tr>
                                         <td>{{ $sickness->user->first_name }}</td>
                                         <td>{{ $sickness->user->surname  }}</td>
+                                        <td>
+                                            {{ $sickness->user->commencement_date }}
+                                        </td>
+                                        <td>{{ $sickness->contracted_from }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
                                         <td>{{ ($sickness->date_from)?\Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') : '' }}</td>
                                         <td>{{ ($sickness->date_to) ? \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') : '' }}</td>

@@ -31,20 +31,28 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>SurName</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>DBS Level</th>
-                                    <!-- <th>Certification No</th> -->
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employement Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search DBS Level"></th>
-                                    <!-- <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Certification No"></th> -->
                                     <th></th> <!-- No search for Action column -->
                                 </tr>
                             </thead>
@@ -53,8 +61,13 @@
                                     <tr>
                                         <td>{{ $disclosure->user->first_name }}</td>
                                         <td>{{ $disclosure->user->surname }}</td>
+                                        <td>
+                                            {{ $disclosure->user->commencement_date }}
+                                        </td>
+                                        <td>
+                                            {{ $disclosure->user->contracted_from_date }}
+                                        </td>
                                         <td>{{ $disclosure->dbs_level }}</td>
-                                        <!-- <td>{{ $disclosure->certificate_no }}</td> -->
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
