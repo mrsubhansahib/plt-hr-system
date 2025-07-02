@@ -31,6 +31,8 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>Reason for Disciplinary</th>
                                     <th>Date of Hearing</th>
                                     <th>Action</th>
@@ -41,6 +43,14 @@
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employement Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Reason"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -53,6 +63,8 @@
                                     <tr>
                                         <td>{{ $disciplinary->user->first_name }}</td>
                                         <td>{{ $disciplinary->user->surname }}</td>
+                                        <td>{{ $disciplinary->user->commencement_date }}</td>
+                                        <td>{{ $disciplinary->user->contracted_from_date }}</td>
                                         <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                         <td>{{ $disciplinary->hearing_date }}</td>
                                         <td>

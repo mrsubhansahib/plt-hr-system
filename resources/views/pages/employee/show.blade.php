@@ -1120,7 +1120,6 @@
                     $('.dataTableExampleDetail').each(function() {
                         const table = $(this);
 
-                        // Destroy existing if already initialized
                         if ($.fn.DataTable.isDataTable(table)) {
                             table.DataTable().destroy();
                         }
@@ -1131,19 +1130,91 @@
                             searching: true,
                             ordering: true,
                             info: true,
-                            dom: 'Bfrtip', // B = Buttons, f = filter, r = processing, t = table, i = info, p = pagination
+                            dom: 'Bfrtip',
                             buttons: [{
                                     extend: 'excelHtml5',
                                     className: 'btn btn-sm btn-outline-success',
+                                    title: '', // ❌ Remove default title (like PLT HR System)
                                     exportOptions: {
-                                        columns: ':visible'
+                                        columns: ':not(:last-child)' // ✅ Exclude last column (e.g. Action/Edit)
+                                    },
+                                    customize: function(xlsx) {
+                                        const sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                                        const firstName = '{{ $user->first_name }}';
+                                        const surname = '{{ $user->surname }}';
+                                        const commencementDate =
+                                            '{{ $user->commencement_date }}';
+                                        const contractedFrom =
+                                            '{{ $user->contracted_from_date ?? 'Not Entered' }}';
+
+                                        const $sheetData = $(sheet).find('sheetData');
+
+                                        // Shift all existing rows 4 down
+                                        $sheetData.find('row').each(function() {
+                                            const $row = $(this);
+                                            const r = parseInt($row.attr('r'));
+                                            $row.attr('r', r + 4);
+                                            $row.find('c').each(function() {
+                                                const $cell = $(this);
+                                                const cellRef = $cell.attr('r');
+                                                if (cellRef) {
+                                                    const col = cellRef.replace(
+                                                        /[0-9]/g, '');
+                                                    const row = parseInt(cellRef
+                                                        .replace(/[A-Z]/g,
+                                                            '')) + 4;
+                                                    $cell.attr('r', col + row);
+                                                }
+                                            });
+                                        });
+
+                                        // Insert user info rows
+                                        const userInfoRows = `
+                                    <row r="1">
+                                        <c t="inlineStr" r="A1"><is><t>First Name</t></is></c>
+                                        <c t="inlineStr" r="B1"><is><t>${firstName}</t></is></c>
+                                    </row>
+                                    <row r="2">
+                                        <c t="inlineStr" r="A2"><is><t>Surname</t></is></c>
+                                        <c t="inlineStr" r="B2"><is><t>${surname}</t></is></c>
+                                    </row>
+                                    <row r="3">
+                                        <c t="inlineStr" r="A3"><is><t>Employment Commencement Date</t></is></c>
+                                        <c t="inlineStr" r="B3"><is><t>${commencementDate}</t></is></c>
+                                    </row>
+                                    <row r="4">
+                                        <c t="inlineStr" r="A4"><is><t>Contract From Date</t></is></c>
+                                        <c t="inlineStr" r="B4"><is><t>${contractedFrom}</t></is></c>
+                                    </row>
+                                `;
+
+                                        $sheetData.prepend(userInfoRows);
                                     }
                                 },
                                 {
                                     extend: 'csvHtml5',
                                     className: 'btn btn-sm btn-outline-primary',
+                                    title: '', // ❌ Remove default title
                                     exportOptions: {
-                                        columns: ':visible'
+                                        columns: ':not(:last-child)' // ✅ Exclude Edit/Action column
+                                    },
+                                    customize: function(csv) {
+                                        const firstName = '{{ $user->first_name }}';
+                                        const surname = '{{ $user->surname }}';
+                                        const commencementDate =
+                                            '{{ $user->commencement_date }}';
+                                        const contractedFrom =
+                                            '{{ $user->contracted_from_date ?? 'Not Entered' }}';
+
+                                        const info = [
+                                            `First Name:,${firstName}`,
+                                            `Surname:,${surname}`,
+                                            `Employment Commencement Date:,${commencementDate}`,
+                                            `Contract From Date:,${contractedFrom}`
+                                        ].join('\n');
+
+                                        return info + '\n\n' + csv;
                                     }
                                 }
                             ],
@@ -1158,10 +1229,8 @@
                     });
                 }
 
-                // Initial load
                 initDataTables();
 
-                // Re-initialize when tab is shown
                 $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function() {
                     initDataTables();
                 });

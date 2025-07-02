@@ -32,6 +32,8 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>SurName</th>
+                                    <th>Employement Commencement Date</th>
+                                    <th>Contracted From Date</th>
                                     <th>Job Title</th>
                                     <th>Main Job</th>
                                     <th>Start Date</th>
@@ -43,6 +45,14 @@
                                             placeholder="Search Name"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Employee Commencement Date">
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Contracted From Date">
+                                    </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Title"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -60,6 +70,8 @@
 
                                         <td>{{ $job->user?->first_name ?? 'N/A' }}</td>
                                         <td>{{ $job->user?->surname ?? 'N/A' }}</td>
+                                        <td>{{ $job->user->commencement_date }}</td>
+                                        <td>{{ $job->user->contracted_from_date }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ ucfirst($job->main_job) }}</td>
                                         <td>{{ $job->start_date }}</td>
@@ -143,6 +155,7 @@
                 document.getElementById('terminate-job-form-' + jobId).submit();
             }
         }
+
         function confirmActivation(jobId) {
             if (confirm('Are you sure you want to activate this job?')) {
                 document.getElementById('activate-job-form-' + jobId).submit();
