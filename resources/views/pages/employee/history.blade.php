@@ -352,7 +352,7 @@
                 <hr>
                 @foreach ($user->sicknesses as $index => $sickness)
                 <div class="mt-4 mb-3 border-bottom pb-3">
-                    <h5 class="text-primary mb-3">Sickness {{ $index + 1 }}</h5>
+                    <h5 class="text-primary mb-3">Sickness #{{ $index + 1 }}</h5>
                     <div class="row">
                         <div class="col-md-3 mt-3">
                             <label class="form-label">Reason for Absence</label>
