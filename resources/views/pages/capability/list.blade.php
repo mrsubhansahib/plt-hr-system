@@ -67,7 +67,7 @@
                                         <td>{{ $capability->user->first_name }}</td>
                                         <td>{{ $capability->user->surname }}</td>
                                         <td>{{ $capability->user->commencement_date }}</td>                                    
-                                        <td>{{ $capability->user->contracted_from_date }}</td>
+                                        <td>{{ $capability->user->contracted_from_date ?? 'N/A'  }}</td>
                                         <td>{{ $capability->stage }}</td>
                                         <td>{{ $capability->date }}</td>
                                         <td>{{ $capability->outcome }}</td>

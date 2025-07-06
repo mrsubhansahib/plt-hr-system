@@ -1,0 +1,45 @@
+@extends('layout.master')
+
+@push('style')
+    @livewireStyles
+@endpush
+
+@section('content')
+    <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Reports</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Full Sickness Capability</li>
+        </ol>
+    </nav>
+    @livewire('full-sickness-capability')
+@endsection
+
+@push('custom-scripts')
+    @livewireScripts
+    <script>
+        document.addEventListener('livewire:load', function () {
+            function initTable() {
+                var table = $('.dataTableSickness').DataTable({
+                    autoWidth: false,
+                    paging: true,
+                    searching: true,
+                    ordering: false,
+                    info: true,
+                    dom: 'Bfrtip',
+                    buttons: ['csv', 'excel'],
+                    initComplete: function () {
+                        this.api().columns.adjust().draw();
+                        $('table.dataTableSickness td').css({ 'padding': '5px 0px' });
+                    }
+                });
+            }
+
+            initTable();
+
+            Livewire.hook('message.processed', () => {
+                $('.dataTableSickness').DataTable().destroy();
+                initTable();
+            });
+        });
+    </script>
+@endpush

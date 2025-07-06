@@ -35,7 +35,7 @@
                                     <th>Contracted From Date</th>
                                     <th>Reason for Absence</th>
                                     <th>Date From</th>
-                                    {{-- <th>Date To</th> --}}
+                                    <th>Date To</th>
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
@@ -56,8 +56,8 @@
                                             placeholder="Search Reason for Absence"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Date From"></th>
-                                    {{-- <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Date To"></th> --}}
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Date To"></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -69,7 +69,7 @@
                                         <td>
                                             {{ $sickness->user->commencement_date }}
                                         </td>
-                                        <td>{{ $sickness->contracted_from }}</td>
+                                        <td>{{ $sickness->contracted_from ?? 'N/A'  }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
                                         <td>{{ ($sickness->date_from)?\Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') : '' }}</td>
                                         <td>{{ ($sickness->date_to) ? \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') : '' }}</td>

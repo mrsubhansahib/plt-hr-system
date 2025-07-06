@@ -71,7 +71,7 @@
                                         <td>{{ $job->user?->first_name ?? 'N/A' }}</td>
                                         <td>{{ $job->user?->surname ?? 'N/A' }}</td>
                                         <td>{{ $job->user->commencement_date }}</td>
-                                        <td>{{ $job->user->contracted_from_date }}</td>
+                                        <td>{{ $job->user->contracted_from_date ?? 'N/A' }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ ucfirst($job->main_job) }}</td>
                                         <td>{{ $job->start_date }}</td>

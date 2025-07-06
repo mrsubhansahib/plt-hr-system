@@ -64,7 +64,7 @@
                                         <td>{{ $lateness->user->first_name }}</td>
                                         <td>{{ $lateness->user->surname }}</td>
                                         <td>{{ $lateness->user->commencement_date }}</td>
-                                        <td>{{ $lateness->user->contracted_from_date }}</td>
+                                        <td>{{ $lateness->user->contracted_from_date ?? 'N/A' }}</td>
                                         <td>{{ $lateness->lateness_triggered }}</td>
                                         <td>{{ $lateness->lateness_stage }}</td>
                                         <td>

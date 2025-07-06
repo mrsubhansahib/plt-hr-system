@@ -258,7 +258,12 @@ Route::middleware('auth')->group(function () {
          Route::get('/dbs-check', function () {
             return view('pages.reports.dbs-check');
         })->name('reports.dbs-check');
-        //
+        Route::get('/long-term-sickness', function () {
+            return view('pages.reports.long-term-sickness');
+        })->name('reports.long-term-sickness');
+        Route::get('/full-sickness-capability', function () {
+            return view('pages.reports.full-sickness-capability');
+        })->name('reports.full-sickness-capability');
     });
 });
 
