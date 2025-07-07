@@ -394,8 +394,10 @@
                                             <tr>
 
                                                 <td>{{ $sickness->reason_for_absence }}</td>
-                                                <td>{{ $sickness->date_from }}</td>
-                                                <td>{{ $sickness->date_to }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($sickness->date_from)->format('d/m/Y') }}</td>
+                                                <td>
+                                                    {{ $sickness->date_to ? \Carbon\Carbon::parse($sickness->date_to)->format('d/m/Y') : '—' }}
+                                                </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"

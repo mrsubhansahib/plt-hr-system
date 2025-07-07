@@ -615,7 +615,16 @@
                             <a href="{{ url('/reports/dbs-check') }}"
                                 class="nav-link {{ active_class(['reports/dbs-check']) }}">DBS Check</a>
                         </li>
-
+                        {{-- Long term sickness Indicator --}}
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/long-term-sickness') }}"
+                                class="nav-link {{ active_class(['reports/long-term-sickness']) }}">Long Term Sickness Indicator</a>
+                        </li>
+                        {{-- Full Sickness and Capability Details --}}
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/full-sickness-capability') }}"
+                                class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full Sickness and Capability Details</a>
+                        </li>
                     </ul>
                 </div>
             </li>

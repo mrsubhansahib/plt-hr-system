@@ -65,7 +65,7 @@
                                             {{ $disclosure->user->commencement_date }}
                                         </td>
                                         <td>
-                                            {{ $disclosure->user->contracted_from_date }}
+                                            {{ $disclosure->user->contracted_from_date ?? 'N/A' }}
                                         </td>
                                         <td>{{ $disclosure->dbs_level }}</td>
                                         <td>
