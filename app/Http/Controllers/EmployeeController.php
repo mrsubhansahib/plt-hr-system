@@ -9,14 +9,7 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     
-     * Display a listing of the resource.
-     * @return \Illuminate\Contracts\View\View
-     */
+    
     public function index()
     {
         $users = User::where('role', 'employee')
@@ -215,6 +208,26 @@ class EmployeeController extends Controller
             'dropdowns'
         ));
     }
+    // showhistory main mujy user ki jo jo cheez add hoti jay gi vo saari ik ee page py disabled form ki soort main chahiy
+    public function showhistory($id){
+        $user = User::find($id)->with([
+            'jobs' => function ($query) {
+                $query->whereIn('status', ['terminated', 'active']);
+            },
+            'disclosures',
+            'sicknesses',
+            'capabilities',
+            'disciplinaries',
+            'latenesses',
+            'trainings',
+            'all_notes' => function ($query) {
+                $query->orderBy('created_at', 'desc');
+            },
+        ])->find($id);
+    
+        $dropdowns = Dropdown::all();
+        return view('pages.employee.history', compact('user', 'dropdowns'));
+    }
     public function terminatedShow($id)
     {
         // dd($id);
@@ -307,6 +320,7 @@ class EmployeeController extends Controller
         $user->update(['status' => 'active', 'joined_date' => now()->format('Y-m-d'), 'left_date' => null]);
         return redirect()->route('show.employees')->with('success', 'Employee activated successfully.');
     }
+    
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse

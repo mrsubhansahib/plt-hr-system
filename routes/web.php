@@ -80,6 +80,7 @@ Route::middleware('auth')->group(function () {
         Route::get('temp/create',   [EmployeeController::class, 'create'])->name('create.temp.employee');
         Route::post('store',        [EmployeeController::class, 'store'])->name('store.employee');
         Route::get('detail/{id}',   [EmployeeController::class, 'show'])->name('detail.employee');
+        Route::get('history/{id}',   [EmployeeController::class, 'showhistory'])->name('history.employee');
         Route::get('edit/{id}',     [EmployeeController::class, 'edit'])->name('edit.employee');
         Route::post('update/{id}',  [EmployeeController::class, 'update'])->name('update.employee');
         Route::get('accept/{id}',   [EmployeeController::class, 'accept_employee'])->name('accept.employee');
