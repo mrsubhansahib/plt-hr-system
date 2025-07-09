@@ -1,7 +1,54 @@
 @extends('layout.master')
 
 @push('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     @livewireStyles
+    <style>
+        label {
+            font-weight: 500;
+        }
+
+        .select2-container--default .select2-selection--single {
+            height: 37px !important;
+        }
+
+        .select2-selection__arrow {
+            top: 6px !important;
+        }
+
+        .select2-selection__rendered {
+            padding-top: 5px !important;
+        }
+
+        .select2-selection__clear {
+            display: none !important;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #printSection,
+            #printSection * {
+                visibility: visible;
+            }
+
+            #printSection {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                page-break-before: always;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 1in;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -15,30 +62,40 @@
 @endsection
 
 @push('custom-scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+
     @livewireScripts
     <script>
-        document.addEventListener('livewire:load', function () {
-            function initTable() {
-                var table = $('.dataTableSickness').DataTable({
-                    autoWidth: false,
-                    paging: true,
-                    searching: true,
-                    ordering: false,
-                    info: true,
-                    dom: 'Bfrtip',
-                    buttons: ['csv', 'excel'],
-                    initComplete: function () {
-                        this.api().columns.adjust().draw();
-                        $('table.dataTableSickness td').css({ 'padding': '5px 0px' });
-                    }
+        function printDiv(divId) {
+            const printContents = document.getElementById(divId).innerHTML;
+            const originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+            location.reload();
+        }
+
+        document.addEventListener('livewire:load', function() {
+            function initSelect2Sync() {
+                $('#emergency_info').select2({
+                    width: '100%',
+                    placeholder: 'Select an employee',
+                    allowClear: true
+                });
+
+                $('#emergency_info').on('change', function() {
+                    const value = $(this).val();
+                    let livewireComponent = Livewire.find(document.querySelector('[wire\\:id]')
+                        .getAttribute('wire:id'));
+                    livewireComponent.set('employee_id', value);
                 });
             }
 
-            initTable();
-
+            initSelect2Sync();
             Livewire.hook('message.processed', () => {
-                $('.dataTableSickness').DataTable().destroy();
-                initTable();
+                $('#emergency_info').select2('destroy');
+                initSelect2Sync();
             });
         });
     </script>
