@@ -33,7 +33,7 @@ class LongTermSickness extends Component
         $usersOnCapability = Capability::where('on_capability_procedure', 'yes')
             ->pluck('user_id');
 
-        $query = Sickness::with('user')
+        $query = Sickness::with('user' , 'user.jobs')
             ->whereIn('user_id', $usersOnCapability)
             ->whereBetween('date_from', [$this->start_date, $this->end_date])
             ->get()

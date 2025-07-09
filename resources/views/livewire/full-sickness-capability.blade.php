@@ -3,21 +3,27 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form wire:submit.prevent="filterSickness">
+                    <form wire:submit.prevent="filterColleagues">
                         <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-4 mb-3">
-                                <label for="from" class="form-label">From</label>
-                                <input type="date" wire:model="start_date" class="form-control" id="from">
+                            <div class="col-4"></div>
+                            <div class="col-md-3 mb-3">
+                                <label for="emergency_info" class="form-label">Select Employee</label>
+                                <select class="form-select" wire:model="employee_id" id="emergency_info">
+                                    <option selected value="Select" disabled>Select</option>
+                                    @foreach ($colleagues as $colleague)
+                                        <option value="{{ $colleague->id }}">
+                                            {{ $colleague->first_name . ' ' . $colleague->surname }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="to" class="form-label">To</label>
-                                <input type="date" wire:model="end_date" class="form-control" id="to">
-                            </div>
-                            <div class="col-md-2 mt-4 pt-1">
+                            <div class="col-md-1 mt-4 pt-1">
                                 <button class="btn btn-primary">Filter</button>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="col-3"></div>
+                            <div class="col-1 mt-4 pt-1">
+                                <button {{ $employee ? '' : 'disabled' }} onclick="printDiv('printSection')"
+                                    class="btn btn-secondary">Print</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -28,51 +34,192 @@
     @if ($errorMsg)
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>{{ $errorMsg }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
         </div>
     @endif
 
     @if ($successMsg)
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{ $successMsg }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
         </div>
     @endif
 
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table dataTableSickness">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Sickness From</th>
-                                    <th>Sickness To</th>
-                                    <th>Total Days</th>
-                                    <th>Notes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($sickUsers as $sick)
-                                    <tr>
-                                        <td>{{ $sick->user->first_name . ' ' . $sick->user->surname }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($sick->date_from)->format('d/m/Y') }}</td>
-                                        <td>
-                                            {{ $sick->date_to ? \Carbon\Carbon::parse($sick->date_to)->format('d/m/Y') : '—' }}
-                                        </td>
-                                        <td>
-                                            {{ \Carbon\Carbon::parse($sick->date_from)->diffInDays($sick->date_to ?? $sick->date_from) + 1 }}
-                                        </td>
-                                        <td>{{ $sick->notes ?? 'N/A' }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+    @if ($employee)
+        <div class="row" id="printSection">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row my-3">
+                            <div class="col-3 my-2">
+                                <label>First Name</label>
+                                <input type="text" class="form-control mt-2" value="{{ $employee->first_name }}"
+                                    disabled>
+                            </div>
+                            <div class="col-3 my-2">
+                                <label>Surname</label>
+                                <input type="text" class="form-control mt-2" value="{{ $employee->surname }}"
+                                    disabled>
+                            </div>
+
+                            @php
+                                $mainJob = $employee->jobs->firstWhere('main_job', 'yes');
+                            @endphp
+
+                            <div class="col-3 my-2">
+                                <label>Job Title</label>
+                                <input type="text" class="form-control mt-2"
+                                    value="{{ optional($mainJob)->title ?? 'N/A' }}" disabled>
+                            </div>
+                            <div class="col-3 my-2">
+                                <label>Facility</label>
+                                <input type="text" class="form-control mt-2"
+                                    value="{{ optional($mainJob)->facility ?? 'N/A' }}" disabled>
+                            </div>
+                            <div class="col-3 my-2">
+                                <label>Contract Type</label>
+                                <input type="text" class="form-control mt-2"
+                                    value="{{ optional($mainJob)->contract_type ?? 'N/A' }}" disabled>
+                            </div>
+                            <div class="col-3 my-2">
+                                <label>Commencement Date</label>
+                                <input type="text" class="form-control mt-2"
+                                    value="{{ $employee->commencement_date ?? 'N/A' }}" disabled>
+                            </div>
+                            <div class="col-3 my-2">
+                                <label>Contracted From</label>
+                                <input type="text" class="form-control mt-2"
+                                    value="{{ $employee->contracted_from ?? 'N/A' }}" disabled>
+                            </div>
+                            <div class="col-3 my-2">
+                                <label>Email</label>
+                                <input type="email" class="form-control mt-2" value="{{ $employee->email }}"
+                                    disabled>
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <h4 class="text-center">Sickness Record</h4>
+                                <hr>
+                            </div>
+                            @forelse ($employee->sicknesses as $sickness)
+                                <div class="mt-4 mb-3 border-bottom pb-3">
+                                    <h5 class="text-primary mb-3">Sickness {{ $loop->iteration }}</h5>
+                                    <div class="row">
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Reason for Absence</label>
+                                            <input class="form-control" type="text" required
+                                                name="reason_for_absence" value="{{ $sickness->reason_for_absence }}"
+                                                disabled />
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Date From</label>
+                                            <input class="form-control datepicker" type="text"
+                                                placeholder="Select Date" required name="date_from"
+                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') }}"
+                                                disabled />
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Total Hours</label>
+                                            <input class="form-control" type="text" name="total_hours"
+                                                value="{{ $sickness->total_hours }}" disabled />
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Self Certification Form Received</label>
+                                            <input class="form-control" type="text"
+                                                value="{{ ucfirst($sickness->certification_form_received) }}"
+                                                disabled />
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Fit Note Received</label>
+                                            <input class="form-control" type="text"
+                                                value="{{ ucfirst($sickness->fit_note_received) }}" disabled />
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Date To</label>
+                                            <input class="form-control datepicker" type="text"
+                                                placeholder="Select Date" name="date_to"
+                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') }}"
+                                                disabled />
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label class="form-label">Notes</label>
+                                            <textarea class="form-control" name="notes" disabled>{{ $sickness->notes }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="col-12 mt-3">
+                                    <p class="text-muted">No sickness records found.</p>
+                                </div>
+                            @endforelse
+
+                            <div class="col-12 mt-3">
+                                <h4 class="text-center">Capability Record</h4>
+                                <hr>
+                            </div>
+                            @forelse ($employee->capabilities as $capability)
+                                <div class="card-body border-bottom mb-4 pb-3">
+                                    <h5 class="text-primary mb-3">Capability {{ $loop->iteration }}</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">On Capability Procedure</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ ucfirst($capability->on_capability_procedure) }}" disabled>
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Capability Stage</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ $capability->stage }}" disabled>
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Date</label>
+                                            <input type="text" class="form-control datepicker"
+                                                value="{{ $capability->date }}" disabled>
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Outcome</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ $capability->outcome }}" disabled>
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Warning Issued Type</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ $capability->warning_issued_type }}" disabled>
+                                        </div>
+
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-label">Review Date</label>
+                                            <input type="text" class="form-control datepicker"
+                                                value="{{ $capability->review_date }}" disabled>
+                                        </div>
+
+                                        <div class="col-md-12 mt-3">
+                                            <label class="form-label">Notes</label>
+                                            <textarea class="form-control" disabled>{{ $capability->notes }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="col-12 mt-3">
+                                    <p class="text-muted">No capability records found.</p>
+                                </div>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 </div>
