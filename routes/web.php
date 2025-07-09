@@ -265,6 +265,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/full-sickness-capability', function () {
             return view('pages.reports.full-sickness-capability');
         })->name('reports.full-sickness-capability');
+        Route::get('/national-statistics', function () {
+            return view('pages.reports.national-statistics');
+        })->name('reports.national-statistics');
     });
 });
 
