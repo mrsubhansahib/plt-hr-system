@@ -14,7 +14,7 @@
                     <h3 class="my-4 text-center">Personal Details</h3>
                     <!-- Personal Information -->
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">First Name <span class="text-danger">*</span></label>
+                        <label class="form-label">First Name </label>
                         <input class="form-control" type="text" required name="first_name"
                             value="{{ $user->first_name }}" disabled />
                     </div>
@@ -24,30 +24,28 @@
                             value="{{ $user->middle_name }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Surname <span class="text-danger">*</span></label>
+                        <label class="form-label">Surname </label>
                         <input class="form-control" type="text" required name="surname"
                             value="{{ $user->surname }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Preferred Name <span class="text-danger">*</span></label>
+                        <label class="form-label">Preferred Name </label>
                         <input class="form-control" type="text" required name="preferred_name"
                             value="{{ $user->preferred_name }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label for="dob" class="form-label">DOB <span
-                                class="text-danger">*</span></label>
+                        <label for="dob" class="form-label">DOB </label>
                         <input class="form-control datepicker py-2" type="text" id="dob"
                             placeholder="Select Date" required name="dob" onchange="calculateAge()"
                             value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label for="age" class="form-label">Age <span
-                                class="text-danger">*</span></label>
+                        <label for="age" class="form-label">Age </label>
                         <input class="form-control" type="text" id="age" readonly required
                             name="age" value="{{ $user->age }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Gender <span class="text-danger">*</span></label>
+                        <label class="form-label">Gender </label>
                         <select class="form-control form-select" required name="gender" disabled>
                             <option value="" selected>Select</option>
                             <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Male
@@ -70,7 +68,7 @@
                     @endphp
 
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
+                        <label class="form-label">Ethnicity </label>
                         <select class="form-control form-select" required name="ethnicity" disabled>
                             <option value="" selected disabled>Select</option>
                             @foreach ($ethnicityOptions as $option)
@@ -94,7 +92,7 @@
 
                     <!-- Address Details -->
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Address 1 <span class="text-danger">*</span></label>
+                        <label class="form-label">Address 1 </label>
                         <input class="form-control" type="text" required name="address1"
                             value="{{ $user->address1 }}" disabled />
                     </div>
@@ -108,38 +106,38 @@
                         <input class="form-control" type="text" name="address3" value="{{ $user->address3 }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Town <span class="text-danger">*</span></label>
+                        <label class="form-label">Town </label>
                         <input class="form-control" type="text" required name="town"
                             value="{{ $user->town }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Postcode <span class="text-danger">*</span></label>
+                        <label class="form-label">Postcode </label>
                         <input class="form-control" type="text" required name="post_code"
                             value="{{ $user->post_code }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                        <label class="form-label">Email </label>
                         <input class="form-control" type="email" required name="email"
                             value="{{ $user->email }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Employment Commencement Date<span class="text-danger">*</span></label>
+                        <label class="form-label">Employment Commencement Date</label>
                         <input class="form-control datepicker py-2" type="text" placeholder="Select Date" name="commencement_date"
                             value="{{ $user->commencement_date }}" required disabled />
                     </div>
 
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">NI Number <span class="text-danger">*</span></label>
+                        <label class="form-label">NI Number </label>
                         <input class="form-control" type="text" required name="ni_number" value="{{ $user->ni_number }}" disabled />
                     </div>
 
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Default Cost Centre <span class="text-danger">*</span></label>
+                        <label class="form-label">Default Cost Centre </label>
                         <input class="form-control" type="text" required name="default_cost_center" value="{{ $user->default_cost_center }}" disabled />
                     </div>
 
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Salaried / Monthly in Arrears <span class="text-danger">*</span></label>
+                        <label class="form-label">Salaried / Monthly in Arrears </label>
                         <input class="form-control" type="text" required name="salaried" value="{{ $user->salaried }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
@@ -155,20 +153,17 @@
 
                     <!-- Emergency Contact -->
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 1 Name <span
-                                class="text-danger">*</span></label>
+                        <label class="form-label">Emergency Contact 1 Name</label>
                         <input class="form-control" type="text" required name="emergency_1_name"
                             value="{{ $user->emergency_1_name }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 1 Mobile <span
-                                class="text-danger">*</span></label>
+                        <label class="form-label">Emergency Contact 1 Mobile </label>
                         <input class="form-control" type="number" placeholder="Phone Number" required
                             name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" disabled />
                     </div>
                     <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 1 Relationship <span
-                                class="text-danger">*</span></label>
+                        <label class="form-label">Emergency Contact 1 Relationship </label>
                         <input class="form-control" type="text" required name="emergency_1_relation"
                             value="{{ $user->emergency_1_relation }}" disabled />
                     </div>
@@ -280,8 +275,7 @@
                     </div>
                 </div>
                 @endforeach
-                @else
-                <p class="text-muted">No job records found.</p>
+                
                 @endif
 
                 @if ($user->disclosures->count() > 0)
@@ -341,8 +335,7 @@
                     </div>
                 </div>
                 @endforeach
-                @else
-                <p class="text-muted">No disclosure records found.</p>
+                
                 @endif
 
 
@@ -393,8 +386,7 @@
                     </div>
                 </div>
                 @endforeach
-                @else
-                <p class="text-muted">No sickness records found.</p>
+                
                 @endif
 
 
@@ -443,8 +435,7 @@
                     </div>
                 </div>
                 @endforeach
-                @else
-                <p class="text-muted">No capability records found.</p>
+                
                 @endif
 
 
@@ -488,9 +479,7 @@
                     </div>
                 </div>
                 @endforeach
-
-                @else
-                <p class="text-muted">No disciplinary records found.</p>
+    
                 @endif
 
                 @if ($user->latenesses->count() > 0)
@@ -535,8 +524,6 @@
                 </div>
                 @endforeach
 
-                @else
-                <p class="text-muted">No lateness records found.</p>
                 @endif
 
 
@@ -574,8 +561,7 @@
 
 
                 </div>
-                @else
-                <p class="text-muted">No training records found.</p>
+                
                 @endif
 
             </div>
