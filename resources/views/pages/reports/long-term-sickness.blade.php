@@ -30,6 +30,12 @@
                     initComplete: function() {
                         this.api().columns.adjust().draw();
                         $('table.dataTableSickness td').css({ 'padding': '5px 0px' });
+                        // the table headings are overlapping each other
+                        $('.dataTableSickness thead th').css({
+                            'padding': '10px 5px',
+                            'text-align': 'center',
+                            'font-weight': 'bold'
+                        });
                     }
                 });
             }

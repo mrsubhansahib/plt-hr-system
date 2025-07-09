@@ -44,27 +44,41 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table dataTableSickness">
+                        <table id="" class="table dataTableSickness">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Sickness From</th>
-                                    <th>Sickness To</th>
-                                    <th>Total Days</th>
-                                    <th>Notes</th>
+                                    <th>Job Title</th>
+                                    <th>Facility</th>
+                                    <th>Contract Type</th>
+                                    <th>Commencement Date</th>
+                                    <th>Contracted From</th>
+                                    <th>Email</th>
+                                    {{-- <th>Sickness From</th>
+                                    <th>Sickness To</th>  --}}
+                                    {{-- <th>Total Days</th>
+                                    <th>Notes</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($sickUsers as $sick)
+                                    @php
+                                        $mainJob = $sick->user->jobs->firstWhere('main_job', 'yes');
+                                    @endphp
                                     <tr>
                                         <td>{{ $sick->user->first_name . ' ' . $sick->user->surname }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($sick->date_from)->format('d/m/Y') }}</td>
+                                        <td>{{ $mainJob ? $mainJob->title : 'N/A' }}</td>
+                                        <td>{{ $mainJob ? $mainJob->facility : 'N/A' }}</td>
+                                        <td>{{ $mainJob ? $mainJob->contract_type : 'N/A' }}</td>
+                                        <td>{{ $sick->user->commencement_date }}</td>
+                                        <td>{{ $sick->user->contracted_from ?? 'N/A' }}</td>
+                                        <td>{{ $sick->user->email ?? 'N/A' }}</td>
+                                        {{-- <td>{{ \Carbon\Carbon::parse($sick->date_from)->format('d/m/Y') }}</td>
                                         <td>
                                             {{ $sick->date_to ? \Carbon\Carbon::parse($sick->date_to)->format('d/m/Y') : '—' }}
-                                        </td>
-                                        <td>{{ \Carbon\Carbon::parse($sick->date_from)->diffInDays($sick->date_to) + 1 }}
-                                        </td>
-                                        <td>{{ $sick->notes ?? 'N/A' }}</td>
+                                        </td> --}}
+                                        {{-- <td>{{ \Carbon\Carbon::parse($sick->date_from)->diffInDays($sick->date_to) + 1 }}
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

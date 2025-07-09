@@ -2,47 +2,40 @@
 
 namespace App\Http\Livewire;
 
+use App\User;
 use Livewire\Component;
-use App\Sickness;
-use App\Capability;
-use Carbon\Carbon;
 
 class FullSicknessCapability extends Component
 {
-    public $start_date = '';
-    public $end_date = '';
-    public $successMsg;
-    public $errorMsg;
-    public $sickUsers = [];
+    public $successMsg = '';
+    public $errorMsg = '';
+    public $colleagues = [];
+    public $employee_id;
+    public $employee;
 
-    public function filterSickness()
+    public function mount()
+    {
+        $this->employee_id = 'Select';
+    }
+
+    public function filterColleagues()
     {
         $this->successMsg = $this->errorMsg = '';
-        $this->sickUsers = [];
+        $this->employee = null;
 
-        if (!$this->start_date || !$this->end_date) {
-            $this->errorMsg = 'Both start date and end date are required.';
-            return;
-        }
+        if ($this->employee_id !== "Select") {
+            $user = User::with(['jobs', 'capabilities', 'sicknesses'])->find($this->employee_id);
 
-        if ($this->start_date > $this->end_date) {
-            $this->errorMsg = 'Start date cannot be greater than end date.';
-            return;
-        }
+            $onCapability = $user?->capabilities?->first()?->on_capability_procedure;
 
-        $usersOnCapability = Capability::where('on_capability_procedure', 'yes')
-            ->pluck('user_id');
-
-        $query = Sickness::with('user')
-            ->whereIn('user_id', $usersOnCapability)
-            ->whereBetween('date_from', [$this->start_date, $this->end_date])
-            ->get(); // ⬅️ no filter for 28 days
-
-        if ($query->isEmpty()) {
-            $this->errorMsg = 'No sickness records found in the selected date range.';
+            if ($user && $onCapability === 'yes') {
+                $this->employee = $user;
+                $this->successMsg = 'Capability and sickness data loaded for ' . $user->first_name . ' ' . $user->surname;
+            } else {
+                $this->errorMsg = 'This employee is not on a capability procedure.';
+            }
         } else {
-            $this->sickUsers = $query;
-            $this->successMsg = 'Records found: ' . $query->count();
+            $this->errorMsg = 'Please select an employee.';
         }
 
         $this->resetFilters();
@@ -50,12 +43,16 @@ class FullSicknessCapability extends Component
 
     public function resetFilters()
     {
-        $this->start_date = '';
-        $this->end_date = '';
+        $this->employee_id = 'Select';
     }
 
     public function render()
     {
+        $this->colleagues = User::where('role', 'employee')
+            ->where('status', 'active')
+            ->latest()
+            ->get();
+
         return view('livewire.full-sickness-capability');
     }
 }
