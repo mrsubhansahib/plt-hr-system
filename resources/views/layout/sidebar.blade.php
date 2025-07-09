@@ -625,6 +625,10 @@
                             <a title="Full Sickness and Capability Details" href="{{ url('/reports/full-sickness-capability') }}"
                                 class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full Sickness and Capability....</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/national-statistics') }}"
+                                class="nav-link {{ active_class(['reports/national-statistics']) }}">National Statistics male/female</a>
+                        </li>
                     </ul>
                 </div>
             </li>
