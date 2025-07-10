@@ -53,6 +53,10 @@
                                     <th>Surname</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
+                                    <th>Contract Type</th>
+                                    <th>Date of Commencement</th>
+                                    <th>Contracted From</th>
+                                    <th>Email</th>
                                 </tr>
                                
                             </thead>
@@ -69,6 +73,17 @@
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
                                             </td>
                                             <td>
+                                                {{ $colleague->contract_type ?? 'No Contract Type Assigned' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->date_of_commencement ?? 'No Date of Commencement' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->contracted_from ?? 'No Contracted From' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->email ?? 'No Email Assigned' }}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @endif

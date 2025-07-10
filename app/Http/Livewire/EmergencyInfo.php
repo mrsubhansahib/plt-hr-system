@@ -23,7 +23,7 @@ class EmergencyInfo extends Component
         $this->employee = null; // Reset employee to null
 
         if ($this->employee_id !== "Select") {
-            $this->employee = User::find( $this->employee_id);
+            $this->employee = User::with('jobs')->find( $this->employee_id);
         } else {
             $this->error('Please select an employee.');
             $this->resetFilters();
