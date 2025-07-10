@@ -47,6 +47,12 @@
                                     <th>Surname</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
+                                    <th>Contract Type</th>
+                                    <th>Contracted From</th>
+                                    <th>Job Start Date</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Mobile No</th>
                                     <th>Status</th>
 
                                 </tr>
@@ -63,6 +69,24 @@
                                             </td>
                                             <td>
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->contract_type ?? 'Not Specified' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->contracted_from ?? 'Not Specified' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->job_start_date ?? 'Not Specified' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->email ?? 'Not Specified' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->address ?? 'Not Specified' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->mobile_tel ?? 'Not Specified' }}
                                             </td>
                                             <td>
                                                 <span class="badge bg-success">Active</span>

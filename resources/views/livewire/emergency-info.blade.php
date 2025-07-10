@@ -22,7 +22,8 @@
                             </div>
                             <div class="col-3"></div>
                             <div class="col-1 mt-4 pt-1">
-                                <button {{ ($employee) ? '' : 'disabled' }} onclick="printDiv('printSection')"  class="btn btn-secondary">Print</button>
+                                <button {{ $employee ? '' : 'disabled' }} onclick="printDiv('printSection')"
+                                    class="btn btn-secondary">Print</button>
 
                             </div>
                         </div>
@@ -60,7 +61,24 @@
                                     value="{{ $employee->surname }}" disabled>
                             </div>
 
-                            <div class="col-3 my-2">
+                            @php
+                                $job = $employee->jobs->firstWhere('main_job', 'yes') ?? $employee->jobs->first();
+                            @endphp
+
+                            @if ($job)
+                                <div class="col-3 my-2">
+                                    <label for="job_title">Job Title</label>
+                                    <input type="text" class="form-control mt-2" id="job_title"
+                                        value="{{ $job->title ? $job->title : 'N/A' }}" disabled>
+                                </div>
+
+                                <div class="col-3 my-2">
+                                    <label for="facility">Facility</label>
+                                    <input type="text" class="form-control mt-2" id="facility"
+                                        value="{{ $job->facility ? $job->facility : 'N/A' }}" disabled>
+                                </div>
+                            @endif
+                            {{-- <div class="col-3 my-2">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control mt-2" id="email"
                                     value="{{ $employee->email }}" disabled>
@@ -81,7 +99,7 @@
                                 <label for="mobile_tel">Mobile No</label>
                                 <input type="text" class="form-control mt-2" id="mobile_tel"
                                     value="{{ $employee->mobile_tel ?? 'Not Entered' }}" disabled>
-                            </div>
+                            </div> --}}
                             <!-- Emergency Contact -->
                             <div class="col-3 mt-3">
                                 <label class="form-label">Emergency Contact 1 Name </label>
