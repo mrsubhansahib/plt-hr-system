@@ -26,72 +26,76 @@
 
     {{-- Alert Messages --}}
     @if ($errorMsg)
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>{{ $errorMsg }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ $errorMsg }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
     @endif
 
     @if ($successMsg)
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{ $successMsg }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ $successMsg }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
     @endif
 
     {{-- Results Table --}}
     @if ($resultCounts)
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card shadow-sm">
-                <div class="card-body pb-5">
-                    <div class="table-responsive">
-                        <table class="table table-striped  dataTableNationalStatistics">
-                            <thead>
-                                <tr>
-                                    <th>Gender</th>
-                                    <th>More then 30 Hours</th>
-                                    <th>Less then 30 Hours</th>
-                                    <th>Total Employees</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="fw-bold">Male</td>
-                                    <td>{{ $resultCounts['male_gt_30'] }}</td>
-                                    <td>{{ $resultCounts['male_lte_30'] }}</td>
-                                    <td>{{ $resultCounts['male_gt_30'] + $resultCounts['male_lte_30'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Female</td>
-                                    <td>{{ $resultCounts['female_gt_30'] }}</td>
-                                    <td>{{ $resultCounts['female_lte_30'] }}</td>
-                                    <td>{{ $resultCounts['female_gt_30'] + $resultCounts['female_lte_30'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Other</td>
-                                    <td>{{ $resultCounts['other_gt_30'] }}</td>
-                                    <td>{{ $resultCounts['other_lte_30'] }}</td>
-                                    <td>{{ $resultCounts['other_gt_30'] + $resultCounts['other_lte_30'] }}</td>
-                                </tr>
-                                <tr class="fw-bold">
-                                    <td>Total</td>
-                                    <td>{{ $resultCounts['male_gt_30'] + $resultCounts['female_gt_30'] }}</td>
-                                    <td>{{ $resultCounts['male_lte_30'] + $resultCounts['female_lte_30'] }}</td>
-                                    <td>
-                                        {{
-                                $resultCounts['male_gt_30'] + $resultCounts['male_lte_30'] +
-                                $resultCounts['female_gt_30'] + $resultCounts['female_lte_30']
-                            }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card shadow-sm">
+                    <div class="card-body pb-5">
+                        <div class="table-responsive">
+                            <table class="table table-striped  dataTableNationalStatistics">
+                                <thead>
+                                    <tr>
+                                        <th>Gender</th>
+                                        <th>More then 30 Hours</th>
+                                        <th>Less then or equal to 30 Hours</th>
+                                        <th>Total Employees</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold">Male</td>
+                                        <td>{{ $resultCounts['male_gt_30'] }}</td>
+                                        <td>{{ $resultCounts['male_lte_30'] }}</td>
+                                        <td>{{ $resultCounts['male_gt_30'] + $resultCounts['male_lte_30'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Female</td>
+                                        <td>{{ $resultCounts['female_gt_30'] }}</td>
+                                        <td>{{ $resultCounts['female_lte_30'] }}</td>
+                                        <td>{{ $resultCounts['female_gt_30'] + $resultCounts['female_lte_30'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Other</td>
+                                        <td>{{ $resultCounts['other_gt_30'] }}</td>
+                                        <td>{{ $resultCounts['other_lte_30'] }}</td>
+                                        <td>{{ $resultCounts['other_gt_30'] + $resultCounts['other_lte_30'] }}</td>
+                                    </tr>
+                                    <tr class="fw-bold">
+                                        <td>Total</td>
+                                        <td>{{ $resultCounts['other_gt_30'] + $resultCounts['male_gt_30'] + $resultCounts['female_gt_30'] }}
+                                        </td>
+                                        <td>{{ $resultCounts['other_lte_30'] + $resultCounts['male_lte_30'] + $resultCounts['female_lte_30'] }}
+                                        </td>
+                                        <td>
+                                            {{ $resultCounts['male_gt_30'] +
+                                                $resultCounts['male_lte_30'] +
+                                                $resultCounts['female_gt_30'] +
+                                                $resultCounts['female_lte_30'] +
+                                                $resultCounts['other_gt_30'] +
+                                                $resultCounts['other_lte_30'] }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
     @endif
 </div>

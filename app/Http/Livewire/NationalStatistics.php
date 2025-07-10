@@ -13,6 +13,8 @@ class NationalStatistics extends Component
     public $successMsg = '';
     public $errorMsg = '';
     public $resultCounts = [];
+    public $user = [];
+
 
     public function filter()
     {
@@ -24,13 +26,29 @@ class NationalStatistics extends Component
             return;
         }
 
-        $targetDate = Carbon::parse($this->date)->endOfDay();
+        $targetDate = Carbon::parse($this->date)->format('Y-m-d');
 
-        $users = Job::where('termination_TE', 'active')
-            ->where('role', 'employee')
-            ->whereDate('created_at', '<=', $targetDate)
+        // 1. Get all jobs based on the logic
+        $jobs = Job::with('user') // Eager load user to prevent N+1
+            ->where(function ($query) use ($targetDate) {
+                $query->where('termination_date', '>=', $targetDate)
+                    ->where('start_date', '<=', $targetDate);
+            })
+            ->orWhere(function ($query) use ($targetDate) {
+                $query->whereNull('termination_date')
+                    ->where('start_date', '<=', $targetDate);
+            })
             ->get();
 
+        if ($jobs->isEmpty()) {
+            $this->errorMsg = 'No jobs found for the selected date.';
+            return;
+        }
+
+        // 2. Group jobs by user_id
+        $groupedJobs = $jobs->groupBy('user_id');
+
+        // 3. Prepare data buckets
         $data = [
             'male_gt_30' => 0,
             'male_lte_30' => 0,
@@ -40,29 +58,24 @@ class NationalStatistics extends Component
             'other_lte_30' => 0,
         ];
 
-        foreach ($users as $user) {
-            // ✅ Get main job only
-            $job = $user->jobs->firstWhere('main_job', 'yes');
+        // 4. Process each user
+        foreach ($groupedJobs as $userId => $userJobs) {
+            $user = $userJobs->first()->user;
+            $totalHours = $userJobs->sum('number_of_hours');
 
-            if (!$job) continue;
-            $hours = $job->number_of_hours;
-
-
-
-            $gender = $user->gender ?? '';
+            $gender = strtolower($user->gender ?? 'other'); // Default to 'other' if gender is null
 
             if ($gender === 'male') {
-                $data[$hours > 30 ? 'male_gt_30' : 'male_lte_30']++;
+                $data[$totalHours <= 30 ? 'male_lte_30' : 'male_gt_30']++;
             } elseif ($gender === 'female') {
-                $data[$hours > 30 ? 'female_gt_30' : 'female_lte_30']++;
+                $data[$totalHours <= 30 ? 'female_lte_30' : 'female_gt_30']++;
             } else {
-                $data[$hours > 30 ? 'other_gt_30' : 'other_lte_30']++;
+                $data[$totalHours <= 30 ? 'other_lte_30' : 'other_gt_30']++;
             }
         }
 
         $this->resultCounts = $data;
         $this->successMsg = 'Data retrieved successfully for ' . Carbon::parse($this->date)->format('d-m-Y');
-
         $this->resetFilters();
     }
 
