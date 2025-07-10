@@ -51,6 +51,10 @@ class FullSicknessCapability extends Component
         $this->colleagues = User::where('role', 'employee')
             ->where('status', 'active')
             ->latest()
+            ->whereHas('capabilities', function ($query) {
+                $query->where('on_capability_procedure', 'yes');
+            })->latest()
+
             ->get();
 
         return view('livewire.full-sickness-capability');

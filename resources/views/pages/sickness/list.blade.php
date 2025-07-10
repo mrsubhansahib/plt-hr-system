@@ -40,7 +40,8 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
@@ -65,14 +66,14 @@
                                 @foreach ($sicknesses as $key => $sickness)
                                     <tr>
                                         <td>{{ $sickness->user->first_name }}</td>
-                                        <td>{{ $sickness->user->surname  }}</td>
+                                        <td>{{ $sickness->user->surname }}</td>
                                         <td>
                                             {{ $sickness->user->commencement_date }}
                                         </td>
-                                        <td>{{ $sickness->contracted_from ?? 'N/A'  }}</td>
+                                        <td>{{ $sickness->contracted_from ?? 'N/A' }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
-                                        <td>{{ ($sickness->date_from)?\Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') : '' }}</td>
-                                        <td>{{ ($sickness->date_to) ? \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') : '' }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($sickness->date_from)->format('d-m-Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($sickness->date_to)->format('d-m-Y') }}</td>
 
                                         <td>
                                             <div class="dropdown">
