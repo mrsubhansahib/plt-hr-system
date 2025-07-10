@@ -27,7 +27,7 @@
 
         @media print {
             body * {
-                visibility: hidden;
+                visibility:visible;
             }
 
             #printSection,
@@ -68,8 +68,10 @@
     @livewireScripts
     <script>
         function printDiv(divId) {
-            const printContents = document.getElementById('printSection').innerHTML;
+            const printContents = document.getElementById(divId).innerHTML;
+            console.log(printContents);
             const originalContents = document.body.innerHTML;
+            console.log(originalContents);
             document.body.innerHTML = printContents;
             window.print();
             document.body.innerHTML = originalContents;
