@@ -48,39 +48,35 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Email</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
                                     <th>Contract Type</th>
                                     <th>Commencement Date</th>
                                     <th>Contracted From</th>
-                                    <th>Email</th>
-                                    {{-- <th>Sickness From</th>
-                                    <th>Sickness To</th>  --}}
-                                    {{-- <th>Total Days</th>
-                                    <th>Notes</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sickUsers as $sick)
-                                    @php
-                                        $mainJob = $sick->user->jobs->firstWhere('main_job', 'yes');
-                                    @endphp
+                                @forelse ($sickUsers as $user)
                                     <tr>
-                                        <td>{{ $sick->user->first_name . ' ' . $sick->user->surname }}</td>
-                                        <td>{{ $mainJob ? $mainJob->title : 'N/A' }}</td>
-                                        <td>{{ $mainJob ? $mainJob->facility : 'N/A' }}</td>
-                                        <td>{{ $mainJob ? $mainJob->contract_type : 'N/A' }}</td>
-                                        <td>{{ $sick->user->commencement_date }}</td>
-                                        <td>{{ $sick->user->contracted_from ?? 'N/A' }}</td>
-                                        <td>{{ $sick->user->email ?? 'N/A' }}</td>
-                                        {{-- <td>{{ \Carbon\Carbon::parse($sick->date_from)->format('d/m/Y') }}</td>
-                                        <td>
-                                            {{ $sick->date_to ? \Carbon\Carbon::parse($sick->date_to)->format('d/m/Y') : '—' }}
-                                        </td> --}}
-                                        {{-- <td>{{ \Carbon\Carbon::parse($sick->date_from)->diffInDays($sick->date_to) + 1 }}
-                                        </td> --}}
+                                        {{-- @dd($user) --}}
+                                        <td>{{ $user->first_name . ' ' . $user->surname }}</td>
+                                        <td>{{ $user->email ?? 'N/A' }}</td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->title ?? 'N/A' }}
+                                        </td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->facility ?? 'N/A' }}
+                                        </td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->contract_type ?? 'N/A' }}
+                                        </td>
+                                        <td>{{ $user->commencement_date }}</td>
+                                        <td>{{ $user->contracted_from ?? 'N/A' }}</td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="7" class="text-center">No Record Found</td>
+
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

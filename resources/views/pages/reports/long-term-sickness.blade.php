@@ -40,9 +40,15 @@
             initTable();
 
             Livewire.hook('message.processed', () => {
-                $('.dataTableSickness').DataTable().destroy();
+                let $table = $('.dataTableSickness');
+
+                if ($.fn.dataTable.isDataTable($table)) {
+                    $table.DataTable().destroy();
+                }
+
                 initTable();
             });
+
 
             $('.dataTableSickness .filters input').on('keyup change', function() {
                 var colIndex = $(this).parent().index();
