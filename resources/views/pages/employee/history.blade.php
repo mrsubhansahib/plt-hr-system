@@ -19,15 +19,14 @@
                 page-break-before: always;
             }
         }
+
         @page {
             size: A4;
             margin: 1in;
         }
     </style>
-    
 @endpush
 @section('content')
-
     <nav class="page-breadcrumb">
         <div class="d-flex justify-content-between">
             <ol class="breadcrumb">
@@ -343,20 +342,20 @@
                                             disabled>
                                     </div>
 
-                        <div class="col-md-12 mt-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3" disabled>{{ $job->notes }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @else
-                <p class="text-muted">No job records found.</p>
-                @endif
+                                    <div class="col-md-12 mt-3">
+                                        <label class="form-label">Notes</label>
+                                        <textarea class="form-control" rows="3" disabled>{{ $job->notes }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No job records found.</p>
+                        <hr>
+                    @endif
 
                     @if ($user->disclosures->count() > 0)
                         <h3 class="text-center w-50 m-auto border-bottom border-2 pb-2">Disclosure Details</h3>
-                        <hr>
                         @foreach ($user->disclosures as $index => $disclosure)
                             <div class="mt-4 mb-3 border-bottom pb-3">
                                 <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
@@ -423,12 +422,13 @@
                                         <textarea class="form-control" rows="3" disabled>{{ $disclosure->notes ? $disclosure->notes : 'empty' }}</textarea>
                                     </div>
 
-                    </div>
-                </div>
-                @endforeach
-                @else
-                <p class="text-muted">No disclosure records found.</p>
-                @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No disclosure records found.</p>
+                        <hr>
+                    @endif
 
 
                     @if ($user->sicknesses->count() > 0)
@@ -479,16 +479,17 @@
                                             value="{{ ucfirst($sickness->fit_note_received) }}" disabled>
                                     </div>
 
-                        <div class="col-md-12 mt-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3" disabled>{{ $sickness->notes }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @else
-                <p class="text-muted">No sickness records found.</p>
-                @endif
+                                    <div class="col-md-12 mt-3">
+                                        <label class="form-label">Notes</label>
+                                        <textarea class="form-control" rows="3" disabled>{{ $sickness->notes }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No sickness records found.</p>
+                        <hr>
+                    @endif
 
 
 
@@ -537,16 +538,17 @@
                                             disabled>
                                     </div>
 
-                        <div class="col-md-12 mt-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3" disabled>{{ $capability->notes }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @else
-                <p class="text-muted">No capability records found.</p>
-                @endif
+                                    <div class="col-md-12 mt-3">
+                                        <label class="form-label">Notes</label>
+                                        <textarea class="form-control" rows="3" disabled>{{ $capability->notes }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No capability records found.</p>
+                        <hr>
+                    @endif
 
 
                     @if ($user->disciplinaries->count() > 0)
@@ -591,17 +593,17 @@
                                             disabled>
                                     </div>
 
-                        <div class="col-md-12 mt-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3" disabled>{{ $disciplinary->notes }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-
-                @else
-                <p class="text-muted">No disciplinary records found.</p>
-                @endif
+                                    <div class="col-md-12 mt-3">
+                                        <label class="form-label">Notes</label>
+                                        <textarea class="form-control" rows="3" disabled>{{ $disciplinary->notes }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No disciplinary records found.</p>
+                        <hr>
+                    @endif
 
                     @if ($user->latenesses->count() > 0)
                         <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Lateness Details</h3>
@@ -645,17 +647,17 @@
                                             disabled>
                                     </div>
 
-                        <div class="col-md-12 mt-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3" disabled>{{ $lateness->notes }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-
-                @else
-                <p class="text-muted">No lateness records found.</p>
-                @endif
+                                    <div class="col-md-12 mt-3">
+                                        <label class="form-label">Notes</label>
+                                        <textarea class="form-control" rows="3" disabled>{{ $lateness->notes }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No lateness records found.</p>
+                        <hr>
+                    @endif
 
 
                     @if ($user->trainings->count() > 0)
@@ -701,10 +703,7 @@
                     @endif
 
                 </div>
-                @else
-                <p class="text-muted">No training records found.</p>
-                @endif
-
+       
             </div>
         </div>
     </div>
@@ -718,7 +717,7 @@
             document.body.innerHTML = printContents;
             window.print();
             document.body.innerHTML = originalContents;
-            // location.reload();
+            location.reload();
         }
     </script>
 @endpush

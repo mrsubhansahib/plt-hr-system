@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Job;
 use Livewire\Component;
 use App\User;
 use Carbon\Carbon;
@@ -25,8 +26,7 @@ class NationalStatistics extends Component
 
         $targetDate = Carbon::parse($this->date)->endOfDay();
 
-        $users = User::with('jobs')
-            ->where('status', 'active')
+        $users = Job::where('termination_TE', 'active')
             ->where('role', 'employee')
             ->whereDate('created_at', '<=', $targetDate)
             ->get();
