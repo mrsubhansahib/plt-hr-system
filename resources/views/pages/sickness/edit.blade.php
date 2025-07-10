@@ -32,7 +32,7 @@
                                     value="{{ $sickness->reason_for_absence }}" />
                             </div>
                             <div class="col-md-3 mt-3">
-                                <label class="form-label">date_from <span class="text-danger">*</span></label>
+                                <label class="form-label">Date From <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date" required
                                     name="date_from"
                                     value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') }}" />
