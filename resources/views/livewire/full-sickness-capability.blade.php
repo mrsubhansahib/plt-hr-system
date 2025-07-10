@@ -50,60 +50,68 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row my-3">
-                            <div class="col-3 my-2">
-                                <label>First Name</label>
-                                <input type="text" class="form-control mt-2" value="{{ $employee->first_name }}"
-                                    disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label>Surname</label>
-                                <input type="text" class="form-control mt-2" value="{{ $employee->surname }}"
-                                    disabled>
-                            </div>
+                        <div class="my-3">
 
-                            @php
-                                $mainJob = $employee->jobs->firstWhere('main_job', 'yes');
-                            @endphp
+                            <div class="row mb-3 border-bottom border-2 pb-2 pb-4">
 
-                            <div class="col-3 my-2">
-                                <label>Job Title</label>
-                                <input type="text" class="form-control mt-2"
-                                    value="{{ optional($mainJob)->title ?? 'N/A' }}" disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label>Facility</label>
-                                <input type="text" class="form-control mt-2"
-                                    value="{{ optional($mainJob)->facility ?? 'N/A' }}" disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label>Contract Type</label>
-                                <input type="text" class="form-control mt-2"
-                                    value="{{ optional($mainJob)->contract_type ?? 'N/A' }}" disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label>Commencement Date</label>
-                                <input type="text" class="form-control mt-2"
-                                    value="{{ $employee->commencement_date ?? 'N/A' }}" disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label>Contracted From</label>
-                                <input type="text" class="form-control mt-2"
-                                    value="{{ $employee->contracted_from ?? 'N/A' }}" disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label>Email</label>
-                                <input type="email" class="form-control mt-2" value="{{ $employee->email }}"
-                                    disabled>
+                                <div class="col-12">
+                                    <h3 class=" text-center w-25 m-auto border-bottom border-2 pb-2 mb-3">Personal
+                                        Details</h3>
+
+                                </div>
+                                <div class="col-3 my-2">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control mt-2" value="{{ $employee->first_name }}"
+                                        disabled>
+                                </div>
+                                <div class="col-3 my-2">
+                                    <label>Surname</label>
+                                    <input type="text" class="form-control mt-2" value="{{ $employee->surname }}"
+                                        disabled>
+                                </div>
+
+                                @php
+                                    $mainJob = $employee->jobs->firstWhere('main_job', 'yes');
+                                @endphp
+
+                                <div class="col-3 my-2">
+                                    <label>Job Title</label>
+                                    <input type="text" class="form-control mt-2"
+                                        value="{{ optional($mainJob)->title ?? 'N/A' }}" disabled>
+                                </div>
+                                <div class="col-3 my-2">
+                                    <label>Facility</label>
+                                    <input type="text" class="form-control mt-2"
+                                        value="{{ optional($mainJob)->facility ?? 'N/A' }}" disabled>
+                                </div>
+                                <div class="col-3 my-2">
+                                    <label>Contract Type</label>
+                                    <input type="text" class="form-control mt-2"
+                                        value="{{ optional($mainJob)->contract_type ?? 'N/A' }}" disabled>
+                                </div>
+                                <div class="col-3 my-2">
+                                    <label>Commencement Date</label>
+                                    <input type="text" class="form-control mt-2"
+                                        value="{{ $employee->commencement_date ?? 'N/A' }}" disabled>
+                                </div>
+                                <div class="col-3 my-2">
+                                    <label>Contracted From</label>
+                                    <input type="text" class="form-control mt-2"
+                                        value="{{ $employee->contracted_from ?? 'N/A' }}" disabled>
+                                </div>
+                                <div class="col-3 my-2">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control mt-2" value="{{ $employee->email }}"
+                                        disabled>
+                                </div>
                             </div>
 
                             <div class="col-12 mt-3">
-                                <h4 class="text-center">Sickness Record</h4>
-                                <hr>
+                                <h4 class="text-center  w-25 m-auto border-bottom border-2 pb-2 mb-3">Sickness Record</h4>
                             </div>
                             @forelse ($employee->sicknesses as $sickness)
-                                <div class="mt-4 mb-3 border-bottom pb-3">
-                                    <h5 class="text-primary mb-3">Sickness {{ $loop->iteration }}</h5>
+                                <div class="mt-4 mb-3 border-bottom pb-4">
+                                    <h5 class="text-primary mb-3">NO#{{ $loop->iteration }}</h5>
                                     <div class="row">
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Reason for Absence</label>
@@ -157,17 +165,16 @@
                                 </div>
                             @empty
                                 <div class="col-12 mt-3">
-                                    <p class="text-muted">No sickness records found.</p>
-                                </div>
+                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No sickness records found.</p>
+                                    <hr>
                             @endforelse
 
                             <div class="col-12 mt-3">
-                                <h4 class="text-center">Capability Record</h4>
-                                <hr>
+                                <h4 class="text-center  w-25 m-auto border-bottom border-2 pb-2 mb-3">Capability Record</h4>
                             </div>
                             @forelse ($employee->capabilities as $capability)
-                                <div class="card-body border-bottom mb-4 pb-3">
-                                    <h5 class="text-primary mb-3">Capability {{ $loop->iteration }}</h5>
+                                <div class="card-body border-bottom mb-4 pb-4">
+                                    <h5 class="text-primary mb-3">NO#{{ $loop->iteration }}</h5>
                                     <div class="row mb-3">
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">On Capability Procedure</label>
@@ -213,7 +220,8 @@
                                 </div>
                             @empty
                                 <div class="col-12 mt-3">
-                                    <p class="text-muted">No capability records found.</p>
+                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No capability records found.</p>
+                                    <hr>
                                 </div>
                             @endforelse
                         </div>
