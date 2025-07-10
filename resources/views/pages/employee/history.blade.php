@@ -109,19 +109,6 @@
                                 ->values();
                         @endphp
 
-<<<<<<< HEAD
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Ethnicity <span class="text-danger">*</span></label>
-                        <select class="form-control form-select" required name="ethnicity" disabled>
-                            <option value="" selected disabled>Select</option>
-                            @foreach ($ethnicityOptions as $option)
-                            <option value="{{ $option }}" {{ old('ethnicity', $user->ethnicity) == $option ? 'selected' : '' }}>
-                                {{ $option }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-=======
                         <div class="col-3 mt-3">
                             <label class="form-label">Ethnicity</label>
                             <select class="form-control form-select" required name="ethnicity" disabled>
@@ -134,7 +121,6 @@
                                 @endforeach
                             </select>
                         </div>
->>>>>>> a2bfe4801bd017a4de232e1ed92437b38919f5ad
 
                         <div class="col-3 mt-3">
                             <label class="form-label">Disability</label>
@@ -146,118 +132,6 @@
                             </select>
                         </div>
 
-<<<<<<< HEAD
-                    <!-- Address Details -->
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Address 1 <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="address1"
-                            value="{{ $user->address1 }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Address 2</label>
-                        <input class="form-control" type="text" name="address2"
-                            value="{{ $user->address2 }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Address 3</label>
-                        <input class="form-control" type="text" name="address3" value="{{ $user->address3 }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Town <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="town"
-                            value="{{ $user->town }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Postcode <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="post_code"
-                            value="{{ $user->post_code }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Email <span class="text-danger">*</span></label>
-                        <input class="form-control" type="email" required name="email"
-                            value="{{ $user->email }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Employment Commencement Date<span class="text-danger">*</span></label>
-                        <input class="form-control datepicker py-2" type="text" placeholder="Select Date" name="commencement_date"
-                            value="{{ $user->commencement_date }}" required disabled />
-                    </div>
-
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">NI Number <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="ni_number" value="{{ $user->ni_number }}" disabled />
-                    </div>
-
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Default Cost Centre <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="default_cost_center" value="{{ $user->default_cost_center }}" disabled />
-                    </div>
-
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Salaried / Monthly in Arrears <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="salaried" value="{{ $user->salaried }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Mobile Tel</label>
-                        <input class="form-control" type="text" name="mobile_tel"
-                            value="{{ $user->mobile_tel }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Home Tel</label>
-                        <input class="form-control" type="text" name="home_tel"
-                            value="{{ $user->home_tel }}" disabled />
-                    </div>
-
-                    <!-- Emergency Contact -->
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 1 Name <span
-                                class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="emergency_1_name"
-                            value="{{ $user->emergency_1_name }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 1 Mobile <span
-                                class="text-danger">*</span></label>
-                        <input class="form-control" type="number" placeholder="Phone Number" required
-                            name="emergency_1_ph_no" value="{{ $user->emergency_1_ph_no }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 1 Relationship <span
-                                class="text-danger">*</span></label>
-                        <input class="form-control" type="text" required name="emergency_1_relation"
-                            value="{{ $user->emergency_1_relation }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 1 Home Number</label>
-                        <input class="form-control" type="number" placeholder="phone number"
-                            name="emergency_1_home_ph" value="{{ $user->emergency_1_home_ph }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 2 Name</label>
-                        <input class="form-control" type="text" name="emergency_2_name"
-                            value="{{ $user->emergency_2_name }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 2 Mobile</label>
-                        <input class="form-control" type="number" placeholder="phone number"
-                            name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 2 Relationship</label>
-                        <input class="form-control" type="text" name="emergency_2_relation"
-                            value="{{ $user->emergency_2_relation }}" disabled />
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label class="form-label">Emergency Contact 2 Home Number</label>
-                        <input class="form-control" type="number" placeholder="phone number"
-                            name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" disabled />
-                    </div>
-                </div>
-                @if ($user->jobs->count() > 0)
-
-                <h3 class="my-4 text-center">Job Details</h3>
-                <hr>
-=======
                         <!-- Address Details -->
                         <div class="col-3 mt-3">
                             <label class="form-label">Address 1</label>
@@ -380,7 +254,6 @@
                     </div>
                     @if ($user->jobs->count() > 0)
                         <h3 class=" text-center w-50 m-auto border-bottom border-2 pb-2 ">Job Details</h3>
->>>>>>> a2bfe4801bd017a4de232e1ed92437b38919f5ad
 
                         @foreach ($user->jobs as $index => $job)
                             <div class="mt-4 mb-3 border-bottom pb-4">

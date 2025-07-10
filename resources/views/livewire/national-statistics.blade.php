@@ -2,7 +2,7 @@
     {{-- Filter Form --}}
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-body">
                     <form wire:submit.prevent="filter">
                         <div class="row justify-content-center">
@@ -43,10 +43,10 @@
     @if ($resultCounts)
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
+            <div class="card shadow-sm">
+                <div class="card-body pb-5">
                     <div class="table-responsive">
-                        <table class="table table-bordered dataTableNationalStatistics">
+                        <table class="table table-striped  dataTableNationalStatistics">
                             <thead>
                                 <tr>
                                     <th>Gender</th>
@@ -74,7 +74,7 @@
                                     <td>{{ $resultCounts['other_lte_30'] }}</td>
                                     <td>{{ $resultCounts['other_gt_30'] + $resultCounts['other_lte_30'] }}</td>
                                 </tr>
-                                <tr class="table-primary fw-bold">
+                                <tr class="fw-bold">
                                     <td>Total</td>
                                     <td>{{ $resultCounts['male_gt_30'] + $resultCounts['female_gt_30'] }}</td>
                                     <td>{{ $resultCounts['male_lte_30'] + $resultCounts['female_lte_30'] }}</td>
