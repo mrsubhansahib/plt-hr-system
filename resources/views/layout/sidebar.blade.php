@@ -573,11 +573,11 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/new-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">New Colleagues each month</a>
+                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">Joinees Each Month </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/left-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers each month</a>
+                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers Each Month</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/casual-colleagues-by-site') }}"
@@ -618,16 +618,16 @@
                         {{-- Long term sickness Indicator --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/long-term-sickness') }}"
-                                class="nav-link {{ active_class(['reports/long-term-sickness']) }}">Long Term Sickness Indicator</a>
+                                class="nav-link {{ active_class(['reports/long-term-sickness']) }}">Long Term Sickness </a>
                         </li>
                         {{-- Full Sickness and Capability Details --}}
                         <li class="nav-item">
                             <a title="Full Sickness and Capability Details" href="{{ url('/reports/full-sickness-capability') }}"
-                                class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full Sickness and Capability....</a>
+                                class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full Sickness & Capability</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/national-statistics') }}"
-                                class="nav-link {{ active_class(['reports/national-statistics']) }}">National Statistics male/female</a>
+                                class="nav-link {{ active_class(['reports/national-statistics']) }}">National Statistics</a>
                         </li>
                     </ul>
                 </div>
