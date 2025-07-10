@@ -21,15 +21,15 @@
             function initTable() {
                 $('.dataTableNationalStatistics').DataTable({
                     autoWidth: false,
-                    paging: true,
+                    paging: false,
                     searching: false,
                     ordering: false,
-                    info: true,
+                    info: false,
                     dom: 'Bfrtip',
                     buttons: ['csv', 'excel'],
                     initComplete: function () {
                         this.api().columns.adjust().draw();
-                        $('table.dataTableNationalStatistics td').css({ 'padding': '5px 0px' });
+                        $('table.dataTableNationalStatistics td').css({ 'padding': '5px 10px' });
                     }
                 });
             }
