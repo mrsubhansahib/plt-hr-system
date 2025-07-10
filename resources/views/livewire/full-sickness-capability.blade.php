@@ -107,7 +107,8 @@
                             </div>
 
                             <div class="col-12 mt-3">
-                                <h4 class="text-center  w-25 m-auto border-bottom border-2 pb-2 mb-3">Sickness Record</h4>
+                                <h4 class="text-center  w-25 m-auto border-bottom border-2 pb-2 mb-3">Sickness Record
+                                </h4>
                             </div>
                             @forelse ($employee->sicknesses as $sickness)
                                 <div class="mt-4 mb-3 border-bottom pb-4">
@@ -116,7 +117,8 @@
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Reason for Absence</label>
                                             <input class="form-control" type="text" required
-                                                name="reason_for_absence" value="{{ $sickness->reason_for_absence }}"
+                                                name="reason_for_absence"
+                                                value="{{ $sickness->reason_for_absence ? $sickness->reason_for_absence : 'N/A' }}"
                                                 disabled />
                                         </div>
 
@@ -124,34 +126,36 @@
                                             <label class="form-label">Date From</label>
                                             <input class="form-control datepicker" type="text"
                                                 placeholder="Select Date" required name="date_from"
-                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_from)->format('d-m-Y') }}"
+                                                value="{{ \Carbon\Carbon::parse($sickness->date_from)->format('d-m-Y') ? \Carbon\Carbon::parse($sickness->date_from)->format('d-m-Y') : 'N/A' }}"
                                                 disabled />
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Total Hours</label>
                                             <input class="form-control" type="text" name="total_hours"
-                                                value="{{ $sickness->total_hours }}" disabled />
+                                                value="{{ $sickness->total_hours ? $sickness->total_hours : 'N/A' }}"
+                                                disabled />
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Self Certification Form Received</label>
                                             <input class="form-control" type="text"
-                                                value="{{ ucfirst($sickness->certification_form_received) }}"
+                                                value="{{ ucfirst($sickness->certification_form_received ? $sickness->certification_form_received : 'N/A') }}"
                                                 disabled />
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Fit Note Received</label>
                                             <input class="form-control" type="text"
-                                                value="{{ ucfirst($sickness->fit_note_received) }}" disabled />
+                                                value="{{ ucfirst($sickness->fit_note_received ? $sickness->fit_note_received : 'N/A') }}"
+                                                disabled />
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Date To</label>
                                             <input class="form-control datepicker" type="text"
                                                 placeholder="Select Date" name="date_to"
-                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') }}"
+                                                value="{{ \Carbon\Carbon::parse($sickness->date_to)->format('d-m-Y') ? \Carbon\Carbon::parse($sickness->date_to)->format('d-m-Y') : 'N/A' }}"
                                                 disabled />
                                         </div>
                                     </div>
@@ -159,18 +163,20 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label class="form-label">Notes</label>
-                                            <textarea class="form-control" name="notes" disabled>{{ $sickness->notes }}</textarea>
+                                            <textarea class="form-control" name="notes" disabled>{{ $sickness->notes ? $sickness->notes : 'N/A' }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             @empty
                                 <div class="col-12 mt-3">
-                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No sickness records found.</p>
+                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No sickness
+                                        records found.</p>
                                     <hr>
                             @endforelse
 
                             <div class="col-12 mt-3">
-                                <h4 class="text-center  w-25 m-auto border-bottom border-2 pb-2 mb-3">Capability Record</h4>
+                                <h4 class="text-center  w-25 m-auto border-bottom border-2 pb-2 mb-3">Capability Record
+                                </h4>
                             </div>
                             @forelse ($employee->capabilities as $capability)
                                 <div class="card-body border-bottom mb-4 pb-4">
@@ -179,48 +185,53 @@
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">On Capability Procedure</label>
                                             <input type="text" class="form-control"
-                                                value="{{ ucfirst($capability->on_capability_procedure) }}" disabled>
+                                                value="{{ ucfirst($capability->on_capability_procedure ? $capability->on_capability_procedure : 'N/A') }}"
+                                                disabled>
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Capability Stage</label>
                                             <input type="text" class="form-control"
-                                                value="{{ $capability->stage }}" disabled>
+                                                value="{{ $capability->stage ? $capability->stage : 'N/A' }}" disabled>
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Date</label>
                                             <input type="text" class="form-control datepicker"
-                                                value="{{ $capability->date }}" disabled>
+                                                value="{{ $capability->date ? $capability->date : 'N/A' }}" disabled>
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Outcome</label>
                                             <input type="text" class="form-control"
-                                                value="{{ $capability->outcome }}" disabled>
+                                                value="{{ $capability->outcome ? $capability->outcome : 'N/A' }}"
+                                                disabled>
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Warning Issued Type</label>
                                             <input type="text" class="form-control"
-                                                value="{{ $capability->warning_issued_type }}" disabled>
+                                                value="{{ $capability->warning_issued_type ? $capability->warning_issued_type : 'N/A' }}"
+                                                disabled>
                                         </div>
 
                                         <div class="col-md-3 mt-3">
                                             <label class="form-label">Review Date</label>
                                             <input type="text" class="form-control datepicker"
-                                                value="{{ $capability->review_date }}" disabled>
+                                                value="{{ $capability->review_date ? $capability->review_date : 'N/A' }}"
+                                                disabled>
                                         </div>
 
                                         <div class="col-md-12 mt-3">
                                             <label class="form-label">Notes</label>
-                                            <textarea class="form-control" disabled>{{ $capability->notes }}</textarea>
+                                            <textarea class="form-control" disabled>{{ $capability->notes ? $capability->notes : 'N/A' }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             @empty
                                 <div class="col-12 mt-3">
-                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No capability records found.</p>
+                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No
+                                        capability records found.</p>
                                     <hr>
                                 </div>
                             @endforelse

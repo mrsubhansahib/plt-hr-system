@@ -68,7 +68,7 @@
     @livewireScripts
     <script>
         function printDiv(divId) {
-            const printContents = document.getElementById(divId).innerHTML;
+            const printContents = document.getElementById('printSection').innerHTML;
             const originalContents = document.body.innerHTML;
             document.body.innerHTML = printContents;
             window.print();
