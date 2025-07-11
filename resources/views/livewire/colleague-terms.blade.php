@@ -49,10 +49,10 @@
                         <table id="" class="table dataTableColleagues">
                             <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>Surname</th>
+                                    <th>Name</th>
                                     <th>Job Title</th>
                                     <th>Facility</th>
+                                    <th>Commencement Date</th>
                                     <th>Status</th>
                                 </tr>
 
@@ -61,13 +61,15 @@
                                 @if ($colleagues !== [])
                                     @foreach ($colleagues as $colleague)
                                         <tr>
-                                            <td>{{ $colleague->first_name }}</td>
-                                            <td>{{ $colleague->surname }}</td>
+                                            <td>{{ $colleague->first_name . ' ' . $colleague->surname }}</td>
                                             <td>
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? 'No Facility Assigned' }}
+                                            </td>
+                                            <td>
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->commencement_date ?? 'No Facility Assigned' }}
                                             </td>
                                             <td>
                                                 @if ($colleague->status === 'active')

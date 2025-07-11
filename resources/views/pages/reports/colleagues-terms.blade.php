@@ -8,7 +8,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Reports</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Temp/Fix Terms Colleagues</li>
+            <li class="breadcrumb-item active" aria-current="page">Current Colleagues by Type</li>
         </ol>
     </nav>
     @livewire('colleague-terms')

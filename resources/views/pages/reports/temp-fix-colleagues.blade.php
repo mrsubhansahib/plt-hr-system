@@ -2,16 +2,25 @@
 
 @push('style')
     @livewireStyles
+    <style>
+        table.dataTableColleagues th,
+        table.dataTableColleagues td {
+            text-align: left !important;
+        }
+                table.dataTableColleagues td {
+            padding-left: 10px !important;
+        }
+    </style>
 @endpush
 
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Reports</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Casual Colleagues by Facility</li>
+            <li class="breadcrumb-item active" aria-current="page">Temp/Fix Term Colleagues</li>
         </ol>
     </nav>
-    @livewire('casual-colleagues-by-site')
+    @livewire('temp-fix-colleagues')
 @endsection
 
 @push('custom-scripts')

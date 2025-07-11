@@ -8,8 +8,8 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-3 mb-3">
                                 <label for="to" class="form-label">Select Date</label>
-                                <input type="date" wire:model="date" class="form-control"
-                                    placeholder="Select Date" id="to">
+                                <input type="date" wire:model="date" class="form-control" placeholder="Select Date"
+                                    id="to">
                             </div>
                             <div class="col-md-1 mt-4  pt-1">
                                 <button class="btn btn-primary">Filter</button>
@@ -64,26 +64,27 @@
                                         <tr>
                                             <td>{{ $colleague->first_name }}</td>
                                             <td>{{ $colleague->surname }}</td>
+                                            {{-- Check if the main job exists and is active --}}
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ? $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title : 'No Main Job Assigned' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ? $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility : 'No Facility Assigned' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->contract_type ?? 'Not Specified' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->contract_type ?? 'Not Specified' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->contracted_from ?? 'Not Specified' }}
+                                                {{ $colleague->contracted_from_date ?? 'Not Specified' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->job_start_date ?? 'Not Specified' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->start_date ?? 'Not Specified' }}
                                             </td>
                                             <td>
                                                 {{ $colleague->email ?? 'Not Specified' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->address ?? 'Not Specified' }}
+                                                {{ $colleague->address1 ?? 'Not Specified' }}
                                             </td>
                                             <td>
                                                 {{ $colleague->mobile_tel ?? 'Not Specified' }}

@@ -581,7 +581,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/casual-colleagues-by-site') }}"
-                                class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual Colleagues by Site</a>
+                                class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual Colleagues by Fac..</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/hours-by-site') }}"
@@ -593,7 +593,13 @@
                         </li> --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/colleague-terms') }}"
-                                class="nav-link {{ active_class(['reports/colleague-terms']) }}">Temp/Fix Term Colleague</a>
+                                class="nav-link {{ active_class(['reports/colleague-terms']) }}">Current Colleagues by Type</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/temp-fix-colleagues') }}"
+                                class="nav-link {{ active_class(['reports/temp-fix-colleagues']) }}">Temp/Fix Term Colleagues</a>
+
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/retirement') }}"

@@ -69,24 +69,21 @@
                                         disabled>
                                 </div>
 
-                                @php
-                                    $mainJob = $employee->jobs->firstWhere('main_job', 'yes');
-                                @endphp
 
                                 <div class="col-3 my-2">
                                     <label>Job Title</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ optional($mainJob)->title ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->jobs->where('status','active')->where('main_job','yes')->first()->title ?? 'N/A' }}" disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Facility</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ optional($mainJob)->facility ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->jobs->where('status','active')->where('main_job','yes')->first()->facility ?? 'N/A' }}" disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Contract Type</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ optional($mainJob)->contract_type ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->jobs->where('status','active')->where('main_job','yes')->first()->contract_type ?? 'N/A' }}" disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Commencement Date</label>
@@ -96,7 +93,7 @@
                                 <div class="col-3 my-2">
                                     <label>Contracted From</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->contracted_from ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->contracted_from_date ?? 'N/A' }}" disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Email</label>

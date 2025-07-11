@@ -268,6 +268,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/national-statistics', function () {
             return view('pages.reports.national-statistics');
         })->name('reports.national-statistics');
+        Route::get('/temp-fix-colleagues', function () {
+            return view('pages.reports.temp-fix-colleagues');
+        })->name('reports.temp-fix-colleagues');
     });
 });
 

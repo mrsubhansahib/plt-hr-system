@@ -30,6 +30,10 @@ class CurrentColleagues extends Component
         ->where(function ($q) {
             $q->orWhereNull('left_date')
               ->orWhere('left_date', '>', $this->date);
+        })
+        ->whereHas('jobs', function ($q) {
+            $q->where('status', 'active')
+              ->where('main_job', 'yes');
         });
 
         // Date filters
