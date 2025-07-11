@@ -63,10 +63,10 @@
                                     <tr>
                                         <td>{{ $disciplinary->user->first_name }}</td>
                                         <td>{{ $disciplinary->user->surname }}</td>
-                                        <td>{{ $disciplinary->user->commencement_date }}</td>
+                                        <td>{{ $disciplinary->user->commencement_date??'N/A' }}</td>
                                         <td>{{ $disciplinary->user->contracted_from_date ?? 'N/A'  }}</td>
-                                        <td>{{ $disciplinary->reason_for_disciplinary }}</td>
-                                        <td>{{ $disciplinary->hearing_date }}</td>
+                                        <td>{{ $disciplinary->reason_for_disciplinary ?? 'N/A' }}</td>
+                                        <td>{{ $disciplinary->hearing_date ?? 'N/A' }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"

@@ -344,7 +344,7 @@
 
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
-                                        <textarea class="form-control" rows="3" disabled>{{ $job->notes }}</textarea>
+                                        <textarea class="form-control" rows="3" disabled>{{ $job->notes??'empty' }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -481,7 +481,7 @@
 
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
-                                        <textarea class="form-control" rows="3" disabled>{{ $sickness->notes }}</textarea>
+                                        <textarea class="form-control" rows="3" disabled>{{ $sickness->notes??'empty' }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -540,7 +540,7 @@
 
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
-                                        <textarea class="form-control" rows="3" disabled>{{ $capability->notes }}</textarea>
+                                        <textarea class="form-control" rows="3" disabled>{{ $capability->notes ?? 'empty' }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -595,7 +595,7 @@
 
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
-                                        <textarea class="form-control" rows="3" disabled>{{ $disciplinary->notes }}</textarea>
+                                        <textarea class="form-control" rows="3" disabled>{{ $disciplinary->notes ?? 'empty' }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -649,7 +649,7 @@
 
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
-                                        <textarea class="form-control" rows="3" disabled>{{ $lateness->notes }}</textarea>
+                                        <textarea class="form-control" rows="3" disabled>{{ $lateness->notes ?? 'empty' }}</textarea>
                                     </div>
                                 </div>
                             </div>

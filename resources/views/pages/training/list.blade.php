@@ -66,11 +66,11 @@
                                     <tr>
                                         <td>{{ $training->user->first_name }}</td>
                                         <td>{{ $training->user->surname }}</td>
-                                        <td>{{ $training->user->commencement_date }}</td>
+                                        <td>{{ $training->user->commencement_date ?? 'N/A'}}</td>
                                         <td>{{ $training->user->contracted_from_date ?? 'N/A' }}</td>
-                                        <td>{{ $training->training_title }}</td>
-                                        <td>{{ $training->course_date }}</td>
-                                        <td>{{ $training->renewal_date }}</td>
+                                        <td>{{ $training->training_title??'N/A' }}</td>
+                                        <td>{{ $training->course_date??'N/A' }}</td>
+                                        <td>{{ $training->renewal_date??'N/A' }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"

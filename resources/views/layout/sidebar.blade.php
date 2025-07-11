@@ -579,7 +579,7 @@
                             <a href="{{ url('/reports/left-colleagues') }}"
                                 class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers Each Month</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" title="Casual Colleagues by Facility">
                             <a href="{{ url('/reports/casual-colleagues-by-site') }}"
                                 class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual Colleagues by Fac..</a>
                         </li>
@@ -634,6 +634,10 @@
                         <li class="nav-item">
                             <a href="{{ url('/reports/national-statistics') }}"
                                 class="nav-link {{ active_class(['reports/national-statistics']) }}">National Statistics</a>
+                        </li>
+                        <li class="nav-item" title="Disciplinary Capability Lateness">
+                            <a href="{{ url('/reports/disciplinary-capability-lateness') }}"
+                                class="nav-link {{ active_class(['reports/disciplinary-capability-lateness']) }}">Disci.. Capabi.. Late..</a>
                         </li>
                     </ul>
                 </div>

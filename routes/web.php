@@ -271,6 +271,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/temp-fix-colleagues', function () {
             return view('pages.reports.temp-fix-colleagues');
         })->name('reports.temp-fix-colleagues');
+        Route::get('/disciplinary-capability-lateness', function () {
+            return view('pages.reports.disciplinary-capability-lateness');
+        })->name('reports.disciplinary-capability-lateness');
     });
 });
 

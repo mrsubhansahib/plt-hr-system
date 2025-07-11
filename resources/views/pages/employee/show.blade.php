@@ -221,7 +221,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user->jobs as $key => $job)
+                                    @foreach ($user->jobs->sortByDesc('id') as $key => $job)
                                         <tr>
                                             <td>{{ $job->title }}</td>
                                             <td>{{ $job->facility }}</td>
@@ -324,7 +324,7 @@
                                 <tbody>
                                     @if ($user->disclosures->isNotEmpty())
                                         <!-- Check if there are any disclosures -->
-                                        @foreach ($user->disclosures as $index => $disclosure)
+                                        @foreach ($user->disclosures->sortByDesc('id') as $index => $disclosure)
                                             <!-- Loop through each disclosure -->
                                             <tr>
                                                 <td>{{ $user->first_name }}</td>
@@ -390,7 +390,7 @@
                                 </thead>
                                 <tbody>
                                     @if ($user->sicknesses->isNotEmpty())
-                                        @foreach ($user->sicknesses as $key => $sickness)
+                                        @foreach ($user->sicknesses->sortByDesc('id') as $key => $sickness)
                                             <tr>
 
                                                 <td>{{ $sickness->reason_for_absence }}</td>
@@ -454,7 +454,7 @@
                                 </thead>
                                 <tbody>
                                     @if ($user->capabilities->isNotEmpty())
-                                        @foreach ($user->capabilities as $key => $capability)
+                                        @foreach ($user->capabilities->sortByDesc('id') as $key => $capability)
                                             <tr>
                                                 <td>{{ $capability->stage }}</td>
                                                 <td>{{ $capability->date }}</td>
@@ -516,11 +516,11 @@
                                 </thead>
                                 <tbody>
                                     @if ($user->trainings->isNotEmpty())
-                                        @foreach ($user->trainings as $key => $training)
+                                        @foreach ($user->trainings->sortByDesc('id') as $key => $training)
                                             <tr>
-                                                <td>{{ $training->training_title }}</td>
-                                                <td>{{ $training->course_date }}</td>
-                                                <td>{{ $training->renewal_date }}</td>
+                                                <td>{{ $training->training_title ?? 'N/A' }}</td>
+                                                <td>{{ $training->course_date ?? 'N/A' }}</td>
+                                                <td>{{ $training->renewal_date ?? 'N/A' }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
@@ -575,15 +575,19 @@
                                     <tr>
                                         <th>Reason for Disciplinary</th>
                                         <th>Date of Hearing</th>
+                                        <th>Outcome</th>
+                                        <th>Suspended</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if ($user->disciplinaries->isNotEmpty())
-                                        @foreach ($user->disciplinaries as $key => $disciplinary)
+                                        @foreach ($user->disciplinaries->sortByDesc('id') as $key => $disciplinary)
                                             <tr>
-                                                <td>{{ $disciplinary->reason_for_disciplinary }}</td>
-                                                <td>{{ $disciplinary->hearing_date }}</td>
+                                                <td>{{ $disciplinary->reason_for_disciplinary ?? 'N/A' }}</td>
+                                                <td>{{ $disciplinary->hearing_date ?? 'N/A' }}</td>
+                                                <td>{{ $disciplinary->outcome ?? 'N/A' }}</td>
+                                                <td>{{ $disciplinary->suspended ?? 'N\A' }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
@@ -640,7 +644,7 @@
                                 </thead>
                                 <tbody>
                                     @if ($user->latenesses->isNotEmpty())
-                                        @foreach ($user->latenesses as $key => $lateness)
+                                        @foreach ($user->latenesses->sortByDesc('id') as $key => $lateness)
                                             <tr>
                                                 <td>{{ $lateness->lateness_triggered }}</td>
                                                 <td>{{ $lateness->lateness_stage }}</td>
@@ -703,7 +707,7 @@
                                 </thead>
                                 <tbody>
                                     @if ($user->all_notes->isNotEmpty())
-                                        @foreach ($user->all_notes as $note)
+                                        @foreach ($user->all_notes->sortByDesc('id') as $note)
                                             <tr>
                                                 <td>{{ $note->admin->first_name . ' ' . $note->admin->surname }}</td>
                                                 <td>{{ $note->notes }}</td>
@@ -1111,68 +1115,70 @@
             </div>
         </div>
     </div>
-    @push('plugin-scripts')
-        <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
-        <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
-    @endpush
-    @push('custom-scripts')
-        <script>
-            $(document).ready(function() {
-                function initDataTables() {
-                    $('.dataTableExampleDetail').each(function() {
-                        const table = $(this);
 
-                        if ($.fn.DataTable.isDataTable(table)) {
-                            table.DataTable().destroy();
-                        }
+@endsection
+@push('plugin-scripts')
+    <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
+@endpush
+@push('custom-scripts')
+    <script>
+        $(document).ready(function() {
+            function initDataTables() {
+                $('.dataTableExampleDetail').each(function() {
+                    const table = $(this);
 
-                        table.DataTable({
-                            autoWidth: false,
-                            paging: true,
-                            searching: true,
-                            ordering: true,
-                            info: true,
-                            dom: 'Bfrtip',
-                            buttons: [{
-                                    extend: 'excelHtml5',
-                                    className: 'btn btn-sm btn-outline-success',
-                                    title: '', // ❌ Remove default title (like PLT HR System)
-                                    exportOptions: {
-                                        columns: ':not(:last-child)' // ✅ Exclude last column (e.g. Action/Edit)
-                                    },
-                                    customize: function(xlsx) {
-                                        const sheet = xlsx.xl.worksheets['sheet1.xml'];
+                    if ($.fn.DataTable.isDataTable(table)) {
+                        table.DataTable().destroy();
+                    }
 
-                                        const firstName = '{{ $user->first_name }}';
-                                        const surname = '{{ $user->surname }}';
-                                        const commencementDate =
-                                            '{{ $user->commencement_date }}';
-                                        const contractedFrom =
-                                            '{{ $user->contracted_from_date ?? 'Not Entered' }}';
+                    table.DataTable({
+                        autoWidth: false,
+                        paging: true,
+                        searching: true,
+                        ordering: false,
+                        info: true,
+                        dom: 'Bfrtip',
+                        buttons: [{
+                                extend: 'excelHtml5',
+                                className: 'btn btn-sm btn-outline-success',
+                                title: '', // ❌ Remove default title (like PLT HR System)
+                                exportOptions: {
+                                    columns: ':not(:last-child)' // ✅ Exclude last column (e.g. Action/Edit)
+                                },
+                                customize: function(xlsx) {
+                                    const sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-                                        const $sheetData = $(sheet).find('sheetData');
+                                    const firstName = '{{ $user->first_name }}';
+                                    const surname = '{{ $user->surname }}';
+                                    const commencementDate =
+                                        '{{ $user->commencement_date }}';
+                                    const contractedFrom =
+                                        '{{ $user->contracted_from_date ?? 'Not Entered' }}';
 
-                                        // Shift all existing rows 4 down
-                                        $sheetData.find('row').each(function() {
-                                            const $row = $(this);
-                                            const r = parseInt($row.attr('r'));
-                                            $row.attr('r', r + 4);
-                                            $row.find('c').each(function() {
-                                                const $cell = $(this);
-                                                const cellRef = $cell.attr('r');
-                                                if (cellRef) {
-                                                    const col = cellRef.replace(
-                                                        /[0-9]/g, '');
-                                                    const row = parseInt(cellRef
-                                                        .replace(/[A-Z]/g,
-                                                            '')) + 4;
-                                                    $cell.attr('r', col + row);
-                                                }
-                                            });
+                                    const $sheetData = $(sheet).find('sheetData');
+
+                                    // Shift all existing rows 4 down
+                                    $sheetData.find('row').each(function() {
+                                        const $row = $(this);
+                                        const r = parseInt($row.attr('r'));
+                                        $row.attr('r', r + 4);
+                                        $row.find('c').each(function() {
+                                            const $cell = $(this);
+                                            const cellRef = $cell.attr('r');
+                                            if (cellRef) {
+                                                const col = cellRef.replace(
+                                                    /[0-9]/g, '');
+                                                const row = parseInt(cellRef
+                                                    .replace(/[A-Z]/g,
+                                                        '')) + 4;
+                                                $cell.attr('r', col + row);
+                                            }
                                         });
+                                    });
 
-                                        // Insert user info rows
-                                        const userInfoRows = `
+                                    // Insert user info rows
+                                    const userInfoRows = `
                                     <row r="1">
                                         <c t="inlineStr" r="A1"><is><t>First Name</t></is></c>
                                         <c t="inlineStr" r="B1"><is><t>${firstName}</t></is></c>
@@ -1191,96 +1197,91 @@
                                     </row>
                                 `;
 
-                                        $sheetData.prepend(userInfoRows);
-                                    }
-                                },
-                                {
-                                    extend: 'csvHtml5',
-                                    className: 'btn btn-sm btn-outline-primary',
-                                    title: '', // ❌ Remove default title
-                                    exportOptions: {
-                                        columns: ':not(:last-child)' // ✅ Exclude Edit/Action column
-                                    },
-                                    customize: function(csv) {
-                                        const firstName = '{{ $user->first_name }}';
-                                        const surname = '{{ $user->surname }}';
-                                        const commencementDate =
-                                            '{{ $user->commencement_date }}';
-                                        const contractedFrom =
-                                            '{{ $user->contracted_from_date ?? 'Not Entered' }}';
-
-                                        const info = [
-                                            `First Name:,${firstName}`,
-                                            `Surname:,${surname}`,
-                                            `Employment Commencement Date:,${commencementDate}`,
-                                            `Contract From Date:,${contractedFrom}`
-                                        ].join('\n');
-
-                                        return info + '\n\n' + csv;
-                                    }
+                                    $sheetData.prepend(userInfoRows);
                                 }
-                            ],
-                            initComplete: function() {
-                                let api = this.api();
-                                api.columns.adjust().draw();
-                                table.find('td').css({
-                                    'padding': '5px 0px'
-                                });
+                            },
+                            {
+                                extend: 'csvHtml5',
+                                className: 'btn btn-sm btn-outline-primary',
+                                title: '', // ❌ Remove default title
+                                exportOptions: {
+                                    columns: ':not(:last-child)' // ✅ Exclude Edit/Action column
+                                },
+                                customize: function(csv) {
+                                    const firstName = '{{ $user->first_name }}';
+                                    const surname = '{{ $user->surname }}';
+                                    const commencementDate =
+                                        '{{ $user->commencement_date }}';
+                                    const contractedFrom =
+                                        '{{ $user->contracted_from_date ?? 'Not Entered' }}';
+
+                                    const info = [
+                                        `First Name:,${firstName}`,
+                                        `Surname:,${surname}`,
+                                        `Employment Commencement Date:,${commencementDate}`,
+                                        `Contract From Date:,${contractedFrom}`
+                                    ].join('\n');
+
+                                    return info + '\n\n' + csv;
+                                }
                             }
-                        });
-                    });
-                }
+                        ],
+                        initComplete: function() {
 
+                        }
+                    });
+                });
+            }
+
+            initDataTables();
+
+            $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function() {
                 initDataTables();
-
-                $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function() {
-                    initDataTables();
-                });
             });
-        </script>
-        <script>
-            $(document).ready(function() {
-                // Adjust DataTable columns when tab is shown
-                $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
-                    const target = $(e.target).data('bs-target');
-                    $(target).find('table').DataTable().columns.adjust();
-                });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Adjust DataTable columns when tab is shown
+            $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+                const target = $(e.target).data('bs-target');
+                $(target).find('table').DataTable([ordering: false]).columns.adjust();
             });
+        });
 
-            function confirmTermination(jobId) {
-                if (confirm('Are you sure you want to terminate this job?')) {
-                    document.getElementById('terminate-job-form-' + jobId).submit();
+        function confirmTermination(jobId) {
+            if (confirm('Are you sure you want to terminate this job?')) {
+                document.getElementById('terminate-job-form-' + jobId).submit();
+            }
+        }
+
+        function confirmActivation(jobId) {
+            if (confirm('Are you sure you want to activate this job?')) {
+                document.getElementById('activate-job-form-' + jobId).submit();
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get tab from sessionStorage or use default
+            let activeTab = sessionStorage.getItem("activeTab") ||
+                "{{ session('active_tab', 'default-tab-id') }}";
+            if (activeTab) {
+                let tabButton = document.getElementById(activeTab);
+                if (tabButton) {
+                    new bootstrap.Tab(tabButton).show();
                 }
             }
-
-            function confirmActivation(jobId) {
-                if (confirm('Are you sure you want to activate this job?')) {
-                    document.getElementById('activate-job-form-' + jobId).submit();
-                }
-            }
-        </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Get tab from sessionStorage or use default
-                let activeTab = sessionStorage.getItem("activeTab") ||
-                    "{{ session('active_tab', 'default-tab-id') }}";
-                if (activeTab) {
-                    let tabButton = document.getElementById(activeTab);
-                    if (tabButton) {
-                        new bootstrap.Tab(tabButton).show();
-                    }
-                }
-                // Save clicked tab in sessionStorage
-                document.querySelectorAll(".nav-link").forEach(tab => {
-                    tab.addEventListener("click", function() {
-                        sessionStorage.setItem("activeTab", this.id);
-                    });
-                });
-                // Reset on full reload
-                window.addEventListener("beforeunload", function() {
-                    sessionStorage.removeItem("activeTab");
+            // Save clicked tab in sessionStorage
+            document.querySelectorAll(".nav-link").forEach(tab => {
+                tab.addEventListener("click", function() {
+                    sessionStorage.setItem("activeTab", this.id);
                 });
             });
-        </script>
-    @endpush
-@endsection
+            // Reset on full reload
+            window.addEventListener("beforeunload", function() {
+                sessionStorage.removeItem("activeTab");
+            });
+        });
+    </script>
+@endpush

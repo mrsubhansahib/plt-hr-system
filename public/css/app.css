@@ -22413,10 +22413,10 @@ table.dataTable {
 
 /* Prevent content overflow and maintain alignment */
 table.dataTableExample th, table.dataTableExample td ,table.detailTable th, table.detailTable td {
-  text-overflow: ellipsis;  /* Ellipsis for overflowed text */
-  white-space: wrap;      /* Prevent text wrapping */
-  vertical-align: middle;   /* Center-align text vertically */
-  padding-top: 10px;            /* Consistent padding */
+  text-overflow: ellipsis!important;  /* Ellipsis for overflowed text */
+  white-space: wrap!important;      /* Prevent text wrapping */
+  vertical-align: middle!important;   /* Center-align text vertically */
+  padding-top: 10px!important;            /* Consistent padding */
   /* text-align: center ; */
 }
 table.dataTableExample td {

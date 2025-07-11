@@ -183,20 +183,7 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $user = User::with([
-            'jobs' => function ($query) {
-                $query->whereIn('status', ['terminated', 'active']);
-            },
-            'disclosures',
-            'sicknesses',
-            'capabilities',
-            'disciplinaries',
-            'latenesses',
-            'trainings',
-            'all_notes' => function ($query) {
-                $query->orderBy('created_at', 'desc');
-            },
-        ])->find($id);
+        $user = User::find($id);
         if (!$user) {
             return redirect()->back()->with('error', 'User not found.');
         }
