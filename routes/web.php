@@ -274,6 +274,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/disciplinary-capability-lateness', function () {
             return view('pages.reports.disciplinary-capability-lateness');
         })->name('reports.disciplinary-capability-lateness');
+        Route::get('/turnover-monthly', function () {
+            return view('pages.reports.turnover-monthly');
+        })->name('reports.turnover-monthly');
+        Route::get('/turnover-yearly', function () {
+            return view('pages.reports.turnover-yearly');
+        })->name('reports.turnover-yearly');
     });
 });
 

@@ -569,23 +569,28 @@
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ url('/reports/current-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/current-colleagues']) }}">Current Colleagues</a>
+                                class="nav-link {{ active_class(['reports/current-colleagues']) }}">Current
+                                Colleagues</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/new-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">Joinees Each Month </a>
+                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">Joinees Each Month
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/left-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers Each Month</a>
+                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers Each
+                                Month</a>
                         </li>
                         <li class="nav-item" title="Casual Colleagues by Facility">
                             <a href="{{ url('/reports/casual-colleagues-by-site') }}"
-                                class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual Colleagues by Fac..</a>
+                                class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual
+                                Colleagues by Fac..</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/hours-by-site') }}"
-                                    class="nav-link {{ active_class(['reports/hours-by-site']) }}">Current Contracted Hours</a>
+                                class="nav-link {{ active_class(['reports/hours-by-site']) }}">Current Contracted
+                                Hours</a>
                         </li>
                         {{-- <li class="nav-item">
                             <a href="{{ url('/reports/colleagues') }}"
@@ -593,12 +598,14 @@
                         </li> --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/colleague-terms') }}"
-                                class="nav-link {{ active_class(['reports/colleague-terms']) }}">Current Colleagues by Type</a>
+                                class="nav-link {{ active_class(['reports/colleague-terms']) }}">Current Colleagues
+                                by Type</a>
 
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/temp-fix-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/temp-fix-colleagues']) }}">Temp/Fix Term Colleagues</a>
+                                class="nav-link {{ active_class(['reports/temp-fix-colleagues']) }}">Temp/Fix Term
+                                Colleagues</a>
 
                         </li>
                         <li class="nav-item">
@@ -615,7 +622,8 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/full-time-equivalent') }}"
-                                class="nav-link {{ active_class(['reports/full-time-equivalent']) }}">Full Time Equivalent</a>
+                                class="nav-link {{ active_class(['reports/full-time-equivalent']) }}">Full Time
+                                Equivalent</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/dbs-check') }}"
@@ -624,25 +632,39 @@
                         {{-- Long term sickness Indicator --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/long-term-sickness') }}"
-                                class="nav-link {{ active_class(['reports/long-term-sickness']) }}">Long Term Sickness </a>
+                                class="nav-link {{ active_class(['reports/long-term-sickness']) }}">Long Term
+                                Sickness </a>
                         </li>
                         {{-- Full Sickness and Capability Details --}}
                         <li class="nav-item">
-                            <a title="Full Sickness and Capability Details" href="{{ url('/reports/full-sickness-capability') }}"
-                                class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full Sickness & Capability</a>
+                            <a title="Full Sickness and Capability Details"
+                                href="{{ url('/reports/full-sickness-capability') }}"
+                                class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full
+                                Sickness & Capability</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/national-statistics') }}"
-                                class="nav-link {{ active_class(['reports/national-statistics']) }}">National Statistics</a>
+                                class="nav-link {{ active_class(['reports/national-statistics']) }}">National
+                                Statistics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/turnover-monthly') }}"
+                                class="nav-link {{ active_class(['reports/turnover-monthly']) }}">Turnover
+                                Monthly</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/turnover-yearly') }}"
+                                class="nav-link {{ active_class(['reports/turnover-yearly']) }}">Turnover Yearly</a>
                         </li>
                         <li class="nav-item" title="Disciplinary Capability Lateness">
                             <a href="{{ url('/reports/disciplinary-capability-lateness') }}"
-                                class="nav-link {{ active_class(['reports/disciplinary-capability-lateness']) }}">Disci.. Capabi.. Late..</a>
+                                class="nav-link {{ active_class(['reports/disciplinary-capability-lateness']) }}">Disci..
+                                Capabi.. Late..</a>
                         </li>
                     </ul>
                 </div>
             </li>
-            {{--<li class="nav-item {{ active_class(['auth/*']) }}">
+            {{-- <li class="nav-item {{ active_class(['auth/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#auth" role="button"
                     aria-expanded="{{ is_active_route(['auth/*']) }}" aria-controls="auth">
                     <i class="link-icon" data-feather="unlock"></i>
