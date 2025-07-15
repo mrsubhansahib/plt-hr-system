@@ -24,29 +24,38 @@
         .select2-selection__clear {
             display: none !important;
         }
+    </style>
+    <style>
+        .heading {
+            display: none;
+        }
+
+        #printContent {
+            display: none !important;
+            border: none;
+            box-shadow: none;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
 
         @media print {
-            body * {
-                visibility:visible;
+            #app {
+                display: none;
             }
 
-            #printSection,
-            #printSection * {
-                visibility: visible;
+            .heading {
+                display: block;
             }
 
-            #printSection {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                page-break-before: always;
+            #printContent {
+                display: block !important;
             }
         }
 
+
         @page {
             size: A4;
-            margin: 1in;
+            margin: 0.5in 0.5in 0.5in 1in;
         }
     </style>
 @endpush

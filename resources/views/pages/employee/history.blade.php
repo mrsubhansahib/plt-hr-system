@@ -1,9 +1,19 @@
 @extends('layout.master')
 @push('style')
     <style>
+        .heading {
+            display: none;
+        }
+        hr{
+            opacity: 1;
+        }
         @media print {
             body * {
                 visibility: visible;
+            }
+
+            .heading {
+                display: block;
             }
 
             #printSection,
@@ -22,7 +32,7 @@
 
         @page {
             size: A4;
-            margin: 1in;
+            margin: 0.5in 0.5in 0.5in 1in;
         }
     </style>
 @endpush
@@ -42,12 +52,17 @@
     <div class="row">
         <div class="col-md-12 grid-margin">
             <div class="card">
-                <div class="card-body" id="printSection">
+                <div class="card-body " id="printSection">
 
-                    <div class="row mb-3 border-bottom border-2 pb-2 pb-4">
+
+                    <h3 class=" heading text-center border-bottom border-2 pb-2 mb-4 border-dark fw-bolder">Employee History
+                        Report</h3>
+
+                    <div class="row mb-3 border-bottom border-1 border-dark pb-2 pb-4">
 
                         <div class="">
-                            <h3 class=" text-center w-50 m-auto border-bottom border-2 pb-2">Personal Details</h3>
+                            <h3 class=" text-center w-50 m-auto border-bottom border-1 border-dark pb-2">Personal Details
+                            </h3>
 
                         </div>
                         <!-- Personal Information -->
@@ -252,10 +267,10 @@
                         </div>
                     </div>
                     @if ($user->jobs->count() > 0)
-                        <h3 class=" text-center w-50 m-auto border-bottom border-2 pb-2 ">Job Details</h3>
+                        <h3 class=" text-center w-50 m-auto border-bottom border-1 border-dark pb-2 ">Job Details</h3>
 
                         @foreach ($user->jobs as $index => $job)
-                            <div class="mt-4 mb-3 border-bottom pb-4">
+                            <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                 <h4 class="text-primary mb-3">NO#{{ $index + 1 }}</h4>
                                 <div class="row">
                                     <div class="col-3 mt-3">
@@ -344,20 +359,21 @@
 
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
-                                        <textarea class="form-control" rows="3" disabled>{{ $job->notes??'empty' }}</textarea>
+                                        <textarea class="form-control" rows="3" disabled>{{ $job->notes ?? 'empty' }}</textarea>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     @else
-                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No job records found.</p>
+                        <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No job records
+                            found.</p>
                         <hr>
                     @endif
 
                     @if ($user->disclosures->count() > 0)
-                        <h3 class="text-center w-50 m-auto border-bottom border-2 pb-2">Disclosure Details</h3>
+                        <h3 class="text-center w-50 m-auto border-bottom border-1 border-dark pb-2">Disclosure Details</h3>
                         @foreach ($user->disclosures as $index => $disclosure)
-                            <div class="mt-4 mb-3 border-bottom pb-3">
+                            <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                 <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                 <div class="row">
 
@@ -426,16 +442,18 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No disclosure records found.</p>
+                        <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No disclosure
+                            records found.
+                        </p>
                         <hr>
                     @endif
 
 
                     @if ($user->sicknesses->count() > 0)
-                        <h3 class=" text-center w-50 m-auto border-bottom border-2 pb-2">Sickness Details</h3>
+                        <h3 class=" text-center w-50 m-auto border-bottom border-1 border-dark pb-2">Sickness Details</h3>
 
                         @foreach ($user->sicknesses as $index => $sickness)
-                            <div class="mt-4 mb-3 border-bottom pb-4">
+                            <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                 <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                 <div class="row">
                                     <div class="col-3 mt-3">
@@ -481,22 +499,24 @@
 
                                     <div class="col-md-12 mt-3">
                                         <label class="form-label">Notes</label>
-                                        <textarea class="form-control" rows="3" disabled>{{ $sickness->notes??'empty' }}</textarea>
+                                        <textarea class="form-control" rows="3" disabled>{{ $sickness->notes ?? 'empty' }}</textarea>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     @else
-                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No sickness records found.</p>
+                        <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No sickness
+                            records found.
+                        </p>
                         <hr>
                     @endif
 
 
 
                     @if ($user->capabilities->count() > 0)
-                        <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Capability Details</h3>
+                        <h3 class="w-50 m-auto border-bottom border-1 border-dark pb-2 text-center">Capability Details</h3>
                         @foreach ($user->capabilities as $index => $capability)
-                            <div class="mt-4 mb-3 border-bottom pb-4">
+                            <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                 <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                 <div class="row">
                                     <div class="col-3 mt-3">
@@ -546,16 +566,19 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No capability records found.</p>
+                        <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No capability
+                            records found.
+                        </p>
                         <hr>
                     @endif
 
 
                     @if ($user->disciplinaries->count() > 0)
-                        <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Disciplinary Details</h3>
+                        <h3 class="w-50 m-auto border-bottom border-1 border-dark pb-2 text-center">Disciplinary Details
+                        </h3>
 
                         @foreach ($user->disciplinaries as $index => $disciplinary)
-                            <div class="mt-4 mb-3 border-bottom pb-4">
+                            <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                 <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                 <div class="row">
                                     <div class="col-3 mt-3">
@@ -601,16 +624,18 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No disciplinary records found.</p>
+                        <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No disciplinary
+                            records
+                            found.</p>
                         <hr>
                     @endif
 
                     @if ($user->latenesses->count() > 0)
-                        <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Lateness Details</h3>
+                        <h3 class="w-50 m-auto border-bottom border-1 border-dark pb-2 text-center">Lateness Details</h3>
 
 
                         @foreach ($user->latenesses as $index => $lateness)
-                            <div class="mt-4 mb-3 border-bottom pb-4">
+                            <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                 <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                 <div class="row">
                                     <div class="col-3 mt-3">
@@ -655,17 +680,19 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No lateness records found.</p>
+                        <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No lateness
+                            records found.
+                        </p>
                         <hr>
                     @endif
 
 
                     @if ($user->trainings->count() > 0)
-                        <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Training Details</h3>
+                        <h3 class="w-50 m-auto border-bottom border-1 border-dark pb-2 text-center">Training Details</h3>
 
 
                         @foreach ($user->trainings as $index => $training)
-                            <div class="mt-4 mb-3 border-bottom pb-4">
+                            <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                 <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                 <div class="row">
                                     <div class="col-3 mt-3">
@@ -697,13 +724,14 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No training records found.
+                        <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No training
+                            records found.
                         </p>
                         <hr>
                     @endif
 
                 </div>
-       
+
             </div>
         </div>
     </div>

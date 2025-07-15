@@ -3,8 +3,12 @@
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
     <style>
+        .heading {
+            display: none;
+        }
+
         #printContent {
-            display: none!important;
+            display: none !important;
             border: none;
             box-shadow: none;
             margin-bottom: 0px;
@@ -16,6 +20,10 @@
                 display: none;
             }
 
+            .heading {
+                display: block;
+            }
+
             #printContent {
                 display: block !important;
             }
@@ -25,18 +33,25 @@
             display: none !important;
         }
 
-        .cke_top ,.cke_bottom {
+        .cke_top,
+        .cke_bottom {
             display: none !important;
         }
 
-        .cke_editor_contentEditor,.cke_editor_content  {
+        .cke_editor_contentEditor,
+        .cke_editor_content {
             border: none !important;
+        }
+
+        @page {
+            size: A4;
+            margin: 0.5in 0.5in 0.5in 1in;
         }
     </style>
     <div id="printContent">
 
         <div class="text-center mb-4">
-            <h3>{{ $document->title }}</h3>
+            <h3 class="heading heading text-center border-bottom border-2 pb-2 mb-4 border-dark fw-bolder">{{ $document->title }}</h3>
         </div>
         {!! $document->content !!}
     </div>
@@ -56,7 +71,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between py-2">
                         <div>
-                            <h4 class="py-2">Document Details</h4>
+                            <h4 class=" py-2">Document Details</h4>
                         </div>
                         <div>
                             <button class="btn btn-secondary" onclick="window.print()"><strong>Print</strong><i

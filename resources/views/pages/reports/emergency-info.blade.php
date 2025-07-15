@@ -6,8 +6,36 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @livewireStyles
     <style>
-        label {
-            font-weight: 500;
+        .heading {
+            display: none;
+        }
+
+        #printContent {
+            display: none !important;
+            border: none;
+            box-shadow: none;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        @media print {
+            #app {
+                display: none;
+            }
+
+            .heading {
+                display: block;
+            }
+
+            #printContent {
+                display: block !important;
+            }
+        }
+
+
+        @page {
+            size: A4;
+            margin: 0.5in 0.5in 0.5in 1in;
         }
     </style>
 @endpush
@@ -60,7 +88,7 @@
 
         @page {
             size: A4;
-            margin: 1in;
+            margin: 0.5in 0.5in 0.5in 1in;
         }
     </style>
 @endsection

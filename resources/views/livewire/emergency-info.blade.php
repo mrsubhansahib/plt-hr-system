@@ -50,6 +50,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row my-3">
+                            <h3 class="heading text-center border-bottom border-2 pb-2 mb-4 border-dark fw-bolder">Employee Emergency Report</h3>
                             <div class="col-3 my-2">
                                 <label for="first_name">First Name</label>
                                 <input type="text" class="form-control mt-2" id="first_name"

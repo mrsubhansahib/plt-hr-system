@@ -49,13 +49,17 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    <div class="card-body"  id="printSection">
+                    <div class="card-body" id="printSection">
                         <div class="my-3">
+                            <h3
+                                class="heading text-center border-bottom border-1 border-dark pb-2 mb-4 border-dark fw-bolder">
+                                Full Sickness & Capability Report</h3>
 
-                            <div class="row mb-3 border-bottom border-2 pb-2 pb-4">
+                            <div class="row mb-3 border-bottom border-1 border-dark pb-2 pb-4">
 
                                 <div class="col-12">
-                                    <h4 class=" text-center w-50 m-auto border-bottom border-2 pb-2 mb-3">Personal&nbsp;Details</h4>
+                                    <h4 class=" text-center w-50 m-auto border-bottom border-1 border-dark pb-2 mb-3">
+                                        Personal&nbsp;Details</h4>
 
                                 </div>
                                 <div class="col-3 my-2">
@@ -73,17 +77,20 @@
                                 <div class="col-3 my-2">
                                     <label>Job Title</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status','active')->where('main_job','yes')->first()->title ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->title ?? 'N/A' }}"
+                                        disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Facility</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status','active')->where('main_job','yes')->first()->facility ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ?? 'N/A' }}"
+                                        disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Contract Type</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status','active')->where('main_job','yes')->first()->contract_type ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->contract_type ?? 'N/A' }}"
+                                        disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Commencement Date</label>
@@ -103,11 +110,12 @@
                             </div>
 
                             <div class="col-12 mt-3">
-                                <h4 class="text-center  w-50 m-auto border-bottom border-2 pb-2 mb-3">Sickness&nbsp;Record
+                                <h4 class="text-center  w-50 m-auto border-bottom border-1 border-dark pb-2 mb-3">
+                                    Sickness&nbsp;Record
                                 </h4>
                             </div>
                             @forelse ($employee->sicknesses as $sickness)
-                                <div class="mt-4 mb-3 border-bottom pb-4">
+                                <div class="mt-4 mb-3 border-bottom border-dark pb-4">
                                     <h5 class="text-primary mb-3">NO#{{ $loop->iteration }}</h5>
                                     <div class="row">
                                         <div class="col-3 mt-3">
@@ -165,17 +173,19 @@
                                 </div>
                             @empty
                                 <div class="col-12 mt-3">
-                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No sickness
+                                    <p class="text-muted text-center fs-5 border-1 border-dark border w-50 m-auto p-3">
+                                        No sickness
                                         records found.</p>
                                     <hr>
                             @endforelse
 
                             <div class="col-12 mt-3">
-                                <h4 class="text-center  w-50 m-auto border-bottom border-2 pb-2 mb-3">Capability&nbsp;Record
+                                <h4 class="text-center  w-50 m-auto border-bottom border-1 border-dark pb-2 mb-3">
+                                    Capability&nbsp;Record
                                 </h4>
                             </div>
                             @forelse ($employee->capabilities as $capability)
-                                <div class="card-body border-bottom mb-4 pb-4">
+                                <div class="card-body border-bottom border-dark mb-4 pb-4">
                                     <h5 class="text-primary mb-3">NO#{{ $loop->iteration }}</h5>
                                     <div class="row mb-3">
                                         <div class="col-3 mt-3">
@@ -188,7 +198,8 @@
                                         <div class="col-3 mt-3">
                                             <label class="form-label">Capability Stage</label>
                                             <input type="text" class="form-control"
-                                                value="{{ $capability->stage ? $capability->stage : 'N/A' }}" disabled>
+                                                value="{{ $capability->stage ? $capability->stage : 'N/A' }}"
+                                                disabled>
                                         </div>
 
                                         <div class="col-3 mt-3">
@@ -226,7 +237,8 @@
                                 </div>
                             @empty
                                 <div class="col-12 mt-3">
-                                    <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No
+                                    <p class="text-muted text-center fs-5 border-1 border-dark border w-50 m-auto p-3">
+                                        No
                                         capability records found.</p>
                                     <hr>
                                 </div>

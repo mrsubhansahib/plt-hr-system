@@ -49,7 +49,15 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row my-3  border-bottom pb-4">
+                        <h3
+                            class="heading text-center border-bottom border-1 border-dark pb-2 mb-4 border-dark fw-bolder">
+                            Disciplinary, Capability & Lateness Report</h3>
+                        <div class="row my-3  border-bottom pb-4 border-dark">
+                            <div class="col-12">
+                                <h4 class=" text-center w-50 m-auto border-bottom border-1 border-dark pb-2 mb-3">
+                                    Personal&nbsp;Details</h4>
+
+                            </div>
                             <div class="col-3 my-2">
                                 <label for="first_name">First Name</label>
                                 <input type="text" class="form-control mt-2" id="first_name"
@@ -81,9 +89,9 @@
 
                         </div>
                         @if ($employee->capabilities->count() > 0)
-                            <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Capability Details</h3>
+                            <h4 class="w-50 m-auto border-bottom border-1 border-dark pb-2 text-center">Capability Details</h3>
                             @foreach ($employee->capabilities as $index => $capability)
-                                <div class="mt-4 mb-3 border-bottom pb-4">
+                                <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                     <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                     <div class="row">
                                         <div class="col-3 mt-3">
@@ -129,23 +137,23 @@
 
                                         <div class="col-md-12 mt-3">
                                             <label class="form-label">Notes</label>
-                                            <textarea class="form-control" rows="3" disabled>{{ $capability->notes??'empty' }}</textarea>
+                                            <textarea class="form-control" rows="3" disabled>{{ $capability->notes ?? 'empty' }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No capability
+                            <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No capability
                                 records found.</p>
-                            <hr>
+                            <hr class="opacity-100">
                         @endif
 
 
                         @if ($employee->disciplinaries->count() > 0)
-                            <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Disciplinary Details</h3>
+                            <h4 class="w-50 m-auto border-bottom border-1 border-dark pb-2 text-center">Disciplinary Details</h3>
 
                             @foreach ($employee->disciplinaries as $index => $disciplinary)
-                                <div class="mt-4 mb-3 border-bottom pb-4">
+                                <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                     <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                     <div class="row">
                                         <div class="col-3 mt-3">
@@ -185,23 +193,23 @@
 
                                         <div class="col-md-12 mt-3">
                                             <label class="form-label">Notes</label>
-                                            <textarea class="form-control" rows="3" disabled>{{ $disciplinary->notes??'empty' }}</textarea>
+                                            <textarea class="form-control" rows="3" disabled>{{ $disciplinary->notes ?? 'empty' }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No disciplinary
+                            <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No disciplinary
                                 records found.</p>
-                            <hr>
+                            <hr class="opacity-100">
                         @endif
 
                         @if ($employee->latenesses->count() > 0)
-                            <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Lateness Details</h3>
+                            <h4 class="w-50 m-auto border-bottom border-1 border-dark pb-2 text-center">Lateness Details</h4>
 
 
                             @foreach ($employee->latenesses as $index => $lateness)
-                                <div class="mt-4 mb-3 border-bottom pb-4">
+                                <div class="mt-4 mb-3 border-bottom pb-4 border-dark">
                                     <h5 class="text-primary mb-3">NO#{{ $index + 1 }}</h5>
                                     <div class="row">
                                         <div class="col-3 mt-3">
@@ -241,15 +249,15 @@
 
                                         <div class="col-md-12 mt-3">
                                             <label class="form-label">Notes</label>
-                                            <textarea class="form-control" rows="3" disabled>{{ $lateness->notes??'empty' }}</textarea>
+                                            <textarea class="form-control" rows="3" disabled>{{ $lateness->notes ?? 'empty' }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            <p class="text-muted text-center fs-5 border-2 border w-50 m-auto p-3">No lateness records
+                            <p class=" text-center fs-5 border-1 border-dark border w-50 m-auto p-3">No lateness records
                                 found.</p>
-                            <hr>
+                            <hr class="opacity-100">
                         @endif
                     </div>
                 </div>
