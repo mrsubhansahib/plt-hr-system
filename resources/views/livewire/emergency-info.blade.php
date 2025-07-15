@@ -49,6 +49,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Emergency Info</h3>
                         <div class="row my-3">
                             <h3 class="heading text-center border-bottom border-2 pb-2 mb-4 border-dark fw-bolder">Employee Emergency Report</h3>
                             <div class="col-3 my-2">

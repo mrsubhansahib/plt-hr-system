@@ -49,6 +49,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+<<<<<<< Updated upstream
                         <h3
                             class="heading text-center border-bottom border-1 border-dark pb-2 mb-4 border-dark fw-bolder">
                             Disciplinary, Capability & Lateness Report</h3>
@@ -58,6 +59,10 @@
                                     Personal&nbsp;Details</h4>
 
                             </div>
+=======
+                    <h3 class="w-50 m-auto border-bottom border-2 pb-2 text-center">Personal&nbsp;Details</h3>
+                        <div class="row my-3  border-bottom pb-4">
+>>>>>>> Stashed changes
                             <div class="col-3 my-2">
                                 <label for="first_name">First Name</label>
                                 <input type="text" class="form-control mt-2" id="first_name"
