@@ -62,19 +62,25 @@
 
 
 @push('custom-scripts')
-    <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.22.1/full-all/ckeditor.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof CKEDITOR !== 'undefined') {
                 CKEDITOR.replace('contentEditor', {
                     height: 700,
+                    extraPlugins: 'uploadimage,image2',
+                    filebrowserUploadUrl: "{{ route('ckeditor.upload') }}?_token={{ csrf_token() }}",
+                    filebrowserUploadMethod: 'form',
                     toolbar: [{
                             name: 'clipboard',
                             items: ['Cut', 'Copy', 'Paste', 'Undo', 'Redo']
-                        },
-                        {
+                        }, {
                             name: 'find',
                             items: ['Find', 'Replace', 'SelectAll']
+                        },
+                        {
+                            name: 'insert',
+                            items: ['Image', 'Table', 'HorizontalRule']
                         },
                         {
                             name: 'basicstyles',
@@ -95,15 +101,13 @@
                             items: ['Styles', 'Format', 'Font', 'FontSize']
                         },
                         {
-                            name: 'insert',
-                            items: ['HorizontalRule']
-                        }, 
-
-                        {
                             name: 'colors',
-                            items: ['TextColor']
+                            items: ['TextColor', 'BGColor']
                         },
-
+                        {
+                            name: 'tools',
+                            items: ['Maximize']
+                        }
                     ]
                 });
 
@@ -123,6 +127,7 @@
                         });
                     }
                 });
+                window.parent.CKEDITOR.tools.callFunction(1, 'image_url', 'success message');
             } else {
                 console.error('CKEditor not loaded.');
             }

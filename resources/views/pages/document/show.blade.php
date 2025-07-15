@@ -38,7 +38,7 @@
         <div class="text-center mb-4">
             <h3>{{ $document->title }}</h3>
         </div>
-        <textarea id="content">{{ $document->content }}</textarea>
+        {!! $document->content !!}
     </div>
 @endpush
 

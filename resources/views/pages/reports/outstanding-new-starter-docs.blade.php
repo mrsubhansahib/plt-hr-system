@@ -2,15 +2,7 @@
 
 @push('style')
     @livewireStyles
-    <style>
-        table.dataTableColleagues th,
-        table.dataTableColleagues td {
-            text-align: left !important;
-        }
-                table.dataTableColleagues td {
-            padding-left: 10px !important;
-        }
-    </style>
+
 @endpush
 
 @section('content')

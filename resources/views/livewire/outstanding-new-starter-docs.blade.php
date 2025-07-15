@@ -21,26 +21,29 @@
                         <table id="" class="table dataTableColleagues">
                             <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>Surname</th>
-                                    <th>DBS Level</th>
-                                    <th>Certificate No</th>
+                                    <th style="text-align: left !important;">First Name</th>
+                                    <th style="text-align: left !important;">Surname</th>
+                                    <th style="text-align: left !important;">DBS Level</th>
+                                    <th style="text-align: left !important;">Certificate No</th>
                                 </tr>
 
                             </thead>
                             <tbody>
                                 @if ($colleagues !== [])
+
                                     @foreach ($colleagues as $colleague)
                                         <tr>
-                                            <td>{{ $colleague->first_name }}</td>
-                                            <td>{{ $colleague->surname }}</td>
-                                            <td>
+                                            <td style="text-align: left !important;  padding-left: 10px !important;">
+                                                {{ $colleague->first_name }}</td>
+                                            <td style="text-align: left !important;  padding-left: 10px !important;">
+                                                {{ $colleague->surname }}</td>
+                                            <td style="text-align: left !important;  padding-left: 10px !important;">
                                                 {{ $colleague->disclosures->whereNull('certificate_no')->first()->dbs_level ?? 'No DBS Level Assigned' }}
                                             </td>
-                                            <td>
+                                            <td style="text-align: left !important;  padding-left: 10px !important;">
                                                 Empty
                                             </td>
-                                           
+
                                         </tr>
                                     @endforeach
                                 @endif

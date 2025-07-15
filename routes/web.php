@@ -19,6 +19,7 @@ use App\Http\Controllers\SicknessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CapabilityController;
+use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\DisclosureController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DropdownController;
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function () {
     // Route for authentication
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+    Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
     // Route for Admin CRUD  
     Route::group(['prefix' => 'admin'], function () {
@@ -250,13 +252,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/sickness', function () {
             return view('pages.reports.sickness-report');
         })->name('reports.sickness');
-         Route::get('/emergency-info', function () {
+        Route::get('/emergency-info', function () {
             return view('pages.reports.emergency-info');
         })->name('reports.emergency-info');
-         Route::get('/full-time-equivalent', function () {
+        Route::get('/full-time-equivalent', function () {
             return view('pages.reports.full-time-equivalent');
         })->name('reports.full-time-equivalent');
-         Route::get('/dbs-check', function () {
+        Route::get('/dbs-check', function () {
             return view('pages.reports.dbs-check');
         })->name('reports.dbs-check');
         Route::get('/long-term-sickness', function () {

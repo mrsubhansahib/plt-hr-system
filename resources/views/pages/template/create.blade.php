@@ -95,7 +95,7 @@
                                     <option value="{ $user->ihasco_training_complete }">iHasco Training Complete</option>
                                 </select>
                             </div>
-                            <div class="col-1 mt-2 "style="padding-top: 22px">
+                            <div class="col-1 mt-2 " style="padding-top: 22px">
                                 <button type="button" id="add_personal_info_button"
                                     class="btn btn-secondary btn-sm mt-2">Add</button>
                             </div>
@@ -118,7 +118,7 @@
                                     <option value="{ $job->ethnicity }">Ethnicity</option>
                                 </select>
                             </div>
-                            <div class="col-1 mt-2 "style="padding-top: 22px">
+                            <div class="col-1 mt-2 " style="padding-top: 22px">
                                 <button type="button" id="add_job_info_button"
                                     class="btn btn-secondary btn-sm mt-2">Add</button>
                             </div>
@@ -216,7 +216,7 @@
 
                             <div class="col-12 mt-3">
                                 <label class="form-label">Content<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="content" id="contentEditor" required rows="10"></textarea>
+                                <textarea class="form-control" name="content" id="contentEditor" required rows="10">  {!! old('content') !!}</textarea>
                             </div>
                         </div>
 
@@ -228,37 +228,43 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Remove the click event listener for the button since it's now a submit button
             const form = document.querySelector('#form');
             form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
-                // alert('Form submitted!');
                 const contentEditor = CKEDITOR.instances.contentEditor;
                 if (contentEditor) {
+                    // This part is unnecessary: CKEditor already uses correct HTML encoding
+                    // If you're manually modifying the content, you'd want to clean it here
                     const content = contentEditor.getData();
-                    // Replace &gt; with >
-                    const updatedContent = content.replace(/&gt;/g, '>');
-                    contentEditor.setData(updatedContent);
-                    form.submit();
+                    contentEditor.setData(content); // Keep consistent
+
+                    // Let form submit naturally
                 }
             });
         });
     </script>
 @endsection
 @push('custom-scripts')
-    <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.22.1/full-all/ckeditor.js"></script>
+    <script></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
             if (typeof CKEDITOR !== 'undefined') {
                 CKEDITOR.replace('contentEditor', {
                     height: 700,
+                    extraPlugins: 'uploadimage,image2',
+                    filebrowserUploadUrl: "{{ route('ckeditor.upload') }}?_token={{ csrf_token() }}",
+                    filebrowserUploadMethod: 'form',
                     toolbar: [{
                             name: 'clipboard',
                             items: ['Cut', 'Copy', 'Paste', 'Undo', 'Redo']
-                        },
-                        {
+                        }, {
                             name: 'find',
                             items: ['Find', 'Replace', 'SelectAll']
+                        },
+                        {
+                            name: 'insert',
+                            items: ['Image', 'Table', 'HorizontalRule']
                         },
                         {
                             name: 'basicstyles',
@@ -279,120 +285,42 @@
                             items: ['Styles', 'Format', 'Font', 'FontSize']
                         },
                         {
-                            name: 'insert',
-                            items: ['HorizontalRule']
-                        },
-
-                        {
                             name: 'colors',
-                            items: ['TextColor']
+                            items: ['TextColor', 'BGColor']
                         },
-
+                        {
+                            name: 'tools',
+                            items: ['Maximize']
+                        }
                     ]
                 });
 
-                // Insert merge fields
+                // Merge field handlers
                 CKEDITOR.instances.contentEditor.on('instanceReady', function() {
-                    const add_personal_info_button = document.querySelector('#add_personal_info_button');
-                    const personalInfoSelect = document.querySelector('#personalInfoSelect');
-                    const add_job_info_button = document.querySelector('#add_job_info_button');
-                    const jobInfoSelect = document.querySelector('#jobInfoSelect');
+                    const insertField = (selectId, buttonId) => {
+                        const select = document.querySelector(selectId);
+                        const button = document.querySelector(buttonId);
+                        if (select && button) {
+                            button.addEventListener('click', () => {
+                                const value = select.value;
+                                if (value) {
+                                    CKEDITOR.instances.contentEditor.insertText(' {' + value +
+                                        '} ');
+                                    select.selectedIndex = 0;
+                                }
+                            });
+                        }
+                    };
 
-                    if (add_personal_info_button && personalInfoSelect) {
-                        add_personal_info_button.addEventListener('click', function() {
-                            const selectedField = personalInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                personalInfoSelect.selectedIndex = 0;
-                            }
-                        });
-                    }
-                    if (jobInfoSelect && add_job_info_button) {
-                        add_job_info_button.addEventListener('click', function() {
-                            const selectedField = jobInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                jobInfoSelect.selectedIndex =
-                                    0; // Update this line to reset jobInfoSelect
-                            }
-                        });
-                    }
-                    // Disclosure Info
-                    const disclosureInfoSelect = document.querySelector('#disclosureInfoSelect');
-                    const add_disclosure_info_button = document.querySelector(
-                    '#add_disclosure_info_button');
-                    if (disclosureInfoSelect && add_disclosure_info_button) {
-                        add_disclosure_info_button.addEventListener('click', function() {
-                            const selectedField = disclosureInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                disclosureInfoSelect.selectedIndex = 0;
-                            }
-                        });
-                    }
-
-                    // Sickness Info
-                    const sicknessInfoSelect = document.querySelector('#sicknessInfoSelect');
-                    const add_sickness_info_button = document.querySelector('#add_sickness_info_button');
-                    if (sicknessInfoSelect && add_sickness_info_button) {
-                        add_sickness_info_button.addEventListener('click', function() {
-                            const selectedField = sicknessInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                sicknessInfoSelect.selectedIndex = 0;
-                            }
-                        });
-                    }
-
-                    // Capability Info
-                    const capabilityInfoSelect = document.querySelector('#capabilityInfoSelect');
-                    const add_capability_info_button = document.querySelector(
-                    '#add_capability_info_button');
-                    if (capabilityInfoSelect && add_capability_info_button) {
-                        add_capability_info_button.addEventListener('click', function() {
-                            const selectedField = capabilityInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                capabilityInfoSelect.selectedIndex = 0;
-                            }
-                        });
-                    }
-
-                    // Disciplinary Info
-                    const disciplinaryInfoSelect = document.querySelector('#disciplinaryInfoSelect');
-                    const add_disciplinary_info_button = document.querySelector(
-                        '#add_disciplinary_info_button');
-                    if (disciplinaryInfoSelect && add_disciplinary_info_button) {
-                        add_disciplinary_info_button.addEventListener('click', function() {
-                            const selectedField = disciplinaryInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                disciplinaryInfoSelect.selectedIndex = 0;
-                            }
-                        });
-                    }
-
-                    // Training Info
-                    const trainingInfoSelect = document.querySelector('#trainingInfoSelect');
-                    const add_training_info_button = document.querySelector('#add_training_info_button');
-                    if (trainingInfoSelect && add_training_info_button) {
-                        add_training_info_button.addEventListener('click', function() {
-                            const selectedField = trainingInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                trainingInfoSelect.selectedIndex = 0;
-                            }
-                        });
-                    }
-
+                    insertField('#personalInfoSelect', '#add_personal_info_button');
+                    insertField('#jobInfoSelect', '#add_job_info_button');
+                    insertField('#disclosureInfoSelect', '#add_disclosure_info_button');
+                    insertField('#sicknessInfoSelect', '#add_sickness_info_button');
+                    insertField('#capabilityInfoSelect', '#add_capability_info_button');
+                    insertField('#disciplinaryInfoSelect', '#add_disciplinary_info_button');
+                    insertField('#trainingInfoSelect', '#add_training_info_button');
                 });
+                window.parent.CKEDITOR.tools.callFunction(1, 'image_url', 'success message');
             } else {
                 console.error('CKEditor not loaded.');
             }

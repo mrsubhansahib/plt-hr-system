@@ -44,7 +44,7 @@
             {{-- Other Modules Dynamic data --}}
             @if (!empty($templateFlags['sickness']) && !empty($sicknesses))
                 <div class="col-6 mt-3">
-                    <label class="form-label">Sickness</label>
+                    <label class="form-label">Sickness<span class="text-danger">*</span>a</label>
                     <select class="form-select" wire:model="selectedSickness">
                         <option value="">Select Sickness</option>
                         @foreach ($sicknesses as $item)
@@ -58,7 +58,7 @@
 
             @if (!empty($templateFlags['disclosure']) && !empty($disclosures))
                 <div class="col-6 mt-3">
-                    <label class="form-label">Disclosure</label>
+                    <label class="form-label">Disclosure<span class="text-danger">*</span>a</label>
                     <select class="form-select" wire:model="selectedDisclosure">
                         <option value="">Select Disclosure</option>
                         @foreach ($disclosures as $item)
@@ -72,7 +72,7 @@
 
             @if (!empty($templateFlags['capability']) && !empty($capabilities))
                 <div class="col-6 mt-3">
-                    <label class="form-label">Capability</label>
+                    <label class="form-label">Capability<span class="text-danger">*</span>a</label>
                     <select class="form-select" wire:model="selectedCapability">
                         <option value="">Select Capability</option>
                         @foreach ($capabilities as $item)
@@ -84,7 +84,7 @@
 
             @if (!empty($templateFlags['disciplinary']) && !empty($disciplinaries))
                 <div class="col-6 mt-3">
-                    <label class="form-label">Disciplinary</label>
+                    <label class="form-label">Disciplinary<span class="text-danger">*</span>a</label>
                     <select class="form-select" wire:model="selectedDisciplinary">
                         <option value="">Select Disciplinary</option>
                         @foreach ($disciplinaries as $item)
@@ -96,7 +96,7 @@
 
             @if (!empty($templateFlags['lateness']) && !empty($latenesses))
                 <div class="col-6 mt-3">
-                    <label class="form-label">Lateness</label>
+                    <label class="form-label">Lateness<span class="text-danger">*</span>a</label>
                     <select class="form-select" wire:model="selectedLateness">
                         <option value="">Select Lateness</option>
                         @foreach ($latenesses as $item)
@@ -110,7 +110,7 @@
 
             @if (!empty($templateFlags['training']) && !empty($trainings))
                 <div class="col-6 mt-3">
-                    <label class="form-label">Training</label>
+                    <label class="form-label">Training<span class="text-danger">*</span>a</label>
                     <select class="form-select" wire:model="selectedTraining">
                         <option value="">Select Training</option>
                         @foreach ($trainings as $item)

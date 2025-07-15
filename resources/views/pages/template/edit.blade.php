@@ -35,7 +35,8 @@
                         <div class="row mb-3">
                             <div class="col-12 mb-3">
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" value="{{ $template->title }}" name="title" required />
+                                <input class="form-control" type="text" value="{{ $template->title }}" name="title"
+                                    required />
                             </div>
                             {{-- <hr> --}}
                             <h4 style="text-align: center; text-decoration: underline;">Merge Fields</h4>
@@ -124,6 +125,86 @@
                                 <button type="button" id="add_job_info_button"
                                     class="btn btn-secondary btn-sm mt-2">Add</button>
                             </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Disclosure Info</label>
+                                <select class="form-control form-select" id="disclosureInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $disclosure->dbs_level }">DBS Level</option>
+                                    <option value="{ $disclosure->date_requested }">Date Requested</option>
+                                    <option value="{ $disclosure->date_on_certificate }">Date on Certificate</option>
+                                    <option value="{ $disclosure->certificate_no }">Certificate No</option>
+                                    <option value="{ $disclosure->paid_liberata }">Paid Liberata</option>
+                                    <option value="{ $disclosure->reimbursed_candidate }">Reimbursed Candidate</option>
+                                    <option value="{ $disclosure->invoice_sent }">Invoice Sent</option>
+                                    <option value="{ $disclosure->contract_type }">Contract Type</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_disclosure_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Sickness Info</label>
+                                <select class="form-control form-select" id="sicknessInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $sickness->reason_for_absence }">Reason for Absence</option>
+                                    <option value="{ $sickness->date_from }">Date From</option>
+                                    <option value="{ $sickness->date_to }">Date To</option>
+                                    <option value="{ $sickness->total_hours }">Total Hours</option>
+                                    <option value="{ $sickness->certification_form_received }">Certification Form Received
+                                    </option>
+                                    <option value="{ $sickness->fit_note_received }">Fit Note Received</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_sickness_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Capability Info</label>
+                                <select class="form-control form-select" id="capabilityInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $capability->on_capability_procedure }">On Capability Procedure
+                                    </option>
+                                    <option value="{ $capability->stage }">Stage</option>
+                                    <option value="{ $capability->date }">Date</option>
+                                    <option value="{ $capability->outcome }">Outcome</option>
+                                    <option value="{ $capability->warning_issued_type }">Warning Issued Type</option>
+                                    <option value="{ $capability->review_date }">Review Date</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_capability_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Disciplinary Info</label>
+                                <select class="form-control form-select" id="disciplinaryInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $disciplinary->reason_for_disciplinary }">Reason</option>
+                                    <option value="{ $disciplinary->hearing_date }">Hearing Date</option>
+                                    <option value="{ $disciplinary->outcome }">Outcome</option>
+                                    <option value="{ $disciplinary->suspended }">Suspended</option>
+                                    <option value="{ $disciplinary->date_suspended }">Date Suspended</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_disciplinary_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Training Info</label>
+                                <select class="form-control form-select" id="trainingInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $training->training_title }">Training Title</option>
+                                    <option value="{ $training->course_date }">Course Date</option>
+                                    <option value="{ $training->renewal_date }">Renewal Date</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_training_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
                             <input type="hidden" name="personal_info" id="personal_info" value="false">
                             <input type="hidden" name="job_info" id="job_info" value="false">
                             <input type="hidden" name="disclosure_info" id="disclosure_info" value="false">
@@ -134,7 +215,7 @@
                             <input type="hidden" name="training_info" id="training_info" value="false">
                             <div class="col-12 mt-3">
                                 <label class="form-label">Content<span class="text-danger">*</span></label>
-                                <textarea class="form-control" required name="content" id="contentEditor" rows="10">{{ $template->content }}</textarea>
+                                <textarea class="form-control" required name="content" id="contentEditor" rows="10">{!! $template->content !!}</textarea>
                             </div>
                         </div>
 
@@ -165,19 +246,25 @@
     </script>
 @endsection
 @push('custom-scripts')
-    <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.22.1/full-all/ckeditor.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof CKEDITOR !== 'undefined') {
                 CKEDITOR.replace('contentEditor', {
                     height: 700,
+                    extraPlugins: 'uploadimage,image2',
+                    filebrowserUploadUrl: "{{ route('ckeditor.upload') }}?_token={{ csrf_token() }}",
+                    filebrowserUploadMethod: 'form',
                     toolbar: [{
                             name: 'clipboard',
                             items: ['Cut', 'Copy', 'Paste', 'Undo', 'Redo']
-                        },
-                        {
+                        }, {
                             name: 'find',
                             items: ['Find', 'Replace', 'SelectAll']
+                        },
+                        {
+                            name: 'insert',
+                            items: ['Image', 'Table', 'HorizontalRule']
                         },
                         {
                             name: 'basicstyles',
@@ -198,47 +285,42 @@
                             items: ['Styles', 'Format', 'Font', 'FontSize']
                         },
                         {
-                            name: 'insert',
-                            items: ['HorizontalRule']
-                        },
-
-                        {
                             name: 'colors',
-                            items: ['TextColor']
+                            items: ['TextColor', 'BGColor']
                         },
-
+                        {
+                            name: 'tools',
+                            items: ['Maximize']
+                        }
                     ]
                 });
 
                 // Insert merge fields
                 CKEDITOR.instances.contentEditor.on('instanceReady', function() {
-                    const add_personal_info_button = document.querySelector('#add_personal_info_button');
-                    const personalInfoSelect = document.querySelector('#personalInfoSelect');
-                    const add_job_info_button = document.querySelector('#add_job_info_button');
-                    const jobInfoSelect = document.querySelector('#jobInfoSelect');
-
-                    if (add_personal_info_button && personalInfoSelect) {
-                        add_personal_info_button.addEventListener('click', function() {
-                            const selectedField = personalInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                personalInfoSelect.selectedIndex = 0;
-                            }
-                        });
-                    }
-                    if (jobInfoSelect && add_job_info_button) {
-                        add_job_info_button.addEventListener('click', function() {
-                            const selectedField = jobInfoSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                jobInfoSelect.selectedIndex =
-                                    0; // Update this line to reset jobInfoSelect
-                            }
-                        });
-                    }
+             
+                    const insertField = (selectId, buttonId) => {
+                        const select = document.querySelector(selectId);
+                        const button = document.querySelector(buttonId);
+                        if (select && button) {
+                            button.addEventListener('click', () => {
+                                const value = select.value;
+                                if (value) {
+                                    CKEDITOR.instances.contentEditor.insertText(' {' + value +
+                                        '} ');
+                                    select.selectedIndex = 0;
+                                }
+                            });
+                        }
+                    };
+                    insertField('#personalInfoSelect', '#add_personal_info_button');
+                    insertField('#jobInfoSelect', '#add_job_info_button');
+                    insertField('#disclosureInfoSelect', '#add_disclosure_info_button');
+                    insertField('#sicknessInfoSelect', '#add_sickness_info_button');
+                    insertField('#capabilityInfoSelect', '#add_capability_info_button');
+                    insertField('#disciplinaryInfoSelect', '#add_disciplinary_info_button');
+                    insertField('#trainingInfoSelect', '#add_training_info_button');
                 });
+                    window.parent.CKEDITOR.tools.callFunction(1, 'image_url', 'success message');
             } else {
                 console.error('CKEditor not loaded.');
             }
