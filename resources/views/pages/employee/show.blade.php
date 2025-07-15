@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label for="dob">DOB</label>
                                 <input type="text" class="form-control mt-2" id="dob"
-                                    value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') }}"
+                                    value="{{ $user->dob ? \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') : 'N/A' }}"
                                     disabled>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="age">Age</label>
-                                <input type="text" class="form-control mt-2" id="age" value="{{ $user->age }}"
+                                <input type="text" class="form-control mt-2" id="age" value="{{ $user->age ?? 'N/A' }}"
                                     disabled>
                             </div>
                         </div>
@@ -71,28 +71,28 @@
                             <div class="form-group">
                                 <label for="mobile_tel">Mobile No</label>
                                 <input type="text" class="form-control mt-2" id="mobile_tel"
-                                    value="{{ $user->mobile_tel ?? 'Not Entered' }}" disabled>
+                                    value="{{ $user->mobile_tel ?? 'N/A' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="commencement_date">Employment Commencement Date</label>
                                 <input type="text" class="form-control mt-2" id="commencement_date"
-                                    value="{{ $user->commencement_date }}" disabled>
+                                    value="{{ $user->commencement_date ?? 'N/A' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="contracted_from_date">Contract From Date</label>
                                 <input type="text" class="form-control mt-2" id="contracted_from_date"
-                                    value="{{ $user->contracted_from_date ?? 'Not Entered' }}" disabled>
+                                    value="{{ $user->contracted_from_date ?? 'N/A' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="termination_date">Employment Termination Date</label>
                                 <input class="form-control datepicker mt-2" type="text" name="termination_date"
-                                    value="{{ $user->termination_date ?? 'Not Entered' }}" disabled>
+                                    value="{{ $user->termination_date ?? 'N/A' }}" disabled>
                             </div>
                         </div>
 
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label for="reason_termination">Reason for Termination</label>
                                 <input class="form-control mt-2" type="text"
-                                    value="{{ $user->reason_termination ?? 'Not Entered' }}" disabled>
+                                    value="{{ $user->reason_termination ?? 'N/A' }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -314,8 +314,8 @@
                             <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Surname</th>
+                                        {{-- <th>First Name</th>
+                                        <th>Surname</th> --}}
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
                                         <th>Action</th>
@@ -327,10 +327,10 @@
                                         @foreach ($user->disclosures->sortByDesc('id') as $index => $disclosure)
                                             <!-- Loop through each disclosure -->
                                             <tr>
-                                                <td>{{ $user->first_name }}</td>
-                                                <td>{{ $user->surname }}</td>
+                                                {{-- <td>{{ $user->first_name }}</td>
+                                                <td>{{ $user->surname }}</td> --}}
                                                 <td>{{ $disclosure->dbs_level }}</td>
-                                                <td>{{ $disclosure->certificate_no }}</td>
+                                                <td>{{ $disclosure->certificate_no ?? 'N/A' }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
@@ -396,7 +396,7 @@
                                                 <td>{{ $sickness->reason_for_absence }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($sickness->date_from)->format('d/m/Y') }}</td>
                                                 <td>
-                                                    {{ $sickness->date_to ? \Carbon\Carbon::parse($sickness->date_to)->format('d/m/Y') : '—' }}
+                                                    {{ $sickness->date_to ? \Carbon\Carbon::parse($sickness->date_to)->format('d/m/Y') : 'N/A' }}
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">
@@ -456,9 +456,9 @@
                                     @if ($user->capabilities->isNotEmpty())
                                         @foreach ($user->capabilities->sortByDesc('id') as $key => $capability)
                                             <tr>
-                                                <td>{{ $capability->stage }}</td>
-                                                <td>{{ $capability->date }}</td>
-                                                <td>{{ $capability->outcome }}</td>
+                                                <td>{{ $capability->stage ?? 'N/A' }}</td>
+                                                <td>{{ $capability->date ?? 'N/A' }}</td>
+                                                <td>{{ $capability->outcome ?? 'N/A' }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
@@ -587,7 +587,7 @@
                                                 <td>{{ $disciplinary->reason_for_disciplinary ?? 'N/A' }}</td>
                                                 <td>{{ $disciplinary->hearing_date ?? 'N/A' }}</td>
                                                 <td>{{ $disciplinary->outcome ?? 'N/A' }}</td>
-                                                <td>{{ $disciplinary->suspended ?? 'N\A' }}</td>
+                                                <td>{{ $disciplinary->suspended ? ucfirst($disciplinary->suspended) : 'N/A' }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
@@ -646,8 +646,8 @@
                                     @if ($user->latenesses->isNotEmpty())
                                         @foreach ($user->latenesses->sortByDesc('id') as $key => $lateness)
                                             <tr>
-                                                <td>{{ $lateness->lateness_triggered }}</td>
-                                                <td>{{ $lateness->lateness_stage }}</td>
+                                                <td>{{ $lateness->lateness_triggered ?? 'N/A'}}</td>
+                                                <td>{{ $lateness->lateness_stage ?? 'N/A' }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"

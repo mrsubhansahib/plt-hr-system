@@ -130,7 +130,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Pay Frequency<span class="text-danger">*</span></label>
-                                <select class="form-control form-select" name="pay_frequency">
+                                <select class="form-control form-select" required name="pay_frequency">
                                     <option value="Per Annum" {{ $job->pay_frequency == 'Per Annum' ? 'selected' : '' }}>
                                         Per
                                         Annum</option>
@@ -147,7 +147,7 @@
 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
-                                <select class="form-control form-select" required name="contract_returned">
+                                <select class="form-control form-select" name="contract_returned">
                                     <option value="yes" {{ $job->contract_returned == 'yes' ? 'selected' : '' }}>Yes
                                     </option>
                                     <option value="no" {{ $job->contract_returned == 'no' ? 'selected' : '' }}>No
@@ -156,7 +156,7 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">JD Returned</label>
-                                <select class="form-control form-select" required name="jd_returned">
+                                <select class="form-control form-select" name="jd_returned">
                                     <option value="yes" {{ $job->jd_returned == 'yes' ? 'selected' : '' }}>Yes
                                     </option>
                                     <option value="no" {{ $job->jd_returned == 'no' ? 'selected' : '' }}>No</option>

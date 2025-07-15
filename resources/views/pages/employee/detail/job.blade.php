@@ -116,15 +116,15 @@
 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Contract Returned</label>
-                                <select class="form-control form-select" required name="contract_returned">
-                                    <option value="" selected disabled>Select Option</option>
+                                <select class="form-control form-select" name="contract_returned">
+                                    {{-- <option value="" selected disabled>Select Option</option> --}}
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">JD Returned</label>
-                                <select class="form-control form-select" required name="jd_returned">
+                                <select class="form-control form-select" name="jd_returned">
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
