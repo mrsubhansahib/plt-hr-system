@@ -629,6 +629,10 @@
                             <a href="{{ url('/reports/dbs-check') }}"
                                 class="nav-link {{ active_class(['reports/dbs-check']) }}">DBS Check</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/outstanding-new-starter-docs') }}" title="Outstanding New Starter Docs"
+                                class="nav-link {{ active_class(['reports/outstanding-new-starter-docs']) }}">Outstanding New Start...</a>
+                        </li>
                         {{-- Long term sickness Indicator --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/long-term-sickness') }}"

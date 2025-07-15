@@ -280,6 +280,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/turnover-yearly', function () {
             return view('pages.reports.turnover-yearly');
         })->name('reports.turnover-yearly');
+        Route::get('/outstanding-new-starter-docs', function () {
+            return view('pages.reports.outstanding-new-starter-docs');
+        })->name('reports.outstanding-new-starter-docs');
     });
 });
 
