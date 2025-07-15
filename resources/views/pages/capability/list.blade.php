@@ -66,11 +66,11 @@
                                     <tr>
                                         <td>{{ $capability->user->first_name }}</td>
                                         <td>{{ $capability->user->surname }}</td>
-                                        <td>{{ $capability->user->commencement_date }}</td>                                    
+                                        <td>{{ $capability->user->commencement_date ?? 'N/A' }}</td>                                    
                                         <td>{{ $capability->user->contracted_from_date ?? 'N/A'  }}</td>
-                                        <td>{{ $capability->stage }}</td>
-                                        <td>{{ $capability->date }}</td>
-                                        <td>{{ $capability->outcome }}</td>
+                                        <td>{{ $capability->stage ?? 'N/A' }}</td>
+                                        <td>{{ $capability->date ?? 'N/A' }}</td>
+                                        <td>{{ $capability->outcome ?? 'N/A' }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
