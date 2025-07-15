@@ -1,0 +1,110 @@
+@extends('layout.master')
+
+@push('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @livewireStyles
+    <style>
+        label {
+            font-weight: 500;
+        }
+
+        .select2-container--default .select2-selection--single {
+            height: 37px !important;
+        }
+
+        .select2-selection__arrow {
+            top: 6px !important;
+        }
+
+        .select2-selection__rendered {
+            padding-top: 5px !important;
+        }
+
+        .select2-selection__clear {
+            display: none !important;
+        }
+    </style>
+    <style>
+        .heading {
+            display: none;
+        }
+
+        #printContent {
+            display: none !important;
+            border: none;
+            box-shadow: none;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        @media print {
+            #app {
+                display: none;
+            }
+
+            .heading {
+                display: block;
+            }
+
+            #printContent {
+                display: block !important;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0.5in 0.5in 0.5in 1in;
+        }
+    </style>
+@endpush
+
+@section('content')
+    <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Reports</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Training Record</li>
+        </ol>
+    </nav>
+    @livewire('training-record')
+@endsection
+
+@push('custom-scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+
+    @livewireScripts
+    <script>
+        function printDiv(divId) {
+            const printContents = document.getElementById(divId).innerHTML;
+            const originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+            location.reload();
+        }
+
+        document.addEventListener('livewire:load', function() {
+            function initSelect2Sync() {
+                $('#emergency_info').select2({
+                    width: '100%',
+                    placeholder: 'Select an employee',
+                    allowClear: true
+                });
+
+                $('#emergency_info').on('change', function() {
+                    const value = $(this).val();
+                    let livewireComponent = Livewire.find(document.querySelector('[wire\\:id]')
+                        .getAttribute('wire:id'));
+                    livewireComponent.set('employee_id', value);
+                });
+            }
+
+            initSelect2Sync();
+            Livewire.hook('message.processed', () => {
+                $('#emergency_info').select2('destroy');
+                initSelect2Sync();
+            });
+        });
+    </script>
+@endpush
