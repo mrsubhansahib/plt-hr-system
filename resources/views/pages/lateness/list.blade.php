@@ -63,10 +63,10 @@
                                     <tr>
                                         <td>{{ $lateness->user->first_name }}</td>
                                         <td>{{ $lateness->user->surname }}</td>
-                                        <td>{{ $lateness->user->commencement_date }}</td>
+                                        <td>{{ $lateness->user->commencement_date ?? 'N/A' }}</td>
                                         <td>{{ $lateness->user->contracted_from_date ?? 'N/A' }}</td>
-                                        <td>{{ $lateness->lateness_triggered }}</td>
-                                        <td>{{ $lateness->lateness_stage }}</td>
+                                        <td>{{ $lateness->lateness_triggered ?? 'N/A' }}</td>
+                                        <td>{{ $lateness->lateness_stage ?? 'N/A' }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"

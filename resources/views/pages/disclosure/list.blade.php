@@ -62,7 +62,7 @@
                                         <td>{{ $disclosure->user->first_name }}</td>
                                         <td>{{ $disclosure->user->surname }}</td>
                                         <td>
-                                            {{ $disclosure->user->commencement_date }}
+                                        {{ $disclosure->user->commencement_date ?? 'N/A' }}
                                         </td>
                                         <td>
                                             {{ $disclosure->user->contracted_from_date ?? 'N/A' }}
