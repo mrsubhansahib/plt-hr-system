@@ -236,9 +236,20 @@
                 dom: 'Bfrtip', // Add the buttons above the table
                 ordering: false, // Disable default column sorting
                 buttons: [
-                    'csv', // CSV export
-                    'excel', // Excel export
-                    // You can also add other buttons like 'pdf', 'copy', etc.
+                            {
+                                extend: 'csv',
+                                exportOptions: {
+                                    columns: ':not(:last-child)'
+                                },
+                                title: null
+                            },
+                            {
+                                extend: 'excel',
+                                exportOptions: {
+                                    columns: ':not(:last-child)'
+                                },
+                                title: null
+                    }
                 ],
                 initComplete: function () {
                     // Fix table layout after initialization

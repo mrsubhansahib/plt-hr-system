@@ -285,6 +285,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/outstanding-new-starter-docs', function () {
             return view('pages.reports.outstanding-new-starter-docs');
         })->name('reports.outstanding-new-starter-docs');
+        Route::get('/training', function () {
+            return view('pages.reports.training-report');
+        })->name('reports.training');
     });
 });
 

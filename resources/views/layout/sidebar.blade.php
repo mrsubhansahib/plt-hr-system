@@ -665,6 +665,12 @@
                                 class="nav-link {{ active_class(['reports/disciplinary-capability-lateness']) }}">Disci..
                                 Capabi.. Late..</a>
                         </li>
+                        {{-- Training Report --}}
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/training') }}"
+                            class="nav-link {{ active_class(['reports/training']) }}">
+                            Training Report</a>
+                        </li>   
                     </ul>
                 </div>
             </li>
