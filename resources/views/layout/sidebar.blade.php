@@ -630,8 +630,10 @@
                                 class="nav-link {{ active_class(['reports/dbs-check']) }}">DBS Check</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/outstanding-new-starter-docs') }}" title="Outstanding New Starter Docs"
-                                class="nav-link {{ active_class(['reports/outstanding-new-starter-docs']) }}">Outstanding New Start...</a>
+                            <a href="{{ url('/reports/outstanding-new-starter-docs') }}"
+                                title="Outstanding New Starter Docs"
+                                class="nav-link {{ active_class(['reports/outstanding-new-starter-docs']) }}">Outstanding
+                                New Start...</a>
                         </li>
                         {{-- Long term sickness Indicator --}}
                         <li class="nav-item">
@@ -667,10 +669,17 @@
                         </li>
                         {{-- Training Report --}}
                         <li class="nav-item">
-                            <a href="{{ url('/reports/training') }}"
-                            class="nav-link {{ active_class(['reports/training']) }}">
-                            Training Report</a>
-                        </li>   
+                            <a href="{{ url('/reports/training-individual') }}" title="Training Individual Report"
+                                class="nav-link {{ active_class(['reports/training-individual']) }}">
+                                Training Individual </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/disciplinary-individual') }}" title="Disciplinary Individual Report"
+                                class="nav-link {{ active_class(['reports/disciplinary-individual']) }}">
+                                Disciplinary Individual</a>
+                        </li>
+                        
                     </ul>
                 </div>
             </li>

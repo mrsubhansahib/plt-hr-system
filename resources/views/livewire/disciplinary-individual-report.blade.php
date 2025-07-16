@@ -52,7 +52,7 @@
                     <div class="card-body" id="printSection">
                         <div class="my-3">
                             <h3 class="heading text-center border-bottom border-1 border-dark pb-2 mb-4 fw-bolder">
-                                Employee Training Report
+                                Employee Disciplinary Report
                             </h3>
 
                             <div class="row mb-3 border-bottom border-1 border-dark pb-2 pb-4">
@@ -87,41 +87,58 @@
 
                             <div class="col-12 mt-3">
                                 <h4 class="text-center w-50 m-auto border-bottom border-1 border-dark pb-2 mb-3">
-                                    Training&nbsp;Record
+                                    Disciplinary&nbsp;Record
                                 </h4>
                             </div>
 
-                            @forelse ($employee->trainings as $training)
+                            @forelse ($employee->disciplinaries as $disciplinary)
                                 <div class="mt-4 mb-3 border-bottom border-dark pb-4">
                                     <h5 class="text-primary mb-3">NO#{{ $loop->iteration }}</h5>
                                     <div class="row">
-                                        <div class="col-4 mt-3">
-                                            <label class="form-label">Training Title</label>
-                                            <input class="form-control" type="text"
-                                                value="{{ $training->training_title ?? 'N/A' }}" disabled />
+                                        <div class="col-3 mt-3">
+                                            <label class="form-label">Reason for Disciplinary</label>
+                                            <input class="form-control" type="text" disabled
+                                                name="reason_for_disciplinary"
+                                                value="{{ $disciplinary->reason_for_disciplinary ?? 'N/A' }}" />
                                         </div>
-                                        <div class="col-4 mt-3">
-                                            <label class="form-label">Course Date</label>
-                                            <input class="form-control" type="text"
-                                                value="{{ $training->course_date ? \Carbon\Carbon::parse($training->course_date)->format('d-m-Y') : 'N/A' }}"
-                                                disabled />
+                                        <div class="col-3 mt-3">
+                                            <label class="form-label">Date of Hearing</label>
+                                            <input class="form-control datepicker" type="text"
+                                                placeholder="Select Date" disabled name="hearing_date"
+                                                value="{{ $disciplinary->hearing_date ?? 'N/A' }}" />
                                         </div>
-                                        <div class="col-4 mt-3">
-                                            <label class="form-label">Renewal Date</label>
-                                            <input class="form-control" type="text"
-                                                value="{{ $training->renewal_date ? \Carbon\Carbon::parse($training->renewal_date)->format('d-m-Y') : 'N/A' }}"
-                                                disabled />
+                                        <div class="col-3 mt-3">
+                                            <label class="form-label">Outcome</label>
+                                            <select class="form-control form-select" disabled name="outcome">
+                                                <option value="{{ $disciplinary->outcome ?? 'N/A' }}"selected disabled>
+                                                    {{ $disciplinary->outcome ?? 'N/A' }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3 mt-3">
+                                            <label class="form-label">Suspended</label>
+                                            <select class="form-control form-select" disabled name="suspended"
+                                                value="{{ $disciplinary->suspended ?? 'N/A' }}" id="suspended">
+                                                <option value="yes">Yes</option>
+                                                <option selected value="no">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3 mt-3" id="date-suspended-container" style="display:none;">
+                                            <label class="form-label">Date Suspended</label>
+                                            <input class="form-control datepicker" type="text"
+                                                placeholder="Select Date" disabled name="date_suspended"
+                                                value="{{ $disciplinary->date_suspended ?? 'N/A' }}"
+                                                id="date_suspended" />
                                         </div>
                                         <div class="col-md-12 mt-3">
                                             <label class="form-label">Notes</label>
-                                            <textarea class="form-control" name="notes" disabled  rows="4">{{ $training->notes ?? 'N/A' }}</textarea>
+                                            <textarea class="form-control" disabled name="notes" rows="4">{{ $disciplinary->notes ?? 'N/A' }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             @empty
                                 <div class="col-12 mt-3">
-                                    <p class=" text-center fs-5 border border-dark w-50 m-auto p-3">
-                                        No training records found.
+                                    <p class="text-center fs-5 border border-dark w-50 m-auto p-3">
+                                        No disciplinary records found.
                                     </p>
                                     <hr>
                                 </div>

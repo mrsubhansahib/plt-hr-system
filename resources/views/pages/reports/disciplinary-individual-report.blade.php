@@ -63,10 +63,10 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Reports</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Training Individual Record</li>
+            <li class="breadcrumb-item active" aria-current="page">Disciplinary Individual Report</li>
         </ol>
     </nav>
-    @livewire('training-record')
+    @livewire('disciplinary-individual-report')
 @endsection
 
 @push('custom-scripts')
