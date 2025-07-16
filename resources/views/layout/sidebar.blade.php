@@ -640,6 +640,12 @@
                                 class="nav-link {{ active_class(['reports/outstanding-new-starter-docs']) }}">Outstanding
                                 New Start...</a>
                         </li>
+                        {{-- Sickness Indicator --}}
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/sickness-indicator') }}"
+                                class="nav-link {{ active_class(['reports/sickness-indicator']) }}">Sickness
+                                Indicator</a>
+                        </li>
                         {{-- Long term sickness Indicator --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/long-term-sickness') }}"

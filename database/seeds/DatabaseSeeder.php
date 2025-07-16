@@ -44,9 +44,9 @@ class DatabaseSeeder extends Seeder
         'Job' => [
             'Facility' => [
                 'No 1 Market Street',
-                'Profile Leisure Centre',
+                'Pendle Leisure Centre',
                 'Pendle Wavelengths',
-                'West Point Sports Centre',
+                'West Craven Sports Centre',
                 'The Muni',
                 'Seedhill Athletics and Fitness Centre',
                 'Inside Spa',

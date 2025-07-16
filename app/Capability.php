@@ -11,6 +11,7 @@ class Capability extends Model
     protected $fillable = [
         'user_id',
         'on_capability_procedure',
+        'capability_procedure_date',
         'stage',
         'date',
         'outcome',
