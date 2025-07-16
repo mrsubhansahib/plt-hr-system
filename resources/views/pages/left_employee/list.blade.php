@@ -28,9 +28,11 @@
                                     <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name">
                                     </th>
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Surname">
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Surname">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Email"></th>
@@ -59,8 +61,13 @@
                                                 <ul class="dropdown-menu"
                                                     aria-labelledby="dropdownMenuButton-{{ $user->id }}">
                                                     <li>
-                                                        <button onclick="if(confirm('Are you sure you want to activate this Employee?')){window.location.href='{{ route('active.employee', $user->id) }}'}"
+                                                        <button
+                                                            onclick="if(confirm('Are you sure you want to activate this Employee?')){window.location.href='{{ route('active.employee', $user->id) }}'}"
                                                             class="dropdown-item">Active</button>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('history.employee', $user->id) }}">History</a>
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item"

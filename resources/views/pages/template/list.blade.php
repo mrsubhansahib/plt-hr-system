@@ -30,7 +30,6 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Content</th>
                                     <th>Created At</th>    
                                     <th>Updated At</th>
                                     <th>Action</th>
@@ -39,8 +38,7 @@
                                 <tr class="filters">
                                     <th><input type="text" class="form-control form-control-sm" placeholder="Search Title">
                                     </th>
-                                    <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Content"></th> 
+                                   
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Created At"></th>
                                     <th><input type="text" class="form-control form-control-sm"
@@ -54,7 +52,6 @@
                                 @foreach ($templates as $key => $template)
                                     <tr>
                                         <td>{{ $template->title }}</td>
-                                        <td>{{ Str::limit($template->content, 60) }}</td>
                                         <td>{{ $template->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $template->updated_at->format('d-m-Y') }}</td>
                                         <td>

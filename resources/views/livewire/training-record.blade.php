@@ -79,7 +79,8 @@
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Facility</label>
-                                    <input type="email" class="form-control mt-2" value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ?? 'N/A' }}"
+                                    <input type="email" class="form-control mt-2"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ?? 'N/A' }}"
                                         disabled>
                                 </div>
                             </div>
@@ -110,6 +111,10 @@
                                             <input class="form-control" type="text"
                                                 value="{{ $training->renewal_date ? \Carbon\Carbon::parse($training->renewal_date)->format('d-m-Y') : 'N/A' }}"
                                                 disabled />
+                                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <label class="form-label">Notes</label>
+                                            <textarea class="form-control" name="notes" disabled  rows="4">{{ $training->notes ?? 'N/A' }}</textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -37,8 +37,8 @@ class DocumentForm extends Component
 
     public function mount()
     {
-        $this->templates = Template::all();
-        $this->employees = User::all();
+        $this->templates = Template::orderBy('created_at', 'desc')->get();
+        $this->employees = User::where('role', 'employee')->where('status', 'active')->latest()->get();
     }
     public function updatedSelectedTemplate($templateId)
     {
