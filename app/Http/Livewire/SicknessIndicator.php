@@ -2,56 +2,78 @@
 
 namespace App\Http\Livewire;
 
-use App\Sickness;
-use App\User;
 use Livewire\Component;
+use App\Sickness;
+use App\Capability;
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class SicknessIndicator extends Component
 {
     public $start_date = '';
     public $end_date = '';
-    public $sicknesses = [];
-    public $errorMsg = '';
     public $successMsg = '';
+    public $errorMsg = '';
+    public Collection $sickUsers;
 
-    public function filterSicknesses()
+    public function mount()
     {
-        $this->errorMsg = $this->successMsg = '';
-        $this->sicknesses = [];
+        $this->sickUsers = collect();
+    }
+
+    public function filterSickness()
+    {
+        $this->successMsg = '';
+        $this->errorMsg = '';
+        $this->sickUsers = collect();
 
         if (!$this->start_date || !$this->end_date) {
-            $this->errorMsg = 'Please provide both start and end dates.';
+            $this->errorMsg = 'Both start date and end date are required.';
             return;
         }
 
         if ($this->start_date > $this->end_date) {
-            $this->errorMsg = 'Start date cannot be after end date.';
+            $this->errorMsg = 'Start date cannot be greater than end date.';
             return;
         }
 
-        // Get users who have capability records with conditions
-        $userIds = User::where('status', 'active')
-            ->whereHas('capabilities', function ($query) {
-                $query->where('on_capability_procedure', 'yes')
-                    ->whereBetween('capability_procedure_date', [$this->start_date, $this->end_date]);
+        $start = Carbon::parse($this->start_date);
+        $end = Carbon::parse($this->end_date);
+
+        $this->sickUsers = Capability::where('on_capability_procedure', 'yes')
+            ->whereNotNull('capability_procedure_date')
+            ->get()
+            ->filter(function ($capability) use ($start, $end) {
+                $capDate = Carbon::parse($capability->capability_procedure_date);
+                return Sickness::where('user_id', $capability->user_id)
+                    ->whereBetween('date_from', [$start, $end])
+                    ->whereDate('date_from', '>=', $capDate)
+                    ->exists();
             })
-            ->pluck('id');
+            ->map(fn($capability) => $capability->user->load('jobs'))
+            ->unique('id')
+            ->values();
 
-        if ($userIds->isEmpty()) {
-            $this->errorMsg = 'No users found with capability procedure in selected range.';
-            return;
+        if ($this->sickUsers->isEmpty()) {
+            $this->errorMsg = 'No sickness records found in the selected date range after capability procedure.';
+        } else {
+            $this->successMsg = 'Records found: ' . $this->sickUsers->count();
         }
 
-        // Now fetch their sicknesses from date range onward
-        $this->sicknesses = Sickness::with('user')
-            ->whereIn('user_id', $userIds)
-            ->whereDate('date_from', '>=', $this->start_date)
-            ->get();
+        $this->resetFilters();
+    }
 
-        if ($this->sicknesses->isEmpty()) {
-            $this->errorMsg = 'No sickness records found for filtered users.';
-        } else {
-            $this->successMsg = 'Sickness data filtered successfully. Found ' . $this->sicknesses->count() . ' records.';
+    public function resetFilters(): void
+    {
+        $this->start_date = '';
+        $this->end_date = '';
+    }
+
+    public function updated($propertyName): void
+    {
+        if (in_array($propertyName, ['start_date', 'end_date'])) {
+            $this->successMsg = '';
+            $this->errorMsg = '';
         }
     }
 

@@ -3,7 +3,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form wire:submit.prevent="filterSicknesses">
+                    <form wire:submit.prevent="filterSickness">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-4 mb-3">
@@ -26,10 +26,17 @@
     </div>
 
     @if ($errorMsg)
-        <div class="alert alert-danger">{{ $errorMsg }}</div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ $errorMsg }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
     @endif
+
     @if ($successMsg)
-        <div class="alert alert-success">{{ $successMsg }}</div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ $successMsg }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
     @endif
 
     <div class="row">
@@ -37,26 +44,32 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table dataTableSicknesses">
+                        <table class="table dataTableSickness">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Capability Date</th>
-                                    <th>Sickness Date</th>
-                                    <th>Reason</th>
+                                    <th>Job Title</th>
+                                    <th>Facility</th>
+                                    <th>Contract Type</th>
+                                    <th>Commencement Date</th>
+                                    <th>Contracted From</th>
+                                    <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($sicknesses as $item)
+                                @forelse ($sickUsers as $user)
                                     <tr>
-                                        <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->user->capability_procedure_date }}</td>
-                                        <td>{{ $item->sickness_date }}</td>
-                                        <td>{{ $item->reason }}</td>
+                                        <td>{{ $user->first_name . ' ' . $user->surname }}</td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->title ?? 'N/A' }}</td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->facility ?? 'N/A' }}</td>
+                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->contract_type ?? 'N/A' }}</td>
+                                        <td>{{ $user->commencement_date }}</td>
+                                        <td>{{ $user->contracted_from ?? 'N/A' }}</td>
+                                        <td>{{ $user->email }}</td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="4" class="text-center">No data found.</td>
+                                        <td colspan="7" class="text-center">No Record Found</td>
                                     </tr>
                                 @endforelse
                             </tbody>

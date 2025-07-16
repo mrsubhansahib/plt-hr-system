@@ -11,7 +11,6 @@
             <li class="breadcrumb-item active" aria-current="page">Sickness Indicator</li>
         </ol>
     </nav>
-
     @livewire('sickness-indicator')
 @endsection
 
@@ -19,29 +18,38 @@
     @livewireScripts
     <script>
         document.addEventListener('livewire:load', function () {
-            $('.dataTableSicknesses').DataTable({
-                paging: true,
-                searching: true,
-                ordering: true,
-                dom: 'Bfrtip',
-                buttons: ['csv', 'excel'],
-                initComplete: function () {
-                    this.api().columns.adjust().draw();
-                }
-            });
-
-            Livewire.hook('message.processed', (message, component) => {
-                $('.dataTableSicknesses').DataTable().destroy();
-                $('.dataTableSicknesses').DataTable({
+            function initTable() {
+                var table = $('.dataTableSickness').DataTable({
+                    autoWidth: true,
                     paging: true,
                     searching: true,
-                    ordering: true,
+                    ordering: false,
+                    info: true,
                     dom: 'Bfrtip',
                     buttons: ['csv', 'excel'],
+                    scrollX: true,
                     initComplete: function () {
                         this.api().columns.adjust().draw();
+                        $('table.dataTableSickness td').css(
+                            'white-space', 'nowrap'
+                        );
                     }
                 });
+            }
+
+            initTable();
+
+            Livewire.hook('message.processed', () => {
+                let $table = $('.dataTableSickness');
+                if ($.fn.dataTable.isDataTable($table)) {
+                    $table.DataTable().destroy();
+                }
+                initTable();
+            });
+
+            $('.dataTableSickness .filters input').on('keyup change', function () {
+                var colIndex = $(this).parent().index();
+                $('.dataTableSickness').DataTable().column(colIndex).search(this.value).draw();
             });
         });
     </script>
