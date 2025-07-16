@@ -12,9 +12,9 @@
                                 <select class="form-select" wire:model="facility" id="facility">
                                     <option selected disabled>Select</option>
                                     <option value="No 1 Market Street">No 1 Market Street</option>
-                                    <option value="Profile Leisure Centre">Profile Leisure Centre</option>
+                                    <option value="Pendle Leisure Centre">Pendle Leisure Centre</option>
                                     <option value="Pendle Wavelengths">Pendle Wavelengths</option>
-                                    <option value="West Point Sports Centre">West Point Sports Centre</option>
+                                    <option value="West Craven Sports Centre">West Craven Sports Centre</option>
                                     <option value="The Muni">The Muni</option>
                                     <option value="Seedhill Athletics and Fitness Centre">Seedhill Athletics and Fitness
                                         Centre</option>
