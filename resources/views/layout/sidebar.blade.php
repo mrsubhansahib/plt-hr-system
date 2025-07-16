@@ -603,6 +603,11 @@
 
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('/reports/current-contracted-colleagues') }}" title="Current Contracted Colleagues"
+                                class="nav-link {{ active_class(['reports/current-contracted-colleagues']) }}">Current Contracted Coll...</a>
+
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('/reports/temp-fix-colleagues') }}"
                                 class="nav-link {{ active_class(['reports/temp-fix-colleagues']) }}">Temp/Fix Term
                                 Colleagues</a>

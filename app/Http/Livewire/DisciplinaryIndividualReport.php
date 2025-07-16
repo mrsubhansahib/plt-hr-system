@@ -28,7 +28,7 @@ class DisciplinaryIndividualReport extends Component
 
             if ($user) {
                 $this->employee = $user;
-                $this->successMsg = 'Training data loaded for ' . $user->first_name . ' ' . $user->surname;
+                $this->successMsg = 'Disciplinary data loaded for ' . $user->first_name . ' ' . $user->surname;
             } else {
                 $this->errorMsg = 'Employee not found.';
             }
