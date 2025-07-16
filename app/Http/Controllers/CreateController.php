@@ -43,7 +43,7 @@ class CreateController extends Controller
             } else {
                 $request['status'] = 'terminated';
             }
-        }else{
+        } else {
             $request['status'] = 'active';
         }
         Job::create($request->all());
@@ -119,17 +119,13 @@ class CreateController extends Controller
     }
     public function capabilityStore(Request $request)
     {
-        // $request->validate([
-        //     'user_id'                       => 'required',
-        //     'on_capability_procedure'       => 'required',
-        //     'stage'                         => 'required',
-        //     'date'                          => 'required',
-        //     'outcome'                       => 'required',
-        //     'warning_issued_type'           => 'required',
-        //     'review_date'                   => 'required',
-        // ]);
-        Capability::create($request->all());
-        // dd($request->all());
+        $data = $request->all();
+        if ($request->on_capability_procedure === 'yes') {
+            $data['capability_procedure_date'] = now()->format('Y-m-d');
+        } else {
+            $data['capability_procedure_date'] = null;
+        }
+        Capability::create($data);
         session()->flash('active_tab', 'capability-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Capability created successfully.');

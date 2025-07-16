@@ -603,6 +603,11 @@
 
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('/reports/current-contracted-colleagues') }}" title="Current Contracted Colleagues"
+                                class="nav-link {{ active_class(['reports/current-contracted-colleagues']) }}">Current Contracted Coll...</a>
+
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('/reports/temp-fix-colleagues') }}"
                                 class="nav-link {{ active_class(['reports/temp-fix-colleagues']) }}">Temp/Fix Term
                                 Colleagues</a>
@@ -634,6 +639,12 @@
                                 title="Outstanding New Starter Docs"
                                 class="nav-link {{ active_class(['reports/outstanding-new-starter-docs']) }}">Outstanding
                                 New Start...</a>
+                        </li>
+                        {{-- Sickness Indicator --}}
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/sickness-indicator') }}"
+                                class="nav-link {{ active_class(['reports/sickness-indicator']) }}">Sickness
+                                Indicator</a>
                         </li>
                         {{-- Long term sickness Indicator --}}
                         <li class="nav-item">

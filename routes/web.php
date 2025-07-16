@@ -261,6 +261,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/dbs-check', function () {
             return view('pages.reports.dbs-check');
         })->name('reports.dbs-check');
+        // Sickness Indicator Route
+        Route::get('/sickness-indicator', function () {
+            return view('pages.reports.sickness-indicator');
+        })->name('reports.sickness-indicator');
         Route::get('/long-term-sickness', function () {
             return view('pages.reports.long-term-sickness');
         })->name('reports.long-term-sickness');
@@ -285,6 +289,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/outstanding-new-starter-docs', function () {
             return view('pages.reports.outstanding-new-starter-docs');
         })->name('reports.outstanding-new-starter-docs');
+        Route::get('/current-contracted-colleagues', function () {
+            return view('pages.reports.current-contracted-colleagues');
+        })->name('reports.current-contracted-colleagues');
         Route::get('/training-individual', function () {
             return view('pages.reports.training-report');
         })->name('reports.training');

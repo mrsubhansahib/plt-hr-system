@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('on_capability_procedure')->nullable();
+            $table->string('capability_procedure_date')->nullable();
             $table->string('stage')->nullable();
             $table->string('date')->nullable();
             $table->string('outcome')->nullable();
