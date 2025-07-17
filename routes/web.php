@@ -30,8 +30,8 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\TrainingController;
-use App\User;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -39,11 +39,14 @@ Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 
 Route::middleware('auth')->group(function () {
+
     // Route for authentication
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
+    // Ni Number Check
+    Route::post('/check-ni', [EmployeeController::class, 'checkNI'])->name('check.ni');
     // Route for Admin CRUD  
     Route::group(['prefix' => 'admin'], function () {
         Route::get('list',          [UserController::class, 'index'])->name('show.admins');
