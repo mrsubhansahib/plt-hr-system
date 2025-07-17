@@ -388,15 +388,13 @@
                                             <label class="form-label">Notes</label>
                                             <textarea class="form-control notes" name="notes[]" rows="4"></textarea>
                                         </div>
-                                        <div class=" mt-4">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class=" mt-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
-
-
                     </div>
                     <!-- Single Submit Button -->
                 </form>
