@@ -70,11 +70,15 @@
 
                                         <td>{{ $job->user?->first_name }}</td>
                                         <td>{{ $job->user?->surname }}</td>
-                                        <td>{{ $job->user->commencement_date ?? 'N/A' }}</td>
+                                        <td>
+                                            {{ $job->user->commencement_date ? \Carbon\Carbon::parse($job->user->commencement_date)->format('d-m-Y') : 'N/A' }}
+                                        </td>
                                         <td>{{ $job->user->contracted_from_date ?? 'N/A' }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ ucfirst($job->main_job ?? 'N/A') }}</td>
-                                        <td>{{ $job->start_date }}</td>
+                                        <td>
+                                            {{ $job->start_date ? \Carbon\Carbon::parse($job->start_date)->format('d-m-Y') : 'N/A' }}
+                                        </td>
                                         <td>{{ ucfirst($job->status) }}</td>
                                         <td>
                                             <div class="dropdown">

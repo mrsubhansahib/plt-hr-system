@@ -58,7 +58,7 @@
                                 <div class="col-md-3 mt-3">
                                     <label for="dob" class="form-label">DOB</label>
                                     <input class="form-control datepicker py-2" type="text" id="dob"
-                                        placeholder="Select Date" name="dob" value="{{ $user->dob }}" disabled />
+                                        placeholder="Select Date" name="dob" value="{{ \Carbon\Carbon::parse($user->dob)->format('d-m-Y') ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label for="age" class="form-label">Age</label>
@@ -142,27 +142,27 @@
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Address 3</label>
                                     <input class="form-control" type="text" name="address3"
-                                        value="{{ $user->address3 }}" disabled />
+                                        value="{{ $user->address3 ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Emergency Contact 2 Name</label>
                                     <input class="form-control" type="text" name="emergency_2_name"
-                                        value="{{ $user->emergency_2_name }}" disabled />
+                                        value="{{ $user->emergency_2_name ?? 'N/A'}}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Emergency Contact 2 Mobile</label>
                                     <input class="form-control" type="number" placeholder="phone number"
-                                        name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no }}" disabled />
+                                        name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Emergency Contact 2 Relationship</label>
                                     <input class="form-control" type="text" name="emergency_2_relation"
-                                        value="{{ $user->emergency_2_relation }}" disabled />
+                                        value="{{ $user->emergency_2_relation ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Emergency Contact 2 Home Number</label>
                                     <input class="form-control" type="number" placeholder="phone number"
-                                        name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph }}" disabled />
+                                        name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph ?? 'N/A' }}" disabled />
                                 </div>
                                 <!-- Employment Details -->
                                 {{-- <h3 class="my-4 text-center">Job Details</h3>
@@ -430,13 +430,15 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label class="form-label">Start Date</label>
-                                            <input type="text" class="form-control" value="{{ $job->start_date ?? 'Not Entered' }}" disabled>
+                                            <input type="text" class="form-control"
+                                                value="{{ $job->start_date ? \Carbon\Carbon::parse($job->start_date)->format('d-m-Y') : 'Not Entered' }}"
+                                                disabled>
                                         </div>
                                         <div class="col-md-4">
                                             <label class="form-label">
                                                 {{ in_array($job->contract_type, ['Fixed Term', 'Temporary']) ? 'Fix/Temp Expiry' : 'Job Termination Date' }}
                                             </label>
-                                            <input type="text" class="form-control" value="{{ $job->termination_date ?? 'Not Entered' }}" disabled>
+                                            <input type="text" class="form-control" value="{{ $job->termination_date ? \Carbon\Carbon::parse($job->termination_date)->format('d-m-Y') : 'Not Entered' }}" disabled>
                                         </div>
                                     </div>
 

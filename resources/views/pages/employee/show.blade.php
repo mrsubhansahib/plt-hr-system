@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <label for="commencement_date">Employment Commencement Date</label>
                                 <input type="text" class="form-control mt-2" id="commencement_date"
-                                    value="{{ $user->commencement_date ?? 'N/A' }}" disabled>
+                                    value="{{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d-m-Y') : 'N/A' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
@@ -228,7 +228,9 @@
                                             <td>{{ $job->number_of_hours }}</td>
                                             <td>{{ ucfirst($job->main_job) }}</td>
                                             <td>{{ $job->contract_type }}</td>
-                                            <td>{{ $job->start_date }}</td>
+                                            <td>
+                                                {{ $job->start_date ? \Carbon\Carbon::parse($job->start_date)->format('d-m-Y') : 'N/A' }}
+                                            </td>
                                             <td>{{ ucfirst($job->status) }}</td>
                                             <td>
                                                 <div class="dropdown">

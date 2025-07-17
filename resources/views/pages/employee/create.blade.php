@@ -412,17 +412,24 @@
 @push('custom-scripts')
     <script>
         // Ajax
-        let isUniqueNI = false;
+        let isUniqueNI = true; // assume it's valid initially
         $(document).ready(function() {
-            $('#ni_number').on('input', function() {
-                let ni = $(this).val();
-                let userId = $('#user_id').val();
+            const originalNI = $('#ni_number').val();
+            const userId = $('#user_id').val();
 
+            $('#ni_number').on('input', function() {
+                let currentNI = $(this).val();
+
+                if (currentNI === originalNI) {
+                    isUniqueNI = true;
+                    $('#ni-feedback').text('').css('color', '');
+                    return;
+                }
                 $.ajax({
                     url: '/check-ni',
                     type: 'POST',
                     data: {
-                        ni_number: ni,
+                        ni_number: currentNI,
                         user_id: userId,
                         _token: '{{ csrf_token() }}'
                     },

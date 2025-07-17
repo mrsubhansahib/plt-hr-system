@@ -54,7 +54,9 @@
                             <tr>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->surname }}</td>
-                                <td>{{ $user->commencement_date ?? 'N/A' }}</td>
+                                <td>
+                                    {{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d-m-Y') : 'N/A' }}
+                                </td>
                                 <td>{{ $user->contracted_from_date ?? 'N/A' }}</td>
                                 <td>
                                     {{ $user->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
