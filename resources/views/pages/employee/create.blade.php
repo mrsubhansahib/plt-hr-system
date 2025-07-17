@@ -385,24 +385,25 @@
                                                 </select>
                                             </div>
 
-                                            <!-- Notes Field -->
-                                            <div class="col-md-12 mt-3">
-                                                <label class="form-label">Notes</label>
-                                                <textarea class="form-control notes" name="notes[]" rows="4"></textarea>
-                                            </div>
-                                            <div class=" mt-4">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
+
+                                        <!-- Notes Field -->
+                                        <div class="col-md-12 mt-3">
+                                            <label class="form-label">Notes</label>
+                                            <textarea class="form-control notes" name="notes[]" rows="4"></textarea>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
+                            <div class=" mt-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
-                        <!-- Single Submit Button -->
-                    </form>
-                </div>
+                    </div>
+                    <!-- Single Submit Button -->
+                </form>
+
             </div>
         </div>
     </div>
