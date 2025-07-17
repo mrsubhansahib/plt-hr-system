@@ -62,24 +62,43 @@
                             <tbody>
                                 @if ($total_users || $overall_turnover || $casual_turnover || $contracted_turnover || $turnover_by_facility)
                                     <tr>
-                                        <td>{{ $total_users }} Employees</td>
-                                        <td>{{ $overall_turnover }} Employees
-                                            ({{ number_format(($overall_turnover / $total_users) * 100, 2) }}%)</td>
-                                        <td>{{ $casual_turnover }} Employees
-                                            ({{ number_format(($casual_turnover / $total_users) * 100, 2) }}%)</td>
-                                        <td>{{ $contracted_turnover }} Employees
-                                            ({{ number_format(($contracted_turnover / $total_users) * 100, 2) }}%)</td>
-                                        <td>{{ $turnover_by_facility }} Employees
-                                            ({{ number_format(($turnover_by_facility / $users_by_facility) * 100, 2) }}%)
+                                        <td>
+                                            <strong>{{ $total_users }}</strong> Employees
+                                        </td>
+                                        <td>
+                                            <strong>{{ round($overall_turnover * $total_users, 1) }}</strong> Leavers
+                                            <br>
+                                            <small>({{ round($overall_turnover * 100, 1) }}%)</small>
+                                        </td>
+                                        <td>
+                                            <strong>{{ round($casual_turnover * $total_users, 1) }}</strong> Casual
+                                            Leavers
+                                            <br>
+                                            <small>({{ round($casual_turnover * 100, 1) }}%)</small>
+                                        </td>
+                                        <td>
+                                            <strong>{{ round($contracted_turnover * $total_users, 1) }}</strong>
+                                            Contracted
+                                            Leavers
+                                            <br>
+                                            <small>({{ round($contracted_turnover * 100, 1) }}%)</small>
+                                        </td>
+                                        <td>
+                                            <strong>{{ round($turnover_by_facility * $users_by_facility, 1) }}</strong>
+                                            Leavers
+                                            in Facility
+                                            <br>
+                                            <small>({{ $users_by_facility > 0 ? round($turnover_by_facility * 100, 1) : 0 }}%)</small>
                                         </td>
                                     </tr>
                                 @else
                                     <tr>
-                                        <td colspan="5" class="text-center">No Record Found</td>
+                                        <td colspan="5" class="text-center text-muted">
+                                            No Record Found for the selected year or facility.
+                                        </td>
                                     </tr>
                                 @endif
                             </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

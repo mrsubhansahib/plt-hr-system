@@ -4,57 +4,81 @@ namespace App\Http\Livewire;
 
 use App\Dropdown;
 use App\Job;
+use App\User;
 use Carbon\Carbon;
 use Livewire\Component;
 
 class TurnoverMonthly extends Component
 
 {
-    public $successMsg = '';
-    public $errorMsg = '';
-    public $total_users = 0;
-    public $overall_turnover = 0;
-    public $casual_turnover = 0;
-    public $contracted_turnover = 0;
-    public $turnover_by_facility = 0;
-    public $users_by_facility = 0;
-    public $facilities = [];
-    public $selected_facility; // Default value for facility
+    public $overall_turnover, $casual_turnover, $contracted_turnover, $turnover_by_facility;
+    public $total_users, $users_by_facility;
+    public $selected_facility, $successMsg, $errorMsg, $startDate, $endDate;
 
 
     public function filter()
     {
         $this->successMsg = $this->errorMsg = '';
-        $this->overall_turnover = $this->casual_turnover = $this->contracted_turnover = $this->turnover_by_facility = $this->total_users = $this->users_by_facility = 0;
+        $this->overall_turnover = $this->casual_turnover = $this->contracted_turnover = $this->turnover_by_facility = 0;
+        $this->total_users = $this->users_by_facility = 0;
 
         if ($this->selected_facility === 'Select') {
             $this->errorMsg = 'Please select a facility.';
-            return view('livewire.turnover-monthly');
+            return;
         }
-        // Count total distinct active users
-        $this->total_users = Job::where('status', 'active')->distinct('user_id')->count('user_id');
-        $this->users_by_facility = Job::where('status', 'active')
-            ->where('facility', $this->selected_facility)
-            ->distinct('user_id')
-            ->count('user_id');
+        if (empty($this->startDate) || empty($this->endDate)) {
+            $this->errorMsg = 'Please select a valid date range.';
+            return;
+        }
+        //start date less then end date validation
+        if (Carbon::parse($this->startDate)->greaterThan(Carbon::parse($this->endDate))) {
+            $this->errorMsg = 'Start date cannot be greater than end date.';
+            return;
+        }
+        //date requred
+        
 
-        $endDate = Carbon::now()->format('Y-m-d');
-        $startDate = Carbon::now()->subDays(30)->format('Y-m-d');
-
-        // Get jobs that ended in the last month
-        $jobs = Job::with('user')
-            ->whereBetween('termination_date', [$startDate, $endDate])
+        $endDate = $this->endDate;
+        $startDate = $this->startDate;
+        /**
+         * Get users who left this month
+         */
+        $leavers = User::whereBetween('left_date', [$startDate, $endDate])
+            ->with(['jobs' => function ($query) {
+                $query->latest();
+            }])
             ->get();
-
-        if ($jobs->isEmpty()) {
-            $this->errorMsg = 'No jobs found for the selected date.';
-            return view('livewire.turnover-monthly');
+        if ($leavers->isEmpty()) {
+            $this->errorMsg = 'No users left during this month.';
+            return;
         }
 
-        $groupedJobs = $jobs->groupBy('user_id');
+        /**
+         * Get users who were active at the start of the month
+         * Includes those who left later in the month
+         */
+        $activeUsersStartOfMonth = User::where(function ($query) use ($startDate) {
+            $query->orWhereNull('left_date')->orWhere('left_date', '>=', $startDate);
+        })->where('status', '!=', 'pending')->get();
+        /**
+         * Filter users by selected facility
+         */
+        $activeUsersInFacility = $activeUsersStartOfMonth->filter(function ($user) {
+            return $user->jobs->first()?->facility === $this->selected_facility;
+        });
 
-        foreach ($groupedJobs as $userId => $userJobs) {
-            $job = $userJobs->first(); // Latest or relevant job entry
+        // Total active users (at start of month)
+        $this->total_users = $activeUsersStartOfMonth->count();
+
+        // Total users in selected facility
+        $this->users_by_facility = $activeUsersInFacility->count();
+
+        // Categorize leavers
+        foreach ($leavers as $user) {
+            $job = $user->jobs->first(); // latest job
+
+            if (!$job) continue;
+
             $contract_type = $job->contract_type;
 
             if ($contract_type === 'Casual') {
@@ -68,18 +92,29 @@ class TurnoverMonthly extends Component
             if (in_array($contract_type, ['Permanent', 'Casual', 'Fixed Term', 'Temporary', 'Permanent Variable'])) {
                 $this->overall_turnover++;
             }
+
             if ($job->facility === $this->selected_facility) {
                 $this->turnover_by_facility++;
             }
         }
-        $this->total_users += $this->overall_turnover;
-        $this->users_by_facility += $this->turnover_by_facility;
-        $this->successMsg = 'Data retrieved successfully for last month from ' . Carbon::parse($startDate)->format('d-m-Y') . ' to ' . Carbon::parse($endDate)->format('d-m-Y');
+
+        /**
+         * Final Calculations – All values are percentages (you can multiply by 100 if needed)
+         */
+        $this->overall_turnover = $this->total_users > 0 ? round($this->overall_turnover / $this->total_users, 3) : 0;
+        $this->casual_turnover = $this->total_users > 0 ? round($this->casual_turnover / $this->total_users, 3) : 0;
+        $this->contracted_turnover = $this->total_users > 0 ? round($this->contracted_turnover / $this->total_users, 3) : 0;
+        $this->turnover_by_facility = $this->users_by_facility > 0 ? round($this->turnover_by_facility / $this->users_by_facility, 3) : 0;
+
+        $this->successMsg = 'Turnover data calculated for ' . Carbon::parse($startDate)->format('F Y');
         $this->resetFilter();
     }
+
     public function resetFilter()
     {
         $this->selected_facility = 'Select'; // Reset facility selection
+        $this->startDate = '';
+        $this->endDate = ''; // Reset date selection
     }
     public function mount()
     {
