@@ -8,7 +8,7 @@
 
             <div class="col-6 mt-3">
                 <label class="form-label">Template<span class="text-danger">*</span></label>
-                <select class="form-control form-select" required wire:model="selectedTemplate" id="template">
+                <select class="form-control form-select" required wire:model="selectedTemplate" data-placeholder="Select Template" id="template">
                     <option value="" selected>Select Template</option>
                     @foreach ($templates as $template)
                         <option value="{{ $template->id }}">
@@ -20,7 +20,7 @@
 
             <div class="col-6 mt-3">
                 <label class="form-label">Employee<span class="text-danger">*</span></label>
-                <select class="form-control form-select" required wire:model="selectedEmployee" id="employeeSelect">
+                <select class="form-control form-select" required wire:model="selectedEmployee" data-placeholder="Select Employee" id="employeeSelect">
                     <option value="" selected>Select Employee</option>
                     @foreach ($employees as $employee)
                         <option value="{{ $employee->id }}">
@@ -33,7 +33,7 @@
             @if ( !empty($templateFlags['job']) && !empty($userJobs))
                 <div class="col-6 mt-3">
                     <label class="form-label">Job<span class="text-danger">*</span></label>
-                    <select class="form-select" wire:model="selectedJob">
+                    <select class="form-select" wire:model="selectedJob" data-placeholder="Select Job">
                         <option value="">Select Job</option>
                         @foreach ($userJobs as $job)
                             <option value="{{ $job->id }}">{{ $job->title }}</option>
@@ -45,7 +45,7 @@
             @if (!empty($templateFlags['sickness']) && !empty($sicknesses))
                 <div class="col-6 mt-3">
                     <label class="form-label">Sickness<span class="text-danger">*</span></label>
-                    <select class="form-select" wire:model="selectedSickness">
+                    <select class="form-select" wire:model="selectedSickness" data-placeholder="Select Sickness">
                         <option value="">Select Sickness</option>
                         @foreach ($sicknesses as $item)
                             <option value="{{ $item->id }}">
@@ -59,7 +59,7 @@
             @if (!empty($templateFlags['disclosure']) && !empty($disclosures))
                 <div class="col-6 mt-3">
                     <label class="form-label">Disclosure<span class="text-danger">*</span></label>
-                    <select class="form-select" wire:model="selectedDisclosure">
+                    <select class="form-select" wire:model="selectedDisclosure" data-placeholder="Select Disclosure">
                         <option value="">Select Disclosure</option>
                         @foreach ($disclosures as $item)
                             <option value="{{ $item->id }}">
@@ -73,7 +73,7 @@
             @if (!empty($templateFlags['capability']) && !empty($capabilities))
                 <div class="col-6 mt-3">
                     <label class="form-label">Capability<span class="text-danger">*</span></label>
-                    <select class="form-select" wire:model="selectedCapability">
+                    <select class="form-select" wire:model="selectedCapability" data-placeholder="Select Capability">
                         <option value="">Select Capability</option>
                         @foreach ($capabilities as $item)
                             <option value="{{ $item->id }}">{{ $item->title }}</option>
@@ -85,7 +85,7 @@
             @if (!empty($templateFlags['disciplinary']) && !empty($disciplinaries))
                 <div class="col-6 mt-3">
                     <label class="form-label">Disciplinary<span class="text-danger">*</span></label>
-                    <select class="form-select" wire:model="selectedDisciplinary">
+                    <select class="form-select" wire:model="selectedDisciplinary"   data-placeholder="Select Disciplinary">
                         <option value="">Select Disciplinary</option>
                         @foreach ($disciplinaries as $item)
                             <option value="{{ $item->id }}">{{ $item->reason ?? 'N/A' }}</option>
@@ -97,7 +97,7 @@
             @if (!empty($templateFlags['lateness']) && !empty($latenesses))
                 <div class="col-6 mt-3">
                     <label class="form-label">Lateness<span class="text-danger">*</span></label>
-                    <select class="form-select" wire:model="selectedLateness">
+                    <select class="form-select" wire:model="selectedLateness" data-placeholder="Select Lateness">
                         <option value="">Select Lateness</option>
                         @foreach ($latenesses as $item)
                             <option value="{{ $item->id }}">
@@ -111,7 +111,7 @@
             @if (!empty($templateFlags['training']) && !empty($trainings))
                 <div class="col-6 mt-3">
                     <label class="form-label">Training<span class="text-danger">*</span></label>
-                    <select class="form-select" wire:model="selectedTraining">
+                    <select class="form-select" wire:model="selectedTraining" data-placeholder="Select Training"    >
                         <option value="">Select Training</option>
                         @foreach ($trainings as $item)
                             <option value="{{ $item->id }}">{{ $item->title }}</option>
