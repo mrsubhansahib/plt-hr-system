@@ -67,14 +67,14 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item {{ active_class(['templates/*']) }}">
+            <li class="nav-item {{ active_class(['template/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Template" role="button"
-                    aria-expanded="{{ is_active_route(['templates/*']) }}" aria-controls="Template">
+                    aria-expanded="{{ is_active_route(['template/*']) }}" aria-controls="Template">
                     <i class="link-icon" data-feather="book-open"></i>
                     <span class="link-title">Templates</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse {{ show_class(['templates/*']) }}" id="Template">
+                <div class="collapse {{ show_class(['template/*']) }}" id="Template">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ route('show.templates') }}"
@@ -87,14 +87,14 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item {{ active_class(['documents/*']) }}">
+            <li class="nav-item {{ active_class(['document/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#Document" role="button"
-                    aria-expanded="{{ is_active_route(['documents/*']) }}" aria-controls="Document">
+                    aria-expanded="{{ is_active_route(['document/*']) }}" aria-controls="Document">
                     <i class="link-icon" data-feather="book"></i>
                     <span class="link-title">Documents</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse {{ show_class(['documents/*']) }}" id="Document">
+                <div class="collapse {{ show_class(['document/*']) }}" id="Document">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ route('show.documents') }}"
