@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    
+
     public function index()
     {
         $users = User::where('role', 'employee')
@@ -23,7 +23,18 @@ class EmployeeController extends Controller
         return view('pages.employee.list', compact('users'));
     }
 
-
+    public function checkNI(Request $request)
+    {
+        $query = User::where('ni_number', $request->ni_number);
+        if ($request->has('user_id') && $request->user_id != '') {
+            $query->where('id', '!=', $request->user_id);
+        }
+        $exists = $query->exists();
+        return response()->json([
+            'status' => $exists ? 'exists' : 'unique',
+            'message' => $exists ? 'Already registered.' : 'Available.'
+        ]);
+    }
     public function temp()
     {
         $users = User::where('role', 'employee')
@@ -137,7 +148,7 @@ class EmployeeController extends Controller
                     'main_job' => $request->main_job[$index] ?? 'no',
                     'facility' => $request->facility[$index],
                     'cost_center' => $request->cost_center[$index] ?? null,
-                    'start_date' => ($request->start_date[$index])? \Carbon\Carbon::createFromFormat('d-m-Y', $request->start_date[$index])->format('Y-m-d') : null,
+                    'start_date' => ($request->start_date[$index]) ? \Carbon\Carbon::createFromFormat('d-m-Y', $request->start_date[$index])->format('Y-m-d') : null,
                     'rate_of_pay' => $request->rate_of_pay[$index],
                     'pay_frequency' => $request->pay_frequency[$index],
                     'number_of_hours' => $request->number_of_hours[$index],
@@ -152,7 +163,6 @@ class EmployeeController extends Controller
                 } else {
                     $job->update(['termination_date' => null]);
                 }
-
             }
         }
         return redirect()->route('show.temp.employees')
@@ -196,7 +206,8 @@ class EmployeeController extends Controller
         ));
     }
     // showhistory main mujy user ki jo jo cheez add hoti jay gi vo saari ik ee page py disabled form ki soort main chahiy
-    public function showhistory($id){
+    public function showhistory($id)
+    {
         $user = User::find($id)->with([
             'jobs' => function ($query) {
                 $query->whereIn('status', ['terminated', 'active']);
@@ -211,7 +222,7 @@ class EmployeeController extends Controller
                 $query->orderBy('created_at', 'desc');
             },
         ])->find($id);
-    
+
         $dropdowns = Dropdown::all();
         return view('pages.employee.history', compact('user', 'dropdowns'));
     }
@@ -307,7 +318,7 @@ class EmployeeController extends Controller
         $user->update(['status' => 'active', 'joined_date' => now()->format('Y-m-d'), 'left_date' => null]);
         return redirect()->route('show.employees')->with('success', 'Employee activated successfully.');
     }
-    
+
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
