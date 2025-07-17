@@ -10,7 +10,7 @@ class CurrrentColleaguesAllContracts extends Component
     public $successMsg;
     public $errorMsg;
 
-    public $date = '';
+    public $date;
 
     public $colleagues = [];
     public function filterColleagues()
@@ -36,7 +36,7 @@ class CurrrentColleaguesAllContracts extends Component
                     $query->orWhere('termination_date','>', $this->date)
                     ->orWhereNull('termination_date');
                 })
-                    ->where('created_at', '<=', $this->date);
+                    ->where('start_date', '<=', $this->date);
             });
             // Date filters
             
@@ -62,6 +62,7 @@ class CurrrentColleaguesAllContracts extends Component
     {
         $this->date = ''; // Reset date
     }
+    
     public function render()
     {
         return view('livewire.currrent-colleagues-all-contracts');

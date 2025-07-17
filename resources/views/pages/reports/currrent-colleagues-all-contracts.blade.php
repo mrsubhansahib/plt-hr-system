@@ -71,7 +71,8 @@
                         });
                     }
                 });
-
+                console.log('DataTable re-initialized after Livewire update');
+                
 
             });
 
