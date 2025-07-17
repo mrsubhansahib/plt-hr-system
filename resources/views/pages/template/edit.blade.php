@@ -118,7 +118,6 @@
                                     <option value="{ $job->contract_returned }">Contract Returned</option>
                                     <option value="{ $job->jd_returned }">JD Returned</option>
                                     <option value="{ $job->dbs_required }">DBS</option>
-                                    <option value="{ $job->ethnicity }">Ethnicity</option>
                                 </select>
                             </div>
                             <div class="col-1 mt-2 "style="padding-top: 22px">
@@ -190,6 +189,21 @@
                             </div>
                             <div class="col-1 mt-2" style="padding-top: 22px">
                                 <button type="button" id="add_disciplinary_info_button"
+                                    class="btn btn-secondary btn-sm mt-2">Add</button>
+                            </div>
+                            <div class="col-5 mt-2">
+                                <label class="form-label">Lateness Info</label>
+                                <select class="form-control form-select" id="latenessInfoSelect">
+                                    <option value="" selected disabled>Select Field</option>
+                                    <option value="{ $lateness->lateness_triggered }">Lateness Triggered</option>
+                                    <option value="{ $lateness->lateness_stage }">Lateness Stage</option>
+                                    <option value="{ $lateness->warning_level }">Warning Level</option>
+                                    <option value="{ $lateness->outcome }">Outcome</option>
+                                    <option value="{ $lateness->review_date }">Review Date</option>
+                                </select>
+                            </div>
+                            <div class="col-1 mt-2" style="padding-top: 22px">
+                                <button type="button" id="add_lateness_info_button"
                                     class="btn btn-secondary btn-sm mt-2">Add</button>
                             </div>
                             <div class="col-5 mt-2">
@@ -297,7 +311,7 @@
 
                 // Insert merge fields
                 CKEDITOR.instances.contentEditor.on('instanceReady', function() {
-             
+
                     const insertField = (selectId, buttonId) => {
                         const select = document.querySelector(selectId);
                         const button = document.querySelector(buttonId);
@@ -317,10 +331,12 @@
                     insertField('#disclosureInfoSelect', '#add_disclosure_info_button');
                     insertField('#sicknessInfoSelect', '#add_sickness_info_button');
                     insertField('#capabilityInfoSelect', '#add_capability_info_button');
+
+                    insertField('#latenessInfoSelect', '#add_lateness_info_button');
                     insertField('#disciplinaryInfoSelect', '#add_disciplinary_info_button');
                     insertField('#trainingInfoSelect', '#add_training_info_button');
                 });
-                    window.parent.CKEDITOR.tools.callFunction(1, 'image_url', 'success message');
+                window.parent.CKEDITOR.tools.callFunction(1, 'image_url', 'success message');
             } else {
                 console.error('CKEditor not loaded.');
             }

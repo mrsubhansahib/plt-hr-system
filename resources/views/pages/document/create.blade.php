@@ -26,6 +26,38 @@
         .select2-container--default .select2-selection--single .select2-selection__clear {
             display: none;
         }
+
+        /* Make Select2 match Bootstrap form-control */
+        .select2-container--bootstrap4 .select2-selection--single {
+            height: calc(2.25rem + 2px);
+            /* same as .form-control */
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .select2-container--bootstrap4 .select2-selection--single:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+        }
+
+        /* Fix arrow height alignment */
+        .select2-container--bootstrap4 .select2-selection__arrow {
+            height: 100% !important;
+        }
+
+        /* Remove double border caused by default Bootstrap select + Select2 */
+        select.form-select,
+        select.form-control {
+            display: none !important;
+        }
     </style>
 @endpush
 @section('content')
