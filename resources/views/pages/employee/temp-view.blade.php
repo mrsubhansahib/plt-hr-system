@@ -43,7 +43,7 @@
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Middle Name</label>
                                     <input class="form-control" type="text" name="middle_name"
-                                        value="{{ $user->middle_name }}" disabled />
+                                        value="{{ $user->middle_name ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Surname</label>
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Disability</label>
-                                    <input class="form-control" type="text" name="disability" value="{{ $user->disability }}"
+                                    <input class="form-control" type="text" name="disability" value="{{ $user->disability ?? 'N/A'}}"
                                         disabled />
                                 </div>
 
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Address 2</label>
-                                    <input class="form-control" type="text" name="address2" value="{{ $user->address2 }}"
+                                    <input class="form-control" type="text" name="address2" value="{{ $user->address2 ?? 'N/A'}}"
                                         disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
@@ -110,12 +110,12 @@
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Mobile Tel</label>
                                     <input class="form-control" type="text" name="mobile_tel"
-                                        value="{{ $user->mobile_tel }}" disabled />
+                                        value="{{ $user->mobile_tel ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Home Tel</label>
                                     <input class="form-control" type="text" name="home_tel"
-                                        value="{{ $user->home_tel }}" disabled />
+                                        value="{{ $user->home_tel ?? 'N/A' }}" disabled />
                                 </div>
 
                                 <!-- Emergency Contact -->
@@ -136,8 +136,8 @@
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Emergency Contact 1 Home Number</label>
-                                    <input class="form-control" type="number" placeholder="phone number"
-                                        name="emergency_1_home_ph" value="{{ $user->emergency_1_home_ph }}" disabled />
+                                    <input class="form-control" type="text" placeholder="phone number"
+                                        name="emergency_1_home_ph" value="{{ $user->emergency_1_home_ph ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Address 3</label>
@@ -151,7 +151,7 @@
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Emergency Contact 2 Mobile</label>
-                                    <input class="form-control" type="number" placeholder="phone number"
+                                    <input class="form-control" type="text" placeholder="phone number"
                                         name="emergency_2_ph_no" value="{{ $user->emergency_2_ph_no ?? 'N/A' }}" disabled />
                                 </div>
                                 <div class="col-md-3 mt-3">
@@ -161,7 +161,7 @@
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <label class="form-label">Emergency Contact 2 Home Number</label>
-                                    <input class="form-control" type="number" placeholder="phone number"
+                                    <input class="form-control" type="text" placeholder="phone number"
                                         name="emergency_2_home_ph" value="{{ $user->emergency_2_home_ph ?? 'N/A' }}" disabled />
                                 </div>
                                 <!-- Employment Details -->
