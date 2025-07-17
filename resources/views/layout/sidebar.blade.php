@@ -569,217 +569,147 @@
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ url('/reports/current-colleagues') }}"
+                                title="Current Colleagues on Specific Date"
                                 class="nav-link {{ active_class(['reports/current-colleagues']) }}">Current
                                 Colleagues</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/new-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">Joinees Each Month
-                            </a>
+                            <a href="{{ url('/reports/currrent-colleagues-all-contracts') }}"
+                                title="Current Colleagues All Contracts"
+                                class="nav-link {{ active_class(['reports/currrent-colleagues-all-contracts']) }}">Current
+                                Colleagues All...</a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/retirement') }}" title="Retirement Report"
+                                class="nav-link {{ active_class(['reports/retirement']) }}">Retirement Report</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/left-colleagues') }}"
-                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers Each
-                                Month</a>
-                        </li>
-                        <li class="nav-item" title="Casual Colleagues by Facility">
-                            <a href="{{ url('/reports/casual-colleagues-by-site') }}"
-                                class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual
-                                Colleagues by Fac..</a>
+                            <a href="{{ url('/reports/sickness') }}" title="Sickness on 3 Occasions"
+                                class="nav-link {{ active_class(['reports/sickness']) }}">Sickness Report</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/hours-by-site') }}"
-                                class="nav-link {{ active_class(['reports/hours-by-site']) }}">Current Contracted
-                                Hours</a>
+                            <a href="{{ url('/reports/long-term-sickness') }}"
+                                title="On Capability Procedure – Long Term Sick Indicator"
+                                class="nav-link {{ active_class(['reports/long-term-sickness']) }}">Long Term
+                                Sickness </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="{{ url('/reports/colleagues') }}"
-                                class="nav-link {{ active_class(['reports/colleagues']) }}">Colleagues</a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/sickness-indicator') }}"
+                                title="On Capability any further absence"
+                                class="nav-link {{ active_class(['reports/sickness-indicator']) }}">Sickness
+                                Indicator</a>
+                        </li>
+                        <li class="nav-item">
+                            <a title="On Capability Procedure – Full Sickness and Capability Details Report"
+                                href="{{ url('/reports/full-sickness-capability') }}"
+                                class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full
+                                Sickness & Capability</a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/colleague-terms') }}"
                                 class="nav-link {{ active_class(['reports/colleague-terms']) }}">Current Colleagues
                                 by Type</a>
 
                         </li>
+                        <li class="nav-item" title="Current Casual Colleagues by Facility">
+                            <a href="{{ url('/reports/casual-colleagues-by-site') }}"
+                                class="nav-link {{ active_class(['reports/casual-colleagues-by-site']) }}">Casual
+                                Colleagues by Fac..</a>
+                        </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/current-contracted-colleagues') }}" title="Current Contracted Colleagues"
-                                class="nav-link {{ active_class(['reports/current-contracted-colleagues']) }}">Current Contracted Coll...</a>
+                            <a href="{{ url('/reports/current-contracted-colleagues') }}"
+                                title="Current Contracted Colleagues"
+                                class="nav-link {{ active_class(['reports/current-contracted-colleagues']) }}">Current
+                                Contracted Coll...</a>
 
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/currrent-colleagues-all-contracts') }}" title="Current Colleagues All Contracts"
-                                class="nav-link {{ active_class(['reports/currrent-colleagues-all-contracts']) }}">Current Colleagues All...</a>
-
+                            <a href="{{ url('/reports/hours-by-site') }}" title="Current Contracted Hours by Site"
+                                class="nav-link {{ active_class(['reports/hours-by-site']) }}">Current Contracted
+                                Hours</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/temp-fix-colleagues') }}"
+                            <a href="{{ url('/reports/temp-fix-colleagues') }}" title="Temp/Fix Term Colleagues"
                                 class="nav-link {{ active_class(['reports/temp-fix-colleagues']) }}">Temp/Fix Term
                                 Colleagues</a>
 
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/retirement') }}"
-                                class="nav-link {{ active_class(['reports/retirement']) }}">Retirement Report</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/reports/sickness') }}"
-                                class="nav-link {{ active_class(['reports/sickness']) }}">Sickness Report</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/reports/emergency-info') }}"
+                            <a href="{{ url('/reports/emergency-info') }}" title="Emergency Contact Information"
                                 class="nav-link {{ active_class(['reports/emergency-info']) }}">Emergency Info</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports/full-time-equivalent') }}"
-                                class="nav-link {{ active_class(['reports/full-time-equivalent']) }}">Full Time
-                                Equivalent</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/reports/dbs-check') }}"
-                                class="nav-link {{ active_class(['reports/dbs-check']) }}">DBS Check</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/reports/outstanding-new-starter-docs') }}"
-                                title="Outstanding New Starter Docs"
-                                class="nav-link {{ active_class(['reports/outstanding-new-starter-docs']) }}">Outstanding
-                                New Start...</a>
-                        </li>
-                        {{-- Sickness Indicator --}}
-                        <li class="nav-item">
-                            <a href="{{ url('/reports/sickness-indicator') }}"
-                                class="nav-link {{ active_class(['reports/sickness-indicator']) }}">Sickness
-                                Indicator</a>
-                        </li>
-                        {{-- Long term sickness Indicator --}}
-                        <li class="nav-item">
-                            <a href="{{ url('/reports/long-term-sickness') }}"
-                                class="nav-link {{ active_class(['reports/long-term-sickness']) }}">Long Term
-                                Sickness </a>
-                        </li>
-                        {{-- Full Sickness and Capability Details --}}
-                        <li class="nav-item">
-                            <a title="Full Sickness and Capability Details"
-                                href="{{ url('/reports/full-sickness-capability') }}"
-                                class="nav-link {{ active_class(['reports/full-sickness-capability']) }}">Full
-                                Sickness & Capability</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ url('/reports/national-statistics') }}"
+                                title="National Statistics – male / female, 30 hours and under / over 30 hours, per facility – casuals and contracted"
                                 class="nav-link {{ active_class(['reports/national-statistics']) }}">National
                                 Statistics</a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('/reports/dbs-check') }}"
+                                title="DBS – outstanding / missed – double check for admin"
+                                class="nav-link {{ active_class(['reports/dbs-check']) }}">DBS Check</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/full-time-equivalent') }}"
+                                title="Full Time Equivalent? Running amount"
+                                class="nav-link {{ active_class(['reports/full-time-equivalent']) }}">Full Time
+                                Equivalent</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/outstanding-new-starter-docs') }}"
+                                title="Outstanding New Starter Docs – Contract, JD, DBS, Medical, etc"
+                                class="nav-link {{ active_class(['reports/outstanding-new-starter-docs']) }}">Outstanding
+                                New Start...</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/new-colleagues') }}" title="New Colleagues each month"
+                                class="nav-link {{ active_class(['reports/new-colleagues']) }}">Joinees Each Month
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports/left-colleagues') }}" title="Leavers each month"
+                                class="nav-link {{ active_class(['reports/left-colleagues']) }}">Leavers Each
+                                Month</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ url('/reports/turnover-monthly') }}"
+                                title="Turnover – Monthly – Total, Casuals and Contracted, by role and by centre"
                                 class="nav-link {{ active_class(['reports/turnover-monthly']) }}">Turnover
                                 Monthly</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports/turnover-yearly') }}"
+                                title="Turnover – for last 12 month period – updated each month - Total, Casuals and Contracted"
                                 class="nav-link {{ active_class(['reports/turnover-yearly']) }}">Turnover Yearly</a>
                         </li>
-                        <li class="nav-item" title="Disciplinary Capability Lateness">
-                            <a href="{{ url('/reports/disciplinary-capability-lateness') }}"
-                                class="nav-link {{ active_class(['reports/disciplinary-capability-lateness']) }}">Disci..
-                                Capabi.. Late..</a>
-                        </li>
+
                         {{-- Training Report --}}
                         <li class="nav-item">
                             <a href="{{ url('/reports/training-individual') }}" title="Training Individual Report"
                                 class="nav-link {{ active_class(['reports/training-individual']) }}">
                                 Training Individual </a>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a href="{{ url('/reports/disciplinary-individual') }}" title="Disciplinary Individual Report"
+                            <a href="{{ url('/reports/disciplinary-individual') }}"
+                                title="Disciplinary Individual Report"
                                 class="nav-link {{ active_class(['reports/disciplinary-individual']) }}">
                                 Disciplinary Individual</a>
                         </li>
-                        
-                    </ul>
-                </div>
-            </li>
-            {{-- <li class="nav-item {{ active_class(['auth/*']) }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#auth" role="button"
-                    aria-expanded="{{ is_active_route(['auth/*']) }}" aria-controls="auth">
-                    <i class="link-icon" data-feather="unlock"></i>
-                    <span class="link-title">Authentication</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse {{ show_class(['auth/*']) }}" id="auth">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ url('/auth/login') }}"
-                                class="nav-link {{ active_class(['auth/login']) }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/auth/register') }}"
-                                class="nav-link {{ active_class(['auth/register']) }}">Register</a>
+                        <li class="nav-item" title="Disciplinary Capability Lateness">
+                            <a href="{{ url('/reports/disciplinary-capability-lateness') }}"
+                                title="Disciplinaries, Capabilities, Lates – combined report for individuals"
+                                class="nav-link {{ active_class(['reports/disciplinary-capability-lateness']) }}">Disci..
+                                Capabi.. Late..</a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="nav-item {{ active_class(['error/*']) }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#error" role="button"
-                    aria-expanded="{{ is_active_route(['error/*']) }}" aria-controls="error">
-                    <i class="link-icon" data-feather="cloud-off"></i>
-                    <span class="link-title">Error</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-                </a>
-                <div class="collapse {{ show_class(['error/*']) }}" id="error">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ url('/error/404') }}"
-                                class="nav-link {{ active_class(['error/404']) }}">404</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/error/500') }}"
-                                class="nav-link {{ active_class(['error/500']) }}">500</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item nav-category">Docs</li>
-            <li class="nav-item">
-                <a href="https://www.nobleui.com/laravel/documentation/docs.html" target="_blank" class="nav-link">
-                    <i class="link-icon" data-feather="hash"></i>
-                    <span class="link-title">Documentation</span>
-                </a>
-            </li> --}}
+
         </ul>
     </div>
 </nav>
-{{-- <nav class="settings-sidebar">
-    <div class="sidebar-body">
-        <a href="#" class="settings-sidebar-toggler">
-            <i data-feather="settings"></i>
-        </a>
-        <h6 class="text-muted mb-2">Sidebar:</h6>
-        <div class="mb-3 pb-3 border-bottom">
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight"
-                        value="sidebar-light" checked>
-                    Light
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark"
-                        value="sidebar-dark">
-                    Dark
-                </label>
-            </div>
-        </div>
-        <div class="theme-wrapper">
-            <h6 class="text-muted mb-2">Light Version:</h6>
-            <a class="theme-item active" href="https://www.nobleui.com/laravel/template/demo1/">
-                <img src="{{ url('assets/images/screenshots/light.jpg') }}" alt="light version">
-            </a>
-            <h6 class="text-muted mb-2">Dark Version:</h6>
-            <a class="theme-item" href="https://www.nobleui.com/laravel/template/demo2/">
-                <img src="{{ url('assets/images/screenshots/dark.jpg') }}" alt="light version">
-            </a>
-        </div>
-    </div>
-</nav> --}}
