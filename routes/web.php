@@ -162,7 +162,7 @@ Route::middleware('auth')->group(function () {
         Route::post('update/{id}',  [DisciplinaryController::class, 'update'])->name('update.disciplinary');
         Route::get('delete/{id}',   [DisciplinaryController::class, 'destroy'])->name('delete.disciplinary');
     });
-    // Routes for Lateness
+    // Routes for 
 
     Route::group(['prefix' => 'lateness'], function () {
         Route::get('list',           [LatenesController::class, 'index'])->name('show.latenesses');
@@ -298,6 +298,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/disciplinary-individual', function () {
             return view('pages.reports.disciplinary-individual-report');
         })->name('reports.disciplinary-individual-report');
+        Route::get('/currrent-colleagues-all-contracts', function () {
+            return view('pages.reports.currrent-colleagues-all-contracts');
+        })->name('reports.currrent-colleagues-all-contracts');
     });
 });
 

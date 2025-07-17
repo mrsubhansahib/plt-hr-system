@@ -608,6 +608,11 @@
 
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('/reports/currrent-colleagues-all-contracts') }}" title="Current Colleagues All Contracts"
+                                class="nav-link {{ active_class(['reports/currrent-colleagues-all-contracts']) }}">Current Colleagues All...</a>
+
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('/reports/temp-fix-colleagues') }}"
                                 class="nav-link {{ active_class(['reports/temp-fix-colleagues']) }}">Temp/Fix Term
                                 Colleagues</a>

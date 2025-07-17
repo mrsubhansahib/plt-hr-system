@@ -36,13 +36,13 @@
                                             <td style="text-align: left !important;  padding-left: 10px !important;">{{ $colleague->first_name }}</td>
                                             <td style="text-align: left !important;  padding-left: 10px !important;">{{ $colleague->surname }}</td>
                                             <td style="text-align: left !important;  padding-left: 10px !important;">
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->contract_type ?? 'No Contract Type Assigned' }}
+                                                {{ $colleague->jobs->whereIn('contract_type', ['Permanent', 'Fixed Term', 'Temporary', 'Permanent Variable'])->where('status', 'active')->first()->contract_type ?? 'No Contract Type Assigned' }}
                                             </td>
                                             <td style="text-align: left !important;  padding-left: 10px !important;">
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Job Title Assigned' }}
+                                                {{ $colleague->jobs->whereIn('contract_type', ['Permanent', 'Fixed Term', 'Temporary', 'Permanent Variable'])->where('status', 'active')->first()->title ?? 'No Job Title Assigned' }}
                                             </td>
                                             <td style="text-align: left !important;  padding-left: 10px !important;">
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? 'No Facility Assigned' }}
+                                                {{ $colleague->jobs->whereIn('contract_type', ['Permanent', 'Fixed Term', 'Temporary', 'Permanent Variable'])->where('status', 'active')->first()->facility ?? 'No Facility Assigned' }}
                                             </td>
 
                                         </tr>
