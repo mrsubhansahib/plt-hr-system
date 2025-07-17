@@ -9,6 +9,10 @@
 
 
         }
+        th{
+            white-space:normal!important;
+            word-wrap:break-word!important;
+        }
     </style>
 @endpush
 

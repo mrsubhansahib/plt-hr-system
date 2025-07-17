@@ -8,7 +8,7 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-3 mb-3">
                                 <label for="to" class="form-label">Select Date</label>
-                                <input type="date" wire:model="date" class="form-control" placeholder="Select Date"
+                                <input type="date" wire:model.defer="date" class="form-control" placeholder="Select Date"
                                     id="to">
                             </div>
                             <div class="col-md-1 mt-4  pt-1">

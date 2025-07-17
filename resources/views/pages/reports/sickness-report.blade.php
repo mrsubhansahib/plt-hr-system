@@ -7,6 +7,10 @@
             white-space: wrap !important;
             word-wrap: break-word !important
         }
+           th{
+            white-space:normal!important;
+            word-wrap:break-word!important;
+        }
     </style>
 @endpush
 

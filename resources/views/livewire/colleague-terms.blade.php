@@ -9,7 +9,7 @@
                             <div class="col-4"></div>
                             <div class="col-md-3 mb-3">
                                 <label for="colleagueTerm" class="form-label">Colleague Term</label>
-                                <select class="form-select" wire:model="colleagueTerm" id="colleagueTerm">
+                                <select class="form-select" wire:model.defer="colleagueTerm" id="colleagueTerm">
                                     <option selected disabled>Select</option>
                                     <option value="Casual">Casual</option>
                                     <option value="Fixed Term">Fixed Term</option>
