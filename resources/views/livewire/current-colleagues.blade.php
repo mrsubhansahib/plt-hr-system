@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="" class="table dataTableColleagues">
+                        <table  class="table table-striped  reportDataTable w-100 ">
                             <thead>
                                 <tr>
                                     <th>First Name</th>
@@ -94,6 +94,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    
                                 @endif
                             </tbody>
                         </table>

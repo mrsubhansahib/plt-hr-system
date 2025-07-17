@@ -2,6 +2,12 @@
 
 @push('style')
     @livewireStyles
+     <style>
+        td {
+            white-space: wrap !important;
+            word-wrap: break-word !important
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -16,30 +22,30 @@
 
 @push('custom-scripts')
     @livewireScripts
-    <script>
-        document.addEventListener('livewire:load', function () {
-            function initTable() {
-                $('.dataTableNationalStatistics').DataTable({
+  
+  <script>
+        document.addEventListener('livewire:load', function() {
+            function initializeDataTable() {
+                $('.reportDataTable').DataTable({
                     autoWidth: false,
-                    paging: false,
-                    searching: false,
+                    paging: true,
+                    searching: true,
                     ordering: false,
-                    info: false,
+                    info: true,
                     dom: 'Bfrtip',
                     buttons: ['csv', 'excel'],
-                    initComplete: function () {
+                    initComplete: function() {
                         this.api().columns.adjust().draw();
-                        $('table.dataTableNationalStatistics td').css({ 'padding': '5px 10px' });
+
                     }
                 });
             }
-
             Livewire.hook('message.processed', () => {
-                $('.dataTableNationalStatistics').DataTable().destroy();
-                initTable();
+                $('.reportDataTable').DataTable().destroy();
+                initializeDataTable();
             });
 
-            initTable();
+            initializeDataTable();
         });
     </script>
 @endpush

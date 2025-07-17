@@ -12,45 +12,40 @@
         </ol>
     </nav>
     @livewire('sickness-indicator')
+     <style>
+        td {
+            white-space: wrap !important;
+            word-wrap: break-word !important
+        }
+    </style>
 @endsection
 
 @push('custom-scripts')
     @livewireScripts
-    <script>
-        document.addEventListener('livewire:load', function () {
-            function initTable() {
-                var table = $('.dataTableSickness').DataTable({
-                    autoWidth: true,
+   
+     <script>
+        document.addEventListener('livewire:load', function() {
+            function initializeDataTable() {
+                $('.reportDataTable').DataTable({
+                    autoWidth: false,
                     paging: true,
                     searching: true,
                     ordering: false,
                     info: true,
                     dom: 'Bfrtip',
                     buttons: ['csv', 'excel'],
-                    scrollX: true,
-                    initComplete: function () {
+                    initComplete: function() {
                         this.api().columns.adjust().draw();
-                        $('table.dataTableSickness td').css(
-                            'white-space', 'nowrap'
-                        );
+
                     }
                 });
             }
-
-            initTable();
-
             Livewire.hook('message.processed', () => {
-                let $table = $('.dataTableSickness');
-                if ($.fn.dataTable.isDataTable($table)) {
-                    $table.DataTable().destroy();
-                }
-                initTable();
+                $('.reportDataTable').DataTable().destroy();
+                initializeDataTable();
             });
 
-            $('.dataTableSickness .filters input').on('keyup change', function () {
-                var colIndex = $(this).parent().index();
-                $('.dataTableSickness').DataTable().column(colIndex).search(this.value).draw();
-            });
+            initializeDataTable();
         });
     </script>
 @endpush
