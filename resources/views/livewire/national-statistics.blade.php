@@ -9,7 +9,7 @@
                             <!-- <div class="col-md-1"></div> -->
                             <div class="col-md-3 mb-3">
                                 <label for="date" class="form-label">Select Date</label>
-                                <input type="date" class="form-control" wire:model="date" id="date">
+                                <input type="date" class="form-control" wire:model.defer="date" id="date">
                             </div>
 
                             <div class="col-md-2 mt-4 pt-1">
@@ -46,7 +46,7 @@
                 <div class="card shadow-sm">
                     <div class="card-body pb-5">
                         <div class="table-responsive">
-                            <table class="table table-striped  dataTableNationalStatistics">
+                            <table class="table  table-striped  reportDataTable">
                                 <thead>
                                     <tr>
                                         <th>Gender</th>

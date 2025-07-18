@@ -8,7 +8,7 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-3 mb-3">
                                 <label for="to" class="form-label">Select Date</label>
-                                <input type="date" wire:model="date" class="form-control" placeholder="Select Date"
+                                <input type="date" wire:model.defer="date" class="form-control" placeholder="Select Date"
                                     id="to">
                             </div>
                             <div class="col-md-1 mt-4  pt-1">
@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="" class="table dataTableColleagues">
+                        <table  class="table table-striped  reportDataTable w-100 ">
                             <thead>
                                 <tr>
                                     <th>First Name</th>
@@ -94,6 +94,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    
                                 @endif
                             </tbody>
                         </table>

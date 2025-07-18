@@ -9,7 +9,7 @@
                             <div class="col-4"></div>
                             <div class="col-md-3 mb-3">
                                 <label for="facility" class="form-label">Facility</label>
-                                <select class="form-select" wire:model="facility" id="facility">
+                                <select class="form-select" wire:model.defer="facility" id="facility">
                                     <option selected disabled>Select</option>
                                     <option value="No 1 Market Street">No 1 Market Street</option>
                                     <option value="Pendle Leisure Centre">Pendle Leisure Centre</option>
@@ -51,7 +51,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="" class="table dataTableColleagues">
+                        <table id="" class="table table-striped reportDataTable">
                             <thead>
                                 <tr>
                                     <th>First Name</th>

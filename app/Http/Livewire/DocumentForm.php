@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use App\Disclosure;
-use Livewire\Component;
 use App\User;
 use App\Job;
 use App\Template;
 use App\Document;
 use App\Sickness;
+use App\Disclosure;
+use Livewire\Component;
 use Illuminate\Support\Facades\Blade;
 
 class DocumentForm extends Component
@@ -35,11 +35,14 @@ class DocumentForm extends Component
     public $selectedLateness;
     public $selectedTraining;
 
+    public $showMissingFieldsAlert = false;
+
     public function mount()
     {
         $this->templates = Template::orderBy('created_at', 'desc')->get();
         $this->employees = User::where('role', 'employee')->where('status', 'active')->latest()->get();
     }
+
     public function updatedSelectedTemplate($templateId)
     {
         $template = Template::find($templateId);
@@ -55,9 +58,7 @@ class DocumentForm extends Component
             ];
         }
 
-        // Clear dynamic data when template changes
-
-        // Reset selected employee and dependent data
+        // Reset all dynamic fields when template changes
         $this->selectedEmployee = null;
         $this->selectedJob = null;
         $this->selectedSickness = null;
@@ -74,60 +75,55 @@ class DocumentForm extends Component
         $this->disciplinaries = [];
         $this->latenesses = [];
         $this->trainings = [];
+
+        $this->showMissingFieldsAlert = false;
     }
 
-    public function updatedSelectedEmployee($employeeId)
+    public function updatedSelectedEmployee()
     {
+        $this->loadEmployeeData();
+        $this->showMissingFieldsAlert = false;
+    }
 
-        $user = User::find($employeeId);
+    private function loadEmployeeData()
+    {
+        $user = User::find($this->selectedEmployee);
         if (!$user || empty($this->templateFlags)) {
             return;
         }
 
-        if ($this->templateFlags['job']) {
-            $this->userJobs = $user->jobs;
-        }
-
-        if ($this->templateFlags['sickness']) {
-            $this->sicknesses = $user->sicknesses;
-        }
-
-        if ($this->templateFlags['disclosure']) {
-            $this->disclosures = $user->disclosures;
-        }
-
-        if ($this->templateFlags['capability']) {
-            $this->capabilities = $user->capabilities;
-        }
-
-        if ($this->templateFlags['disciplinary']) {
-            $this->disciplinaries = $user->disciplinaries;
-        }
-
-        if ($this->templateFlags['lateness']) {
-            $this->latenesses = $user->latenesses;
-        }
-
-        if ($this->templateFlags['training']) {
-            $this->trainings = $user->trainings;
-        }
+        if ($this->templateFlags['job']) $this->userJobs = $user->jobs;
+        if ($this->templateFlags['sickness']) $this->sicknesses = $user->sicknesses;
+        if ($this->templateFlags['disclosure']) $this->disclosures = $user->disclosures;
+        if ($this->templateFlags['capability']) $this->capabilities = $user->capabilities;
+        if ($this->templateFlags['disciplinary']) $this->disciplinaries = $user->disciplinaries;
+        if ($this->templateFlags['lateness']) $this->latenesses = $user->latenesses;
+        if ($this->templateFlags['training']) $this->trainings = $user->trainings;
     }
 
     public function save()
     {
-        $this->validate([
+        // Build dynamic validation rules
+        $rules = [
             'title' => 'required|string|max:255',
             'selectedTemplate' => 'required|exists:templates,id',
             'selectedEmployee' => 'required|exists:users,id',
-            'selectedJob' => 'nullable|exists:jobs,id',
-            'selectedSickness' => 'nullable|exists:sicknesses,id',
-            'selectedDisclosure' => 'nullable|exists:disclosures,id',
-            'selectedCapability' => 'nullable|exists:capabilities,id',
-            'selectedDisciplinary' => 'nullable|exists:disciplinaries,id',
-            'selectedLateness' => 'nullable|exists:latenesses,id',
-            'selectedTraining' => 'nullable|exists:trainings,id',
+        ];
 
-        ]);
+        if (!empty($this->templateFlags['job'])) $rules['selectedJob'] = 'required|exists:jobs,id';
+        if (!empty($this->templateFlags['sickness'])) $rules['selectedSickness'] = 'required|exists:sicknesses,id';
+        if (!empty($this->templateFlags['disclosure'])) $rules['selectedDisclosure'] = 'required|exists:disclosures,id';
+        if (!empty($this->templateFlags['capability'])) $rules['selectedCapability'] = 'required|exists:capabilities,id';
+        if (!empty($this->templateFlags['disciplinary'])) $rules['selectedDisciplinary'] = 'required|exists:disciplinaries,id';
+        if (!empty($this->templateFlags['lateness'])) $rules['selectedLateness'] = 'required|exists:latenesses,id';
+        if (!empty($this->templateFlags['training'])) $rules['selectedTraining'] = 'required|exists:trainings,id';
+
+        try {
+            $this->validate($rules);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $this->showMissingFieldsAlert = true;
+            throw $e;
+        }
 
         $template = Template::find($this->selectedTemplate);
         $user = User::find($this->selectedEmployee);

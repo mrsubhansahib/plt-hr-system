@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="" class="table dataTableColleagues">
+                        <table id="" class="table  table-striped  reportDataTable">
                             <thead>
                                 <tr>
                                     <th>Name</th>

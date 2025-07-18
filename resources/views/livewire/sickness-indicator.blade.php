@@ -8,11 +8,11 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-4 mb-3">
                                 <label for="from" class="form-label">From</label>
-                                <input type="date" wire:model="start_date" class="form-control" id="from">
+                                <input type="date" wire:model.defer="start_date" class="form-control" id="from">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="to" class="form-label">To</label>
-                                <input type="date" wire:model="end_date" class="form-control" id="to">
+                                <input type="date" wire:model.defer="end_date" class="form-control" id="to">
                             </div>
                             <div class="col-md-2 mt-4 pt-1">
                                 <button class="btn btn-primary">Filter</button>
@@ -44,7 +44,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table dataTableSickness">
+                        <table class="table  table-striped  reportDataTable">
                             <thead>
                                 <tr>
                                     <th>Name</th>

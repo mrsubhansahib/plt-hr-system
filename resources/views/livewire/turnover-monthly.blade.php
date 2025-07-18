@@ -60,7 +60,7 @@
             <div class="card shadow-sm">
                 <div class="card-body pb-5">
                     <div class="table-responsive">
-                        <table class="table table-striped  dataTableNationalStatistics">
+                        <table class="table table-striped  reportDataTable">
                             <thead>
                                 <tr>
                                     <th>Total Employees</th>
