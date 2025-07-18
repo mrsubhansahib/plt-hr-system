@@ -21,10 +21,14 @@ class ColleagueTerms extends Component
         if ($this->colleagueTerm !== "Select") {
             $query->where('contract_type', $this->colleagueTerm);
         } else {
-            $query->whereIn('contract_type', ['Temporary', 'Fixed Term','Permanent','Permanent Variable','Casual']);
+            $query->whereIn('contract_type', ['Temporary', 'Fixed Term', 'Permanent', 'Permanent Variable', 'Casual']);
         }
-        
-        $query->where('status', 'active')->latest();
+
+        $query->where('status', 'active')
+            ->whereHas('user', function ($q) {
+                $q->where('status', 'active');
+            })
+            ->latest();
         // Get users related to jobs
         $jobs = $query->with('user')->get();
         $this->colleagues = $jobs->map->user->filter()->unique('id')->values();

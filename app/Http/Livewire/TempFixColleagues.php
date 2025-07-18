@@ -27,7 +27,9 @@ class TempFixColleagues extends Component
         $cutoff = $now->copy()->addDays(60);
         // Get all matching jobs with their user
         $jobs = Job::with('user')
-            ->where('status', 'active')
+            ->where('status', 'active')->whereHas('user', function ($q) {
+                $q->where('status', 'active');
+            })
             ->whereIn('contract_type', ['Temporary', 'Fixed Term'])
             ->whereDate('termination_date', '<=', $cutoff)
             ->whereDate('termination_date', '>=', $now)

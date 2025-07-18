@@ -20,7 +20,13 @@ class CasualColleaguesBySite extends Component
 
         if ($this->facility !== "Select") {
             $this->nowFacility = $this->facility; // Store the selected facility
-            $query->where('facility', $this->facility)->where('contract_type', 'casual')->where('status', 'active')->latest();
+            $query->where('facility', $this->facility)
+                ->where('contract_type', 'casual')
+                ->where('status', 'active')
+                ->whereHas('user', function ($q) {
+                    $q->where('status', 'active');
+                })
+                ->latest();
         } else {
             $this->error('Please select a facility to filter by.');
             return; // Exit if no facility is selected
