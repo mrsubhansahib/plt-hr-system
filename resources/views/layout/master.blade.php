@@ -96,16 +96,16 @@
     <script src="https://cdn.datatables.net/buttons/2.2.0/js/buttons.html5.min.js"></script>
     @stack('custom-scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Initialize Bootstrap Datepicker
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // Datepicker for Age (Restrict Future Dates)
                 $('#dob').datepicker({
                     format: 'dd-mm-yyyy', // Format for display
                     autoclose: true, // Auto-close picker after date select
                     todayHighlight: true,
                     endDate: new Date() // Restricts future dates
-                }).on('changeDate', function (e) {
+                }).on('changeDate', function(e) {
                     calculateAge();
                 });
 
@@ -157,16 +157,16 @@
             // Get all forms with the class 'forms-sample'
             let forms = document.querySelectorAll('.forms-sample');
 
-            forms.forEach(function (form) {
+            forms.forEach(function(form) {
                 let isFormDirty = false;
 
                 // Track changes in each form
-                form.addEventListener('change', function () {
+                form.addEventListener('change', function() {
                     isFormDirty = true;
                 });
 
                 // Show warning alert when navigating away
-                window.addEventListener('beforeunload', function (e) {
+                window.addEventListener('beforeunload', function(e) {
                     if (isFormDirty) {
                         // Modern browsers display a default message in the alert
                         e.preventDefault();
@@ -175,7 +175,7 @@
                 });
 
                 // Reset the flag when the form is submitted
-                form.addEventListener('submit', function () {
+                form.addEventListener('submit', function() {
                     isFormDirty = false;
                 });
             });
@@ -186,21 +186,21 @@
             const password = document.getElementById("password").value;
             const hint = document.getElementById("password-hint");
             const checks = [{
-                valid: password.length >= 8,
-                message: "Minimum 8 characters"
-            },
-            {
-                valid: /[0-9]/.test(password),
-                message: "At least one number"
-            },
-            {
-                valid: /[!@#$%^&*(),.?":{}|<>]/.test(password),
-                message: "At least one special character"
-            },
-            {
-                valid: /[A-Z]/.test(password),
-                message: "At least one uppercase letter"
-            },
+                    valid: password.length >= 8,
+                    message: "Minimum 8 characters"
+                },
+                {
+                    valid: /[0-9]/.test(password),
+                    message: "At least one number"
+                },
+                {
+                    valid: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                    message: "At least one special character"
+                },
+                {
+                    valid: /[A-Z]/.test(password),
+                    message: "At least one uppercase letter"
+                },
             ];
             const unmetCondition = checks.find(check => !check.valid);
             if (unmetCondition) {
@@ -225,7 +225,7 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Initialize the DataTable with optimized options
             var table = $('.dataTableExample').DataTable({
                 autoWidth: false, // Prevent table from stretching
@@ -235,23 +235,33 @@
                 info: true,
                 dom: 'Bfrtip', // Add the buttons above the table
                 ordering: false, // Disable default column sorting
-                buttons: [
-                            {
-                                extend: 'csv',
-                                exportOptions: {
-                                    columns: ':not(:last-child)'
-                                },
-                                title: null
-                            },
-                            {
-                                extend: 'excel',
-                                exportOptions: {
-                                    columns: ':not(:last-child)'
-                                },
-                                title: null
+                buttons: [{
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':not(:last-child)',
+                            format: {
+                                header: function(data, columnIdx) {
+                                    return $('.dataTableExample thead tr:first-child th').eq(columnIdx).text();
+                                }
+                            }
+                        },
+                        title: null
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':not(:last-child)',
+                            format: {
+                                header: function(data, columnIdx) {
+                                    return $('.dataTableExample thead tr:first-child th').eq(columnIdx).text();
+                                }
+                            }
+                        },
+                        title: null
                     }
                 ],
-                initComplete: function () {
+
+                initComplete: function() {
                     // Fix table layout after initialization
                     var table = this.api();
                     table.columns.adjust().draw();
@@ -263,7 +273,7 @@
             });
 
             // Apply the column-wise search functionality
-            $('.dataTableExample .filters input').on('keyup change', function () {
+            $('.dataTableExample .filters input').on('keyup change', function() {
                 var colIndex = $(this).parent().index(); // Get column index
                 table.column(colIndex).search(this.value).draw(); // Search and redraw table
             });
@@ -281,7 +291,7 @@
         });
     </script>
 
-    
+
 </body>
 
 </html>
