@@ -8,7 +8,7 @@
                             <!-- <div class="col-md-1"></div> -->
                             <div class="col-md-3 mb-3">
                                 <label for="facility" class="form-label">Select Facility</label>
-                                <select class="form-select" wire:model="selected_facility" id="facility">
+                                <select class="form-select" wire:model.defer="selected_facility" id="facility">
                                     <option selected disabled>Select</option>
                                     @foreach ($facilities as $facility)
                                         <option value="{{ $facility }}">{{ $facility }}</option>
