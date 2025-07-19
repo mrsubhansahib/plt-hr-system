@@ -13,7 +13,7 @@ class CurrrentContractedColleagues extends Component
     public function filterColleagues() {}
     public function success($number)
     {
-        $this->successMsg = 'We found ' . $number . ' casual colleagues.';
+        $this->successMsg = 'We found ' . $number . ' current contracted colleagues.';
     }
     public function error($message)
     {

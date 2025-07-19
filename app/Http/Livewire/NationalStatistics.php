@@ -29,14 +29,19 @@ class NationalStatistics extends Component
         $targetDate = Carbon::parse($this->date)->format('Y-m-d');
 
         // 1. Get all jobs based on the logic
-        $jobs = Job::with('user') // Eager load user to prevent N+1
-            ->where(function ($query) use ($targetDate) {
-                $query->where('termination_date', '>=', $targetDate)
-                    ->where('start_date', '<=', $targetDate);
+        $jobs = Job::with('user')
+            ->whereHas('user', function ($q) {
+                $q->where('status', 'active');
             })
-            ->orWhere(function ($query) use ($targetDate) {
-                $query->whereNull('termination_date')
-                    ->where('start_date', '<=', $targetDate);
+            ->where(function ($query) use ($targetDate) {
+                $query->where(function ($q) use ($targetDate) {
+                    $q->where('termination_date', '>=', $targetDate)
+                        ->where('start_date', '<=', $targetDate);
+                })
+                    ->orWhere(function ($q) use ($targetDate) {
+                        $q->whereNull('termination_date')
+                            ->where('start_date', '<=', $targetDate);
+                    });
             })
             ->get();
 
