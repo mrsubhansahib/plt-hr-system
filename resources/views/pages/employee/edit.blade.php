@@ -42,7 +42,7 @@
                                 <label for="dob" class="form-label">DOB <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker py-2" type="text" id="dob"
                                     placeholder="Select Date" required name="dob" onchange="calculateAge()"
-                                    value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') }}" />
+                                    value="{{ $user->dob ? \Carbon\Carbon::createFromFormat('Y-m-d', $user->dob)->format('d-m-Y') : '' }}" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label for="age" class="form-label">Age <span class="text-danger">*</span></label>

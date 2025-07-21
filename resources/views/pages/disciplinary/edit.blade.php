@@ -52,7 +52,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3" id="date-suspended-container">
-                                <label class="form-label">Date Suspended</label>
+                                <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
                                 <input id="date_suspended" class="form-control datepicker" type="text" placeholder="Select Date" name="date_suspended" value="{{ $disciplinary->date_suspended }}" />
                             </div>                            
                             <div class="col-md-12 mt-3">
