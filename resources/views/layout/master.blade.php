@@ -231,7 +231,6 @@
                 autoWidth: false, // Prevent table from stretching
                 paging: true, // Enable pagination
                 searching: true, // Enable column search
-                ordering: true, // Enable sorting on columns
                 info: true,
                 dom: 'Bfrtip', // Add the buttons above the table
                 ordering: false, // Disable default column sorting

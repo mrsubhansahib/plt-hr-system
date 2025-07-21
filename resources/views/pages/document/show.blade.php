@@ -84,7 +84,7 @@
                     <div class="row mb-3">
                         <div class="col-md-4  mt-3">
                             <label class="form-label">Template Used</label>
-                            <input class="form-control" type="text" disabled value="{{ $document->template->title }}">
+                            <input class="form-control" type="text" disabled value="{{ $document->template_title }}">
                         </div>
                         <div class="col-md-4  mt-3">
                             <label class="form-label">Employee</label>

@@ -96,6 +96,7 @@ class EmployeeController extends Controller
             'emergency_1_relation' => 'required',
         ]);
 
+        $validatedData['dob'] = \Carbon\Carbon::createFromFormat('d-m-Y', $validatedData['dob'])->format('Y-m-d');
         $user = User::create($request->only([
             'first_name',
             'middle_name',
@@ -127,7 +128,7 @@ class EmployeeController extends Controller
             'emergency_2_home_ph',
             'emergency_2_relation'
         ]));
-        $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
+        // $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
 
         // dd($user);
         if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
@@ -142,13 +143,21 @@ class EmployeeController extends Controller
                 'dbs_required.*'      => 'required',
             ]);
             foreach ($request->title as $index => $title) {
-                $job =  Job::create([
+                $startDate = !empty($request->start_date[$index])
+                    ? \Carbon\Carbon::createFromFormat('d-m-Y', $request->start_date[$index])->format('Y-m-d')
+                    : null;
+
+                $terminationDate = !empty($request->termination_date[$index])
+                    ? \Carbon\Carbon::createFromFormat('d-m-Y', $request->termination_date[$index])->format('Y-m-d')
+                    : null;
+
+                $job = Job::create([
                     'user_id' => $user->id,
                     'title' => $title,
                     'main_job' => $request->main_job[$index] ?? 'no',
                     'facility' => $request->facility[$index],
                     'cost_center' => $request->cost_center[$index] ?? null,
-                    'start_date' => ($request->start_date[$index]) ? \Carbon\Carbon::createFromFormat('d-m-Y', $request->start_date[$index])->format('Y-m-d') : null,
+                    'start_date' => $startDate,
                     'rate_of_pay' => $request->rate_of_pay[$index],
                     'pay_frequency' => $request->pay_frequency[$index],
                     'number_of_hours' => $request->number_of_hours[$index],
@@ -157,12 +166,8 @@ class EmployeeController extends Controller
                     'jd_returned' => $request->jd_returned[$index] ?? null,
                     'dbs_required' => $request->dbs_required[$index],
                     'notes' => $request->notes[$index] ?? null,
+                    'termination_date' => $terminationDate,
                 ]);
-                if (!empty($request->termination_date[$index])) {
-                    $job->update(['termination_date' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->termination_date[$index])->format('Y-m-d')]);
-                } else {
-                    $job->update(['termination_date' => null]);
-                }
             }
         }
         return redirect()->route('show.temp.employees')
