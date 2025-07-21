@@ -143,7 +143,7 @@ class DocumentForm extends Component
         $content = Blade::render($template->content, $variables);
 
         Document::create([
-            'template_id' => $template->id,
+            'template_title' => $template->title,
             'user_id' => $user->id,
             'title' => $this->title,
             'content' => $content,

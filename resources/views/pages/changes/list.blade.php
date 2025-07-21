@@ -39,9 +39,9 @@
                                     <tr>
                                         <td>{{ $log->admin->first_name ?? 'N/A' }}</td>
                                         <td>
-                                            @if (
-                                                ($log->employee->role === 'admin' || $log->employee->role === 'super_admin') &&
-                                                    $log->admin->id === $log->employee->id)
+                                            @if (in_array($log->module_type, ['Template', 'Dropdown']))
+                                                N/A
+                                            @elseif ($log->admin->id === $log->employee->id)
                                                 Self
                                             @elseif ($log->employee->role === 'admin')
                                                 {{ $log->employee->first_name }} (Admin)

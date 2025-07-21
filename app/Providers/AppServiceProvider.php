@@ -6,6 +6,7 @@ use App\Job;
 use App\Capability;
 use App\Disciplinary;
 use App\Disclosure;
+use App\Document;
 use App\Dropdown;
 use App\Lateness;
 use App\Sickness;
@@ -13,6 +14,7 @@ use App\Training;
 use App\User;
 use App\Observers\LogObserver;
 use App\Observers\NotesObserver;
+use App\Template;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
         Training::observe(LogObserver::class);
         User::observe(LogObserver::class);
         Dropdown::observe(LogObserver::class);
+        Document::observe(LogObserver::class);
+        Template::observe(LogObserver::class);
 
         // Register NotesObserver for the same models
         Job::observe(NotesObserver::class);

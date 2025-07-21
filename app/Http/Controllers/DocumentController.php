@@ -53,7 +53,7 @@ class DocumentController extends Controller
         // dd($content);
         Document::create(
             [
-                'template_id' => $request->template_id,
+                'template_title' => $template->title,
                 'user_id' => $request->user_id,
                 'title' => $request->title,
                 'content' => $content,
@@ -115,7 +115,8 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        $document->delete();
+        return redirect()->route('show.documents')->with('success', 'Document deleted successfully.');
     }
     public function getEmployeeData($id)
     {
