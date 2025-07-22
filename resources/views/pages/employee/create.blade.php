@@ -206,7 +206,7 @@
                                 </div>
                             </div>
 
-                            <!-- optional Fields Tab -->
+                            <!-- job Fields Tab -->
                             <div class="tab-pane fade" id="optional-fields-tab-pane" role="tabpanel"
                                 aria-labelledby="optional-fields-tab" tabindex="0">
                                 <div class="row mb-3">

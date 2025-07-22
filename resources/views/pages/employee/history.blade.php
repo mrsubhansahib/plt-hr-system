@@ -100,15 +100,7 @@
                         </div>
                         <div class="col-3 mt-3">
                             <label class="form-label">Gender</label>
-                            <select class="form-control form-select" required name="gender" disabled>
-                                <option value="" selected>Select</option>
-                                <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Male
-                                </option>
-                                <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>Female
-                                </option>
-                                <option value="other" {{ $user->gender == 'other' ? 'selected' : '' }}>Other
-                                </option>
-                            </select>
+                            <input type="text" class="form-control" value="{{ $user->gender }}" disabled>
                         </div>
                         @php
                             // Collect ethnicity options from both seeder and dropdowns
@@ -125,25 +117,12 @@
 
                         <div class="col-3 mt-3">
                             <label class="form-label">Ethnicity</label>
-                            <select class="form-control form-select" required name="ethnicity" disabled>
-                                <option value="" selected disabled>Select</option>
-                                @foreach ($ethnicityOptions as $option)
-                                    <option value="{{ $option }}"
-                                        {{ old('ethnicity', $user->ethnicity) == $option ? 'selected' : '' }}>
-                                        {{ $option }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control" value="{{ $user->ethnicity }}" disabled>
                         </div>
 
                         <div class="col-3 mt-3">
                             <label class="form-label">Disability</label>
-                            <select class="form-control form-select" name="disability" disabled>
-                                <option value="yes" {{ $user->disability == 'yes' ? 'selected' : '' }}>Yes
-                                </option>
-                                <option value="no" {{ $user->disability == 'no' ? 'selected' : '' }}>No
-                                </option>
-                            </select>
+                            <input type="text" class="form-control" value="{{ $user->disability }}" disabled>
                         </div>
 
                         <!-- Address Details -->
