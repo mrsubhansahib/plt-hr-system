@@ -64,7 +64,7 @@
                                 <label class="form-label">Date To</label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="date_to"
-                                    value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') }}" />
+                                    value="{{ $sickness->date_to ? \Carbon\Carbon::createFromFormat('Y-m-d', $sickness->date_to)->format('d-m-Y') : '' }}" />
                             </div>
                         </div>
                         <div class="row mb-3">

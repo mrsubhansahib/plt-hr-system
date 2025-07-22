@@ -99,6 +99,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Bootstrap Datepicker
             $(document).ready(function() {
+                $('.datepicker').attr('autocomplete', 'off');
                 // Datepicker for Age (Restrict Future Dates)
                 $('#dob').datepicker({
                     format: 'dd-mm-yyyy', // Format for display
@@ -148,6 +149,13 @@
                     // Display the result
                     document.getElementById('age').value = age + " years";
                 }
+                $(document).on('input', '.datepicker', function() {
+                    const value = $(this).val().trim();
+                    const formatRegex = /^\d{2}-\d{2}-\d{4}$/; // dd-mm-yyyy
+                    if (value && !formatRegex.test(value)) {
+                        $(this).val('');
+                    }
+                });
             });
 
 

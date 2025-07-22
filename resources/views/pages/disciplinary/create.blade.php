@@ -64,7 +64,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3" id="date-suspended-container" style="display:none;">
-                                <label class="form-label">Date Suspended</label>
+                                <label class="form-label">Date Suspended<span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
                                     name="date_suspended" id="date_suspended" />
                             </div>

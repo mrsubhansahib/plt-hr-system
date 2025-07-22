@@ -97,37 +97,40 @@ class EmployeeController extends Controller
         ]);
 
         $validatedData['dob'] = \Carbon\Carbon::createFromFormat('d-m-Y', $validatedData['dob'])->format('Y-m-d');
-        $user = User::create($request->only([
-            'first_name',
-            'middle_name',
-            'surname',
-            'preferred_name',
-            'dob',
-            'age',
-            'gender',
-            'ethnicity',
-            'address1',
-            'address2',
-            'address3',
-            'mobile_tel',
-            'home_tel',
-            'disability',
-            'town',
-            'post_code',
-            'email',
-            'commencement_date',
-            'ni_number',
-            'default_cost_center',
-            'salaried',
-            'emergency_1_name',
-            'emergency_1_ph_no',
-            'emergency_1_relation',
-            'emergency_1_home_ph',
-            'emergency_2_name',
-            'emergency_2_ph_no',
-            'emergency_2_home_ph',
-            'emergency_2_relation'
-        ]));
+        $user = User::create(array_merge(
+            $request->only([
+                'first_name',
+                'middle_name',
+                'surname',
+                'preferred_name',
+                'age',
+                'gender',
+                'ethnicity',
+                'address1',
+                'address2',
+                'address3',
+                'mobile_tel',
+                'home_tel',
+                'disability',
+                'town',
+                'post_code',
+                'email',
+                'commencement_date',
+                'ni_number',
+                'default_cost_center',
+                'salaried',
+                'emergency_1_name',
+                'emergency_1_ph_no',
+                'emergency_1_relation',
+                'emergency_1_home_ph',
+                'emergency_2_name',
+                'emergency_2_ph_no',
+                'emergency_2_home_ph',
+                'emergency_2_relation'
+            ]),
+            ['dob' => $validatedData['dob']] // overwrite with formatted dob
+        ));
+
         // $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
 
         // dd($user);
