@@ -266,6 +266,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/dbs-check', function () {
             return view('pages.reports.dbs-check');
         })->name('reports.dbs-check');
+        Route::get('/hr-checklist', function () {
+            return view('pages.reports.hr-checklist');
+        })->name('reports.hr-checklist');
         // Sickness Indicator Route
         Route::get('/sickness-indicator', function () {
             return view('pages.reports.sickness-indicator');

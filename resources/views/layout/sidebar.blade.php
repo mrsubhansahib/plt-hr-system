@@ -661,6 +661,11 @@
                                 class="nav-link {{ active_class(['reports/dbs-check']) }}">DBS Check</a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('/reports/hr-checklist') }}"
+                                title="HR Checklist"
+                                class="nav-link {{ active_class(['reports/hr-checklist']) }}">HR Checklist</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('/reports/full-time-equivalent') }}"
                                 title="Full Time Equivalent? Running amount"
                                 class="nav-link {{ active_class(['reports/full-time-equivalent']) }}">Full Time
