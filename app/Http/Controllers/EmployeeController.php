@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Capability;
 use App\Dropdown;
 use App\Job;
 use App\User;
@@ -210,10 +211,12 @@ class EmployeeController extends Controller
         }
         $hasDisclosure = $user->disclosures()->count();
         $dropdowns = Dropdown::all();
+        $capabilities = Capability::where('user_id', $id)->first();
         return view('pages.employee.show', compact(
             'user',
             'hasDisclosure',
-            'dropdowns'
+            'dropdowns',
+            'capabilities'
         ));
     }
     // showhistory main mujy user ki jo jo cheez add hoti jay gi vo saari ik ee page py disabled form ki soort main chahiy
