@@ -58,7 +58,7 @@
                                     <th>Contracted From</th>
                                     <th>Email</th>
                                 </tr>
-                               
+
                             </thead>
                             <tbody>
                                 @if ($colleagues !== [])
@@ -70,19 +70,19 @@
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'N/A') }}
                                             </td>
                                             <td>
-                                                {{ $colleague->contract_type ?? 'No Contract Type Assigned' }}
+                                                {{ $colleague->contract_type ?? 'N/A' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->date_of_commencement ?? 'No Date of Commencement' }}
+                                                {{ $colleague->date_of_commencement ?? 'N/A' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->contracted_from ?? 'No Contracted From' }}
+                                                {{ $colleague->contracted_from ?? 'N/A' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->email ?? 'No Email Assigned' }}
+                                                {{ $colleague->email ?? 'N/A' }}
                                             </td>
                                         </tr>
                                     @endforeach

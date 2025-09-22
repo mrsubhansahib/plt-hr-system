@@ -36,20 +36,20 @@ class TurnoverMonthly extends Component
             return;
         }
         //date requred
-        
 
         $endDate = $this->endDate;
         $startDate = $this->startDate;
         /**
          * Get users who left this month
          */
-        $leavers = User::whereBetween('left_date', [$startDate, $endDate])
+        $leavers = User::where('role', 'Employee')
+            ->whereBetween('left_date', [$startDate, $endDate])
             ->with(['jobs' => function ($query) {
                 $query->latest();
             }])
             ->get();
         if ($leavers->isEmpty()) {
-            $this->errorMsg = 'No users left during this month.';
+            $this->errorMsg = 'No employees left during this month.';
             return;
         }
 
@@ -57,9 +57,12 @@ class TurnoverMonthly extends Component
          * Get users who were active at the start of the month
          * Includes those who left later in the month
          */
-        $activeUsersStartOfMonth = User::where(function ($query) use ($startDate) {
-            $query->orWhereNull('left_date')->orWhere('left_date', '>=', $startDate);
-        })->where('status', '!=', 'pending')->get();
+        $activeUsersStartOfMonth = User::where('role', 'Employee') 
+            ->where(function ($query) use ($startDate) {
+                $query->orWhereNull('left_date')->orWhere('left_date', '>=', $startDate);
+            })
+            ->where('status', '!=', 'pending')
+            ->get();
         /**
          * Filter users by selected facility
          */
