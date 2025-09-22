@@ -29,10 +29,11 @@ class NewColleagues extends Component
         $query = User::query()->where('role', 'employee');
         // Date filters
         if ($this->start_date && $this->end_date) {
-            $query->whereBetween('joined_date', [
+            
+            $query->whereBetween('commencement_date', [
                 $this->start_date,
                 $this->end_date . ' 23:59:59'
-            ])->where(function ($q) {
+            ])->where(column: function ($q) {
                 $q->orWhereNull('left_date')
                     ->orWhere('left_date', '>', $this->end_date);
             });
@@ -40,7 +41,6 @@ class NewColleagues extends Component
 
 
         $this->colleagues = $query->latest()->get();
-
         if ($this->colleagues->isEmpty()) {
             $this->errorMsg = 'No data found. Please adjust your filters.';
         } else {
