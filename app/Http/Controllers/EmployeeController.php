@@ -96,7 +96,8 @@ class EmployeeController extends Controller
             'emergency_1_relation' => 'required',
         ]);
 
-        $validatedData['dob'] = \Carbon\Carbon::createFromFormat('d-m-Y', $validatedData['dob'])->format('Y-m-d');
+        $validatedData['dob'] = \Carbon\Carbon::createFromFormat('d-m-Y', $validatedData['dob'])->format('Y-m-d'); //same logic for commencment date 
+        $validatedData['commencement_date'] = \Carbon\Carbon::createFromFormat('d-m-Y', $request->commencement_date)->format('Y-m-d');
         $user = User::create(array_merge(
             $request->only([
                 'first_name',
@@ -128,7 +129,9 @@ class EmployeeController extends Controller
                 'emergency_2_home_ph',
                 'emergency_2_relation'
             ]),
-            ['dob' => $validatedData['dob']] // overwrite with formatted dob
+            ['dob' => $validatedData['dob'], 'commencement_date' => $validatedData['commencement_date']
+            ] // overwrite with formatted dob
+            
         ));
 
         // $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
@@ -299,6 +302,7 @@ class EmployeeController extends Controller
         $user = User::find($id);
         $user->update($request->all());
         $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
+        $user->update(['commencement_date' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->commencement_date)->format('Y-m-d')]);
         if ($user->status == 'pending') {
             return redirect()->route('show.temp.employees')->with('success', 'Employee edited successfully.');
         }
@@ -309,6 +313,7 @@ class EmployeeController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update(['status' => 'terminated', 'left_date' => now()->format('Y-m-d')]);
+        
         $job = Job::where('user_id', $id)
             ->where('status', 'active')
             ->update(['status' => 'terminated', 'termination_date' => now()->format('d-m-Y')]);

@@ -131,8 +131,9 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Employment Commencement Date<span
                                         class="text-danger">*</span></label>
+                                        <!-- jo date data base sy aa re ha isko b dobara actual formate ma kera ha  -->
                                 <input class="form-control datepicker py-2" type="text" placeholder="Select Date"
-                                    name="commencement_date" value="{{ $user->commencement_date }}" required />
+                                    name="commencement_date" value="{{ $user->commencement_date ? \Carbon\Carbon::createFromFormat('Y-m-d', $user->commencement_date)->format('d-m-Y') : '' }}" required />
                             </div>
 
                             <div class="col-md-3 mt-3">
