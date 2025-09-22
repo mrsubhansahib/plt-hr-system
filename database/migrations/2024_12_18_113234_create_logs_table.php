@@ -13,13 +13,13 @@ class CreateLogsTable extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('module_id');
-            $table->string('module_type');
+            $table->string('module_type');  
             $table->string('action');
             $table->timestamps();
 
             // Foreign key constraints
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->nullable();
         });
     }
 

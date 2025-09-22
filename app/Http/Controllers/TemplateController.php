@@ -49,37 +49,37 @@ class TemplateController extends Controller
 
         // Dynamically set the flags based on the presence of placeholders
         $template->personal_info = $this->hasPlaceholder($content, [
-            '{{ $user->',
+            '{{ $user-',
         ]);
 
         $template->job_info = $this->hasPlaceholder($content, [
-            '{{ $job->',
+            '{{ $job-',
         ]);
 
         $template->disclosure_info = $this->hasPlaceholder($content, [
-            '{{ $disclosure',
+            '{{ $disclosure-',
         ]);
 
         $template->sickness_info = $this->hasPlaceholder($content, [
-            '{{ $sickness',
+            '{{ $sickness-',
         ]);
 
         $template->capability_info = $this->hasPlaceholder($content, [
-            '{{ $capability',
+            '{{ $capability-',
         ]);
 
         $template->disciplinary_info = $this->hasPlaceholder($content, [
-            '{{ $disciplinary',
+            '{{ $disciplinary-',
         ]);
 
         $template->lateness_info = $this->hasPlaceholder($content, [
-            '{{ $lateness',
+            '{{ $lateness-',
         ]);
 
         $template->training_info = $this->hasPlaceholder($content, [
-            '{{ $training',
+            '{{ $training-',
         ]);
-
+        // dd($template);
         $template->save();
 
         return redirect()->route('show.templates')->with('success', 'Template created successfully.');
@@ -140,11 +140,11 @@ class TemplateController extends Controller
         $content = $request->content;
 
         $template->personal_info = $this->hasPlaceholder($content, [
-            '{{ $user->',
+            '{{ $user-',
         ]);
 
         $template->job_info = $this->hasPlaceholder($content, [
-            '{{ $job->',
+            '{{ $job-',
         ]);
 
         $template->disclosure_info = $this->hasPlaceholder($content, [

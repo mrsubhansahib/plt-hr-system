@@ -140,7 +140,8 @@ class DocumentForm extends Component
             'training' => $this->selectedTraining ? \App\Training::find($this->selectedTraining) : null,
         ];
 
-        $content = Blade::render($template->content, $variables);
+        // $content = Blade::render($template->content, $variables);
+        $content = Blade::render(html_entity_decode($template->content), $variables);
 
         Document::create([
             'template_title' => $template->title,

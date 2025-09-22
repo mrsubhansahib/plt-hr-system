@@ -17,7 +17,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = Document::with('template', 'user')->latest()->get();
+        $documents = Document::with('user')->latest()->get();
         return view('pages.document.list', compact('documents'));
     }
 

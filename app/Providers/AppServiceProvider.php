@@ -32,7 +32,6 @@ class AppServiceProvider extends ServiceProvider
         User::observe(LogObserver::class);
         Dropdown::observe(LogObserver::class);
         Document::observe(LogObserver::class);
-        Template::observe(LogObserver::class);
 
         // Register NotesObserver for the same models
         Job::observe(NotesObserver::class);
