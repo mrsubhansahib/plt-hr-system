@@ -20,10 +20,21 @@ class DropdownController extends Controller
         return view('pages.dropdowns.job', compact('dropdowns'));
     }
 
+    public function disclosureDropdowns()
+    {
+        $dropdowns = Dropdown::where('module_type', 'Disclosure')->orderBy('value', 'asc')->get();
+        return view('pages.dropdowns.disclosure', compact('dropdowns'));
+    }
+
     public function capabilityDropdowns()
     {
         $dropdowns = Dropdown::where('module_type', 'capability')->orderBy('value', 'asc')->get();
         return view('pages.dropdowns.capability', compact('dropdowns'));
+    }
+    public function disciplinaryDropdowns()
+    {
+        $dropdowns = Dropdown::where('module_type', 'Disciplinary')->orderBy('value', 'asc')->get();
+        return view('pages.dropdowns.disciplinary', compact('dropdowns'));
     }
 
     public function latenessDropdowns()
@@ -72,8 +83,12 @@ class DropdownController extends Controller
                 return redirect()->route('dropdown.user')->with('success', 'User dropdown added successfully!');
             case 'Job':
                 return redirect()->route('dropdown.job')->with('success', 'Job dropdown added successfully!');
+            case 'Disclosure':
+                return redirect()->route('dropdown.disclosure')->with('success', 'Disclosure dropdown added successfully!');
             case 'Capability':
                 return redirect()->route('dropdown.capability')->with('success', 'Capability dropdown added successfully!');
+            case 'Disciplinary':
+                return redirect()->route('dropdown.disciplinary')->with('success', 'Disciplinary dropdown added successfully!');    
             case 'Lateness':
                 return redirect()->route('dropdown.lateness')->with('success', 'Lateness dropdown added successfully!');
             case 'Training':
@@ -124,8 +139,12 @@ class DropdownController extends Controller
                 return redirect()->route('dropdown.user')->with('success', 'User dropdown updated successfully!');
             case 'Job':
                 return redirect()->route('dropdown.job')->with('success', 'Job dropdown updated successfully!');
+            case 'Disclosure':
+                return redirect()->route('dropdown.disclosure')->with('success', 'Disclosure dropdown updated successfully!');    
             case 'Capability':
                 return redirect()->route('dropdown.capability')->with('success', 'Capability dropdown updated successfully!');
+            case 'Disciplinary':
+                return redirect()->route('dropdown.disciplinary')->with('success', 'Disciplinary dropdown updated successfully!');    
             case 'Lateness':
                 return redirect()->route('dropdown.lateness')->with('success', 'Lateness dropdown updated successfully!');
             case 'Training':
@@ -133,7 +152,6 @@ class DropdownController extends Controller
             default:
                 return redirect()->route('dropdown.list')->with('success', 'Dropdown updated successfully!');
         }
-
     }
 
     /**

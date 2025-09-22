@@ -32,7 +32,9 @@
                                     <option value="" selected disabled>Select Module Type</option>
                                     <option value="User">User</option>
                                     <option value="Job">Job</option>
+                                    <option value="Disclosure">Disclosure</option>
                                     <option value="Capability">Capability</option>
+                                    <option value="Disciplinary">Disciplinary</option>
                                     <option value="Lateness">Lateness</option>
                                     <option value="Training">Training</option>
                                 </select>
@@ -73,10 +75,12 @@
         const dropdownNameSelect = document.getElementById('dropdownName');
         // Define options for each Module Type
         const moduleOptions = {
-            User: ['Ethnicity'],
+            User: ['Ethnicity', 'Equipment Ordered'],
             Job: ['Title', 'Facility', 'Contract Type'],
-            Capability: ['Capability Stage'],
-            Lateness: ['Lateness Stage'],
+            Disclosure: ['Contract Type'],
+            Capability: ['Capability Stage', 'Warning Issued Type'],
+            Disciplinary: ['Outcome'],
+            Lateness: ['Lateness Stage', 'Level of Warning Issued'],
             Training: ['Training Course Titles'],
         };
         // Event listener for Module Type selection

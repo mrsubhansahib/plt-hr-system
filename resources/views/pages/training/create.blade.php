@@ -17,8 +17,8 @@
                             <h4 class="py-2">Training Details</h4>
                         </div>
                         <div>
-                            <a href="{{ route('show.trainings') }}"
-                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                            <a href="{{ route('show.trainings') }}" class="btn btn-primary"><strong>List</strong><i
+                                    data-feather="list" class="ms-2"></i></a>
                         </div>
                     </div>
                     <hr>
@@ -31,13 +31,16 @@
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
-                                            {{ $employee->first_name.' '.$employee->surname  }}
+                                            {{ $employee->first_name . ' ' . $employee->surname }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             @php
-                                $trainingTitleDropdowns = collect($dropdowns)->where('module_type', 'Training')->where('name', 'Training Course Titles')->sortBy('value');
+                                $trainingTitleDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Training')
+                                    ->where('name', 'Training Course Titles')
+                                    ->sortBy(fn($d) => strtolower($d->value));  
                             @endphp
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Training Title</label>
@@ -51,11 +54,13 @@
 
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Course Date</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="course_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="course_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Renewal Date</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="renewal_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="renewal_date" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>

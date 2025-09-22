@@ -33,13 +33,13 @@ class DatabaseSeeder extends Seeder
                 'Chinese',
                 'Other Ethnic Group'
             ],
-            // 'Equipment Required' => [
-            //     'Telphone Ext',
-            //     'Computer / Laptop',
-            //     'Email Address / Login',
-            //     'Mobile',
-            //     'Other'
-            // ]
+            'Equipment Ordered' => [
+                'Telphone Ext',
+                'Computer / Laptop',
+                'Email Address / Login',
+                'Mobile',
+                'Other'
+            ]
         ],
         'Job' => [
             'Facility' => [
@@ -125,6 +125,13 @@ class DatabaseSeeder extends Seeder
                 'Permanent Variable',
             ]
         ],
+        'Disclosure' => [
+            'Contract Type' => [
+                'Employee',
+                'Volunteer',
+                'Self Employed',
+            ]
+        ],
         'Capability' => [
             'Capability Stage' => [
                 'Triggered Capability',
@@ -135,6 +142,22 @@ class DatabaseSeeder extends Seeder
                 'Long Term Sickness Review',
                 'Capability Formal Interview',
                 'Other'
+            ],
+            'Warning Issued Type' => [
+                'Dismissal',
+                'Final Written Warning',
+                'NFA',
+                'Verbal Warning',
+                'Written Warning'
+            ]
+        ],
+        'Disciplinary' => [
+            'Outcome' => [
+                'Dismissal',
+                'Final Written Warning',
+                'NFA',
+                'Verbal Warning',
+                'Written Warning'
             ]
         ],
         'Lateness' => [
@@ -145,6 +168,13 @@ class DatabaseSeeder extends Seeder
                 'Further Lateness',
                 'Lateness Formal Interview',
                 'Other'
+            ],
+            'Level of Warning Issued' => [
+                'Dismissal',
+                'Final Written Warning',
+                'NFA',
+                'Verbal Warning',
+                'Written Warning'
             ]
         ],
         'Training' => [

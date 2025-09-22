@@ -17,8 +17,8 @@
                             <h4 class="py-2">Disclosure Details</h4>
                         </div>
                         <div>
-                            <a href="{{ route('show.disclosures') }}"
-                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                            <a href="{{ route('show.disclosures') }}" class="btn btn-primary"><strong>List</strong><i
+                                    data-feather="list" class="ms-2"></i></a>
                         </div>
                     </div>
                     <hr>
@@ -31,7 +31,7 @@
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
-                                            {{ $employee->first_name .' '.$employee->surname }}
+                                            {{ $employee->first_name . ' ' . $employee->surname }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -46,11 +46,13 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date Requested<span class="text-danger">*</span></label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" required name="date_requested" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date" required
+                                    name="date_requested" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Date on Certificate</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="date_on_certificate" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="date_on_certificate" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Certificate Number</label>
@@ -79,9 +81,11 @@
                                 <label class="form-label">Contract Type<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="contract_type">
                                     <option value="" selected disabled>Select Contract Type</option>
-                                    <option value="Employee">Employee</option>
-                                    <option value="Volunteer">Volunteer</option>
-                                    <option value="Self Employed">Self Employed</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Disclosure' && $dropdown->name == 'Contract Type')
+                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-12 mt-3">

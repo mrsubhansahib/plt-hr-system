@@ -66,9 +66,9 @@
                                 <label class="form-label">Contract Type<span class="text-danger">*</span></label>
                                 <select class="form-control form-select" required name="contract_type">
                                     <option value="" selected disabled>Select Contract Type</option>
-                                    <option value="Employee">Employee</option>
-                                    <option value="Volunteer">Volunteer</option>
-                                    <option value="Self Employed">Self Employed</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-12 mt-3">

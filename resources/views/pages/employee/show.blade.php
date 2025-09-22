@@ -63,8 +63,8 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label for="age">Age</label>
-                                <input type="text" class="form-control mt-2" id="age" value="{{ $user->age ?? 'N/A' }}"
-                                    disabled>
+                                <input type="text" class="form-control mt-2" id="age"
+                                    value="{{ $user->age ?? 'N/A' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
@@ -78,7 +78,8 @@
                             <div class="form-group">
                                 <label for="commencement_date">Employment Commencement Date</label>
                                 <input type="text" class="form-control mt-2" id="commencement_date"
-                                    value="{{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d-m-Y') : 'N/A' }}" disabled>
+                                    value="{{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d-m-Y') : 'N/A' }}"
+                                    disabled>
                             </div>
                         </div>
                         <div class="col-md-4 my-2">
@@ -589,7 +590,8 @@
                                                 <td>{{ $disciplinary->reason_for_disciplinary ?? 'N/A' }}</td>
                                                 <td>{{ $disciplinary->hearing_date ?? 'N/A' }}</td>
                                                 <td>{{ $disciplinary->outcome ?? 'N/A' }}</td>
-                                                <td>{{ $disciplinary->suspended ? ucfirst($disciplinary->suspended) : 'N/A' }}</td>
+                                                <td>{{ $disciplinary->suspended ? ucfirst($disciplinary->suspended) : 'N/A' }}
+                                                </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
@@ -648,7 +650,7 @@
                                     @if ($user->latenesses->isNotEmpty())
                                         @foreach ($user->latenesses->sortByDesc('id') as $key => $lateness)
                                             <tr>
-                                                <td>{{ $lateness->lateness_triggered ?? 'N/A'}}</td>
+                                                <td>{{ $lateness->lateness_triggered ?? 'N/A' }}</td>
                                                 <td>{{ $lateness->lateness_stage ?? 'N/A' }}</td>
                                                 <td>
                                                     <div class="dropdown">
@@ -989,24 +991,21 @@
                                     {{-- @endif --}}
 
                                     {{-- @if (empty($user->equipment_ordered)) --}}
+                                    @php
+                                        $equipmentOptions = collect($dropdowns)
+                                            ->where('module_type', 'User')
+                                            ->where('name', 'Equipment Ordered')
+                                            ->sortBy('value');
+                                    @endphp
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Equipment Ordered</label>
                                         <select class="form-control form-select" name="equipment_ordered">
-                                            <option value="Telphone Ext"
-                                                {{ $user->equipment_ordered == 'Telphone Ext' ? 'selected' : '' }}>
-                                                Telephone Ext</option>
-                                            <option value="Computer / Laptop"
-                                                {{ $user->equipment_ordered == 'Computer / Laptop' ? 'selected' : '' }}>
-                                                Computer / Laptop</option>
-                                            <option value="Email Address / Login"
-                                                {{ $user->equipment_ordered == 'Email Address / Login' ? 'selected' : '' }}>
-                                                Email Address / Login</option>
-                                            <option value="Mobile"
-                                                {{ $user->equipment_ordered == 'Mobile' ? 'selected' : '' }}>Mobile
-                                            </option>
-                                            <option value="other"
-                                                {{ empty($user->equipment_ordered) || $user->equipment_ordered == 'other' ? 'selected' : '' }}>
-                                                Other</option>
+                                            <option value="" disabled selected>Select Equipment</option>
+                                            @foreach ($equipmentOptions as $option)
+                                                <option value="{{ $option->value }}"
+                                                    {{ $user->equipment_ordered == $option->value ? 'selected' : '' }}>
+                                                    {{ $option->value }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     {{-- @endif --}}

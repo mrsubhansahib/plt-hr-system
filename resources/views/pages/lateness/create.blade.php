@@ -17,8 +17,8 @@
                             <h4 class="py-2">Lateness Details</h4>
                         </div>
                         <div>
-                            <a href="{{ route('show.latenesses') }}"
-                                class="btn btn-primary"><strong>List</strong><i data-feather="list" class="ms-2"></i></a>
+                            <a href="{{ route('show.latenesses') }}" class="btn btn-primary"><strong>List</strong><i
+                                    data-feather="list" class="ms-2"></i></a>
                         </div>
                     </div>
                     <hr>
@@ -31,19 +31,23 @@
                                     <option value="" selected disabled>Select Employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" data-surname="{{ $employee->surname }}">
-                                            {{ $employee->first_name.' '.$employee->surname  }}
+                                            {{ $employee->first_name . ' ' . $employee->surname }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Triggered</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="lateness_triggered" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="lateness_triggered" />
                             </div>
-                            
+
                             @php
-                                $latenessStageDropdowns = collect($dropdowns)->where('module_type', 'Lateness')->where('name', 'Lateness Stage')->sortBy('value');
-                            @endphp 
+                                $latenessStageDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Lateness')
+                                    ->where('name', 'Lateness Stage')
+                                    ->sortBy('value');
+                            @endphp
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Lateness Stage</label>
                                 <select class="form-control form-select" name="lateness_stage">
@@ -54,15 +58,20 @@
                                 </select>
                             </div>
 
+                            @php
+                                $warningLevelDropdowns = collect($dropdowns)
+                                    ->where('module_type', 'Lateness')
+                                    ->where('name', 'Level of Warning Issued')
+                                    ->sortBy('value');
+                            @endphp
+
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Level of Warning Issued</label>
                                 <select class="form-control form-select" name="warning_level">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="Dismissal"> Dismissal</option>
-                                    <option value="Final Written Warning">Final Written Warning</option>
-                                    <option value="NFA">NFA</option>
-                                    <option value="Verbal Warning">Verbal Warning</option>
-                                    <option value="Written Warning">Written Warning</option>
+                                    @foreach ($warningLevelDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach 
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
@@ -71,7 +80,8 @@
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date</label>
-                                <input class="form-control datepicker" type="text" placeholder="Select Date" name="review_date" />
+                                <input class="form-control datepicker" type="text" placeholder="Select Date"
+                                    name="review_date" />
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label class="form-label">Notes</label>
