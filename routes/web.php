@@ -216,7 +216,9 @@ Route::middleware('auth')->group(function () {
         // Separate Routes for Each Dropdown Category
         Route::get('user',          [DropdownController::class, 'userDropdowns'])->name('dropdown.user');
         Route::get('job',           [DropdownController::class, 'jobDropdowns'])->name('dropdown.job');
+        Route::get('disclosure',   [DropdownController::class, 'disclosureDropdowns'])->name('dropdown.disclosure');
         Route::get('capability',    [DropdownController::class, 'capabilityDropdowns'])->name('dropdown.capability');
+        Route::get('disciplinary',    [DropdownController::class, 'disciplinaryDropdowns'])->name('dropdown.disciplinary');
         Route::get('lateness',       [DropdownController::class, 'latenessDropdowns'])->name('dropdown.lateness');
         Route::get('training',      [DropdownController::class, 'trainingDropdowns'])->name('dropdown.training');
     });

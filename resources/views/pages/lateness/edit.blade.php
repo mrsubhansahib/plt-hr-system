@@ -45,31 +45,33 @@
                                 <select class="form-control form-select" name="lateness_stage">
                                     <option value="" selected disabled>Select</option>
                                     @foreach ($latenessStages as $stage)
-                                        <option value="{{ $stage }}" {{ isset($lateness->lateness_stage) && $lateness->lateness_stage == $stage ? 'selected' : '' }}>
+                                        <option value="{{ $stage }}"
+                                            {{ isset($lateness->lateness_stage) && $lateness->lateness_stage == $stage ? 'selected' : '' }}>
                                             {{ $stage }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
 
+                            @php
+                                $warningLevels = collect($dropdowns)
+                                    ->where('module_type', 'Lateness')
+                                    ->where('name', 'Level of Warning Issued')
+                                    ->pluck('value')
+                                    ->unique()
+                                    ->sort()
+                                    ->values();
+                            @endphp
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Level of Warning Issued</label>
                                 <select class="form-control form-select" name="warning_level">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="NFA" {{ $lateness->warning_level == 'NFA' ? 'selected' : '' }}>NFA
-                                    </option>
-                                    <option value="Verbal Warning"
-                                        {{ $lateness->warning_level == 'Verbal Warning' ? 'selected' : '' }}>Verbal
-                                        Warning</option>
-                                    <option value="Written Warning"
-                                        {{ $lateness->warning_level == 'Written Warning' ? 'selected' : '' }}>Written
-                                        Warning</option>
-                                    <option value="Final Written Warning"
-                                        {{ $lateness->warning_level == 'Final Written Warning' ? 'selected' : '' }}>Final
-                                        Written Warning</option>
-                                    <option value="Dismissal"
-                                        {{ $lateness->warning_level == 'Dismissal' ? 'selected' : '' }}> Dismissal
-                                    </option>
+                                    @foreach ($warningLevels as $level)
+                                        <option value="{{ $level }}"
+                                            {{ isset($lateness->warning_level) && $lateness->warning_level == $level ? 'selected' : '' }}>
+                                            {{ $level }}
+                                        </option>
+                                    @endforeach   
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

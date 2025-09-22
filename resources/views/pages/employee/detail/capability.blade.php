@@ -55,11 +55,11 @@
                                 <label class="form-label">Warning Issued Type</label>
                                 <select class="form-control form-select" name="warning_issued_type">
                                     <option value="" selected disabled>Select Warning Type</option>
-                                    <option value="Verbal Warning">Verbal Warning</option>
-                                    <option value="Written Warning">Written Warning</option>
-                                    <option value="Final Written Warning">Final Written Warning</option>
-                                    <option value="Dismissal">Dismissal</option>
-                                    <option value="NFA">NFA</option>
+                                    @foreach ($dropdowns as $dropdown)
+                                        @if ($dropdown->module_type == 'Capability' && $dropdown->name == 'Warning Issued Type')
+                                            <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

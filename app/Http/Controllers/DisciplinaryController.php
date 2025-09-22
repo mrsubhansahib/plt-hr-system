@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disciplinary;
+use App\Dropdown;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,9 @@ class DisciplinaryController extends Controller
 
     public function create()
     {
+        $dropdowns = Dropdown::get()->sortBy('value')->values();
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
-        return view("pages.disciplinary.create", compact("employees"));
+        return view("pages.disciplinary.create", compact("employees" , "dropdowns"));
     }
 
 
@@ -53,12 +55,13 @@ class DisciplinaryController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $dropdowns = Dropdown::get()->sortBy('value')->values();
         $form_type = $request->form_type;
         $disciplinary = Disciplinary::with('user')
             ->whereHas('user', function ($query) {
                 $query->where('role', 'employee')->where('status', 'active');
             })->findOrFail($id);
-        return view("pages.disciplinary.edit", compact("disciplinary", "form_type"));
+        return view("pages.disciplinary.edit", compact("disciplinary", "form_type" , "dropdowns"));
     }
 
 

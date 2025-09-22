@@ -47,13 +47,15 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Capability Stage</label>
                                 <select class="form-control form-select" name="stage">
-                                    <option value="" disabled {{ empty($capability->stage) ? 'selected' : '' }}>Select Stage</option>
+                                    <option value="" disabled {{ empty($capability->stage) ? 'selected' : '' }}>Select
+                                        Stage</option>
                                     @foreach ($capabilityStages as $stage)
-                                        <option value="{{ $stage }}" {{ isset($capability->stage) && $capability->stage == $stage ? 'selected' : '' }}>
+                                        <option value="{{ $stage }}"
+                                            {{ isset($capability->stage) && $capability->stage == $stage ? 'selected' : '' }}>
                                             {{ $stage }}
                                         </option>
                                     @endforeach
-                                </select>                                
+                                </select>
                             </div>
 
                             <div class="col-md-3 mt-3">
@@ -66,31 +68,30 @@
                                 <input class="form-control" type="text" name="outcome"
                                     value="{{ $capability->outcome }}" placeholder="Enter Outcome" />
                             </div>
+
+                            @php
+                                $warningTypes = collect($dropdowns)
+                                    ->where('module_type', 'Capability')
+                                    ->where('name', 'Warning Issued Type')
+                                    ->pluck('value')
+                                    ->unique()
+                                    ->sort()
+                                    ->values();
+                            @endphp
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Warning Issued Type</label>
                                 <select class="form-control form-select" name="warning_issued_type">
-                                    <option value="" disabled {{ empty($capability->warning_issued_type) ? 'selected' : '' }}>Select Warning Type</option>
-                                    <option value="Verbal Warning"
-                                        {{ isset($capability->warning_issued_type) && $capability->warning_issued_type == 'Verbal Warning' ? 'selected' : '' }}>
-                                        Verbal Warning
+                                    <option value="" disabled
+                                        {{ empty($capability->warning_issued_type) ? 'selected' : '' }}>
+                                        Select Warning Type
                                     </option>
-                                    <option value="Written Warning"
-                                        {{ isset($capability->warning_issued_type) && $capability->warning_issued_type == 'Written Warning' ? 'selected' : '' }}>
-                                        Written Warning
-                                    </option>
-                                    <option value="Final Written Warning"
-                                        {{ isset($capability->warning_issued_type) && $capability->warning_issued_type == 'Final Written Warning' ? 'selected' : '' }}>
-                                        Final Written Warning
-                                    </option>
-                                    <option value="Dismissal"
-                                        {{ isset($capability->warning_issued_type) && $capability->warning_issued_type == 'Dismissal' ? 'selected' : '' }}>
-                                        Dismissal
-                                    </option>
-                                    <option value="NFA"
-                                        {{ isset($capability->warning_issued_type) && $capability->warning_issued_type == 'NFA' ? 'selected' : '' }}>
-                                        NFA
-                                    </option>
-                                </select>                                
+                                    @foreach ($warningTypes as $type)
+                                        <option value="{{ $type }}"
+                                            {{ isset($capability->warning_issued_type) && $capability->warning_issued_type == $type ? 'selected' : '' }}>
+                                            {{ $type }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Review Date</label>

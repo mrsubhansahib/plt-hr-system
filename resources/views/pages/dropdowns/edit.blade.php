@@ -58,9 +58,10 @@
 
         // Define options for each Module Type
         const moduleOptions = {
-            User: ['Ethnicity'],
+            User: ['Ethnicity', 'Equipment Ordered'],
             Job: ['Title', 'Facility', 'Contract Type'],
-            Capability: ['Capability Stage'],
+            Disclosure: ['Contract Type'],
+            Capability: ['Capability Stage', 'Warning Issued Type' ],
             Lateness: ['Lateness Stage'],
             Training: ['Training Course Titles'],
         };

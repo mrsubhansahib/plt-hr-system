@@ -303,8 +303,16 @@
                                     class="nav-link {{ active_class(['dropdowns/job']) }}">Job</a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('dropdown.disclosure') }}"
+                                    class="nav-link {{ active_class(['dropdowns/disclosure']) }}">Disclosure</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('dropdown.capability') }}"
                                     class="nav-link {{ active_class(['dropdowns/capability']) }}">Capability</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('dropdown.disciplinary') }}"
+                                    class="nav-link {{ active_class(['dropdowns/disciplinary']) }}">Disciplinary</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('dropdown.lateness') }}"

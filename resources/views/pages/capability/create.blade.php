@@ -66,15 +66,16 @@
                                 <input class="form-control" type="text" name="outcome" 
                                     placeholder="Enter Outcome" />
                             </div>
+                            @php
+                                $capabilityStageDropdowns = collect($dropdowns)->where('module_type', 'Capability')->where('name', 'Warning Issued Type')->sortBy('value');
+                            @endphp
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Warning Issued Type</label>
                                 <select class="form-control form-select" name="warning_issued_type">
                                     <option value="" selected disabled>Select Warning Type</option>
-                                    <option value="Dismissal">Dismissal</option>
-                                    <option value="Final Written Warning">Final Written Warning</option>
-                                    <option value="NFA">NFA</option>
-                                    <option value="Verbal Warning">Verbal Warning</option>
-                                    <option value="Written Warning">Written Warning</option>
+                                    @foreach ($capabilityStageDropdowns as $dropdown)
+                                        <option value="{{ $dropdown->value }}">{{ $dropdown->value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">

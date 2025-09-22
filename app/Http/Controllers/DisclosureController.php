@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disclosure;
+use App\Dropdown;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,10 @@ class DisclosureController extends Controller
 
     public function create()
     {
+        $dropdowns = Dropdown::get()->sortBy('value')->values();
         $employees = User::where('role', 'employee')
             ->where('status', 'active')->get();
-        return view('pages.disclosure.create', compact('employees'));
+        return view('pages.disclosure.create', compact('employees' , 'dropdowns'));
     }
 
 
@@ -55,11 +57,12 @@ class DisclosureController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $dropdowns = Dropdown::get()->sortBy('value')->values();
         $form_type = $request->form_type;
         $disclosure = Disclosure::with('user')->find($id);
         // dd($disclosure);
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
-        return view('pages.disclosure.edit', compact('disclosure', 'employees', 'form_type'));
+        return view('pages.disclosure.edit', compact('disclosure', 'employees', 'form_type', 'dropdowns'));
     }
 
 

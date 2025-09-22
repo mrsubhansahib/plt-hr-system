@@ -59,9 +59,10 @@ class CreateController extends Controller
 |*/
     public function disclosureCreate($id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Disclosure')->orderBy('name')->get()->all();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.disclosure", compact("employee", "user_id"));
+        return view("pages.employee.detail.disclosure", compact("employee", "user_id" , 'dropdowns'));
     }
     public function disclosureStore(Request $request)
     {
@@ -112,7 +113,7 @@ class CreateController extends Controller
 |*/
     public function capabilityCreate($id)
     {
-        $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
+        $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('value')->get();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
         return view("pages.employee.detail.capability", compact("employee", "user_id", 'dropdowns'));
@@ -170,9 +171,10 @@ class CreateController extends Controller
 |*/
     public function disciplinaryCreate($id)
     {
+        $dropdowns = Dropdown::where('module_type', 'Disciplinary')->orderBy('name')->get();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.disciplinary", compact("employee", "user_id"));
+        return view("pages.employee.detail.disciplinary", compact("employee", "user_id" , 'dropdowns'));
     }
     public function disciplinaryStore(Request $request)
     {

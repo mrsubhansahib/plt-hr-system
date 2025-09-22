@@ -37,11 +37,9 @@
                                 <label class="form-label">Outcome</label>
                                 <select class="form-control form-select" name="outcome">
                                     <option value="" selected disabled>Select</option>
-                                    <option value="NFA" {{ ($disciplinary->outcome == 'NFA') ? 'selected' : '' }}>NFA</option>
-                                    <option value="Verbal Warning" {{ ($disciplinary->outcome == 'Verbal Warning') ? 'selected' : '' }}>Verbal Warning</option>
-                                    <option value="Written Warning" {{ ($disciplinary->outcome == 'Written Warning') ? 'selected' : '' }}>Written Warning</option>
-                                    <option value="Final Written Warning" {{ ($disciplinary->outcome == 'Final Written Warning') ? 'selected' : '' }}>Final Written Warning</option>
-                                    <option value="Dismissal" {{ ($disciplinary->outcome == 'Dismissal') ? 'selected' : '' }}> Dismissal</option>
+                                    @foreach ($dropdowns->where('module_type', 'Disciplinary')->where('name', 'Outcome') as $dropdown)
+                                        <option value="{{ $dropdown->value }}" {{ ($disciplinary->outcome == $dropdown->value) ? 'selected' : '' }}>{{ $dropdown->value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mt-3">
