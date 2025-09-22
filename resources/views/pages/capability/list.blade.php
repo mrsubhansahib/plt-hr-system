@@ -35,7 +35,7 @@
                                     <th>Contracted From Date</th>
                                     <th>Stage</th>
                                     <th>Date</th>
-                                    <th>Outcome</th>
+                                    <th>On Capability Procedure</th>
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
@@ -70,7 +70,7 @@
                                         <td>{{ $capability->user->contracted_from_date ?? 'N/A'  }}</td>
                                         <td>{{ $capability->stage ?? 'N/A' }}</td>
                                         <td>{{ $capability->date ?? 'N/A' }}</td>
-                                        <td>{{ $capability->outcome ?? 'N/A' }}</td>
+                                        <td>{{ $capability->on_capability_procedure ?? 'N/A' }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
