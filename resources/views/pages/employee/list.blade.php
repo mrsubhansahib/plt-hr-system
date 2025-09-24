@@ -58,7 +58,7 @@
                                             {{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d-m-Y') : 'N/A' }}
                                         </td>
                                         <td>
-                                            {{ $user->contracted_from_date ? \Carbon\Carbon::parse($user->contracted_from_date)->format('d/m/Y') : 'N/A' }}
+                                            {{ $user->contracted_from_date ? \Carbon\Carbon::parse($user->contracted_from_date)->format('d-m-Y') : 'N/A' }}
                                         </td>
 
                                         <td>

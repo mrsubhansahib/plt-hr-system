@@ -98,14 +98,14 @@
                                 <div class="col-3 my-2">
                                     <label>Commencement Date</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->commencement_date ? \Carbon\Carbon::parse($employee->commencement_date)->format('d/m/Y') : 'N/A' }}"
+                                        value="{{ $employee->commencement_date ? \Carbon\Carbon::parse($employee->commencement_date)->format('d-m-Y') : 'N/A' }}"
                                         disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Contracted From</label>
                                     <input type="text" class="form-control mt-2"
                                         value="{{ $employee->contracted_from_date
-                                            ? \Carbon\Carbon::parse($employee->contracted_from_date)->format('d/m/Y')
+                                            ? \Carbon\Carbon::parse($employee->contracted_from_date)->format('d-m-Y')
                                             : 'N/A' }}"
                                         disabled>
                                 </div>

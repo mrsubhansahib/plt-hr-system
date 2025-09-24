@@ -405,9 +405,9 @@
                                             <tr>
 
                                                 <td>{{ $sickness->reason_for_absence }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($sickness->date_from)->format('d/m/Y') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($sickness->date_from)->format('d-m-Y') }}</td>
                                                 <td>
-                                                    {{ $sickness->date_to ? \Carbon\Carbon::parse($sickness->date_to)->format('d/m/Y') : 'N/A' }}
+                                                    {{ $sickness->date_to ? \Carbon\Carbon::parse($sickness->date_to)->format('d-m-Y') : 'N/A' }}
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">

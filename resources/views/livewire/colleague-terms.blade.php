@@ -63,13 +63,15 @@
                                         <tr>
                                             <td>{{ $colleague->first_name . ' ' . $colleague->surname }}</td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ??
+                                                    ($colleague->jobs->first()->title ?? 'No Main Job Assigned') }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? 'No Facility Assigned' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ??
+                                                    ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->commencement_date ?? 'No Facility Assigned' }}
+                                                {{ $colleague->commencement_date ? \Carbon\Carbon::parse($colleague->commencement_date)->format('d-m-Y') : 'N/A' }}
                                             </td>
                                             <td>
                                                 @if ($colleague->status === 'active')

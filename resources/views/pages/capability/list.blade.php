@@ -34,7 +34,7 @@
                                     <th>Employement Commencement Date</th>
                                     <th>Contracted From Date</th>
                                     <th>Stage</th>
-                                    <th>Date</th>
+                                    <th>Capability Procedure Date</th>
                                     <th>On Capability Procedure</th>
                                     <th>Action</th>
                                 </tr>
@@ -69,19 +69,19 @@
                                         <td>{{ $capability->user->surname }}</td>
                                         <td>
                                             {{ $capability->user->commencement_date
-                                                ? \Carbon\Carbon::parse($capability->user->commencement_date)->format('d/m/Y')
+                                                ? \Carbon\Carbon::parse($capability->user->commencement_date)->format('d-m-Y')
                                                 : 'N/A' }}
                                         </td>
                                         <td>
                                             {{ $capability->user->contracted_from_date
-                                                ? \Carbon\Carbon::parse($capability->user->contracted_from_date)->format('d/m/Y')
+                                                ? \Carbon\Carbon::parse($capability->user->contracted_from_date)->format('d-m-Y')
                                                 : 'N/A' }}
                                         </td>
                                         <td>
                                             {{ $capability->stage ?? 'N/A' }}
                                         </td>
                                         <td>
-                                            {{ $capability->date ? \Carbon\Carbon::parse($capability->date)->format('d/m/Y') : 'N/A' }}
+                                            {{ $capability->capability_procedure_date ? \Carbon\Carbon::parse($capability->capability_procedure_date)->format('d-m-Y') : 'N/A' }}
                                         </td>
 
                                         <td>{{ $capability->on_capability_procedure ?? 'N/A' }}</td>

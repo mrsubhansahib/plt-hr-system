@@ -8,8 +8,8 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-3 mb-3">
                                 <label for="to" class="form-label">Select Date</label>
-                                <input type="date" wire:model.defer="date" class="form-control" placeholder="Select Date"
-                                    id="to">
+                                <input type="date" wire:model.defer="date" class="form-control"
+                                    placeholder="Select Date" id="to">
                             </div>
                             <div class="col-md-1 mt-4  pt-1">
                                 <button class="btn btn-primary">Filter</button>
@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table  class="table table-striped  reportDataTable w-100 ">
+                        <table class="table table-striped  reportDataTable w-100 ">
                             <thead>
                                 <tr>
                                     <th>First Name</th>
@@ -75,10 +75,17 @@
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->contract_type ?? 'Not Specified' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->contracted_from_date ?? 'Not Specified' }}
+                                                {{ $colleague->contracted_from_date
+                                                    ? \Carbon\Carbon::parse($colleague->contracted_from_date)->format('d-m-Y')
+                                                    : 'N/A' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->start_date ?? 'Not Specified' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->start_date
+                                                    ? \Carbon\Carbon::parse(
+                                                        $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->start_date,
+                                                    )->format('d-m-Y')
+                                                    : 'Not Specified' }}
+
                                             </td>
                                             <td>
                                                 {{ $colleague->email ?? 'Not Specified' }}
@@ -94,7 +101,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                    
+
                                 @endif
                             </tbody>
                         </table>
