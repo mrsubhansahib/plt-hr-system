@@ -54,7 +54,7 @@
                                     <th>Job Title</th>
                                     <th>Facility</th>
                                     <th>Contract Type</th>
-                                    <th>Date of Commencement</th>
+                                    <th>Commencement Date</th>
                                     <th>Contracted From</th>
                                     <th>Email</th>
                                 </tr>
@@ -67,19 +67,21 @@
                                             <td>{{ $colleague->first_name }}</td>
                                             <td>{{ $colleague->surname }}</td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? ($colleague->jobs->first()->title ?? 'No Main Job Assigned') }}
                                             </td>
                                             <td>
                                                 {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'N/A') }}
                                             </td>
                                             <td>
-                                                {{ $colleague->contract_type ?? 'N/A' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->contract_type ?? ($colleague->jobs->first()->contract_type ?? 'N/A') }}
                                             </td>
                                             <td>
-                                                {{ $colleague->date_of_commencement ?? 'N/A' }}
+                                                {{ $colleague->commencement_date
+                                                    ? \Carbon\Carbon::parse($colleague->commencement_date)->format('d/m/Y')
+                                                    : 'N/A' }}
                                             </td>
                                             <td>
-                                                {{ $colleague->contracted_from ?? 'N/A' }}
+                                                {{ $user->contracted_from ? \Carbon\Carbon::parse($user->contracted_from)->format('d/m/Y') : 'N/A' }}
                                             </td>
                                             <td>
                                                 {{ $colleague->email ?? 'N/A' }}

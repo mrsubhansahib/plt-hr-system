@@ -74,13 +74,15 @@
                                 <div class="col-3 my-2">
                                     <label>Job Title</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->title ?? 'N/A' }}"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->title ??
+                                            ($employee->jobs->first()->title ?? 'N/A') }}"
                                         disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Facility</label>
-                                    <input type="email" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ?? 'N/A' }}"
+                                    <input type="text" class="form-control mt-2"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ??
+                                            ($employee->jobs->first()->facility ?? 'N/A') }}"
                                         disabled>
                                 </div>
                             </div>
@@ -114,7 +116,7 @@
                                         </div>
                                         <div class="col-md-12 mt-3">
                                             <label class="form-label">Notes</label>
-                                            <textarea class="form-control" name="notes" disabled  rows="4">{{ $training->notes ?? 'N/A' }}</textarea>
+                                            <textarea class="form-control" name="notes" disabled rows="4">{{ $training->notes ?? 'N/A' }}</textarea>
                                         </div>
                                     </div>
                                 </div>

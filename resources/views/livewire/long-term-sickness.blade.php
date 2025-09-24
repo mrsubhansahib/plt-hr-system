@@ -62,14 +62,26 @@
                                         {{-- @dd($user) --}}
                                         <td>{{ $user->first_name . ' ' . $user->surname }}</td>
                                         <td>{{ $user->email ?? 'N/A' }}</td>
-                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->title ?? 'N/A' }}
+                                        <td>
+                                            {{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->title ??
+                                                ($user->jobs->first()->title ?? 'N/A') }}
                                         </td>
-                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->facility ?? 'N/A' }}
+
+                                        <td>
+                                            {{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->facility ??
+                                                ($user->jobs->first()->facility ?? 'N/A') }}
                                         </td>
-                                        <td>{{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->contract_type ?? 'N/A' }}
+
+                                        <td>
+                                            {{ $user->jobs->where('main_job', 'yes')->where('user_id', $user->id)->first()->contract_type ??
+                                                ($user->jobs->first()->contract_type ?? 'N/A') }}
                                         </td>
-                                        <td>{{ $user->commencement_date }}</td>
-                                        <td>{{ $user->contracted_from ?? 'N/A' }}</td>
+                                        <td>
+                                            {{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d/m/Y') : 'N/A' }}
+                                        </td>
+                                        <td>
+                                            {{ $user->contracted_from ? \Carbon\Carbon::parse($user->contracted_from)->format('d/m/Y') : 'N/A' }}
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>

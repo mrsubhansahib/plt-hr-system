@@ -74,13 +74,15 @@
                                 <div class="col-3 my-2">
                                     <label>Job Title</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->title ?? 'N/A' }}"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->title ??
+                                            ($employee->jobs->first()->title ?? 'N/A') }}"
                                         disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Facility</label>
-                                    <input type="email" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ?? 'N/A' }}"
+                                    <input type="text" class="form-control mt-2"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ??
+                                            ($employee->jobs->first()->facility ?? 'N/A') }}"
                                         disabled>
                                 </div>
                             </div>
@@ -109,26 +111,25 @@
                                         </div>
                                         <div class="col-3 mt-3">
                                             <label class="form-label">Outcome</label>
-                                            <select class="form-control form-select" disabled name="outcome">
-                                                <option value="{{ $disciplinary->outcome ?? 'N/A' }}"selected disabled>
-                                                    {{ $disciplinary->outcome ?? 'N/A' }}</option>
-                                            </select>
+                                            <input class="form-control" type="text"
+                                                value="{{ $disciplinary->outcome ?? 'N/A' }}" disabled>
                                         </div>
+
                                         <div class="col-3 mt-3">
                                             <label class="form-label">Suspended</label>
-                                            <select class="form-control form-select" disabled name="suspended"
-                                                value="{{ $disciplinary->suspended ?? 'N/A' }}" id="suspended">
-                                                <option value="yes">Yes</option>
-                                                <option selected value="no">No</option>
-                                            </select>
+                                            <input class="form-control" type="text"
+                                                value="{{ $disciplinary->suspended ?? 'N/A' }}" disabled>
                                         </div>
-                                        <div class="col-3 mt-3" id="date-suspended-container" style="display:none;">
+
+                                        <div class="col-3 mt-3">
                                             <label class="form-label">Date Suspended</label>
-                                            <input class="form-control datepicker" type="text"
-                                                placeholder="Select Date" disabled name="date_suspended"
-                                                value="{{ $disciplinary->date_suspended ?? 'N/A' }}"
-                                                id="date_suspended" />
+                                            <input class="form-control" type="text"
+                                                value="{{ $disciplinary->date_suspended
+                                                    ? \Carbon\Carbon::parse($disciplinary->date_suspended)->format('d/m/Y')
+                                                    : 'N/A' }}"
+                                                disabled>
                                         </div>
+
                                         <div class="col-md-12 mt-3">
                                             <label class="form-label">Notes</label>
                                             <textarea class="form-control" disabled name="notes" rows="4">{{ $disciplinary->notes ?? 'N/A' }}</textarea>
