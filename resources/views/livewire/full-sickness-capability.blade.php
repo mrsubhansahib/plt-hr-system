@@ -77,30 +77,37 @@
                                 <div class="col-3 my-2">
                                     <label>Job Title</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->title ?? 'N/A' }}"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->title ??
+                                            ($employee->jobs->first()->title ?? 'N/A') }}"
                                         disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Facility</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ?? 'N/A' }}"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->facility ??
+                                            ($employee->jobs->first()->facility ?? 'N/A') }}"
                                         disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Contract Type</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->contract_type ?? 'N/A' }}"
+                                        value="{{ $employee->jobs->where('status', 'active')->where('main_job', 'yes')->first()->contract_type ??
+                                            ($employee->jobs->first()->contract_type ?? 'N/A') }}"
                                         disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Commencement Date</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->commencement_date ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->commencement_date ? \Carbon\Carbon::parse($employee->commencement_date)->format('d/m/Y') : 'N/A' }}"
+                                        disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Contracted From</label>
                                     <input type="text" class="form-control mt-2"
-                                        value="{{ $employee->contracted_from_date ?? 'N/A' }}" disabled>
+                                        value="{{ $employee->contracted_from_date
+                                            ? \Carbon\Carbon::parse($employee->contracted_from_date)->format('d/m/Y')
+                                            : 'N/A' }}"
+                                        disabled>
                                 </div>
                                 <div class="col-3 my-2">
                                     <label>Email</label>

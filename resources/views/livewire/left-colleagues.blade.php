@@ -67,10 +67,12 @@
                                                 <span class="badge bg-danger">Left</span>
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->first()->title ?? 'No Main Job Assigned' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->first()->title ??
+                                                    ($colleague->jobs->first()->title ?? 'No Main Job Assigned') }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->first()->facility ??
+                                                    ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
                                             </td>
                                         </tr>
                                     @endforeach

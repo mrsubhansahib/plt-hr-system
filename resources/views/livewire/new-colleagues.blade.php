@@ -64,10 +64,12 @@
                                             <td>{{ $colleague->first_name }}</td>
                                             <td>{{ $colleague->surname }}</td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ?? 'No Main Job Assigned' }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->title ??
+                                                    ($colleague->jobs->first()->title ?? 'No Main Job Assigned') }}
                                             </td>
                                             <td>
-                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ?? ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
+                                                {{ $colleague->jobs->where('main_job', 'yes')->where('status', 'active')->first()->facility ??
+                                                    ($colleague->jobs->first()->facility ?? 'No Facility Assigned') }}
                                             </td>
                                             <td>
                                                 <span class="badge bg-success">Joined</span>

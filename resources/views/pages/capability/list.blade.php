@@ -40,7 +40,8 @@
                                 </tr>
                                 <!-- Search inputs row -->
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control form-control-sm" placeholder="Search Name">
+                                    <th><input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Name">
                                     </th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
@@ -66,10 +67,23 @@
                                     <tr>
                                         <td>{{ $capability->user->first_name }}</td>
                                         <td>{{ $capability->user->surname }}</td>
-                                        <td>{{ $capability->user->commencement_date ?? 'N/A' }}</td>                                    
-                                        <td>{{ $capability->user->contracted_from_date ?? 'N/A'  }}</td>
-                                        <td>{{ $capability->stage ?? 'N/A' }}</td>
-                                        <td>{{ $capability->date ?? 'N/A' }}</td>
+                                        <td>
+                                            {{ $capability->user->commencement_date
+                                                ? \Carbon\Carbon::parse($capability->user->commencement_date)->format('d/m/Y')
+                                                : 'N/A' }}
+                                        </td>
+                                        <td>
+                                            {{ $capability->user->contracted_from_date
+                                                ? \Carbon\Carbon::parse($capability->user->contracted_from_date)->format('d/m/Y')
+                                                : 'N/A' }}
+                                        </td>
+                                        <td>
+                                            {{ $capability->stage ?? 'N/A' }}
+                                        </td>
+                                        <td>
+                                            {{ $capability->date ? \Carbon\Carbon::parse($capability->date)->format('d/m/Y') : 'N/A' }}
+                                        </td>
+
                                         <td>{{ $capability->on_capability_procedure ?? 'N/A' }}</td>
                                         <td>
                                             <div class="dropdown">
