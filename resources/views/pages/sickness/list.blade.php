@@ -69,14 +69,14 @@
                                         <td>{{ $sickness->user->surname }}</td>
                                         <td>
                                             {{ $sickness->user->commencement_date
-                                                ? \Carbon\Carbon::parse($sickness->user->commencement_date)->format('d/m/Y')
+                                                ? \Carbon\Carbon::parse($sickness->user->commencement_date)->format('d-m-Y')
                                                 : 'N/A' }}
                                         </td>
                                         <td>{{ $sickness->contracted_from ?? 'N/A' }}</td>
                                         <td>{{ $sickness->reason_for_absence }}</td>
                                         <td>{{ \Carbon\Carbon::parse(time: $sickness->date_from)->format('d-m-Y') }}</td>
                                         <td>
-                                            {{ $sickness->date_to ? \Carbon\Carbon::parse($sickness->date_to)->format('d/m/Y') : 'N/A' }}
+                                            {{ $sickness->date_to ? \Carbon\Carbon::parse($sickness->date_to)->format('d-m-Y') : 'N/A' }}
                                             
                                         </td>
                                         <td>

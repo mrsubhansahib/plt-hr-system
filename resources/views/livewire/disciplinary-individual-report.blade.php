@@ -125,7 +125,7 @@
                                             <label class="form-label">Date Suspended</label>
                                             <input class="form-control" type="text"
                                                 value="{{ $disciplinary->date_suspended
-                                                    ? \Carbon\Carbon::parse($disciplinary->date_suspended)->format('d/m/Y')
+                                                    ? \Carbon\Carbon::parse($disciplinary->date_suspended)->format('d-m-Y')
                                                     : 'N/A' }}"
                                                 disabled>
                                         </div>

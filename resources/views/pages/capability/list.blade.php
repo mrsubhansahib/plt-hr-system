@@ -69,19 +69,19 @@
                                         <td>{{ $capability->user->surname }}</td>
                                         <td>
                                             {{ $capability->user->commencement_date
-                                                ? \Carbon\Carbon::parse($capability->user->commencement_date)->format('d/m/Y')
+                                                ? \Carbon\Carbon::parse($capability->user->commencement_date)->format('d-m-Y')
                                                 : 'N/A' }}
                                         </td>
                                         <td>
                                             {{ $capability->user->contracted_from_date
-                                                ? \Carbon\Carbon::parse($capability->user->contracted_from_date)->format('d/m/Y')
+                                                ? \Carbon\Carbon::parse($capability->user->contracted_from_date)->format('d-m-Y')
                                                 : 'N/A' }}
                                         </td>
                                         <td>
                                             {{ $capability->stage ?? 'N/A' }}
                                         </td>
                                         <td>
-                                            {{ $capability->date ? \Carbon\Carbon::parse($capability->date)->format('d/m/Y') : 'N/A' }}
+                                            {{ $capability->date ? \Carbon\Carbon::parse($capability->date)->format('d-m-Y') : 'N/A' }}
                                         </td>
 
                                         <td>{{ $capability->on_capability_procedure ?? 'N/A' }}</td>

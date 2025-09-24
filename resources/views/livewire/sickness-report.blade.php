@@ -77,11 +77,11 @@
                                             </td>
                                             <td>
                                                 {{ $colleague->commencement_date
-                                                    ? \Carbon\Carbon::parse($colleague->commencement_date)->format('d/m/Y')
+                                                    ? \Carbon\Carbon::parse($colleague->commencement_date)->format('d-m-Y')
                                                     : 'N/A' }}
                                             </td>
                                             <td>
-                                                {{ $user->contracted_from ? \Carbon\Carbon::parse($user->contracted_from)->format('d/m/Y') : 'N/A' }}
+                                                {{ $colleague->contracted_from ? \Carbon\Carbon::parse($colleague->contracted_from)->format('d-m-Y') : 'N/A' }}
                                             </td>
                                             <td>
                                                 {{ $colleague->email ?? 'N/A' }}

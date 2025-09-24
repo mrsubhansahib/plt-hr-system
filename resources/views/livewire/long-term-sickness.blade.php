@@ -77,10 +77,10 @@
                                                 ($user->jobs->first()->contract_type ?? 'N/A') }}
                                         </td>
                                         <td>
-                                            {{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d/m/Y') : 'N/A' }}
+                                            {{ $user->commencement_date ? \Carbon\Carbon::parse($user->commencement_date)->format('d-m-Y') : 'N/A' }}
                                         </td>
                                         <td>
-                                            {{ $user->contracted_from ? \Carbon\Carbon::parse($user->contracted_from)->format('d/m/Y') : 'N/A' }}
+                                            {{ $user->contracted_from ? \Carbon\Carbon::parse($user->contracted_from)->format('d-m-Y') : 'N/A' }}
                                         </td>
                                     </tr>
                                 @empty

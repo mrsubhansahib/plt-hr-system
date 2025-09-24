@@ -83,8 +83,10 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Job Start Date <span class="text-danger">*</span></label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                    value="{{ $job->start_date }}" required name="start_date" />
+                                    value="{{ $job->start_date ? \Carbon\Carbon::parse($job->start_date)->format('d-m-Y') : '' }}"
+                                    required name="start_date" />
                             </div>
+
                             @php
                                 $defaultContractTypes = collect([
                                     'Permanent',
@@ -121,7 +123,8 @@
                             <div class="col-md-3 mt-3">
                                 <label class="form-label" id="terminationLabel">Job Termination Date </label>
                                 <input class="form-control datepicker" type="text" placeholder="Select Date"
-                                    value="{{ ($job->termination_date) ? \Carbon\Carbon::parse($job->termination_date)->format('d-m-Y') : '' }}" name="termination_date" />
+                                    value="{{ $job->termination_date ? \Carbon\Carbon::parse($job->termination_date)->format('d-m-Y') : '' }}"
+                                    name="termination_date" />
                             </div>
                             <div class="col-md-3 mt-3">
                                 <label class="form-label">Rate of Pay <span class="text-danger">*</span></label>
@@ -184,22 +187,22 @@
     </div>
 @endsection
 @push('custom-scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const contractTypeSelect = document.querySelector("select[name='contract_type']");
-        const terminationLabel = document.getElementById("terminationLabel");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contractTypeSelect = document.querySelector("select[name='contract_type']");
+            const terminationLabel = document.getElementById("terminationLabel");
 
-        function updateTerminationLabel() {
-            const selectedValue = contractTypeSelect.value.trim(); // Get selected value
-            
-            if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
-                terminationLabel.textContent = "Fix/Temp Expiry";
-            } else {
-                terminationLabel.textContent = "Job Termination Date";
+            function updateTerminationLabel() {
+                const selectedValue = contractTypeSelect.value.trim(); // Get selected value
+
+                if (selectedValue === "Fixed Term" || selectedValue === "Temporary") {
+                    terminationLabel.textContent = "Fix/Temp Expiry";
+                } else {
+                    terminationLabel.textContent = "Job Termination Date";
+                }
             }
-        }
-        updateTerminationLabel();
-        contractTypeSelect.addEventListener("change", updateTerminationLabel);
-    });
-</script>
+            updateTerminationLabel();
+            contractTypeSelect.addEventListener("change", updateTerminationLabel);
+        });
+    </script>
 @endpush
