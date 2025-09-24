@@ -34,7 +34,7 @@
                                     <th>Employement Commencement Date</th>
                                     <th>Contracted From Date</th>
                                     <th>Stage</th>
-                                    <th>Capability Procedure Date</th>
+                                    <th>Date</th>
                                     <th>On Capability Procedure</th>
                                     <th>Action</th>
                                 </tr>
@@ -81,7 +81,7 @@
                                             {{ $capability->stage ?? 'N/A' }}
                                         </td>
                                         <td>
-                                            {{ $capability->capability_procedure_date ? \Carbon\Carbon::parse($capability->capability_procedure_date)->format('d-m-Y') : 'N/A' }}
+                                            {{ $capability->date ? \Carbon\Carbon::parse($capability->date)->format('d-m-Y') : 'N/A' }}
                                         </td>
 
                                         <td>{{ $capability->on_capability_procedure ?? 'N/A' }}</td>
