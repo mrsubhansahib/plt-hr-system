@@ -26,7 +26,7 @@ class CurrentColleagues extends Component
 
        $query = User::query()
         ->where('role', 'employee')
-        ->where('joined_date', '<=', $this->date)
+        ->where('commencement_date', '<=', $this->date)
         ->where(function ($q) {
             $q->orWhereNull('left_date')
               ->orWhere('left_date', '>', $this->date);

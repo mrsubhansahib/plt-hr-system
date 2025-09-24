@@ -31,7 +31,7 @@ class FullTimeEquivalent extends Component
         // Only users with active status AND at least one active job
         $this->colleagues = User::where('role', 'employee')
             ->where('status', 'active')
-            ->where('joined_date', '<=', now())
+            ->where('commencement_date', '<=', now())
             ->whereHas('jobs', function ($query) {
                 $query->where('status', 'active');
             })
