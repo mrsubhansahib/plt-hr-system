@@ -108,7 +108,7 @@
                             <div class="form-group">
                                 <label for="reason_termination">On Capability Procedure</label>
                                 <input class="form-control mt-2" type="text"
-                                    value="{{ $capabilities->on_capability_procedure ?? 'N/A' }}" disabled>
+                                    value="{{ $capabilities->on_capability_procedure ? ucfirst($capabilities->on_capability_procedure) : '' }}"  disabled>
                             </div>
                         </div>
                     </div>
@@ -461,6 +461,7 @@
                                         <th>Date</th>
                                         <th>Outcome</th>
                                         <th>On Capability Procedure</th>
+                                        <th>Capability Procedure Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -469,9 +470,19 @@
                                         @foreach ($user->capabilities->sortByDesc('id') as $key => $capability)
                                             <tr>
                                                 <td>{{ $capability->stage ?? 'N/A' }}</td>
-                                                <td>{{ $capability->date ?? 'N/A' }}</td>
+                                                <td>
+                                                    {{ $capability->date ? \Carbon\Carbon::parse($capability->date)->format('d-m-Y') : 'N/A' }}
+                                                </td>
+
                                                 <td>{{ $capability->outcome ?? 'N/A' }}</td>
-                                                <td>{{ $capability->on_capability_procedure ?? 'N/A' }}</td>
+                                                <td>{{ $capability->on_capability_procedure ? ucfirst($capability->on_capability_procedure) : 'N/A' }}
+                                                </td>
+
+                                                <td>
+                                                    {{ $capability->capability_procedure_date
+                                                        ? \Carbon\Carbon::parse($capability->capability_procedure_date)->format('d-m-Y')
+                                                        : 'N/A' }}
+                                                </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-link p-0" type="button"
@@ -926,7 +937,8 @@
                                         <label class="form-label">Qualifications Checked</label>
                                         <select class="form-control form-select" name="qualifications_checked">
                                             <option value="yes"
-                                                {{ $user->qualifications_checked == 'yes' ? 'selected' : '' }}>Yes</option>
+                                                {{ $user->qualifications_checked == 'yes' ? 'selected' : '' }}>Yes
+                                            </option>
                                             <option value="no"
                                                 {{ empty($user->qualifications_checked) || $user->qualifications_checked == 'no' ? 'selected' : '' }}>
                                                 No</option>

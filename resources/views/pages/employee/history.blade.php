@@ -4,9 +4,11 @@
         .heading {
             display: none;
         }
-        hr{
+
+        hr {
             opacity: 1;
         }
+
         @media print {
             body * {
                 visibility: visible;
@@ -502,6 +504,13 @@
                                         <label class="form-label">On Capability Procedure</label>
                                         <input type="text" class="form-control"
                                             value="{{ ucfirst($capability->on_capability_procedure) ? $capability->on_capability_procedure : 'empty' }}"
+                                            disabled>
+                                    </div>
+                                    {{-- Capability Procedure date --}}
+                                    <div class="col-3 mt-3">
+                                        <label class="form-label">Capability Procedure Date</label>
+                                        <input type="text" class="form-control"
+                                            value="{{ $capability->capability_procedure_date ? \Carbon\Carbon::parse($capability->capability_procedure_date)->format('d-m-Y') : 'empty' }}"
                                             disabled>
                                     </div>
 
