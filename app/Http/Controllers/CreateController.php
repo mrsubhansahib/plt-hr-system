@@ -11,6 +11,7 @@ use App\Lateness;
 use App\Sickness;
 use App\Training;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CreateController extends Controller
@@ -62,7 +63,7 @@ class CreateController extends Controller
         $dropdowns = Dropdown::where('module_type', 'Disclosure')->orderBy('name')->get()->all();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.disclosure", compact("employee", "user_id" , 'dropdowns'));
+        return view("pages.employee.detail.disclosure", compact("employee", "user_id", 'dropdowns'));
     }
     public function disclosureStore(Request $request)
     {
@@ -97,8 +98,11 @@ class CreateController extends Controller
             'reason_for_absence'    => 'required',
             'date_from'             => 'required',
         ]);
-        Sickness::create($request->all());
-        // dd($request->all());
+        $Sickness = Sickness::create($request->all());
+        $Sickness->update(['date_from' => Carbon::createFromFormat('d-m-Y', $request->date_from)->format('Y-m-d')]);
+        if ($request->date_to) {
+            $Sickness->update(['date_to' => Carbon::createFromFormat('d-m-Y', $request->date_to)->format('Y-m-d')]);
+        }
         session()->flash('active_tab', 'sickness-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Sickness created successfully.');
@@ -174,7 +178,7 @@ class CreateController extends Controller
         $dropdowns = Dropdown::where('module_type', 'Disciplinary')->orderBy('name')->get();
         $user_id = $id;
         $employee = User::where('id', $id)->where('role', 'employee')->first();
-        return view("pages.employee.detail.disciplinary", compact("employee", "user_id" , 'dropdowns'));
+        return view("pages.employee.detail.disciplinary", compact("employee", "user_id", 'dropdowns'));
     }
     public function disciplinaryStore(Request $request)
     {
