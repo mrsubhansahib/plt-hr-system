@@ -100,6 +100,13 @@
                                                 value="{{ ucfirst($capability->on_capability_procedure) ? $capability->on_capability_procedure : 'empty' }}"
                                                 disabled>
                                         </div>
+                                        {{-- capability procedure date --}}
+                                        <div class="col-3 mt-3">
+                                            <label class="form-label">Capability Procedure Date</label>
+                                            <input type="text" class="form-control datepicker"
+                                                value="{{ $capability->capability_procedure_date ? \Carbon\Carbon::parse($capability->capability_procedure_date)->format('d-m-Y') : 'N/A' }}"
+                                                disabled>   
+                                        </div>
 
                                         <div class="col-3 mt-3">
                                             <label class="form-label">Capability Stage</label>

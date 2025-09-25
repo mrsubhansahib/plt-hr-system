@@ -36,6 +36,7 @@
                                     <th>Stage</th>
                                     <th>Date</th>
                                     <th>On Capability Procedure</th>
+                                    <th>Capability Procedure Date</th>
                                     <th>Action</th>
                                 </tr>
                                 <!-- Search inputs row -->
@@ -58,7 +59,11 @@
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Date"></th>
                                     <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Outcome"></th>
+                                            placeholder="Search Procedure"></th>
+                                    <th>
+                                        <input type="text" class="form-control form-control-sm"
+                                            placeholder="Search Procedure Date">
+                                    </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -84,7 +89,13 @@
                                             {{ $capability->date ? \Carbon\Carbon::parse($capability->date)->format('d-m-Y') : 'N/A' }}
                                         </td>
 
-                                        <td>{{ $capability->on_capability_procedure ?? 'N/A' }}</td>
+                                        <td>{{ $capability->on_capability_procedure ? ucfirst($capability->on_capability_procedure) : 'N/A' }}
+                                        </td>
+                                        <td>
+                                            {{ $capability->capability_procedure_date
+                                                ? \Carbon\Carbon::parse($capability->capability_procedure_date)->format('d-m-Y')
+                                                : 'N/A' }}
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"
