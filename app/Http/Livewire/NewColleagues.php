@@ -26,7 +26,7 @@ class NewColleagues extends Component
             return;
         }
 
-        $query = User::query()->where('role', 'employee');
+        $query = User::query()->where('role', 'employee')->where('status', 'active');
         // Date filters
         if ($this->start_date && $this->end_date) {
             
