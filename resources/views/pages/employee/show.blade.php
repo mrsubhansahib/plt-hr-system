@@ -108,7 +108,8 @@
                             <div class="form-group">
                                 <label for="reason_termination">On Capability Procedure</label>
                                 <input class="form-control mt-2" type="text"
-                                    value="{{ $capabilities->on_capability_procedure ? ucfirst($capabilities->on_capability_procedure) : '' }}"  disabled>
+                                    value="{{ $capabilities ? ucfirst($capabilities->on_capability_procedure ?? '') : 'N/A' }}"
+                                    disabled>
                             </div>
                         </div>
                     </div>
