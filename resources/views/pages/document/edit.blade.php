@@ -1,136 +1,138 @@
 @extends('layout.master')
 @push('plugin-styles')
-    <style>
-        .cke_notification_warning {
-            display: none !important;
-        }
-    </style>
+<style>
+    .cke_notification_warning {
+        display: none !important;
+    }
+</style>
 @endpush
 @section('content')
-    <nav class="page-breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Document</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit</li>
-        </ol>
-    </nav>
-    @include('layout.alert')
-    <div class="row">
-        <div class="col-md-12 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="my-4 text-center">Document Details</h3>
-                    <hr>
-                    <form class="forms-sample" action="{{ route('update.document', $document->id) }}" method="POST">
-                        @csrf
-                        <div class="row mb-3">
-                            <div class="col-12 mt-3">
-                                <label class="form-label">Title<span class="text-danger">*</span></label>
-                                <input class="form-control" required type="text" name="title"
-                                    value="{{ $document->title }}" />
-                            </div>
-
-                            <div class="col-12 mt-3">
-                                <label class="form-label">Content<span class="text-danger">*</span></label>
-                                <textarea class="form-control" required id="contentEditor" name="content" rows="10">{{ $document->content }}</textarea>
-                            </div>
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Document</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+    </ol>
+</nav>
+@include('layout.alert')
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="my-4 text-center">Document Details</h3>
+                <hr>
+                <form class="forms-sample" action="{{ route('update.document', $document->id) }}" method="POST">
+                    @csrf
+                    <div class="row mb-3">
+                        <div class="col-12 mt-3">
+                            <label class="form-label">Title<span class="text-danger">*</span></label>
+                            <input class="form-control" required type="text" name="title"
+                                value="{{ $document->title }}" />
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                    </form>
-                </div>
+
+                        <div class="col-12 mt-3">
+                            <label class="form-label">Content<span class="text-danger">*</span></label>
+                            <textarea class="form-control" required id="contentEditor" name="content" rows="10">{{ $document->content }}</textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Remove the click event listener for the button since it's now a submit button
-            const form = document.querySelector('#form');
-            form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
-                // alert('Form submitted!');
-                const contentEditor = CKEDITOR.instances.contentEditor;
-                if (contentEditor) {
-                    const content = contentEditor.getData();
-                    // Replace &gt; with >
-                    const updatedContent = content.replace(/&gt;/g, '>');
-                    contentEditor.setData(updatedContent);
-                    form.submit();
-                }
-            });
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Remove the click event listener for the button since it's now a submit button
+        const form = document.querySelector('#form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            // alert('Form submitted!');
+            const contentEditor = CKEDITOR.instances.contentEditor;
+            if (contentEditor) {
+                const content = contentEditor.getData();
+                // Replace &gt; with >
+                const updatedContent = content.replace(/&gt;/g, '>');
+                contentEditor.setData(updatedContent);
+                form.submit();
+            }
         });
-    </script>
+    });
+</script>
 @endsection
 
 
 @push('custom-scripts')
-    <script src="https://cdn.ckeditor.com/4.22.1/full-all/ckeditor.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof CKEDITOR !== 'undefined') {
-                CKEDITOR.replace('contentEditor', {
-                    height: 700,
-                    extraPlugins: 'uploadimage,image2',
-                    filebrowserUploadUrl: "{{ route('ckeditor.upload') }}?_token={{ csrf_token() }}",
-                    filebrowserUploadMethod: 'form',
-                    toolbar: [{
-                            name: 'clipboard',
-                            items: ['Cut', 'Copy', 'Paste', 'Undo', 'Redo']
-                        }, {
-                            name: 'find',
-                            items: ['Find', 'Replace', 'SelectAll']
-                        },
-                        {
-                            name: 'insert',
-                            items: ['Image', 'Table', 'HorizontalRule']
-                        },
-                        {
-                            name: 'basicstyles',
-                            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript',
-                                'RemoveFormat'
-                            ]
-                        },
-                        {
-                            name: 'paragraph',
-                            items: ['NumberedList', 'BulletedList', 'Blockquote', 'Indent', 'Outdent']
-                        },
-                        {
-                            name: 'align',
-                            items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-                        },
-                        {
-                            name: 'styles',
-                            items: ['Styles', 'Format', 'Font', 'FontSize']
-                        },
-                        {
-                            name: 'colors',
-                            items: ['TextColor', 'BGColor']
-                        },
-                        {
-                            name: 'tools',
-                            items: ['Maximize']
-                        }
-                    ]
-                });
-
-                // Insert merge fields
-                CKEDITOR.instances.contentEditor.on('instanceReady', function() {
-                    const addButton = document.querySelector('#add_field_button');
-                    const mergerFieldSelect = document.querySelector('#mergerFieldSelect');
-
-                    if (addButton && mergerFieldSelect) {
-                        addButton.addEventListener('click', function() {
-                            const selectedField = mergerFieldSelect.value;
-                            if (selectedField) {
-                                CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
-                                    '} ');
-                                mergerFieldSelect.selectedIndex = 0;
-                            }
-                        });
+<script src="https://cdn.ckeditor.com/4.22.1/full-all/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof CKEDITOR !== 'undefined') {
+            CKEDITOR.replace('contentEditor', {
+                height: 700,
+                extraPlugins: 'uploadimage,image2',
+                filebrowserUploadUrl: "{{ route('ckeditor.upload') }}?_token={{ csrf_token() }}",
+                filebrowserUploadMethod: 'form',
+                // 🔥 H1 removed — allowed tags only
+                format_tags: 'p;h2;h3;h4;h5;h6',
+                toolbar: [{
+                        name: 'clipboard',
+                        items: ['Cut', 'Copy', 'Paste', 'Undo', 'Redo']
+                    }, {
+                        name: 'find',
+                        items: ['Find', 'Replace', 'SelectAll']
+                    },
+                    {
+                        name: 'insert',
+                        items: ['Image', 'Table', 'HorizontalRule']
+                    },
+                    {
+                        name: 'basicstyles',
+                        items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript',
+                            'RemoveFormat'
+                        ]
+                    },
+                    {
+                        name: 'paragraph',
+                        items: ['NumberedList', 'BulletedList', 'Blockquote', 'Indent', 'Outdent']
+                    },
+                    {
+                        name: 'align',
+                        items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+                    },
+                    {
+                        name: 'styles',
+                        items: ['Styles', 'Format', 'Font', 'FontSize']
+                    },
+                    {
+                        name: 'colors',
+                        items: ['TextColor', 'BGColor']
+                    },
+                    {
+                        name: 'tools',
+                        items: ['Maximize']
                     }
-                });
-                window.parent.CKEDITOR.tools.callFunction(1, 'image_url', 'success message');
-            } else {
-                console.error('CKEditor not loaded.');
-            }
-        });
-    </script>
+                ]
+            });
+
+            // Insert merge fields
+            CKEDITOR.instances.contentEditor.on('instanceReady', function() {
+                const addButton = document.querySelector('#add_field_button');
+                const mergerFieldSelect = document.querySelector('#mergerFieldSelect');
+
+                if (addButton && mergerFieldSelect) {
+                    addButton.addEventListener('click', function() {
+                        const selectedField = mergerFieldSelect.value;
+                        if (selectedField) {
+                            CKEDITOR.instances.contentEditor.insertText(' {' + selectedField +
+                                '} ');
+                            mergerFieldSelect.selectedIndex = 0;
+                        }
+                    });
+                }
+            });
+            window.parent.CKEDITOR.tools.callFunction(1, 'image_url', 'success message');
+        } else {
+            console.error('CKEditor not loaded.');
+        }
+    });
+</script>
 @endpush
