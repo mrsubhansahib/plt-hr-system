@@ -97,7 +97,7 @@
                                                             class="dropdown-item">Terminate
                                                         </button>
                                                     </li>
-                                                    @if (auth()->user()->role == 'super_admin')
+                                                    {{-- @if (auth()->user()->role == 'super_admin')
                                                         <li>
                                                             <button
                                                                 onclick="if(confirm('Are you sure you want to delete this record?')) { 
@@ -105,7 +105,7 @@
                                                                 class="dropdown-item">Delete
                                                             </button>
                                                         </li>
-                                                    @endif
+                                                    @endif --}}
                                                 </ul>
                                             </div>
                                         </td>
