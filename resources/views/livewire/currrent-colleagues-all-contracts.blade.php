@@ -8,8 +8,8 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-3 mb-3">
                                 <label for="to" class="form-label">Select Date</label>
-                                <input type="date" wire:model.defer ="date" class="form-control" placeholder="Select Date"
-                                    id="to">
+                                <input type="date" wire:model.defer ="date" class="form-control"
+                                    placeholder="Select Date" id="to">
                             </div>
                             <div class="col-md-1 mt-4  pt-1">
                                 <button class="btn btn-primary">Filter</button>
@@ -61,7 +61,6 @@
                             <tbody>
                                 @if ($colleagues !== [])
                                     @foreach ($colleagues as $colleague)
-                                      
                                         @foreach ($colleague->jobs as $job)
                                             <tr>
                                                 {{-- @dd($job) --}}
@@ -78,10 +77,12 @@
                                                     {{ $job->contract_type ?? 'N/A' }}
                                                 </td>
                                                 <td>
-                                                    {{ $colleague->contracted_from_date ?? 'Not Specified' }}
+                                                    {{ $colleague->contracted_from_date
+                                                        ? \Carbon\Carbon::parse($colleague->contracted_from_date)->format('d-m-Y')
+                                                        : 'Not Specified' }}
                                                 </td>
                                                 <td>
-                                                    {{ $job->start_date ?? 'N/A' }}
+                                                    {{ $job->start_date ? \Carbon\Carbon::parse($job->start_date)->format('d-m-Y') : 'N/A' }}
                                                 </td>
                                                 <td>
                                                     {{ $colleague->email ?? 'Not Specified' }}
