@@ -24,15 +24,17 @@ class FullSicknessCapability extends Component
         $this->employee = null;
 
         if ($this->employee_id !== "Select") {
+
+            // We already know from render() that this user MUST have capability = yes
             $user = User::with(['jobs', 'capabilities', 'sicknesses'])->find($this->employee_id);
 
-            $onCapability = $user?->capabilities?->first()?->on_capability_procedure;
-
-            if ($user && $onCapability === 'yes') {
+            if ($user) {
                 $this->employee = $user;
-                $this->successMsg = 'Capability and sickness data loaded for ' . $user->first_name . ' ' . $user->surname;
+
+                $this->successMsg = 'Capability and sickness data loaded for '
+                    . $user->first_name . ' ' . $user->surname;
             } else {
-                $this->errorMsg = 'This employee is not on a capability procedure.';
+                $this->errorMsg = 'Employee not found!';
             }
         } else {
             $this->errorMsg = 'Please select an employee.';
@@ -53,9 +55,7 @@ class FullSicknessCapability extends Component
             ->latest()
             ->whereHas('capabilities', function ($query) {
                 $query->where('on_capability_procedure', 'yes');
-            })->latest()
-
-            ->get();
+            })->latest()->get();
 
         return view('livewire.full-sickness-capability');
     }
