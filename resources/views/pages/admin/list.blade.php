@@ -20,10 +20,12 @@
                         <div>
                             <h4 class="py-2">User List</h4>
                         </div>
+                        @if (auth()->user()->role == 'super_admin')
                         <div>
                             <a href="{{ route('create.admin') }}"
                                 class="btn btn-primary"><strong>Create</strong><i data-feather="bookmark" class="ms-2"></i></a>
                         </div>
+                        @endif
                     </div>
                     <div class="table-responsive">
                         <table id="" class="table dataTableExample">
