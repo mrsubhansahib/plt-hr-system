@@ -45,8 +45,6 @@
                                             placeholder="Search Created At"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Updated At"></th>
-                                    <!-- <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Certification No"></th> -->
                                     <th></th> <!-- No search for Action column -->
                                 </tr>
                             </thead>

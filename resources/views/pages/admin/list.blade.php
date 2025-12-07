@@ -47,7 +47,6 @@
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
                                         <td>{{ ucfirst($user->role) }}</td>
-                                        {{-- <!-- <td>{{ $user->default_cost_center }}</td> --> --}}
                                         <td>{{ $user->email }}</td>
                                         @if (auth()->user()->role == 'super_admin')
                                             <td>

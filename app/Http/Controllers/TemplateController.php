@@ -79,7 +79,6 @@ class TemplateController extends Controller
         $template->training_info = $this->hasPlaceholder($content, [
             '{{ $training-',
         ]);
-        // dd($template);
         $template->save();
 
         return redirect()->route('show.templates')->with('success', 'Template created successfully.');
@@ -94,18 +93,6 @@ class TemplateController extends Controller
             }
         }
         return false;
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Template  $template
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Template $template)
-    {
-        //
     }
 
     /**

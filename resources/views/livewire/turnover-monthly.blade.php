@@ -16,7 +16,6 @@
                                 <input type="date" wire:model.defer="endDate" class="form-control"
                                     placeholder="Select Date" id="to">
                             </div>
-                            <!-- <div class="col-md-1"></div> -->
                             <div class="col-md-3 mb-3">
                                 <label for="facility" class="form-label">Select Facility</label>
                                 <select class="form-select" wire:model.defer="selected_facility" id="facility">
@@ -31,8 +30,6 @@
                                 <button class="btn btn-primary">Filter</button>
                             </div>
                             <div class="col-md-1"></div>
-
-                            <!-- <div class="col-md-5"></div> -->
                         </div>
                     </form>
                 </div>

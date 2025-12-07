@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class CapabilityController extends Controller
 {
-
-
     public function index()
     {
         $capabilities = Capability::with('user')->whereHas('user', function ($e) {
@@ -19,16 +17,12 @@ class CapabilityController extends Controller
         return view('pages.capability.list', compact('capabilities'));
     }
 
-
-
     public function create()
     {
         $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
         return view("pages.capability.create", compact('employees', 'dropdowns'));
     }
-
-
 
     public function store(Request $request)
     {
@@ -42,15 +36,6 @@ class CapabilityController extends Controller
         return redirect()->route('show.capabilities')->with('success', 'Capability created successfully.');
     }
 
-
-
-    public function show(Capability $Capability)
-    {
-        //
-    }
-
-
-
     public function edit(Request $request, $id)
     {
         $dropdowns = Dropdown::where('module_type', 'Capability')->orderBy('name')->get()->all();
@@ -59,8 +44,6 @@ class CapabilityController extends Controller
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
         return view("pages.capability.edit", compact('capability', 'employees', 'form_type', 'dropdowns'));
     }
-
-
 
     public function update(Request $request, $id)
     {

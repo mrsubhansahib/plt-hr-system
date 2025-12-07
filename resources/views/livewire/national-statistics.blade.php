@@ -6,7 +6,6 @@
                 <div class="card-body">
                     <form wire:submit.prevent="filter">
                         <div class="row justify-content-center">
-                            <!-- <div class="col-md-1"></div> -->
                             <div class="col-md-3 mb-3">
                                 <label for="date" class="form-label">Select Date</label>
                                 <input type="date" class="form-control" wire:model.defer="date" id="date">
@@ -15,8 +14,6 @@
                             <div class="col-md-2 mt-4 pt-1">
                                 <button class="btn btn-primary">Filter</button>
                             </div>
-
-                            <!-- <div class="col-md-5"></div> -->
                         </div>
                     </form>
                 </div>

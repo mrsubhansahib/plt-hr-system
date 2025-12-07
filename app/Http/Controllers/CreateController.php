@@ -16,8 +16,6 @@ use Illuminate\Http\Request;
 
 class CreateController extends Controller
 {
-
-
     public function jobCreate($id)
     {
         $dropdowns = Dropdown::where('module_type', 'Job')->orderBy('name')->get()->all();
@@ -25,6 +23,7 @@ class CreateController extends Controller
         $employee = User::where('id', $id)->where('role', 'employee')->where('status', 'active')->first();
         return view("pages.employee.detail.job", compact("employee", "user_id", 'dropdowns'));
     }
+
     public function jobStore(Request $request)
     {
         $request->validate([
@@ -51,8 +50,6 @@ class CreateController extends Controller
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Job created successfully.');
     }
-
-
     /*
 |--------------------------------------------------------------------------
 | disclosure tab create fuctoins
@@ -152,16 +149,7 @@ class CreateController extends Controller
     }
     public function trainingStore(Request $request)
     {
-        // $request->validate([
-        //     'user_id'                       => 'required',
-        //     'training_title'                => 'required',
-        //     'course_date'                   => 'required',
-        //     'renewal_date'                  => 'required',
-        //     'ihasco_training_sent'          => 'required',
-        //     'ihasco_training_complete'      => 'required',
-        // ]);
         Training::create($request->all());
-        // dd($request->all());
         session()->flash('active_tab', 'training-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Training created successfully.');
@@ -182,16 +170,7 @@ class CreateController extends Controller
     }
     public function disciplinaryStore(Request $request)
     {
-        // $request->validate([
-        //     'user_id'                           => 'required',
-        //     'reason_for_disciplinary'           => 'required',
-        //     'hearing_date'                      => 'required',
-        //     'outcome'                           => 'required',
-        //     'suspended'                         => 'required',
-        //     'date_suspended'                    => 'required',
-        // ]);
         Disciplinary::create($request->all());
-        // dd($request->all());
         session()->flash('active_tab', 'disciplinary-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Disciplinary created successfully.');
@@ -211,16 +190,7 @@ class CreateController extends Controller
     }
     public function latenessStore(Request $request)
     {
-        // $request->validate([
-        //     'user_id'                           => 'required',
-        //     'lateness_triggered'                => 'required',
-        //     'lateness_stage'                    => 'required',
-        //     'warning_level'                     => 'required',
-        //     'outcome'                           => 'required',
-        //     'review_date'                       => 'required',
-        // ]);
         Lateness::create($request->all());
-        // dd($request->all());
         session()->flash('active_tab', 'lateness-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Lateness created successfully.');

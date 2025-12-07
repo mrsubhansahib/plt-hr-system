@@ -17,16 +17,7 @@
                     <div>
                         <h4 class="py-2">Personal Details</h4>
                     </div>
-                    {{-- <div>
-                        <a href="{{ route('edit.employee', $user->id) }}" class="btn btn-primary"><strong
-                                class="me-1">Edit</strong><i data-feather="edit"></i></a>
-                    </div> --}}
                 </div>
-
-
-
-
-
                 <div class="my-4">
                     <div class="row mb-3">
                         <div class="col-md-3 mt-3">
@@ -135,10 +126,6 @@
                             <div>
                                 <h4 class="py-2">Job Details</h4>
                             </div>
-                            {{-- <div>
-                                <a href="{{ route('create.new.job', $user->id) }}"
-                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div> --}}
                         </div>
                         <div class="">
                             <table class="table table-striped detailTable dataTableExample">
@@ -153,7 +140,6 @@
                                         <th>Types of Contract</th>
                                         <th>Job Start Date</th>
                                         <th>Job Status</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -168,28 +154,6 @@
                                             <td>{{ $job->contract_type }}</td>
                                             <td>{{ $job->start_date }}</td>
                                             <td>{{ ucfirst($job->status) }}</td>
-                                            {{-- <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-link p-0" type="button"
-                                                        id="dropdownMenuButton-{{ $job->id }}"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <i data-feather="align-justify"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end"
-                                                        aria-labelledby="dropdownMenuButton-{{ $job->id }}">
-                                                        <li><a class="dropdown-item"
-                                                                href="{{ route('edit.job', ['id' => $job->id, 'form_type' => 'tab']) }}">Edit</a>
-                                                        </li>
-                                                        @if (auth()->user()->role == 'super_admin')
-                                                            <li>
-                                                                <button
-                                                                    onclick="if(confirm('Are you sure you want to delete this record?')) { window.location.href='{{ route('delete.job', $job->id) }}' }"
-                                                                    class="dropdown-item">Delete</button>
-                                                            </li>
-                                                        @endif
-                                                    </ul>
-                                                </div>
-                                            </td> --}}
                                         </tr>
                                     @endforeach
                                     <!-- Add your data here -->
@@ -205,10 +169,6 @@
                             <div>
                                 <h4 class="py-2">Disclosure Details</h4>
                             </div>
-                            {{-- <div>
-                                <a href="{{ route('create.new.disclosure', $user->id) }}"
-                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div> --}}
                         </div>
                         <div class="">
                             <table id="" class="table table-striped detailTable dataTableExample">
@@ -218,7 +178,6 @@
                                         <th>Surname</th>
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -231,31 +190,6 @@
                                                 <td>{{ $user->surname }}</td>
                                                 <td>{{ $disclosure->dbs_level }}</td>
                                                 <td>{{ $disclosure->certificate_no }}</td>
-                                                {{-- <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $disclosure->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i data-feather="align-justify"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton-{{ $disclosure->id }}">
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('edit.disclosure', ['id' => $disclosure->id, 'form_type' => 'tab']) }}">
-                                                                    Edit
-                                                                </a>
-                                                            </li>
-                                                            @if (auth()->user()->role == 'super_admin')
-                                                                <li>
-                                                                    <button
-                                                                        onclick="if(confirm('Are you sure you want to delete this disclosure?')) { window.location.href='{{ route('delete.disclosure', $disclosure->id) }}' }"
-                                                                        class="dropdown-item">Delete</button>
-                                                                </li>
-                                                            @endif
-                                                        </ul>
-                                                    </div>
-                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     @else
@@ -278,10 +212,6 @@
                             <div>
                                 <h4 class="py-2">Sickness Details</h4>
                             </div>
-                            {{-- <div>
-                                <a href="{{ route('create.new.sickness', $user->id) }}"
-                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div> --}}
                         </div>
                         <div class="">
                             <table id="" class="table table-striped detailTable dataTableExample">
@@ -292,7 +222,6 @@
                                         <th>Reason for Absence</th>
                                         <th>Date From</th>
                                         <th>Date To</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -304,29 +233,7 @@
                                                 <td>{{ $sickness->reason_for_absence }}</td>
                                                 <td>{{ $sickness->date_from }}</td>
                                                 <td>{{ $sickness->date_to }}</td>
-                                                {{-- <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $sickness->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i data-feather="align-justify"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton-{{ $sickness->id }}">
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('edit.sickness', ['id' => $sickness->id, 'form_type' => 'tab']) }}">Edit</a>
-                                                            </li>
-                                                            @if (auth()->user()->role == 'super_admin')
-                                                                <li>
-                                                                    <button
-                                                                        onclick="if(confirm('Are you sure you want to delete this sickness?')) { window.location.href='{{ route('delete.sickness', $sickness->id) }}' }"
-                                                                        class="dropdown-item">Delete</button>
-                                                                </li>
-                                                            @endif
-                                                        </ul>
-                                                    </div>
-                                                </td> --}}
+                                                
                                             </tr>
                                         @endforeach
                                     @else
@@ -345,10 +252,6 @@
                             <div>
                                 <h4 class="py-2">Capability Details</h4>
                             </div>
-                            {{-- <div>
-                                <a href="{{ route('create.new.capability', $user->id) }}"
-                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div> --}}
                         </div>
                         <div class="">
                             <table id="" class="table table-striped detailTable dataTableExample">
@@ -359,7 +262,6 @@
                                         <th>Stage</th>
                                         <th>Date</th>
                                         <th>Outcome</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -371,30 +273,6 @@
                                                 <td>{{ $capability->stage }}</td>
                                                 <td>{{ $capability->date }}</td>
                                                 <td>{{ $capability->outcome }}</td>
-                                                {{-- <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $capability->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i data-feather="align-justify"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton-{{ $capability->id }}">
-                                                            
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('edit.capability', ['id' => $capability->id, 'form_type' => 'tab']) }}">Edit</a>
-                                                            </li>
-                                                            @if (auth()->user()->role == 'super_admin')
-                                                                <li>
-                                                                    <button
-                                                                        onclick="if(confirm('Are you sure you want to delete this capability?')) { window.location.href='{{ route('delete.capability', $capability->id) }}' }"
-                                                                        class="dropdown-item">Delete</button>
-                                                                </li>
-                                                            @endif
-                                                        </ul>
-                                                    </div>
-                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     @else
@@ -413,10 +291,6 @@
                             <div>
                                 <h4 class="py-2">Training Details</h4>
                             </div>
-                            {{-- <div>
-                                <a href="{{ route('create.new.training', $user->id) }}"
-                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div> --}}
                         </div>
                         <div class="">
                             <table id="" class="table table-striped detailTable dataTableExample">
@@ -427,7 +301,6 @@
                                         <th>Training Title</th>
                                         <th>Course Date</th>
                                         <th>Renewal Date</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -439,30 +312,6 @@
                                                 <td>{{ $training->training_title }}</td>
                                                 <td>{{ $training->course_date }}</td>
                                                 <td>{{ $training->renewal_date }}</td>
-                                                {{-- <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $training->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i data-feather="align-justify"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton-{{ $training->id }}">
-                                                         
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('edit.training', ['id' => $training->id, 'form_type' => 'tab']) }}">Edit</a>
-                                                            </li>
-                                                            @if (auth()->user()->role == 'super_admin')
-                                                                <li>
-                                                                    <button
-                                                                        onclick="if(confirm('Are you sure you want to delete this training?')) { window.location.href='{{ route('delete.training', $training->id) }}' }"
-                                                                        class="dropdown-item">Delete</button>
-                                                                </li>
-                                                            @endif
-                                                        </ul>
-                                                    </div>
-                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     @else
@@ -481,10 +330,6 @@
                             <div>
                                 <h4 class="py-2">Disciplinary Details</h4>
                             </div>
-                            {{-- <div>
-                                <a href="{{ route('create.new.disciplinary', $user->id) }}"
-                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div> --}}
                         </div>
                         <div class="">
                             <table id="" class="table table-striped detailTable dataTableExample">
@@ -494,7 +339,6 @@
                                         <th>Surname</th>
                                         <th>Reason for Disciplinary</th>
                                         <th>Date of Hearing</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -505,30 +349,6 @@
                                                 <td>{{ $disciplinary->user->surname }}</td>
                                                 <td>{{ $disciplinary->reason_for_disciplinary }}</td>
                                                 <td>{{ $disciplinary->hearing_date }}</td>
-                                                {{-- <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $disciplinary->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i data-feather="align-justify"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton-{{ $disciplinary->id }}">
-
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('edit.disciplinary', ['id' => $disciplinary->id, 'form_type' => 'tab']) }}">Edit</a>
-                                                            </li>
-                                                            @if (auth()->user()->role == 'super_admin')
-                                                                <li>
-                                                                    <button
-                                                                        onclick="if(confirm('Are you sure you want to delete this disciplinary?')) { window.location.href='{{ route('delete.disciplinary', $disciplinary->id) }}' }"
-                                                                        class="dropdown-item">Delete</button>
-                                                                </li>
-                                                            @endif
-                                                        </ul>
-                                                    </div>
-                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     @else
@@ -547,10 +367,6 @@
                             <div>
                                 <h4 class="py-2">Lateness Details</h4>
                             </div>
-                            {{-- <div>
-                                <a href="{{ route('create.new.lateness', $user->id) }}"
-                                    class="btn btn-primary"><strong>New</strong><i data-feather="bookmark"></i></a>
-                            </div> --}}
                         </div>
                         <div class="">
                             <table id="" class="table table-striped detailTable dataTableExample">
@@ -560,7 +376,6 @@
                                         <th>Surname</th>
                                         <th>Lateness Triggered</th>
                                         <th>Lateness Stage</th>
-                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -571,36 +386,6 @@
                                                 <td>{{ $lateness->user->surname }}</td>
                                                 <td>{{ $lateness->lateness_triggered }}</td>
                                                 <td>{{ $lateness->lateness_stage }}</td>
-                                                {{-- <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-link p-0" type="button"
-                                                            id="dropdownMenuButton-{{ $lateness->id }}"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i data-feather="align-justify"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton-{{ $lateness->id }}">
-
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('edit.lateness', ['id' => $lateness->id, 'form_type' => 'tab']) }}">Edit</a>
-                                                            </li>
-                                                            @if (auth()->user()->role == 'super_admin')
-                                                                @if (auth()->user()->role == 'super_admin')
-                                                                @endif
-
-                                                                <li>
-                                                                    <button
-                                                                        onclick="if(confirm('Are you sure you want to delete this lateness?')) { window.location.href='{{ route('delete.lateness', $lateness->id) }}' }"
-                                                                        class="dropdown-item">Delete</button>
-                                                                </li>
-                                                            @endif
-                                                            @if (auth()->user()->role == 'super_admin')
-                                                            @endif
-
-                                                        </ul>
-                                                    </div>
-                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     @else

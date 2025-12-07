@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class LatenesController extends Controller
 {
-
-
     public function index()
     {
         $latenesses = lateness::with('user')->whereHas('user', function ($e) {
@@ -19,8 +17,6 @@ class LatenesController extends Controller
         return view("pages.lateness.list", compact("latenesses"));
     }
 
-
-
     public function create()
     {
         $dropdowns = Dropdown::where('module_type', 'Lateness')->orderBy('name')->get()->all();
@@ -28,30 +24,14 @@ class LatenesController extends Controller
         return view("pages.lateness.create", compact("employees", 'dropdowns'));
     }
 
-
-
     public function store(Request $request)
     {
         $request->validate([
             'user_id' => 'required',
-            // 'lateness_triggered'=> 'required',
-            // 'lateness_stage'=> 'required',
-            // 'warning_level'=> 'required',
-            // 'outcome'=> 'required',
-            // 'review_date'=> 'required',
         ]);
         $lateness = lateness::create($request->all());
         return redirect()->route('show.latenesses')->with('success', 'Lateness created successfully.');
     }
-
-
-
-    public function show(Lateness $Lateness)
-    {
-        //
-    }
-
-
 
     public function edit(Request $request, $id)
     {
@@ -66,13 +46,6 @@ class LatenesController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        // 'lateness_triggered'=> 'required',
-        // 'lateness_stage'=> 'required',
-        // 'warning_level'=> 'required',
-        // 'outcome'=> 'required',
-        // 'review_date'=> 'required',
-        // ]);
         $lateness = lateness::findOrFail($id);
         $lateness->update($request->all());
         if ($request->form_type == 'tab') {
@@ -84,8 +57,6 @@ class LatenesController extends Controller
                 ->with('success', 'Lateness updated successfully.');
         }
     }
-
-
 
     public function destroy($id)
     {

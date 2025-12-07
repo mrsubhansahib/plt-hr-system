@@ -77,10 +77,6 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="dropdownMenuButton-{{ $disclosure->id }}">
-                                                    {{-- <li>
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('detail.disclosure', $disclosure->id) }}">View</a>
-                                                    </li> --}}
                                                     <li>
                                                         <a class="dropdown-item"
                                                             href="{{ route('edit.disclosure', $disclosure->id) }}">Edit</a>

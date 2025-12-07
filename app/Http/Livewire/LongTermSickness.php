@@ -39,11 +39,8 @@ class LongTermSickness extends Component
 
         $start = Carbon::parse($this->start_date);
         $end = Carbon::parse($this->end_date);
-        // dd($start, $end);
         // Get users on capability
         $usersOnCapability = Capability::where('on_capability_procedure', 'yes')->pluck('user_id');
-        // dd($usersOnCapability);
-
         // Get sicknesses for those users, ordered by user and date
         $sicknesses = Sickness::with('user', 'user.jobs')
             ->whereIn('user_id', $usersOnCapability)
@@ -89,7 +86,6 @@ class LongTermSickness extends Component
                 }
             }
         }
-        // dd('here');
 
         if ($qualifiedUsers->isEmpty()) {
             $this->errorMsg = 'No long-term sickness records found in the selected date range.';

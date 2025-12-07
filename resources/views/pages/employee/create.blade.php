@@ -216,9 +216,6 @@
                                             <h4 class="py-2">Job Details</h4>
                                         </div>
                                         <div>
-                                            {{-- <a href="{{ route('show.temp.employees') }}" class="btn btn-primary">
-                                        <strong>List</strong><i data-feather="list" class="ms-2"></i>
-                                        </a> --}}
                                             <button type="button" class="btn btn-sm btn-success ms-2"
                                                 title="Add New Job" id="add-job"><i data-feather="plus"></i></button>
                                             <button type="button" class="btn btn-sm btn-danger  ms-2"

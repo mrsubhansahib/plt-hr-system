@@ -135,9 +135,6 @@ class EmployeeController extends Controller
             
         ));
 
-        // $user->update(['dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d')]);
-
-        // dd($user);
         if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
             $request->validate([
                 'title.*'             => 'required',
@@ -191,7 +188,6 @@ class EmployeeController extends Controller
     }
     public function reject_employee($id)
     {
-        // dd($id);
         $user = User::find($id);
         $user->update(['status' => 'rejected']);
         return redirect()->route('show.temp.employees')
@@ -242,7 +238,6 @@ class EmployeeController extends Controller
     }
     public function terminatedShow($id)
     {
-        // dd($id);
         $user = User::with([
             'jobs' => function ($query) {
                 $query->whereIn('status', ['terminated', 'active']);
@@ -257,7 +252,6 @@ class EmployeeController extends Controller
                 $query->orderBy('created_at', 'desc');
             },
         ])->find($id);
-        // dd($user);
         $hasDisclosure = $user->disclosures()->count();
         return view('pages.employee.show-terminated', compact('user', 'hasDisclosure'));
     }
@@ -282,7 +276,6 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $request->validate([
             'first_name'                => 'required',
             'surname'                   => 'required',

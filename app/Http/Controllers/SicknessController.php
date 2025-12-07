@@ -9,8 +9,6 @@ use Carbon\Carbon;
 
 class SicknessController extends Controller
 {
-
-
     public function index()
     {
         $sicknesses = Sickness::with('user')->whereHas('user', function ($e) {
@@ -19,15 +17,11 @@ class SicknessController extends Controller
         return view("pages.sickness.list", compact("sicknesses"));
     }
 
-
-
     public function create()
     {
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
         return view("pages.sickness.create", compact("employees"));
     }
-
-
 
     public function store(Request $request)
     {
@@ -36,7 +30,6 @@ class SicknessController extends Controller
             'reason_for_absence'    => 'required',
             'date_from'             => 'required',
         ]);
-        // dd($request->all());    
         $Sickness = Sickness::create($request->all());
         $Sickness->update(['date_from' => Carbon::createFromFormat('d-m-Y', $request->date_from)->format('Y-m-d')]);
         if ($request->date_to) {
@@ -45,16 +38,6 @@ class SicknessController extends Controller
         return redirect()->route('show.sicknesses')->with('success', 'Sickness created successfully.');
     }
 
-
-
-    public function show(Sickness $Sickness)
-    {
-        // return view("pages.sickness.show");
-
-    }
-
-
-
     public function edit(Request $request, $id)
     {
         $form_type = $request->form_type;
@@ -62,8 +45,6 @@ class SicknessController extends Controller
         $sickness = sickness::with('user')->findOrFail($id);
         return view("pages.sickness.edit", compact("sickness", "employees", 'form_type'));
     }
-
-
 
     public function update(Request $request, $id)
     {
@@ -87,8 +68,6 @@ class SicknessController extends Controller
                 ->with('success', 'Sickness edited successfully.');
         }
     }
-
-
 
     public function destroy($id)
     {

@@ -245,9 +245,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/hours-by-site', function () {
             return view('pages.reports.hours-by-site');
         })->name('reports.hours-by-site');
-        // Route::get('/colleagues', function () {
-        //     return view('pages.reports.colleagues');
-        // })->name('reports.colleagues');
         Route::get('/colleague-terms', function () {
             return view('pages.reports.colleagues-terms');
         })->name('reports.colleague-terms');

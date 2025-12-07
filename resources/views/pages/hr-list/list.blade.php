@@ -24,7 +24,6 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Surname</th>
-                                    {{-- <th>Role</th> --}}
                                     <th>Actions</th>
                                 </tr>
                                 <tr class="filters">
@@ -32,8 +31,6 @@
                                             placeholder="Search First Name"></th>
                                     <th><input type="text" class="form-control form-control-sm"
                                             placeholder="Search Surname"></th>
-                                    {{-- <th><input type="text" class="form-control form-control-sm"
-                                            placeholder="Search Role"></th> --}}
                                     <th></th> <!-- No search for Actions column -->
                                 </tr>
                             </thead>
@@ -42,7 +39,6 @@
                                     <tr>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->surname }}</td>
-                                        {{-- <td>{{ $user->role }}</td> <!-- Displaying Role --> --}}
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-link p-0" type="button"

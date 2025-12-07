@@ -8,11 +8,8 @@ use Illuminate\Http\Request;
 
 class HrController extends Controller
 {
-
-
     public function index()
     {
-        // $users = User::where('role', 'employee')->where('status', 'active')->get();
         // only show those employes whoses atleast 1 fiels is empty
         $users = User::where('role', 'employee')->where('status', 'active')->where(function ($query) {
             $query->whereNull('middle_name')
@@ -52,28 +49,6 @@ class HrController extends Controller
         return view('pages.hr-list.list', compact('users'));
     }
 
-
-    public function create()
-    {
-        //
-    }
-
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
-
     public function edit($id)
     {
         $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
@@ -81,11 +56,8 @@ class HrController extends Controller
         return view('pages.hr-list.edit', compact('user', 'dropdowns'));
     }
 
-
-
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $user = User::findOrFail($id);
         $user->update($request->all());
         if ($request->has('hr_checklist_employee_detail')) {
@@ -93,13 +65,5 @@ class HrController extends Controller
             return redirect()->back()->with('success', 'Employee edited successfully.');
         }
         return redirect()->route('hr_list')->with('success', 'Employee edited successfully.');
-    }
-
-
-
-
-    public function destroy($id)
-    {
-        //
     }
 }

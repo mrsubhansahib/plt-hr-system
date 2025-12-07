@@ -22,11 +22,6 @@
                                 class="me-1">Edit</strong><i data-feather="edit"></i></a>
                     </div>
                 </div>
-
-
-
-
-
                 <div class="my-4">
                     <div class="row my-3">
                         <div class="col-md-4 my-2">
@@ -116,11 +111,6 @@
 
                 </div>
 
-
-
-
-
-
                 <hr>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
@@ -166,41 +156,12 @@
                             type="button" role="tab" aria-controls="notes-tab-pane"
                             aria-selected="false">Notes</button>
                     </li>
-                    {{-- @if (!empty($user->home_tel) &&
-    !empty($user->address2) &&
-    !empty($user->address3) &&
-    !empty($user->disability) &&
-    !empty($user->emergency_2_name) &&
-    !empty($user->emergency_2_ph_no) &&
-    !empty($user->emergency_2_home_ph) &&
-    !empty($user->emergency_2_relation) &&
-    !empty($user->contracted_from_date) &&
-    !empty($user->termination_date) &&
-    !empty($user->reason_termination) &&
-    !empty($user->handbook_sent) &&
-    !empty($user->medical_form_returned) &&
-    !empty($user->new_entrant_form_returned) &&
-    !empty($user->confidentiality_statement_returned) &&
-    !empty($user->work_document_received) &&
-    !empty($user->qualifications_checked) &&
-    !empty($user->references_requested) &&
-    !empty($user->references_returned) &&
-    !empty($user->payroll_informed) &&
-    !empty($user->probation_complete) &&
-    !empty($user->equipment_required) &&
-    !empty($user->equipment_ordered) &&
-    !empty($user->p45) &&
-    !empty($user->employee_pack_sent) &&
-    !empty($user->termination_form_to_payroll) &&
-    !empty($user->casual_holiday_pay) &&
-    !empty($user->notes))
-                    @else --}}
+                   
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="hr-checklist-tab" data-bs-toggle="tab"
                             data-bs-target="#hr-checklist-tab-pane" type="button" role="tab"
                             aria-controls="hr-checklist-tab-pane" aria-selected="false">HR Checklist</button>
                     </li>
-                    {{-- @endif --}}
                 </ul>
                 <!-- Static Tab Panes -->
                 <div class="tab-content" id="myTabContent">
@@ -326,8 +287,6 @@
                             <table id="" class="table table-striped detailTable dataTableExampleDetail">
                                 <thead>
                                     <tr>
-                                        {{-- <th>First Name</th>
-                                        <th>Surname</th> --}}
                                         <th>DBS Level</th>
                                         <th>Certification No</th>
                                         <th>Action</th>
@@ -339,8 +298,6 @@
                                         @foreach ($user->disclosures->sortByDesc('id') as $index => $disclosure)
                                             <!-- Loop through each disclosure -->
                                             <tr>
-                                                {{-- <td>{{ $user->first_name }}</td>
-                                                <td>{{ $user->surname }}</td> --}}
                                                 <td>{{ $disclosure->dbs_level }}</td>
                                                 <td>{{ $disclosure->certificate_no ?? 'N/A' }}</td>
                                                 <td>
@@ -555,10 +512,6 @@
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="dropdownMenuButton-{{ $training->id }}">
-                                                            {{-- <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('detail.training', $training->id) }}">View</a>
-                                                        </li> --}}
                                                             <li>
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('edit.training', ['id' => $training->id, 'form_type' => 'tab']) }}">Edit</a>
@@ -764,108 +717,24 @@
                             <form class="forms-sample" action="{{ route('update.hr_list', $user->id) }}" method="POST">
                                 @csrf
                                 <div class="row mb-3">
-                                    {{-- @if (empty($user->home_tel)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Home Tel</label>
-                                        <input class="form-control" type="text" name="home_tel"
-                                            value="{{ $user->home_tel }}" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->address2)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Address 2</label>
-                                        <input class="form-control" type="text" name="address2"
-                                            value="{{ $user->address2 }}" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->address3)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Address 3</label>
-                                        <input class="form-control" type="text" name="address3"
-                                            value="{{ $user->address3 }}" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->disability)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Disability</label>
-                                        <select class="form-control form-select" value="{{ $user->disability }}"
-                                            name="disability">
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
-                                        </select>
-                                    </div> --}}
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->emergency_2_name)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Emergency Contact 2 Name</label>
-                                        <input class="form-control" type="text" value="{{ $user->emergency_2_name }}"
-                                            name="emergency_2_name" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->emergency_2_ph_no)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Emergency Contact 2 Mobile</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            value="{{ $user->emergency_2_ph_no }}" name="emergency_2_ph_no" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->emergency_2_home_ph)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Emergency Contact 2 Home Number</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            value="{{ $user->emergency_2_home_ph }}" name="emergency_2_home_ph" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->emergency_2_relation)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Emergency Contact 2 Relationship</label>
-                                        <input class="form-control" type="text"
-                                            value="{{ $user->emergency_2_relation }}" name="emergency_2_relation" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->emergency_2_ph_no)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Emergency Contact 2 Mobile</label>
-                                        <input class="form-control" type="number" placeholder="phone number"
-                                            value="{{ $user->emergency_2_ph_no }}" name="emergency_2_ph_no" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->emergency_2_relation)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Emergency Contact 2 Relationship</label>
-                                        <input class="form-control" type="text"
-                                            value="{{ $user->emergency_2_relation }}" name="emergency_2_relation" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->contracted_from_date)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Contracted From Date</label>
                                         <input class="form-control datepicker" type="text" placeholder="Select Date"
                                             value="{{ $user->contracted_from_date }}" name="contracted_from_date" />
                                     </div>
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->termination_date)) --}}
+                                    
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employment Termination Date</label>
                                         <input class="form-control datepicker" type="text" placeholder="Select Date"
                                             value="{{ $user->termination_date }}" name="termination_date" />
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->reason_termination)) --}}
+                                    
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Reason for Termination</label>
                                         <input class="form-control" type="text"
                                             value="{{ $user->reason_termination }}" name="reason_termination" />
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->handbook_sent)) --}}
+                                    
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Handbook Sent</label>
                                         <select class="form-control form-select" name="handbook_sent">
@@ -876,8 +745,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->medical_form_returned)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Medical Form Returned</label>
                                         <select class="form-control form-select" name="medical_form_returned">
@@ -891,9 +758,6 @@
                                             </option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->new_entrant_form_returned)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">New Entrant Form Returned</label>
                                         <select class="form-control form-select" name="new_entrant_form_returned">
@@ -905,8 +769,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->confidentiality_statement_returned)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Confidentiality Statement</label>
                                         <select class="form-control form-select"
@@ -919,9 +781,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->work_document_received)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Work Document Received</label>
                                         <select class="form-control form-select" name="work_document_received">
@@ -932,8 +791,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->qualifications_checked)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Qualifications Checked</label>
                                         <select class="form-control form-select" name="qualifications_checked">
@@ -945,9 +802,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->references_requested)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">References Requested</label>
                                         <select class="form-control form-select" name="references_requested">
@@ -958,8 +812,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->references_returned)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">References Returned</label>
                                         <select class="form-control form-select" name="references_returned">
@@ -970,9 +822,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->payroll_informed)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Payroll Informed</label>
                                         <select class="form-control form-select" name="payroll_informed">
@@ -983,9 +832,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->probation_complete)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Probation Complete</label>
                                         <select class="form-control form-select" name="probation_complete">
@@ -999,8 +845,6 @@
                                                 Required</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->equipment_required)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Equipment Required</label>
                                         <select class="form-control form-select" name="equipment_required">
@@ -1011,9 +855,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->equipment_ordered)) --}}
                                     @php
                                         $equipmentOptions = collect($dropdowns)
                                             ->where('module_type', 'User')
@@ -1031,8 +872,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->p45)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">P45 / Tax Form Received</label>
                                         <select class="form-control form-select" name="p45">
@@ -1043,9 +882,6 @@
                                             </option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->employee_pack_sent)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Employee Pack Sent</label>
                                         <select class="form-control form-select" name="employee_pack_sent">
@@ -1056,9 +892,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->termination_form_to_payroll)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Termination Form to Payroll</label>
                                         <select class="form-control form-select" name="termination_form_to_payroll">
@@ -1070,9 +903,6 @@
                                                 No</option>
                                         </select>
                                     </div>
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->casual_holiday_pay)) --}}
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">Casual Holiday Pay</label>
                                         <select class="form-control form-select" name="casual_holiday_pay">
@@ -1083,16 +913,7 @@
                                         </select>
                                     </div>
 
-                                    {{-- @endif --}}
-                                    {{-- @if (empty($user->default_cost_center)) --}}
-                                    {{-- <div class="col-md-3 mt-3">
-                                        <label class="form-label">Cost Centre </label>
-                                        <input class="form-control" type="text"
-                                            value="{{ $user->default_cost_center }}" name="default_cost_center" />
-                                    </div> --}}
-                                    {{-- @endif --}}
-
-                                    {{-- @if (empty($user->notes)) --}}
+                                    
                                     <div class="col-md-3 mt-3">
                                         <label class="form-label">IHASCO Training Sent</label>
                                         <select class="form-control form-select" name="ihasco_training_sent">
