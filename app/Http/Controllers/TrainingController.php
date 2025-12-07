@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class TrainingController extends Controller
 {
-    
-
     public function index()
     {
         $trainings = Training::with('user')->whereHas('user', function ($e) {
@@ -18,8 +16,6 @@ class TrainingController extends Controller
         })->latest()->get();
         return view('pages.training.list', compact('trainings'));
     }
-
-    
 
     public function create()
     {
@@ -35,25 +31,11 @@ class TrainingController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            // 'training_title'             => 'required',
-            // 'course_date'                => 'required',
-            // 'renewal_date'               => 'required',
-            // 'ihasco_training_sent'       => 'required',
-            // 'ihasco_training_complete'   => 'required',
         ]);
         Training::create($request->all());
         return redirect()->route('show.trainings')->with('success', 'Training created successfully.');
     }
-
     
-
-    public function show(Training $Training)
-    {
-        //
-    }
-
-    
-
     public function edit(Request $request, $id)
     {
         $dropdowns = Dropdown::where('module_type', 'Training')->orderBy('name')->get()->all();
@@ -63,17 +45,8 @@ class TrainingController extends Controller
         return view('pages.training.edit', compact('training', 'employees' ,'form_type', 'dropdowns'));
     }
 
-    
-
     public function update(Request $request, $id)
     {
-        $request->validate([
-            // 'training_title'             => 'required',
-            // 'course_date'                => 'required',
-            // 'renewal_date'               => 'required',
-            // 'ihasco_training_sent'       => 'required',
-            // 'ihasco_training_complete'   => 'required',
-        ]);
         $training = Training::findOrFail($id);
         $training->update($request->all());
         if ($request->form_type == 'tab') {
@@ -84,8 +57,6 @@ class TrainingController extends Controller
         return redirect()->route('show.trainings')->with('success', 'Training edited successfully.');
         }
     }
-
-    
 
     public function destroy($id)
     {

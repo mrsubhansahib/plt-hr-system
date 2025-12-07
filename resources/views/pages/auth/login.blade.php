@@ -34,23 +34,11 @@
                     <div class="text-danger">{{ $message }}</div>
                   @enderror 
                 </div>
-                {{-- <div class="form-check mb-3">
-                  <input type="checkbox" class="form-check-input" id="authCheck">
-                  <label class="form-check-label" for="authCheck">
-                    Remember me
-                  </label>
-                </div> --}}
                 <div>
                   <div class="d-flex justify-content-center">
-
                     <button class="btn btn-primary w-100">Login</button>
                   </div>
-                  {{-- <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
-                    <i class="btn-icon-prepend" data-feather="twitter"></i>
-                    Login with twitter
-                  </button> --}}
                 </div>
-                {{-- <a href="{{ url('/auth/register') }}" class="d-block mt-3 text-muted">Not a user? Sign up</a> --}}
               </form>
             </div>
           </div>

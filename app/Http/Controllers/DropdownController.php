@@ -113,8 +113,6 @@ class DropdownController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        // dd(123);
         // Validate the input
         $request->validate([
             'module_type' => 'required|string',

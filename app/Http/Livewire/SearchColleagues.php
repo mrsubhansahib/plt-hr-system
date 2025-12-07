@@ -26,7 +26,6 @@ class SearchColleagues extends Component
         }
 
         $query = User::query()->where('role', 'employee');
-        // dd($query->toSql());
         // Status filter
         if ($this->status !== "Select") {
             if ($this->status === "active") {
@@ -99,8 +98,6 @@ class SearchColleagues extends Component
     {
         // Initialize default values for the properties
         $this->status = 'Select'; // Default status
-        // $this->start_date = now()->subMonth()->toDateString(); // Default start date (1 month ago)
-        // $this->end_date = now()->toDateString(); // Default end date (today)
     }
     public function render()
     {

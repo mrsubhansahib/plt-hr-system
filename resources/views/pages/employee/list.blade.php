@@ -97,15 +97,6 @@
                                                             class="dropdown-item">Terminate
                                                         </button>
                                                     </li>
-                                                    {{-- @if (auth()->user()->role == 'super_admin')
-                                                        <li>
-                                                            <button
-                                                                onclick="if(confirm('Are you sure you want to delete this record?')) { 
-                                                    window.location.href='{{ route('delete.employee', $user->id) }}' }"
-                                                                class="dropdown-item">Delete
-                                                            </button>
-                                                        </li>
-                                                    @endif --}}
                                                 </ul>
                                             </div>
                                         </td>

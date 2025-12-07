@@ -59,7 +59,6 @@
                             <tbody>
                                 @forelse ($sickUsers as $user)
                                     <tr>
-                                        {{-- @dd($user) --}}
                                         <td>{{ $user->first_name . ' ' . $user->surname }}</td>
                                         <td>{{ $user->email ?? 'N/A' }}</td>
                                         <td>

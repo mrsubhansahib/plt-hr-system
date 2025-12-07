@@ -16,10 +16,6 @@
                         <div>
                             <h4 class="py-2">Add New Dropdown</h4>
                         </div>
-                        {{-- <div>
-                            <a href="" class="btn btn-primary"><strong>List</strong><i
-                                    data-feather="list" class="ms-2"></i></a>
-                        </div> --}}
                     </div>
                     <hr>
                     <form class="forms-sample" action="{{ route('store.dropdown') }}" method="POST">
@@ -48,7 +44,6 @@
                                     <option value="Facility">Facility</option>
                                     <option value="Title">Title</option>
                                     <option value="Contract Type">Contract Type</option>
-                                    <!-- <option value="Equipment Required">Equipment Required</option> -->
                                     <option value="Capability Stage">Capability Stage</option>
                                     <option value="Lateness Stage">Lateness Stage</option>
                                     <option value="Training Course Titles">Training Course Titles</option>

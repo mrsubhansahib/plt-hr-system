@@ -41,7 +41,6 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'template_id' => 'required|exists:templates,id',
             'user_id' => 'required|exists:users,id',
@@ -50,7 +49,6 @@ class DocumentController extends Controller
         $content = Blade::render($template->content, [
             'user' => User::find($request->user_id),
         ]);
-        // dd($content);
         Document::create(
             [
                 'template_title' => $template->title,

@@ -63,7 +63,6 @@
                                     @foreach ($colleagues as $colleague)
                                         @foreach ($colleague->jobs as $job)
                                             <tr>
-                                                {{-- @dd($job) --}}
                                                 <td>{{ $colleague->first_name }}</td>
                                                 <td>{{ $colleague->surname }}</td>
                                                 {{-- Check if the main job exists and is active --}}

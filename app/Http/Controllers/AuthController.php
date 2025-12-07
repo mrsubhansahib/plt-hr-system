@@ -16,14 +16,6 @@ class AuthController extends Controller
         return view('pages.auth.login');
     }
 
-
-
-    public function create()
-    {
-        //
-    }
-
-
     public function authenticate(Request $request)
     {
         $data = $request->validate([
@@ -44,7 +36,6 @@ class AuthController extends Controller
         }
     }
 
-
     public function logout(Request $request)
     {
         auth()->logout();
@@ -57,24 +48,5 @@ class AuthController extends Controller
         $total_employees_left = User::where('role', 'employee')->where('status', 'left')->count();
         $new_entrants = User::where('role', 'employee')->where('status', 'pending')->count();
         return view('dashboard', compact('total_employees', 'total_admins', 'total_employees_left' , 'new_entrants'));
-    }
-
-
-
-    public function edit(Auth $auth)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Auth $auth)
-    {
-        //
-    }
-
-
-    public function destroy(Auth $auth)
-    {
-        //
     }
 }

@@ -80,28 +80,6 @@
                                         value="{{ $job->facility ? $job->facility : 'N/A' }}" disabled>
                                 </div>
                             @endif
-                            {{-- <div class="col-3 my-2">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control mt-2" id="email"
-                                    value="{{ $employee->email }}" disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label for="dob">DOB</label>
-                                <input type="text" class="form-control mt-2" id="dob"
-                                    value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $employee->dob)->format('d-m-Y') }}"
-                                    disabled>
-                            </div>
-
-                            <div class="col-3 my-2">
-                                <label for="age">Age</label>
-                                <input type="text" class="form-control mt-2" id="age"
-                                    value="{{ $employee->age }}" disabled>
-                            </div>
-                            <div class="col-3 my-2">
-                                <label for="mobile_tel">Mobile No</label>
-                                <input type="text" class="form-control mt-2" id="mobile_tel"
-                                    value="{{ $employee->mobile_tel ?? 'Not Entered' }}" disabled>
-                            </div> --}}
                             <!-- Emergency Contact -->
                             <div class="col-3 mt-3">
                                 <label class="form-label">Emergency Contact 1 Name </label>
