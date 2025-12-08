@@ -46,6 +46,8 @@ class DisciplinaryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+        ]);
         $disciplinary = disciplinary::findOrFail($id);
         $disciplinary->update($request->all());
         if ($request->form_type == 'tab') {

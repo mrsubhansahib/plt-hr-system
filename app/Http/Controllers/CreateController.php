@@ -71,7 +71,6 @@ class CreateController extends Controller
             'contract_type'             => 'required',
         ]);
         Disclosure::create($request->all());
-        // dd($request->all());
         session()->flash('active_tab', 'disclosure-tab');
         return redirect()->route('detail.employee', $request->user_id)
             ->with('success', 'Disclosure created successfully.');

@@ -77,22 +77,23 @@ class EmployeeController extends Controller
     {
 
         $validatedData = $request->validate([
-            'first_name' => 'required',
-            'surname' => 'required',
-            'preferred_name' => 'required',
-            'dob' => 'required',
-            'age' => 'required',
-            'gender' => 'required',
-            'ethnicity' => 'required',
-            'address1' => 'required',
-            'town' => 'required',
-            'post_code' => 'required',
-            'email' => 'required',
+            'first_name'        => 'required',
+            'middle_name'       => 'nullable',
+            'surname'           => 'required',
+            'preferred_name'    => 'required',
+            'dob'               => 'required',
+            'age'               => 'required',
+            'gender'            => 'required',
+            'ethnicity'         => 'required',
+            'address1'          => 'required',
+            'town'              => 'required',
+            'post_code'         => 'required',
+            'email'             => 'required',
             'commencement_date' => 'required',
-            'ni_number' => 'required',
+            'ni_number'         => 'required',
             'default_cost_center' => 'required',
-            'salaried' => 'required',
-            'emergency_1_name' => 'required',
+            'salaried'          => 'required',
+            'emergency_1_name'  => 'required',
             'emergency_1_ph_no' => 'required',
             'emergency_1_relation' => 'required',
         ]);
@@ -134,7 +135,6 @@ class EmployeeController extends Controller
             ] // overwrite with formatted dob
             
         ));
-
         if ($request->has('title') && is_array($request->title) && count($request->title) > 0) {
             $request->validate([
                 'title.*'             => 'required',
@@ -156,21 +156,21 @@ class EmployeeController extends Controller
                     : null;
 
                 $job = Job::create([
-                    'user_id' => $user->id,
-                    'title' => $title,
-                    'main_job' => $request->main_job[$index] ?? 'no',
-                    'facility' => $request->facility[$index],
-                    'cost_center' => $request->cost_center[$index] ?? null,
-                    'start_date' => $startDate,
-                    'rate_of_pay' => $request->rate_of_pay[$index],
-                    'pay_frequency' => $request->pay_frequency[$index],
-                    'number_of_hours' => $request->number_of_hours[$index],
-                    'contract_type' => $request->contract_type[$index],
-                    'contract_returned' => $request->contract_returned[$index] ?? null,
-                    'jd_returned' => $request->jd_returned[$index] ?? null,
-                    'dbs_required' => $request->dbs_required[$index],
-                    'notes' => $request->notes[$index] ?? null,
-                    'termination_date' => $terminationDate,
+                    'user_id'               => $user->id,
+                    'title'                 => $title,
+                    'main_job'              => $request->main_job[$index] ?? 'no',
+                    'facility'              => $request->facility[$index],
+                    'cost_center'           => $request->cost_center[$index] ?? null,
+                    'start_date'            => $startDate,
+                    'rate_of_pay'           => $request->rate_of_pay[$index],
+                    'pay_frequency'         => $request->pay_frequency[$index],
+                    'number_of_hours'       => $request->number_of_hours[$index],
+                    'contract_type'         => $request->contract_type[$index],
+                    'contract_returned'     => $request->contract_returned[$index] ?? null,
+                    'jd_returned'           => $request->jd_returned[$index] ?? null,
+                    'dbs_required'          => $request->dbs_required[$index],
+                    'notes'                 => $request->notes[$index] ?? null,
+                    'termination_date'      => $terminationDate,
                 ]);
             }
         }

@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('template_id')->constrained();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('template_title');
             $table->string('title');

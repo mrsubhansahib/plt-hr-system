@@ -21,7 +21,7 @@ class HrController extends Controller
                 ->orWhereNull('emergency_2_ph_no')
                 ->orWhereNull('emergency_2_home_ph')
                 ->orWhereNull('emergency_2_relation')
-            ->orWhereNull('emergency_2_ph_no')
+                ->orWhereNull('emergency_2_ph_no')
                 ->orWhereNull('emergency_2_relation')
                 ->orWhereNull('contracted_from_date')
                 ->orWhereNull('termination_date')
@@ -48,7 +48,6 @@ class HrController extends Controller
 
         return view('pages.hr-list.list', compact('users'));
     }
-
     public function edit($id)
     {
         $dropdowns = Dropdown::where('module_type', 'User')->orderBy('name')->get()->all();
@@ -61,7 +60,7 @@ class HrController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
         if ($request->has('hr_checklist_employee_detail')) {
-        session()->flash('active_tab', 'hr-checklist-tab');
+            session()->flash('active_tab', 'hr-checklist-tab');
             return redirect()->back()->with('success', 'Employee edited successfully.');
         }
         return redirect()->route('hr_list')->with('success', 'Employee edited successfully.');
