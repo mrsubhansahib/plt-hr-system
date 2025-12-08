@@ -19,30 +19,31 @@
                 </a>
             </li>
 
+
             {{-- admin added by haider --}}
             @if (auth()->user()->role !== 'manager')
-                <li class="nav-item {{ active_class(['admin/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#Admin" role="button"
-                        aria-expanded="{{ is_active_route(['admin/*']) }}" aria-controls="Admin">
-                        <i class="link-icon" data-feather="user"></i>
-                        <span class="link-title">Users</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['admin/*']) }}" id="Admin">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.admins') }}"
-                                    class="nav-link {{ active_class(['admin/list']) }}">List</a>
-                            </li>
-                            @if (auth()->user()->role == 'super_admin')
-                                <li class="nav-item">
-                                    <a href="{{ url('/admin/create') }}"
-                                        class="nav-link {{ active_class(['admin/create']) }}">Create</a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                </li>
+            <li class="nav-item {{ active_class(['admin/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Admin" role="button"
+                    aria-expanded="{{ is_active_route(['admin/*']) }}" aria-controls="Admin">
+                    <i class="link-icon" data-feather="user"></i>
+                    <span class="link-title">Admins / Managers</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['admin/*']) }}" id="Admin">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.admins') }}"
+                                class="nav-link {{ active_class(['admin/list']) }}">List</a>
+                        </li>
+                        @if (auth()->user()->role == 'super_admin')
+                        <li class="nav-item">
+                            <a href="{{ url('/admin/create') }}"
+                                class="nav-link {{ active_class(['admin/create']) }}">Create</a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
             @endif
             <li class="nav-item {{ active_class(['employee/temp/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#TempEmployee" role="button"
@@ -105,225 +106,225 @@
                 </div>
             </li>
             @if (auth()->user()->role !== 'manager')
-                <li class="nav-item {{ active_class(['employee/list']) }}">
-                    <a href="{{ route('show.employees') }}" class="nav-link">
-                        <i class="link-icon" data-feather="user-check"></i>
-                        <span class="link-title">Employees</span>
-                    </a>
-                </li>
-                <li class="nav-item {{ active_class(['employee/terminated/list']) }}">
-                    <a href="{{ route('show.left.employees') }}" class="nav-link">
-                        <i class="link-icon" data-feather="user-x"></i>
-                        <span class="link-title">Terminated</span>
-                    </a>
-                </li>
-                {{-- Changes --}}
-                <li class="nav-item {{ active_class(['activities/list']) }}">
-                    <a href="{{ route('logs.index') }}" class="nav-link">
-                        <i class="link-icon" data-feather="refresh-cw"></i>
-                        <span class="link-title">Activities</span>
-                    </a>
-                </li>
-                {{-- Job added by Wasi --}}
-                <li class="nav-item {{ active_class(['job/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#Jobs" role="button"
-                        aria-expanded="{{ is_active_route(['job/*']) }}" aria-controls="Jobs">
-                        <i class="link-icon" data-feather="briefcase"></i>
-                        <span class="link-title">Job</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['job/*']) }}" id="Jobs">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.jobs') }}"
-                                    class="nav-link {{ active_class(['job/list']) }}">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('create.job') }}"
-                                    class="nav-link {{ active_class(['job/create']) }}">Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            <li class="nav-item {{ active_class(['employee/list']) }}">
+                <a href="{{ route('show.employees') }}" class="nav-link">
+                    <i class="link-icon" data-feather="user-check"></i>
+                    <span class="link-title">Employees</span>
+                </a>
+            </li>
+            <li class="nav-item {{ active_class(['employee/terminated/list']) }}">
+                <a href="{{ route('show.left.employees') }}" class="nav-link">
+                    <i class="link-icon" data-feather="user-x"></i>
+                    <span class="link-title">Terminated</span>
+                </a>
+            </li>
+            {{-- Changes --}}
+            <li class="nav-item {{ active_class(['activities/list']) }}">
+                <a href="{{ route('logs.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="refresh-cw"></i>
+                    <span class="link-title">Activities</span>
+                </a>
+            </li>
+            {{-- Job added by Wasi --}}
+            <li class="nav-item {{ active_class(['job/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Jobs" role="button"
+                    aria-expanded="{{ is_active_route(['job/*']) }}" aria-controls="Jobs">
+                    <i class="link-icon" data-feather="briefcase"></i>
+                    <span class="link-title">Job</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['job/*']) }}" id="Jobs">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.jobs') }}"
+                                class="nav-link {{ active_class(['job/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.job') }}"
+                                class="nav-link {{ active_class(['job/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-                {{-- Disclosure Section --}}
-                <li class="nav-item {{ active_class(['disclosure/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#Disclosures" role="button"
-                        aria-expanded="{{ is_active_route(['disclosure/*']) }}" aria-controls="Disclosures">
-                        <i class="link-icon" data-feather="file-text"></i>
-                        <span class="link-title">Disclosure</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['disclosure/*']) }}" id="Disclosures">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.disclosures') }}"
-                                    class="nav-link {{ active_class(['disclosure/list']) }}">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('create.disclosure') }}"
-                                    class="nav-link {{ active_class(['disclosure/create']) }}">Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            {{-- Disclosure Section --}}
+            <li class="nav-item {{ active_class(['disclosure/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Disclosures" role="button"
+                    aria-expanded="{{ is_active_route(['disclosure/*']) }}" aria-controls="Disclosures">
+                    <i class="link-icon" data-feather="file-text"></i>
+                    <span class="link-title">Disclosure</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['disclosure/*']) }}" id="Disclosures">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.disclosures') }}"
+                                class="nav-link {{ active_class(['disclosure/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.disclosure') }}"
+                                class="nav-link {{ active_class(['disclosure/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-                {{-- sickness Section --}}
-                <li class="nav-item {{ active_class(['sickness/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#sickness" role="button"
-                        aria-expanded="{{ is_active_route(['sickness/*']) }}" aria-controls="sickness">
-                        <i class="link-icon" data-feather="frown"></i>
-                        <span class="link-title">Sickness</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['sickness/*']) }}" id="sickness">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.sicknesses') }}"
-                                    class="nav-link {{ active_class(['sickness/list']) }}">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('create.sickness') }}"
-                                    class="nav-link {{ active_class(['sickness/create']) }}">Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            {{-- sickness Section --}}
+            <li class="nav-item {{ active_class(['sickness/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#sickness" role="button"
+                    aria-expanded="{{ is_active_route(['sickness/*']) }}" aria-controls="sickness">
+                    <i class="link-icon" data-feather="frown"></i>
+                    <span class="link-title">Sickness</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['sickness/*']) }}" id="sickness">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.sicknesses') }}"
+                                class="nav-link {{ active_class(['sickness/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.sickness') }}"
+                                class="nav-link {{ active_class(['sickness/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-                {{-- Capability Procedure Section --}}
-                <li class="nav-item {{ active_class(['capability/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#Capabilities" role="button"
-                        aria-expanded="{{ is_active_route(['capability/*']) }}" aria-controls="Capabilities">
-                        <i class="link-icon" data-feather="settings"></i> <!-- Updated icon -->
-                        <span class="link-title">Capability</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['capability/*']) }}" id="Capabilities">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.capabilities') }}"
-                                    class="nav-link {{ active_class(['capability/list']) }}">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('create.capability') }}"
-                                    class="nav-link {{ active_class(['capability/create']) }}">Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            {{-- Capability Procedure Section --}}
+            <li class="nav-item {{ active_class(['capability/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Capabilities" role="button"
+                    aria-expanded="{{ is_active_route(['capability/*']) }}" aria-controls="Capabilities">
+                    <i class="link-icon" data-feather="settings"></i> <!-- Updated icon -->
+                    <span class="link-title">Capability</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['capability/*']) }}" id="Capabilities">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.capabilities') }}"
+                                class="nav-link {{ active_class(['capability/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.capability') }}"
+                                class="nav-link {{ active_class(['capability/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-                {{-- disciplinary Section --}}
-                <li class="nav-item {{ active_class(['disciplinary/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#disciplinary" role="button"
-                        aria-expanded="{{ is_active_route(['disciplinary/*']) }}" aria-controls="disciplinary">
-                        <i class="link-icon" data-feather="users"></i>
-                        <span class="link-title">Disciplinary</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['disciplinary/*']) }}" id="disciplinary">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.disciplinaries') }}"
-                                    class="nav-link {{ active_class(['disciplinary/list']) }}">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('create.disciplinary') }}"
-                                    class="nav-link {{ active_class(['disciplinary/create']) }}">Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            {{-- disciplinary Section --}}
+            <li class="nav-item {{ active_class(['disciplinary/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#disciplinary" role="button"
+                    aria-expanded="{{ is_active_route(['disciplinary/*']) }}" aria-controls="disciplinary">
+                    <i class="link-icon" data-feather="users"></i>
+                    <span class="link-title">Disciplinary</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['disciplinary/*']) }}" id="disciplinary">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.disciplinaries') }}"
+                                class="nav-link {{ active_class(['disciplinary/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.disciplinary') }}"
+                                class="nav-link {{ active_class(['disciplinary/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-                {{-- lateness section --}}
-                <li class="nav-item {{ active_class(['lateness/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#Lateness" role="button"
-                        aria-expanded="{{ is_active_route(['lateness/*']) }}" aria-controls="Lateness">
-                        <i class="link-icon" data-feather="minus-circle"></i>
-                        <span class="link-title">Lateness</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['lateness/*']) }}" id="Lateness">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.latenesses') }}"
-                                    class="nav-link {{ active_class(['lateness/list']) }}">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('create.lateness') }}"
-                                    class="nav-link {{ active_class(['lateness/create']) }}">Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                {{-- Training Record Section --}}
-                <li class="nav-item {{ active_class(['training/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#Trainings" role="button"
-                        aria-expanded="{{ is_active_route(['training/*']) }}" aria-controls="Trainings">
-                        <i class="link-icon" data-feather="book"></i> <!-- Updated icon -->
-                        <span class="link-title">Training</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['training/*']) }}" id="Trainings">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('show.trainings') }}"
-                                    class="nav-link {{ active_class(['training/list']) }}">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('create.training') }}"
-                                    class="nav-link {{ active_class(['training/create']) }}">Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            {{-- lateness section --}}
+            <li class="nav-item {{ active_class(['lateness/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Lateness" role="button"
+                    aria-expanded="{{ is_active_route(['lateness/*']) }}" aria-controls="Lateness">
+                    <i class="link-icon" data-feather="minus-circle"></i>
+                    <span class="link-title">Lateness</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['lateness/*']) }}" id="Lateness">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.latenesses') }}"
+                                class="nav-link {{ active_class(['lateness/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.lateness') }}"
+                                class="nav-link {{ active_class(['lateness/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- Training Record Section --}}
+            <li class="nav-item {{ active_class(['training/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Trainings" role="button"
+                    aria-expanded="{{ is_active_route(['training/*']) }}" aria-controls="Trainings">
+                    <i class="link-icon" data-feather="book"></i> <!-- Updated icon -->
+                    <span class="link-title">Training</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['training/*']) }}" id="Trainings">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('show.trainings') }}"
+                                class="nav-link {{ active_class(['training/list']) }}">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create.training') }}"
+                                class="nav-link {{ active_class(['training/create']) }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-                {{-- Dropdowns --}}
-                <li class="nav-item {{ active_class(['dropdowns/*']) }}">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#Dropdowns" role="button"
-                        aria-expanded="{{ is_active_route(['dropdowns/*']) }}" aria-controls="Dropdowns">
-                        <i class="link-icon" data-feather="menu"></i> <!-- Updated icon -->
-                        <span class="link-title">Dropdowns</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse {{ show_class(['dropdowns/*']) }}" id="Dropdowns">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('create.dropdown') }}"
-                                    class="nav-link {{ active_class(['dropdowns/create']) }}">Create</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('dropdown.user') }}"
-                                    class="nav-link {{ active_class(['dropdowns/user']) }}">User</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('dropdown.job') }}"
-                                    class="nav-link {{ active_class(['dropdowns/job']) }}">Job</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('dropdown.disclosure') }}"
-                                    class="nav-link {{ active_class(['dropdowns/disclosure']) }}">Disclosure</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('dropdown.capability') }}"
-                                    class="nav-link {{ active_class(['dropdowns/capability']) }}">Capability</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('dropdown.disciplinary') }}"
-                                    class="nav-link {{ active_class(['dropdowns/disciplinary']) }}">Disciplinary</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('dropdown.lateness') }}"
-                                    class="nav-link {{ active_class(['dropdowns/lateness']) }}">Lateness</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('dropdown.training') }}"
-                                    class="nav-link {{ active_class(['dropdowns/training']) }}">Training</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            {{-- Dropdowns --}}
+            <li class="nav-item {{ active_class(['dropdowns/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#Dropdowns" role="button"
+                    aria-expanded="{{ is_active_route(['dropdowns/*']) }}" aria-controls="Dropdowns">
+                    <i class="link-icon" data-feather="menu"></i> <!-- Updated icon -->
+                    <span class="link-title">Dropdowns</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['dropdowns/*']) }}" id="Dropdowns">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('create.dropdown') }}"
+                                class="nav-link {{ active_class(['dropdowns/create']) }}">Create</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.user') }}"
+                                class="nav-link {{ active_class(['dropdowns/user']) }}">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.job') }}"
+                                class="nav-link {{ active_class(['dropdowns/job']) }}">Job</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.disclosure') }}"
+                                class="nav-link {{ active_class(['dropdowns/disclosure']) }}">Disclosure</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.capability') }}"
+                                class="nav-link {{ active_class(['dropdowns/capability']) }}">Capability</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.disciplinary') }}"
+                                class="nav-link {{ active_class(['dropdowns/disciplinary']) }}">Disciplinary</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.lateness') }}"
+                                class="nav-link {{ active_class(['dropdowns/lateness']) }}">Lateness</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dropdown.training') }}"
+                                class="nav-link {{ active_class(['dropdowns/training']) }}">Training</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             @endif
-            
+            <!-- Reports -->
             <li class="nav-item {{ active_class(['reports/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#reports" role="button"
                     aria-expanded="{{ is_active_route(['reports/*']) }}" aria-controls="reports">

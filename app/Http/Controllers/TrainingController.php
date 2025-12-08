@@ -47,6 +47,9 @@ class TrainingController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'user_id' => 'required',
+        ]);
         $training = Training::findOrFail($id);
         $training->update($request->all());
         if ($request->form_type == 'tab') {

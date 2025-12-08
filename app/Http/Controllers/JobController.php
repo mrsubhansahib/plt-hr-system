@@ -29,12 +29,12 @@ class JobController extends Controller
     {
         $dropdowns = Dropdown::where('module_type', 'Job')->orderBy('name')->get()->all();
         $employees = User::where('role', 'employee')->where('status', 'active')->get();
-        
+
         return view('pages.job.create', compact('employees', 'dropdowns'));
     }
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'title'             => 'required',
             'user_id'           => 'required',
@@ -55,7 +55,7 @@ class JobController extends Controller
             } else {
                 $request['status'] = 'terminated';
             }
-        }else{
+        } else {
             $request['status'] = 'active';
         }
         $job = Job::create($jobData);
@@ -88,13 +88,13 @@ class JobController extends Controller
             'termination_date'  => 'nullable|date'
         ]);
         if (!empty($request->termination_date)) {
-            
+
             if (strtotime($request->termination_date) > strtotime(now())) {
                 $request['status'] = 'active';
             } else {
                 $request['status'] = 'terminated';
             }
-        }else{
+        } else {
             $request['status'] = 'active';
         }
         $job = Job::findOrFail($id);
